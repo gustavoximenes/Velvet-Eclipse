@@ -1,0 +1,46 @@
+plugins { id 'java' }
+group = 'com.gx.velveteclipse'
+version = '0.6.4-evoker-weakness'
+java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
+dependencies {
+    compileOnly files('dependencies/minecraft-forge-api.jar')
+    compileOnly fileTree('dependencies') { include '*.jar'; exclude 'minecraft-forge-api.jar' }
+    testImplementation sourceSets.main.output
+}
+configurations.testImplementation.extendsFrom(configurations.compileOnly)
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
+tasks.named('jar') {
+    manifest { attributes 'Implementation-Title': 'Velvet Eclipse', 'Implementation-Version': project.version }
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+tasks.named('processResources') {
+    inputs.property('modVersion', project.version)
+    filesMatching('META-INF/mods.toml') { filter { line -> line.startsWith('version=') ? 'version="' + project.version + '"' : line } }
+}
+tasks.register('logicTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.ExplorationAudit'
+}
+tasks.named('check') { dependsOn 'logicTest' }
+tasks.register('presentationTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.PresentationAudit'
+}
+tasks.named('check') { dependsOn 'presentationTest' }
+
+tasks.register('stylePoseTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.StylePoseAudit'
+}
+tasks.named('check') { dependsOn 'stylePoseTest' }
+
+tasks.register('evokerWeaknessTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.EvokerWeaknessAudit'
+}
+tasks.named('check') { dependsOn 'evokerWeaknessTest' }

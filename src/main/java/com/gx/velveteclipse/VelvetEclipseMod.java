@@ -1,0 +1,21 @@
+package com.gx.velveteclipse;
+
+import com.gx.velveteclipse.core.persona.PersonaRegistry;
+import com.gx.velveteclipse.network.ModNetwork;
+import com.mojang.logging.LogUtils;
+import net.minecraftforge.fml.common.Mod;
+import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
+
+@Mod("velvet_eclipse")
+public final class VelvetEclipseMod {
+   public static final String MOD_ID = "velvet_eclipse";
+   public static final Logger LOGGER = LogUtils.getLogger();
+
+   public VelvetEclipseMod() {
+      GeckoLib.initialize();
+      PersonaRegistry.bootstrap();
+      ModNetwork.register();
+      LOGGER.info("Velvet Eclipse 0.5.1 GeckoLib initialized.");
+   }
+}
