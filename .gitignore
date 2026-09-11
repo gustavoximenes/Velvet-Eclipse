@@ -1,0 +1,13 @@
+# Generated build outputs and local machine state
+.gradle/
+build/
+out/
+.idea/
+.vscode/
+*.iml
+*.log
+*.tmp
+__pycache__/
+.env
+.env.*
+# Versioned releases belong in compiled Jar/; do not ignore all JARs.

@@ -26,11 +26,12 @@ public final class ExplorationAnimation implements IAnimation {
         double dx=p.m_20185_()-x,dz=p.m_20189_()-z;x=p.m_20185_();z=p.m_20189_();
         double distance=Math.min(.6,Math.sqrt(dx*dx+dz*dz));
         double target=p.m_20096_()?Math.min(1,distance/.28):0;
+        if(com.gx.velveteclipse.client.PersonaCinematics.meleeActive())target=Math.min(1,distance/.28);
         if(ExplorationClient.entry())target=1;
         speed+=(target-speed)*.32;
         phase+=ExplorationClient.entry()?.52:distance*2.05;
         weight+=((ExplorationClient.swordVisible()?1:0)-weight)*.38;
-        if(ExplorationClient.mode()==Mode.BATTLE||ExplorationClient.mode()==Mode.SKILL_CINEMATIC)weight=previousWeight=0;
+        if(ExplorationClient.mode()==Mode.SKILL_CINEMATIC)weight=previousWeight=0;
     }
     @Override public void tick(){}
     @Override public void setupAnim(float partial){}
@@ -39,7 +40,7 @@ public final class ExplorationAnimation implements IAnimation {
         if(!part.equals("body")&&!part.equals("head")&&!part.equals("rightArm")&&!part.equals("leftArm")&&!part.equals("rightLeg")&&!part.equals("leftLeg"))return base;
         double p=previousPhase+(phase-previousPhase)*partial,v=previousSpeed+(speed-previousSpeed)*partial,w=previousWeight+(weight-previousWeight)*partial;
         double t=ExplorationClient.ticks()+partial;
-        double attack=ExplorationClient.attacking()?t:-1;
+        double attack=ExplorationClient.swordAttackTime(partial);
         Vec3f sample;
         if(type==TransformType.ROTATION)sample=ExplorationPose.rotation(part,p,v,attack);
         else if(type==TransformType.BEND)sample=ExplorationPose.bend(part,p,v,attack);

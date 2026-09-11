@@ -1,0 +1,129 @@
+package com.gx.velveteclipse.core.persona;
+
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public final class PersonaRegistry {
+   private static final Map<String, SkillDefinition> SKILLS = new LinkedHashMap<>();
+   private static final Map<String, PersonaDefinition> PERSONAS = new LinkedHashMap<>();
+   private static boolean bootstrapped;
+
+   private PersonaRegistry() {
+   }
+
+   public static synchronized void bootstrap() {
+      if (!bootstrapped) {
+         registerSkill(new SkillDefinition("ember", "Ember", Element.FIRE, 44, 96, 4, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("frost_shard", "Frost Shard", Element.ICE, 42, 96, 4, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("volt_spark", "Volt Spark", Element.ELECTRIC, 43, 95, 4, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("gale_cut", "Gale Cut", Element.WIND, 42, 98, 4, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("cleave", "Cleave", Element.PHYSICAL, 52, 92, 0, 8, true, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("lumen_ray", "Lumen Ray", Element.LIGHT, 48, 95, 5, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("shade_bite", "Shade Bite", Element.DARK, 48, 95, 5, 0, false, SkillTarget.ONE_ENEMY));
+         registerPersona(
+            persona(
+               "cinder_wisp",
+               "Cinder Wisp",
+               Arcana.MAGICIAN,
+               1,
+               new PersonaStats(2, 5, 3, 4, 3),
+               Map.of(Element.FIRE, Affinity.RESIST, Element.ICE, Affinity.WEAK),
+               Map.of(1, List.of("ember"), 4, List.of("cleave"))
+            )
+         );
+         registerPersona(
+            persona(
+               "nocturne_knight",
+               "Nocturne Knight",
+               Arcana.FOOL,
+               4,
+               new PersonaStats(6, 3, 5, 4, 3),
+               Map.of(Element.DARK, Affinity.RESIST, Element.LIGHT, Affinity.WEAK),
+               Map.of(4, List.of("cleave", "shade_bite"))
+            )
+         );
+         registerPersona(
+            persona(
+               "sylphid",
+               "Sylphid",
+               Arcana.LOVERS,
+               3,
+               new PersonaStats(2, 5, 3, 6, 4),
+               Map.of(Element.WIND, Affinity.RESIST, Element.ELECTRIC, Affinity.WEAK),
+               Map.of(3, List.of("gale_cut"))
+            )
+         );
+         registerPersona(
+            persona(
+               "lumen_hare",
+               "Lumen Hare",
+               Arcana.STAR,
+               5,
+               new PersonaStats(3, 6, 3, 7, 6),
+               Map.of(Element.LIGHT, Affinity.RESIST, Element.DARK, Affinity.WEAK),
+               Map.of(5, List.of("lumen_ray", "gale_cut"))
+            )
+         );
+         registerPersona(
+            persona(
+               "iron_oni",
+               "Iron Oni",
+               Arcana.STRENGTH,
+               7,
+               new PersonaStats(8, 2, 8, 3, 3),
+               Map.of(Element.PHYSICAL, Affinity.RESIST, Element.PSY, Affinity.WEAK),
+               Map.of(7, List.of("cleave"))
+            )
+         );
+         registerPersona(
+            persona(
+               "umbra_slime",
+               "Umbra Slime",
+               Arcana.MOON,
+               2,
+               new PersonaStats(3, 3, 4, 2, 2),
+               Map.of(Element.FIRE, Affinity.WEAK, Element.DARK, Affinity.RESIST),
+               Map.of(2, List.of("shade_bite"))
+            )
+         );
+         bootstrapped = true;
+      }
+   }
+
+   private static PersonaDefinition persona(
+      String var0, String var1, Arcana var2, int var3, PersonaStats var4, Map<Element, Affinity> var5, Map<Integer, List<String>> var6
+   ) {
+      return new PersonaDefinition(var0, var1, var2, var3, var4, var5, var6);
+   }
+
+   public static void registerSkill(SkillDefinition var0) {
+      SKILLS.put(var0.id(), var0);
+   }
+
+   public static void registerPersona(PersonaDefinition var0) {
+      PERSONAS.put(var0.id(), var0);
+   }
+
+   public static Optional<SkillDefinition> skill(String var0) {
+      bootstrap();
+      return Optional.ofNullable(SKILLS.get(var0));
+   }
+
+   public static Optional<PersonaDefinition> persona(String var0) {
+      bootstrap();
+      return Optional.ofNullable(PERSONAS.get(var0));
+   }
+
+   public static Map<String, SkillDefinition> skills() {
+      bootstrap();
+      return Collections.unmodifiableMap(SKILLS);
+   }
+
+   public static Map<String, PersonaDefinition> personas() {
+      bootstrap();
+      return Collections.unmodifiableMap(PERSONAS);
+   }
+}

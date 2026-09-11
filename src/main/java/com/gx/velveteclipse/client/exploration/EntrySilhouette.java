@@ -8,14 +8,16 @@ public final class EntrySilhouette implements VertexConsumer {
     public static final int BLUE=0x1616FF;
     private final VertexConsumer output;
     private final int alpha;
-    public EntrySilhouette(VertexConsumer output,float alpha){this.output=output;this.alpha=Math.round(Math.max(0,Math.min(1,alpha))*255);}
+    private final int color;
+    public EntrySilhouette(VertexConsumer output,float alpha){this(output,alpha,BLUE);}
+    public EntrySilhouette(VertexConsumer output,float alpha,int color){this.output=output;this.color=color;this.alpha=Math.round(Math.max(0,Math.min(1,alpha))*255);}
     @Override public VertexConsumer m_5483_(double x,double y,double z){output.m_5483_(x,y,z);return this;}
     @Override public VertexConsumer m_6122_(int r,int g,int b,int a){return this;}
     @Override public VertexConsumer m_7421_(float u,float v){return this;}
     @Override public VertexConsumer m_7122_(int u,int v){return this;}
     @Override public VertexConsumer m_7120_(int u,int v){return this;}
     @Override public VertexConsumer m_5601_(float x,float y,float z){return this;}
-    @Override public void m_5752_(){output.m_6122_((BLUE>>16)&255,(BLUE>>8)&255,BLUE&255,alpha);output.m_5752_();}
+    @Override public void m_5752_(){output.m_6122_((color>>16)&255,(color>>8)&255,color&255,alpha);output.m_5752_();}
     @Override public void m_7404_(int r,int g,int b,int a){}
     @Override public void m_141991_(){}
 }

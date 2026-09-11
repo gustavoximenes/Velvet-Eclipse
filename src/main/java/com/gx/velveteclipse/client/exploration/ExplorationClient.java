@@ -27,7 +27,8 @@ public final class ExplorationClient {
     public static boolean enabled(){return mode!=Mode.NORMAL;}
     public static boolean entry(){return mode==Mode.BATTLE_ENTRY;}
     public static boolean attacking(){return mode==Mode.EXPLORATION_ATTACK;}
-    public static boolean swordVisible(){return !ClientBattleState.snapshot().active()&&!PersonaCinematics.skillSequenceActive()&&(mode==Mode.EXPLORATION||mode==Mode.EXPLORATION_ATTACK||mode==Mode.BATTLE_ENTRY);}
+    public static boolean swordVisible(){return !PersonaCinematics.skillSequenceActive()&&(ClientBattleState.snapshot().active()||mode==Mode.EXPLORATION||mode==Mode.EXPLORATION_ATTACK||mode==Mode.BATTLE_ENTRY);}
+    public static double swordAttackTime(float partial){return PersonaCinematics.meleeActive()?com.gx.velveteclipse.core.battle.MeleeTimeline.slash(PersonaCinematics.meleeTicks()+partial):attacking()?tick+partial:-1;}
     public static boolean blocksMenu(){return attacking()||entry();}
     public static int ticks(){return tick;}
     public static float yaw(){return yaw;}
@@ -65,11 +66,11 @@ public final class ExplorationClient {
         }
         ExplorationAnimation.update(mc.f_91074_);
     }
-    public static void reset(){mode=Mode.NORMAL;tick=0;sequence=-1;level=null;start=end=null;requestPending=false;ExplorationAnimation.clear();EntryTransition.reset();com.gx.velveteclipse.client.EvokerPlayerAnimation.clear();com.gx.velveteclipse.client.ClientPersonaCutinOverlay.reset();}
+    public static void reset(){mode=Mode.NORMAL;tick=0;sequence=-1;level=null;start=end=null;requestPending=false;ExplorationAnimation.clear();EntryTransition.reset();com.gx.velveteclipse.client.EvokerPlayerAnimation.clear();com.gx.velveteclipse.client.ClientPersonaCutinOverlay.reset();PersonaCinematics.reset();BattleTargetHud.reset();PersonaSelectorPortrait.reset();}
     @SubscribeEvent public static void mouse(InputEvent.MouseButton.Pre e){
         var mc=Minecraft.m_91087_();if(mc.f_91080_!=null)return;
         if(entry()){e.setCanceled(true);return;}
-        if(swordVisible()&&e.getButton()==0){
+        if(!ClientBattleState.snapshot().active()&&swordVisible()&&e.getButton()==0){
             e.setCanceled(true);
             if(e.getAction()==1&&canAttack(mode())&&!requestPending){mode=Mode.EXPLORATION_ATTACK;tick=0;yaw=mc.f_91074_.m_146908_();requestPending=true;requestTicks=0;ExplorationNetwork.request(ExplorationNetwork.ATTACK);}
         }
@@ -78,7 +79,7 @@ public final class ExplorationClient {
         if(entry()||(swordVisible()&&e.isAttack())){e.setCanceled(true);e.setSwingHand(false);}
     }
     @SubscribeEvent public static void movement(MovementInputUpdateEvent e){
-        if(!entry())return;var in=e.getInput();in.f_108566_=0;in.f_108567_=0;
+        if(!entry()&&!ClientBattleState.snapshot().active())return;var in=e.getInput();in.f_108566_=0;in.f_108567_=0;
         in.f_108568_=in.f_108569_=in.f_108570_=in.f_108571_=in.f_108572_=in.f_108573_=false;
     }
     @SubscribeEvent public static void open(ScreenEvent.Opening e){if(entry()&&Minecraft.m_91087_().f_91074_!=null&&Minecraft.m_91087_().f_91074_.m_6084_())e.setCanceled(true);}

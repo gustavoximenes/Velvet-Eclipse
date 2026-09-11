@@ -1,0 +1,13 @@
+package com.gx.velveteclipse.menu;
+import java.util.List;
+import com.gx.velveteclipse.core.persona.SkillDefinition;
+
+public record MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,
+    List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message) {
+    public record Persona(String id,String name,String arcana,int level,int xp,int nextXp,int[] stats,
+                          List<SkillDefinition> skills,List<String> affinities) {}
+    public record Quest(String name,String description,boolean done,float progress) {}
+    public record Link(String id,String name,int rank,long lastDay) {}
+    public static MenuSnapshot empty(){return new MenuSnapshot(0,1,0,1,0,"",List.of(),List.of(),List.of(),1,0,"Sincronizando...");}
+    public Persona equipped(){return personas.stream().filter(p->p.id().equals(active)).findFirst().orElse(null);}
+}

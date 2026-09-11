@@ -1,0 +1,45 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="velvet_eclipse"
+version="0.5.30-hud-render-fix"
+displayName="Velvet Eclipse"
+authors="Gustavo Ximenes"
+description='''An original Minecraft RPG mod inspired by stylish monster-collecting and social JRPG combat systems.'''
+
+[[dependencies.velvet_eclipse]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.0,48)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.velvet_eclipse]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.velvet_eclipse]]
+modId="geckolib"
+mandatory=true
+versionRange="[4.8.4,5)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.velvet_eclipse]]
+modId="playeranimator"
+mandatory=true
+versionRange="[1.0.2-rc1,2)"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.velvet_eclipse]]
+modId="bendylib"
+mandatory=true
+versionRange="[4.0.0,5)"
+ordering="AFTER"
+side="CLIENT"

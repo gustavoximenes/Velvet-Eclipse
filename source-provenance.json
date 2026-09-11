@@ -75,5 +75,6 @@
   "com\\gx\\velveteclipse\\client\\menu\\PersonaSheetDesign.java": "work\\persona-status-0.5.29\\src\\com\\gx\\velveteclipse\\client\\menu\\PersonaSheetDesign.java",
   "com\\gx\\velveteclipse\\client\\menu\\PersonaSheetState.java": "work\\persona-status-0.5.29\\src\\com\\gx\\velveteclipse\\client\\menu\\PersonaSheetState.java",
   "com\\gx\\velveteclipse\\client\\menu\\MenuDepth.java": "work\\render-fix-0.5.30\\src\\com\\gx\\velveteclipse\\client\\menu\\MenuDepth.java",
-  "com\\gx\\velveteclipse\\client\\menu\\MenuGeometry.java": "work\\render-fix-0.5.30\\src\\com\\gx\\velveteclipse\\client\\menu\\MenuGeometry.java"
+  "com\\gx\\velveteclipse\\client\\menu\\MenuGeometry.java": "work\\render-fix-0.5.30\\src\\com\\gx\\velveteclipse\\client\\menu\\MenuGeometry.java",
+  "dependencies/lwjgl-opengl-3.3.1.jar": "Copied from the installed Minecraft library org/lwjgl/lwjgl-opengl/3.3.1. Compile-only; Minecraft provides it at runtime. SHA256 E436D2144F3A36FFF772FD64233316809B795F390DEFD4D55660FC686E7C2834."
 }
