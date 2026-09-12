@@ -40,7 +40,7 @@ public final class CinematicEffects {
             }
             if(tick>=70&&tick<=85) {
                 double p=(tick-70)/15.0;
-                if(magic) {
+                if(magic&&element!=Element.ELECTRIC) {
                     for(int i=0;i<3;i++) {
                         double a=tick*.8+i*2.094;
                         point(level,player,color,mix(origin[0],target[0],p)+Math.cos(a)*.12,mix(origin[1]+.5,target[1],p)+Math.sin(p*Math.PI)*.6+Math.sin(a)*.12,mix(origin[2],target[2],p));
@@ -53,7 +53,15 @@ public final class CinematicEffects {
                     }
                 }
             }
-            if(tick==86)burst(level,player,target,color,18,.4);
+            if(tick==86){
+                burst(level,player,target,color,18,.4);
+                if(element==Element.ELECTRIC){
+                    burst(level,player,target,WHITE,28,.32);
+                    burst(level,player,target,dust(1,.45f,.75f,.7f),18,.45);
+                    ring(level,player,target,CYAN,1.1,24);
+                }
+                if(element==Element.SUPPORT){for(int i=0;i<3;i++){double[] p={target[0],target[1]+i*.28,target[2]};ring(level,player,p,color,.5+i*.1,18);}}
+            }
             if(tick==102||tick==106) {
                 ring(level,player,origin,CYAN,tick==102?.8:.4,16);
             }
@@ -64,6 +72,10 @@ public final class CinematicEffects {
     }
     public static void melee(ServerPlayer player){
         if(player.m_9236_() instanceof ServerLevel level && VisualBattleActors.enemyActor(player) instanceof Entity enemy){
+            // Extend the slash effect when terrain shortened the safe approach.
+            double gap=player.m_20182_().m_82554_(enemy.m_20182_());
+            if(gap>2){for(int i=0;i<24;i++){double t=i/23.0;var p=player.m_20182_().m_165921_(enemy.m_20182_(),t);
+                point(level,player,CYAN,p.f_82479_,p.f_82480_+.8+Math.sin(t*Math.PI)*.35,p.f_82481_);}}
             double[] pos={enemy.m_20185_(),enemy.m_20186_()+.65,enemy.m_20189_()};burst(level,player,pos,WHITE,22,.33);burst(level,player,pos,CYAN,12,.5);
             for(int i=0;i<25;i++){double a=-1.1+i*.095;double[] p=RuntimeBridge.localOffset(pos,player.m_146908_(),Math.cos(a)*1.1,Math.sin(a),0);point(level,player,CYAN,p[0],p[1],p[2]);}
         }
@@ -72,7 +84,8 @@ public final class CinematicEffects {
         return switch(element) {
             case HEALING,SUPPORT,WIND->dust(.35f,1,.65f,.8f);
             case FIRE->dust(1,.3f,.12f,.85f);
-            case ELECTRIC,LIGHT->dust(1,.85f,.2f,.85f);
+            case ELECTRIC->dust(.85f,.72f,1,.85f);
+            case LIGHT->dust(1,.85f,.2f,.85f);
             case DARK,PSY,AILMENT->dust(.68f,.3f,1,.85f);
             case PHYSICAL->WHITE;
             default->CYAN;

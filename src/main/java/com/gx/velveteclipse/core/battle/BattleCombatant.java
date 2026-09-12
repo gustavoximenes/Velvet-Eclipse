@@ -17,6 +17,23 @@ public final class BattleCombatant {
    private int sp;
    private boolean guarding;
    private boolean downed;
+   private int attackTurns, defenseTurns, defenseStage;
+   private boolean attackWaiting, defenseWaiting;
+
+   public double attackMultiplier(){return attackTurns>0?1.33:1;}
+   public double defenseMultiplier(){return defenseTurns>0?(defenseStage>0?1.33:.66):1;}
+   public int attackTurns(){return attackTurns;}
+   public int defenseTurns(){return defenseTurns;}
+   public void attackStatus(boolean waiting){attackTurns=3;attackWaiting=waiting;}
+   public void defenseStatus(int stage,boolean waiting){
+      // Opposing effects cancel; repeated effects refresh duration without stacking.
+      if(defenseTurns>0&&defenseStage!=stage){defenseTurns=0;defenseStage=0;defenseWaiting=false;}
+      else {defenseStage=stage;defenseTurns=3;defenseWaiting=waiting;}
+   }
+   public void beginTurn(){
+      if(attackWaiting)attackWaiting=false;else if(attackTurns>0)--attackTurns;
+      if(defenseWaiting)defenseWaiting=false;else if(defenseTurns>0)--defenseTurns;
+   }
 
    public BattleCombatant(UUID var1, String var2, BattleSide var3, PersonaInstance var4, int var5, int var6, int var7, int var8) {
       this.id = var1;

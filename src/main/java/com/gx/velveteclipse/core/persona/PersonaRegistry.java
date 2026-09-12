@@ -89,6 +89,20 @@ public final class PersonaRegistry {
                Map.of(2, List.of("shade_bite"))
             )
          );
+         registerSkill(new SkillDefinition("zio","Zio",Element.ELECTRIC,43,96,4,0,false,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("mazio","Mazio",Element.ELECTRIC,43,95,10,0,false,SkillTarget.ALL_ENEMIES));
+         registerSkill(new SkillDefinition("zionga","Zionga",Element.ELECTRIC,75,96,8,0,false,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("mazionga","Mazionga",Element.ELECTRIC,75,95,16,0,false,SkillTarget.ALL_ENEMIES));
+         registerSkill(new SkillDefinition("ziodyne","Ziodyne",Element.ELECTRIC,115,96,12,0,false,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("maziodyne","Maziodyne",Element.ELECTRIC,115,95,24,0,false,SkillTarget.ALL_ENEMIES));
+         // Persona 4's first acquisition. Keep the older Personas' Cleave balance intact.
+         registerSkill(new SkillDefinition("izanagi_cleave","Cleave",Element.PHYSICAL,52,95,0,5,true,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("rakukaja","Rakukaja",Element.SUPPORT,0,100,12,0,false,SkillTarget.ONE_ALLY));
+         registerSkill(new SkillDefinition("rakunda","Rakunda",Element.SUPPORT,0,100,12,0,false,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("tarukaja","Tarukaja",Element.SUPPORT,0,100,12,0,false,SkillTarget.ONE_ALLY));
+         registerPersona(persona("izanagi","Izanagi",Arcana.FOOL,1,new PersonaStats(3,2,2,3,2),
+             Map.of(Element.ELECTRIC,Affinity.RESIST,Element.WIND,Affinity.WEAK,Element.DARK,Affinity.NULL),
+             Map.of(1,List.of("zio","izanagi_cleave","rakukaja"),3,List.of("rakunda"),5,List.of("tarukaja"))));
          bootstrapped = true;
       }
    }

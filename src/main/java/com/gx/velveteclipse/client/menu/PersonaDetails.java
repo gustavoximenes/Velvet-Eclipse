@@ -34,6 +34,9 @@ public final class PersonaDetails {
     public static String target(SkillTarget t){return switch(t){case ONE_ENEMY -> "um inimigo";case ALL_ENEMIES -> "todos os inimigos";
         case SELF -> "o usuário";case ONE_ALLY -> "um aliado";case ALL_ALLIES -> "todos os aliados";};}
     public static String description(SkillDefinition s){
+        if(s.id().equals("rakukaja"))return "Aumenta a defesa de um aliado por 3 turnos.";
+        if(s.id().equals("rakunda"))return "Reduz a defesa de um inimigo por 3 turnos.";
+        if(s.id().equals("tarukaja"))return "Aumenta o ataque de um aliado por 3 turnos.";
         if(s.element()==Element.HEALING)return "Recupera "+s.power()+" HP de "+target(s.target())+".";
         if(!s.isDamageSkill())return "Habilidade de "+element(s.element()).toLowerCase(Locale.ROOT)+" para "+target(s.target())+".";
         return "Dano de "+element(s.element()).toLowerCase(Locale.ROOT)+" contra "+target(s.target())+". Usa "+(s.usesMagicStat()?"Magia (Ma)":"Força (St)")+"."

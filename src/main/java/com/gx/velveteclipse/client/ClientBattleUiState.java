@@ -31,6 +31,8 @@ public final class ClientBattleUiState {
   if(!selector()||index<0||index>=s.skills().size())return false;
   selected=index;String id=s.skills().get(index);
   if(!affordable(PersonaRegistry.skill(id).orElse(null),s))return false;
+  var skill=PersonaRegistry.skill(id).orElseThrow();
+  if(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.SELF){send("skill",id);return true;}
   pendingSkill=id;page=Page.TARGET;return true;
  }
  public static boolean selectVisible(int row,BattleSnapshotS2C s){return selectIndex(selected/7*7+row,s);}

@@ -16,13 +16,15 @@ public final class MeleeBattleServer {
   var session=BattleService.current(p);if(session==null||session.prepared()!=null)return false;
   if(!(VisualBattleActors.enemyActor(p) instanceof Entity enemy)){BattleService.sync(p,"O alvo ainda não está disponível para o ataque.");return false;}
   Vec3 start=p.m_20182_(),delta=enemy.m_20182_().m_82546_(start);double distance=Math.sqrt(delta.f_82479_*delta.f_82479_+delta.f_82481_*delta.f_82481_);
-  if(distance<.1){BattleService.sync(p,"Não há espaço para aproximar-se deste alvo.");return false;}
-  Vec3 offset=new Vec3(delta.f_82479_/distance*Math.max(0,distance-1.35),0,delta.f_82481_/distance*Math.max(0,distance-1.35));
-  // Sweep the full player box before reserving the attack; never teleport through terrain.
-  for(int i=1;i<=40;i++){
-   Vec3 step=offset.m_82490_(i/40.0);var box=p.m_20191_().m_82383_(step);
-   if(!p.m_9236_().m_45756_(p,box)||p.m_9236_().m_45756_(p,box.m_82386_(0,-.65,0))){BattleService.sync(p,"Caminho até o alvo bloqueado. Use uma habilidade de Persona.");return false;}
-  }
+  double travel=Math.max(0,distance-1.35);
+  Vec3 direction=distance<.001?Vec3.f_82478_:new Vec3(delta.f_82479_/distance,0,delta.f_82481_/distance);
+  boolean supported=!p.m_9236_().m_45756_(p,p.m_20191_().m_82386_(0,-.65,0));
+  // Terrain constrains presentation, never the validity of a turn-based attack.
+  double reachable=MeleeApproach.reachable(travel,d->{
+   var box=p.m_20191_().m_82383_(direction.m_82490_(d));
+   return p.m_9236_().m_45756_(p,box)&&(!supported||!p.m_9236_().m_45756_(p,box.m_82386_(0,-.65,0)));
+  });
+  Vec3 offset=direction.m_82490_(reachable);
   var reserved=session.prepare(p.m_20148_(),action);if(reserved==null){BattleService.sync(p,"Ataque indisponível.");return false;}
   var s=new Sequence(p,action,start.m_82549_(offset));sequences.put(p.m_20148_(),s);
   ModNetwork.sendPresentation(p,new BattleCueS2C("attack","",false,start.f_82479_,start.f_82480_,start.f_82481_,s.end.f_82479_,s.end.f_82480_,s.end.f_82481_));return true;
@@ -31,9 +33,11 @@ public final class MeleeBattleServer {
   var session=BattleService.current(s.p);if(session==null||!s.p.m_6084_()){clear(s.p);continue;}
   ++s.tick;Vec3 desired=s.start.m_165921_(s.end,MeleeTimeline.progress(s.tick));
   var offset=desired.m_82546_(s.p.m_20182_());
-  if(!s.p.m_9236_().m_45756_(s.p,s.p.m_20191_().m_82383_(offset))){clear(s.p);session.cancelPrepared();ModNetwork.sendPresentation(s.p,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));BattleService.sync(s.p,"Movimento interrompido por um obstáculo.");continue;}
-  // Client and server follow the same path; per-tick teleport packets would reset interpolation.
-  RuntimeBridge.freezePlayer(s.p,new double[]{desired.f_82479_,desired.f_82480_,desired.f_82481_});RuntimeBridge.setEntityRotation(s.p,s.yaw,0);
+  // A block placed during the animation may stop movement, but cannot discard its reserved hit.
+  if(s.p.m_9236_().m_45756_(s.p,s.p.m_20191_().m_82383_(offset)))
+   RuntimeBridge.freezePlayer(s.p,new double[]{desired.f_82479_,desired.f_82480_,desired.f_82481_});
+  else s.p.m_20256_(Vec3.f_82478_);
+  RuntimeBridge.setEntityRotation(s.p,s.yaw,0);
   if(s.tick==MeleeTimeline.IMPACT){CinematicEffects.melee(s.p);BattleService.act(s.p,s.action);}
   if(s.tick>=MeleeTimeline.END)clear(s.p);
  }}

@@ -66,7 +66,7 @@ public final class PersonaBattleDesign {
    BattleHudDesign.ribbon(c,192,infoY-5,330,49,0xE9010A37);
    c.styled("Info",198,infoY,.9f,CYAN);
    wrap(c,PersonaDetails.description(skill),198,infoY+12,309,CYAN,2);
-   c.text("Poder "+skill.power()+"   Acerto "+skill.accuracy()+"%",198,infoY+34,WHITE);
+   c.text(skill.isDamageSkill()?"Poder "+skill.power()+"   Acerto "+skill.accuracy()+"%":"Efeito de suporte   3 turnos",198,infoY+34,WHITE);
   }
   c.styled("Qual habilidade usar?",198,317,1.1f,WHITE);
   c.fill(0,338,530,22,0xF303092A);

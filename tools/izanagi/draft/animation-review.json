@@ -1,0 +1,15 @@
+{
+  "status": "preview_only",
+  "magic": {
+    "gather": 0.8,
+    "release": 1.25,
+    "return": 2.5
+  },
+  "physical": {
+    "windup": 0.55,
+    "impact": 0.83,
+    "follow_through": 1.1,
+    "return": 1.85
+  },
+  "support_hand_max_unreachable_distance": 0
+}

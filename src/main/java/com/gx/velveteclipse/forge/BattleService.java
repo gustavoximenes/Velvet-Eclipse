@@ -126,7 +126,7 @@ public final class BattleService {
 
          var prepared=var2.prepared();
          BattleResolution var5 = var2.perform(var3, var1);
-         if(prepared!=null&&var2.prepared()==null&&prepared.action().equals(var1))var2.find(var1.targetId()).ifPresent(target->BattleKnowledge.learn(var0,target.persona().definitionId(),prepared.hit()));
+         if(prepared!=null&&var2.prepared()==null&&prepared.action().equals(var1))prepared.hits().forEach((id,hit)->var2.find(id).ifPresent(target->BattleKnowledge.learn(var0,target.persona().definitionId(),hit)));
          String var6 = battleText(var5);
          persistPlayerResources(var0, var2);
          if (var2.state() != BattleState.ACTIVE) {

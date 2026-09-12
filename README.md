@@ -1,40 +1,49 @@
-# Velvet Eclipse 0.6.6 — seletor de Persona
+# Velvet Eclipse 0.6.7 — Izanagi voxel
 
-Mod para Minecraft 1.20.1 / Forge 47.4.10, Java 17. O seletor fica no canto inferior esquerdo, deixando a arena visível à direita. O retrato mantém o modelo normal/slim, a pose com Evoker e detalhes da skin real em tons de azul, ciano e branco.
+Minecraft 1.20.1 / Forge 47.4.10 / Java 17. Dependências: GeckoLib 4.8.4, PlayerAnimator 1.0.2-rc1 e Bendy Lib 4.0.0.
 
-## Mudanças
+## Izanagi
 
-- Painel e retrato menores, alinhados ao canto esquerdo, com cabeçalho, habilidades, custos, descrição e comandos na mesma escala.
-- Abertura de aproximadamente 0,3 segundo: painel desliza, retrato aparece e habilidades entram em sequência. As áreas clicáveis acompanham a animação.
-- Paleta tonal conserva cabelo, rosto e detalhes da roupa. Camadas externas habilitadas da skin permanecem presentes; a textura original nunca é substituída.
-- Retrato usa o passe sem iluminação do Forge com profundidade e fog isolado do mundo. Corrigida a sobreposição das linhas translúcidas em escalas fracionárias.
-- Mantidos combate, modelos de Personas, espada, invocação, marcador de alvo, descoberta de fraquezas e protocolo 4 da versão 0.6.5.
+O modelo aprovado substitui integralmente a malha arredondada anterior: 123 cuboides/planos nativos, 34 ossos e atlas pixelado de 512×512. Máscara segmentada com pupilas internas, casaco longo contínuo com forro vermelho, mãos articuladas, pés estreitos, fitas e lâmina presa à mão. Os olhos têm máscara emissiva.
 
-## Instalação e controles
+O menu usa o idle de 4,8 segundos. A animação mágica recolhe e abre os braços; a física prepara um corte horizontal com apoio das duas mãos. As poses aprovadas foram mantidas, com tempos ajustados ao impacto do combate. Arma, casaco e fitas acompanham os ossos. A escala global preserva o atlas e é compartilhada pelo menu e pelo mundo.
 
-Use o JAR 0.6.6 da pasta `compiled Jar`, substituindo a versão anterior do Velvet Eclipse. Reinicie o perfil para carregar a alteração. São necessários GeckoLib 4.8.4, PlayerAnimator 1.0.2-rc1 e Bendy Lib 4.0.0, nas versões Forge para Minecraft 1.20.1. Nenhum outro mod de API foi acrescentado.
+Zio mostra raios ramificados brancos com halo lilás descendo sobre o inimigo, seguidos de um clarão branco/rosa e faíscas no impacto. O efeito não cria uma entidade de relâmpago que cause fogo ou dano adicional.
 
-Q/E troca Persona; setas escolhem habilidade; Enter seleciona e depois confirma o alvo; Esc ou botão direito volta.
+## Comandos e habilidades
 
-## Fontes e compilação
+- `/velvet persona add izanagi`: adiciona Izanagi à seleção.
+- `/velvet persona equip izanagi`: equipa fora de combate; durante a batalha, Q/E troca Persona no seletor.
+- `/velvet persona remove izanagi`: remove fora de combate. Outra Persona é equipada se necessário; a última Persona não pode ser removida.
+- `give` continua disponível; add/remove oferecem sugestões de IDs.
 
-Projeto-fonte completo, recursos, testes, wrapper e dependências locais. As fontes recuperadas e sua origem estão documentadas em `source-provenance.json`. A entrega é construída das fontes, sem edição binária do JAR.
+| Habilidade | Nível | Custo | Efeito |
+| --- | --- | --- | --- |
+| Zio | 1 | 4 SP | Dano elétrico leve a um inimigo |
+| Cleave | 1 | 5% HP | Dano físico leve a um inimigo |
+| Rakukaja | 1 | 12 SP | Aumenta a defesa de um aliado por 3 turnos |
+| Rakunda | 3 | 12 SP | Reduz a defesa de um inimigo por 3 turnos |
+| Tarukaja | 5 | 12 SP | Aumenta o ataque de um aliado por 3 turnos |
 
-Com Java 17 configurado em JAVA_HOME:
+Conjunto inicial baseado em [Persona 4](https://persona4.wikidot.com/persona), conferido com a [tabela de Izanagi](https://aqiu384.github.io/megaten-fusion-tool/p4g/personas/Izanagi). O cálculo de dano e EXP continuam adaptados ao mod. Cleave do Izanagi usa ID `izanagi_cleave`, preservando o balanceamento das Personas antigas. A família Mazio/Zionga/Mazionga/Ziodyne/Maziodyne permanece no registro, sem ser concedida automaticamente a este Izanagi inicial.
+
+Rakukaja/Tarukaja afetam o jogador no combate atual de um aliado: selecionar a habilidade confirma esse alvo. Rakunda usa a seleção de inimigo. Buffs não causam dano, não descobrem fraquezas e não ativam cut-in. Repetir renova a duração sem acumular multiplicadores; Rakukaja e Rakunda se cancelam. Ataque recebe ×1,33; defesa recebe ×1,33 ou ×0,66 no cálculo de dano. A duração avança com os turnos do alvo, sem consumir um turno extra em ONE MORE.
+
+## Correção do ATTACK
+
+Terreno bloqueado ou falta de apoio no chão não descarta mais um ataque válido. O personagem avança pelo trecho livre e executa o golpe. Quando o terreno encurta a aproximação, o efeito de corte alcança o alvo. Obstáculos surgidos durante a animação interrompem o deslocamento, preservando o impacto reservado. Mantidos dano cortante, impacto no tick 19, retorno e ausência de cut-in para ataques normais, inclusive quando acertam fraqueza.
+
+## Compilação e autoria
 
 ```powershell
 ./gradlew.bat check --offline
 ./gradlew.bat assemble --offline
 ```
 
-O wrapper usa Gradle 8.8. Em uma máquina sem essa distribuição no cache, a primeira execução do wrapper precisa baixá-la. As dependências Java estão em `dependencies/`; o projeto usa nomes SRG e o plugin Java, sem ForgeGradle/runClient. No Linux, use `bash gradlew`.
+JAVA_HOME deve apontar para Java 17. Fontes, recursos, testes, dependências locais e wrapper Gradle 8.8 incluídos. O primeiro uso do wrapper precisa baixar Gradle se não estiver no cache. Projeto com nomes SRG e plugin Java, sem ForgeGradle/runClient. A origem das fontes recuperadas está em `source-provenance.json`.
 
-A tarefa `check` executa as auditorias de lógica, câmera, postura, Evoker e comandos de combate. Com Python, Pillow e NumPy, `python tools/render_battle_previews.py` gera prévias após os testes. Elas usam skin ilustrativa e geometria real; não são capturas do Minecraft.
+Com Python, Pillow e NumPy, `python tools/izanagi/export_model.py` gera os recursos finais. `python tools/izanagi/render_study.py --animate` gera prévias de autoria (tempos anteriores à adaptação ao combate). Padrão de modelagem em [tools/izanagi/MODELING.md](tools/izanagi/MODELING.md).
 
-## Validação
+As verificações offline cobrem leitura real da geometria pelo GeckoLib, cuboides, animações, habilidades iniciais, suporte, comandos, aproximação bloqueada, golpes em grupo e regressões anteriores. Não houve teste dentro do Minecraft. As prévias são renders dos recursos, não capturas do jogo.
 
-Auditorias offline aprovadas: 20 combinações de resolução/escala de GUI, transição e áreas clicáveis, preservação tonal/transparência, geometria normal/slim e regressões de batalha. Os 120 combates de referência mantêm o mesmo resultado. O Minecraft não foi aberto para testes; a composição final da GPU e a skin carregada em jogo ainda precisam de conferência visual.
-
-## Publicação de versões
-
-Ao finalizar cada versão, publicar neste repositório as fontes e o JAR compilado em `compiled Jar`, preservando o histórico e os JARs anteriores. Preferências persistentes em `AGENTS.md`. No perfil local `yuxio test`, a versão anterior fica em `velvet-eclipse-versions/0.6.5`. Ver `CHANGELOG.md` para as alterações de combate da 0.6.5.
+Fontes e JAR de cada versão são publicados na pasta `compiled Jar` de https://github.com/gustavoximenes/Velvet-Eclipse. A instalação no perfil `yuxio test` arquiva a versão anterior e verifica os hashes. Reinicie o perfil para carregar o novo JAR; cliente e servidor devem usar a mesma versão.

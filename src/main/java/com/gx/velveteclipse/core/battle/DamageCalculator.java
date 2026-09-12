@@ -21,6 +21,7 @@ public final class DamageCalculator {
          int var4 = var2.usesMagicStat() ? var0.stats().magic() : var0.stats().strength();
          int var5 = Math.max(1, var1.stats().endurance());
          int var6 = Math.max(1, var2.power() * (var4 + 8) / (var5 + 8));
+         var6 = Math.max(1,(int)Math.round(var6 * var0.attackMultiplier() / var1.defenseMultiplier()));
          Affinity var7 = var2.element() == Element.ALMIGHTY ? Affinity.NORMAL : var1.personaDefinition().affinity(var2.element());
          boolean var8 = var2.canCritical() && var3.nextInt(100) < Math.min(35, 4 + var0.stats().luck() * 2);
          if (var8) {

@@ -16,8 +16,8 @@ public final class BattleSession {
    private final List<BattleCombatant> turnOrder;
    private final Random random;
    private int turnIndex;
-   public record Prepared(UUID actor, BattleAction action, DamageOutcome hit) {
-      public boolean cutin(){return action.type()==BattleActionType.SKILL&&isWeaknessHit(hit);}
+   public record Prepared(UUID actor, BattleAction action, DamageOutcome hit, java.util.Map<UUID,DamageOutcome> hits) {
+      public boolean cutin(){return action.type()==BattleActionType.SKILL&&hits.values().stream().anyMatch(BattleSession::isWeaknessHit);}
    }
    private Prepared prepared;
    public Prepared prepared(){return prepared;}
@@ -26,16 +26,24 @@ public final class BattleSession {
    /** Reserve one validated action and its random outcome until the animation reaches impact. */
    public Prepared prepare(UUID actorId,BattleAction action){
       if(prepared!=null||state!=BattleState.ACTIVE||currentActor()==null||!currentActor().id().equals(actorId))return null;
-      var actor=currentActor();var target=validEnemyTarget(actor,action.targetId());
+      var actor=currentActor();
       var skill=action.type()==BattleActionType.ATTACK?sword():action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
+      var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
       if(skill==null||target==null||!actor.alive())return null;
       if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<skill.spCost()
          ||(skill.hpPercentCost()>0&&actor.hp()<=Math.max(1,actor.maxHp()*skill.hpPercentCost()/100))))return null;
-      prepared=new Prepared(actorId,action,DamageCalculator.roll(actor,target,skill,random));return prepared;
+      var hits=new java.util.LinkedHashMap<UUID,DamageOutcome>();
+      if(!skill.isDamageSkill()) {
+         if(!SupportEffects.supported(skill.id()))return null;
+         prepared=new Prepared(actorId,action,null,java.util.Map.of());return prepared;
+      }
+      var targets=skill.target()==SkillTarget.ALL_ENEMIES?enemiesOf(actor):List.of(target);
+      for(var victim:targets)hits.put(victim.id(),DamageCalculator.roll(actor,victim,skill,random));
+      prepared=new Prepared(actorId,action,hits.get(target.id()),java.util.Map.copyOf(hits));return prepared;
    }
    private DamageOutcome damage(BattleCombatant actor,BattleCombatant target,SkillDefinition skill){
       if(prepared==null)return DamageCalculator.resolve(actor,target,skill,random);
-      var hit=prepared.hit();prepared=null;return DamageCalculator.apply(actor,target,hit);
+      var hit=prepared.hits().get(target.id());return DamageCalculator.apply(actor,target,hit);
    }
    private BattleState state = BattleState.ACTIVE;
 
@@ -135,6 +143,10 @@ public final class BattleSession {
                      return new BattleResolution(this.state, false, List.of(var4.name() + " has not learned " + var6.displayName() + "."));
                   }
 
+                  BattleCombatant var7 = this.validSkillTarget(var4, var2.targetId(), var6);
+                  if (var7 == null) return new BattleResolution(this.state,false,List.of("Invalid target."));
+                  if(!var6.isDamageSkill()&&!SupportEffects.supported(var6.id()))
+                     return new BattleResolution(this.state,false,List.of("Unsupported skill."));
                   if (var6.spCost() > 0 && !var4.spendSp(var6.spCost())) {
                      return new BattleResolution(this.state, false, List.of("Not enough SP."));
                   }
@@ -143,16 +155,20 @@ public final class BattleSession {
                      return new BattleResolution(this.state, false, List.of("Not enough HP to use that physical skill."));
                   }
 
-                  BattleCombatant var7 = this.validEnemyTarget(var4, var2.targetId());
-                  if (var7 == null) {
-                     return new BattleResolution(this.state, false, List.of("Invalid target."));
+                  if(!var6.isDamageSkill()) {
+                     var3.add(var4.name()+" usou "+var6.displayName()+" em "+var7.name()+". "+SupportEffects.apply(var6.id(),var4,var7));
+                     break;
                   }
 
-                  DamageOutcome var8 = damage(var4, var7, var6);
-                  weaknessHit = isWeaknessHit(var8);
-                  var5 = this.appendOutcome(var3, var4, var7, var6, var8);
+                  var targets=var6.target()==SkillTarget.ALL_ENEMIES?enemiesOf(var4):List.of(var7);
+                  for(var victim:targets){
+                     DamageOutcome hit=damage(var4,victim,var6);
+                     weaknessHit|=isWeaknessHit(hit);
+                     var5|=this.appendOutcome(var3,var4,victim,var6,hit);
+                  }
             }
 
+            prepared=null;
             this.updateState();
             if (this.state == BattleState.ACTIVE && !var5) {
                this.advanceTurn();
@@ -210,6 +226,13 @@ public final class BattleSession {
       }
    }
 
+   public BattleCombatant validSkillTarget(BattleCombatant actor,UUID id,SkillDefinition skill) {
+      if(skill.target()==SkillTarget.SELF)return id==null||id.equals(actor.id())?actor:null;
+      if(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES)
+         return id==null?actor:find(id).filter(BattleCombatant::alive).filter(t->t.side()==actor.side()).orElse(null);
+      return validEnemyTarget(actor,id);
+   }
+
    private BattleCombatant validEnemyTarget(BattleCombatant var1, UUID var2) {
       return var2 == null
          ? this.enemiesOf(var1).stream().findFirst().orElse(null)
@@ -221,6 +244,7 @@ public final class BattleSession {
          int var1 = this.firstLivingIndex(this.turnIndex + 1);
          this.turnIndex = var1;
          BattleCombatant var2 = this.currentActor();
+         if(var2!=null)var2.beginTurn();
          if (var2 != null && var2.downed()) {
             var2.setDowned(false);
          }

@@ -83,7 +83,7 @@ public final class PersonaSheetDesign {
         }else if(!p.skills().isEmpty()){
             var s=p.skills().get(Math.min(v.skill,p.skills().size()-1));
             c.text(fit(c,s.displayName(),186,14),29,421,14,CYAN,0);
-            c.text(PersonaDetails.cost(s)+"  /  Poder "+s.power()+"  /  Acerto "+s.accuracy()+"%",225,423,10,WHITE,0);
+            c.text(PersonaDetails.cost(s)+(s.isDamageSkill()?"  /  Poder "+s.power()+"  /  Acerto "+s.accuracy()+"%":"  /  Suporte por 3 turnos"),225,423,10,WHITE,0);
             wrapped(c,PersonaDetails.description(s),29,442,442,11,WHITE);
         }else c.text("Esta Persona ainda não possui habilidades.",29,435,13,MUTED,0);
         c.text("A / D  Girar modelo",640,455,9,MUTED,0);

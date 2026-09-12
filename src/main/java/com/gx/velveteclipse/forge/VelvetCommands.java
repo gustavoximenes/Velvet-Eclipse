@@ -133,6 +133,17 @@ public final class VelvetCommands {
                   .then(LiteralArgumentBuilder.literal("sync").executes(var0x -> sync(var0x.getSource())))
             )
       );
+      var0.register(LiteralArgumentBuilder.<CommandSourceStack>literal("velvet").then(
+         LiteralArgumentBuilder.<CommandSourceStack>literal("persona")
+          .then(LiteralArgumentBuilder.<CommandSourceStack>literal("add").then(
+            RequiredArgumentBuilder.<CommandSourceStack,String>argument("id",StringArgumentType.word())
+              .suggests((ctx,b)->{PersonaRegistry.personas().keySet().stream().sorted().filter(id->id.startsWith(b.getRemaining())).forEach(b::suggest);return b.buildFuture();})
+              .executes(ctx->givePersona(ctx.getSource(),StringArgumentType.getString(ctx,"id")))))
+          .then(LiteralArgumentBuilder.<CommandSourceStack>literal("remove").then(
+            RequiredArgumentBuilder.<CommandSourceStack,String>argument("id",StringArgumentType.word())
+              .suggests((ctx,b)->{Object p=RuntimeBridge.playerFromSource(ctx.getSource());if(p!=null)PlayerPersonaData.load(p).rosterIds().stream().sorted().filter(id->id.startsWith(b.getRemaining())).forEach(b::suggest);return b.buildFuture();})
+              .executes(ctx->removePersona(ctx.getSource(),StringArgumentType.getString(ctx,"id")))))
+      ));
    }
 
    private static Object player(Object var0) {
@@ -145,9 +156,9 @@ public final class VelvetCommands {
    }
 
    private static int help(Object var0) {
-      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.3.5 Renderer ABI Fix");
+      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.7 Izanagi");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
-      RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|give <id>|equip <id>");
+      RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|add <id>|remove <id>|equip <id> (give continua disponível)");
       RuntimeBridge.sendMessage(var0, "§d/velvet fusion preview|perform <persona1> <persona2> [skill]");
       RuntimeBridge.sendMessage(var0, "§d/velvet diagnostics §7- verifica rede, EntityType, mundo, Shadow e BattleSession");
       RuntimeBridge.sendMessage(var0, "§d/velvet battle start §7- inicia uma batalha imediatamente (fallback do B)");
@@ -256,6 +267,16 @@ public final class VelvetCommands {
             return 1;
          }
       }
+   }
+
+   private static int removePersona(Object source,String id) {
+      Object p=player(source);if(p==null)return 0;
+      if(BattleService.current(p)!=null){RuntimeBridge.sendMessage(p,"§eFinalize a batalha antes de remover uma Persona.");return 0;}
+      PlayerPersonaData data=PlayerPersonaData.load(p);
+      if(!data.rosterIds().contains(id)){RuntimeBridge.sendMessage(p,"§cVocê não possui essa Persona.");return 0;}
+      if(!data.removePersona(id)){RuntimeBridge.sendMessage(p,"§eMantenha pelo menos uma Persona na seleção.");return 0;}
+      data.save(p);BattleService.sync(p,"Persona removida: "+id);
+      RuntimeBridge.sendMessage(p,"§aPersona removida: §f"+id+"§7. Ativa: "+data.activePersona());return 1;
    }
 
    private static int equipPersona(Object var0, String var1) {

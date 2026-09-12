@@ -15,6 +15,7 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
 public final class BattleTargetHud {
     private static int entityId=-1;
+    public static int entityId(){return entityId;}
     private static final EnumMap<Element,Affinity> known=new EnumMap<>(Element.class);
     private static double x,y,minX,minY,maxX,maxY;
     private static boolean visible;
@@ -44,13 +45,15 @@ public final class BattleTargetHud {
         minX-=12;maxX+=48;minY-=12;maxY+=18;visible=true;
     }
     public static void paint(HudDesign.Canvas c,int w,int h,double hp,double trail){
+        if(ClientBattleUiState.selectedElement()==Element.SUPPORT&&ClientBattleUiState.page()!=ClientBattleUiState.Page.TARGET){marker=null;return;}
         if(!visible||ClientBattleState.snapshot().enemyHp()<=0){marker=null;return;}
         boolean target=ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET||PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()>=68;
         if(!target&&!hit(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY())){marker=null;return;}
         if(ClientBattleUiState.selector()){marker=null;return;}
         double unit=Math.max(.65,Math.min(w/640.0,h/360.0));int px=(int)Math.max(22*unit,Math.min(w-122*unit,x)),py=(int)Math.max(34*unit,Math.min(h-39*unit,y));
         marker=new BattleMenuLayout.Rect(px-(int)(26*unit),py-(int)(40*unit),(int)(127*unit),(int)(70*unit),"",0);
-        paintMarker(c,px,py,unit,hp,trail,ClientBattleUiState.selectedElement(),known.get(ClientBattleUiState.selectedElement()));
+        var element=ClientBattleUiState.selectedElement();
+        paintMarker(c,px,py,unit,hp,trail,element,element==Element.SUPPORT?Affinity.NORMAL:known.get(element));
     }
     public static void paintMarker(HudDesign.Canvas c,int x,int y,double u,double hp,double trail,Element element,Affinity affinity){
         double r=22*u;BattleGraphics.poly(c,new double[]{x,y-r-3,x+r+4,y,x,y+r+3,x-r-4,y},0xFFFF2655);

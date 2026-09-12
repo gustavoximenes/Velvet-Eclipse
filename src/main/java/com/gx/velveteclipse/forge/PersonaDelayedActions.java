@@ -44,7 +44,8 @@ public final class PersonaDelayedActions {
          return false;
       } else {
          var session=BattleService.current(var0);
-         var target=firstTarget(var0);
+         var definition=com.gx.velveteclipse.core.persona.PersonaRegistry.skill(var1).orElse(null);
+         var target=session==null||definition==null?null:session.validSkillTarget(session.currentActor(),null,definition);
          if(session==null||target==null||session.prepare(RuntimeBridge.playerUuid(var0),BattleAction.skill(var1,target.id()))==null){BattleService.sync(var0,"Habilidade indisponível: confira HP, SP e turno.");return false;}
          PersonaCinematicServer.armSkill(var0, var1);
          double[] base=RuntimeBridge.playerPosition(var0);
@@ -61,8 +62,9 @@ public final class PersonaDelayedActions {
 
    public static boolean resolve(Object var0, String var1) {
       if (var0 != null && var1 != null && !var1.isBlank()) {
-         BattleCombatant var2 = firstTarget(var0);
-         return var2 == null ? false : BattleService.act(var0, BattleAction.skill(var1, var2.id()));
+         var session=BattleService.current(var0);
+         var reserved=session==null?null:session.prepared();
+         return reserved!=null&&reserved.action().skillId().equals(var1)&&BattleService.act(var0,reserved.action());
       } else {
          return false;
       }

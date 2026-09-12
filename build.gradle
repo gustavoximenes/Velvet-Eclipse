@@ -1,6 +1,6 @@
 plugins { id 'java' }
 group = 'com.gx.velveteclipse'
-version = '0.6.6-persona-corner'
+version = '0.6.7-izanagi'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -51,3 +51,10 @@ tasks.register('battleCommandTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.BattleCommandAudit'
 }
 tasks.named('check') { dependsOn 'battleCommandTest' }
+
+tasks.register('izanagiTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.IzanagiAudit'
+}
+tasks.named('check') { dependsOn 'izanagiTest' }
