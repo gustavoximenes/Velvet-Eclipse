@@ -35,3 +35,10 @@ Fonte: [Minecraft Style Guide — Blockbench](https://blockbench.net/wiki/guides
 8. Apresentar o modelo real para avaliação antes de integrar uma nova Persona. Após aprovação, exportar os recursos, validar no carregador GeckoLib e executar as verificações de combate antes da entrega.
 
 Estas escolhas artísticas são o padrão proposto do Velvet Eclipse, inspirado nas fontes acima e no pedido do usuário. Não são apresentadas como regras universais nem como uma reprodução de todos os modelos do Cobblemon. Os recursos deste estudo são próprios; nenhum modelo ou textura do Cobblemon foi copiado.
+
+
+## Conversão validada na 0.6.8
+
+A prévia usa coordenadas cartesianas; o exportador compensa a inversão de X e das rotações X/Y aplicada pelo GeckoLib. A conversão ocorre uma vez, em geometria e animações. Cubos/planos de autoria permanecem iguais; os planos recebem 0,08 unidade de espessura exportada com UV explícito para impedir sobreposição das faces. Não copiar o JSON do draft diretamente para o jogo.
+
+IzanagiAudit compara pivôs/rotações nativos com a pose aprovada e exporta os vértices de idle e ataques após a leitura real do GeckoLib para `build/reports/izanagi/native-*.json`.

@@ -1,3 +1,11 @@
+# Velvet Eclipse 0.6.8 — correção do Izanagi
+
+Correção da conversão entre as coordenadas da prévia aprovada e o GeckoLib: pivôs, rotações dos ossos/cubos e canais das animações preservam a pose original. Isso corrige a posição das mãos, pernas e arma no idle e nos ataques mágico/físico.
+
+As superfícies planas do rosto ganharam uma separação mínima de profundidade, preservando os retângulos da textura. Elimina a disputa entre faces sobrepostas na máscara e nos olhos. A textura aprovada e o desenho do personagem foram preservados.
+
+Validação offline com a geometria e os keyframes carregados pelo GeckoLib; prévias geradas a partir desses dados. Não houve teste dentro do Minecraft. Cut-in, regras de fraqueza, habilidades e combate continuam com o comportamento da 0.6.7.
+
 # Velvet Eclipse 0.6.7 — Izanagi voxel
 
 - Modelo voxel aprovado, máscara pixelada, casaco, mãos, arma e pés detalhados.

@@ -33,6 +33,14 @@ public final class IzanagiAudit {
   var rawModel=software.bernie.geckolib.util.JsonUtil.GEO_GSON.fromJson(Files.readString(dir.resolve("geo/entity/izanagi.geo.json")),software.bernie.geckolib.loading.json.raw.Model.class);
   var baked=software.bernie.geckolib.loading.object.BakedModelFactory.DEFAULT_FACTORY.constructGeoModel(software.bernie.geckolib.loading.object.GeometryTree.fromModel(rawModel));
   check(baked.getBone("weapon").isPresent()&&baked.getBone("head").isPresent(),"actual GeckoLib model bake");
+  var approved=com.google.gson.JsonParser.parseString(Files.readString(Path.of("tools/izanagi/draft/izanagi.geo.json"))).getAsJsonObject().getAsJsonArray("minecraft:geometry").get(0).getAsJsonObject();
+  for(var raw:approved.getAsJsonArray("bones")){
+   var b=raw.getAsJsonObject();var actual=baked.getBone(b.get("name").getAsString()).orElseThrow();
+   var pivot=b.getAsJsonArray("pivot");check(Math.abs(actual.getPivotX()-pivot.get(0).getAsDouble())<.001,"native pivot preserves approved side");
+   if(b.has("rotation")){var rot=b.getAsJsonArray("rotation");check(Math.abs(actual.getRotX()-Math.toRadians(rot.get(0).getAsDouble()))<.001&&Math.abs(actual.getRotY()-Math.toRadians(rot.get(1).getAsDouble()))<.001&&Math.abs(actual.getRotZ()-Math.toRadians(rot.get(2).getAsDouble()))<.001,"native pose matches approved Cartesian rotations");}
+  }
+  var surfaceDump=new ArrayList<Object>();for(var bone:baked.topLevelBones())dump(bone,new com.mojang.blaze3d.vertex.PoseStack(),surfaceDump);
+  Files.createDirectories(Path.of("build/reports/izanagi"));Files.writeString(Path.of("build/reports/izanagi/native-geometry.json"),new com.google.gson.Gson().toJson(surfaceDump));
   var names=new HashSet<String>();int cubes=0;
   for(var raw:geometry.getAsJsonArray("bones")) {
    var bone=raw.getAsJsonObject();check(names.add(bone.get("name").getAsString()),"unique bones");
@@ -43,6 +51,16 @@ public final class IzanagiAudit {
   var json=com.google.gson.JsonParser.parseString(Files.readString(dir.resolve("animations/entity/izanagi.animation.json"))).getAsJsonObject();
   var bakedAnimations=software.bernie.geckolib.util.JsonUtil.GEO_GSON.fromJson(json.getAsJsonObject("animations"),software.bernie.geckolib.loading.object.BakedAnimations.class);
   for(String clip:List.of("misc.idle","action.magic","action.physical"))check(bakedAnimations.getAnimation(clip)!=null,"actual GeckoLib animation bake "+clip);
+  for(String clip:List.of("action.magic","action.physical")){
+   var posed=software.bernie.geckolib.loading.object.BakedModelFactory.DEFAULT_FACTORY.constructGeoModel(software.bernie.geckolib.loading.object.GeometryTree.fromModel(rawModel));
+   for(var track:bakedAnimations.getAnimation(clip).boneAnimations()){
+    var bone=posed.getBone(track.boneName()).orElseThrow();var r=track.rotationKeyFrames();var pos=track.positionKeyFrames();
+    bone.setRotX(bone.getRotX()+sample(r.xKeyframes(),28));bone.setRotY(bone.getRotY()+sample(r.yKeyframes(),28));bone.setRotZ(bone.getRotZ()+sample(r.zKeyframes(),28));
+    bone.setPosX(sample(pos.xKeyframes(),28));bone.setPosY(sample(pos.yKeyframes(),28));bone.setPosZ(sample(pos.zKeyframes(),28));
+   }
+   var frame=new ArrayList<Object>();for(var bone:posed.topLevelBones())dump(bone,new com.mojang.blaze3d.vertex.PoseStack(),frame);
+   Files.writeString(Path.of("build/reports/izanagi/native-"+clip.substring(7)+".json"),new com.google.gson.Gson().toJson(frame));
+  }
   var idle=json.getAsJsonObject("animations").getAsJsonObject("misc.idle");check(idle.get("loop").getAsBoolean(),"looping idle");
   for(var entry:idle.getAsJsonObject("bones").entrySet())for(var track:entry.getValue().getAsJsonObject().entrySet()){
    var keys=track.getValue().getAsJsonObject();check(keys.get("0.0").equals(keys.get("4.8")),"seamless idle "+entry.getKey());
@@ -59,6 +77,22 @@ public final class IzanagiAudit {
   }
   check(LightningStrike.opacity(81)==0&&LightningStrike.opacity(86)>0&&LightningStrike.opacity(94)==0,"effect timing");
   System.out.println("PASS Izanagi: P4 skills, functional support, commands, roster, safe melee, 40 AOE reservations, 123 native cuboids, 34 bones, three clips and lightning.");
+ }
+ static float sample(List<software.bernie.geckolib.core.keyframe.Keyframe<com.eliotlash.mclib.math.IValue>> frames,double tick){
+  double elapsed=0;for(var frame:frames){if(tick<=elapsed+frame.length()+1e-7){double t=frame.length()==0?1:Math.max(0,Math.min(1,(tick-elapsed)/frame.length()));return (float)(frame.startValue().get()+(frame.endValue().get()-frame.startValue().get())*t);}elapsed+=frame.length();}
+  return frames.isEmpty()?0:(float)frames.get(frames.size()-1).endValue().get();
+ }
+ static void dump(software.bernie.geckolib.cache.object.GeoBone bone,com.mojang.blaze3d.vertex.PoseStack pose,List<Object> result){
+  pose.m_85836_();software.bernie.geckolib.util.RenderUtils.prepMatrixForBone(pose,bone);
+  for(var cube:bone.getCubes()){
+   pose.m_85836_();software.bernie.geckolib.util.RenderUtils.translateToPivotPoint(pose,cube);software.bernie.geckolib.util.RenderUtils.rotateMatrixAroundCube(pose,cube);software.bernie.geckolib.util.RenderUtils.translateAwayFromPivotPoint(pose,cube);
+   for(var quad:cube.quads())if(quad!=null){
+    var vertices=new ArrayList<Object>();for(var v:quad.vertices()){var p=new org.joml.Vector3f(v.position()).mulPosition(pose.m_85850_().m_252922_()).mul(16);vertices.add(List.of(p.x,p.y,p.z,v.texU()*512,v.texV()*512));}
+    var n=new org.joml.Vector3f(quad.normal()).mul(pose.m_85850_().m_252943_()).normalize();
+    result.add(Map.of("bone",bone.getName(),"vertices",vertices,"normal",List.of(n.x,n.y,n.z)));
+   }pose.m_85849_();
+  }
+  for(var child:bone.getChildBones())dump(child,pose,result);pose.m_85849_();
  }
  static void support(){
   for(String id:List.of("rakukaja","rakunda","tarukaja")) {

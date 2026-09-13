@@ -156,7 +156,7 @@ public final class VelvetCommands {
    }
 
    private static int help(Object var0) {
-      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.7 Izanagi");
+      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.8 Izanagi");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|add <id>|remove <id>|equip <id> (give continua disponível)");
       RuntimeBridge.sendMessage(var0, "§d/velvet fusion preview|perform <persona1> <persona2> [skill]");
