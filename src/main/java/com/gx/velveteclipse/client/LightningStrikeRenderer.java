@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
-/** Bright layered ribbons use the vanilla lightning shader; no damaging lightning entity is spawned. */
+/** Original shader, beam geometry, feathered glow and impact star. No vanilla lightning or particles. */
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
 public final class LightningStrikeRenderer {
     private static java.util.List<com.gx.velveteclipse.network.BattleLightningS2C.Strike> strikes=java.util.List.of();
@@ -19,14 +19,14 @@ public final class LightningStrikeRenderer {
     public static void reset(){strikes=java.util.List.of();}
     public static void accept(com.gx.velveteclipse.network.BattleLightningS2C packet){var mc=Minecraft.m_91087_();if(mc.f_91073_==null)return;strikes=packet.strikes();startTick=mc.f_91073_.m_46467_();}
     @SubscribeEvent public static void render(RenderLevelStageEvent event) {
-        if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_PARTICLES||strikes.isEmpty())return;
+        if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_PARTICLES||strikes.isEmpty()||!com.gx.velveteclipse.client.vfx.VelvetVfxRenderType.ready())return;
         var mc=Minecraft.m_91087_();if(mc.f_91073_==null){reset();return;}
         double tick=82+mc.f_91073_.m_46467_()-startTick+event.getPartialTick();double alpha=LightningStrike.opacity(tick);
         if(tick>=94){reset();return;}if(alpha<=0)return;
         var camera=event.getCamera().m_90583_();
         for(var strike:strikes){var p=new net.minecraft.world.phys.Vec3(strike.x(),strike.y(),strike.z());
         var pose=event.getPoseStack();pose.m_85836_();
-        var buffers=mc.m_91269_().m_110104_();var type=RenderType.m_110502_();
+        var buffers=mc.m_91269_().m_110104_();var type=com.gx.velveteclipse.client.vfx.VelvetVfxRenderType.GLOW;
         try {
             pose.m_85837_(p.f_82479_-camera.f_82479_,p.f_82480_-camera.f_82480_,p.f_82481_-camera.f_82481_);
             var out=buffers.m_6299_(type);var matrix=pose.m_85850_().m_252922_();
@@ -65,10 +65,10 @@ public final class LightningStrikeRenderer {
     private static void ribbon(VertexConsumer out,Matrix4f matrix,Vector3f eye,Vector3f a,Vector3f b,float width,int r,int g,int blue,int alpha) {
         var side=new Vector3f(b).sub(a).cross(new Vector3f(eye).sub(a));
         if(side.lengthSquared()<.000001f)side.set(1,0,0);side.normalize().mul(width);
-        vertex(out,matrix,new Vector3f(a).sub(side),r,g,blue,alpha);
-        vertex(out,matrix,new Vector3f(b).sub(side),r,g,blue,alpha);
-        vertex(out,matrix,new Vector3f(b).add(side),r,g,blue,alpha);
-        vertex(out,matrix,new Vector3f(a).add(side),r,g,blue,alpha);
+        vertex(out,matrix,new Vector3f(a).sub(side),r,g,blue,alpha,0,0);
+        vertex(out,matrix,new Vector3f(b).sub(side),r,g,blue,alpha,0,1);
+        vertex(out,matrix,new Vector3f(b).add(side),r,g,blue,alpha,1,1);
+        vertex(out,matrix,new Vector3f(a).add(side),r,g,blue,alpha,1,0);
     }
-    private static void vertex(VertexConsumer out,Matrix4f m,Vector3f p,int r,int g,int b,int a){out.m_252986_(m,p.x,p.y,p.z).m_6122_(r,g,b,a).m_5752_();}
+    private static void vertex(VertexConsumer out,Matrix4f m,Vector3f p,int r,int g,int b,int a,float u,float v){out.m_252986_(m,p.x,p.y,p.z).m_6122_(r,g,b,a).m_7421_(u,v).m_5752_();}
 }

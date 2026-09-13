@@ -28,7 +28,7 @@ public final class MeleeBattleServer {
   var reserved=session.prepare(p.m_20148_(),action);if(reserved==null){BattleService.sync(p,"Ataque indisponível.");return false;}
   float attackYaw=(float)Math.toDegrees(Math.atan2(-delta.f_82479_,delta.f_82481_));
   var s=new Sequence(p,action,start.m_82549_(offset),attackYaw);sequences.put(p.m_20148_(),s);BattleService.beginAction(p,action);
-  ModNetwork.sendPresentation(p,new BattleCueS2C("attack","",false,start.f_82479_,start.f_82480_,start.f_82481_,s.end.f_82479_,s.end.f_82480_,s.end.f_82481_));return true;
+  ModNetwork.sendPresentation(p,new BattleCueS2C("attack","",false,start.f_82479_,start.f_82480_,start.f_82481_,s.end.f_82479_,s.end.f_82480_,s.end.f_82481_,action.targetId()));return true;
  }
  public static void tick(){for(var s:new ArrayList<>(sequences.values())){
   var session=BattleService.current(s.p);if(session==null||!s.p.m_6084_()){clear(s.p);continue;}

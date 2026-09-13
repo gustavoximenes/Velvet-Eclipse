@@ -8,7 +8,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-   private static final String PROTOCOL = "5";
+   private static final String PROTOCOL = "6";
    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
       new ResourceLocation("velvet_eclipse", "main"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals
    );
@@ -29,8 +29,10 @@ public final class ModNetwork {
          CHANNEL.registerMessage(var0++,BattleRosterS2C.class,BattleRosterS2C::encode,BattleRosterS2C::decode,BattleRosterS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleSceneS2C.class,BattleSceneS2C::encode,BattleSceneS2C::decode,BattleSceneS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleLightningS2C.class,BattleLightningS2C::encode,BattleLightningS2C::decode,BattleLightningS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++,BattleTacticsS2C.class,BattleTacticsS2C::encode,BattleTacticsS2C::decode,BattleTacticsS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++,AllOutCueS2C.class,AllOutCueS2C::encode,AllOutCueS2C::decode,AllOutCueS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          registered = true;
-         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 5, 8 packets).");
+         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 6, 10 packets).");
       }
    }
 

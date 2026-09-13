@@ -184,7 +184,7 @@ public final class ClientKeyMappings {
                ClientBattleUiState.back();
             }
 
-            if (inGame && var1 != null && var1.active() && var1.playerTurn() && !ClientBattleUiState.actionLocked()) {
+            if (inGame && var1 != null && var1.active() && var1.playerTurn() && !ClientBattleUiState.actionLocked() && !BattleTacticsClient.prompt()) {
                if (ClientBattleUiState.page() != Page.MAIN) {
                   if (ClientKeyMappings.pressedCompat(ClientKeyMappings.ATTACK)) {
                      ClientBattleUiState.selectVisible(0, var1);
@@ -249,6 +249,7 @@ public final class ClientKeyMappings {
 
       @SubscribeEvent
       public static void onKey(Key var0) {
+         if(BattleTacticsClient.key(var0))return;
          var mc=net.minecraft.client.Minecraft.m_91087_();var snapshot=ClientBattleState.snapshot();
          if(mc.f_91080_==null&&snapshot.active()&&(var0.getAction()==1||var0.getAction()==2)){
             switch(var0.getKey()){

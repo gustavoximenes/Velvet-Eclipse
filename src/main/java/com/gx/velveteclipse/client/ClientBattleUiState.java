@@ -14,7 +14,7 @@ public final class ClientBattleUiState {
  public static int selected(){return selected;}
  public static double age(){return (System.nanoTime()-opened)*1e-9;}
  public static boolean selector(){return page==Page.SKILLS||page==Page.PERSONAS;}
- public static boolean actionLocked(){return actionLocked||switchPending||PersonaCinematics.skillSequenceActive()||PersonaCinematics.meleeActive();}
+ public static boolean actionLocked(){return AllOutPresentation.active()||BattleTacticsClient.awaitingAllOut()||actionLocked||switchPending||PersonaCinematics.skillSequenceActive()||PersonaCinematics.meleeActive();}
  public static void onSnapshot(BattleSnapshotS2C old,BattleSnapshotS2C next){
   if(next==null||!next.active()){page=Page.MAIN;actionLocked=switchPending=false;selected=0;pendingSkill="";return;}
   if(old==null||old.playerTurn()!=next.playerTurn())page=Page.MAIN;
@@ -22,8 +22,8 @@ public final class ClientBattleUiState {
   selected=Math.min(selected,Math.max(0,next.skills().size()-1));
  }
  public static void open(Page next){if(!actionLocked()){page=next==Page.PERSONAS?Page.SKILLS:next==null?Page.MAIN:next;opened=System.nanoTime();pendingSkill="";selected=0;lastMouseX=lastMouseY=-1;}}
- public static void back(){if(page==Page.TARGET&&!pendingSkill.isBlank()){page=Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
- private static boolean canAct(BattleSnapshotS2C s){return s!=null&&s.active()&&s.playerTurn()&&!actionLocked();}
+ public static void back(){if(page==Page.TARGET&&!pendingSkill.isBlank()&&!pendingSkill.equals("__baton_pass")){page=Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
+ private static boolean canAct(BattleSnapshotS2C s){return s!=null&&s.active()&&s.playerTurn()&&!actionLocked()&&!BattleTacticsClient.prompt();}
  public static boolean affordable(SkillDefinition skill,BattleSnapshotS2C s){return skill!=null&&skill.spCost()<=s.sp()&&(skill.hpPercentCost()==0||s.hp()>Math.max(1,s.maxHp()*skill.hpPercentCost()/100));}
  public static boolean selectIndex(int index,BattleSnapshotS2C s){
   if(!canAct(s))return false;
@@ -36,9 +36,10 @@ public final class ClientBattleUiState {
  }
  public static boolean selectVisible(int row,BattleSnapshotS2C s){return selectIndex(selected/7*7+row,s);}
  public static void attack(){var s=ClientBattleState.snapshot();if(canAct(s)){pendingSkill="";page=Page.TARGET;BattleTargetHud.chooseDefault();}}
- public static boolean confirm(BattleSnapshotS2C s){if(!canAct(s))return false;if(selector())return selectIndex(selected,s);if(page!=Page.TARGET||BattleTargetHud.selectedId()==null)return false;send(pendingSkill.isEmpty()?"attack":"skill",pendingSkill);return true;}
+ public static void baton(){var s=ClientBattleState.snapshot();if(canAct(s)&&BattleTacticsClient.canPass()){pendingSkill="__baton_pass";page=Page.TARGET;BattleTargetHud.chooseDefault();}}
+ public static boolean confirm(BattleSnapshotS2C s){if(!canAct(s))return false;if(selector())return selectIndex(selected,s);if(page!=Page.TARGET||BattleTargetHud.selectedId()==null)return false;send(pendingSkill.equals("__baton_pass")?"baton_pass":pendingSkill.isEmpty()?"attack":"skill",pendingSkill);return true;}
  public static void move(int delta){if(page==Page.TARGET&&!actionLocked()){BattleTargetHud.move(delta);return;}var s=ClientBattleState.snapshot();if(selector()&&canAct(s)&&!s.skills().isEmpty())selected=Math.floorMod(selected+delta,s.skills().size());}
- public static void cycle(int direction){if(page==Page.TARGET){move(direction);return;}var s=ClientBattleState.snapshot();if(!selector()||!canAct(s)||s.roster().size()<2)return;
+ public static void cycle(int direction){if(page==Page.TARGET){move(direction);return;}var s=ClientBattleState.snapshot();if(!selector()||!canAct(s)||BattleTacticsClient.oneMore()||s.roster().size()<2)return;
   int i=s.roster().indexOf(s.personaId());String id=s.roster().get(Math.floorMod(i+direction,s.roster().size()));switchPending=true;selected=0;ModNetwork.sendAction("persona",id);
  }
  public static void hover(double x,double y,int w,int h){
@@ -51,7 +52,7 @@ public final class ClientBattleUiState {
  public static String pendingSkill(){return pendingSkill;}
  public static Element selectedElement(){
   String id=PersonaCinematics.skillSequenceActive()?PersonaCinematics.activeSkill():page==Page.TARGET?pendingSkill:selector()&&selected<ClientBattleState.snapshot().skills().size()?ClientBattleState.snapshot().skills().get(selected):"";
-  return PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::element).orElse(Element.SLASH);
+  return "__baton_pass".equals(id)?Element.SUPPORT:PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::element).orElse(Element.SLASH);
  }
  public static boolean click(double x,double y,int w,int h,BattleSnapshotS2C s){
   if(!canAct(s))return false;

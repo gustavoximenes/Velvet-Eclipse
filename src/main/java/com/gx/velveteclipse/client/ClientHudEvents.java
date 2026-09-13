@@ -69,7 +69,9 @@ public final class ClientHudEvents {
                 PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),w,h);
             }else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);
-            else BattleEncounterClient.paint(canvas,w,h);
+            if(s.active())BattleTacticsClient.paint(canvas,w,h);
+            if(AllOutPresentation.active()){g.m_280262_();AllOutPresentation.paint(g,canvas,w,h,partial);}
+            else if(!s.active())BattleEncounterClient.paint(canvas,w,h);
             if(com.gx.velveteclipse.client.exploration.EntryTransition.visible()){
                 g.m_280262_();var pose=g.m_280168_();pose.m_85836_();pose.m_252880_(0,0,100);
                 try{com.gx.velveteclipse.client.exploration.EntryTransition.paint(canvas,w,h,partial);}
@@ -85,6 +87,8 @@ public final class ClientHudEvents {
     @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
     public static final class InputHandler {
         @SubscribeEvent public static void onScreen(net.minecraftforge.client.event.ScreenEvent.Opening event){
+            if(AllOutPresentation.active()){event.setCanceled(true);return;}
+            if(BattleTacticsClient.prompt()&&event.getNewScreen() instanceof net.minecraft.client.gui.screens.PauseScreen){BattleTacticsClient.dismiss();event.setCanceled(true);return;}
             if(ClientBattleState.snapshot().active()&&event.getNewScreen() instanceof net.minecraft.client.gui.screens.PauseScreen&&ClientBattleUiState.page()!=ClientBattleUiState.Page.MAIN){
                 ClientBattleUiState.back();event.setCanceled(true);
             }
@@ -93,7 +97,9 @@ public final class ClientHudEvents {
             BattleSnapshotS2C s=ClientBattleState.snapshot();if(s==null||!s.active()||net.minecraft.client.Minecraft.m_91087_().f_91080_!=null)return;
             if(event.getButton()==0||event.getButton()==1)event.setCanceled(true);
             if(event.getAction()!=1)return;
+            if(BattleTacticsClient.prompt()){if(event.getButton()==1)BattleTacticsClient.dismiss();else if(event.getButton()==0)BattleTacticsClient.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight());return;}
             if(event.getButton()==1){ClientBattleUiState.back();return;}
+            if(event.getButton()==0&&BattleTacticsClient.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight()))return;
             if(event.getButton()==0)ClientBattleUiState.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight(),s);
         }
     }

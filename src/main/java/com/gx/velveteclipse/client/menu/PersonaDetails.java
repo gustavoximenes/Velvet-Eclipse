@@ -30,7 +30,7 @@ public final class PersonaDetails {
     public static String element(Element e){return switch(e){
         case SLASH -> "Corte";case PHYSICAL -> "Físico";case FIRE -> "Fogo";case ICE -> "Gelo";case ELECTRIC -> "Elétrico";
         case WIND -> "Vento";case PSY -> "Psíquico";case NUCLEAR -> "Nuclear";case LIGHT -> "Luz";
-        case DARK -> "Trevas";case ALMIGHTY -> "Onipotente";case HEALING -> "Cura";case SUPPORT -> "Suporte";case AILMENT -> "Condição";};}
+        case DARK -> "Trevas";case ALMIGHTY -> "Onipotente";case HEALING -> "Cura";case SUPPORT -> "Suporte";case AILMENT -> "Condição";case NONE -> "Sem elemento";};}
     public static String target(SkillTarget t){return switch(t){case ONE_ENEMY -> "um inimigo";case ALL_ENEMIES -> "todos os inimigos";
         case SELF -> "o usuário";case ONE_ALLY -> "um aliado";case ALL_ALLIES -> "todos os aliados";};}
     public static String description(SkillDefinition s){
@@ -50,5 +50,5 @@ public final class PersonaDetails {
     public static int color(Element e){return switch(e){case PHYSICAL, SLASH -> 0xFFFFB12D;case FIRE -> 0xFFFF555A;case ICE -> 0xFF67E5FF;
         case ELECTRIC -> 0xFFFFFF32;case WIND -> 0xFF57FFA6;case PSY -> 0xFFFF80B9;case NUCLEAR -> 0xFF53CFF5;
         case LIGHT -> 0xFFE7FFFF;case DARK -> 0xFFB470F8;case ALMIGHTY -> 0xFFD9E2F4;case HEALING -> 0xFF56FFD4;
-        case SUPPORT -> 0xFF82A2FF;case AILMENT -> 0xFFB2E454;};}
+        case SUPPORT -> 0xFF82A2FF;case AILMENT -> 0xFFB2E454;case NONE -> 0xFFF5FFFF;};}
 }

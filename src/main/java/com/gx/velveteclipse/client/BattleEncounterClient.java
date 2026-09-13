@@ -25,8 +25,9 @@ public final class BattleEncounterClient {
     }
     private static boolean fresh(){return Minecraft.m_91087_().f_91073_!=null&&(System.nanoTime()-received)<2_000_000_000L;}
     private static BattleSceneS2C.Scene invitation(){return !fresh()||ClientBattleState.snapshot().active()?null:scenes.stream().filter(s->s.joinable()&&!s.id().equals(dismissed)).findFirst().orElse(null);}
-    @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut e){scenes=List.of();dismissed=shown=null;BattleTargetHud.reset();LightningStrikeRenderer.reset();}
-    @SubscribeEvent public static void hide(RenderLivingEvent.Pre<?,?> event){if(fresh()&&scenes.stream().anyMatch(s->s.enemies().contains(event.getEntity().m_19879_())))event.setCanceled(true);}
+    @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut e){scenes=List.of();dismissed=shown=null;BattleTargetHud.reset();LightningStrikeRenderer.reset();BattleTacticsClient.reset();AllOutPresentation.reset();}
+    public static boolean hidden(int id){return fresh()&&scenes.stream().anyMatch(s->s.enemies().contains(id));}
+    @SubscribeEvent public static void hide(RenderLivingEvent.Pre<?,?> event){if(hidden(event.getEntity().m_19879_()))event.setCanceled(true);}
     @SubscribeEvent public static void key(InputEvent.Key event){
         if(event.getAction()!=1||Minecraft.m_91087_().f_91080_!=null)return;var invite=invitation();if(invite==null)return;
         if(event.getKey()==74){ModNetwork.sendAction("join",invite.id().toString());dismissed=invite.id();}

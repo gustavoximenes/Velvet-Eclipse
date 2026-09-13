@@ -52,7 +52,7 @@ public final class PersonaDelayedActions {
          PersonaCinematicServer.armSkill(var0, var1);
          BattleService.beginAction(var0,session.prepared().action());
          double[] base=RuntimeBridge.playerPosition(var0);
-         com.gx.velveteclipse.network.ModNetwork.sendPresentation(var0,new com.gx.velveteclipse.network.BattleCueS2C("skill",var1,session.prepared().cutin(),base[0],base[1],base[2],base[0],base[1],base[2]));
+         com.gx.velveteclipse.network.ModNetwork.sendPresentation(var0,new com.gx.velveteclipse.network.BattleCueS2C("skill",var1,session.prepared().cutin(),base[0],base[1],base[2],base[0],base[1],base[2],target.id()));
          String var2 = PlayerPersonaData.load(var0).activePersona();
          if (!PersonaCinematicServer.interceptPulse(var0, var2)) {
             PersonaCinematicServer.clear(var0);

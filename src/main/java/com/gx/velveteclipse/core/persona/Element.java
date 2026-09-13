@@ -14,5 +14,6 @@ public enum Element {
    ALMIGHTY,
    HEALING,
    SUPPORT,
-   AILMENT;
+   AILMENT,
+   NONE;
 }

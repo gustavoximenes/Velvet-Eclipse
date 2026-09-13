@@ -1,3 +1,16 @@
+# Velvet Eclipse 0.6.10 — 1 More, Baton Pass e All-Out Attack
+
+- Marcador preso ao alvo confirmado pelo servidor e oculto durante o close de invocação, sem selecionar o próprio jogador pelo mouse durante a animação.
+- Zio usa malha e shader emissivo próprios: raios brancos/lilás ramificados e impacto branco/rosa, sem partículas nativas do Minecraft. Sem dependência adicional.
+- 1 More tem aviso animado e bloqueia a troca de Persona, inclusive por comando. SHIFT abre o seletor de aliados para Baton Pass; o receptor recebe +50% de dano na ação bônus, multiplicador independente dos buffs comuns. Não é possível devolver o bônus a quem já participou da cadeia. O turno regular do receptor é preservado.
+- O primeiro acerto de fraqueza derruba o inimigo, com estrelas amarelas orbitando. Apenas um segundo acerto da mesma fraqueza antes da recuperação faz perder a próxima ação.
+- Todos os inimigos vivos caídos liberam o convite All-Out Attack: ENTER confirma, ESC cancela. O ataque não possui elemento, atinge todos os inimigos do combate e não causa dano aos aliados. Não consome HP/SP.
+- Transição azul, formação com o iniciador no centro e modelos/skins reais da equipe, corrida para o centro e nuvem de golpes. Só uma vitória completa exibe a finalização e a pose de vitória; sobreviventes retornam diretamente ao combate. Entrada de jogadores suspensa durante a sequência.
+- Modelo, textura e animações aprovados do Izanagi preservados. Cut-in continua condicionado à fraqueza de ataques de Persona.
+- Cliente e servidor precisam desta mesma versão: protocolo 6.
+
+Validação: oito auditorias offline, incluindo 11.091 verificações novas de combate, codecs e continuidade das poses; regressões anteriores preservadas. Prévias de HUD geradas do código. O shader também passou por compilação, link e renderização em contexto OpenGL oculto na Radeon RX 6600, incluindo núcleo, halo e transparência. Não houve execução dentro do Minecraft nem sessão real com dois clientes.
+
 # Velvet Eclipse 0.6.9 — combates em grupo
 
 - `/velvet battle demo` mantém um inimigo. `/velvet battle demo 1` até `/velvet battle demo 5` define a quantidade; valores fora desse intervalo são rejeitados.

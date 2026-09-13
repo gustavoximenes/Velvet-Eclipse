@@ -4,7 +4,7 @@ import java.util.*;
 /** Only observed outcomes are transmitted; untested affinities stay unknown. */
 public final class AffinityKnowledge {
  private final Map<String,EnumMap<Element,Affinity>> known=new TreeMap<>();
- public void learn(String enemy,DamageOutcome hit){if(!hit.missed())known.computeIfAbsent(enemy,k->new EnumMap<>(Element.class)).put(hit.element(),hit.affinity());}
+ public void learn(String enemy,DamageOutcome hit){if(!hit.missed()&&hit.element()!=Element.NONE)known.computeIfAbsent(enemy,k->new EnumMap<>(Element.class)).put(hit.element(),hit.affinity());}
  public Affinity get(String enemy,Element element){var map=known.get(enemy);return map==null?null:map.get(element);}
  public String forEnemy(String enemy){var map=known.get(enemy);if(map==null)return "";return String.join(",",map.entrySet().stream().map(e->e.getKey()+":"+e.getValue()).toList());}
  public String encode(){List<String> out=new ArrayList<>();known.forEach((id,map)->map.forEach((e,a)->out.add(id+":"+e+":"+a)));return String.join(";",out);}

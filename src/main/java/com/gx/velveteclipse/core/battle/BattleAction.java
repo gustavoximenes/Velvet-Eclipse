@@ -3,6 +3,7 @@ package com.gx.velveteclipse.core.battle;
 import java.util.UUID;
 
 public record BattleAction(BattleActionType type, String skillId, UUID targetId) {
+   public static BattleAction allOut(){return new BattleAction(BattleActionType.ALL_OUT,"__all_out",null);}
    public static BattleAction attack(UUID var0) {
       return new BattleAction(BattleActionType.ATTACK, null, var0);
    }

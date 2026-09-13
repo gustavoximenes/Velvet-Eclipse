@@ -25,6 +25,7 @@ public final class PersonaCinematics {
     public static boolean weakness(){return skillSequence&&weakness;}
     public static void reset(){skillSequence=false;melee=false;weakness=false;skillTicks=meleeTicks=0;activeSkill="";wasActive=false;introTicks=0;}
     public static void accept(com.gx.velveteclipse.network.BattleCueS2C cue){
+        BattleTargetHud.lockActionTarget(cue.target());
         if("cancel".equals(cue.type())){reset();return;}
         if("skill".equals(cue.type())){onAction("skill",cue.skill());weakness=cue.weakness();}
         if("attack".equals(cue.type())&&ClientBattleState.snapshot().active()){

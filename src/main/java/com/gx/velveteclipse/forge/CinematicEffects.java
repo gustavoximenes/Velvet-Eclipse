@@ -28,6 +28,11 @@ public final class CinematicEffects {
             boolean heal=definition!=null&&(definition.target()==SkillTarget.SELF||definition.target()==SkillTarget.ONE_ALLY||definition.target()==SkillTarget.ALL_ALLIES);
             Object enemy=VisualBattleActors.enemyActor(player);
             double[] target=enemy instanceof Entity e?new double[]{e.m_20185_(),e.m_20186_()+.8,e.m_20189_()}:RuntimeBridge.localOffset(base,yaw,0,1,5);
+            if(tick==82&&element==Element.ELECTRIC){
+                var strikes=BattleService.effectTargets(player,skill).stream().map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
+                for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleLightningS2C(strikes));
+            }
+            if(id.equals("zio"))return;
             DustParticleOptions color=color(element);
             if(tick==38) {
                 double[] muzzle=RuntimeBridge.localOffset(base,yaw,.25,1.55,0);
@@ -52,10 +57,6 @@ public final class CinematicEffects {
                         point(level,player,WHITE,pos[0],pos[1],pos[2]);
                     }
                 }
-            }
-            if(tick==82&&element==Element.ELECTRIC){
-                var strikes=BattleService.effectTargets(player,skill).stream().map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
-                for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleLightningS2C(strikes));
             }
             if(tick==86){
                 burst(level,player,target,color,18,.4);

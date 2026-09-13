@@ -33,6 +33,11 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
             cube(32,-.64f,2.2f,-.16f,1.28f,16,.32f),cube(40,-.12f,2.2f,-.22f,.24f,15,.44f),cube(16,-.9f,-2.5f,-.7f,1.8f,.7f,1.4f)),Map.of());
     }
     private static ModelPart.Cube cube(int u,float x,float y,float z,float w,float h,float d){return new ModelPart.Cube(u,0,x,y,z,w,h,d,0,0,0,false,64,64,EnumSet.allOf(Direction.class));}
+    public void drawProp(PoseStack pose,MultiBufferSource buffers,int light){
+        var out=buffers.m_6299_(RenderType.m_110452_(TEXTURE));sword.m_104301_(pose,out,light,655360);
+        tip(out,pose,light,-.04f,1.1375f,.01f,.04f,1.1375f,.01f,0,1.36f,0);
+        tip(out,pose,light,.04f,1.1375f,-.01f,-.04f,1.1375f,-.01f,0,1.36f,0);
+    }
     @SubscribeEvent public static void layers(EntityRenderersEvent.AddLayers e){
         for(String skin:e.getSkins()){
             PlayerRenderer renderer=e.getSkin(skin);if(renderer==null)continue;

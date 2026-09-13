@@ -21,8 +21,8 @@ public final class DamageCalculator {
          int var4 = var2.usesMagicStat() ? var0.stats().magic() : var0.stats().strength();
          int var5 = Math.max(1, var1.stats().endurance());
          int var6 = Math.max(1, var2.power() * (var4 + 8) / (var5 + 8));
-         var6 = Math.max(1,(int)Math.round(var6 * var0.attackMultiplier() / var1.defenseMultiplier()));
-         Affinity var7 = var2.element() == Element.ALMIGHTY ? Affinity.NORMAL : var1.personaDefinition().affinity(var2.element());
+         var6 = Math.max(1,(int)Math.round(var6 * var0.attackMultiplier() * var0.batonMultiplier() / var1.defenseMultiplier()));
+         Affinity var7 = var2.element() == Element.ALMIGHTY || var2.element() == Element.NONE ? Affinity.NORMAL : var1.personaDefinition().affinity(var2.element());
          boolean var8 = var2.canCritical() && var3.nextInt(100) < Math.min(35, 4 + var0.stats().luck() * 2);
          if (var8) {
             var6 = (int)Math.ceil((double)var6 * 1.35);
@@ -64,8 +64,8 @@ public final class DamageCalculator {
          if(hit.reflected())attacker.damage(hit.damage());
          else if(hit.drained())target.heal(hit.damage());
          else {
-            boolean wasDown=target.downed();target.damage(hit.damage());
-            if(target.alive()&&!wasDown&&(hit.affinity()==Affinity.WEAK||hit.critical())){target.setDowned(true);down=true;}
+            target.damage(hit.damage());
+            if(target.alive()&&hit.damage()>0&&(hit.affinity()==Affinity.WEAK||hit.critical()))down=target.knockDown(hit.element(),hit.affinity()==Affinity.WEAK);
          }
       }
       return new DamageOutcome(hit.element(),hit.affinity(),hit.damage(),hit.critical(),down,hit.reflected(),hit.drained(),hit.missed());

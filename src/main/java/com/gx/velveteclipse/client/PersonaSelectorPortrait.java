@@ -57,6 +57,7 @@ public final class PersonaSelectorPortrait {
             }finally{if(pixels!=null)pixels.close();}
         }finally{RenderSystem.bindTexture(prior);RenderSystem.activeTexture(active);}
     }
+    public static ResourceLocation paletteTexture(ResourceLocation skin){return texture(skin);}
     private static void model(boolean slim){
         if(root!=null&&slim==slimModel)return;slimModel=slim;
         root=LayerDefinition.m_171565_(PlayerModel.m_170825_(CubeDeformation.f_171458_,slim),64,64).m_171564_();

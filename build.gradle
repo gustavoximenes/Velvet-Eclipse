@@ -1,6 +1,6 @@
 plugins { id 'java' }
 group = 'com.gx.velveteclipse'
-version = '0.6.9-multiplayer'
+version = '0.6.10-tactics'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -65,3 +65,10 @@ tasks.register('multiplayerTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.MultiplayerAudit'
 }
 tasks.named('check') { dependsOn 'multiplayerTest' }
+
+tasks.register('tacticalTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.TacticalAudit'
+}
+tasks.named('check') { dependsOn 'tacticalTest' }

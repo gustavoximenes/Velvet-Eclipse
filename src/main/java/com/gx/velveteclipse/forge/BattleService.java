@@ -31,7 +31,7 @@ public final class BattleService {
     public static BattleSession current(Object p){var g=group(p);return g==null?null:g.session;}
     public static boolean hasActiveBattle(Object p){var s=current(p);return s!=null&&s.state()==BattleState.ACTIVE;}
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
-    private static boolean busy(Encounter g){return g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p));}
+    private static boolean busy(Encounter g){return g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
     public static boolean actionBusy(Object p){var g=group(p);return g!=null&&(g.session.prepared()!=null||busy(g));}
     private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);return new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp());}
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
@@ -69,12 +69,12 @@ public final class BattleService {
         if(!g.session.join(combatant(p)))return false;
         attach(g,p,anchor);VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());syncAll(g,RuntimeBridge.playerName(p)+" entrou na batalha!");return true;
     }
-    private static boolean canJoin(ServerPlayer p,Encounter g){return g.session.state()==BattleState.ACTIVE&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
+    private static boolean canJoin(ServerPlayer p,Encounter g){return g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
 
     /** Leaving/disconnecting removes only that participant; an interrupted reservation costs nothing. */
     public static void stop(Object p){
         var g=group(p);if(g==null){sync(p,"Batalha encerrada.");return;}
-        persist(p,g.session);UUID id=RuntimeBridge.playerUuid(p);var reserved=g.session.prepared();
+        AllOutServer.cancel(p);persist(p,g.session);UUID id=RuntimeBridge.playerUuid(p);var reserved=g.session.prepared();
         if(reserved!=null&&(reserved.actor().equals(id)||id.equals(reserved.action().targetId()))){
             Object acting=g.players.get(reserved.actor());if(acting!=null){MeleeBattleServer.clear(acting);PersonaCinematicServer.clear(acting);ModNetwork.sendPresentation(acting,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));}g.session.cancelPrepared();
         }
@@ -107,7 +107,7 @@ public final class BattleService {
     }
     public static boolean switchPersona(Object p,String persona){
         var g=group(p);UUID id=RuntimeBridge.playerUuid(p);
-        if(g==null||actionBusy(p)||g.session.currentActor()==null||!g.session.currentActor().id().equals(id)){sync(p,"Aguarde seu turno.");return false;}
+        if(g==null||actionBusy(p)||!g.session.canSwitchPersona(id)){sync(p,"Não é possível trocar de Persona durante 1 More. Aguarde seu turno normal.");return false;}
         var data=PlayerPersonaData.load(p);var instance=data.instance(persona);if(instance==null||!data.equipPersona(persona)){sync(p,"Persona não está na seleção.");return false;}
         g.session.find(id).orElseThrow().setPersona(instance);data.save(p);VisualBattleActors.replacePersona(p,persona);syncAll(g,"PERSONA → "+PersonaRegistry.persona(persona).orElseThrow().displayName());return true;
     }
@@ -121,6 +121,8 @@ public final class BattleService {
             case "attack"->{var s=current(p);if(s!=null){UUID enemy=target==null?s.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null):target;if(enemy!=null)MeleeBattleServer.start(p,BattleAction.attack(enemy));}}
             case "skill"->PersonaDelayedActions.queueSkill(p,value,target);
             case "persona"->switchPersona(p,value);
+            case "baton_pass"->{var g=group(p);if(g!=null&&g.session.batonPass(RuntimeBridge.playerUuid(p),target)){syncAll(g,"SHIFT! Turno passado com bônus de dano de 50%.");}else sync(p,"Baton Pass indisponível para este alvo.");}
+            case "all_out"->{if(!AllOutServer.start(p))sync(p,"All-Out Attack indisponível.");}
             case "guard"->act(p,BattleAction.guard());case "item"->act(p,BattleAction.item("pulse_tonic"));case "escape"->act(p,BattleAction.escape());
         }
     }
@@ -128,7 +130,7 @@ public final class BattleService {
     public static boolean skillFirstTarget(Object p,String skill){return !actionBusy(p)&&PersonaDelayedActions.queueSkill(p,skill);}
 
     public static void tickServer(){
-        PersonaCinematicServer.tick();MeleeBattleServer.tick();
+        PersonaCinematicServer.tick();MeleeBattleServer.tick();AllOutServer.tick();
         for(var g:new ArrayList<>(BATTLES.values())){
             for(Object p:new ArrayList<>(g.players.values()))if(p instanceof Entity e&&(!e.m_6084_()||e.m_9236_()!=g.level))stop(p);
             if(!BATTLES.containsKey(g.session.id()))continue;
@@ -152,7 +154,15 @@ public final class BattleService {
         if(p==null)return;var data=PlayerPersonaData.load(p);var g=group(p);var actor=g==null?null:g.session.find(RuntimeBridge.playerUuid(p)).orElse(null);
         var persona=actor==null?data.activeInstance():actor.persona();var targets=new ArrayList<BattleRosterS2C.Target>();
         if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name(),ally,c.hp(),c.maxHp(),c.persona().definitionId(),ally?"":BattleKnowledge.load(p).forEnemy(c.persona().definitionId()),g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
-        ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));var enemy=targets.stream().filter(t->!t.ally()&&t.hp()>0).findFirst().orElse(null);
+        ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));
+        if(g==null)ModNetwork.sendPresentation(p,BattleTacticsS2C.empty());
+        else {
+            var turnActor=g.session.currentActor();UUID turnId=turnActor==null?null:turnActor.id();
+            boolean own=RuntimeBridge.playerUuid(p).equals(turnId);
+            var downed=g.session.participants().stream().filter(c->c.alive()&&c.downed()).map(c->new BattleTacticsS2C.Down(targetActor(p,c.id())==null?-1:targetActor(p,c.id()).m_19879_(),c.skipsNextTurn())).toList();
+            ModNetwork.sendPresentation(p,new BattleTacticsS2C(turnId,own&&g.session.oneMore(),g.session.tacticalEvent(),g.session.tacticalKind(),own&&g.session.canAllOut(turnId),own?g.session.batonTargets().stream().map(BattleCombatant::id).toList():List.of(),downed));
+        }
+        var enemy=targets.stream().filter(t->!t.ally()&&t.hp()>0).findFirst().orElse(null);
         boolean turn=actor!=null&&g.session.currentActor()==actor&&!busy(g)&&g.session.prepared()==null;
         ModNetwork.sendToPlayer(p,new BattleSnapshotS2C(g!=null,turn,persona.definitionId(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),actor==null?data.hp():actor.hp(),actor==null?data.maxHp():actor.maxHp(),actor==null?data.sp():actor.sp(),actor==null?data.maxSp():actor.maxSp(),enemy==null?"":enemy.name(),enemy==null?0:enemy.hp(),enemy==null?0:enemy.maxHp(),data.pulseTonics(),new ArrayList<>(persona.learnedSkills()),new ArrayList<>(data.rosterIds()),message==null?"":message));
     }

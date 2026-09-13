@@ -5,5 +5,6 @@ public enum BattleActionType {
    SKILL,
    ITEM,
    GUARD,
-   ESCAPE;
+   ESCAPE,
+   ALL_OUT;
 }

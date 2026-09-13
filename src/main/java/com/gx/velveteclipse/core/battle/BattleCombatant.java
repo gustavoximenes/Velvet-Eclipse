@@ -17,6 +17,19 @@ public final class BattleCombatant {
    private int sp;
    private boolean guarding;
    private boolean downed;
+   private com.gx.velveteclipse.core.persona.Element downElement;
+   private boolean skipNextTurn;
+   private double batonMultiplier=1;
+   public double batonMultiplier(){return batonMultiplier;}
+   public void setBatonBoost(boolean active){batonMultiplier=active?1.5:1;}
+   public boolean skipsNextTurn(){return skipNextTurn;}
+   public com.gx.velveteclipse.core.persona.Element downElement(){return downElement;}
+   /** Only a repeated hit of the SAME weakness, before recovery, causes a lost turn. */
+   public boolean knockDown(com.gx.velveteclipse.core.persona.Element element,boolean weakness){
+      boolean fresh=!downed;
+      if(weakness){if(downed&&element==downElement)skipNextTurn=true;else if(fresh||downElement==null)downElement=element;}
+      downed=true;return fresh;
+   }
    private int attackTurns, defenseTurns, defenseStage;
    private boolean attackWaiting, defenseWaiting;
 
@@ -151,6 +164,7 @@ public final class BattleCombatant {
 
    public void setDowned(boolean var1) {
       this.downed = var1;
+      if(!var1){downElement=null;skipNextTurn=false;}
    }
 
    private static int clamp(int var0, int var1, int var2) {

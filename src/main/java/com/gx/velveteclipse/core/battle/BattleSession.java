@@ -16,6 +16,29 @@ public final class BattleSession {
    private final List<BattleCombatant> turnOrder;
    private final Random random;
    private int turnIndex;
+   private UUID bonusActor;
+   private final java.util.Set<UUID> batonChain=new java.util.HashSet<>();
+   private int tacticalEvent;
+   private String tacticalKind="";
+   public int tacticalEvent(){return tacticalEvent;}
+   public String tacticalKind(){return tacticalKind;}
+   public boolean oneMore(){return state==BattleState.ACTIVE&&bonusActor!=null;}
+   public boolean canSwitchPersona(UUID actor){return !oneMore()&&prepared==null&&currentActor()!=null&&currentActor().id().equals(actor);}
+   public List<BattleCombatant> batonTargets(){
+      var actor=currentActor();if(!oneMore()||actor==null||actor.side()!=BattleSide.PLAYERS)return List.of();
+      return alliesOf(actor).stream().filter(a->!a.id().equals(actor.id())&&!a.downed()&&!batonChain.contains(a.id())).toList();
+   }
+   public boolean batonPass(UUID actor,UUID target){
+      if(prepared!=null||!oneMore()||currentActor()==null||!currentActor().id().equals(actor)||batonTargets().stream().noneMatch(a->a.id().equals(target)))return false;
+      currentActor().setBatonBoost(false);batonChain.add(actor);batonChain.add(target);bonusActor=target;currentActor().setBatonBoost(true);
+      tacticalKind="SHIFT";tacticalEvent++;return true;
+   }
+   public boolean canAllOut(UUID actor){
+      var a=currentActor();if(!oneMore()||a==null||!a.id().equals(actor)||a.side()!=BattleSide.PLAYERS||a.downed())return false;
+      var enemies=enemiesOf(a);return !enemies.isEmpty()&&enemies.stream().allMatch(BattleCombatant::downed);
+   }
+   public List<BattleCombatant> allOutFighters(){var actor=currentActor();return actor==null?List.of():alliesOf(actor).stream().filter(a->!a.downed()).toList();}
+   public SkillDefinition allOutSkill(){return new SkillDefinition("__all_out","All-Out Attack",Element.NONE,30+allOutFighters().size()*22,100,0,0,false,SkillTarget.ALL_ENEMIES);}
    public record Prepared(UUID actor, BattleAction action, DamageOutcome hit, java.util.Map<UUID,DamageOutcome> hits) {
       public boolean cutin(){return action.type()==BattleActionType.SKILL&&hits.values().stream().anyMatch(BattleSession::isWeaknessHit);}
    }
@@ -27,7 +50,8 @@ public final class BattleSession {
    public Prepared prepare(UUID actorId,BattleAction action){
       if(prepared!=null||state!=BattleState.ACTIVE||currentActor()==null||!currentActor().id().equals(actorId))return null;
       var actor=currentActor();
-      var skill=action.type()==BattleActionType.ATTACK?sword():action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
+      if(action.type()==BattleActionType.ALL_OUT&&!canAllOut(actorId))return null;
+      var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ATTACK?sword():action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
       var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
       if(skill==null||target==null||!actor.alive())return null;
       if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<skill.spCost()
@@ -76,7 +100,7 @@ public final class BattleSession {
    }
 
    public BattleCombatant currentActor() {
-      return this.state != BattleState.ACTIVE ? null : this.turnOrder.get(this.turnIndex);
+      return state!=BattleState.ACTIVE?null:bonusActor==null?turnOrder.get(turnIndex):find(bonusActor).orElse(null);
    }
 
    public Optional<BattleCombatant> find(UUID var1) {
@@ -105,6 +129,14 @@ public final class BattleSession {
             boolean var5 = false;
             boolean weaknessHit = false;
             switch (var2.type()) {
+               case ALL_OUT:
+                  if(!canAllOut(var1))return new BattleResolution(state,false,List.of("All-Out Attack indisponível."));
+                  var allOut=allOutSkill();
+                  for(var enemy:enemiesOf(var4)){
+                     var hit=damage(var4,enemy,allOut);appendOutcome(var3,var4,enemy,allOut,hit);
+                     enemy.setDowned(false);
+                  }
+                  break;
                case ITEM:
                   if (!"pulse_tonic".equals(var2.skillId())) {
                      return new BattleResolution(this.state, false, List.of("Unknown item."));
@@ -173,10 +205,12 @@ public final class BattleSession {
             }
 
             prepared=null;
+            var4.setBatonBoost(false);
             this.updateState();
             if (this.state == BattleState.ACTIVE && !var5) {
                this.advanceTurn();
-            } else if (var5) {
+            } else if (this.state == BattleState.ACTIVE && var5) {
+               bonusActor=var4.id();batonChain.add(var4.id());tacticalKind="1 MORE";tacticalEvent++;
                var3.add("ONE MORE! " + var4.name() + " acts again.");
             }
 
@@ -247,10 +281,14 @@ public final class BattleSession {
       int index=-1;for(int i=0;i<turnOrder.size();i++)if(turnOrder.get(i).id().equals(id)){index=i;break;}
       if(index<0||turnOrder.get(index).side()!=BattleSide.PLAYERS)return false;
       boolean active=index==turnIndex;
+      boolean bonusLeaving=id.equals(bonusActor);
       if(prepared!=null&&(prepared.actor().equals(id)||id.equals(prepared.action().targetId())))prepared=null;
       turnOrder.remove(index);if(index<turnIndex)turnIndex--;
+      if(active&&bonusActor!=null&&!bonusLeaving)turnIndex=Math.floorMod(turnIndex-1,Math.max(1,turnOrder.size()));
+      if(bonusLeaving){bonusActor=null;batonChain.clear();}
       updateState();
-      if(state==BattleState.ACTIVE&&active){turnIndex=firstLivingIndex(turnIndex);currentActor().beginTurn();currentActor().setDowned(false);}
+      if(state==BattleState.ACTIVE&&bonusLeaving&&!active)advanceTurn();
+      else if(state==BattleState.ACTIVE&&active&&bonusActor==null){turnIndex=firstLivingIndex(turnIndex);if(!beginCurrentTurn())advanceTurn();}
       return true;
    }
 
@@ -265,16 +303,14 @@ public final class BattleSession {
    }
 
    private void advanceTurn() {
-      if (this.state == BattleState.ACTIVE) {
-         int var1 = this.firstLivingIndex(this.turnIndex + 1);
-         this.turnIndex = var1;
-         BattleCombatant var2 = this.currentActor();
-         if(var2!=null)var2.beginTurn();
-         if (var2 != null && var2.downed()) {
-            var2.setDowned(false);
-         }
+      bonusActor=null;batonChain.clear();for(var actor:turnOrder)actor.setBatonBoost(false);
+      if(state!=BattleState.ACTIVE)return;
+      for(int attempts=0;attempts<=turnOrder.size();attempts++){
+         turnIndex=firstLivingIndex(turnIndex+1);if(beginCurrentTurn())return;
       }
    }
+
+   private boolean beginCurrentTurn(){var actor=currentActor();actor.beginTurn();boolean skip=actor.skipsNextTurn();actor.setDowned(false);return !skip;}
 
    private int firstLivingIndex(int var1) {
       int var2 = this.turnOrder.size();

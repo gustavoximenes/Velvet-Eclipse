@@ -157,7 +157,7 @@ public final class VelvetCommands {
    }
 
    private static int help(Object var0) {
-      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.9 Combates em grupo");
+      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.10 Táticas");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|add <id>|remove <id>|equip <id> (give continua disponível)");
       RuntimeBridge.sendMessage(var0, "§d/velvet fusion preview|perform <persona1> <persona2> [skill]");
@@ -282,6 +282,7 @@ public final class VelvetCommands {
 
    private static int equipPersona(Object var0, String var1) {
       Object var2 = player(var0);
+      if (var2 != null && BattleService.hasActiveBattle(var2)) return BattleService.switchPersona(var2, var1) ? 1 : 0;
       if (var2 == null) {
          return 0;
       } else {

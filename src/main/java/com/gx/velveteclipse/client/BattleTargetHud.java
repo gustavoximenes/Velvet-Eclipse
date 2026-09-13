@@ -20,10 +20,12 @@ public final class BattleTargetHud {
     private static double lastX=-1,lastY=-1;
     public static int entityId(){return roster.stream().filter(t->t.id().equals(selected)).mapToInt(BattleRosterS2C.Target::entityId).findFirst().orElse(-1);}
     public static UUID selectedId(){return selected;}
+    public static void lockActionTarget(UUID id){if(id!=null)selected=id;}
     public static void reset(){roster=List.of();selected=null;boxes.clear();positions.clear();cards.clear();}
     public static void accept(BattleTargetS2C ignored){}
     public static void accept(BattleRosterS2C p){roster=p.targets();if(roster.isEmpty()){reset();return;}if(ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET&&candidates().stream().noneMatch(t->t.id().equals(selected)))chooseDefault();}
     public static List<BattleRosterS2C.Target> candidates(){
+        if(ClientBattleUiState.pendingSkill().equals("__baton_pass"))return roster.stream().filter(t->t.ally()&&t.hp()>0&&BattleTacticsClient.passTargets().contains(t.id())).toList();
         var skill=PersonaRegistry.skill(ClientBattleUiState.pendingSkill()).orElse(null);
         boolean ally=skill!=null&&(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES||skill.target()==SkillTarget.SELF);
         return roster.stream().filter(t->t.hp()>0&&t.ally()==ally).filter(t->skill==null||skill.target()!=SkillTarget.SELF||t.id().equals(RuntimeBridge.playerUuid(Minecraft.m_91087_().f_91074_))).toList();
@@ -49,6 +51,8 @@ public final class BattleTargetHud {
     public static void paint(HudDesign.Canvas c,int w,int h,double ignored,double ignoredTrail){
         cards.clear();if(ClientBattleUiState.selector())return;
         boolean targeting=ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET;
+        boolean acting=PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive();
+        if(AllOutPresentation.active()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()<68)return;
         var element=ClientBattleUiState.selectedElement();double u=Math.max(.6,Math.min(w/640.,h/360.));
         if(targeting){
             var list=candidates();int index=0;for(int i=0;i<list.size();i++)if(list.get(i).id().equals(selected))index=i;
@@ -62,7 +66,9 @@ public final class BattleTargetHud {
         }
         for(var t:roster){if(t.hp()<=0)continue;var at=positions.get(t.id());if(at==null)continue;
             var box=boxes.get(t.id());boolean focus=t.id().equals(selected)&&(targeting||PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()>=68);
-            boolean hover=box!=null&&box.contains(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
+            boolean hover=!acting&&box!=null&&box.contains(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
+            if(acting&&!t.id().equals(selected))continue;
+            if(!targeting&&!acting&&t.ally())continue;
             if(!focus&&!hover||targeting&&candidates().stream().noneMatch(a->a.id().equals(t.id())))continue;
             Affinity affinity=t.ally()?Affinity.NORMAL:null;for(String pair:t.known().split(",")){var a=pair.split(":");if(a.length==2&&a[0].equals(element.name()))try{affinity=Affinity.valueOf(a[1]);}catch(IllegalArgumentException ignoredError){}}
             int px=(int)Math.max(25*u,Math.min(w-110*u,at[0])),py=(int)Math.max(45*u,Math.min(h-90*u,at[1]));double ratio=t.hp()/(double)Math.max(1,t.maxHp());
