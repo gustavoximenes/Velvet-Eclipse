@@ -34,7 +34,7 @@ public final class BattleSession {
          ||(skill.hpPercentCost()>0&&actor.hp()<=Math.max(1,actor.maxHp()*skill.hpPercentCost()/100))))return null;
       var hits=new java.util.LinkedHashMap<UUID,DamageOutcome>();
       if(!skill.isDamageSkill()) {
-         if(!SupportEffects.supported(skill.id()))return null;
+         if(skill.element()!=Element.HEALING&&!SupportEffects.supported(skill.id()))return null;
          prepared=new Prepared(actorId,action,null,java.util.Map.of());return prepared;
       }
       var targets=skill.target()==SkillTarget.ALL_ENEMIES?enemiesOf(actor):List.of(target);
@@ -145,7 +145,7 @@ public final class BattleSession {
 
                   BattleCombatant var7 = this.validSkillTarget(var4, var2.targetId(), var6);
                   if (var7 == null) return new BattleResolution(this.state,false,List.of("Invalid target."));
-                  if(!var6.isDamageSkill()&&!SupportEffects.supported(var6.id()))
+                  if(!var6.isDamageSkill()&&var6.element()!=Element.HEALING&&!SupportEffects.supported(var6.id()))
                      return new BattleResolution(this.state,false,List.of("Unsupported skill."));
                   if (var6.spCost() > 0 && !var4.spendSp(var6.spCost())) {
                      return new BattleResolution(this.state, false, List.of("Not enough SP."));
@@ -156,7 +156,11 @@ public final class BattleSession {
                   }
 
                   if(!var6.isDamageSkill()) {
-                     var3.add(var4.name()+" usou "+var6.displayName()+" em "+var7.name()+". "+SupportEffects.apply(var6.id(),var4,var7));
+                     var allies=var6.target()==SkillTarget.ALL_ALLIES?alliesOf(var4):List.of(var7);
+                     for(var ally:allies){
+                        if(var6.element()==Element.HEALING){int before=ally.hp();ally.heal(Math.max(1,var6.power()));var3.add(var4.name()+" usou "+var6.displayName()+" em "+ally.name()+": +"+(ally.hp()-before)+" HP.");}
+                        else var3.add(var4.name()+" usou "+var6.displayName()+" em "+ally.name()+". "+SupportEffects.apply(var6.id(),var4,ally));
+                     }
                      break;
                   }
 
@@ -231,6 +235,27 @@ public final class BattleSession {
       if(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES)
          return id==null?actor:find(id).filter(BattleCombatant::alive).filter(t->t.side()==actor.side()).orElse(null);
       return validEnemyTarget(actor,id);
+   }
+
+   /** Join at the end of the existing order; never steal the active or reserved turn. */
+   public boolean join(BattleCombatant ally) {
+      if(state!=BattleState.ACTIVE||ally==null||!ally.alive()||ally.side()!=BattleSide.PLAYERS||find(ally.id()).isPresent())return false;
+      turnOrder.add(ally);return true;
+   }
+
+   public boolean leave(UUID id) {
+      int index=-1;for(int i=0;i<turnOrder.size();i++)if(turnOrder.get(i).id().equals(id)){index=i;break;}
+      if(index<0||turnOrder.get(index).side()!=BattleSide.PLAYERS)return false;
+      boolean active=index==turnIndex;
+      if(prepared!=null&&(prepared.actor().equals(id)||id.equals(prepared.action().targetId())))prepared=null;
+      turnOrder.remove(index);if(index<turnIndex)turnIndex--;
+      updateState();
+      if(state==BattleState.ACTIVE&&active){turnIndex=firstLivingIndex(turnIndex);currentActor().beginTurn();currentActor().setDowned(false);}
+      return true;
+   }
+
+   public List<BattleCombatant> alliesOf(BattleCombatant actor) {
+      return turnOrder.stream().filter(BattleCombatant::alive).filter(c->c.side()==actor.side()).toList();
    }
 
    private BattleCombatant validEnemyTarget(BattleCombatant var1, UUID var2) {

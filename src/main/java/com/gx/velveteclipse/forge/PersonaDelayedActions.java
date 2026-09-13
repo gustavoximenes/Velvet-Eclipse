@@ -36,7 +36,9 @@ public final class PersonaDelayedActions {
       }
    }
 
-   public static boolean queueSkill(Object var0, String var1) {
+   public static boolean queueSkill(Object var0,String var1){return queueSkill(var0,var1,null);}
+   public static boolean queueSkill(Object var0, String var1,UUID targetId) {
+      if(BattleService.actionBusy(var0))return false;
       if (var0 == null || var1 == null || var1.isBlank()) {
          return false;
       } else if (firstTarget(var0) == null) {
@@ -45,9 +47,10 @@ public final class PersonaDelayedActions {
       } else {
          var session=BattleService.current(var0);
          var definition=com.gx.velveteclipse.core.persona.PersonaRegistry.skill(var1).orElse(null);
-         var target=session==null||definition==null?null:session.validSkillTarget(session.currentActor(),null,definition);
+         var target=session==null||definition==null?null:session.validSkillTarget(session.currentActor(),targetId,definition);
          if(session==null||target==null||session.prepare(RuntimeBridge.playerUuid(var0),BattleAction.skill(var1,target.id()))==null){BattleService.sync(var0,"Habilidade indisponível: confira HP, SP e turno.");return false;}
          PersonaCinematicServer.armSkill(var0, var1);
+         BattleService.beginAction(var0,session.prepared().action());
          double[] base=RuntimeBridge.playerPosition(var0);
          com.gx.velveteclipse.network.ModNetwork.sendPresentation(var0,new com.gx.velveteclipse.network.BattleCueS2C("skill",var1,session.prepared().cutin(),base[0],base[1],base[2],base[0],base[1],base[2]));
          String var2 = PlayerPersonaData.load(var0).activePersona();

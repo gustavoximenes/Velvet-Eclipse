@@ -79,8 +79,10 @@ public final class PersonaCinematics {
             if(melee){
                 ++meleeTicks;var player=net.minecraft.client.Minecraft.m_91087_().f_91074_;
                 if(player!=null&&meleeStart!=null){var desired=meleeStart.m_165921_(meleeEnd,com.gx.velveteclipse.core.battle.MeleeTimeline.progress(meleeTicks));
+                    var target=net.minecraft.client.Minecraft.m_91087_().f_91073_.m_6815_(BattleTargetHud.entityId());
+                    if(target!=null)RuntimeBridge.setEntityRotation(player,(float)Math.toDegrees(Math.atan2(-(target.m_20185_()-meleeStart.f_82479_),target.m_20189_()-meleeStart.f_82481_)),0);
                     player.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);player.m_6478_(net.minecraft.world.entity.MoverType.SELF,desired.m_82546_(player.m_20182_()));}
-                if(meleeTicks>=com.gx.velveteclipse.core.battle.MeleeTimeline.END)melee=false;
+                if(meleeTicks>=com.gx.velveteclipse.core.battle.MeleeTimeline.END){melee=false;RuntimeBridge.setEntityRotation(player,battleYaw,0);}
             }
             if (introTicks > 0) {
                 --introTicks;

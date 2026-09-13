@@ -32,29 +32,30 @@ public final class ClientBattleUiState {
   selected=index;String id=s.skills().get(index);
   if(!affordable(PersonaRegistry.skill(id).orElse(null),s))return false;
   var skill=PersonaRegistry.skill(id).orElseThrow();
-  if(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.SELF){send("skill",id);return true;}
-  pendingSkill=id;page=Page.TARGET;return true;
+  pendingSkill=id;page=Page.TARGET;BattleTargetHud.chooseDefault();return true;
  }
  public static boolean selectVisible(int row,BattleSnapshotS2C s){return selectIndex(selected/7*7+row,s);}
- public static void attack(){var s=ClientBattleState.snapshot();if(canAct(s)){pendingSkill="";page=Page.TARGET;}}
- public static boolean confirm(BattleSnapshotS2C s){if(!canAct(s))return false;if(selector())return selectIndex(selected,s);if(page!=Page.TARGET)return false;send(pendingSkill.isEmpty()?"attack":"skill",pendingSkill);return true;}
- public static void move(int delta){var s=ClientBattleState.snapshot();if(selector()&&canAct(s)&&!s.skills().isEmpty())selected=Math.floorMod(selected+delta,s.skills().size());}
- public static void cycle(int direction){var s=ClientBattleState.snapshot();if(!selector()||!canAct(s)||s.roster().size()<2)return;
+ public static void attack(){var s=ClientBattleState.snapshot();if(canAct(s)){pendingSkill="";page=Page.TARGET;BattleTargetHud.chooseDefault();}}
+ public static boolean confirm(BattleSnapshotS2C s){if(!canAct(s))return false;if(selector())return selectIndex(selected,s);if(page!=Page.TARGET||BattleTargetHud.selectedId()==null)return false;send(pendingSkill.isEmpty()?"attack":"skill",pendingSkill);return true;}
+ public static void move(int delta){if(page==Page.TARGET&&!actionLocked()){BattleTargetHud.move(delta);return;}var s=ClientBattleState.snapshot();if(selector()&&canAct(s)&&!s.skills().isEmpty())selected=Math.floorMod(selected+delta,s.skills().size());}
+ public static void cycle(int direction){if(page==Page.TARGET){move(direction);return;}var s=ClientBattleState.snapshot();if(!selector()||!canAct(s)||s.roster().size()<2)return;
   int i=s.roster().indexOf(s.personaId());String id=s.roster().get(Math.floorMod(i+direction,s.roster().size()));switchPending=true;selected=0;ModNetwork.sendAction("persona",id);
  }
  public static void hover(double x,double y,int w,int h){
+  if(page==Page.TARGET&&!actionLocked()){BattleTargetHud.hover(x,y);return;}
   if(!selector()||actionLocked())return;
   if(Math.abs(x-lastMouseX)+Math.abs(y-lastMouseY)<.2)return;lastMouseX=x;lastMouseY=y;
   var s=ClientBattleState.snapshot();int first=selected/7*7;
   for(int row=0;row<Math.min(7,s.skills().size()-first);row++)if(PersonaBattleDesign.row(w,h,row,age()).contains(x,y)){selected=first+row;break;}
  }
+ public static String pendingSkill(){return pendingSkill;}
  public static Element selectedElement(){
   String id=PersonaCinematics.skillSequenceActive()?PersonaCinematics.activeSkill():page==Page.TARGET?pendingSkill:selector()&&selected<ClientBattleState.snapshot().skills().size()?ClientBattleState.snapshot().skills().get(selected):"";
   return PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::element).orElse(Element.SLASH);
  }
  public static boolean click(double x,double y,int w,int h,BattleSnapshotS2C s){
   if(!canAct(s))return false;
-  if(page==Page.TARGET){if(BattleTargetHud.hit(x,y)||y>h-28)return confirm(s);return false;}
+  if(page==Page.TARGET){if(BattleTargetHud.click(x,y)||y>h-28)return confirm(s);return false;}
   if(selector()){
    if(PersonaBattleDesign.previous(w,h,age()).contains(x,y)){cycle(-1);return true;}
    if(PersonaBattleDesign.next(w,h,age()).contains(x,y)){cycle(1);return true;}
@@ -68,5 +69,5 @@ public final class ClientBattleUiState {
  }
  public static String displaySkill(String id){return PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::displayName).orElse(id==null?"":id);}
  public static String displayPersona(String id){return PersonaRegistry.persona(id).map(PersonaDefinition::displayName).orElse(id==null?"":id);}
- private static void send(String type,String id){actionLocked=true;page=Page.MAIN;ModNetwork.sendAction(type,id);}
+ private static void send(String type,String id){var target=page==Page.TARGET?BattleTargetHud.selectedId():null;actionLocked=true;page=Page.MAIN;ModNetwork.sendAction(type,id,target);}
 }

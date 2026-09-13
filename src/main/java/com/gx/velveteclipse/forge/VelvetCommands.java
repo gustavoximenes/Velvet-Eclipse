@@ -110,7 +110,8 @@ public final class VelvetCommands {
                                                 )
                                                 .then(LiteralArgumentBuilder.literal("start").executes(var0x -> startBattle(var0x.getSource()))))
                                              .then(LiteralArgumentBuilder.literal("nearest").executes(var0x -> startNearestBattle(var0x.getSource()))))
-                                          .then(LiteralArgumentBuilder.literal("demo").executes(var0x -> demoBattle(var0x.getSource()))))
+                                          .then(LiteralArgumentBuilder.literal("demo").executes(var0x -> demoBattle(var0x.getSource()))
+                                             .then(RequiredArgumentBuilder.argument("count", com.mojang.brigadier.arguments.IntegerArgumentType.integer(1,5)).executes(c -> demoBattle(c.getSource(),com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(c,"count"))))))
                                        .then(LiteralArgumentBuilder.literal("attack").executes(var0x -> attack(var0x.getSource()))))
                                     .then(
                                        LiteralArgumentBuilder.literal("skill")
@@ -156,7 +157,7 @@ public final class VelvetCommands {
    }
 
    private static int help(Object var0) {
-      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.8 Izanagi");
+      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.9 Combates em grupo");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|add <id>|remove <id>|equip <id> (give continua disponível)");
       RuntimeBridge.sendMessage(var0, "§d/velvet fusion preview|perform <persona1> <persona2> [skill]");
@@ -487,12 +488,13 @@ public final class VelvetCommands {
       }
    }
 
-   private static int demoBattle(Object var0) {
+   private static int demoBattle(Object source){return demoBattle(source,1);}
+   private static int demoBattle(Object var0,int count) {
       Object var1 = player(var0);
       if (var1 == null) {
          return 0;
       } else {
-         BattleService.startDemo(var1);
+         BattleService.startDemo(var1,count);
          return 1;
       }
    }

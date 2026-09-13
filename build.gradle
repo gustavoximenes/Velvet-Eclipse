@@ -1,6 +1,6 @@
 plugins { id 'java' }
 group = 'com.gx.velveteclipse'
-version = '0.6.8-izanagi-fix'
+version = '0.6.9-multiplayer'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -58,3 +58,10 @@ tasks.register('izanagiTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.IzanagiAudit'
 }
 tasks.named('check') { dependsOn 'izanagiTest' }
+
+tasks.register('multiplayerTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.MultiplayerAudit'
+}
+tasks.named('check') { dependsOn 'multiplayerTest' }

@@ -14,15 +14,17 @@ import org.joml.Vector3f;
 /** Bright layered ribbons use the vanilla lightning shader; no damaging lightning entity is spawned. */
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
 public final class LightningStrikeRenderer {
+    private static java.util.List<com.gx.velveteclipse.network.BattleLightningS2C.Strike> strikes=java.util.List.of();
+    private static long startTick;
+    public static void reset(){strikes=java.util.List.of();}
+    public static void accept(com.gx.velveteclipse.network.BattleLightningS2C packet){var mc=Minecraft.m_91087_();if(mc.f_91073_==null)return;strikes=packet.strikes();startTick=mc.f_91073_.m_46467_();}
     @SubscribeEvent public static void render(RenderLevelStageEvent event) {
-        if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_PARTICLES||!PersonaCinematics.skillSequenceActive())return;
-        var skill=PersonaRegistry.skill(PersonaCinematics.activeSkill()).orElse(null);
-        if(skill==null||skill.element()!=Element.ELECTRIC)return;
-        double tick=PersonaCinematics.skillTicks()+event.getPartialTick();double alpha=LightningStrike.opacity(tick);
-        if(alpha<=0)return;
-        var mc=Minecraft.m_91087_();if(mc.f_91073_==null)return;
-        var target=mc.f_91073_.m_6815_(BattleTargetHud.entityId());if(target==null)return;
-        var p=target.m_20318_(event.getPartialTick());var camera=event.getCamera().m_90583_();
+        if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_PARTICLES||strikes.isEmpty())return;
+        var mc=Minecraft.m_91087_();if(mc.f_91073_==null){reset();return;}
+        double tick=82+mc.f_91073_.m_46467_()-startTick+event.getPartialTick();double alpha=LightningStrike.opacity(tick);
+        if(tick>=94){reset();return;}if(alpha<=0)return;
+        var camera=event.getCamera().m_90583_();
+        for(var strike:strikes){var p=new net.minecraft.world.phys.Vec3(strike.x(),strike.y(),strike.z());
         var pose=event.getPoseStack();pose.m_85836_();
         var buffers=mc.m_91269_().m_110104_();var type=RenderType.m_110502_();
         try {
@@ -30,24 +32,35 @@ public final class LightningStrikeRenderer {
             var out=buffers.m_6299_(type);var matrix=pose.m_85850_().m_252922_();
             var eye=new Vector3f((float)(camera.f_82479_-p.f_82479_),(float)(camera.f_82480_-p.f_82480_),(float)(camera.f_82481_-p.f_82481_));
             float bottom=(float)(6.2*(1-Math.min(1,(tick-82)/4)));
-            for(var segment:LightningStrike.bolts(target.m_19879_()*31L+(int)Math.max(0,(tick-86)/2))) {
+            for(var segment:LightningStrike.bolts(strike.seed()+(int)Math.max(0,(tick-86)/2))) {
                 var a=segment.from();var b=segment.to();if(a.y<bottom)continue;
                 if(b.y<bottom)b=new Vector3f(a).lerp(b,(a.y-bottom)/(a.y-b.y));
-                ribbon(out,matrix,eye,a,b,.11f,182,126,255,(int)(alpha*85));
-                ribbon(out,matrix,eye,a,b,.028f,255,244,255,(int)(alpha*250));
+                ribbon(out,matrix,eye,a,b,.19f,172,116,248,(int)(alpha*60));
+                ribbon(out,matrix,eye,a,b,.078f,225,185,255,(int)(alpha*175));
+                ribbon(out,matrix,eye,a,b,.036f,255,250,255,(int)(alpha*255));
             }
             if(tick>=86) {
                 float expand=(float)(tick-86);var center=new Vector3f(0,.22f,0);
-                for(int i=0;i<14;i++) {
-                    double angle=i*Math.PI*2/14;
-                    float length=(i%3==0?1.35f:.8f)*(1+expand*.08f);
+                for(int i=0;i<22;i++) {
+                    double angle=i*Math.PI*2/22;
+                    float length=(i%3==0?1.8f:1.05f)*(1+expand*.08f);
                     var end=new Vector3f((float)Math.cos(angle)*length,.2f+(float)Math.abs(Math.sin(angle))*length,(float)Math.sin(angle)*length*.55f);
                     ribbon(out,matrix,eye,center,end,.095f,255,142,229,(int)(alpha*130));
                     ribbon(out,matrix,eye,center,end,.035f,255,255,255,(int)(alpha*255));
                 }
+                // A white impact star with pink rays; the halo stays close to the ground.
+                var up=new Vector3f(0,1,0);var right=new Vector3f(eye).cross(up);if(right.lengthSquared()<.001f)right.set(1,0,0);right.normalize();
+                float flash=(float)Math.max(0,1-expand/5f);
+                for(int i=0;i<10;i++){
+                    double angle=i*Math.PI/5;float length=(i%2==0?1.15f:.55f)*(1+expand*.08f);
+                    var tip=new Vector3f(center).fma((float)Math.cos(angle)*length,right).fma((float)Math.sin(angle)*length,up);
+                    ribbon(out,matrix,eye,center,tip,.17f*flash,255,255,255,(int)(alpha*250));
+                }
+                ribbon(out,matrix,eye,new Vector3f(-1.8f,.1f,0),new Vector3f(1.8f,.1f,0),.1f*flash,255,154,217,(int)(alpha*200));
             }
             buffers.m_109912_(type);
         } finally {pose.m_85849_();}
+        }
     }
     private static void ribbon(VertexConsumer out,Matrix4f matrix,Vector3f eye,Vector3f a,Vector3f b,float width,int r,int g,int blue,int alpha) {
         var side=new Vector3f(b).sub(a).cross(new Vector3f(eye).sub(a));

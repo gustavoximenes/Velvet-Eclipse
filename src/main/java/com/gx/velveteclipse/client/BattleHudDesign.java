@@ -40,7 +40,7 @@ public final class BattleHudDesign {
             String key=fit(c,v.keys().get(i),(int)(15*u));
             c.text(key,r.x()+r.w()-Math.max(10,c.width(key)+3),r.y()+Math.max(1,(r.h()-8)/2),chosen?CYAN:0xFFB5F8FF);
         }
-        String turn=v.locked()?"ACTION":available?"COMMAND":"SHADOW TURN";
+        String turn=v.locked()?"ACTION":available?"COMMAND":"AGUARDE";
         c.styled(turn,(int)(19*u),h-(int)(105*u),(float)(.9*u),CYAN);
         if(v.message()!=null&&!v.message().isBlank()){
             int x=(int)(202*u),y=h-(int)(33*u),width=w-x-pad;

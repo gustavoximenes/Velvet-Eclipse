@@ -1,7 +1,7 @@
 package com.gx.velveteclipse.client;
 
 import com.gx.velveteclipse.core.persona.*;
-import com.gx.velveteclipse.network.BattleTargetS2C;
+import com.gx.velveteclipse.network.*;
 import com.gx.velveteclipse.util.RuntimeBridge;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -11,49 +11,65 @@ import net.minecraftforge.fml.common.Mod;
 import org.joml.Vector4f;
 import java.util.*;
 
-/** A marker anchored to the actual selected enemy, not an always-visible screen panel. */
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
 public final class BattleTargetHud {
-    private static int entityId=-1;
-    public static int entityId(){return entityId;}
-    private static final EnumMap<Element,Affinity> known=new EnumMap<>(Element.class);
-    private static double x,y,minX,minY,maxX,maxY;
-    private static boolean visible;
-    private static BattleMenuLayout.Rect marker;
-    public static void reset(){entityId=-1;visible=false;marker=null;known.clear();}
-    public static void accept(BattleTargetS2C p){entityId=p.entityId();known.clear();for(String text:p.known().split(",")){String[] pair=text.split(":");if(pair.length==2)try{known.put(Element.valueOf(pair[0]),Affinity.valueOf(pair[1]));}catch(IllegalArgumentException ignored){}}}
-    public static String indicator(Affinity affinity){return affinity==null?"?":affinity==Affinity.WEAK?"! WEAK":"";}
-    public static boolean hit(double mx,double my){return visible&&((mx>=minX&&mx<=maxX&&my>=minY&&my<=maxY)||(marker!=null&&marker.contains(mx,my)));}
-    @SubscribeEvent public static void project(RenderLevelStageEvent e){
-        if(e.getStage()!=RenderLevelStageEvent.Stage.AFTER_ENTITIES)return;visible=false;
-        var mc=Minecraft.m_91087_();if(!ClientBattleState.snapshot().active()||mc.f_91073_==null)return;
-        var entity=mc.f_91073_.m_6815_(entityId);if(entity==null||!entity.m_6084_())return;
-        var position=entity.m_20318_(e.getPartialTick());var camera=e.getCamera().m_90583_();
-        int w=RuntimeBridge.guiScaledWidth(),h=RuntimeBridge.guiScaledHeight();
-        var matrix=new org.joml.Matrix4f(e.getProjectionMatrix()).mul(e.getPoseStack().m_85850_().m_252922_());
-        var clip=matrix.transform(new Vector4f((float)(position.f_82479_-camera.f_82479_),(float)(position.f_82480_+entity.m_20206_()*.45-camera.f_82480_),(float)(position.f_82481_-camera.f_82481_),1));
-        if(clip.w<=0)return;x=(clip.x/clip.w*.5+.5)*w;y=(.5-clip.y/clip.w*.5)*h;
-        if(x<0||x>w||y<0||y>h)return;
-        double radius=Math.max(.4,entity.m_20205_()*.65);minX=maxX=x;minY=maxY=y;
-        for(int i=0;i<8;i++){
-            var corner=matrix.transform(new Vector4f((float)(position.f_82479_+((i&1)==0?-radius:radius)-camera.f_82479_),
-                (float)(position.f_82480_+((i&2)==0?0:entity.m_20206_())-camera.f_82480_),
-                (float)(position.f_82481_+((i&4)==0?-radius:radius)-camera.f_82481_),1));
-            if(corner.w<=0)continue;double sx=(corner.x/corner.w*.5+.5)*w,sy=(.5-corner.y/corner.w*.5)*h;
-            minX=Math.min(minX,sx);maxX=Math.max(maxX,sx);minY=Math.min(minY,sy);maxY=Math.max(maxY,sy);
-        }
-        minX-=12;maxX+=48;minY-=12;maxY+=18;visible=true;
+    private static List<BattleRosterS2C.Target> roster=List.of();
+    private static UUID selected;
+    private static final Map<UUID,BattleMenuLayout.Rect> boxes=new LinkedHashMap<>(),cards=new LinkedHashMap<>();
+    private static final Map<UUID,double[]> positions=new HashMap<>();
+    private static double lastX=-1,lastY=-1;
+    public static int entityId(){return roster.stream().filter(t->t.id().equals(selected)).mapToInt(BattleRosterS2C.Target::entityId).findFirst().orElse(-1);}
+    public static UUID selectedId(){return selected;}
+    public static void reset(){roster=List.of();selected=null;boxes.clear();positions.clear();cards.clear();}
+    public static void accept(BattleTargetS2C ignored){}
+    public static void accept(BattleRosterS2C p){roster=p.targets();if(roster.isEmpty()){reset();return;}if(ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET&&candidates().stream().noneMatch(t->t.id().equals(selected)))chooseDefault();}
+    public static List<BattleRosterS2C.Target> candidates(){
+        var skill=PersonaRegistry.skill(ClientBattleUiState.pendingSkill()).orElse(null);
+        boolean ally=skill!=null&&(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES||skill.target()==SkillTarget.SELF);
+        return roster.stream().filter(t->t.hp()>0&&t.ally()==ally).filter(t->skill==null||skill.target()!=SkillTarget.SELF||t.id().equals(RuntimeBridge.playerUuid(Minecraft.m_91087_().f_91074_))).toList();
     }
-    public static void paint(HudDesign.Canvas c,int w,int h,double hp,double trail){
-        if(ClientBattleUiState.selectedElement()==Element.SUPPORT&&ClientBattleUiState.page()!=ClientBattleUiState.Page.TARGET){marker=null;return;}
-        if(!visible||ClientBattleState.snapshot().enemyHp()<=0){marker=null;return;}
-        boolean target=ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET||PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()>=68;
-        if(!target&&!hit(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY())){marker=null;return;}
-        if(ClientBattleUiState.selector()){marker=null;return;}
-        double unit=Math.max(.65,Math.min(w/640.0,h/360.0));int px=(int)Math.max(22*unit,Math.min(w-122*unit,x)),py=(int)Math.max(34*unit,Math.min(h-39*unit,y));
-        marker=new BattleMenuLayout.Rect(px-(int)(26*unit),py-(int)(40*unit),(int)(127*unit),(int)(70*unit),"",0);
-        var element=ClientBattleUiState.selectedElement();
-        paintMarker(c,px,py,unit,hp,trail,element,element==Element.SUPPORT?Affinity.NORMAL:known.get(element));
+    public static void chooseDefault(){var list=candidates();selected=list.isEmpty()?null:list.get(0).id();lastX=lastY=-1;}
+    public static void move(int delta){var list=candidates();if(list.isEmpty()){selected=null;return;}int index=0;for(int i=0;i<list.size();i++)if(list.get(i).id().equals(selected))index=i;selected=list.get(Math.floorMod(index+delta,list.size())).id();}
+    public static String indicator(Affinity affinity){return affinity==null?"?":affinity==Affinity.WEAK?"! WEAK":"";}
+    private static UUID hitId(double x,double y){for(var t:candidates()){var card=cards.get(t.id());var box=boxes.get(t.id());if(card!=null&&card.contains(x,y)||box!=null&&box.contains(x,y))return t.id();}return null;}
+    public static boolean hit(double x,double y){return hitId(x,y)!=null;}
+    public static boolean click(double x,double y){UUID id=hitId(x,y);if(id==null)return false;selected=id;return true;}
+    public static void hover(double x,double y){if(Math.abs(x-lastX)+Math.abs(y-lastY)<.3)return;lastX=x;lastY=y;UUID id=hitId(x,y);if(id!=null)selected=id;}
+    @SubscribeEvent public static void project(RenderLevelStageEvent e){
+        if(e.getStage()!=RenderLevelStageEvent.Stage.AFTER_ENTITIES)return;positions.clear();boxes.clear();
+        var mc=Minecraft.m_91087_();if(!ClientBattleState.snapshot().active()||mc.f_91073_==null)return;
+        int w=RuntimeBridge.guiScaledWidth(),h=RuntimeBridge.guiScaledHeight();var camera=e.getCamera().m_90583_();
+        var matrix=new org.joml.Matrix4f(e.getProjectionMatrix()).mul(e.getPoseStack().m_85850_().m_252922_());
+        for(var t:roster){var entity=mc.f_91073_.m_6815_(t.entityId());if(entity==null||t.hp()<=0)continue;var p=entity.m_20318_(e.getPartialTick());
+            var clip=matrix.transform(new Vector4f((float)(p.f_82479_-camera.f_82479_),(float)(p.f_82480_+entity.m_20206_()*.6-camera.f_82480_),(float)(p.f_82481_-camera.f_82481_),1));
+            if(clip.w<=0)continue;double x=(clip.x/clip.w*.5+.5)*w,y=(.5-clip.y/clip.w*.5)*h;if(x<0||x>w||y<0||y>h)continue;
+            double radius=Math.max(16,Math.min(85,h*.6/clip.w));positions.put(t.id(),new double[]{x,y});boxes.put(t.id(),new BattleMenuLayout.Rect((int)(x-radius),(int)(y-radius),(int)(radius*2),(int)(radius*2),"",0));
+        }
+    }
+    public static void paint(HudDesign.Canvas c,int w,int h,double ignored,double ignoredTrail){
+        cards.clear();if(ClientBattleUiState.selector())return;
+        boolean targeting=ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET;
+        var element=ClientBattleUiState.selectedElement();double u=Math.max(.6,Math.min(w/640.,h/360.));
+        if(targeting){
+            var list=candidates();int index=0;for(int i=0;i<list.size();i++)if(list.get(i).id().equals(selected))index=i;
+            int first=index/5*5,n=Math.min(5,list.size()-first),cw=(int)Math.min(104*u,(w-32.)/Math.max(1,n)),x=(w-cw*n)/2,y=h-(int)(65*u);
+            for(int i=0;i<n;i++){var t=list.get(first+i);int px=x+i*cw;boolean active=t.id().equals(selected);cards.put(t.id(),new BattleMenuLayout.Rect(px,y,cw-3,(int)(25*u),"",0));
+                c.fill(px,y,cw-3,(int)(25*u),active?0xFFF4FFFF:0xED050C30);c.fill(px,y,cw-3,2,active?0xFFFF286B:0xFF48E8F2);
+                String name=t.name();while(c.width(name)>cw-10&&name.length()>3)name=name.substring(0,name.length()-1);c.text(name,px+4,y+4,active?0xFF08102C:0xFF71F5FF);
+                c.text(t.hp()+" / "+t.maxHp()+" HP",px+4,y+14,active?0xFF17344B:0xFFE4F9FF);
+            }
+            c.text("← → alvo   ENTER confirmar   ESC voltar",Math.max(8,(w-c.width("← → alvo   ENTER confirmar   ESC voltar"))/2),y-13,0xFF79F8FF);
+        }
+        for(var t:roster){if(t.hp()<=0)continue;var at=positions.get(t.id());if(at==null)continue;
+            var box=boxes.get(t.id());boolean focus=t.id().equals(selected)&&(targeting||PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()>=68);
+            boolean hover=box!=null&&box.contains(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
+            if(!focus&&!hover||targeting&&candidates().stream().noneMatch(a->a.id().equals(t.id())))continue;
+            Affinity affinity=t.ally()?Affinity.NORMAL:null;for(String pair:t.known().split(",")){var a=pair.split(":");if(a.length==2&&a[0].equals(element.name()))try{affinity=Affinity.valueOf(a[1]);}catch(IllegalArgumentException ignoredError){}}
+            int px=(int)Math.max(25*u,Math.min(w-110*u,at[0])),py=(int)Math.max(45*u,Math.min(h-90*u,at[1]));double ratio=t.hp()/(double)Math.max(1,t.maxHp());
+            paintMarker(c,px,py,u,ratio,ratio,element,t.ally()||element==Element.SUPPORT?Affinity.NORMAL:affinity);
+            c.text(t.name(),px-(int)(20*u),py+(int)(26*u),0xFFF4FFFF);
+        }
+        if(!targeting){var turn=roster.stream().filter(BattleRosterS2C.Target::turn).findFirst().orElse(null);if(turn!=null&&!ClientBattleState.snapshot().playerTurn())c.text("TURNO: "+turn.name(),12,12,0xFF66F5FF);}
     }
     public static void paintMarker(HudDesign.Canvas c,int x,int y,double u,double hp,double trail,Element element,Affinity affinity){
         double r=22*u;BattleGraphics.poly(c,new double[]{x,y-r-3,x+r+4,y,x,y+r+3,x-r-4,y},0xFFFF2655);

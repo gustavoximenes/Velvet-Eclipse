@@ -27,7 +27,7 @@ public final class CinematicEffects {
             Element element=definition==null?Element.ALMIGHTY:definition.element();
             boolean heal=definition!=null&&(definition.target()==SkillTarget.SELF||definition.target()==SkillTarget.ONE_ALLY||definition.target()==SkillTarget.ALL_ALLIES);
             Object enemy=VisualBattleActors.enemyActor(player);
-            double[] target=heal?RuntimeBridge.localOffset(base,yaw,0,.8,0):enemy instanceof Entity e?new double[]{e.m_20185_(),e.m_20186_()+.8,e.m_20189_()}:RuntimeBridge.localOffset(base,yaw,0,1,5);
+            double[] target=enemy instanceof Entity e?new double[]{e.m_20185_(),e.m_20186_()+.8,e.m_20189_()}:RuntimeBridge.localOffset(base,yaw,0,1,5);
             DustParticleOptions color=color(element);
             if(tick==38) {
                 double[] muzzle=RuntimeBridge.localOffset(base,yaw,.25,1.55,0);
@@ -53,6 +53,10 @@ public final class CinematicEffects {
                     }
                 }
             }
+            if(tick==82&&element==Element.ELECTRIC){
+                var strikes=BattleService.effectTargets(player,skill).stream().map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
+                for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleLightningS2C(strikes));
+            }
             if(tick==86){
                 burst(level,player,target,color,18,.4);
                 if(element==Element.ELECTRIC){
@@ -60,7 +64,7 @@ public final class CinematicEffects {
                     burst(level,player,target,dust(1,.45f,.75f,.7f),18,.45);
                     ring(level,player,target,CYAN,1.1,24);
                 }
-                if(element==Element.SUPPORT){for(int i=0;i<3;i++){double[] p={target[0],target[1]+i*.28,target[2]};ring(level,player,p,color,.5+i*.1,18);}}
+                if(element==Element.SUPPORT||element==Element.HEALING){for(var entity:BattleService.effectTargets(player,skill))for(int i=0;i<3;i++){double[] p={entity.m_20185_(),entity.m_20186_()+.8+i*.28,entity.m_20189_()};ring(level,player,p,color,.5+i*.1,18);}}
             }
             if(tick==102||tick==106) {
                 ring(level,player,origin,CYAN,tick==102?.8:.4,16);
@@ -92,7 +96,7 @@ public final class CinematicEffects {
         };
     }
     private static double mix(double a,double b,double t){return a+(b-a)*t;}
-    private static void point(ServerLevel level,ServerPlayer player,DustParticleOptions color,double x,double y,double z){level.m_8624_(player,color,false,x,y,z,1,0,0,0,0);}
+    private static void point(ServerLevel level,ServerPlayer player,DustParticleOptions color,double x,double y,double z){for(Object member:BattleService.members(player))if(member instanceof ServerPlayer p)level.m_8624_(p,color,false,x,y,z,1,0,0,0,0);}
     private static void ring(ServerLevel level,ServerPlayer player,double[] p,DustParticleOptions color,double radius,int count){for(int i=0;i<count;i++){double a=i*Math.PI*2/count;point(level,player,color,p[0]+Math.cos(a)*radius,p[1]-.45,p[2]+Math.sin(a)*radius);}}
-    private static void burst(ServerLevel level,ServerPlayer player,double[] p,DustParticleOptions color,int count,double spread){level.m_8624_(player,color,false,p[0],p[1],p[2],count,spread,spread,spread,0);}
+    private static void burst(ServerLevel level,ServerPlayer player,double[] p,DustParticleOptions color,int count,double spread){for(Object member:BattleService.members(player))if(member instanceof ServerPlayer recipient)level.m_8624_(recipient,color,false,p[0],p[1],p[2],count,spread,spread,spread,0);}
 }

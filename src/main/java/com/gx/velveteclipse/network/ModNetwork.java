@@ -8,7 +8,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-   private static final String PROTOCOL = "4";
+   private static final String PROTOCOL = "5";
    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
       new ResourceLocation("velvet_eclipse", "main"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals
    );
@@ -21,13 +21,16 @@ public final class ModNetwork {
    public static synchronized void register() {
       if (!registered) {
          int var0 = 0;
-         CHANNEL.registerMessage(var0++, BattleSnapshotS2C.class, BattleSnapshotS2C::encode, BattleSnapshotS2C::decode, BattleSnapshotS2C::handle);
-         CHANNEL.registerMessage(var0++, BattleActionC2S.class, BattleActionC2S::encode, BattleActionC2S::decode, BattleActionC2S::handle);
+         CHANNEL.registerMessage(var0++, BattleSnapshotS2C.class, BattleSnapshotS2C::encode, BattleSnapshotS2C::decode, BattleSnapshotS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++, BattleActionC2S.class, BattleActionC2S::encode, BattleActionC2S::decode, BattleActionC2S::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER));
          CHANNEL.registerMessage(var0++, WeaknessHitS2C.class, WeaknessHitS2C::encode, WeaknessHitS2C::decode, WeaknessHitS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleCueS2C.class,BattleCueS2C::encode,BattleCueS2C::decode,BattleCueS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleTargetS2C.class,BattleTargetS2C::encode,BattleTargetS2C::decode,BattleTargetS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++,BattleRosterS2C.class,BattleRosterS2C::encode,BattleRosterS2C::decode,BattleRosterS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++,BattleSceneS2C.class,BattleSceneS2C::encode,BattleSceneS2C::decode,BattleSceneS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++,BattleLightningS2C.class,BattleLightningS2C::encode,BattleLightningS2C::decode,BattleLightningS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          registered = true;
-         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 4, 5 packets).");
+         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 5, 8 packets).");
       }
    }
 
@@ -45,9 +48,10 @@ public final class ModNetwork {
       }
    }
 
-   public static void sendAction(String var0, String var1) {
+   public static void sendAction(String type,String value){sendAction(type,value,null);}
+   public static void sendAction(String var0, String var1,java.util.UUID target) {
       try {
-         CHANNEL.sendToServer(new BattleActionC2S(var0, var1));
+         CHANNEL.sendToServer(new BattleActionC2S(var0, var1,target));
          VelvetEclipseMod.LOGGER.info("Velvet Eclipse client sent action: " + var0);
       } catch (Throwable var3) {
          VelvetEclipseMod.LOGGER.error("Velvet Eclipse could not send client action '" + var0 + "': " + var3);

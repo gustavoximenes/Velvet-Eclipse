@@ -7,30 +7,25 @@ import java.util.Map;
 import java.util.UUID;
 
 public final class VisualBattleActors {
-   private static final Map<UUID, Object> ENEMY = new HashMap<>();
+   private static final Map<UUID, Map<UUID, net.minecraft.world.entity.Entity>> ENEMIES = new HashMap<>();
    private static final Map<UUID, Object> PERSONA = new HashMap<>();
-   private static final Map<UUID, String> ENEMY_MODEL = new HashMap<>();
 
-   private VisualBattleActors() {
+   public static void spawnBattle(Object player,String persona,String ignored) {
+      var session=BattleService.current(player);if(session==null)return;
+      clearEnemies(session.id());var actors=new java.util.LinkedHashMap<UUID,net.minecraft.world.entity.Entity>();ENEMIES.put(session.id(),actors);
+      var enemies=session.participants().stream().filter(c->c.side()==com.gx.velveteclipse.core.battle.BattleSide.ENEMIES).toList();
+      double[] origin=RuntimeBridge.playerPosition(player);float yaw=RuntimeBridge.playerYaw(player);
+      for(int i=0;i<enemies.size();i++){
+         double[] at=RuntimeBridge.localOffset(origin,yaw,com.gx.velveteclipse.core.battle.BattleFormation.enemyX(i,enemies.size()),.05,5.25);
+         Object entity=spawnEnemy(player,at,yaw+180);if(entity instanceof net.minecraft.world.entity.Entity e)actors.put(enemies.get(i).id(),e);
+      }
+      replacePersona(player,persona);
    }
-
-   public static void spawnBattle(Object var0, String var1, String var2) {
-      clear(var0);
-      UUID var3 = RuntimeBridge.playerUuid(var0);
-      ENEMY_MODEL.put(var3, var2);
-      double[] var4 = RuntimeBridge.playerPosition(var0);
-      float var5 = RuntimeBridge.playerYaw(var0);
-      double[] var6 = RuntimeBridge.localOffset(var4, var5, 0.0, 0.05, 5.25);
-      double[] var7 = RuntimeBridge.localOffset(var4, var5, -0.55, -3.25, -0.65);
-      Object var8 = spawnEnemy(var0, var6, var5 + 180.0F);
-      Object var9 = spawnPersona(var0, var1, var7, var5);
-      if (var8 != null) {
-         ENEMY.put(var3, var8);
-      }
-
-      if (var9 != null) {
-         PERSONA.put(var3, var9);
-      }
+   public static net.minecraft.world.entity.Entity enemy(UUID battle,UUID id){var actors=ENEMIES.get(battle);return actors==null?null:actors.get(id);}
+   public static void clearEnemies(UUID battle){var actors=ENEMIES.remove(battle);if(actors!=null)actors.values().forEach(RuntimeBridge::discardObjectEntity);}
+   public static void prune(com.gx.velveteclipse.core.battle.BattleSession session){
+      var actors=ENEMIES.get(session.id());if(actors==null)return;
+      for(var c:session.participants())if(!c.alive())RuntimeBridge.discardObjectEntity(actors.remove(c.id()));
    }
 
    public static void replacePersona(Object var0, String var1) {
@@ -76,41 +71,15 @@ public final class VisualBattleActors {
       }
    }
 
-   public static void pulseEnemy(Object var0) {
-      Object var1 = ENEMY.get(RuntimeBridge.playerUuid(var0));
-      if (var1 != null && !RuntimeBridge.isEntityRemoved(var1)) {
-         double[] var2 = RuntimeBridge.playerPosition(var0);
-         float var3 = RuntimeBridge.playerYaw(var0);
-         double[] var4 = RuntimeBridge.localOffset(var2, var3, 0.0, 0.05, 3.45);
-         RuntimeBridge.setEntityPosition(var1, var4[0], var4[1], var4[2]);
-         RuntimeBridge.setEntityRotation(var1, var3 + 180.0F, 0.0F);
-      }
+   // Enemy positions belong to the encounter formation and never follow an individual player.
+   public static void pulseEnemy(Object player) {}
+   public static void settleEnemy(Object player) {}
+   public static void clear(Object player) {
+      if(player==null)return;
+      PersonaCinematicServer.clear(player);
+      RuntimeBridge.discardObjectEntity(PERSONA.remove(RuntimeBridge.playerUuid(player)));
    }
-
-   public static void settleEnemy(Object var0) {
-      Object var1 = ENEMY.get(RuntimeBridge.playerUuid(var0));
-      if (var1 != null && !RuntimeBridge.isEntityRemoved(var1)) {
-         double[] var2 = RuntimeBridge.playerPosition(var0);
-         float var3 = RuntimeBridge.playerYaw(var0);
-         double[] var4 = RuntimeBridge.localOffset(var2, var3, 0.0, 0.05, 5.25);
-         RuntimeBridge.setEntityPosition(var1, var4[0], var4[1], var4[2]);
-         RuntimeBridge.setEntityRotation(var1, var3 + 180.0F, 0.0F);
-      }
-   }
-
-   public static void clear(Object var0) {
-      if (var0 != null) {
-         UUID var1 = RuntimeBridge.playerUuid(var0);
-         RuntimeBridge.discardObjectEntity(ENEMY.remove(var1));
-         RuntimeBridge.discardObjectEntity(PERSONA.remove(var1));
-         ENEMY_MODEL.remove(var1);
-         PersonaCinematicServer.clear(var0);
-      }
-   }
-
-   public static Object enemyActor(Object var0) {
-      return var0 == null ? null : ENEMY.get(RuntimeBridge.playerUuid(var0));
-   }
+   public static Object enemyActor(Object player){return BattleService.targetActor(player,BattleService.targetId(player));}
 
    public static Object personaActor(Object var0) {
       return var0 == null ? null : PERSONA.get(RuntimeBridge.playerUuid(var0));

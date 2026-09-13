@@ -23,6 +23,8 @@ public final class PersonaRegistry {
          registerSkill(new SkillDefinition("cleave", "Cleave", Element.PHYSICAL, 52, 92, 0, 8, true, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("lumen_ray", "Lumen Ray", Element.LIGHT, 48, 95, 5, 0, false, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("shade_bite", "Shade Bite", Element.DARK, 48, 95, 5, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("dia", "Dia", Element.HEALING, 50, 100, 3, 0, false, SkillTarget.ONE_ALLY));
+         registerSkill(new SkillDefinition("media", "Media", Element.HEALING, 40, 100, 7, 0, false, SkillTarget.ALL_ALLIES));
          registerPersona(
             persona(
                "cinder_wisp",
@@ -53,7 +55,7 @@ public final class PersonaRegistry {
                3,
                new PersonaStats(2, 5, 3, 6, 4),
                Map.of(Element.WIND, Affinity.RESIST, Element.ELECTRIC, Affinity.WEAK),
-               Map.of(3, List.of("gale_cut"))
+               Map.of(3, List.of("gale_cut", "dia"), 6, List.of("media"))
             )
          );
          registerPersona(

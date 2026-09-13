@@ -69,6 +69,7 @@ public final class ClientHudEvents {
                 PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),w,h);
             }else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);
+            else BattleEncounterClient.paint(canvas,w,h);
             if(com.gx.velveteclipse.client.exploration.EntryTransition.visible()){
                 g.m_280262_();var pose=g.m_280168_();pose.m_85836_();pose.m_252880_(0,0,100);
                 try{com.gx.velveteclipse.client.exploration.EntryTransition.paint(canvas,w,h,partial);}

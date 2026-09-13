@@ -1,3 +1,16 @@
+# Velvet Eclipse 0.6.9 — combates em grupo
+
+- `/velvet battle demo` mantém um inimigo. `/velvet battle demo 1` até `/velvet battle demo 5` define a quantidade; valores fora desse intervalo são rejeitados.
+- Cada inimigo tem identidade, HP, conhecimento de afinidades e alvo próprios. Setas esquerda/direita ou cima/baixo alternam os alvos; ENTER confirma. Também é possível selecionar e confirmar pelo mouse.
+- Jogadores próximos veem uma nuvem de fumaça escondendo os inimigos. A até 9 blocos do centro do encontro aparece o convite: **J** entra, **N** dispensa até se afastar e se aproximar novamente.
+- Ao entrar, o jogador ocupa um espaço livre ao lado do grupo e entra no fim da ordem existente. Há uma única sequência de turnos e uma única resolução de dano. A entrada é recusada se não houver posição segura próxima. Sair/fugir/desconectar remove somente aquele jogador; o restante da equipe continua.
+- HP/SP e recompensas são persistidos para cada participante. Vitória concede 80 EXP por inimigo a cada participante que permaneceu na batalha. Todos precisam usar esta mesma versão (protocolo 5), inclusive o servidor.
+- Buffs e curas abrem o seletor de aliados. Dia cura 50 HP do aliado escolhido; Media cura 40 HP de todos os aliados vivos. Sylphid possui Dia no nível 3 e aprende Media no nível 6. O conjunto inicial de habilidades do Izanagi foi preservado.
+- Zio e outros ataques elétricos recebem raios brancos com halo lilás, convergindo sobre o alvo, e uma estrela de impacto branca/rosa. O efeito é sincronizado para os participantes, inclusive em ataques de área.
+- O modelo, textura e animações aprovados do Izanagi foram preservados. A regra do cut-in continua exclusiva de ataques de Persona que acertam uma fraqueza.
+
+Validação: sete auditorias offline, incluindo 4.099 verificações de grupos, 400 reservas de ataques em área, seleção de aliados, comandos e serialização de rede, além das regressões anteriores. Não houve teste dentro do Minecraft nem sessão real com dois clientes; essa validação prática ainda precisa ser feita no jogo.
+
 # Velvet Eclipse 0.6.8 — correção do Izanagi
 
 Correção da conversão entre as coordenadas da prévia aprovada e o GeckoLib: pivôs, rotações dos ossos/cubos e canais das animações preservam a pose original. Isso corrige a posição das mãos, pernas e arma no idle e nos ataques mágico/físico.
