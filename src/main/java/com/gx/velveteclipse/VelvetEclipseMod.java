@@ -14,8 +14,9 @@ public final class VelvetEclipseMod {
 
    public VelvetEclipseMod() {
       GeckoLib.initialize();
+      com.gx.velveteclipse.room.VelvetRoomRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       PersonaRegistry.bootstrap();
       ModNetwork.register();
-      LOGGER.info("Velvet Eclipse 0.5.1 GeckoLib initialized.");
+      LOGGER.info("Velvet Eclipse 0.6.11 Velvet Room initialized.");
    }
 }

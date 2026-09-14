@@ -24,7 +24,7 @@ public final class ClientBattleCamera {
         boolean valid=mc.f_91074_!=null&&mc.f_91073_!=null&&mc.f_91074_.m_6084_();
         boolean active=valid&&ClientBattleState.snapshot().active();
         if(active!=battle)ExplorationCamera.reset();
-        boolean controlled=valid&&(active||ExplorationClient.enabled());
+        boolean controlled=valid&&(active||VelvetRoomClient.seated()||ExplorationClient.enabled());
         if(controlled){if(previousCamera==null)previousCamera=mc.f_91066_.m_92176_();mc.f_91066_.m_92157_(CameraType.THIRD_PERSON_BACK);}
         else restore();
         if(active){
@@ -42,6 +42,7 @@ public final class ClientBattleCamera {
     }
     @SubscribeEvent public static void onCameraAngles(ViewportEvent.ComputeCameraAngles e){
         if(previousCamera==null)return;
+        if(VelvetRoomClient.seated()){VelvetRoomClient.camera(e);return;}
         Mode mode=ExplorationClient.mode();
         if(mode==Mode.SKILL_CINEMATIC||mode==Mode.BATTLE)PersonaCinematics.applyCamera(e);
         else if(mode!=Mode.NORMAL)ExplorationCamera.apply(e,mode==Mode.BATTLE_ENTRY);

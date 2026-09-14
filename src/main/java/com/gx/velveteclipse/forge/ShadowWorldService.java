@@ -169,7 +169,7 @@ public final class ShadowWorldService {
    }
 
    public static boolean startNearestBattle(Object var0) {
-      if(com.gx.velveteclipse.exploration.ExplorationService.preparing(var0)) return false;
+      if(com.gx.velveteclipse.room.VelvetRoomService.inside(var0)||com.gx.velveteclipse.exploration.ExplorationService.preparing(var0)) return false;
       Object var1 = nearest(var0, 6.0);
       if (var1 == null || com.gx.velveteclipse.exploration.ExplorationService.reserved(var1)) {
          return false;
@@ -182,7 +182,7 @@ public final class ShadowWorldService {
 
    private static void ensureWorldShadows() {
       for (Object var1 : new ArrayList<>(PLAYERS.values())) {
-         if (var1 != null && BattleService.current(var1) == null) {
+         if (var1 != null && !com.gx.velveteclipse.room.VelvetRoomService.inside(var1) && BattleService.current(var1) == null) {
             UUID var2 = RuntimeBridge.playerUuid(var1);
             long var3 = NEXT_SPAWN.getOrDefault(var2, 0L);
             if (serverTicks >= var3) {
@@ -199,7 +199,7 @@ public final class ShadowWorldService {
 
    private static void detectEncounters() {
       for (Object var1 : new ArrayList<>(PLAYERS.values())) {
-         if (var1 != null && !com.gx.velveteclipse.exploration.ExplorationService.active(var1) && BattleService.current(var1) == null) {
+         if (var1 != null && !com.gx.velveteclipse.room.VelvetRoomService.inside(var1) && !com.gx.velveteclipse.exploration.ExplorationService.active(var1) && BattleService.current(var1) == null) {
             Object var2 = nearestEncounterShadow(var1, 2.35);
             if (var2 != null && !com.gx.velveteclipse.exploration.ExplorationService.reserved(var2)) {
                RuntimeBridge.sendMessage(var1, "§5[Velvet Eclipse] §fUma Shadow encontrou você!");

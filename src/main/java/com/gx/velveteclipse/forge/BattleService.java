@@ -39,7 +39,7 @@ public final class BattleService {
     public static BattleSession startDemo(Object p){return startDemo(p,1);}
     public static BattleSession startDemo(Object p,int count){
         BattleFormation.validateCount(count);
-        if(com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
+        if(com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));
         for(int i=0;i<count;i++)participants.add(new BattleCombatant(UUID.randomUUID(),count==1?"Umbra Slime":"Umbra Slime "+(i+1),BattleSide.ENEMIES,new PersonaInstance(PersonaRegistry.persona("umbra_slime").orElseThrow()),85,85,30,30));
         var s=new BattleSession(participants);var g=new Encounter(p,s,count);BATTLES.put(s.id(),g);attach(g,p,g.origin);

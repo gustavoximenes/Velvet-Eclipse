@@ -2,7 +2,7 @@
 
 - Trabalhar no projeto-fonte completo. Não utilizar edição binária do JAR como base da entrega.
 - Concluir as alterações e a revisão antes de gerar o JAR final.
-- Acompanhar o uso durante trabalhos longos. Aos **95% do limite de sessão** (janela de 5 horas), desconsiderando o percentual semanal para esse fechamento antecipado, interromper acréscimos de escopo e iniciar a estabilização, compilação e empacotamento do que estiver concluído; não esperar 99%.
+- Concluir todas as alterações e verificações necessárias antes de montar o JAR, independentemente do percentual de uso da sessão. O usuário revogou a regra de fechamento antecipado por limite em 13/09/2026.
 - Entregar o JAR junto de um ZIP completo das fontes, wrapper, recursos e dependências necessárias.
 - Preservar a versão anterior em `velvet-eclipse-versions` e substituir apenas o JAR deste mod no perfil `yuxio test`, verificando hashes e evitando duplicatas.
 - O usuário dispensou testes diretamente no Minecraft. Executar as verificações offline disponíveis e distinguir claramente essas verificações de validação visual dentro do jogo.

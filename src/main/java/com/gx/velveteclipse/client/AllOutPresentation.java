@@ -37,7 +37,7 @@ public final class AllOutPresentation {
    }
   }else if((phase==AllOutTimeline.Phase.FINISH||phase==AllOutTimeline.Phase.VICTORY)&&leader instanceof AbstractClientPlayer player){
    if(phase==AllOutTimeline.Phase.VICTORY){BattleGraphics.poly(c,new double[]{0,h*.12,w,0,w,h*.74,0,h},0xFF05A9DE);c.angled("VICTORY",(int)(w*.04),(int)(h*.52),(float)(w/130.),0xFF086AAB,-9);}
-   AllOutPlayerRenderer.draw(g,player,w*(phase==AllOutTimeline.Phase.VICTORY?.62:.48),h*(phase==AllOutTimeline.Phase.VICTORY?.46:.42),h*(phase==AllOutTimeline.Phase.VICTORY?.58f:.37f),t,true,-.30f,phase==AllOutTimeline.Phase.VICTORY);
+   AllOutPlayerRenderer.draw(g,player,w*(phase==AllOutTimeline.Phase.VICTORY?.68:.48),h*(phase==AllOutTimeline.Phase.VICTORY?.70:.42),h*(phase==AllOutTimeline.Phase.VICTORY?.58f:.37f),t,true,-.20f,phase==AllOutTimeline.Phase.VICTORY);
   }
   if(phase==AllOutTimeline.Phase.CLOUD||phase==AllOutTimeline.Phase.FINISH){g.m_280262_();g.m_280168_().m_85836_();g.m_280168_().m_85837_(0,0,300);cloud(c,w,h,t,phase==AllOutTimeline.Phase.FINISH?Math.max(0,(120-t)/30):1);g.m_280262_();g.m_280168_().m_85849_();}
   if(phase==AllOutTimeline.Phase.LINEUP)c.angled("ALL-OUT ATTACK",(int)(w*.07),(int)(h*.09),(float)(w/285.),0xFFF6FFFF,-8);

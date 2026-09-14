@@ -20,5 +20,14 @@
   "entity.velvet_eclipse.persona_umbra_slime": "Umbra Slime",
   "item.velvet_eclipse.model_evoker": "Evoker",
   "key.velvet_eclipse.open_menu": "Persona menu",
-  "key.velvet_eclipse.exploration": "Exploration mode"
+  "key.velvet_eclipse.exploration": "Exploration mode",
+  "itemGroup.velvet_eclipse": "Velvet Eclipse",
+  "item.velvet_eclipse.velvet_key": "Velvet Key",
+  "block.velvet_eclipse.velvet_door": "Velvet Door",
+  "block.velvet_eclipse.velvet_chair": "Velvet Chair",
+  "block.velvet_eclipse.velvet_table": "Velvet Table",
+  "block.velvet_eclipse.velvet_floor": "Velvet Carpet",
+  "block.velvet_eclipse.velvet_wall": "Velvet Wall",
+  "block.velvet_eclipse.velvet_trim": "Velvet Cornice",
+  "block.velvet_eclipse.velvet_grille": "Velvet Grille"
 }

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "velvet_eclipse:block/velvet_grille",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "velvet_eclipse:block/velvet_grille",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "velvet_eclipse:block/velvet_grille",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "velvet_eclipse:block/velvet_grille",
+      "y": 270
+    }
+  }
+}
