@@ -1,0 +1,3086 @@
+[
+  {
+    "name": "seated_hips",
+    "bone": "pelvis",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -16,
+        36,
+        -5.0
+      ],
+      "size": [
+        32,
+        12,
+        20
+      ],
+      "uv": [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    "name": "right_trousers_thigh",
+    "bone": "right_thigh",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -16.1,
+        42.0,
+        -4.0
+      ],
+      "size": [
+        13,
+        26,
+        14
+      ],
+      "uv": [
+        107,
+        1
+      ],
+      "rotation": [
+        -78.14074351817663,
+        0,
+        162.25532837494308
+      ],
+      "pivot": [
+        -9.6,
+        42.0,
+        3.0
+      ]
+    }
+  },
+  {
+    "name": "right_trousers_calf",
+    "bone": "right_calf",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -16.2,
+        37.0,
+        -27.5
+      ],
+      "size": [
+        10,
+        32,
+        11
+      ],
+      "uv": [
+        163,
+        1
+      ],
+      "rotation": [
+        -1.8462285112556485,
+        0,
+        177.7832056592598
+      ],
+      "pivot": [
+        -11.2,
+        37.0,
+        -22.0
+      ]
+    }
+  },
+  {
+    "name": "right_polished_shoe",
+    "bone": "right_foot",
+    "material": "shoe",
+    "pattern": "shoe",
+    "cube": {
+      "origin": [
+        -18.4,
+        0,
+        -34.0
+      ],
+      "size": [
+        12,
+        7,
+        22
+      ],
+      "uv": [
+        207,
+        1
+      ]
+    }
+  },
+  {
+    "name": "right_shoe_toe",
+    "bone": "right_foot",
+    "material": "shoe",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -17.4,
+        1.0,
+        -36
+      ],
+      "size": [
+        10,
+        5,
+        3
+      ],
+      "uv": [
+        277,
+        1
+      ]
+    }
+  },
+  {
+    "name": "right_jacket_tail",
+    "bone": "pelvis",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        40,
+        -4
+      ],
+      "size": [
+        16,
+        18,
+        5
+      ],
+      "uv": [
+        305,
+        1
+      ],
+      "rotation": [
+        22,
+        0,
+        -8
+      ],
+      "pivot": [
+        -10.0,
+        48,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_trousers_thigh",
+    "bone": "left_thigh",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        3.1,
+        42.0,
+        -4.0
+      ],
+      "size": [
+        13,
+        26,
+        14
+      ],
+      "uv": [
+        349,
+        1
+      ],
+      "rotation": [
+        -78.14074351817663,
+        0,
+        -162.25532837494308
+      ],
+      "pivot": [
+        9.6,
+        42.0,
+        3.0
+      ]
+    }
+  },
+  {
+    "name": "left_trousers_calf",
+    "bone": "left_calf",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        6.2,
+        37.0,
+        -27.5
+      ],
+      "size": [
+        10,
+        32,
+        11
+      ],
+      "uv": [
+        405,
+        1
+      ],
+      "rotation": [
+        -1.8462285112556485,
+        0,
+        -177.7832056592598
+      ],
+      "pivot": [
+        11.2,
+        37.0,
+        -22.0
+      ]
+    }
+  },
+  {
+    "name": "left_polished_shoe",
+    "bone": "left_foot",
+    "material": "shoe",
+    "pattern": "shoe",
+    "cube": {
+      "origin": [
+        6.4,
+        0,
+        -34.0
+      ],
+      "size": [
+        12,
+        7,
+        22
+      ],
+      "uv": [
+        1,
+        46
+      ]
+    }
+  },
+  {
+    "name": "left_shoe_toe",
+    "bone": "left_foot",
+    "material": "shoe",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.4,
+        1.0,
+        -36
+      ],
+      "size": [
+        10,
+        5,
+        3
+      ],
+      "uv": [
+        71,
+        46
+      ]
+    }
+  },
+  {
+    "name": "left_jacket_tail",
+    "bone": "pelvis",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        2.0,
+        40,
+        -4
+      ],
+      "size": [
+        16,
+        18,
+        5
+      ],
+      "uv": [
+        99,
+        46
+      ],
+      "rotation": [
+        22,
+        0,
+        8
+      ],
+      "pivot": [
+        10.0,
+        48,
+        0
+      ]
+    }
+  },
+  {
+    "name": "jacket_waist",
+    "bone": "body",
+    "material": "suit",
+    "pattern": "jacket",
+    "cube": {
+      "origin": [
+        -15.0,
+        44,
+        -4
+      ],
+      "size": [
+        30,
+        22,
+        18
+      ],
+      "uv": [
+        143,
+        46
+      ],
+      "rotation": [
+        -9,
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        44,
+        2.0
+      ]
+    }
+  },
+  {
+    "name": "hunched_jacket",
+    "bone": "body",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        62.0,
+        -11.0
+      ],
+      "size": [
+        36,
+        24,
+        18
+      ],
+      "uv": [
+        241,
+        46
+      ],
+      "rotation": [
+        -16,
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        64,
+        0
+      ]
+    }
+  },
+  {
+    "name": "white_shirt",
+    "bone": "body",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.0,
+        66.0,
+        -17.0
+      ],
+      "size": [
+        14,
+        20,
+        2
+      ],
+      "uv": [
+        351,
+        46
+      ],
+      "rotation": [
+        -12,
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        76,
+        -12
+      ]
+    }
+  },
+  {
+    "name": "right_notched_lapel",
+    "bone": "body",
+    "material": "lapel",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -17.0,
+        84,
+        -17.4
+      ],
+      "size": [
+        6,
+        22,
+        2
+      ],
+      "uv": [
+        385,
+        46
+      ],
+      "rotation": [
+        -2.619808088353207,
+        0,
+        -150.38518835365358
+      ],
+      "pivot": [
+        -14.0,
+        84,
+        -16.4
+      ]
+    }
+  },
+  {
+    "name": "left_notched_lapel",
+    "bone": "body",
+    "material": "lapel",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        11.0,
+        84,
+        -17.4
+      ],
+      "size": [
+        6,
+        22,
+        2
+      ],
+      "uv": [
+        403,
+        46
+      ],
+      "rotation": [
+        -2.619808088353207,
+        0,
+        150.38518835365358
+      ],
+      "pivot": [
+        14.0,
+        84,
+        -16.4
+      ]
+    }
+  },
+  {
+    "name": "right_collar_tip",
+    "bone": "body",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -9.0,
+        80,
+        -19.2
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "uv": [
+        421,
+        46
+      ],
+      "rotation": [
+        0,
+        0,
+        -27
+      ],
+      "pivot": [
+        -6.0,
+        88,
+        -18.0
+      ]
+    }
+  },
+  {
+    "name": "left_collar_tip",
+    "bone": "body",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        3.0,
+        80,
+        -19.2
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "uv": [
+        439,
+        46
+      ],
+      "rotation": [
+        0,
+        0,
+        27
+      ],
+      "pivot": [
+        6.0,
+        88,
+        -18.0
+      ]
+    }
+  },
+  {
+    "name": "black_tie_knot",
+    "bone": "body",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -2.4,
+        80,
+        -20
+      ],
+      "size": [
+        5,
+        5,
+        2
+      ],
+      "uv": [
+        457,
+        46
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0,
+        82.4,
+        -19.0
+      ]
+    }
+  },
+  {
+    "name": "narrow_black_tie",
+    "bone": "body",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -2.0,
+        68,
+        -19.0
+      ],
+      "size": [
+        4,
+        14,
+        2
+      ],
+      "uv": [
+        473,
+        46
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        80,
+        -19.0
+      ]
+    }
+  },
+  {
+    "name": "breast_pocket",
+    "bone": "body",
+    "material": "lapel",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.6,
+        74.0,
+        -15.2
+      ],
+      "size": [
+        7,
+        2,
+        2
+      ],
+      "uv": [
+        487,
+        46
+      ]
+    }
+  },
+  {
+    "name": "folded_pocket_square_2_6",
+    "bone": "body",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.9,
+        76,
+        -16.4
+      ],
+      "size": [
+        3,
+        5,
+        1
+      ],
+      "uv": [
+        1,
+        90
+      ],
+      "rotation": [
+        0,
+        0,
+        12
+      ],
+      "pivot": [
+        10.4,
+        76,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "folded_pocket_square_3_15",
+    "bone": "body",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        11.1,
+        77.2,
+        -16.4
+      ],
+      "size": [
+        3,
+        5,
+        1
+      ],
+      "uv": [
+        11,
+        90
+      ],
+      "rotation": [
+        0,
+        0,
+        -6
+      ],
+      "pivot": [
+        12.6,
+        77.2,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "folded_pocket_square_3_7",
+    "bone": "body",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        13.3,
+        76.2,
+        -16.4
+      ],
+      "size": [
+        3,
+        5,
+        1
+      ],
+      "uv": [
+        21,
+        90
+      ],
+      "rotation": [
+        0,
+        0,
+        -22
+      ],
+      "pivot": [
+        14.8,
+        76.2,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "old_neck",
+    "bone": "neck",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -6.0,
+        82.0,
+        -16
+      ],
+      "size": [
+        12,
+        13,
+        11
+      ],
+      "uv": [
+        31,
+        90
+      ]
+    }
+  },
+  {
+    "name": "skull",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        96,
+        -27.0
+      ],
+      "size": [
+        36,
+        24,
+        26
+      ],
+      "uv": [
+        79,
+        90
+      ]
+    }
+  },
+  {
+    "name": "bald_forehead",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "forehead",
+    "cube": {
+      "origin": [
+        -16,
+        112,
+        -28
+      ],
+      "size": [
+        32,
+        11,
+        25
+      ],
+      "uv": [
+        205,
+        90
+      ]
+    }
+  },
+  {
+    "name": "bald_crown",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -13.0,
+        120,
+        -26.0
+      ],
+      "size": [
+        26,
+        5,
+        22
+      ],
+      "uv": [
+        321,
+        90
+      ]
+    }
+  },
+  {
+    "name": "jaw",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -14.0,
+        87.0,
+        -26.8
+      ],
+      "size": [
+        28,
+        14,
+        22
+      ],
+      "uv": [
+        1,
+        142
+      ]
+    }
+  },
+  {
+    "name": "chin",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.0,
+        85.0,
+        -25.0
+      ],
+      "size": [
+        20,
+        5,
+        16
+      ],
+      "uv": [
+        103,
+        142
+      ]
+    }
+  },
+  {
+    "name": "right_creased_cheek",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "cheek",
+    "cube": {
+      "origin": [
+        -17.5,
+        93.0,
+        -28.8
+      ],
+      "size": [
+        7,
+        10,
+        3
+      ],
+      "uv": [
+        177,
+        142
+      ],
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "pivot": [
+        -14.0,
+        100,
+        -28
+      ]
+    }
+  },
+  {
+    "name": "left_creased_cheek",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "cheek",
+    "cube": {
+      "origin": [
+        10.5,
+        93.0,
+        -28.8
+      ],
+      "size": [
+        7,
+        10,
+        3
+      ],
+      "uv": [
+        199,
+        142
+      ],
+      "rotation": [
+        0,
+        0,
+        -9
+      ],
+      "pivot": [
+        14.0,
+        100,
+        -28
+      ]
+    }
+  },
+  {
+    "name": "wide_crooked_grin",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "mouth",
+    "cube": {
+      "origin": [
+        -14.0,
+        88.4,
+        -30.0
+      ],
+      "size": [
+        28,
+        9,
+        2
+      ],
+      "uv": [
+        221,
+        142
+      ]
+    }
+  },
+  {
+    "name": "grey_hair_at_back",
+    "bone": "hair_back",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        92,
+        -3.0
+      ],
+      "size": [
+        36,
+        22,
+        6
+      ],
+      "uv": [
+        283,
+        142
+      ]
+    }
+  },
+  {
+    "name": "right_temple",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -19.5,
+        100,
+        -23.0
+      ],
+      "size": [
+        5,
+        15,
+        19
+      ],
+      "uv": [
+        369,
+        142
+      ]
+    }
+  },
+  {
+    "name": "right_hair_lock_0",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.9,
+        116,
+        -23.8
+      ],
+      "size": [
+        5,
+        11,
+        2
+      ],
+      "uv": [
+        419,
+        142
+      ],
+      "rotation": [
+        50.34053007284833,
+        0,
+        73.07248693585304
+      ],
+      "pivot": [
+        -16.4,
+        116,
+        -22.8
+      ]
+    }
+  },
+  {
+    "name": "right_hair_tip_0",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -24.024,
+        118.016,
+        -14.948
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        435,
+        142
+      ],
+      "rotation": [
+        50.34053007284831,
+        0,
+        73.07248693585284
+      ],
+      "pivot": [
+        -23.024,
+        118.01599999999999,
+        -14.448
+      ]
+    }
+  },
+  {
+    "name": "right_hair_lock_1",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -20.6,
+        113.6,
+        -17.0
+      ],
+      "size": [
+        6,
+        12,
+        2
+      ],
+      "uv": [
+        443,
+        142
+      ],
+      "rotation": [
+        54.64903467752334,
+        0,
+        109.98310652189988
+      ],
+      "pivot": [
+        -17.6,
+        113.6,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "right_hair_tip_1",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -24.936,
+        111.296,
+        -6.996
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        461,
+        142
+      ],
+      "rotation": [
+        54.64903467752333,
+        0,
+        109.98310652190001
+      ],
+      "pivot": [
+        -23.936,
+        111.296,
+        -6.496
+      ]
+    }
+  },
+  {
+    "name": "right_hair_lock_2",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -20.1,
+        108,
+        -12.2
+      ],
+      "size": [
+        5,
+        13,
+        2
+      ],
+      "uv": [
+        469,
+        142
+      ],
+      "rotation": [
+        43.80803448685191,
+        0,
+        145.78429786756263
+      ],
+      "pivot": [
+        -17.6,
+        108,
+        -11.2
+      ]
+    }
+  },
+  {
+    "name": "right_hair_tip_2",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -23.496,
+        100.8,
+        -3.348
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        485,
+        142
+      ],
+      "rotation": [
+        43.80803448685192,
+        0,
+        145.78429786756257
+      ],
+      "pivot": [
+        -22.496,
+        100.8,
+        -2.847999999999999
+      ]
+    }
+  },
+  {
+    "name": "right_hair_lock_3",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.4,
+        102.0,
+        -8.2
+      ],
+      "size": [
+        4,
+        13,
+        2
+      ],
+      "uv": [
+        493,
+        142
+      ],
+      "rotation": [
+        30.508239758714634,
+        0,
+        159.6235647861636
+      ],
+      "pivot": [
+        -16.4,
+        102.0,
+        -7.2
+      ]
+    }
+  },
+  {
+    "name": "right_hair_tip_3",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -21.144,
+        91.92,
+        -1.364
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        1,
+        180
+      ],
+      "rotation": [
+        30.50823975871462,
+        0,
+        159.62356478616366
+      ],
+      "pivot": [
+        -20.144000000000002,
+        91.92,
+        -0.8639999999999999
+      ]
+    }
+  },
+  {
+    "name": "right_hair_lock_4",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -15.5,
+        97.2,
+        -3.0
+      ],
+      "size": [
+        3,
+        9,
+        2
+      ],
+      "uv": [
+        9,
+        180
+      ],
+      "rotation": [
+        28.569922263344957,
+        0,
+        166.50426671920422
+      ],
+      "pivot": [
+        -14.0,
+        97.2,
+        -2.0
+      ]
+    }
+  },
+  {
+    "name": "right_hair_tip_4",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -16.728,
+        90.0,
+        1.532
+      ],
+      "size": [
+        2,
+        4,
+        1
+      ],
+      "uv": [
+        21,
+        180
+      ],
+      "rotation": [
+        28.569922263344992,
+        0,
+        166.50426671920417
+      ],
+      "pivot": [
+        -15.727999999999998,
+        90.0,
+        2.032
+      ]
+    }
+  },
+  {
+    "name": "right_pointed_ear",
+    "bone": "face_right_ear",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -19.4,
+        100,
+        -17.5
+      ],
+      "size": [
+        6,
+        15,
+        3
+      ],
+      "uv": [
+        29,
+        180
+      ],
+      "rotation": [
+        -11.75067410793719,
+        0,
+        33.690067525979785
+      ],
+      "pivot": [
+        -16.4,
+        100,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "right_ear_tip",
+    "bone": "face_right_ear",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -23.9,
+        108,
+        -19.2
+      ],
+      "size": [
+        3,
+        8,
+        2
+      ],
+      "uv": [
+        49,
+        180
+      ],
+      "rotation": [
+        -10.326172524260603,
+        0,
+        38.659808254090095
+      ],
+      "pivot": [
+        -22.4,
+        108,
+        -18.2
+      ]
+    }
+  },
+  {
+    "name": "right_inner_ear",
+    "bone": "face_right_ear",
+    "material": "ear",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -19.8,
+        103.6,
+        -18.9
+      ],
+      "size": [
+        2,
+        8,
+        1
+      ],
+      "uv": [
+        61,
+        180
+      ],
+      "rotation": [
+        -7.33684064568919,
+        0,
+        34.50852298766837
+      ],
+      "pivot": [
+        -18.8,
+        103.6,
+        -18.4
+      ]
+    }
+  },
+  {
+    "name": "right_eyeball_core",
+    "bone": "face_right_eye",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.0,
+        104.6,
+        -30.6
+      ],
+      "size": [
+        6,
+        6,
+        3
+      ],
+      "uv": [
+        69,
+        180
+      ]
+    }
+  },
+  {
+    "name": "right_staring_eye",
+    "bone": "face_right_eye",
+    "material": "shirt",
+    "pattern": "eye_right",
+    "cube": {
+      "origin": [
+        -14.5,
+        102.1,
+        -31.6
+      ],
+      "size": [
+        11,
+        11,
+        1
+      ],
+      "uv": [
+        89,
+        180
+      ],
+      "rotation": [
+        0,
+        0,
+        -7
+      ],
+      "pivot": [
+        -9.0,
+        107.6,
+        -30.8
+      ]
+    }
+  },
+  {
+    "name": "right_arched_brow_0",
+    "bone": "face_right_brow",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -3.9,
+        111.6,
+        -33.4
+      ],
+      "size": [
+        3,
+        10,
+        2
+      ],
+      "uv": [
+        115,
+        180
+      ],
+      "rotation": [
+        0.0,
+        0,
+        42.51044707800084
+      ],
+      "pivot": [
+        -2.4,
+        111.6,
+        -32.4
+      ]
+    }
+  },
+  {
+    "name": "right_arched_brow_1",
+    "bone": "face_right_brow",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.5,
+        118.8,
+        -33.4
+      ],
+      "size": [
+        3,
+        8,
+        2
+      ],
+      "uv": [
+        127,
+        180
+      ],
+      "rotation": [
+        5.958025727148764,
+        0,
+        105.12400730831057
+      ],
+      "pivot": [
+        -9.0,
+        118.8,
+        -32.4
+      ]
+    }
+  },
+  {
+    "name": "right_arched_brow_2",
+    "bone": "face_right_brow",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -17.4,
+        116.8,
+        -32.6
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        139,
+        180
+      ],
+      "rotation": [
+        19.794203455088404,
+        0,
+        120.25643716352924
+      ],
+      "pivot": [
+        -16.4,
+        116.8,
+        -31.6
+      ]
+    }
+  },
+  {
+    "name": "left_temple",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        14.5,
+        100,
+        -23.0
+      ],
+      "size": [
+        5,
+        15,
+        19
+      ],
+      "uv": [
+        149,
+        180
+      ]
+    }
+  },
+  {
+    "name": "left_hair_lock_0",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        13.9,
+        116,
+        -23.8
+      ],
+      "size": [
+        5,
+        11,
+        2
+      ],
+      "uv": [
+        199,
+        180
+      ],
+      "rotation": [
+        50.34053007284833,
+        0,
+        -73.07248693585304
+      ],
+      "pivot": [
+        16.4,
+        116,
+        -22.8
+      ]
+    }
+  },
+  {
+    "name": "left_hair_tip_0",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        22.024,
+        118.016,
+        -14.948
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        215,
+        180
+      ],
+      "rotation": [
+        50.34053007284831,
+        0,
+        -73.07248693585284
+      ],
+      "pivot": [
+        23.024,
+        118.01599999999999,
+        -14.448
+      ]
+    }
+  },
+  {
+    "name": "left_hair_lock_1",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        14.6,
+        113.6,
+        -17.0
+      ],
+      "size": [
+        6,
+        12,
+        2
+      ],
+      "uv": [
+        223,
+        180
+      ],
+      "rotation": [
+        54.64903467752334,
+        0,
+        -109.98310652189988
+      ],
+      "pivot": [
+        17.6,
+        113.6,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "left_hair_tip_1",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        22.936,
+        111.296,
+        -6.996
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        241,
+        180
+      ],
+      "rotation": [
+        54.64903467752333,
+        0,
+        -109.98310652190001
+      ],
+      "pivot": [
+        23.936,
+        111.296,
+        -6.496
+      ]
+    }
+  },
+  {
+    "name": "left_hair_lock_2",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        15.1,
+        108,
+        -12.2
+      ],
+      "size": [
+        5,
+        13,
+        2
+      ],
+      "uv": [
+        249,
+        180
+      ],
+      "rotation": [
+        43.80803448685191,
+        0,
+        -145.78429786756263
+      ],
+      "pivot": [
+        17.6,
+        108,
+        -11.2
+      ]
+    }
+  },
+  {
+    "name": "left_hair_tip_2",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        21.496,
+        100.8,
+        -3.348
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        265,
+        180
+      ],
+      "rotation": [
+        43.80803448685192,
+        0,
+        -145.78429786756257
+      ],
+      "pivot": [
+        22.496,
+        100.8,
+        -2.847999999999999
+      ]
+    }
+  },
+  {
+    "name": "left_hair_lock_3",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        14.4,
+        102.0,
+        -8.2
+      ],
+      "size": [
+        4,
+        13,
+        2
+      ],
+      "uv": [
+        273,
+        180
+      ],
+      "rotation": [
+        30.508239758714634,
+        0,
+        -159.6235647861636
+      ],
+      "pivot": [
+        16.4,
+        102.0,
+        -7.2
+      ]
+    }
+  },
+  {
+    "name": "left_hair_tip_3",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        19.144,
+        91.92,
+        -1.364
+      ],
+      "size": [
+        2,
+        5,
+        1
+      ],
+      "uv": [
+        287,
+        180
+      ],
+      "rotation": [
+        30.50823975871462,
+        0,
+        -159.62356478616366
+      ],
+      "pivot": [
+        20.144000000000002,
+        91.92,
+        -0.8639999999999999
+      ]
+    }
+  },
+  {
+    "name": "left_hair_lock_4",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        12.5,
+        97.2,
+        -3.0
+      ],
+      "size": [
+        3,
+        9,
+        2
+      ],
+      "uv": [
+        295,
+        180
+      ],
+      "rotation": [
+        28.569922263344957,
+        0,
+        -166.50426671920422
+      ],
+      "pivot": [
+        14.0,
+        97.2,
+        -2.0
+      ]
+    }
+  },
+  {
+    "name": "left_hair_tip_4",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        14.728,
+        90.0,
+        1.532
+      ],
+      "size": [
+        2,
+        4,
+        1
+      ],
+      "uv": [
+        307,
+        180
+      ],
+      "rotation": [
+        28.569922263344992,
+        0,
+        -166.50426671920417
+      ],
+      "pivot": [
+        15.727999999999998,
+        90.0,
+        2.032
+      ]
+    }
+  },
+  {
+    "name": "left_pointed_ear",
+    "bone": "face_left_ear",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        13.4,
+        100,
+        -17.5
+      ],
+      "size": [
+        6,
+        15,
+        3
+      ],
+      "uv": [
+        315,
+        180
+      ],
+      "rotation": [
+        -11.75067410793719,
+        0,
+        -33.690067525979785
+      ],
+      "pivot": [
+        16.4,
+        100,
+        -16
+      ]
+    }
+  },
+  {
+    "name": "left_ear_tip",
+    "bone": "face_left_ear",
+    "material": "skin",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        20.9,
+        108,
+        -19.2
+      ],
+      "size": [
+        3,
+        8,
+        2
+      ],
+      "uv": [
+        335,
+        180
+      ],
+      "rotation": [
+        -10.326172524260603,
+        0,
+        -38.659808254090095
+      ],
+      "pivot": [
+        22.4,
+        108,
+        -18.2
+      ]
+    }
+  },
+  {
+    "name": "left_inner_ear",
+    "bone": "face_left_ear",
+    "material": "ear",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        17.8,
+        103.6,
+        -18.9
+      ],
+      "size": [
+        2,
+        8,
+        1
+      ],
+      "uv": [
+        347,
+        180
+      ],
+      "rotation": [
+        -7.33684064568919,
+        0,
+        -34.50852298766837
+      ],
+      "pivot": [
+        18.8,
+        103.6,
+        -18.4
+      ]
+    }
+  },
+  {
+    "name": "left_eyeball_core",
+    "bone": "face_left_eye",
+    "material": "shirt",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        6.0,
+        104.6,
+        -30.6
+      ],
+      "size": [
+        6,
+        6,
+        3
+      ],
+      "uv": [
+        355,
+        180
+      ]
+    }
+  },
+  {
+    "name": "left_staring_eye",
+    "bone": "face_left_eye",
+    "material": "shirt",
+    "pattern": "eye_left",
+    "cube": {
+      "origin": [
+        3.5,
+        102.1,
+        -31.6
+      ],
+      "size": [
+        11,
+        11,
+        1
+      ],
+      "uv": [
+        375,
+        180
+      ],
+      "rotation": [
+        0,
+        0,
+        7
+      ],
+      "pivot": [
+        9.0,
+        107.6,
+        -30.8
+      ]
+    }
+  },
+  {
+    "name": "left_arched_brow_0",
+    "bone": "face_left_brow",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.9,
+        111.6,
+        -33.4
+      ],
+      "size": [
+        3,
+        10,
+        2
+      ],
+      "uv": [
+        401,
+        180
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -42.51044707800084
+      ],
+      "pivot": [
+        2.4,
+        111.6,
+        -32.4
+      ]
+    }
+  },
+  {
+    "name": "left_arched_brow_1",
+    "bone": "face_left_brow",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.5,
+        118.8,
+        -33.4
+      ],
+      "size": [
+        3,
+        8,
+        2
+      ],
+      "uv": [
+        413,
+        180
+      ],
+      "rotation": [
+        5.958025727148764,
+        0,
+        -105.12400730831057
+      ],
+      "pivot": [
+        9.0,
+        118.8,
+        -32.4
+      ]
+    }
+  },
+  {
+    "name": "left_arched_brow_2",
+    "bone": "face_left_brow",
+    "material": "brow",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        15.4,
+        116.8,
+        -32.6
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        425,
+        180
+      ],
+      "rotation": [
+        19.794203455088404,
+        0,
+        -120.25643716352924
+      ],
+      "pivot": [
+        16.4,
+        116.8,
+        -31.6
+      ]
+    }
+  },
+  {
+    "name": "tapered_nose_plane_0",
+    "bone": "face_nose",
+    "material": "nose",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -4.5,
+        81.4,
+        -54.4
+      ],
+      "size": [
+        9,
+        39,
+        0
+      ],
+      "uv": [
+        435,
+        180
+      ],
+      "rotation": [
+        45.776863321527294,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        81.4,
+        -54.4
+      ]
+    }
+  },
+  {
+    "name": "tapered_nose_plane_1",
+    "bone": "face_nose",
+    "material": "nose",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -3.5,
+        81.4,
+        -54.4
+      ],
+      "size": [
+        7,
+        39,
+        0
+      ],
+      "uv": [
+        455,
+        180
+      ],
+      "rotation": [
+        96.72585027502282,
+        49.463851181968465,
+        90.0
+      ],
+      "pivot": [
+        0.0,
+        81.4,
+        -54.4
+      ]
+    }
+  },
+  {
+    "name": "tapered_nose_plane_2",
+    "bone": "face_nose",
+    "material": "nose",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -4.5,
+        81.4,
+        -54.4
+      ],
+      "size": [
+        9,
+        39,
+        0
+      ],
+      "uv": [
+        471,
+        180
+      ],
+      "rotation": [
+        144.70456568546405,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        81.4,
+        -54.4
+      ]
+    }
+  },
+  {
+    "name": "tapered_nose_plane_3",
+    "bone": "face_nose",
+    "material": "nose",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -3.5,
+        81.4,
+        -54.4
+      ],
+      "size": [
+        7,
+        39,
+        0
+      ],
+      "uv": [
+        491,
+        180
+      ],
+      "rotation": [
+        96.72585027502282,
+        -49.463851181968465,
+        -90.0
+      ],
+      "pivot": [
+        0.0,
+        81.4,
+        -54.4
+      ]
+    }
+  },
+  {
+    "name": "right_sleeve_upper",
+    "bone": "right_upper_arm",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -25.4,
+        82.0,
+        -17.2
+      ],
+      "size": [
+        10,
+        27,
+        12
+      ],
+      "uv": [
+        1,
+        221
+      ],
+      "rotation": [
+        -25.547142163854744,
+        0,
+        171.46923439005187
+      ],
+      "pivot": [
+        -20.4,
+        82.0,
+        -11.2
+      ]
+    }
+  },
+  {
+    "name": "right_sleeve_forearm",
+    "bone": "right_forearm",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -28.0,
+        58.0,
+        -27.3
+      ],
+      "size": [
+        8,
+        28,
+        9
+      ],
+      "uv": [
+        47,
+        221
+      ],
+      "rotation": [
+        -34.5835102361403,
+        0,
+        -45.0
+      ],
+      "pivot": [
+        -24,
+        58.0,
+        -22.8
+      ]
+    }
+  },
+  {
+    "name": "right_white_cuff",
+    "bone": "right_forearm",
+    "material": "shirt",
+    "pattern": "cuff",
+    "cube": {
+      "origin": [
+        -14.58,
+        71.92,
+        -41.372
+      ],
+      "size": [
+        9,
+        4,
+        10
+      ],
+      "uv": [
+        83,
+        221
+      ],
+      "rotation": [
+        -34.58351023614029,
+        0,
+        -45.00000000000003
+      ],
+      "pivot": [
+        -10.08,
+        71.92,
+        -36.372
+      ]
+    }
+  },
+  {
+    "name": "right_glove_palm",
+    "bone": "right_hand",
+    "material": "glove",
+    "pattern": "glove_back",
+    "cube": {
+      "origin": [
+        -10.0,
+        74.0,
+        -42.4
+      ],
+      "size": [
+        4,
+        11,
+        8
+      ],
+      "uv": [
+        123,
+        221
+      ],
+      "rotation": [
+        4.520227592644618,
+        0,
+        -71.56505117707798
+      ],
+      "pivot": [
+        -8,
+        74.0,
+        -38.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_0_first",
+    "bone": "right_finger_0",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.4,
+        77.6,
+        -41.4
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        149,
+        221
+      ],
+      "rotation": [
+        -1.545902004032565,
+        0,
+        -93.09405805891706
+      ],
+      "pivot": [
+        0.6,
+        77.6,
+        -40.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_0_tip",
+    "bone": "right_finger_0",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.0,
+        77.2,
+        -41.6
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        159,
+        221
+      ],
+      "rotation": [
+        -9.267756546918836,
+        0,
+        -157.61986494804046
+      ],
+      "pivot": [
+        7.999999999999999,
+        77.2,
+        -40.6
+      ]
+    }
+  },
+  {
+    "name": "right_finger_1_first",
+    "bone": "right_finger_1",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.4,
+        77.6,
+        -39.4
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        169,
+        221
+      ],
+      "rotation": [
+        -1.3955223233958374,
+        0,
+        -92.79270236571323
+      ],
+      "pivot": [
+        0.6,
+        77.6,
+        -38.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_1_tip",
+    "bone": "right_finger_1",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.8,
+        77.2,
+        -39.6
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        179,
+        221
+      ],
+      "rotation": [
+        -9.267756546918836,
+        0,
+        -157.61986494804046
+      ],
+      "pivot": [
+        8.799999999999999,
+        77.2,
+        -38.6
+      ]
+    }
+  },
+  {
+    "name": "right_finger_2_first",
+    "bone": "right_finger_2",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.4,
+        77.6,
+        -37.4
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        189,
+        221
+      ],
+      "rotation": [
+        -1.3955223233958374,
+        0,
+        -92.79270236571323
+      ],
+      "pivot": [
+        0.6,
+        77.6,
+        -36.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_2_tip",
+    "bone": "right_finger_2",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.8,
+        77.2,
+        -37.6
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        199,
+        221
+      ],
+      "rotation": [
+        -9.267756546918836,
+        0,
+        -157.61986494804046
+      ],
+      "pivot": [
+        8.799999999999999,
+        77.2,
+        -36.6
+      ]
+    }
+  },
+  {
+    "name": "right_finger_3_first",
+    "bone": "right_finger_3",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.4,
+        77.6,
+        -35.4
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        209,
+        221
+      ],
+      "rotation": [
+        -1.545902004032565,
+        0,
+        -93.09405805891706
+      ],
+      "pivot": [
+        0.6,
+        77.6,
+        -34.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_3_tip",
+    "bone": "right_finger_3",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.0,
+        77.2,
+        -35.6
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        219,
+        221
+      ],
+      "rotation": [
+        -9.267756546918836,
+        0,
+        -157.61986494804046
+      ],
+      "pivot": [
+        7.999999999999999,
+        77.2,
+        -34.6
+      ]
+    }
+  },
+  {
+    "name": "right_thumb",
+    "bone": "right_hand",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -6.9,
+        76,
+        -36.7
+      ],
+      "size": [
+        3,
+        5,
+        3
+      ],
+      "uv": [
+        229,
+        221
+      ],
+      "rotation": [
+        -5.00755823497706,
+        0,
+        -28.810793742973065
+      ],
+      "pivot": [
+        -5.4,
+        76,
+        -35.2
+      ]
+    }
+  },
+  {
+    "name": "left_sleeve_upper",
+    "bone": "left_upper_arm",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        15.4,
+        82.0,
+        -17.2
+      ],
+      "size": [
+        10,
+        27,
+        12
+      ],
+      "uv": [
+        243,
+        221
+      ],
+      "rotation": [
+        -25.547142163854744,
+        0,
+        -171.46923439005187
+      ],
+      "pivot": [
+        20.4,
+        82.0,
+        -11.2
+      ]
+    }
+  },
+  {
+    "name": "left_sleeve_forearm",
+    "bone": "left_forearm",
+    "material": "suit",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        20.0,
+        58.0,
+        -27.3
+      ],
+      "size": [
+        8,
+        27,
+        9
+      ],
+      "uv": [
+        289,
+        221
+      ],
+      "rotation": [
+        -23.889541087966187,
+        0,
+        41.009086901570214
+      ],
+      "pivot": [
+        24,
+        58.0,
+        -22.8
+      ]
+    }
+  },
+  {
+    "name": "left_white_cuff",
+    "bone": "left_forearm",
+    "material": "shirt",
+    "pattern": "cuff",
+    "cube": {
+      "origin": [
+        5.58,
+        74.008,
+        -37.196
+      ],
+      "size": [
+        9,
+        4,
+        10
+      ],
+      "uv": [
+        325,
+        221
+      ],
+      "rotation": [
+        -23.88954108796626,
+        0,
+        41.00908690157027
+      ],
+      "pivot": [
+        10.08,
+        74.00800000000001,
+        -32.196
+      ]
+    }
+  },
+  {
+    "name": "left_glove_palm",
+    "bone": "left_hand",
+    "material": "glove",
+    "pattern": "glove_back",
+    "cube": {
+      "origin": [
+        6.0,
+        76.4,
+        -37.6
+      ],
+      "size": [
+        4,
+        9,
+        8
+      ],
+      "uv": [
+        365,
+        221
+      ],
+      "rotation": [
+        -2.62156257220765,
+        0,
+        74.0546040990772
+      ],
+      "pivot": [
+        8,
+        76.4,
+        -33.6
+      ]
+    }
+  },
+  {
+    "name": "left_finger_0_first",
+    "bone": "left_finger_0",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.2,
+        78.6,
+        -38.0
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        391,
+        221
+      ],
+      "rotation": [
+        -1.6359098225144364,
+        0,
+        88.36342295838327
+      ],
+      "pivot": [
+        0.8,
+        78.6,
+        -37.0
+      ]
+    }
+  },
+  {
+    "name": "left_finger_0_tip",
+    "bone": "left_finger_0",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.2,
+        78.8,
+        -38.2
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        401,
+        221
+      ],
+      "rotation": [
+        -6.85228224543929,
+        0,
+        147.2647737278924
+      ],
+      "pivot": [
+        -6.2,
+        78.8,
+        -37.2
+      ]
+    }
+  },
+  {
+    "name": "left_finger_1_first",
+    "bone": "left_finger_1",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.2,
+        78.6,
+        -36.0
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        411,
+        221
+      ],
+      "rotation": [
+        -1.468318323174989,
+        0,
+        88.53119928561416
+      ],
+      "pivot": [
+        0.8,
+        78.6,
+        -35.0
+      ]
+    }
+  },
+  {
+    "name": "left_finger_1_tip",
+    "bone": "left_finger_1",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -8.0,
+        78.8,
+        -36.2
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        421,
+        221
+      ],
+      "rotation": [
+        -6.85228224543929,
+        0,
+        147.2647737278924
+      ],
+      "pivot": [
+        -7.0,
+        78.8,
+        -35.2
+      ]
+    }
+  },
+  {
+    "name": "left_finger_2_first",
+    "bone": "left_finger_2",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.2,
+        78.6,
+        -34.0
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        431,
+        221
+      ],
+      "rotation": [
+        -1.468318323174989,
+        0,
+        88.53119928561416
+      ],
+      "pivot": [
+        0.8,
+        78.6,
+        -33.0
+      ]
+    }
+  },
+  {
+    "name": "left_finger_2_tip",
+    "bone": "left_finger_2",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -8.0,
+        78.8,
+        -34.2
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        441,
+        221
+      ],
+      "rotation": [
+        -6.85228224543929,
+        0,
+        147.2647737278924
+      ],
+      "pivot": [
+        -7.0,
+        78.8,
+        -33.2
+      ]
+    }
+  },
+  {
+    "name": "left_finger_3_first",
+    "bone": "left_finger_3",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -0.2,
+        78.6,
+        -32.0
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        451,
+        221
+      ],
+      "rotation": [
+        -1.6359098225144073,
+        0,
+        88.36342295838327
+      ],
+      "pivot": [
+        0.8,
+        78.6,
+        -31.0
+      ]
+    }
+  },
+  {
+    "name": "left_finger_3_tip",
+    "bone": "left_finger_3",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.2,
+        78.8,
+        -32.2
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        461,
+        221
+      ],
+      "rotation": [
+        -6.85228224543935,
+        0,
+        147.2647737278924
+      ],
+      "pivot": [
+        -6.2,
+        78.8,
+        -31.2
+      ]
+    }
+  },
+  {
+    "name": "left_thumb",
+    "bone": "left_hand",
+    "material": "glove",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        3.5,
+        78.8,
+        -38.5
+      ],
+      "size": [
+        3,
+        5,
+        3
+      ],
+      "uv": [
+        471,
+        221
+      ],
+      "rotation": [
+        -11.909831449346369,
+        0,
+        62.3540246362613
+      ],
+      "pivot": [
+        5.0,
+        78.8,
+        -37.0
+      ]
+    }
+  }
+]

@@ -1,0 +1,7 @@
+Velvet Eclipse 0.6.12 validation
+JAR bytes: 920640
+SHA256: 398EC49186F3834780979B1125A3460FB393DEF538A2D6A2FB8558E1D00C91B7
+Java source compilation: javac emitted main classes, no compiler errors; Gradle lifecycle blocked while reading local dependency JARs by sandbox AccessDeniedException.
+Igor geometry: 35 bones, 102 cuboids, approved texture SHA256 7598696C9EFBDB0D138A55A5709127F5ACDF8F84FEA3F65E04AAD6503DAFF217.
+Fusion checks: server-side ownership, own-player-level gate, atomic one-use confirmation ticket, stale/expired/replay rejection implemented; in-game execution not run by user request.
+Minecraft visual test: not run by user request.

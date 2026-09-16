@@ -18,6 +18,16 @@ public final class PlayerPersonaData {
    private int maxSp = 45;
    private int sp = 45;
    private int pulseTonics = 3;
+   private int playerLevel=1, playerExperience;
+   public int playerLevel(){return playerLevel;}
+   public int playerExperience(){return playerExperience;}
+   public int playerNextExperience(){return PersonaInstance.experienceForNextLevel(playerLevel);}
+   public void addPlayerExperience(int amount){
+      if(amount<=0||playerLevel>=99)return;
+      long xp=(long)playerExperience+amount;
+      while(playerLevel<99&&xp>=playerNextExperience()){xp-=playerNextExperience();playerLevel++;}
+      playerExperience=playerLevel==99?0:(int)xp;
+   }
    private String activePersona = "cinder_wisp";
    private final LinkedHashMap<String, PersonaInstance> roster = new LinkedHashMap<>();
 
@@ -94,7 +104,9 @@ public final class PlayerPersonaData {
    public boolean replaceFusion(String var1, String var2, PersonaInstance var3) {
       if (var1 == null || var2 == null || var3 == null) {
          return false;
-      } else if (!var1.equals(var2) && this.roster.containsKey(var1) && this.roster.containsKey(var2)) {
+      } else if (!var1.equals(var2) && this.roster.containsKey(var1) && this.roster.containsKey(var2)
+           && !var3.definitionId().equals(var1) && !var3.definitionId().equals(var2) && var3.level()<=playerLevel
+           && PersonaRegistry.persona(var3.definitionId()).isPresent()) {
          boolean var4 = this.activePersona.equals(var1) || this.activePersona.equals(var2);
          this.roster.remove(var1);
          this.roster.remove(var2);
@@ -178,6 +190,7 @@ public final class PlayerPersonaData {
                var1.maxSp = Math.max(0, Integer.parseInt(var4[4]));
                var1.activePersona = var4[5];
                var1.pulseTonics = Math.max(0, Integer.parseInt(var4[6]));
+               if(var4.length>=10){var1.playerLevel=clamp(Integer.parseInt(var4[8]),1,99);var1.playerExperience=clamp(Integer.parseInt(var4[9]),0,var1.playerNextExperience()-1);}
                var1.roster.clear();
                if (!var4[7].isBlank()) {
                   for (String var8 : var4[7].split(";")) {
@@ -257,7 +270,7 @@ public final class PlayerPersonaData {
          + "|"
          + this.pulseTonics
          + "|"
-         + String.join(";", var1);
+         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience;
    }
 
    private static String encodePersona(PersonaInstance var0) {

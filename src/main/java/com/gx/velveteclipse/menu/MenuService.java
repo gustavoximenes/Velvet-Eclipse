@@ -24,13 +24,7 @@ public final class MenuService {
     }
     private static MenuSnapshot snapshot(ServerPlayer player,PlayerPersonaData data,String message){
         List<MenuSnapshot.Persona> personas=new ArrayList<>();
-        for(var instance:data.rosterInstances()){
-            var def=PersonaRegistry.persona(instance.definitionId()).orElseThrow();var stats=def.baseStats();int n=Math.max(0,instance.level()-def.baseLevel());
-            var skills=instance.learnedSkills().stream().sorted().map(k->PersonaRegistry.skill(k).orElse(null)).filter(Objects::nonNull).toList();
-            List<String> affinities=def.affinities().entrySet().stream().filter(e->e.getValue()!=Affinity.NORMAL).map(e->e.getKey()+"  "+e.getValue()).toList();
-            personas.add(new MenuSnapshot.Persona(def.id(),def.id().equals("cinder_wisp")?"Thanatos":def.displayName(),def.arcana().name(),instance.level(),instance.experience(),PersonaInstance.experienceForNextLevel(instance.level()),
-                new int[]{stats.strength()+n/2,stats.magic()+n/2,stats.endurance()+n/2,stats.agility()+n/3,stats.luck()+n/3},skills,affinities));
-        }
+        for(var instance:data.rosterInstances())personas.add(describe(instance));
         List<MenuSnapshot.Quest> quests=new ArrayList<>();
         for(var advancement:player.m_20194_().m_129889_().m_136028_()){
             var display=advancement.m_138320_();if(display==null)continue;
@@ -42,7 +36,14 @@ public final class MenuService {
         quests.sort(Comparator.comparing(MenuSnapshot.Quest::done).thenComparing(MenuSnapshot.Quest::name));
         if(quests.size()>180)quests=new ArrayList<>(quests.subList(0,180));
         long time=player.m_9236_().m_46468_();
-        return new MenuSnapshot(data.hp(),data.maxHp(),data.sp(),data.maxSp(),data.pulseTonics(),data.activePersona(),personas,quests,links(player),Math.floorDiv(time,24000)+1,time,message);
+        return new MenuSnapshot(data.hp(),data.maxHp(),data.sp(),data.maxSp(),data.pulseTonics(),data.activePersona(),personas,quests,links(player),Math.floorDiv(time,24000)+1,time,message,data.playerLevel(),data.playerExperience(),data.playerNextExperience());
+    }
+    public static MenuSnapshot.Persona describe(PersonaInstance instance){
+            var def=PersonaRegistry.persona(instance.definitionId()).orElseThrow();var stats=def.baseStats();int n=Math.max(0,instance.level()-def.baseLevel());
+            var skills=instance.learnedSkills().stream().sorted().map(k->PersonaRegistry.skill(k).orElse(null)).filter(Objects::nonNull).toList();
+            List<String> affinities=def.affinities().entrySet().stream().filter(e->e.getValue()!=Affinity.NORMAL).map(e->e.getKey()+"  "+e.getValue()).toList();
+            return new MenuSnapshot.Persona(def.id(),def.id().equals("cinder_wisp")?"Thanatos":def.displayName(),def.arcana().name(),instance.level(),instance.experience(),PersonaInstance.experienceForNextLevel(instance.level()),
+                new int[]{stats.strength()+n/2,stats.magic()+n/2,stats.endurance()+n/2,stats.agility()+n/3,stats.luck()+n/3},skills,affinities);
     }
     private static List<MenuSnapshot.Link> links(Object player){
         String json=RuntimeBridge.tagGetString(RuntimeBridge.persistentData(player),LINKS);

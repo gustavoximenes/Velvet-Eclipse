@@ -1,0 +1,1 @@
+PASS: 102 cuboids/planes, 35 named bones, integer sizes, Box UV within atlas, unique editable elements, matching bbmodel/geometry, closed idle loop. Runtime resources remain identical to release 0.6.11. No integration or JAR created.

@@ -3,7 +3,8 @@ import java.util.List;
 import com.gx.velveteclipse.core.persona.SkillDefinition;
 
 public record MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,
-    List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message) {
+    List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message,int playerLevel,int playerXp,int playerNextXp) {
+    public MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message){this(hp,maxHp,sp,maxSp,tonics,active,personas,quests,links,day,time,message,1,0,58);}
     public record Persona(String id,String name,String arcana,int level,int xp,int nextXp,int[] stats,
                           List<SkillDefinition> skills,List<String> affinities) {}
     public record Quest(String name,String description,boolean done,float progress) {}

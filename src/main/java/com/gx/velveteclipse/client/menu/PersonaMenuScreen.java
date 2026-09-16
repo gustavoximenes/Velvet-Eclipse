@@ -149,8 +149,8 @@ public final class PersonaMenuScreen extends Screen {
                 else detail.add("Você ainda não possui Personas. As Personas obtidas aparecerão nesta lista.");
             }
             case 4 -> {
-                list.add(new MenuDesign.Row(player.m_36316_().getName(),"Jogador / Minecraft",-1));if(current!=null)list.add(new MenuDesign.Row(current.name(),"Persona / Atributos de batalha",-1));
-                if(selected==0){detail.add(player.m_36316_().getName());detail.add("HP batalha: "+data.hp()+" / "+data.maxHp());detail.add("SP: "+data.sp()+" / "+data.maxSp());detail.add("Vida Minecraft: "+Math.round(player.m_21223_())+" / "+Math.round(player.m_21233_()));detail.add("Armadura: "+player.m_21230_());detail.add("Nivel Minecraft: "+player.f_36078_);}
+                list.add(new MenuDesign.Row(player.m_36316_().getName(),"Jogador / Lv "+data.playerLevel(),-1));if(current!=null)list.add(new MenuDesign.Row(current.name(),"Persona / Atributos de batalha",-1));
+                if(selected==0){detail.add(player.m_36316_().getName());detail.add("HP batalha: "+data.hp()+" / "+data.maxHp());detail.add("SP: "+data.sp()+" / "+data.maxSp());detail.add("Vida Minecraft: "+Math.round(player.m_21223_())+" / "+Math.round(player.m_21233_()));detail.add("Armadura: "+player.m_21230_());detail.add("Nível do jogador: "+data.playerLevel()+" / EXP "+data.playerXp()+" de "+data.playerNextXp());detail.add("Nível Minecraft: "+player.f_36078_);}
                 else if(current!=null){detail.add(current.name()+" / Lv "+current.level());stats=current.stats();detail.add("ST forca / MA magia / EN resistencia");detail.add("AG agilidade / LU sorte");}
             }
             case 5 -> {

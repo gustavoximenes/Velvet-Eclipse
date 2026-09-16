@@ -31,7 +31,8 @@ public final class PersonaSheetDesign {
         c.text("PERSONA",516,249,89,0x142CE3FF,-11);
         c.poly(new double[]{0,244,498,203,490,220,0,273},0xC0050D47);
     }
-    public static void foreground(Canvas c,View v){
+    public static void foreground(Canvas c,View v){foreground(c,v,true);}
+    public static void foreground(Canvas c,View v,boolean browsing){
         Persona p=v.persona;double show=reveal(v),slide=(1-show)*-90;
         c.poly(new double[]{0,65+slide,568,-39+slide,585,64+slide,0,171+slide},WHITE);
         c.poly(new double[]{0,63+slide,568,-41+slide,568,-37+slide,0,67+slide},RED);
@@ -41,8 +42,8 @@ public final class PersonaSheetDesign {
         c.text("Lv "+p.level(),126,121+slide,25,INK,-10);
         c.text("NEXT EXP",226,99+slide,9,INK,-10);
         c.text(String.format(Locale.ROOT,"%,d",PersonaDetails.remainingXp(p)),258,101+slide,23,INK,-10);
-        c.text("< Q",32,119+slide,24,INK,-10);c.text("E >",500,26+slide,24,INK,-10);
-        c.text((v.index+1)+" / "+v.count+"  PERSONAS",27,24,10,CYAN,0);
+        if(browsing){c.text("< Q",32,119+slide,24,INK,-10);c.text("E >",500,26+slide,24,INK,-10);}
+        c.text(browsing?(v.index+1)+" / "+v.count+"  PERSONAS":"RESULTADO DA FUSÃO",27,24,10,CYAN,0);
         if(v.equipped){c.poly(new double[]{645,24,861,24,846,49,630,49},CYAN);c.text("PERSONA EQUIPADA",657,29,12,INK,0);}
         for(int i=0;i<PersonaDetails.ELEMENTS.length;i++){
             Element e=PersonaDetails.ELEMENTS[i];Rect r=affinity(i);double y=r.y()+(1-show)*22;double x=r.x()+20;

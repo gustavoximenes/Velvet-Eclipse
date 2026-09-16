@@ -29,5 +29,6 @@
   "block.velvet_eclipse.velvet_floor": "Velvet Carpet",
   "block.velvet_eclipse.velvet_wall": "Velvet Wall",
   "block.velvet_eclipse.velvet_trim": "Velvet Cornice",
-  "block.velvet_eclipse.velvet_grille": "Velvet Grille"
+  "block.velvet_eclipse.velvet_grille": "Velvet Grille",
+  "entity.velvet_eclipse.igor": "Igor"
 }

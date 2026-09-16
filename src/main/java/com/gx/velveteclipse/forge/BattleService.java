@@ -170,7 +170,7 @@ public final class BattleService {
     private static void finish(Encounter g,String message){
         if(!BATTLES.containsKey(g.session.id()))return;
         for(Object p:new ArrayList<>(g.players.values())){persist(p,g.session);var data=PlayerPersonaData.load(p);String result="BATALHA ENCERRADA";
-            if(g.session.state()==BattleState.PLAYERS_WON){var persona=data.activeInstance();int xp=80*g.enemyCount;persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);data.givePersona("umbra_slime");result="VICTORY • +"+xp+" EXP";}else if(g.session.state()==BattleState.ENEMIES_WON)result="DEFEAT";
+            if(g.session.state()==BattleState.PLAYERS_WON){var persona=data.activeInstance();int xp=80*g.enemyCount;data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);data.givePersona("umbra_slime");result="VICTORY • +"+xp+" EXP • Jogador Lv "+data.playerLevel();}else if(g.session.state()==BattleState.ENEMIES_WON)result="DEFEAT";
             data.save(p);detach(g,p);sync(p,(message.isBlank()?"":message+" • ")+result);
         }
         VisualBattleActors.clearEnemies(g.session.id());BATTLES.remove(g.session.id());

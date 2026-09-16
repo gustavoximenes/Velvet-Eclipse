@@ -157,7 +157,7 @@ public final class VelvetCommands {
    }
 
    private static int help(Object var0) {
-      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.11 Velvet Room");
+      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.12 Fusion / Velvet Room");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|add <id>|remove <id>|equip <id> (give continua disponível)");
       RuntimeBridge.sendMessage(var0, "§d/velvet fusion preview|perform <persona1> <persona2> [skill]");
@@ -198,6 +198,7 @@ public final class VelvetCommands {
          );
          RuntimeBridge.sendMessage(var1, "§7Skills: §f" + String.join(", ", var3.learnedSkills()));
          RuntimeBridge.sendMessage(var1, "§7Roster: §f" + var2.describeRoster());
+         RuntimeBridge.sendMessage(var1,"Jogador Lv "+var2.playerLevel()+" / EXP "+var2.playerExperience()+" de "+var2.playerNextExperience());
          BattleService.sync(var1, "Status synced");
          return 1;
       }
@@ -326,54 +327,15 @@ public final class VelvetCommands {
       }
    }
 
-   private static int performFusion(Object var0, String var1, String var2, String var3) {
-      Object var4 = player(var0);
-      if (var4 == null) {
-         return 0;
-      } else if (BattleService.current(var4) != null) {
-         RuntimeBridge.sendMessage(var4, "§cNão é possível fundir durante uma batalha.");
-         return 0;
-      } else {
-         PlayerPersonaData var5 = PlayerPersonaData.load(var4);
-         PersonaInstance var6 = var5.instance(var1);
-         PersonaInstance var7 = var5.instance(var2);
-         if (var6 != null && var7 != null) {
-            FusionResult var8 = FusionService.preview(var6, var7).orElse(null);
-            if (var8 == null) {
-               RuntimeBridge.sendMessage(var4, "§cEssa combinação ainda não possui regra de fusão.");
-               return 0;
-            } else if (var3 != null && !var8.inheritableSkills().contains(var3)) {
-               RuntimeBridge.sendMessage(var4, "§cSkill não herdável nessa fusão. Opções: " + String.join(", ", var8.inheritableSkills()));
-               return 0;
-            } else {
-               PersonaDefinition var9 = PersonaRegistry.persona(var8.personaId()).orElseThrow();
-               PersonaInstance var10 = new PersonaInstance(var9);
-               String var11 = var3;
-               if (var3 == null && !var8.inheritableSkills().isEmpty()) {
-                  var11 = var8.inheritableSkills().get(0);
-               }
-
-               if (var11 != null) {
-                  var10.inheritSkill(var11);
-               }
-
-               if (!var5.replaceFusion(var1, var2, var10)) {
-                  RuntimeBridge.sendMessage(var4, "§cFalha ao atualizar o roster.");
-                  return 0;
-               } else {
-                  var5.save(var4);
-                  BattleService.sync(var4, "Fusion complete");
-                  RuntimeBridge.sendMessage(
-                     var4, "§5FUSION! §f" + var1 + " + " + var2 + " §d→ §f" + var9.displayName() + (var11 == null ? "" : " §7[herdou " + var11 + "]")
-                  );
-                  return 1;
-               }
-            }
-         } else {
-            RuntimeBridge.sendMessage(var4, "§cVocê precisa possuir as duas Personas.");
-            return 0;
-         }
-      }
+   private static int performFusion(Object source,String first,String second,String skill){
+      Object player=player(source);if(player==null)return 0;
+      if(BattleService.current(player)!=null){RuntimeBridge.sendMessage(player,"Não é possível fundir durante uma batalha.");return 0;}
+      var data=PlayerPersonaData.load(player);
+      var preview=com.gx.velveteclipse.core.fusion.FusionTransaction.preview(data,first,second,skill);
+      if(preview==null){RuntimeBridge.sendMessage(player,"Selecione duas Personas possuídas e uma habilidade herdável válida.");return 0;}
+      if(!preview.allowed()){RuntimeBridge.sendMessage(player,preview.message());return 0;}
+      if(!com.gx.velveteclipse.core.fusion.FusionTransaction.commit(data,first,second,skill))return 0;
+      data.save(player);BattleService.sync(player,"Fusion complete");RuntimeBridge.sendMessage(player,"Fusão concluída: "+preview.result().definitionId());return 1;
    }
 
    private static int diagnostics(Object var0) {
