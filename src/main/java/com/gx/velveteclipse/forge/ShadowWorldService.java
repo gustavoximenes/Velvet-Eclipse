@@ -93,7 +93,7 @@ public final class ShadowWorldService {
    }
 
    private static Object spawnNatural(Object var0) {
-      if (var0 != null && ShadowRegistry.shadowType() != null) {
+      if (var0 instanceof Entity e && com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_()) && ShadowRegistry.shadowType() != null) {
          double[] var1 = RuntimeBridge.playerPosition(var0);
          double var2 = ThreadLocalRandom.current().nextDouble(0.0, Math.PI * 2);
          double var4 = ThreadLocalRandom.current().nextDouble(8.0, 13.0);
@@ -181,8 +181,11 @@ public final class ShadowWorldService {
    }
 
    private static void ensureWorldShadows() {
+      // Natural encounter Shadows dissolve at dawn. Explicit summons and battle
+      // actors stay under their own lifecycle and are never removed here.
+      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
       for (Object var1 : new ArrayList<>(PLAYERS.values())) {
-         if (var1 != null && !com.gx.velveteclipse.room.VelvetRoomService.inside(var1) && BattleService.current(var1) == null) {
+         if (var1 instanceof Entity e && com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_()) && BattleService.current(var1) == null) {
             UUID var2 = RuntimeBridge.playerUuid(var1);
             long var3 = NEXT_SPAWN.getOrDefault(var2, 0L);
             if (serverTicks >= var3) {
@@ -278,7 +281,7 @@ public final class ShadowWorldService {
       if (var0 == null) {
          return false;
       } else {
-         for (String var5 : new String[]{"getTags", "m_20146_"}) {
+         for (String var5 : new String[]{"getTags", "m_19880_"}) {
             try {
                if (var0.getClass().getMethod(var5).invoke(var0) instanceof Set var7) {
                   return var7.contains(var1);

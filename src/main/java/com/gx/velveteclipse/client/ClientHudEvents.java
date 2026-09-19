@@ -64,6 +64,9 @@ public final class ClientHudEvents {
         ClientBattleUiState.hover(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),w,h);
         // GuiGraphics batches all strips and glyphs into its managed GUI buffer.
         g.m_286007_(() -> {
+            if(com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!s.active()){
+                com.gx.velveteclipse.client.darkhour.DarkHourClient.paint(canvas,w,h);return;
+            }
             if(BattleTacticsClient.exclusiveHud()){
                 if(AllOutPresentation.active()){g.m_280262_();AllOutPresentation.paint(g,canvas,w,h,partial);}
                 else BattleTacticsClient.paint(canvas,w,h);
@@ -92,7 +95,7 @@ public final class ClientHudEvents {
     @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
     public static final class InputHandler {
         @SubscribeEvent public static void hideOtherOverlays(net.minecraftforge.client.event.RenderGuiOverlayEvent.Pre event){
-            if(BattleTacticsClient.exclusiveHud()&&!event.getOverlay().id().toString().equals("velvet_eclipse:persona_hud"))event.setCanceled(true);
+            if((BattleTacticsClient.exclusiveHud()||com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!ClientBattleState.snapshot().active())&&!event.getOverlay().id().toString().equals("velvet_eclipse:persona_hud"))event.setCanceled(true);
         }
         @SubscribeEvent public static void onScreen(net.minecraftforge.client.event.ScreenEvent.Opening event){
             if(AllOutPresentation.active()){event.setCanceled(true);return;}

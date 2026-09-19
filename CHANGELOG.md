@@ -1,3 +1,13 @@
+# Velvet Eclipse 0.6.14 — Dark Hour e correções de interface
+
+Igor apresentado de frente no menu de fusões; nível/EXP próprios do jogador com barra de progresso; atalhos no padrão azul/ciano e guia por F1. Seletor multiplayer passa a resolver um só marcador por quadro e centraliza suas instruções.
+
+Primeira implementação da Dark Hour no Overworld, entre 18000 e 23999 ticks. Inclui `/time set dark_hour`, relógio branco/verde, céu e iluminação próprios, manchas vermelhas, congelamento reversível de mobs e caixões. Shadows de encontros naturais só surgem nesse horário e desaparecem ao amanhecer.
+
+Tártaro temporário com blocos próprios, construção animada em camadas, topo no limite do mundo e escadaria de entrada. Adapta a base ao terreno e aparece a até 64 blocos, limitado pelo alcance de chunks e priorizando o anfitrião. `/locate tartarus` e `/locate structure velvet_eclipse:tartarus` mostram a entrada; servidores dedicados podem configurar o dono com `/velvet tartarus owner <jogador>`. A torre acompanha mudanças do jogador prioritário e registra seus blocos para limpeza ao amanhecer/reinício. Personas e efeitos de invocação são excluídos dos caixões por tipo real, inclusive no cliente. Ver `docs/DARK_HOUR.md`. Protocolo de rede 10; nenhuma biblioteca nova.
+
+Validação offline das 11 auditorias. A execução no Minecraft continua dispensada pelo usuário e não foi realizada.
+
 # Velvet Eclipse 0.6.11 — Velvet Room
 
 - O convite All-Out Attack oculta a HUD de combate e as sobreposições comuns. A interface permanece oculta durante a confirmação e a sequência; retorna ao cancelar ou ao terminar o ataque. Cliques durante a confirmação não acionam opções encobertas.

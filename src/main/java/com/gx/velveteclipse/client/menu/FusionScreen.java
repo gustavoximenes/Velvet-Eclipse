@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import java.util.*;
 public final class FusionScreen extends Screen {
  private FusionSnapshot data;private int page,selected,offset,previous=1;private String first="";
- private boolean waiting,confirming,fusionPreview;private double sent,changed=now();
+ private boolean waiting,confirming,fusionPreview,help;private double sent,changed=now();
  private final PersonaSheetState sheet=new PersonaSheetState();private final PersonaModelPreview model=new PersonaModelPreview();private final IgorPreview igor=new IgorPreview();
  public FusionScreen(FusionSnapshot d){super(Component.m_237113_("Velvet Room • Igor"));data=d;}
  private static double now(){return System.nanoTime()/1e9;}
@@ -51,6 +51,8 @@ public final class FusionScreen extends Screen {
  }
  @Override public void m_7379_(){FusionNetwork.request("close","","","");super.m_7379_();}
  @Override public boolean m_7933_(int key,int scan,int mods){
+  if(key==290){help=!help;return true;}
+  if(help){if(key==256||key==257)help=false;return true;}
   if(key==256){back();return true;}
   if(waiting)return true;
   if(key==257||key==335){activate();return true;}
@@ -63,7 +65,10 @@ public final class FusionScreen extends Screen {
  }
  @Override public boolean m_6375_(double x,double y,int button){
   if(button!=0||waiting)return true;double mx=(x-left())/scale(),my=(y-top())/scale();
-  if(my>=477&&mx<260){back();return true;}
+  if(help){help=false;return true;}
+  if(page!=4&&((page==0&&FusionDesign.tutorial().contains(mx,my))||my>=477&&mx>=688)){help=true;return true;}
+  if(my>=477&&mx<208){back();return true;}
+  if(page!=4&&my>=477&&mx>=468&&mx<678){activate();return true;}
   if(page==4){var p=sheet.persona(inspecting());if(p==null)return true;
    if(FusionDesign.confirm().contains(mx,my)){activate();return true;}
    int skill=PersonaSheetDesign.pickSkill(mx,my),affinity=PersonaSheetDesign.pickAffinity(mx,my);
@@ -85,6 +90,7 @@ public final class FusionScreen extends Screen {
     var view=new FusionDesign.View(data,page,selected,offset,first,waiting,time);
     g.m_286007_(() -> FusionDesign.background(c,view));igor.draw(g,time);pose.m_85837_(0,0,MenuDepth.FOREGROUND);g.m_286007_(() -> FusionDesign.foreground(c,view));
    }
+   if(help){pose.m_85837_(0,0,20);g.m_286007_(() -> FusionDesign.help(c));}
   }finally{g.m_280262_();pose.m_85849_();}
  }
 }

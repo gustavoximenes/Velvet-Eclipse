@@ -18,6 +18,10 @@ public final class ClientBattleUiState {
  public static void onSnapshot(BattleSnapshotS2C old,BattleSnapshotS2C next){
   if(next==null||!next.active()){page=Page.MAIN;actionLocked=switchPending=false;selected=0;pendingSkill="";return;}
   if(old==null||old.playerTurn()!=next.playerTurn())page=Page.MAIN;
+  // Target selection belongs to the client whose turn is active.  Closing a
+  // stale selector here prevents every participant in a shared battle from
+  // retaining its own copy of the enemy HUD after the turn moves on.
+  if(!next.playerTurn()&&page==Page.TARGET){page=Page.MAIN;pendingSkill="";selected=0;}
   if(next.playerTurn()){actionLocked=false;switchPending=false;}
   selected=Math.min(selected,Math.max(0,next.skills().size()-1));
  }

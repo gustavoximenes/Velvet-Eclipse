@@ -1,6 +1,6 @@
 plugins { id 'java' }
 group = 'com.gx.velveteclipse'
-version = '0.6.12-fusion'
+version = '0.6.14-dark-hour'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -86,3 +86,11 @@ tasks.register('fusionTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.FusionAudit'
 }
 tasks.named('check') { dependsOn 'fusionTest' }
+
+tasks.register('darkHourTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.DarkHourAudit'
+    jvmArgs '-Djava.awt.headless=true'
+}
+tasks.named('check') { dependsOn 'darkHourTest' }

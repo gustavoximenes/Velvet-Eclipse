@@ -1,3 +1,12 @@
+# Velvet Eclipse 0.6.14 — Dark Hour
+
+- Igor voltado para o jogador no menu de fusões; painel próprio de nível/EXP, barra de progresso e ajuda por F1.
+- Seletor de alvos com um único marcador e uma única camada de instruções, respeitando o dono do turno em multiplayer.
+- Dark Hour no fim do ciclo noturno: relógio animado, céu verde, lua amarelada, caixões e geração de Shadows restrita ao período.
+- Tártaro com surgimento em camadas, escadaria e entrada, atingindo o limite de altura do mundo. Aparece perto do jogador, dentro do alcance de chunks, priorizando o anfitrião.
+
+Teste com `/time set 17800` ou `/time set dark_hour`; localize a torre com `/locate tartarus` ou `/locate structure velvet_eclipse:tartarus`. Servidores dedicados podem definir `/velvet tartarus owner <jogador>`. Consulte [comportamento, escopo e validação](docs/DARK_HOUR.md).
+
 # Velvet Eclipse 0.6.11 — Velvet Room
 
 - O convite All-Out Attack oculta a HUD de combate e as sobreposições comuns. A interface permanece oculta durante a confirmação e a sequência; retorna ao cancelar ou ao terminar o ataque. Cliques durante a confirmação não acionam opções encobertas.

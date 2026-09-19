@@ -23,7 +23,11 @@ public final class BattleTargetHud {
     public static void lockActionTarget(UUID id){if(id!=null)selected=id;}
     public static void reset(){roster=List.of();selected=null;boxes.clear();positions.clear();cards.clear();}
     public static void accept(BattleTargetS2C ignored){}
-    public static void accept(BattleRosterS2C p){roster=p.targets();if(roster.isEmpty()){reset();return;}if(ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET&&candidates().stream().noneMatch(t->t.id().equals(selected)))chooseDefault();}
+    public static void accept(BattleRosterS2C p){
+        // Defensive normalization of the authoritative roster.
+        var seen=new HashSet<UUID>();roster=p.targets().stream().filter(t->t!=null&&seen.add(t.id())).toList();
+        if(roster.isEmpty()){reset();return;}if(ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET&&candidates().stream().noneMatch(t->t.id().equals(selected)))chooseDefault();
+    }
     public static List<BattleRosterS2C.Target> candidates(){
         if(ClientBattleUiState.pendingSkill().equals("__baton_pass"))return roster.stream().filter(t->t.ally()&&t.hp()>0&&BattleTacticsClient.passTargets().contains(t.id())).toList();
         var skill=PersonaRegistry.skill(ClientBattleUiState.pendingSkill()).orElse(null);
@@ -51,6 +55,11 @@ public final class BattleTargetHud {
     public static void paint(HudDesign.Canvas c,int w,int h,double ignored,double ignoredTrail){
         cards.clear();if(ClientBattleUiState.selector())return;
         boolean targeting=ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET;
+        var snapshot=ClientBattleState.snapshot();
+        // Only the player whose turn is active may open the target selector.
+        // This is also a client-side guard for multiplayer packets arriving in
+        // the same frame, so observers never render a second selector HUD.
+        if(targeting&&!snapshot.playerTurn())return;
         boolean acting=PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive();
         if(AllOutPresentation.active()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()<68)return;
         var element=ClientBattleUiState.selectedElement();double u=Math.max(.6,Math.min(w/640.,h/360.));
@@ -64,12 +73,14 @@ public final class BattleTargetHud {
             }
             c.text("← → alvo   ENTER confirmar   ESC voltar",Math.max(8,(w-c.width("← → alvo   ENTER confirmar   ESC voltar"))/2),y-13,0xFF79F8FF);
         }
-        for(var t:roster){if(t.hp()<=0)continue;var at=positions.get(t.id());if(at==null)continue;
-            var box=boxes.get(t.id());boolean focus=t.id().equals(selected)&&(targeting||PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()>=68);
-            boolean hover=!acting&&box!=null&&box.contains(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
-            if(acting&&!t.id().equals(selected))continue;
-            if(!targeting&&!acting&&t.ally())continue;
-            if(!focus&&!hover||targeting&&candidates().stream().noneMatch(a->a.id().equals(t.id())))continue;
+        // Resolve one marker before painting. Overlapping projected entities must
+        // never produce several markers, nor override a locked action target.
+        UUID marker=(targeting||acting)?selected:null;
+        if(marker==null&&!acting&&!targeting&&snapshot.playerTurn())for(var t:roster){
+            var box=boxes.get(t.id());if(!t.ally()&&t.hp()>0&&box!=null&&box.contains(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY())){marker=t.id();break;}
+        }
+        for(var t:roster){if(t.hp()<=0||!t.id().equals(marker))continue;var at=positions.get(t.id());if(at==null)continue;
+            if(targeting&&candidates().stream().noneMatch(a->a.id().equals(t.id())))continue;
             Affinity affinity=t.ally()?Affinity.NORMAL:null;for(String pair:t.known().split(",")){var a=pair.split(":");if(a.length==2&&a[0].equals(element.name()))try{affinity=Affinity.valueOf(a[1]);}catch(IllegalArgumentException ignoredError){}}
             int px=(int)Math.max(25*u,Math.min(w-110*u,at[0])),py=(int)Math.max(45*u,Math.min(h-90*u,at[1]));double ratio=t.hp()/(double)Math.max(1,t.maxHp());
             paintMarker(c,px,py,u,ratio,ratio,element,t.ally()||element==Element.SUPPORT?Affinity.NORMAL:affinity);

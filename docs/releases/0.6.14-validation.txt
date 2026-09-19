@@ -1,0 +1,16 @@
+PASS battle-command: 376309 checks; prepared outcomes, slash, knowledge, summon/shatter clock, melee path, packet roundtrip, responsive selector.
+PASS dark-hour: 2672158 checks; Persona/coffin exclusions, host priority, 11532 bounded placement candidates, persistence journal, clock boundaries, 25 tower layouts, staircase/entrance clearance, height limit and resources; offline HUD previews generated.
+PASS evoker/weakness: 4421 checks; native Bendy grip, temple alignment, spin, confirmed weakness/miss/critical/kill, cut-in lifecycle.
+PASS fusion: 1577 checks; 21 pairs, atomic level gate, read-only previews and navigation layout.
+PASS Izanagi: P4 skills, functional support, commands, roster, safe melee, 40 AOE reservations, 123 native cuboids, 34 bones, three clips and lightning.
+PASS 1902 checks; 20 HUD sizes/scales; 120 seeded battle regressions; digest 360b9165bf6ab455e8b2af662ea7d45fb72c2e29934c984af0156a9689eadffd
+PASS multiplayer: 4099 checks; 400 group reservations, 1..5 enemy commands, joining/leaving turns, chosen/all-ally healing, buffs, target selection and bounded network codecs.
+PASS presentation: 16015 checks; floors/walls/ceilings, 475 camera views, pose continuity, native standard/slim model vertices, enemy-only skill HUD.
+PASS style/pose: 3544 checks; forward sword/arm geometry, unlit blue vertices, HUD footer at 20 sizes/scales.
+PASS tactics: 11091 checks; first/repeated weakness, bonus ownership, isolated Baton Pass damage, departure recovery, 1..5 elementless all-out targets, codecs, animation phases and HUD previews.
+PASS velvet-room: 17632 checks; dimension data, 22 model resource checks, sealed room, seat clearance, 32 door variants, open/closed collision, visual passage clearance and standard/slim All-Out framing.
+
+BUILD SUCCESSFUL: check, jar, sourcesJar.
+JAR: Java 17, ZIP integrity, unique entries, new classes/resources present, all 0.6.13 assets byte-identical.
+No Minecraft execution or two-client test.
+SHA256: B972A287814CC1AA5FC94C791D32EC952DFD3C6C9FCDF97A6CA49EF455702C68

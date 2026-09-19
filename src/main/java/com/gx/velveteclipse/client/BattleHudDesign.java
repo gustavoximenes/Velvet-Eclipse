@@ -7,7 +7,7 @@ public final class BattleHudDesign {
     private static final int BLUE=0xFF1726FF,INK=0xE808103B,WHITE=0xFFF8FFFF,CYAN=0xFF66EFFF;
     public static void paint(Canvas c,View v,int w,int h,double mx,double my){
         double u=BattleMenuLayout.unit(w,h);int pad=Math.max(5,(int)(8*u));
-        // There is exactly one real player in the current battle format.
+        // This card always belongs to the local player in the shared encounter.
         int pw=(int)(106*u),ph=(int)(73*u),px=w-pw-pad,py=h/2+(int)(12*u);
         ribbon(c,px,py,pw,ph,INK);
         int face=(int)(36*u);c.fill(px+pw-face-7,py-8,face+4,face+4,BLUE);
@@ -19,7 +19,7 @@ public final class BattleHudDesign {
         c.fill(px+24,py+(int)(43*u),(int)(Math.max(1,pw-30)*v.hpRatio()),4,0xFFDDFF69);
         c.text(v.sp()+" SP",px+5,py+(int)(51*u),WHITE);
         c.fill(px+5,py+ph-8,(int)((pw-11)*v.spRatio()),3,CYAN);
-        if(v.page().equals("TARGET")){c.fill(0,h-25,w,25,INK);c.text("Escolha o alvo   ENTER / Clique Confirmar   ESC Voltar",8,h-16,CYAN);return;}
+        if(v.page().equals("TARGET"))return; // BattleTargetHud owns the selector and its instructions.
         if(!v.page().equals("MAIN")){HudDesign.submenu(c,v,w,h,mx,my);return;}
         var rects=BattleMenuLayout.main(w,h);
         int cx=(int)(59*u),cy=h-(int)(66*u),radius=(int)(45*u);

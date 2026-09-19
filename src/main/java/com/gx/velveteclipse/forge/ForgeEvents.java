@@ -42,8 +42,8 @@ public final class ForgeEvents {
       Player var1 = var0.getEntity();
       PlayerPersonaData var2 = PlayerPersonaData.load(var1);
       var2.save(var1);
-      RuntimeBridge.sendMessage(var1, "§3[Velvet Eclipse] §fv0.6.12 carregado. §bB§f inicia uma batalha; §d/velvet battle start§f é o fallback por comando.");
-      RuntimeBridge.sendMessage(var1, "§7Shadows reais agora surgem no mundo e também podem ser criadas com §f/summon velvet_eclipse:shadow§7.");
+      RuntimeBridge.sendMessage(var1, "§3[Velvet Eclipse] §fv0.6.14 carregado. §bB§f inicia uma batalha; §d/velvet battle start§f é o fallback por comando.");
+      RuntimeBridge.sendMessage(var1, "§7Shadows surgem durante a Dark Hour. Teste com §f/time set dark_hour§7 e localize a torre com §f/velvet tartarus§7.");
       ShadowWorldService.playerLogin(var1);
       BattleService.sync(var1, "Ready");
    }

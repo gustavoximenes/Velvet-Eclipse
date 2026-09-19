@@ -14,9 +14,10 @@ public final class VelvetEclipseMod {
 
    public VelvetEclipseMod() {
       GeckoLib.initialize();
+      com.gx.velveteclipse.darkhour.DarkHourRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       com.gx.velveteclipse.room.VelvetRoomRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       PersonaRegistry.bootstrap();
       ModNetwork.register();
-      LOGGER.info("Velvet Eclipse 0.6.12 fusion and Velvet Room initialized.");
+      LOGGER.info("Velvet Eclipse 0.6.14 Dark Hour, Tartarus and fusion UI initialized.");
    }
 }
