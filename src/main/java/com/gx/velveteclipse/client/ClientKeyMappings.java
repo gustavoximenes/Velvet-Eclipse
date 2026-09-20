@@ -20,7 +20,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 public final class ClientKeyMappings {
    public static final String CATEGORY = "key.categories.velvet_eclipse";
-   public static final KeyMapping START_BATTLE = mapping("start_battle", 66);
    public static final KeyMapping ATTACK = mapping("battle_attack", 49);
    public static final KeyMapping PERSONA = mapping("battle_persona", 50);
    public static final KeyMapping SKILL = mapping("battle_skill", 51);
@@ -30,7 +29,6 @@ public final class ClientKeyMappings {
    public static final KeyMapping OPTION_7 = mapping("battle_option_7", 55);
    public static final KeyMapping BACK = mapping("battle_back", 259);
    private static final Map<KeyMapping, Boolean> LAST_DOWN = new IdentityHashMap<>();
-   private static int startRequestCooldown;
 
    private ClientKeyMappings() {
    }
@@ -170,16 +168,8 @@ public final class ClientKeyMappings {
       @SubscribeEvent
       public static void onClientTick(ClientTickEvent var0) {
          if (var0.phase == Phase.END) {
-            if (ClientKeyMappings.startRequestCooldown > 0) {
-               ClientKeyMappings.startRequestCooldown--;
-            }
-
             BattleSnapshotS2C var1 = ClientBattleState.snapshot();
             boolean inGame=net.minecraft.client.Minecraft.m_91087_().f_91080_==null;
-            if (ClientKeyMappings.pressedCompat(ClientKeyMappings.START_BATTLE)&&inGame) {
-               requestBattleStart(var1, "KeyMapping tick");
-            }
-
             if (ClientKeyMappings.pressedCompat(ClientKeyMappings.BACK) && inGame && var1 != null && var1.active()) {
                ClientBattleUiState.back();
             }
@@ -258,22 +248,6 @@ public final class ClientKeyMappings {
                case 257,335 -> ClientBattleUiState.confirm(snapshot);
             }
          }
-         if (var0.getAction() == 1) {
-            if (ClientKeyMappings.matchesCompat(ClientKeyMappings.START_BATTLE, var0.getKey(), var0.getScanCode())) {
-               requestBattleStart(ClientBattleState.snapshot(), "InputEvent.Key");
-            }
-         }
-      }
-
-      private static void requestBattleStart(BattleSnapshotS2C var0, String var1) {
-         if(com.gx.velveteclipse.client.exploration.ExplorationClient.blocksMenu()) return;
-         if (ClientKeyMappings.startRequestCooldown <= 0) {
-            if (var0 == null || !var0.active()) {
-               ClientKeyMappings.startRequestCooldown = 8;
-               VelvetEclipseMod.LOGGER.info("Velvet Eclipse: START_BATTLE detected via " + var1 + "; sending start_demo.");
-               ModNetwork.sendAction("start_demo", "");
-            }
-         }
       }
 
       private static void drainBattleActionClicks() {
@@ -298,7 +272,6 @@ public final class ClientKeyMappings {
 
       @SubscribeEvent
       public static void register(RegisterKeyMappingsEvent var0) {
-         var0.register(ClientKeyMappings.START_BATTLE);
          var0.register(ClientKeyMappings.ATTACK);
          var0.register(ClientKeyMappings.PERSONA);
          var0.register(ClientKeyMappings.SKILL);

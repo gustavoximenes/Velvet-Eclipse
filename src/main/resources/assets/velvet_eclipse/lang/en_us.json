@@ -2,7 +2,6 @@
   "mod.velvet_eclipse.name": "Velvet Eclipse",
   "command.velvet_eclipse.no_battle": "You are not in a Velvet Eclipse battle.",
   "key.categories.velvet_eclipse": "Velvet Eclipse",
-  "key.velvet_eclipse.start_battle": "Start battle / encounter",
   "key.velvet_eclipse.battle_attack": "Battle: Attack / Option 1",
   "key.velvet_eclipse.battle_persona": "Battle: Persona / Option 2",
   "key.velvet_eclipse.battle_skill": "Battle: Skill / Option 3",
@@ -97,5 +96,6 @@
   "block.velvet_eclipse.train_lamp": "Monorail Lamp",
   "block.velvet_eclipse.train_rail": "Monorail Rail",
   "item.velvet_eclipse.priestess_figure": "Priestess Figure",
-  "entity.velvet_eclipse.priestess": "Priestess"
+  "entity.velvet_eclipse.priestess": "Priestess",
+  "key.velvet_eclipse.tartarus_map": "Expand Tartarus map"
 }

@@ -1,0 +1,16 @@
+# Velvet Eclipse 0.6.21 — Exploração do Tártaro
+
+- Sacerdotisa nível 30, com 500 + 150 HP por participante. Sentinela e Condutor nível 25, com 180 + 65 HP por participante; os atributos também acompanham o nível.
+- Cada andar comum sorteia 10–20 Shadows no total. A quantidade e as derrotas ficam salvas. Inimigos derrotados não são repostos; fugir não conta como derrotar a Shadow. Os guardiões continuam sozinhos e os andares de transição continuam seguros.
+- `/velvet tartarus shadows <minimo> <maximo>` configura os próximos andares gerados, com limites de 1 a 64 e permissão de operador. Exemplo: `/velvet tartarus shadows 10 20`. Não ressuscita inimigos de andares existentes.
+- Fuga tem chance de 20–80%, partindo de 50% e variando pela diferença de agilidade. Falhar consome o turno. Sucesso oferece oito segundos de proteção contra encontros automáticos. Continua impossível fugir da raid do trem.
+- Afinidades são pessoais e começam desconhecidas: `?` para elemento não testado, sem símbolo adicional para neutro, `!` para fraqueza, escudo para resistência, escudo verde pulsante com `+` para absorção, escudo com `×` para anulação e com seta para reflexão. Errar não revela. Fraqueza descoberta também aparece no chat. O conhecimento normal sobrevive a morte/reentrada; a Sacerdotisa apaga o conhecimento da fase anterior ao trocar de fraqueza. Seu cronômetro não entrega a nova fraqueza.
+- Minimap orientado ao norte, com indicador do jogador, pontos vermelhos para inimigos em setores revelados, escada descoberta e baús vistos e não coletados. `M` abre/fecha o mapa ampliado e pode ser remapeado nas opções. O mapa não abre durante combate. A exploração é individual, persiste ao sair e reiniciar, e é apagada no novo ciclo do Tártaro; terminais descobertos continuam permanentes.
+- Dark Hour dura 30 minutos de tempo real com o servidor aberto, independentemente da velocidade do relógio do mundo. Tempo restante é salvo ao fechar o servidor; o período offline não é descontado. Há contador verde no canto superior direito, inclusive no Tártaro. Ao terminar, amanhece e o servidor encerra combates/raids e retira todos do Tártaro, do trem e da Velvet Room acessada por ele. Quem estava offline volta ao mundo ao entrar fora da Dark Hour. `/time set day` antecipa o encerramento; `/time set dark_hour` inicia/reinicia os 30 minutos. O contador da raid permanece separado, abaixo do contador geral.
+- A tecla B de batalha de teste foi removida. Comandos explícitos de teste continuam disponíveis.
+
+Os andares comuns antigos são reconstruídos uma vez ao serem visitados nesta versão, para migrar as sete vagas reutilizáveis para a população finita. Salas fixas, guardiões vencidos, tesouros fixos coletados e terminais descobertos são preservados. Nos ciclos seguintes, apenas os andares comuns são regenerados normalmente.
+
+Cliente e servidor precisam da mesma versão (protocolo 12). Nenhum bloco ou item novo foi registrado nesta versão; o conteúdo existente permanece na aba criativa Velvet Eclipse.
+
+Validação focada offline: geração/posições, quota e derrotas persistidas, descoberta por jogador, pacotes, fuga e relógio, além da regressão de turnos/All-Out. A prévia em `docs/releases/0.6.21-previews/minimap.png` usa o desenho real da HUD com fonte substituta. Não houve execução do Minecraft nem teste com clientes multiplayer reais.

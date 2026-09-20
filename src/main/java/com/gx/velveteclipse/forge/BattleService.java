@@ -18,6 +18,7 @@ public final class BattleService {
         final LinkedHashMap<UUID,Object> players=new LinkedHashMap<>();
         final Map<UUID,double[]> anchors=new HashMap<>();
         final Map<UUID,UUID> targets=new HashMap<>();
+        final Map<UUID,AffinityKnowledge> raidKnowledge=new HashMap<>();
         final Object level;
         final double[] origin,center;
         final float yaw;
@@ -60,8 +61,8 @@ public final class BattleService {
     public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
         if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null))return null;
         var participants=new ArrayList<BattleCombatant>();for(var p:party)participants.add(combatant(p));
-        var def=PersonaRegistry.persona("umbra_slime").orElseThrow();var instance=new PersonaInstance(def.id(),12,0,Set.of("raid_ice_storm","shade_bite"));
-        int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):90+45*party.size();
+        var def=PersonaRegistry.persona("umbra_slime").orElseThrow();var instance=new PersonaInstance(def.id(),stage==2?30:25,0,Set.of("raid_ice_storm","shade_bite"));
+        int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):180+65*party.size();
         var foe=new BattleCombatant(UUID.randomUUID(),stage==2?"Sacerdotisa":stage==0?"Sentinela do Trem":"Condutor Sombrio",BattleSide.ENEMIES,instance,hp,hp,9999,9999);
         if(stage==2)foe.setRaidBoss(Element.FIRE);participants.add(foe);
         var s=new BattleSession(participants);var g=new Encounter(party.get(0),s,1);g.raid=true;g.raidStage=stage;g.boss=true;g.dungeonFloor=25;
@@ -106,6 +107,7 @@ public final class BattleService {
         if(g.players.isEmpty()){VisualBattleActors.clearEnemies(g.session.id());BATTLES.remove(g.session.id());}
         else if(g.session.state()!=BattleState.ACTIVE){if(!busy(g))finish(g,"Batalha encerrada.");}else syncAll(g,RuntimeBridge.playerName(p)+" saiu da batalha.");
     }
+    public static void abortEncounter(Object p){var g=group(p);if(g==null)return;BATTLES.remove(g.session.id());g.session.cancelPrepared();for(Object member:new ArrayList<>(g.players.values())){AllOutServer.cancel(member);PersonaCinematicServer.clear(member);ModNetwork.sendPresentation(member,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));persist(member,g.session);detach(g,member);sync(member,"A Dark Hour terminou.");}VisualBattleActors.clearEnemies(g.session.id());}
     private static void detach(Encounter g,Object p){UUID id=RuntimeBridge.playerUuid(p);MeleeBattleServer.clear(p);VisualBattleActors.clear(p);MEMBERS.remove(id);g.players.remove(id);g.anchors.remove(id);g.targets.remove(id);}
     public static Entity targetActor(Object p,UUID id){var g=group(p);if(g==null||id==null)return null;Object target=g.players.get(id);return target instanceof Entity e?e:VisualBattleActors.enemy(g.session.id(),id);}
     public static UUID targetId(Object p){var g=group(p);if(g==null)return null;UUID id=RuntimeBridge.playerUuid(p);var r=g.session.prepared();if(r!=null&&r.actor().equals(id))return r.action().targetId();if(g.targets.containsKey(id))return g.targets.get(id);return g.session.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null);}
@@ -121,12 +123,17 @@ public final class BattleService {
         if(busy(g)&&(s.prepared()==null||!s.prepared().actor().equals(id)||!s.prepared().action().equals(action)))return false;
         if(s.currentActor()==null||!s.currentActor().id().equals(id)){sync(p,"Aguarde seu turno.");return false;}
         if(s.prepared()!=null&&!s.prepared().action().equals(action))return false;
-        if(action.type()==BattleActionType.ESCAPE){if(g.raid){sync(p,"Não é possível fugir dentro do trem.");return false;}stop(p);return true;}
+        if(action.type()==BattleActionType.ESCAPE){if(g.raid){sync(p,"Não é possível fugir dentro do trem.");return false;}if(s.attemptEscape(id)){ShadowWorldService.escapeGrace(p);stop(p);}else{g.delay=28;syncAll(g,"A fuga de "+RuntimeBridge.playerName(p)+" falhou! Turno consumido.");}return true;}
         if(action.type()==BattleActionType.ITEM){var data=PlayerPersonaData.load(p);if(!data.consumePulseTonic()){sync(p,"Sem Pulse Tonic.");return false;}data.save(p);}
-        var reserved=s.prepared();var result=s.perform(id,action);
+        var reserved=s.prepared();if(reserved==null)reserved=s.prepare(id,action);var result=s.perform(id,action);
+        if(reserved!=null&&s.prepared()==null)for(var entry:reserved.hits().entrySet()){
+            var target=s.find(entry.getKey()).orElse(null);var hit=entry.getValue();if(target==null||target.side()!=BattleSide.ENEMIES||hit.missed()||hit.element()==Element.NONE)continue;
+            String key=knowledgeKey(g,target);var known=knowledge(g,p);boolean discovered=known.get(key,hit.element())==null;
+            if(g.raid&&g.raidStage==2)known.learn(key,hit);else BattleKnowledge.learn(p,key,hit);
+            if(discovered&&hit.affinity()==Affinity.WEAK)RuntimeBridge.sendMessage(p,"§bFraqueza descoberta: "+target.name()+" • "+hit.element().name());
+        }
         if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(action.type()==BattleActionType.ALL_OUT&&s.state()==BattleState.PLAYERS_WON)g.shuffleVictory=true;
-        if(!g.raid&&reserved!=null&&s.prepared()==null)reserved.hits().forEach((target,hit)->s.find(target).ifPresent(t->BattleKnowledge.learn(p,t.persona().definitionId(),hit)));
         for(Object member:g.players.values())persist(member,s);
         String message=String.join("  •  ",result.log());g.delay=28;
         if(s.state()!=BattleState.ACTIVE){g.ending=message;if(!busy(g)){finish(g,message);return true;}}
@@ -145,7 +152,6 @@ public final class BattleService {
         if(type.equals("join")){try{if(!join(p,UUID.fromString(value)))RuntimeBridge.sendMessage(p,"§eEste combate não está disponível para entrada agora.");}catch(IllegalArgumentException ignored){}return;}
         if(actionBusy(p))return;
         switch(type){
-            case "start_demo"->{if(current(p)==null)startDemo(p);}
             case "attack"->{var s=current(p);if(s!=null){UUID enemy=target==null?s.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null):target;if(enemy!=null)MeleeBattleServer.start(p,BattleAction.attack(enemy));}}
             case "skill"->PersonaDelayedActions.queueSkill(p,value,target);
             case "persona"->switchPersona(p,value);
@@ -184,12 +190,16 @@ public final class BattleService {
         for(Object p:g.players.values())persist(p,s);
         if(s.state()!=BattleState.ACTIVE)finish(g,String.join(" • ",result.log()));else syncAll(g,String.join(" • ",result.log()));
     }
+    private static String knowledgeKey(Encounter g,BattleCombatant c){return g.raid?"raid_"+g.raidStage:c.persona().definitionId();}
+    private static AffinityKnowledge knowledge(Encounter g,Object p){return g.raid&&g.raidStage==2?g.raidKnowledge.computeIfAbsent(RuntimeBridge.playerUuid(p),id->new AffinityKnowledge()):BattleKnowledge.load(p);}
+    public static void resetRaidKnowledge(UUID battle){var g=BATTLES.get(battle);if(g!=null)g.raidKnowledge.clear();}
+    public static String knownRaidWeakness(Object p){var g=group(p);if(g==null||!g.raid||g.raidStage!=2)return "UNKNOWN";var k=knowledge(g,p);return Arrays.stream(Element.values()).filter(e->k.get("raid_2",e)==Affinity.WEAK).map(Enum::name).findFirst().orElse("UNKNOWN");}
     private static void syncAll(Encounter g,String message){for(Object p:g.players.values())sync(p,message);}
     public static void sync(Object p,String message){
         if(p==null)return;var data=PlayerPersonaData.load(p);var g=group(p);var actor=g==null?null:g.session.find(RuntimeBridge.playerUuid(p)).orElse(null);
         var persona=actor==null?data.activeInstance():actor.persona();var targets=new ArrayList<BattleRosterS2C.Target>();
         if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;
-            String affinities=ally?"":g.raid?(g.raidStage==2?java.util.Arrays.stream(Element.values()).filter(e->e!=Element.NONE&&e!=Element.SUPPORT&&e!=Element.HEALING).map(e->e+":"+c.affinity(e)).collect(java.util.stream.Collectors.joining(",")):""):BattleKnowledge.load(p).forEnemy(c.persona().definitionId());
+            String affinities=ally?"":knowledge(g,p).forEnemy(knowledgeKey(g,c));
             targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name(),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
         ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));
         if(g==null)ModNetwork.sendPresentation(p,BattleTacticsS2C.empty());

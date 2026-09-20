@@ -19,7 +19,7 @@ public final class TartarusInteriorLayout {
  public static boolean transitionFloor(int f){return f>0&&f<=LAST_FLOOR&&f%25==0;}
  public static boolean fixedFloor(int f){return f==0||bossFloor(f)||transitionFloor(f);}
  public static String accent(int f){return new String[]{"window","azure","violet","amber","rose"}[Math.floorMod((f-1)/25,5)];}
- public static int shadowLimit(int floor){return bossFloor(floor)?1:transitionFloor(floor)||floor==0?0:7;}
+ public static int shadowLimit(int floor){return bossFloor(floor)?1:transitionFloor(floor)||floor==0?0:20;}
  public record Prop(String kind,int index,Point at,float yaw){}
  public static Point terminal(int f){return f==0?new Point(18,18):bossFloor(f)?new Point(6,291):transitionFloor(f)?new Point(15,268):null;}
  public static List<Prop> props(long seed,int f){return props(seed,f,floor(seed,f));}

@@ -111,6 +111,12 @@ public final class BattleSession {
       return this.turnOrder.stream().filter(BattleCombatant::alive).filter(var1x -> var1x.side() != var1.side()).toList();
    }
 
+   public double escapeChance(){var a=currentActor();if(a==null)return 0;double agility=enemiesOf(a).stream().mapToInt(c->c.stats().agility()).average().orElse(a.stats().agility());return Math.max(.20,Math.min(.80,.50+(a.stats().agility()-agility)*.02));}
+   /** A failed attempt consumes the turn; the caller detaches the successful player. */
+   public boolean attemptEscape(UUID actor){
+      if(state!=BattleState.ACTIVE||prepared!=null||currentActor()==null||!currentActor().id().equals(actor))return false;
+      currentActor().setGuarding(false);boolean success=random.nextDouble()<escapeChance();if(!success)advanceTurn();return success;
+   }
    public BattleResolution perform(UUID var1, BattleAction var2) {
       if(prepared!=null&&(!prepared.actor().equals(var1)||!prepared.action().equals(var2)))
          return new BattleResolution(state,false,List.of("An action is already in progress."));
@@ -151,8 +157,8 @@ public final class BattleSession {
                   var3.add(var4.name() + " braces for the next attack.");
                   break;
                case ESCAPE:
-                  this.state = BattleState.ABORTED;
-                  var3.add(var4.name() + " escaped the battle.");
+                  boolean escaped=attemptEscape(var1);if(escaped)this.state=BattleState.ABORTED;
+                  var3.add(escaped?var4.name()+" fugiu da batalha.":"A fuga falhou! Você perdeu o turno.");
                   return new BattleResolution(this.state, false, List.copyOf(var3));
                case ATTACK:
                   BattleCombatant var9 = this.validEnemyTarget(var4, var2.targetId());

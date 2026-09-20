@@ -8,7 +8,7 @@ public final class TerminalScreen extends Screen {
  private final TartarusTerminalNetwork.Response data;private int selected,offset;private final long opened=System.nanoTime();
  public TerminalScreen(TartarusTerminalNetwork.Response data){super(Component.m_237113_("Selecionar terminal"));this.data=data;selected=Math.max(0,data.floors().indexOf(data.current()));offset=Math.max(0,selected-7);}
  @Override public boolean m_7043_(){return false;}
- @Override public void m_86600_(){if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active())m_7379_();}
+ @Override public void m_86600_(){if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()||!com.gx.velveteclipse.darkhour.TartarusDungeonService.inside(net.minecraft.client.Minecraft.m_91087_().f_91074_))m_7379_();}
  private void move(int n){selected=Math.floorMod(selected+n,data.floors().size());offset=Math.min(offset,selected);if(selected>=offset+8)offset=selected-7;}
  private void choose(){TartarusTerminalNetwork.request(-1,data.floors().get(selected));m_7379_();}
  @Override public boolean m_7933_(int k,int sc,int mods){if(k==265){move(-1);return true;}if(k==264){move(1);return true;}if(k==257||k==335){choose();return true;}return super.m_7933_(k,sc,mods);}

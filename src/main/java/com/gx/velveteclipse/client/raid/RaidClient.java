@@ -15,7 +15,7 @@ public final class RaidClient {
  @SubscribeEvent public static void hud(RenderGuiEvent.Post e){
   if(data.mode().isEmpty()||data.mode().equals("lobby")||data.mode().equals("building")||data.mode().equals("dialogue"))return;
   var m=Minecraft.m_91087_();if(m.f_91074_==null)return;var g=e.getGuiGraphics();int w=m.m_91268_().m_85445_();double scale=Math.min(w/900.0,m.m_91268_().m_85446_()/500.0);
-  var pose=g.m_280168_();pose.m_85836_();pose.m_85837_(w-310*scale,8,200);pose.m_85841_((float)scale,(float)scale,1);
+  var pose=g.m_280168_();pose.m_85836_();pose.m_85837_(w-310*scale,8+com.gx.velveteclipse.client.tartarus.TartarusMapClient.clockHeight(),200);pose.m_85841_((float)scale,(float)scale,1);
   try{g.m_286007_(() -> {var c=new MenuCanvas(g);c.poly(new double[]{12,0,304,0,288,85,0,85},0xED051333);c.fill(16,11,3,60,0xFF38E7F0);
    if(data.stage()==2&&!data.weakness().isEmpty()){
     long elapsed=data.mode().equals("battle")?(System.nanoTime()-received)/1_000_000:0;long ms=Math.max(0,data.milliseconds()-elapsed);long seconds=(ms+999)/1000;
@@ -25,7 +25,7 @@ public final class RaidClient {
   });}finally{g.m_280262_();pose.m_85849_();}
   if(data.line().startsWith("ACELERAÇÃO")&&System.nanoTime()-changed<4_500_000_000L){var c=new MenuCanvas(g);g.m_286007_(() -> c.text(data.line(),14,22,12,0xFFFF647C,0));}
  }
- private static String element(String s){return switch(s){case "FIRE"->"FOGO";case "ICE"->"GELO";case "WIND"->"VENTO";case "ELECTRIC"->"ELÉTRICO";case "LIGHT"->"LUZ";case "DARK"->"TREVAS";case "PSY"->"PSÍQUICO";default->s;};}
+ private static String element(String s){return switch(s){case "UNKNOWN"->"?";case "FIRE"->"FOGO";case "ICE"->"GELO";case "WIND"->"VENTO";case "ELECTRIC"->"ELÉTRICO";case "LIGHT"->"LUZ";case "DARK"->"TREVAS";case "PSY"->"PSÍQUICO";default->s;};}
  private static void next(){if(sent==data.revision()||System.nanoTime()-changed<400_000_000L)return;sent=data.revision();RaidNetwork.request("next",sent);}
  public static final class RaidScreen extends Screen{
   RaidScreen(){super(Component.m_237113_("Operação Monorail"));}

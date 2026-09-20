@@ -57,7 +57,7 @@ public final class RaidService {
   if(r.dialogue<n)return switch(r.dialogue%4){case 1->"Os vagões estão vazios... mas alguma coisa se moveu à frente.";case 2->"As portas se fecharam. Se isto é uma armadilha, vamos abrir caminho.";case 3->"Há duas presenças no corredor. Primeiro cuidamos delas, depois seguimos.";default->"Estou pronto. Vou proteger a retaguarda enquanto avançamos.";};
   return r.dialogue==n?"O trem está acelerando. A presença mais forte está no último vagão.":"Ao enfrentá-la teremos cinco minutos. Observem a fraqueza: ela pode mudar durante a luta.";
  }
- private static void send(Run r,ServerPlayer p){String text=r.mode.equals("dialogue")?line(r):r.message;RaidNetwork.send(p,new RaidNetwork.View(r.mode,List.copyOf(r.names.values()),r.capacity,r.leader().equals(p.m_20148_()),r.revision,r.dialogue%r.names.size(),text,r.rules==null?0:(int)r.rules.remaining(now()),r.rules==null?"":r.rules.weakness().name(),r.stage));}
+ private static void send(Run r,ServerPlayer p){String text=r.mode.equals("dialogue")?line(r):r.message;RaidNetwork.send(p,new RaidNetwork.View(r.mode,List.copyOf(r.names.values()),r.capacity,r.leader().equals(p.m_20148_()),r.revision,r.dialogue%r.names.size(),text,r.rules==null?0:(int)r.rules.remaining(now()),r.rules==null?"":BattleService.knownRaidWeakness(p),r.stage));}
  private static void broadcast(Run r){for(var p:players(r))send(r,p);}
  private static void enter(Run r){int i=0;for(var p:players(r)){
   var t=new CompoundTag();t.m_128347_("x",p.m_20185_());t.m_128347_("y",p.m_20186_());t.m_128347_("z",p.m_20189_());p.getPersistentData().m_128365_(RETURN,t);
@@ -83,7 +83,7 @@ public final class RaidService {
    var boss=s.participants().stream().filter(c->c.side()==BattleSide.ENEMIES).findFirst().orElseThrow();
    if(!boss.alive()){r.rules.stop(now());r.mode="victory";r.message="A Sacerdotisa foi derrotada!";broadcast(r);return;}
    int loss=r.rules.update(boss.hp(),boss.maxHp(),RANDOM);boss.setRaidBoss(r.rules.weakness());
-   if(loss>0){r.revision++;r.message="ACELERAÇÃO! −"+loss+"s";broadcast(r);}
+   if(loss>0){BattleService.resetRaidKnowledge(s.id());r.revision++;r.message="ACELERAÇÃO! −"+loss+"s";broadcast(r);}
   }
  }
  public static boolean iceTurn(UUID id){for(var r:RUNS)if(id.equals(r.battle)&&r.rules!=null){boolean ice=r.rules.iceTurn();r.pulseUntil=now()+2800;if(r.actor!=null)r.actor.m_146926_(-45);return ice;}return false;}
@@ -124,6 +124,7 @@ public final class RaidService {
   if(l==null)l=p.m_20194_().m_129783_();double x=t.m_128441_("x")?t.m_128459_("x"):TartarusInteriorLayout.origin(25)+15.5;
   p.m_8999_(l,x,t.m_128441_("y")?t.m_128459_("y"):65.05,t.m_128441_("z")?t.m_128459_("z"):256.5,90,0);p.f_19789_=0;p.getPersistentData().m_128473_(RETURN);
  }
+ public static void endDarkHour(){for(var r:List.copyOf(RUNS)){for(var p:players(r))BattleService.abortEncounter(p);fail(r,"A Dark Hour terminou. A operaÃ§Ã£o foi encerrada.");}}
  private static void cleanup(Run r){if(r.actor!=null)r.actor.m_146870_();for(UUID id:r.names.keySet())MEMBERS.remove(id);RUNS.remove(r);}
  private static void fail(Run r,String message){fail(r,message,false);}
  private static void fail(Run r,String message,boolean fatal){

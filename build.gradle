@@ -1,6 +1,6 @@
 plugins { id 'java' }
 group = 'com.gx.velveteclipse'
-version = '0.6.20-monorail-raid'
+version = '0.6.21-tartarus-map'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -140,3 +140,6 @@ tasks.named('check') { dependsOn 'raidTest' }
 
 tasks.register('progressionTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.ProgressionAudit' }
 tasks.named('check') { dependsOn 'progressionTest' }
+
+tasks.register('tartarusMapTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusMapAudit'; jvmArgs '-Djava.awt.headless=true' }
+tasks.named('check') { dependsOn 'tartarusMapTest' }

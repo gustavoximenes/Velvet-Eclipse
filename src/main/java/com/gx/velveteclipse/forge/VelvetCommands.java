@@ -158,14 +158,14 @@ public final class VelvetCommands {
    }
 
    private static int help(Object var0) {
-      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.20 Monorail Raid");
+      RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.21 Tartarus Map");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
       RuntimeBridge.sendMessage(var0, "§d/velvet player level <1..99> [jogador] §7- nível do jogador no mod (OP)");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona level <id|active> <1..99> [jogador] §7- nível da Persona (OP)");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona list|owned|add <id>|remove <id>|equip <id> (give continua disponível)");
       RuntimeBridge.sendMessage(var0, "§d/velvet fusion preview|perform <persona1> <persona2> [skill]");
       RuntimeBridge.sendMessage(var0, "§d/velvet diagnostics §7- verifica rede, EntityType, mundo, Shadow e BattleSession");
-      RuntimeBridge.sendMessage(var0, "§d/velvet battle start §7- inicia uma batalha imediatamente (fallback do B)");
+      RuntimeBridge.sendMessage(var0, "§d/velvet battle start §7- inicia uma batalha imediatamente (teste por comando)");
       RuntimeBridge.sendMessage(var0, "§d/velvet battle nearest §7- inicia batalha contra a Shadow próxima");
       RuntimeBridge.sendMessage(var0, "§d/velvet shadow spawn §7- cria uma Shadow real perto de você");
       RuntimeBridge.sendMessage(var0, "§7Também funciona: §f/summon velvet_eclipse:shadow§7.");

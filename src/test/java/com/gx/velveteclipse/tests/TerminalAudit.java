@@ -12,7 +12,7 @@ public final class TerminalAudit {
  private static int checks;
  private static void check(boolean b,String m){checks++;if(!b)throw new AssertionError(m);}
  public static void main(String[] args)throws Exception{
-  for(int f=1;f<=250;f++)check(TartarusInteriorLayout.shadowLimit(f)==(f%25==0?0:f%10==0?1:7),"guardian/transition precedence");
+  for(int f=1;f<=250;f++)check(TartarusInteriorLayout.shadowLimit(f)==(f%25==0?0:f%10==0?1:20),"guardian/transition precedence");
   var out=Path.of("build/reports/terminals");Files.createDirectories(out);
   for(int f:new int[]{0,1,24,25,26,50,250}){
    var p=TartarusInteriorLayout.floor(84,f);var props=TartarusInteriorLayout.props(84,f,p);var blocks=new HashMap<String,String>();for(var c:p.cells())blocks.put(c.x()+","+c.y()+","+c.z(),c.material());

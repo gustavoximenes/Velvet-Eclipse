@@ -22,7 +22,7 @@ public final class IntervalAudit {
   return found;
  }
  public static void main(String[] args)throws Exception{
-  for(int f=1;f<=250;f++)check(TartarusInteriorLayout.shadowLimit(f)==(f%25==0?0:f%10==0?1:7),"one guardian every tenth floor, seven ordinary Shadows otherwise");
+  for(int f=1;f<=250;f++)check(TartarusInteriorLayout.shadowLimit(f)==(f%25==0?0:f%10==0?1:20),"one guardian every tenth floor, twenty default maximum ordinary Shadows otherwise");
   var out=Path.of("build/reports/interval");Files.createDirectories(out);
   for(int f:new int[]{10,40,170,240}){
    var p=TartarusInteriorLayout.floor(481,f);var before=reachable(p,false);var after=reachable(p,true);

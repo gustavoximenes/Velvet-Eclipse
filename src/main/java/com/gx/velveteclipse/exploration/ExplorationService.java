@@ -115,6 +115,7 @@ public final class ExplorationService {
         if(s.shadow instanceof Mob mob&&!mob.m_213877_())mob.m_21557_(s.previousNoAi);
         s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);
     }
+    public static void expire(ServerPlayer p){State s=PLAYERS.get(p.m_20148_());if(s!=null)cancel(s);}
     private static void cancel(State s){release(s);s.mode=Mode.EXPLORATION;s.tick=0;send(s);}
     private static void send(State s){ExplorationNetwork.reply(s.player,s.mode,s.tick,s.sequence,s.shadow==null?-1:s.shadow.m_19879_(),s.yaw,s.start==null?s.player.m_20182_():s.start,s.end==null?s.player.m_20182_():s.end);}
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){State s=PLAYERS.remove(e.getEntity().m_20148_());if(s!=null)release(s);}

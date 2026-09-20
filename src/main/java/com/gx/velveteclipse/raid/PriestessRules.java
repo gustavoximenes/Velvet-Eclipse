@@ -18,5 +18,5 @@ public final class PriestessRules {
    var options=Arrays.stream(TYPES).filter(t->t!=weakness).toList();weakness=options.get(random.nextInt(options.size()));
   }return lost;
  }
- public static int bossHp(int players){return 260+110*Math.max(1,players);}
+ public static int bossHp(int players){return 500+150*Math.max(1,players);}
 }

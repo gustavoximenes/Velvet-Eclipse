@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.21 — Mapa e exploração
+
+Minimapa expansível por M, Shadows finitas e configuráveis, afinidades descobertas por acerto, fuga com chance de falha, chefes do trem fortalecidos e Dark Hour de 30 minutos com contador e saída automática. [Uso, comandos e validação](docs/TARTARUS_MAP.md).
+
 # Versão 0.6.20 — Operação Monorail
 
 Raid pela porta Monad do andar 25: trem próprio, lobby, diálogos por ordem de entrada, dois subchefes e a Sacerdotisa modelada. Timer de cinco minutos, gelo em área e fraqueza variável. Limite padrão de cinco jogadores; comando `/velvetraid maxplayers 1..12`. [Uso e validação](docs/MONORAIL_RAID.md).

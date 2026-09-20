@@ -79,7 +79,7 @@ public final class BattleTargetHud {
         if(marker==null&&!acting&&!targeting&&snapshot.playerTurn())for(var t:roster){
             var box=boxes.get(t.id());if(!t.ally()&&t.hp()>0&&box!=null&&box.contains(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY())){marker=t.id();break;}
         }
-        for(var t:roster){if(t.hp()<=0||!t.id().equals(marker))continue;var at=positions.get(t.id());if(at==null)continue;
+        for(var t:roster){if(t.hp()<=0||!t.id().equals(marker))continue;if(!t.ally())EnemyAffinityHud.paint(c,t.known(),w,h,u,targeting);var at=positions.get(t.id());if(at==null)continue;
             if(targeting&&candidates().stream().noneMatch(a->a.id().equals(t.id())))continue;
             Affinity affinity=t.ally()?Affinity.NORMAL:null;for(String pair:t.known().split(",")){var a=pair.split(":");if(a.length==2&&a[0].equals(element.name()))try{affinity=Affinity.valueOf(a[1]);}catch(IllegalArgumentException ignoredError){}}
             int px=(int)Math.max(25*u,Math.min(w-110*u,at[0])),py=(int)Math.max(45*u,Math.min(h-90*u,at[1]));double ratio=t.hp()/(double)Math.max(1,t.maxHp());

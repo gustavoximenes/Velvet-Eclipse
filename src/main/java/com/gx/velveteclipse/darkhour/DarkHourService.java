@@ -21,11 +21,11 @@ public final class DarkHourService {
  public static boolean eligibleType(Class<?> type){return Mob.class.isAssignableFrom(type)&&!com.gx.velveteclipse.entity.VelvetPersonaGeoEntity.class.isAssignableFrom(type)&&!com.gx.velveteclipse.entity.VelvetShadowGeoEntity.class.isAssignableFrom(type);}
  public static boolean eligible(Entity entity){return eligibleType(entity.getClass())&&!ShadowRegistry.isShadow(entity)&&!entity.m_19880_().contains("velvet_persona_actor")&&!entity.m_19880_().contains("velvet_battle_actor");}
  @SubscribeEvent public static void commands(RegisterCommandsEvent e){
-  for(String name:new String[]{"dark_hour","darkhour"})e.getDispatcher().register(m_82127_("time").requires(s->s.m_6761_(2)).then(m_82127_("set").then(m_82127_(name).executes(c->net.minecraft.server.commands.TimeCommand.m_139077_(c.getSource(),DarkHourCycle.START)))));
+  for(String name:new String[]{"dark_hour","darkhour"})e.getDispatcher().register(m_82127_("time").requires(s->s.m_6761_(2)).then(m_82127_("set").then(m_82127_(name).executes(c->DarkHourDeadline.start(c.getSource())))));
   e.getDispatcher().register(m_82127_("locate").requires(s->s.m_6761_(2)).then(m_82127_("tartarus").executes(c->TartarusService.locate(c.getSource()))).then(m_82127_("structure").then(m_82127_("velvet_eclipse:tartarus").executes(c->TartarusService.locate(c.getSource())))));
   e.getDispatcher().register(m_82127_("velvet").then(m_82127_("tartarus").executes(c->TartarusService.locate(c.getSource())).then(m_82127_("owner").requires(s->s.m_6761_(4)).then(net.minecraft.commands.Commands.m_82129_("player",net.minecraft.commands.arguments.EntityArgument.m_91466_()).executes(c->TartarusService.owner(c.getSource(),net.minecraft.commands.arguments.EntityArgument.m_91474_(c,"player")))))));
  }
- @SubscribeEvent public static void levelTick(TickEvent.LevelTickEvent e){if(e.phase==TickEvent.Phase.END&&e.level instanceof ServerLevel level&&level.m_46472_().equals(Level.f_46428_)){TartarusService.tick(level);TartarusDungeonService.cycle(level);}}
+ @SubscribeEvent public static void levelTick(TickEvent.LevelTickEvent e){if(e.phase==TickEvent.Phase.END&&e.level instanceof ServerLevel level&&level.m_46472_().equals(Level.f_46428_)){DarkHourDeadline.tick(level);TartarusService.tick(level);TartarusDungeonService.cycle(level);}}
  @SubscribeEvent public static void living(LivingEvent.LivingTickEvent e){
   var entity=e.getEntity();if(!(entity instanceof Mob mob)||entity.m_9236_().f_46443_)return;
   CompoundTag data=entity.getPersistentData();

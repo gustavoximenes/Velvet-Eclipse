@@ -2,7 +2,6 @@
   "mod.velvet_eclipse.name": "Velvet Eclipse",
   "command.velvet_eclipse.no_battle": "Você não está em uma batalha do Velvet Eclipse.",
   "key.categories.velvet_eclipse": "Velvet Eclipse",
-  "key.velvet_eclipse.start_battle": "Iniciar batalha / encontro",
   "key.velvet_eclipse.battle_attack": "Batalha: Atacar / Opção 1",
   "key.velvet_eclipse.battle_persona": "Batalha: Persona / Opção 2",
   "key.velvet_eclipse.battle_skill": "Batalha: Skill / Opção 3",
@@ -97,5 +96,6 @@
   "block.velvet_eclipse.train_lamp": "Luminária do Monorail",
   "block.velvet_eclipse.train_rail": "Barra do Monorail",
   "item.velvet_eclipse.priestess_figure": "Figura da Sacerdotisa",
-  "entity.velvet_eclipse.priestess": "Sacerdotisa"
+  "entity.velvet_eclipse.priestess": "Sacerdotisa",
+  "key.velvet_eclipse.tartarus_map": "Expandir mapa do Tártaro"
 }

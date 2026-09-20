@@ -147,7 +147,10 @@ public final class ShadowWorldService {
       }
    }
 
+   public static void escapeGrace(Object p){if(p instanceof Entity e)e.getPersistentData().m_128356_("velvet_escape_until",System.currentTimeMillis()+8000);}
+   private static boolean escaping(Object p){return p instanceof Entity e&&e.getPersistentData().m_128454_("velvet_escape_until")>System.currentTimeMillis();}
    public static Object nearest(Object var0, double var1) {
+      if(escaping(var0))return null;
       if(com.gx.velveteclipse.raid.RaidService.inside(var0))return null;
       if (var0 == null) {
          return null;
@@ -247,6 +250,7 @@ public final class ShadowWorldService {
    }
 
    private static Object nearestEncounterShadow(Object var0, double var1) {
+      if(escaping(var0)||com.gx.velveteclipse.raid.RaidService.inside(var0))return null;
       if (var0 == null) {
          return null;
       } else {
