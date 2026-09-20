@@ -16,7 +16,7 @@ public final class MenuDesign {
     public record Rect(double x,double y,double w,double h){public boolean contains(double px,double py){return px>=x&&px<x+w&&py>=y&&py<y+h;}}
     public record Row(String title,String tag,int slot){}
     public record View(boolean home,int tab,int selected,int offset,List<Row> rows,String title,List<String> detail,
-                       int[] stats,String action,String message,String player,int wallet,long day,long time,double seconds,boolean motion,
+                       int[] stats,String action,String message,String player,long wallet,long day,long time,double seconds,boolean motion,
                        double selection,double entered,double pageAge){}
     private static final int[] HOME_X={374,418,405,374,405,397,365,373,395};
     private static final int[] HOME_WIDTH={116,101,137,186,137,141,266,224,182};
@@ -48,7 +48,7 @@ public final class MenuDesign {
     public static void foreground(Canvas c,View v){
         if(v.home){
             c.fill(61,28,140,46,WHITE);c.fill(61,28,140,1,INK);c.fill(61,73,140,1,INK);
-            c.text(String.format(Locale.ROOT,"%,d",v.wallet),72,35,18,INK,0);c.text("EMERALDS / CARTEIRA",72,59,7,INK,0);
+            String money=String.format(Locale.JAPAN,"¥ %,d",v.wallet);c.text(money,72,35,Math.min(18,18*118/Math.max(118,c.width(money,18))),INK,0);c.text("YEN / CARTEIRA",72,59,7,INK,0);
             c.text(v.player.toUpperCase(Locale.ROOT),590,42,16,WHITE,-4);
         }else{
             c.text("MENU",27,35,34,WHITE,-8);c.text(v.player,27,94,10,CYAN,0);

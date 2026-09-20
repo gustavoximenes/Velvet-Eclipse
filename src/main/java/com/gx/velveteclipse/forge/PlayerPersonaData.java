@@ -19,6 +19,9 @@ public final class PlayerPersonaData {
    private int sp = 45;
    private int pulseTonics = 3;
    private int playerLevel=1, playerExperience;
+   private long yen;
+   public long yen(){return yen;}
+   public void addYen(long amount){if(amount>0)yen=Math.min(9_999_999_999L,yen+Math.min(amount,9_999_999_999L));}
    public int playerLevel(){return playerLevel;}
    public int playerExperience(){return playerExperience;}
    public int playerNextExperience(){return PersonaInstance.experienceForNextLevel(playerLevel);}
@@ -191,6 +194,7 @@ public final class PlayerPersonaData {
                var1.activePersona = var4[5];
                var1.pulseTonics = Math.max(0, Integer.parseInt(var4[6]));
                if(var4.length>=10){var1.playerLevel=clamp(Integer.parseInt(var4[8]),1,99);var1.playerExperience=clamp(Integer.parseInt(var4[9]),0,var1.playerNextExperience()-1);}
+               if(var4.length>=11)var1.yen=Math.max(0,Math.min(9_999_999_999L,Long.parseLong(var4[10])));
                var1.roster.clear();
                if (!var4[7].isBlank()) {
                   for (String var8 : var4[7].split(";")) {
@@ -270,7 +274,7 @@ public final class PlayerPersonaData {
          + "|"
          + this.pulseTonics
          + "|"
-         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience;
+         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen;
    }
 
    private static String encodePersona(PersonaInstance var0) {

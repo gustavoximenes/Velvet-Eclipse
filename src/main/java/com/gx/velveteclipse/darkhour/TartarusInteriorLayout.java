@@ -81,7 +81,10 @@ public final class TartarusInteriorLayout {
   }
   b.box(stairs.x-3,1,stairs.z-6,stairs.x+3,8,stairs.z-4,"wall");
   b.box(stairs.x-2,9,stairs.z-6,stairs.x+2,12,stairs.z-6,floor==LAST_FLOOR?"summit":"forward");
-  var start=centers.get(0);b.box(start.x-2,1,start.z+7,start.x+2,4,start.z+7,"back");spawns.remove(start);
+  // First room occupies the NW corner: its north wall can never carry a corridor.
+  var start=centers.get(0);int backZ=start.z-radii[0]-1;
+  b.box(start.x-3,0,backZ-1,start.x+3,5,backZ-1,"wall");
+  b.box(start.x-2,1,backZ,start.x+2,4,backZ,"back");spawns.remove(start);
   return new Plan(List.copyOf(b.blocks.values()),new Point(start.x,start.z+3),stairs,List.copyOf(spawns),Set.copyOf(tiles));
  }
 }

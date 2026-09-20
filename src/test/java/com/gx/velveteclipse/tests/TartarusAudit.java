@@ -26,6 +26,7 @@ public final class TartarusAudit {
   for(int f:new int[]{1,2,3,7,20,83,84,166,167,249,250}){
    var p=TartarusInteriorLayout.floor(781241,f);reachable(p);shapes.add(p.walkable().hashCode());
    check(p.spawns().size()>=7,"seven distinct Shadow slots");check(p.cells().stream().map(c->key(c.x(),c.y(),c.z())).distinct().count()==p.cells().size(),"no duplicate blocks");
+   for(var back:p.cells().stream().filter(c->c.material().equals("back")).toList())check(!p.walkable().contains(new TartarusInteriorLayout.Point(back.x(),back.z())),"return portal never occupies a corridor or room passage");
    check(p.cells().stream().allMatch(c->Math.abs(c.x())<96&&Math.abs(c.z())<96&&c.y()>=0&&c.y()<=13),"floors stay within separate plots");
    check(p.cells().stream().anyMatch(c->c.material().equals(f==250?"summit":"forward")),"last floor terminates instead of floor 251");
   }

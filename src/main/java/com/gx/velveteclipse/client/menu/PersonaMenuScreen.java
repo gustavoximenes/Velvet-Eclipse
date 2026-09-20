@@ -175,8 +175,8 @@ public final class PersonaMenuScreen extends Screen {
                 else{detail.add("Retornar ao mundo.");action="Fechar menu";}
             }
         }
-        rows=list;adjustScroll();int emeralds=0;for(int i=0;i<36;i++){var stack=item(i);if(!stack.m_41619_()&&"minecraft:emerald".equals(String.valueOf(ForgeRegistries.ITEMS.getKey(stack.m_41720_()))))emeralds+=stack.m_41613_();}
-        return new MenuDesign.View(home,tab,selected,offset,rows,title,detail,stats,action,seconds-messageAt<5?message:"",player.m_36316_().getName(),emeralds,data.day(),data.time(),seconds,motion,selection,seconds-started,seconds-changed);
+        rows=list;adjustScroll();
+        return new MenuDesign.View(home,tab,selected,offset,rows,title,detail,stats,action,seconds-messageAt<5?message:"",player.m_36316_().getName(),data.yen(),data.day(),data.time(),seconds,motion,selection,seconds-started,seconds-changed);
     }
     private static String cost(SkillDefinition s){return s.spCost()>0?s.spCost()+" SP":s.hpPercentCost()>0?s.hpPercentCost()+"% HP":"Sem custo";}
     private void activate(){

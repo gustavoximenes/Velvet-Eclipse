@@ -17,7 +17,8 @@ public final class VelvetEclipseMod {
       com.gx.velveteclipse.darkhour.DarkHourRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       com.gx.velveteclipse.room.VelvetRoomRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       PersonaRegistry.bootstrap();
+      com.gx.velveteclipse.shuffle.SkillCardRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       ModNetwork.register();
-      LOGGER.info("Velvet Eclipse 0.6.14 Dark Hour, Tartarus and fusion UI initialized.");
+      LOGGER.info("Velvet Eclipse 0.6.16 Shuffle Time, yen and Skill Cards initialized.");
    }
 }

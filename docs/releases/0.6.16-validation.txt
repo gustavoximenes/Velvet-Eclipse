@@ -1,0 +1,6 @@
+PASS shuffle: 1357 checks; persisted offers, replay protection, five reward types, floor gates, yen migration, learning and card layout. Offline UI previews generated.
+PASS tartarus: 7522 checks; 11 representative floors, connected rooms, stair/portal clearance, tier closure, seed stability, floor 250 cap, combat progression and saved state. Offline only.
+BUILD SUCCESSFUL: shuffleTest, jar, sourcesJar. Tartarus audit passed before final build; geometry unchanged since that audit.
+JAR integrity, release version, implementation classes, 19 Skill Card models and dimension resources verified.
+Offline card, HUD and animation previews inspected. No Minecraft or two-client execution.
+SHA256: BA9D486EB98C26132AF4523ED9B2DA910693CC7F0AD3F78BE253AED76E96951D

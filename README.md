@@ -1,3 +1,12 @@
+# Velvet Eclipse 0.6.16 — Shuffle Time
+
+- Shuffle Time acumulável após vitória com All-Out Attack, HUD de disponibilidade e abertura por P.
+- Cartas animadas de Persona, Copas, Coins, Wands e Swords, com recompensas por andar e modelos 3D das Personas.
+- Carteira própria em yen no menu Tab, 19 Skill Cards utilizáveis e todos os blocos do Tartarus na aba criativa.
+- Portais de retorno fora dos corredores, com reparo dos andares existentes, e Igor voltado para a frente na prévia de fusões.
+
+Consulte [Shuffle Time: uso e validação](docs/SHUFFLE_TIME.md).
+
 # Velvet Eclipse 0.6.15 — Tartarus
 
 - Torre apoiada no solo, nivelamento reversível do terreno e fechamento dos segmentos.

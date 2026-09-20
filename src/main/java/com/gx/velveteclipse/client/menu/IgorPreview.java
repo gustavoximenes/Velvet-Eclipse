@@ -18,12 +18,12 @@ public final class IgorPreview {
   g.m_280262_();pose.m_85836_();
   try{
    if(entity==null){entity=new IgorEntity(VelvetRoomRegistry.IGOR.get(),mc.f_91073_);var context=new EntityRendererProvider.Context(dispatcher,mc.m_91291_(),mc.m_91289_(),dispatcher.m_234586_(),mc.m_91098_(),mc.m_167973_(),mc.f_91062_);renderer=new VelvetGeoEntityRenderer<>(context,"igor");}
-   // Igor's Bedrock asset is authored toward the opposite horizontal axis from
-   // the vanilla preview camera.  Rotate the actor a half turn so the face,
-   // eyes and folded hands are presented to the player instead of the back.
+   // GeckoLib 4.8.4 actuallyRender uses bodyYaw=0 for non-LivingEntity actors.
+   // Entity yaw alone is ignored for Igor; rotate the preview matrix explicitly.
    entity.f_19797_=(int)(seconds*20);entity.m_146922_(PREVIEW_YAW);entity.f_19859_=PREVIEW_YAW;
    pose.m_85837_(694,407,MenuDepth.MODEL);pose.m_252931_(new Matrix4f().scaling(151,151,-151));
    var tilt=new Quaternionf().rotationX(.035f);pose.m_252781_(new Quaternionf().rotationZ((float)java.lang.Math.PI).mul(tilt));
+   pose.m_252781_(new Quaternionf().rotationY((float)Math.PI));
    Lighting.m_166384_();dispatcher.m_252923_(new Quaternionf(tilt).conjugate());
    RenderSystem.runAsFancy(()->renderer.m_7392_(entity,PREVIEW_YAW,mc.m_91296_(),pose,g.m_280091_(),15728880));
   }catch(RuntimeException|LinkageError e){failed=true;com.gx.velveteclipse.VelvetEclipseMod.LOGGER.error("Igor fusion portrait",e);}

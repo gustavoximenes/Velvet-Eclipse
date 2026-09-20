@@ -31,12 +31,13 @@ public final class TartarusDungeonService {
  private static final class Job {final TartarusInteriorLayout.Plan plan;int index;Job(long seed,int floor){plan=TartarusInteriorLayout.floor(seed,floor);}}
  public static final class State extends SavedData {
   public final Set<Integer> built=new HashSet<>();
+  public final Set<Integer> repaired=new HashSet<>();
   public final Map<String,CompoundTag> slots=new LinkedHashMap<>();
   final Map<Integer,Job> jobs=new LinkedHashMap<>();final Map<UUID,Pending> pending=new HashMap<>();
   final Map<Integer,TartarusInteriorLayout.Plan> plans=new LinkedHashMap<>(8,.75f,true){@Override protected boolean removeEldestEntry(Map.Entry<Integer,TartarusInteriorLayout.Plan> e){return size()>8;}};
   TartarusInteriorLayout.Plan plan(ServerLevel l,int f){return plans.computeIfAbsent(f,k->TartarusInteriorLayout.floor(l.m_7328_(),k));}
-  public static State load(CompoundTag tag){var s=new State();for(int f:tag.m_128465_("built"))if(f>=0&&f<=250)s.built.add(f);var list=tag.m_128437_("slots",10);for(int i=0;i<list.size();i++){var t=list.m_128728_(i);s.slots.put(t.m_128461_("id"),t);}return s;}
-  @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128385_("built",built.stream().mapToInt(Integer::intValue).toArray());var list=new ListTag();for(var e:slots.entrySet()){var t=e.getValue().m_6426_();t.m_128359_("id",e.getKey());list.add(t);}tag.m_128365_("slots",list);return tag;}
+  public static State load(CompoundTag tag){var s=new State();for(int f:tag.m_128465_("built"))if(f>=0&&f<=250)s.built.add(f);for(int f:tag.m_128465_("backPortalV2"))s.repaired.add(f);var list=tag.m_128437_("slots",10);for(int i=0;i<list.size();i++){var t=list.m_128728_(i);s.slots.put(t.m_128461_("id"),t);}return s;}
+  @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128385_("built",built.stream().mapToInt(Integer::intValue).toArray());tag.m_128385_("backPortalV2",repaired.stream().mapToInt(Integer::intValue).toArray());var list=new ListTag();for(var e:slots.entrySet()){var t=e.getValue().m_6426_();t.m_128359_("id",e.getKey());list.add(t);}tag.m_128365_("slots",list);return tag;}
  }
  public static State data(ServerLevel l){return l.m_8895_().m_164861_(State::load,State::new,"velvet_eclipse_tartarus_interior");}
  public static void cross(ServerPlayer p,String route){
@@ -73,17 +74,25 @@ public final class TartarusDungeonService {
    while(job.index<job.plan.cells().size()&&budget-->0){var c=job.plan.cells().get(job.index++);var pos=new BlockPos(TartarusInteriorLayout.origin(f)+c.x(),64+c.y(),c.z());
     if(c.material().equals("velvet_door"))VelvetRoomService.placeDoor(l,pos,Direction.EAST);else l.m_7731_(pos,state(c.material()),2);
    }
-   if(job.index==job.plan.cells().size()){s.built.add(f);jobs.remove();s.m_77762_();}
+   if(job.index==job.plan.cells().size()){s.built.add(f);s.repaired.add(f);jobs.remove();s.m_77762_();}
   }
   var pending=s.pending.entrySet().iterator();while(pending.hasNext()){
    var entry=pending.next();var request=entry.getValue();var p=l.m_7654_().m_6846_().m_11259_(entry.getKey());
    if(p==null||!p.m_9236_().m_46472_().equals(request.from)||p.m_20275_(request.x,request.y,request.z)>36||BattleService.current(p)!=null){pending.remove();continue;}
    if(!s.built.contains(request.floor))continue;
+   repair(l,s,request.floor);
    var plan=s.plan(l,request.floor);var at=request.descending&&request.floor>0?new TartarusInteriorLayout.Point(plan.stairs().x(),plan.stairs().z()+7):plan.entry();
    p.getPersistentData().m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(l,TartarusInteriorLayout.origin(request.floor)+at.x()+.5,65.05,at.z()+.5,180,0);p.f_19789_=0;
    p.m_5661_(Component.m_237113_(request.floor==0?"Tártaro • Hall de entrada":request.floor==250?"Tártaro • Andar 250 — Último andar":"Tártaro • Andar "+request.floor+" / 250"),false);pending.remove();
   }
-  if(l.m_46467_()%100==0){var occupied=new HashSet<Integer>();for(var p:l.m_6907_())if(p.m_6084_()&&floor(p)>0)occupied.add(floor(p));for(int f:occupied)if(s.built.contains(f))spawn(l,s,f);}
+  if(l.m_46467_()%100==0){var occupied=new HashSet<Integer>();for(var p:l.m_6907_())if(p.m_6084_()&&floor(p)>0)occupied.add(floor(p));for(int f:occupied)if(s.built.contains(f)){repair(l,s,f);spawn(l,s,f);}}
+ }
+ private static void repair(ServerLevel l,State s,int floor){
+  if(floor==0||s.repaired.contains(floor))return;int ox=TartarusInteriorLayout.origin(floor);
+  for(int x=-38;x<=-34;x++)for(int y=1;y<=4;y++){var p=new BlockPos(ox+x,64+y,-29);if(l.m_8055_(p).m_60713_(DarkHourRegistry.INTERIOR.get("back").get()))l.m_7731_(p,Blocks.f_50016_.m_49966_(),2);}
+  var plan=s.plan(l,floor);int z=plan.cells().stream().filter(c->c.material().equals("back")).findFirst().orElseThrow().z();
+  for(var c:plan.cells())if(c.x()>=-39&&c.x()<=-33&&c.z()>=z-1&&c.z()<=z&&c.y()<=5)l.m_7731_(new BlockPos(ox+c.x(),64+c.y(),c.z()),state(c.material()),2);
+  s.repaired.add(floor);s.m_77762_();
  }
  private static void spawn(ServerLevel l,State s,int floor){
   var plan=s.plan(l,floor);if(ShadowRegistry.shadowType()==null)return;
