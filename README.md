@@ -1,3 +1,12 @@
+# Velvet Eclipse 0.6.15 — Tartarus
+
+- Torre apoiada no solo, nivelamento reversível do terreno e fechamento dos segmentos.
+- Portal preto para uma dimensão própria, hall com escadaria e relógio, porta permanente da Velvet Room e saída para o mundo.
+- Andares procedurais 1–250, escadarias entre andares e sete vagas de Shadows por andar, compartilhadas em multiplayer, com reposição e progressão de atributos.
+- Portas criadas pela Velvet Key duram 30 segundos. Portas fixas permanecem.
+
+Veja [Tartarus: uso e validação](docs/TARTARUS.md). Auditoria focada `tartarusTest` e compilação Java 17 concluídas; teste dentro do Minecraft a cargo do usuário.
+
 # Velvet Eclipse 0.6.14 — Dark Hour
 
 - Igor voltado para o jogador no menu de fusões; painel próprio de nível/EXP, barra de progresso e ajuda por F1.

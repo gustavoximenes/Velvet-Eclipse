@@ -11,6 +11,14 @@ public final class DarkHourRegistry {
  public static final RegistryObject<Block> TRIM=BLOCKS.register("tartarus_trim",()->new Block(props()));
  public static final RegistryObject<Block> LIGHT=BLOCKS.register("tartarus_light",()->new Block(props().m_60953_(s->13)));
  public static final RegistryObject<Block> STAIRS=BLOCKS.register("tartarus_stairs",()->new StairBlock(()->STONE.get().m_49966_(),props()));
+ public static final RegistryObject<Block> PORTAL=BLOCKS.register("tartarus_portal",()->new TartarusPortalBlock("entrance"));
+ public static final java.util.Map<String,RegistryObject<Block>> INTERIOR=new java.util.LinkedHashMap<>();
+ static {
+  for(String name:java.util.List.of("ivory","tile","tile_dark","wall","column","gold","carpet","clock","hand","border","seal","window","azure","violet"))
+   INTERIOR.put(name,BLOCKS.register("tartarus_"+name,()->new Block(props().m_60953_(s->java.util.Set.of("window","azure","violet","clock","hand").contains(name)?12:0))));
+  INTERIOR.put("blue_stairs",BLOCKS.register("tartarus_blue_stairs",()->new StairBlock(()->INTERIOR.get("carpet").get().m_49966_(),props())));
+  for(String route:java.util.List.of("forward","back","exit","summit"))INTERIOR.put(route,BLOCKS.register("tartarus_"+route,()->new TartarusPortalBlock(route)));
+ }
  public static void register(IEventBus bus){BLOCKS.register(bus);}
- public static boolean temporary(Block b){return b==STONE.get()||b==TRIM.get()||b==LIGHT.get()||b==STAIRS.get();}
+ public static boolean temporary(Block b){return b==STONE.get()||b==TRIM.get()||b==LIGHT.get()||b==STAIRS.get()||b==PORTAL.get();}
 }

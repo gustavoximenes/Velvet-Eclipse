@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw
 root=Path(__file__).resolve().parents[1]
 out=root/'build/reports/dark-hour'
 cells=json.loads((out/'tower.json').read_text())
-palette=[(27,62,49),(58,108,80),(91,244,177),(27,62,49)]
+palette=[(27,62,49),(58,108,80),(91,244,177),(27,62,49),(0,0,0)]
 faces=[((-1,0,0),[(0,0,0),(0,0,1),(0,1,1),(0,1,0)],.67),((1,0,0),[(1,0,1),(1,0,0),(1,1,0),(1,1,1)],.88),((0,1,0),[(0,1,0),(0,1,1),(1,1,1),(1,1,0)],1.12),((0,0,1),[(0,0,1),(1,0,1),(1,1,1),(0,1,1)],1)]
 def render(path,entrance=False):
     w,h=(1050,760) if entrance else (760,1160)

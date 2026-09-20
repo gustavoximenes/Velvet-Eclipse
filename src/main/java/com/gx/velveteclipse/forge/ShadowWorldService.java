@@ -174,8 +174,7 @@ public final class ShadowWorldService {
       if (var1 == null || com.gx.velveteclipse.exploration.ExplorationService.reserved(var1)) {
          return false;
       } else {
-         consumeShadow(var1);
-         BattleService.startDemo(var0);
+         startEncounter(var0,var1);
          return true;
       }
    }
@@ -183,7 +182,7 @@ public final class ShadowWorldService {
    private static void ensureWorldShadows() {
       // Natural encounter Shadows dissolve at dawn. Explicit summons and battle
       // actors stay under their own lifecycle and are never removed here.
-      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
+      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.TartarusDungeonService.dungeonShadow(shadow)&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
       for (Object var1 : new ArrayList<>(PLAYERS.values())) {
          if (var1 instanceof Entity e && com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_()) && BattleService.current(var1) == null) {
             UUID var2 = RuntimeBridge.playerUuid(var1);
@@ -206,8 +205,7 @@ public final class ShadowWorldService {
             Object var2 = nearestEncounterShadow(var1, 2.35);
             if (var2 != null && !com.gx.velveteclipse.exploration.ExplorationService.reserved(var2)) {
                RuntimeBridge.sendMessage(var1, "§5[Velvet Eclipse] §fUma Shadow encontrou você!");
-               consumeShadow(var2);
-               BattleService.startDemo(var1);
+               startEncounter(var1,var2);
             }
          }
       }
@@ -233,10 +231,13 @@ public final class ShadowWorldService {
       if (!com.gx.velveteclipse.exploration.ExplorationService.preparing(player) || com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(player) ||
           !com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow) || !ShadowRegistry.isShadow(shadow) ||
           RuntimeBridge.isEntityRemoved(shadow) || !RuntimeBridge.sameWorld(player,shadow) || BattleService.current(player)!=null) return;
-      BattleService.startDemo(player);
-      if(BattleService.current(player)!=null) consumeShadow(shadow);
+      startEncounter(player,shadow);
    }
 
+   private static void startEncounter(Object player,Object shadow) {
+      BattleService.startEncounter(player,1,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(player));
+      if(BattleService.current(player)!=null){com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterStarted(player,shadow);consumeShadow(shadow);}
+   }
    private static void consumeShadow(Object var0) {
       if (var0 != null) {
          SHADOWS.remove(RuntimeBridge.playerUuid(var0));

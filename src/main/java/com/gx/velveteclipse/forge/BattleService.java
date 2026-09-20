@@ -29,6 +29,7 @@ public final class BattleService {
     }
     private static Encounter group(Object p){return p==null?null:MEMBERS.get(RuntimeBridge.playerUuid(p));}
     public static BattleSession current(Object p){var g=group(p);return g==null?null:g.session;}
+    public static boolean encounterActive(UUID id){return BATTLES.containsKey(id);}
     public static boolean hasActiveBattle(Object p){var s=current(p);return s!=null&&s.state()==BattleState.ACTIVE;}
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
     private static boolean busy(Encounter g){return g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
@@ -37,11 +38,13 @@ public final class BattleService {
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
 
     public static BattleSession startDemo(Object p){return startDemo(p,1);}
-    public static BattleSession startDemo(Object p,int count){
+    public static BattleSession startDemo(Object p,int count){return startEncounter(p,count,0);}
+    public static BattleSession startEncounter(Object p,int count,int dungeonFloor){
         BattleFormation.validateCount(count);
         if(com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));
-        for(int i=0;i<count;i++)participants.add(new BattleCombatant(UUID.randomUUID(),count==1?"Umbra Slime":"Umbra Slime "+(i+1),BattleSide.ENEMIES,new PersonaInstance(PersonaRegistry.persona("umbra_slime").orElseThrow()),85,85,30,30));
+        int floor=Math.max(0,Math.min(250,dungeonFloor)),hp=com.gx.velveteclipse.darkhour.TartarusInteriorLayout.hp(floor);
+        for(int i=0;i<count;i++){var persona=new PersonaInstance(PersonaRegistry.persona("umbra_slime").orElseThrow());if(floor>0)persona=new PersonaInstance(persona.definitionId(),com.gx.velveteclipse.darkhour.TartarusInteriorLayout.level(floor),0,persona.learnedSkills());participants.add(new BattleCombatant(UUID.randomUUID(),(count==1?"Umbra Slime":"Umbra Slime "+(i+1))+(floor>0?" • "+floor+"F":""),BattleSide.ENEMIES,persona,hp,hp,30+floor,30+floor));}
         var s=new BattleSession(participants);var g=new Encounter(p,s,count);BATTLES.put(s.id(),g);attach(g,p,g.origin);
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"umbra_slime");
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;

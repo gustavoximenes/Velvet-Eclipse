@@ -55,8 +55,8 @@ public final class DarkHourAudit {
   for(int height:new int[]{80,192,250,256,384})for(int drop:new int[]{1,4,8,32,96}){
    var cells=TartarusLayout.create(height,drop);var map=new HashMap<String,TartarusLayout.Cell>();int previous=-97;
    for(var c:cells){check(c.y()>=-96&&c.y()<height,"all blocks inside plan limits");check(c.y()>=previous,"bottom-up animation order");previous=c.y();check(map.put(key(c.x(),c.y(),c.z()),c)==null,"one block per location");}
-   check(cells.get(cells.size()-1).y()==height-1,"spire reaches final legal block");check(cells.size()<60000,"bounded generation workload");
-   for(int z=0;z<=TartarusLayout.STAIR_Z;z++)for(int y=1;y<=3;y++)check(!map.containsKey(key(0,y,z)),"open three-block-high approach and entrance");
+   check(cells.get(cells.size()-1).y()==height-1,"spire reaches final legal block");check(cells.size()<90000,"bounded generation workload");
+   for(int z=0;z<=TartarusLayout.STAIR_Z;z++)for(int y=1;y<=3;y++)check(!map.containsKey(key(0,y,z))||map.get(key(0,y,z)).material()==4,"open three-block-high approach and walk-through portal");
    for(int step=0;step<=drop;step++)for(int x=-3;x<=3;x++){var c=map.get(key(x,-step,TartarusLayout.STAIR_Z+step));check(c!=null&&c.material()==3,"continuous wide staircase");check(!map.containsKey(key(x,2-step,TartarusLayout.STAIR_Z+step)),"stairs have headroom");}
   }
   var out=Path.of("build/reports/dark-hour");Files.createDirectories(out);

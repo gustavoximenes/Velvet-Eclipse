@@ -34,6 +34,8 @@ public final class TartarusLayout {
     b.put(x+cx,y,z+cz,material);
    }
    if(y%28==0)b.box(cx-r,y,cz-r,cx+r,y,cz+r,TRIM);
+   // Close the exposed roof of each offset tier before the next tier narrows.
+   if(!legacy&&y%28==27)b.box(cx-r,y,cz-r,cx+r,y,cz+r,TRIM);
   }
   // Exterior spiral flying buttress, broken balconies and staggered turrets.
   for(int y=8;y<height-15;y++){
@@ -42,7 +44,7 @@ public final class TartarusLayout {
   }
   for(int k=0;k<7;k++){
    int base=12+k*(height-50)/7,r=Math.max(5,20-base/14),x=k%2==0?-r-3:r+3,z=k%3==0?-r:r/2;
-   for(int y=base;y<Math.min(height-2,base+34);y++){int w=y<base+22?3:Math.max(0,3-(y-base-22)/3);for(int dx=-w;dx<=w;dx++)for(int dz=-w;dz<=w;dz++)if(Math.abs(dx)==w||Math.abs(dz)==w)b.put(x+dx,y,z+dz,y%7==0?LIGHT:TRIM);}
+   for(int y=base;y<Math.min(height-2,base+34);y++){int w=y<base+22?3:Math.max(0,3-(y-base-22)/3);for(int dx=-w;dx<=w;dx++)for(int dz=-w;dz<=w;dz++)if(!legacy||Math.abs(dx)==w||Math.abs(dz)==w)b.put(x+dx,y,z+dz,y%7==0?LIGHT:TRIM);}
   }
   // Circular luminous seals on the front face of the stacked structure.
   for(int y=18;y<height-26;y+=38){int tier=y/28,r=Math.max(4,20-tier*2),cx=(tier%3-1)*2,z=r+((tier/2)%3-1)*2+1;
@@ -57,6 +59,11 @@ public final class TartarusLayout {
   for(int dx=-2;dx<=2;dx++)for(int dy=-2;dy<=2;dy++)if(dx*dx+dy*dy<=5)b.put(dx,7+dy,25,dx==0||dy==0?LIGHT:TRIM);
   // Ground hall floor and a central spine terminating at the build ceiling.
   b.box(-12,0,-12,12,0,26,TRIM);
+  if(!legacy){
+   int y=height-13,tier=y/28,r=Math.max(4,20-tier*2),cx=(tier%3-1)*2,cz=((tier/2)%3-1)*2;
+   b.box(cx-r,y,cz-r,cx+r,y,cz+r,TRIM);
+   b.box(-2,1,24,2,5,24,4); // opaque black, walk-through entry portal
+  }
   for(int y=height-14;y<height;y++){int r=(height-y)/5;for(int x=-r;x<=r;x++)for(int z=-r;z<=r;z++)b.put(x,y,z,y%4==0||y==height-1?LIGHT:TRIM);}
   return b.cells.values().stream().sorted(Comparator.comparingInt(Cell::y)).toList();
  }

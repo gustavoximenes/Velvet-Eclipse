@@ -8,13 +8,19 @@ import net.minecraft.server.level.*;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.nbt.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import java.util.*;
 
-/** A nearby, terrain-adaptive landmark. The journal only removes blocks placed by the tower. */
+/** A grounded landmark with a persisted rollback journal for every terrain edit. */
 public final class TartarusService {
  public static final class State extends SavedData {
   public int x,y=Integer.MIN_VALUE,z,height,drop,index,attempt;public boolean removing;
   public String owner="",anchor="";public final List<Long> placed=new ArrayList<>();List<TartarusLayout.Cell> cells;
+  public final Map<Long,BlockState> terrain=new LinkedHashMap<>();
+  public int column,scanY=Integer.MIN_VALUE,scanBottom;
+  public boolean leveled;
   public boolean ready(){return y!=Integer.MIN_VALUE;}
   List<TartarusLayout.Cell> cells(){if(cells==null)cells=TartarusLayout.create(height,drop);return cells;}
   public static State load(CompoundTag t){
@@ -22,10 +28,12 @@ public final class TartarusService {
    if(t.m_128471_("ready")){s.x=t.m_128451_("x");s.y=t.m_128451_("y");s.z=t.m_128451_("z");s.height=t.m_128451_("height");s.drop=t.m_128451_("drop");s.index=t.m_128451_("index");s.removing=t.m_128471_("removing");
     if(t.m_128451_("format")>=2)for(long pos:t.m_128467_("placed"))s.placed.add(pos);
     else {var old=TartarusLayout.legacy(s.height,s.drop);for(int i=0;i<Math.min(s.index,old.size());i++){var c=old.get(i);s.placed.add(new BlockPos(s.x+c.x(),s.y+c.y(),s.z+c.z()).m_121878_());}s.removing=true;}
+    if(t.m_128451_("format")>=3){s.column=t.m_128451_("column");s.scanY=t.m_128451_("scanY");s.scanBottom=t.m_128451_("scanBottom");s.leveled=t.m_128471_("leveled");var journal=t.m_128437_("terrain",10);for(int i=0;i<journal.size();i++){var entry=journal.m_128728_(i);s.terrain.put(entry.m_128454_("pos"),NbtUtils.m_247651_(BuiltInRegistries.f_256975_.m_255303_(),entry.m_128469_("state")));}}
+    else s.removing=true; // Remove the airborne 0.6.14 tower before grounding the new one.
    }return s;
   }
-  @Override public CompoundTag m_7176_(CompoundTag t){t.m_128405_("format",2);t.m_128379_("ready",ready());t.m_128405_("x",x);t.m_128405_("y",y);t.m_128405_("z",z);t.m_128405_("height",height);t.m_128405_("drop",drop);t.m_128405_("index",index);t.m_128379_("removing",removing);t.m_128359_("owner",owner);t.m_128359_("anchor",anchor);t.m_128428_("placed",placed);return t;}
-  private void clear(){y=Integer.MIN_VALUE;height=drop=index=attempt=0;cells=null;placed.clear();anchor="";removing=false;m_77762_();}
+  @Override public CompoundTag m_7176_(CompoundTag t){t.m_128405_("format",3);t.m_128379_("ready",ready());t.m_128405_("x",x);t.m_128405_("y",y);t.m_128405_("z",z);t.m_128405_("height",height);t.m_128405_("drop",drop);t.m_128405_("index",index);t.m_128379_("removing",removing);t.m_128359_("owner",owner);t.m_128359_("anchor",anchor);t.m_128428_("placed",placed);t.m_128405_("column",column);t.m_128405_("scanY",scanY);t.m_128405_("scanBottom",scanBottom);t.m_128379_("leveled",leveled);var journal=new ListTag();for(var e:terrain.entrySet()){var entry=new CompoundTag();entry.m_128356_("pos",e.getKey());entry.m_128365_("state",NbtUtils.m_129202_(e.getValue()));journal.add(entry);}t.m_128365_("terrain",journal);return t;}
+  private void clear(){y=Integer.MIN_VALUE;height=drop=index=attempt=column=0;scanY=Integer.MIN_VALUE;leveled=false;cells=null;placed.clear();terrain.clear();anchor="";removing=false;m_77762_();}
  }
  public static State data(ServerLevel l){return l.m_8895_().m_164861_(State::load,State::new,"velvet_eclipse_tartarus");}
  private static int ground(ServerLevel l,int x,int z){return l.m_6924_(Heightmap.Types.WORLD_SURFACE,x,z);}
@@ -38,16 +46,38 @@ public final class TartarusService {
  private static void findSite(ServerLevel l,State s,ServerPlayer p){
   // Four nearby candidates, never an expanding search beyond render distance.
   int px=(int)Math.floor(p.m_20185_()),pz=(int)Math.floor(p.m_20189_());
-  var at=TartarusPlacement.candidate(px,pz,range(p),s.attempt++);int x=at.x(),z=at.z(),top=l.m_141937_();
-  for(int dx=-28;dx<=28;dx++)for(int dz=-28;dz<=28;dz++){
+  var at=TartarusPlacement.candidate(px,pz,range(p),s.attempt++);int x=at.x(),z=at.z();var heights=new ArrayList<Integer>();
+  for(int dx=-32;dx<=32;dx+=4)for(int dz=-32;dz<=32;dz+=4){
    if(!l.m_6857_().m_61937_(new BlockPos(x+dx,64,z+dz)))return;
-   top=Math.max(top,ground(l,x+dx,z+dz));
+   heights.add(l.m_6924_(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,x+dx,z+dz));
   }
-  int base=top+1,height=l.m_151558_()-base;if(height<40||height>512)return;
-  int drop=Math.max(1,Math.min(96,base-(int)Math.floor(p.m_20186_())));
-  // Raise the structure above trees, water and uneven terrain, preserving all existing blocks.
+  heights.sort(Integer::compare);int base=heights.get(heights.size()/2)-1,height=l.m_151558_()-base;if(height<40||height>512)return;
+  int drop=1;
+  // Avoid occupied containers/machines entirely: no block-entity inventories are ever destroyed.
+  for(int dx=-32;dx<=32;dx++)for(int dz=-32;dz<=32;dz++)for(int y=Math.min(base,ground(l,x+dx,z+dz)-1);y<ground(l,x+dx,z+dz);y++)if(l.m_7702_(new BlockPos(x+dx,y,z+dz))!=null)return;
   s.x=x;s.y=base;s.z=z;s.height=height;s.drop=drop;s.index=0;s.cells=TartarusLayout.create(height,drop);s.anchor=p.m_20148_().toString();s.m_77762_();
+  // Move anybody in the excavation to a journaled safe apron before clearing/filling.
+  for(var player:l.m_6907_())if(Math.abs(player.m_20185_()-x)<=32&&Math.abs(player.m_20189_()-z)<=32){
+   for(int dx=-1;dx<=1;dx++)for(int dz=30;dz<=32;dz++){edit(l,s,new BlockPos(x+dx,base,z+dz),DarkHourRegistry.STONE.get().m_49966_());for(int dy=1;dy<=3;dy++)edit(l,s,new BlockPos(x+dx,base+dy,z+dz),Blocks.f_50016_.m_49966_());}
+   player.m_6021_(x+.5,base+1.05,z+31.5);player.f_19789_=0;
+  }
   for(var player:l.m_6907_())player.m_5661_(Component.m_237113_("§aDark Hour • O Tártaro surge perto de "+p.m_36316_().getName()+": "+x+", "+(base+1)+", "+(z+TartarusLayout.FRONT)+". /locate tartarus"),false);
+ }
+ private static boolean edit(ServerLevel l,State s,BlockPos pos,BlockState next){
+  var old=l.m_8055_(pos);if(old.equals(next))return true;if(l.m_7702_(pos)!=null)return false;
+  s.terrain.putIfAbsent(pos.m_121878_(),old);l.m_7731_(pos,next,2);return true;
+ }
+ private static void levelTerrain(ServerLevel l,State s){
+  int budget=1000;
+  while(s.column<65*65&&budget>0){int x=s.x+s.column%65-32,z=s.z+s.column/65-32;
+   if(s.scanY==Integer.MIN_VALUE){s.scanY=Math.max(s.y,ground(l,x,z)-1);s.scanBottom=Math.max(l.m_141937_(),Math.min(s.y-2,ground(l,x,z)-1));}
+   int bottom=s.scanBottom;
+   while(s.scanY>=bottom&&budget-->0){var pos=new BlockPos(x,s.scanY,z);var state=s.scanY>s.y?Blocks.f_50016_.m_49966_():DarkHourRegistry.STONE.get().m_49966_();
+    if(!edit(l,s,pos,state)){beginRemoval(l,s);return;}s.scanY--;
+   }
+   if(s.scanY<bottom){s.column++;s.scanY=Integer.MIN_VALUE;}
+  }
+  s.leveled=s.column>=65*65;s.m_77762_();
  }
  private static void beginRemoval(ServerLevel l,State s){
   s.removing=true;s.m_77762_();
@@ -68,22 +98,26 @@ public final class TartarusService {
  public static void tick(ServerLevel l){
   var s=data(l);boolean active=DarkHourService.active(l);long tick=l.m_46467_();var preferred=preferred(l,s);
   if(active&&s.ready()&&!s.removing&&preferred!=null&&tick%20==0){
-   if(!s.anchor.equals(preferred.m_20148_().toString())||!TartarusPlacement.visible((int)preferred.m_20185_(),(int)preferred.m_20189_(),s.x,s.z,range(preferred)))beginRemoval(l,s);
+   boolean atTower=Math.abs(preferred.m_20185_()-s.x)<=34&&Math.abs(preferred.m_20189_()-s.z)<=34;
+   if(!s.anchor.equals(preferred.m_20148_().toString())||(!atTower&&!TartarusPlacement.visible((int)preferred.m_20185_(),(int)preferred.m_20189_(),s.x,s.z,range(preferred))))beginRemoval(l,s);
   }
   if(!active&&s.ready()&&!s.removing)beginRemoval(l,s);
   if(s.removing){
+   beginRemoval(l,s);
    int budget=900;while(!s.placed.isEmpty()&&budget-->0){var pos=BlockPos.m_122022_(s.placed.remove(s.placed.size()-1));if(DarkHourRegistry.temporary(l.m_8055_(pos).m_60734_()))l.m_7731_(pos,Blocks.f_50016_.m_49966_(),3);}
-   s.m_77762_();if(s.placed.isEmpty())s.clear();
+   if(s.placed.isEmpty()){var journal=s.terrain.entrySet().iterator();while(journal.hasNext()&&budget-->0){var e=journal.next();var pos=BlockPos.m_122022_(e.getKey());var current=l.m_8055_(pos);if(current.m_60795_()||DarkHourRegistry.temporary(current.m_60734_()))l.m_7731_(pos,e.getValue(),2);journal.remove();}}
+   s.m_77762_();if(s.placed.isEmpty()&&s.terrain.isEmpty())s.clear();
   }
   if(active&&!s.ready()&&preferred!=null&&tick%10==0)findSite(l,s,preferred);
   if(!s.ready())return;
   var cells=s.cells();
-  if(active&&!s.removing&&s.index<cells.size()){
+  if(active&&!s.removing&&!s.leveled)levelTerrain(l,s);
+  if(active&&!s.removing&&s.leveled&&s.index<cells.size()){
    int layer=cells.get(s.index).y(),budget=600;
    while(s.index<cells.size()&&cells.get(s.index).y()<=layer&&budget-->0){var c=cells.get(s.index++);var pos=new BlockPos(s.x+c.x(),s.y+c.y(),s.z+c.z());
-    var block=switch(c.material()){case 1->DarkHourRegistry.TRIM.get();case 2->DarkHourRegistry.LIGHT.get();case 3->DarkHourRegistry.STAIRS.get();default->DarkHourRegistry.STONE.get();};
+    var block=switch(c.material()){case 1->DarkHourRegistry.TRIM.get();case 2->DarkHourRegistry.LIGHT.get();case 3->DarkHourRegistry.STAIRS.get();case 4->DarkHourRegistry.PORTAL.get();default->DarkHourRegistry.STONE.get();};
     var state=block.m_49966_();if(c.material()==3)state=state.m_61124_(StairBlock.f_56841_,Direction.NORTH);
-    if(l.m_6857_().m_61937_(pos)&&l.m_8055_(pos).m_60795_()&&l.m_7731_(pos,state,3))s.placed.add(pos.m_121878_());
+    if(l.m_6857_().m_61937_(pos)&&edit(l,s,pos,state)&&s.terrain.containsKey(pos.m_121878_()))s.placed.add(pos.m_121878_());
    }s.m_77762_();
   }
   if(tick%20==0)for(var p:l.m_6907_())ModNetwork.sendPresentation(p,new DarkHourS2C(s.x,s.y,s.z,s.height,s.index==0?0:cells.get(Math.min(cells.size(),s.index)-1).y()+1,active&&!s.removing));

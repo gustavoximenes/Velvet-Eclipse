@@ -28,11 +28,11 @@ public final class VelvetRoomService {
    BlockPos at=step(origin,p.m_6350_(),range).m_7918_(0,dy,0);var level=p.m_284548_();
    if(!level.m_8055_(at).m_60795_()||!level.m_8055_(at.m_7494_()).m_60795_()||!level.m_6857_().m_61937_(at))continue;
    var state=VelvetRoomRegistry.DOOR.get().m_49966_().m_61124_(DoorBlock.f_52726_,facing);
-   if(!state.m_60710_(level,at))continue;placeDoor(level,at,facing);tag.m_128356_(COOLDOWN,now);tell(p,"A porta da Velvet Room apareceu. Abra-a e atravesse.");return;
+   if(!state.m_60710_(level,at))continue;placeDoor(level,at,facing);level.m_186460_(at,VelvetRoomRegistry.DOOR.get(),600);tag.m_128356_(COOLDOWN,now);tell(p,"A porta da Velvet Room apareceu por 30 segundos. Abra-a e atravesse.");return;
   }tell(p,"É preciso chão firme e dois blocos livres à sua frente.");
  }
  private static BlockPos step(BlockPos p,Direction d,int n){for(int i=0;i<n;i++)p=p.m_121945_(d);return p;}
- private static void placeDoor(ServerLevel level,BlockPos at,Direction facing){var state=VelvetRoomRegistry.DOOR.get().m_49966_().m_61124_(DoorBlock.f_52726_,facing);level.m_7731_(at,state.m_61124_(DoorBlock.f_52730_,DoubleBlockHalf.LOWER),3);level.m_7731_(at.m_7494_(),state.m_61124_(DoorBlock.f_52730_,DoubleBlockHalf.UPPER),3);}
+ public static void placeDoor(ServerLevel level,BlockPos at,Direction facing){var state=VelvetRoomRegistry.DOOR.get().m_49966_().m_61124_(DoorBlock.f_52726_,facing);level.m_7731_(at,state.m_61124_(DoorBlock.f_52730_,DoubleBlockHalf.LOWER),3);level.m_7731_(at.m_7494_(),state.m_61124_(DoorBlock.f_52730_,DoubleBlockHalf.UPPER),3);}
  public static void cross(ServerPlayer p,BlockPos door){
   if(!available(p))return;var data=p.getPersistentData();long now=System.currentTimeMillis();if(now-data.m_128454_(COOLDOWN)<1800)return;
   if(inside(p)){leave(p);return;}var room=p.m_20194_().m_129880_(DIMENSION);if(room==null){tell(p,"A dimensão não foi carregada. Reinicie o mundo com o mod instalado.");return;}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "velvet_eclipse:block/tartarus_carpet",
+    "top": "velvet_eclipse:block/tartarus_carpet",
+    "side": "velvet_eclipse:block/tartarus_carpet"
+  }
+}

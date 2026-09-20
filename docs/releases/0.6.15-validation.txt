@@ -1,0 +1,5 @@
+PASS tartarus: 7302 checks; 11 representative floors, connected rooms, stair/portal clearance, tier closure, seed stability, floor 250 cap, combat progression and saved state. Offline only.
+BUILD SUCCESSFUL: tartarusTest, jar, sourcesJar.
+JAR integrity and new classes/dimension/resources present.
+Offline geometry preview inspected. No Minecraft or two-client execution.
+SHA256: 9CD809382B614465EDFA418D191EAC27883AD33E04F5726383DB7635E62F2083
