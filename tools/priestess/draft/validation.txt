@@ -1,0 +1,3 @@
+OK: 229 native elements; 73 named bones; integer Box UV sizes; all UVs in atlas; valid hierarchy; two clips returning to rest.
+Visual previews use the exported geometry, atlas and animation tracks.
+No mod integration or in-game validation was performed.

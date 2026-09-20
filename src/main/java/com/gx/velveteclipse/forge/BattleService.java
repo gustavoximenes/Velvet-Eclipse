@@ -24,7 +24,7 @@ public final class BattleService {
         final int enemyCount;
         int delay=28;
         boolean wasBusy;
-        boolean shuffleVictory,boss;int dungeonFloor;
+        boolean shuffleVictory,boss,raid;int raidStage,dungeonFloor;
         final BattleResultsGate results=new BattleResultsGate();
         String ending="";
         Encounter(Object p,BattleSession s,int count){session=s;enemyCount=count;origin=RuntimeBridge.playerPosition(p);yaw=RuntimeBridge.playerYaw(p);center=RuntimeBridge.localOffset(origin,yaw,0,.05,5.25);level=p instanceof Entity e?e.m_9236_():null;}
@@ -34,7 +34,7 @@ public final class BattleService {
     public static boolean encounterActive(UUID id){return BATTLES.containsKey(id);}
     public static boolean hasActiveBattle(Object p){var s=current(p);return s!=null&&s.state()==BattleState.ACTIVE;}
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
-    private static boolean busy(Encounter g){return g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
+    private static boolean busy(Encounter g){return g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
     public static boolean actionBusy(Object p){var g=group(p);return g!=null&&(g.results.started()||g.session.state()!=BattleState.ACTIVE||g.session.prepared()!=null||busy(g));}
     private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);return new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp());}
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
@@ -45,6 +45,7 @@ public final class BattleService {
         return startEncounter(p,count,dungeonFloor,false);
     }
     public static BattleSession startEncounter(Object p,int count,int dungeonFloor,boolean boss){
+        if(com.gx.velveteclipse.raid.RaidService.inside(p))return current(p);
         BattleFormation.validateCount(count);
         if(com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));
@@ -55,6 +56,17 @@ public final class BattleService {
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"umbra_slime");
         if(boss)for(var c:s.participants())if(c.side()==BattleSide.ENEMIES){var e=targetActor(p,c.id());if(e!=null)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(e);}
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;
+    }
+    public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
+        if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null))return null;
+        var participants=new ArrayList<BattleCombatant>();for(var p:party)participants.add(combatant(p));
+        var def=PersonaRegistry.persona("umbra_slime").orElseThrow();var instance=new PersonaInstance(def.id(),12,0,Set.of("raid_ice_storm","shade_bite"));
+        int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):90+45*party.size();
+        var foe=new BattleCombatant(UUID.randomUUID(),stage==2?"Sacerdotisa":stage==0?"Sentinela do Trem":"Condutor Sombrio",BattleSide.ENEMIES,instance,hp,hp,9999,9999);
+        if(stage==2)foe.setRaidBoss(Element.FIRE);participants.add(foe);
+        var s=new BattleSession(participants);var g=new Encounter(party.get(0),s,1);g.raid=true;g.raidStage=stage;g.boss=true;g.dungeonFloor=25;
+        BATTLES.put(s.id(),g);for(var p:party){attach(g,p,RuntimeBridge.playerPosition(p));VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());}
+        VisualBattleActors.bindEnemy(s.id(),foe.id(),enemy);syncAll(g,"O caminho está bloqueado. Preparem-se!");return s;
     }
     private static void attach(Encounter g,Object p,double[] anchor){
         if(p instanceof ServerPlayer sp)sp.m_6915_();
@@ -80,7 +92,7 @@ public final class BattleService {
         if(!g.session.join(combatant(p)))return false;
         attach(g,p,anchor);VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());syncAll(g,RuntimeBridge.playerName(p)+" entrou na batalha!");return true;
     }
-    private static boolean canJoin(ServerPlayer p,Encounter g){return g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
+    private static boolean canJoin(ServerPlayer p,Encounter g){return !g.raid&&g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
 
     /** Leaving/disconnecting removes only that participant; an interrupted reservation costs nothing. */
     public static void stop(Object p){
@@ -105,15 +117,16 @@ public final class BattleService {
     }
     public static boolean act(Object p,BattleAction action){
         var g=group(p);if(g==null)return false;var s=g.session;UUID id=RuntimeBridge.playerUuid(p);
-        if(g.results.started()||s.state()!=BattleState.ACTIVE)return false;
+        if(g.results.started()||s.state()!=BattleState.ACTIVE||g.raid&&!com.gx.velveteclipse.raid.RaidService.allowAction(s.id()))return false;
         if(busy(g)&&(s.prepared()==null||!s.prepared().actor().equals(id)||!s.prepared().action().equals(action)))return false;
         if(s.currentActor()==null||!s.currentActor().id().equals(id)){sync(p,"Aguarde seu turno.");return false;}
         if(s.prepared()!=null&&!s.prepared().action().equals(action))return false;
-        if(action.type()==BattleActionType.ESCAPE){stop(p);return true;}
+        if(action.type()==BattleActionType.ESCAPE){if(g.raid){sync(p,"Não é possível fugir dentro do trem.");return false;}stop(p);return true;}
         if(action.type()==BattleActionType.ITEM){var data=PlayerPersonaData.load(p);if(!data.consumePulseTonic()){sync(p,"Sem Pulse Tonic.");return false;}data.save(p);}
         var reserved=s.prepared();var result=s.perform(id,action);
+        if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(action.type()==BattleActionType.ALL_OUT&&s.state()==BattleState.PLAYERS_WON)g.shuffleVictory=true;
-        if(reserved!=null&&s.prepared()==null)reserved.hits().forEach((target,hit)->s.find(target).ifPresent(t->BattleKnowledge.learn(p,t.persona().definitionId(),hit)));
+        if(!g.raid&&reserved!=null&&s.prepared()==null)reserved.hits().forEach((target,hit)->s.find(target).ifPresent(t->BattleKnowledge.learn(p,t.persona().definitionId(),hit)));
         for(Object member:g.players.values())persist(member,s);
         String message=String.join("  •  ",result.log());g.delay=28;
         if(s.state()!=BattleState.ACTIVE){g.ending=message;if(!busy(g)){finish(g,message);return true;}}
@@ -161,7 +174,13 @@ public final class BattleService {
         var s=g.session;var actor=s.currentActor();var targets=s.enemiesOf(actor);if(targets.isEmpty())return;
         var target=targets.get(Math.floorMod(ticks+actor.id().hashCode(),targets.size()));
         var skill=actor.persona().learnedSkills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(Objects::nonNull).filter(d->d.isDamageSkill()&&d.spCost()<=actor.sp()).findFirst().orElse(null);
+        if(g.raid&&g.raidStage==2){boolean ice=com.gx.velveteclipse.raid.RaidService.iceTurn(s.id());skill=ice?PersonaRegistry.skill("raid_ice_storm").orElseThrow():null;
+            if(ice&&g.level instanceof net.minecraft.server.level.ServerLevel l)for(Object p:g.players.values())if(p instanceof Entity e)l.m_8767_(net.minecraft.core.particles.ParticleTypes.f_175821_,e.m_20185_(),e.m_20186_()+1,e.m_20189_(),45,.6,1,.6,.08);
+        }
+        if(g.raid&&!com.gx.velveteclipse.raid.RaidService.allowAction(s.id()))return;
         var result=s.perform(actor.id(),skill==null?BattleAction.attack(target.id()):BattleAction.skill(skill.id(),target.id()));g.delay=28;
+        if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
+        if(g.raid&&g.raidStage==2){g.delay=60;g.wasBusy=true;}
         for(Object p:g.players.values())persist(p,s);
         if(s.state()!=BattleState.ACTIVE)finish(g,String.join(" • ",result.log()));else syncAll(g,String.join(" • ",result.log()));
     }
@@ -169,7 +188,9 @@ public final class BattleService {
     public static void sync(Object p,String message){
         if(p==null)return;var data=PlayerPersonaData.load(p);var g=group(p);var actor=g==null?null:g.session.find(RuntimeBridge.playerUuid(p)).orElse(null);
         var persona=actor==null?data.activeInstance():actor.persona();var targets=new ArrayList<BattleRosterS2C.Target>();
-        if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name(),ally,c.hp(),c.maxHp(),c.persona().definitionId(),ally?"":BattleKnowledge.load(p).forEnemy(c.persona().definitionId()),g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
+        if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;
+            String affinities=ally?"":g.raid?(g.raidStage==2?java.util.Arrays.stream(Element.values()).filter(e->e!=Element.NONE&&e!=Element.SUPPORT&&e!=Element.HEALING).map(e->e+":"+c.affinity(e)).collect(java.util.stream.Collectors.joining(",")):""):BattleKnowledge.load(p).forEnemy(c.persona().definitionId());
+            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name(),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
         ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));
         if(g==null)ModNetwork.sendPresentation(p,BattleTacticsS2C.empty());
         else {
@@ -186,12 +207,13 @@ public final class BattleService {
     private static void finish(Encounter g,String message){
         if(!BATTLES.containsKey(g.session.id())||!g.results.begin(g.players.keySet()))return;
         boolean won=g.session.state()==BattleState.PLAYERS_WON;
+        if(g.raid)com.gx.velveteclipse.raid.RaidService.finished(g.session.id(),won);
         com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterFinished(g.session.id(),won);
         VisualBattleActors.clearEnemies(g.session.id());
         // Keep encounter and membership until each player's Enter acknowledgement.
         for(Object p:new ArrayList<>(g.players.values())){
             persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?80*g.enemyCount*(g.boss?3:1):0;String items="NENHUM ITEM";
-            if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);boolean fresh=!data.rosterIds().contains("umbra_slime");data.givePersona("umbra_slime");if(fresh)items="PERSONA • Umbra Slime";}
+            if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{boolean fresh=!data.rosterIds().contains("umbra_slime");data.givePersona("umbra_slime");if(fresh)items="PERSONA • Umbra Slime";}}
             data.save(p);VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
             if(g.shuffleVictory&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor));
             var persona=data.activeInstance();ModNetwork.sendPresentation(p,new BattleResultsS2C(g.session.id().toString(),won,xp,before,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),items,g.shuffleVictory&&won));

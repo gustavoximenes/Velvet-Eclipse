@@ -9,7 +9,7 @@ public final class ShuffleRules {
  public record Round(String token,int floor,List<Card> cards){}
  public static int level(int floor){return Math.max(1,Math.min(99,floor));}
  public static int skillLevel(String id){
-  return switch(id){case "mazio"->8;case "zionga"->20;case "mazionga"->32;case "ziodyne"->50;case "maziodyne"->65;
+  return switch(id){case "raid_ice_storm"->12;case "mazio"->8;case "zionga"->20;case "mazionga"->32;case "ziodyne"->50;case "maziodyne"->65;
    default->PersonaRegistry.personas().values().stream().flatMap(p->p.learnset().entrySet().stream()).filter(e->e.getValue().contains(id)).mapToInt(Map.Entry::getKey).min().orElse(1);};
  }
  public static Round roll(int floor,Set<String> owned,Random random){

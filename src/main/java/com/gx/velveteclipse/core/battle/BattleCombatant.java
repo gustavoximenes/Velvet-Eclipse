@@ -17,6 +17,11 @@ public final class BattleCombatant {
    private int sp;
    private boolean guarding;
    private boolean downed;
+   private boolean knockdownImmune;
+   private com.gx.velveteclipse.core.persona.Element raidWeakness;
+   public void setRaidBoss(com.gx.velveteclipse.core.persona.Element weak){knockdownImmune=true;raidWeakness=weak;setDowned(false);}
+   public boolean knockdownImmune(){return knockdownImmune;}
+   public com.gx.velveteclipse.core.persona.Affinity affinity(com.gx.velveteclipse.core.persona.Element e){return raidWeakness==null?personaDefinition().affinity(e):e==raidWeakness?com.gx.velveteclipse.core.persona.Affinity.WEAK:com.gx.velveteclipse.core.persona.Affinity.NORMAL;}
    private com.gx.velveteclipse.core.persona.Element downElement;
    private boolean skipNextTurn;
    private double batonMultiplier=1;
@@ -26,6 +31,7 @@ public final class BattleCombatant {
    public com.gx.velveteclipse.core.persona.Element downElement(){return downElement;}
    /** Only a repeated hit of the SAME weakness, before recovery, causes a lost turn. */
    public boolean knockDown(com.gx.velveteclipse.core.persona.Element element,boolean weakness){
+      if(knockdownImmune)return false;
       boolean fresh=!downed;
       if(weakness){if(downed&&element==downElement)skipNextTurn=true;else if(fresh||downElement==null)downElement=element;}
       downed=true;return fresh;
@@ -163,7 +169,7 @@ public final class BattleCombatant {
    }
 
    public void setDowned(boolean var1) {
-      this.downed = var1;
+      this.downed = var1&&!knockdownImmune;
       if(!var1){downElement=null;skipNextTurn=false;}
    }
 

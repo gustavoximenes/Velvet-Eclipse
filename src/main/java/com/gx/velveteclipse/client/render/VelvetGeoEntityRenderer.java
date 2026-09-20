@@ -17,6 +17,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         try{
             if(com.gx.velveteclipse.client.BattleTacticsClient.downed(entity.m_19879_())){stack.m_85837_(0,.28,0);stack.m_252781_(new org.joml.Quaternionf().rotationZ(1.40f).rotateX(.12f));}
             if(entity.m_7755_().getString().startsWith("Guardião do Tártaro"))stack.m_85841_(2.2f,2.2f,2.2f);
+            if(entity.m_7755_().getString().startsWith("Guardião do Trem"))stack.m_85841_(1.7f,1.7f,1.7f);
             super.m_7392_(entity,yaw,partial,stack,buffers,light);
         }finally{stack.m_85849_();}
     }
@@ -25,11 +26,12 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         thanatos=asset.equals("thanatos");izanagi=asset.equals("izanagi");this.f_114477_=thanatos?.45f:.55f;
         // Preserve authoring dimensions/Box UV; scale the model uniformly in both world and menus.
         if(izanagi||asset.equals("igor"))withScale(.25f);
+        if(asset.equals("priestess"))withScale(.4f);
         if(asset.equals("wealth_hand")||izanagi||asset.startsWith("tartarus_"))addRenderLayer(new AutoGlowingGeoLayer<T>(this));
     }
     @Override protected void applyRotations(T entity,PoseStack stack,float age,float bodyYaw,float partial){
         // GeckoLib supplies bodyYaw=0 for non-living entities. Props still have a saved world yaw.
-        super.applyRotations(entity,stack,age,entity instanceof com.gx.velveteclipse.darkhour.TartarusPropEntity?entity.m_146908_():bodyYaw,partial);
+        super.applyRotations(entity,stack,age,entity instanceof com.gx.velveteclipse.darkhour.TartarusPropEntity||entity instanceof com.gx.velveteclipse.raid.PriestessEntity?entity.m_146908_():bodyYaw,partial);
     }
     @Override public void renderCubesOfBone(PoseStack stack,GeoBone bone,VertexConsumer out,int light,int overlay,float r,float g,float b,float a) {
         if(thanatos&&ThanatosMesh.draw(stack,bone,out,light,overlay,r,g,b,a))return;

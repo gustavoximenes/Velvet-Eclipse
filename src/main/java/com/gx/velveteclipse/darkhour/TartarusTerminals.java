@@ -27,7 +27,7 @@ public final class TartarusTerminals {
  public static void interact(ServerPlayer p,TartarusPropEntity e){
   if(!near(p,e))return;int f=TartarusDungeonService.floor(p);var s=TartarusDungeonService.data(p.m_284548_());String id=e.getPersistentData().m_128461_(PROP);
   if(e.m_6095_()==TartarusPropRegistry.TERMINAL.get()){discover(p,f);var floors=new ArrayList<>(TartarusProgress.discovered(p.getPersistentData().m_128465_(DISCOVERED)));Collections.reverse(floors);TartarusTerminalNetwork.reply(p,floors);return;}
-  if(e.m_6095_()==TartarusPropRegistry.MONAD.get()){p.m_5661_(Component.m_237113_("A porta de Monad permanece selada."),true);return;}
+  if(e.m_6095_()==TartarusPropRegistry.MONAD.get()){com.gx.velveteclipse.raid.RaidService.open(p);return;}
   if(e.m_6095_()!=TartarusPropRegistry.TREASURE.get())return;String key=f+":"+id.substring(id.lastIndexOf(':')+1);
   if(!s.progress.treasures.add(key))return;
   var data=PlayerPersonaData.load(p);long yen=250L+f*45L;data.addYen(yen);data.addPulseTonics(1);data.save(p);s.props.remove(id);s.m_77762_();e.m_146870_();BattleService.sync(p,"Tesouro • ¥ "+yen+" e 1 Pulse Tonic");com.gx.velveteclipse.shuffle.ShuffleService.status(p,"");p.m_5661_(Component.m_237113_("Tesouro recolhido: ¥ "+yen+" e 1 Pulse Tonic"),false);

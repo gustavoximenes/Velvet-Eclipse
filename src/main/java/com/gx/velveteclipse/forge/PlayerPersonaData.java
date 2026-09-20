@@ -24,6 +24,11 @@ public final class PlayerPersonaData {
    public void addYen(long amount){if(amount>0)yen=Math.min(9_999_999_999L,yen+Math.min(amount,9_999_999_999L));}
    public int playerLevel(){return playerLevel;}
    public int playerExperience(){return playerExperience;}
+   public void setPlayerLevel(int level){if(level<1||level>99)throw new IllegalArgumentException("Player level must be 1..99");playerLevel=level;playerExperience=0;}
+   public boolean setPersonaLevel(String id,int level){
+      var instance=roster.get(id);if(instance==null)return false;
+      instance.setLevel(PersonaRegistry.persona(id).orElseThrow(),level);return true;
+   }
    public int playerNextExperience(){return PersonaInstance.experienceForNextLevel(playerLevel);}
    public void addPlayerExperience(int amount){
       if(amount<=0||playerLevel>=99)return;

@@ -37,6 +37,12 @@ public final class PersonaInstance {
       return this.experience;
    }
 
+   /** Administrative level change preserves learned/inherited skills and resets level progress. */
+   public void setLevel(PersonaDefinition definition,int value) {
+      if(value<1||value>99||!definitionId.equals(definition.id()))throw new IllegalArgumentException("Persona level must be 1..99 and match its definition");
+      level=value;experience=0;learnSkillsForLevel(definition,value);
+   }
+
    public Set<String> learnedSkills() {
       return Set.copyOf(this.learnedSkills);
    }

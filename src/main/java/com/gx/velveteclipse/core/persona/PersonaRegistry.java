@@ -16,6 +16,7 @@ public final class PersonaRegistry {
 
    public static synchronized void bootstrap() {
       if (!bootstrapped) {
+         registerSkill(new SkillDefinition("raid_ice_storm","Tempestade Glacial",Element.ICE,40,100,10,0,false,SkillTarget.ALL_ENEMIES));
          registerSkill(new SkillDefinition("ember", "Ember", Element.FIRE, 44, 96, 4, 0, false, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("frost_shard", "Frost Shard", Element.ICE, 42, 96, 4, 0, false, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("volt_spark", "Volt Spark", Element.ELECTRIC, 43, 95, 4, 0, false, SkillTarget.ONE_ENEMY));

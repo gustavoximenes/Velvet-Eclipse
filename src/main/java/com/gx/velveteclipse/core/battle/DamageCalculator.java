@@ -16,13 +16,13 @@ public final class DamageCalculator {
    /** Roll once on the authoritative server; no resources or entity state change here. */
    public static DamageOutcome roll(BattleCombatant var0, BattleCombatant var1, SkillDefinition var2, Random var3) {
       if (var3.nextInt(100) >= var2.accuracy()) {
-         return new DamageOutcome(var2.element(), var1.personaDefinition().affinity(var2.element()), 0, false, false, false, false, true);
+         return new DamageOutcome(var2.element(), var1.affinity(var2.element()), 0, false, false, false, false, true);
       } else {
          int var4 = var2.usesMagicStat() ? var0.stats().magic() : var0.stats().strength();
          int var5 = Math.max(1, var1.stats().endurance());
          int var6 = Math.max(1, var2.power() * (var4 + 8) / (var5 + 8));
          var6 = Math.max(1,(int)Math.round(var6 * var0.attackMultiplier() * var0.batonMultiplier() / var1.defenseMultiplier()));
-         Affinity var7 = var2.element() == Element.ALMIGHTY || var2.element() == Element.NONE ? Affinity.NORMAL : var1.personaDefinition().affinity(var2.element());
+         Affinity var7 = var2.element() == Element.ALMIGHTY || var2.element() == Element.NONE ? Affinity.NORMAL : var1.affinity(var2.element());
          boolean var8 = var2.canCritical() && var3.nextInt(100) < Math.min(35, 4 + var0.stats().luck() * 2);
          if (var8) {
             var6 = (int)Math.ceil((double)var6 * 1.35);

@@ -9,6 +9,7 @@ import java.util.UUID;
 public final class VisualBattleActors {
    private static final Map<UUID, Map<UUID, net.minecraft.world.entity.Entity>> ENEMIES = new HashMap<>();
    private static final Map<UUID, Object> PERSONA = new HashMap<>();
+   public static void bindEnemy(UUID battle,UUID id,net.minecraft.world.entity.Entity e){ENEMIES.computeIfAbsent(battle,k->new java.util.LinkedHashMap<>()).put(id,e);}
 
    public static void spawnBattle(Object player,String persona,String ignored) {
       var session=BattleService.current(player);if(session==null)return;

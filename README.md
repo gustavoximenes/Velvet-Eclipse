@@ -1,3 +1,7 @@
+# Versão 0.6.20 — Operação Monorail
+
+Raid pela porta Monad do andar 25: trem próprio, lobby, diálogos por ordem de entrada, dois subchefes e a Sacerdotisa modelada. Timer de cinco minutos, gelo em área e fraqueza variável. Limite padrão de cinco jogadores; comando `/velvetraid maxplayers 1..12`. [Uso e validação](docs/MONORAIL_RAID.md).
+
 # Versão 0.6.19
 
 Correções de guardiões após teleporte e da rotação da porta de Monad. Salas de transição em todos os múltiplos de 25, inclusive nos andares já visitados. Aba criativa automática e itens de colocação de terminal, tesouro e porta. [Notas](docs/TARTARUS_FIXES_019.md).

@@ -88,5 +88,14 @@
   "item.velvet_eclipse.model_sylphid": "Sylphid • Modelo",
   "item.velvet_eclipse.model_lumen_hare": "Lumen Hare • Modelo",
   "item.velvet_eclipse.model_iron_oni": "Iron Oni • Modelo",
-  "item.velvet_eclipse.model_umbra_slime": "Umbra Slime • Modelo"
+  "item.velvet_eclipse.model_umbra_slime": "Umbra Slime • Modelo",
+  "block.velvet_eclipse.train_floor": "Piso do Monorail",
+  "block.velvet_eclipse.train_wall": "Parede do Monorail",
+  "block.velvet_eclipse.train_window": "Janela do Monorail",
+  "block.velvet_eclipse.train_seat": "Banco do Monorail",
+  "block.velvet_eclipse.train_metal": "Metal do Monorail",
+  "block.velvet_eclipse.train_lamp": "Luminária do Monorail",
+  "block.velvet_eclipse.train_rail": "Barra do Monorail",
+  "item.velvet_eclipse.priestess_figure": "Figura da Sacerdotisa",
+  "entity.velvet_eclipse.priestess": "Sacerdotisa"
 }

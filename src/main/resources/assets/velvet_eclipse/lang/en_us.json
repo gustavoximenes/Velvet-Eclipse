@@ -88,5 +88,14 @@
   "item.velvet_eclipse.model_sylphid": "Sylphid • Model",
   "item.velvet_eclipse.model_lumen_hare": "Lumen Hare • Model",
   "item.velvet_eclipse.model_iron_oni": "Iron Oni • Model",
-  "item.velvet_eclipse.model_umbra_slime": "Umbra Slime • Model"
+  "item.velvet_eclipse.model_umbra_slime": "Umbra Slime • Model",
+  "block.velvet_eclipse.train_floor": "Monorail Floor",
+  "block.velvet_eclipse.train_wall": "Monorail Wall",
+  "block.velvet_eclipse.train_window": "Monorail Window",
+  "block.velvet_eclipse.train_seat": "Monorail Seat",
+  "block.velvet_eclipse.train_metal": "Monorail Metal",
+  "block.velvet_eclipse.train_lamp": "Monorail Lamp",
+  "block.velvet_eclipse.train_rail": "Monorail Rail",
+  "item.velvet_eclipse.priestess_figure": "Priestess Figure",
+  "entity.velvet_eclipse.priestess": "Priestess"
 }

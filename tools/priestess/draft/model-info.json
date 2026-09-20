@@ -1,0 +1,11 @@
+{
+  "elements": 229,
+  "bones": 73,
+  "texture_size": 1024,
+  "atlas_height_used": 331,
+  "density": 4,
+  "clips": {
+    "misc.idle": 4.8,
+    "action.attack": 2.8
+  }
+}

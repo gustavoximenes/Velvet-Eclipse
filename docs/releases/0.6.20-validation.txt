@@ -1,0 +1,8 @@
+PASS raid: 401 checks; timer phases, retry, changing affinity, boss immunity, area ice, sealed train gates, 1�12 player formation and native GeckoLib assets. Offline only.
+PASS tactics: 11091 checks; first/repeated weakness, bonus ownership, isolated Baton Pass damage, departure recovery, 1..5 elementless all-out targets, codecs, animation phases and HUD previews.
+PASS progression: 11 checks; exact levels, XP reset, inherited skills, save/load, rejected values, fusion gates and command registration. Offline only.
+BUILD SUCCESSFUL: final jar and sourcesJar after the focused checks.
+Offline GUI previews use runtime geometry. Train preview uses Java layout and shipped textures; lighting is illustrative.
+No Minecraft launch or testing with live multiplayer clients, per project preference.
+Jar version, classes, dimension, model/animations, creative items and textures verified.
+SHA256: 7992D2F71F01D6A4055C45C43D2DA5325BCA43B79FDE25E4119A56219785C867

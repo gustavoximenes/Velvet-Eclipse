@@ -148,6 +148,7 @@ public final class ShadowWorldService {
    }
 
    public static Object nearest(Object var0, double var1) {
+      if(com.gx.velveteclipse.raid.RaidService.inside(var0))return null;
       if (var0 == null) {
          return null;
       } else {

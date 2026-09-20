@@ -1,0 +1,7140 @@
+[
+  {
+    "name": "black_hip",
+    "bone": "pelvis",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        16,
+        -8
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "uv": [
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "name": "black_upper_leg",
+    "bone": "black_thigh",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -19.0,
+        24,
+        -9.5
+      ],
+      "size": [
+        14,
+        51,
+        15
+      ],
+      "uv": [
+        76,
+        2
+      ],
+      "rotation": [
+        -26.08145122244507,
+        0,
+        69.14554196042165
+      ],
+      "pivot": [
+        -12,
+        24,
+        -2.0
+      ]
+    }
+  },
+  {
+    "name": "black_lower_leg",
+    "bone": "black_calf",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -59.0,
+        40,
+        -29.5
+      ],
+      "size": [
+        10,
+        58,
+        11
+      ],
+      "uv": [
+        136,
+        2
+      ],
+      "rotation": [
+        -29.15238740910075,
+        0,
+        130.7993777953646
+      ],
+      "pivot": [
+        -54.0,
+        40,
+        -24
+      ]
+    }
+  },
+  {
+    "name": "black_foot",
+    "bone": "black_foot",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -98.0,
+        0,
+        -64
+      ],
+      "size": [
+        12,
+        7,
+        20
+      ],
+      "uv": [
+        180,
+        2
+      ],
+      "rotation": [
+        0,
+        23,
+        0
+      ],
+      "pivot": [
+        -92,
+        4,
+        -52
+      ]
+    }
+  },
+  {
+    "name": "black_anklet",
+    "bone": "black_calf",
+    "material": "gold",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -97.5,
+        6.0,
+        -57.6
+      ],
+      "size": [
+        11,
+        2,
+        11
+      ],
+      "uv": [
+        246,
+        2
+      ]
+    }
+  },
+  {
+    "name": "black_drape_1",
+    "bone": "black_skirt",
+    "material": "cloth_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -1.0,
+        30.0,
+        -11.0
+      ],
+      "size": [
+        83,
+        52,
+        0
+      ],
+      "uv": [
+        292,
+        2
+      ],
+      "rotation": [
+        18.071578368471126,
+        14.400669174345687,
+        166.4225207630957
+      ],
+      "pivot": [
+        -1.0,
+        30.0,
+        -11.0
+      ]
+    }
+  },
+  {
+    "name": "black_drape_2",
+    "bone": "black_skirt",
+    "material": "cloth_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -1.0,
+        30.0,
+        -11.0
+      ],
+      "size": [
+        98,
+        33,
+        0
+      ],
+      "uv": [
+        460,
+        2
+      ],
+      "rotation": [
+        67.01385924740657,
+        2.9470295699777664,
+        -163.24425107080103
+      ],
+      "pivot": [
+        -1.0,
+        30.0,
+        -11.0
+      ]
+    }
+  },
+  {
+    "name": "black_drape_3",
+    "bone": "black_skirt",
+    "material": "cloth_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -1.0,
+        30.0,
+        -11.0
+      ],
+      "size": [
+        65,
+        26,
+        0
+      ],
+      "uv": [
+        658,
+        2
+      ],
+      "rotation": [
+        17.875934929969212,
+        -24.785626189116527,
+        -150.7169753987347
+      ],
+      "pivot": [
+        -1.0,
+        30.0,
+        -11.0
+      ]
+    }
+  },
+  {
+    "name": "black_front_fold",
+    "bone": "black_skirt",
+    "material": "cloth_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -1.0,
+        30.0,
+        -12.0
+      ],
+      "size": [
+        57,
+        33,
+        0
+      ],
+      "uv": [
+        790,
+        2
+      ],
+      "rotation": [
+        -3.1166420838672706,
+        14.400669174345687,
+        166.4225207630957
+      ],
+      "pivot": [
+        -1.0,
+        30.0,
+        -12.0
+      ]
+    }
+  },
+  {
+    "name": "white_hip",
+    "bone": "pelvis",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0,
+        16,
+        -8
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "uv": [
+        906,
+        2
+      ]
+    }
+  },
+  {
+    "name": "white_upper_leg",
+    "bone": "white_thigh",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        5.0,
+        24,
+        -9.5
+      ],
+      "size": [
+        14,
+        51,
+        15
+      ],
+      "uv": [
+        2,
+        73
+      ],
+      "rotation": [
+        -26.08145122244507,
+        0,
+        -69.14554196042165
+      ],
+      "pivot": [
+        12,
+        24,
+        -2.0
+      ]
+    }
+  },
+  {
+    "name": "white_lower_leg",
+    "bone": "white_calf",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        49.0,
+        40,
+        -29.5
+      ],
+      "size": [
+        10,
+        58,
+        11
+      ],
+      "uv": [
+        62,
+        73
+      ],
+      "rotation": [
+        -29.15238740910075,
+        0,
+        -130.7993777953646
+      ],
+      "pivot": [
+        54.0,
+        40,
+        -24
+      ]
+    }
+  },
+  {
+    "name": "white_foot",
+    "bone": "white_foot",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        86.0,
+        0,
+        -64
+      ],
+      "size": [
+        12,
+        7,
+        20
+      ],
+      "uv": [
+        106,
+        73
+      ],
+      "rotation": [
+        0,
+        -23,
+        0
+      ],
+      "pivot": [
+        92,
+        4,
+        -52
+      ]
+    }
+  },
+  {
+    "name": "white_anklet",
+    "bone": "white_calf",
+    "material": "gold",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        86.5,
+        6.0,
+        -57.6
+      ],
+      "size": [
+        11,
+        2,
+        11
+      ],
+      "uv": [
+        172,
+        73
+      ]
+    }
+  },
+  {
+    "name": "white_drape_1",
+    "bone": "white_skirt",
+    "material": "cloth_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        1.0,
+        30.0,
+        -11.0
+      ],
+      "size": [
+        83,
+        52,
+        0
+      ],
+      "uv": [
+        218,
+        73
+      ],
+      "rotation": [
+        161.92842163152886,
+        14.400669174345687,
+        13.577479236904303
+      ],
+      "pivot": [
+        1.0,
+        30.0,
+        -11.0
+      ]
+    }
+  },
+  {
+    "name": "white_drape_2",
+    "bone": "white_skirt",
+    "material": "cloth_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        1.0,
+        30.0,
+        -11.0
+      ],
+      "size": [
+        98,
+        33,
+        0
+      ],
+      "uv": [
+        386,
+        73
+      ],
+      "rotation": [
+        112.98614075259344,
+        2.9470295699777664,
+        -16.755748929198983
+      ],
+      "pivot": [
+        1.0,
+        30.0,
+        -11.0
+      ]
+    }
+  },
+  {
+    "name": "white_drape_3",
+    "bone": "white_skirt",
+    "material": "cloth_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        1.0,
+        30.0,
+        -11.0
+      ],
+      "size": [
+        65,
+        26,
+        0
+      ],
+      "uv": [
+        584,
+        73
+      ],
+      "rotation": [
+        162.12406507003078,
+        -24.785626189116527,
+        -29.283024601265303
+      ],
+      "pivot": [
+        1.0,
+        30.0,
+        -11.0
+      ]
+    }
+  },
+  {
+    "name": "white_front_fold",
+    "bone": "white_skirt",
+    "material": "cloth_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        1.0,
+        30.0,
+        -12.0
+      ],
+      "size": [
+        57,
+        33,
+        0
+      ],
+      "uv": [
+        716,
+        73
+      ],
+      "rotation": [
+        -176.88335791613272,
+        14.400669174345687,
+        13.577479236904303
+      ],
+      "pivot": [
+        1.0,
+        30.0,
+        -12.0
+      ]
+    }
+  },
+  {
+    "name": "waist_clasp",
+    "bone": "pelvis",
+    "material": "gold",
+    "pattern": "clasp",
+    "cube": {
+      "origin": [
+        -6.0,
+        28,
+        -13.6
+      ],
+      "size": [
+        12,
+        7,
+        2
+      ],
+      "uv": [
+        832,
+        73
+      ]
+    }
+  },
+  {
+    "name": "black_waist",
+    "bone": "body",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.0,
+        32,
+        -6.4
+      ],
+      "size": [
+        10,
+        20,
+        13
+      ],
+      "uv": [
+        862,
+        73
+      ]
+    }
+  },
+  {
+    "name": "black_ribcage",
+    "bone": "body",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12,
+        52,
+        -7.6
+      ],
+      "size": [
+        12,
+        20,
+        15
+      ],
+      "uv": [
+        910,
+        73
+      ]
+    }
+  },
+  {
+    "name": "black_chest",
+    "bone": "body",
+    "material": "obsidian",
+    "pattern": "B",
+    "cube": {
+      "origin": [
+        -15.0,
+        72,
+        -8
+      ],
+      "size": [
+        15,
+        16,
+        16
+      ],
+      "uv": [
+        2,
+        144
+      ]
+    }
+  },
+  {
+    "name": "white_waist",
+    "bone": "body",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0,
+        32,
+        -6.4
+      ],
+      "size": [
+        10,
+        20,
+        13
+      ],
+      "uv": [
+        66,
+        144
+      ]
+    }
+  },
+  {
+    "name": "white_ribcage",
+    "bone": "body",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0,
+        52,
+        -7.6
+      ],
+      "size": [
+        12,
+        20,
+        15
+      ],
+      "uv": [
+        114,
+        144
+      ]
+    }
+  },
+  {
+    "name": "white_chest",
+    "bone": "body",
+    "material": "ivory",
+    "pattern": "J",
+    "cube": {
+      "origin": [
+        0,
+        72,
+        -8
+      ],
+      "size": [
+        15,
+        16,
+        16
+      ],
+      "uv": [
+        170,
+        144
+      ]
+    }
+  },
+  {
+    "name": "black_neck",
+    "bone": "neck",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -5.0,
+        86.0,
+        -4.4
+      ],
+      "size": [
+        5,
+        15,
+        9
+      ],
+      "uv": [
+        234,
+        144
+      ]
+    }
+  },
+  {
+    "name": "white_neck",
+    "bone": "neck",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0,
+        86.0,
+        -4.4
+      ],
+      "size": [
+        5,
+        15,
+        9
+      ],
+      "uv": [
+        264,
+        144
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_0_0",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        99.2,
+        -6.16
+      ],
+      "size": [
+        5,
+        3,
+        0
+      ],
+      "uv": [
+        294,
+        144
+      ],
+      "rotation": [
+        -148.3392489033633,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        99.2,
+        -6.16
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_0_1",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -2.442942,
+        99.2,
+        -6.16
+      ],
+      "size": [
+        3,
+        4,
+        0
+      ],
+      "uv": [
+        306,
+        144
+      ],
+      "rotation": [
+        -135.21174143377462,
+        -55.00797980144133,
+        180.0
+      ],
+      "pivot": [
+        -2.304,
+        99.2,
+        -6.16
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_0_2",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -3.873586,
+        99.2,
+        -4.88
+      ],
+      "size": [
+        6,
+        4,
+        0
+      ],
+      "uv": [
+        314,
+        144
+      ],
+      "rotation": [
+        46.729946878149505,
+        -84.80557109226521,
+        0.0
+      ],
+      "pivot": [
+        -3.2,
+        99.2,
+        -4.88
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_0_3",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -4.59613,
+        99.2,
+        -2.064
+      ],
+      "size": [
+        6,
+        4,
+        0
+      ],
+      "uv": [
+        328,
+        144
+      ],
+      "rotation": [
+        46.52463876720729,
+        -19.179008025810717,
+        0.0
+      ],
+      "pivot": [
+        -2.944,
+        99.2,
+        -2.064
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_1_0",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        101.6,
+        -7.64
+      ],
+      "size": [
+        7,
+        6,
+        0
+      ],
+      "uv": [
+        342,
+        144
+      ],
+      "rotation": [
+        -163.93359946480334,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        101.6,
+        -7.64
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_1_1",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -4.199594,
+        101.6,
+        -7.64
+      ],
+      "size": [
+        5,
+        6,
+        0
+      ],
+      "uv": [
+        358,
+        144
+      ],
+      "rotation": [
+        -153.64289732229915,
+        -55.00797980144134,
+        180.0
+      ],
+      "pivot": [
+        -4.176,
+        101.6,
+        -7.64
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_1_2",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -6.372186,
+        101.6,
+        -5.32
+      ],
+      "size": [
+        8,
+        6,
+        0
+      ],
+      "uv": [
+        370,
+        144
+      ],
+      "rotation": [
+        28.894565402082804,
+        -84.80557109226528,
+        0.0
+      ],
+      "pivot": [
+        -5.8,
+        101.6,
+        -5.32
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_1_3",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.064676,
+        101.6,
+        -0.216
+      ],
+      "size": [
+        9,
+        6,
+        0
+      ],
+      "uv": [
+        388,
+        144
+      ],
+      "rotation": [
+        29.866771504201196,
+        -19.17900802581072,
+        0.0
+      ],
+      "pivot": [
+        -5.336,
+        101.6,
+        -0.216
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_2_0",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        106.6,
+        -9.08
+      ],
+      "size": [
+        8,
+        8,
+        0
+      ],
+      "uv": [
+        408,
+        144
+      ],
+      "rotation": [
+        -177.77295303258646,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        106.6,
+        -9.08
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_2_1",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -6.192,
+        106.6,
+        -9.08
+      ],
+      "size": [
+        6,
+        8,
+        0
+      ],
+      "uv": [
+        426,
+        144
+      ],
+      "rotation": [
+        -171.280019079475,
+        -55.00797980144133,
+        180.0
+      ],
+      "pivot": [
+        -6.192,
+        106.6,
+        -9.08
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_2_2",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -8.6,
+        106.6,
+        -5.64
+      ],
+      "size": [
+        10,
+        8,
+        0
+      ],
+      "uv": [
+        440,
+        144
+      ],
+      "rotation": [
+        12.725987729805304,
+        -84.80557109226521,
+        0.0
+      ],
+      "pivot": [
+        -8.6,
+        106.6,
+        -5.64
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_2_3",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -8.721475,
+        106.6,
+        1.928
+      ],
+      "size": [
+        10,
+        8,
+        0
+      ],
+      "uv": [
+        462,
+        144
+      ],
+      "rotation": [
+        16.65143247524405,
+        -19.17900802581072,
+        0.0
+      ],
+      "pivot": [
+        -7.912,
+        106.6,
+        1.928
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_3_0",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        113.8,
+        -9.36
+      ],
+      "size": [
+        8,
+        6,
+        0
+      ],
+      "uv": [
+        484,
+        144
+      ],
+      "rotation": [
+        160.90650799951442,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        113.8,
+        -9.36
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_3_1",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.344,
+        113.8,
+        -9.36
+      ],
+      "size": [
+        6,
+        6,
+        0
+      ],
+      "uv": [
+        502,
+        144
+      ],
+      "rotation": [
+        162.675299402173,
+        -55.00797980144134,
+        180.0
+      ],
+      "pivot": [
+        -7.344,
+        113.8,
+        -9.36
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_3_2",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.2,
+        113.8,
+        -5.28
+      ],
+      "size": [
+        10,
+        6,
+        0
+      ],
+      "uv": [
+        516,
+        144
+      ],
+      "rotation": [
+        -9.48886973132838,
+        -84.80557109226521,
+        0.0
+      ],
+      "pivot": [
+        -10.2,
+        113.8,
+        -5.28
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_3_3",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -9.384,
+        113.8,
+        3.696
+      ],
+      "size": [
+        11,
+        6,
+        0
+      ],
+      "uv": [
+        538,
+        144
+      ],
+      "rotation": [
+        2.0804574886426432,
+        -19.17900802581072,
+        0.0
+      ],
+      "pivot": [
+        -9.384,
+        113.8,
+        3.696
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_4_0",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        119.0,
+        -7.56
+      ],
+      "size": [
+        7,
+        6,
+        0
+      ],
+      "uv": [
+        562,
+        144
+      ],
+      "rotation": [
+        137.86240522611178,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        119.0,
+        -7.56
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_4_1",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -6.624,
+        119.0,
+        -7.56
+      ],
+      "size": [
+        5,
+        7,
+        0
+      ],
+      "uv": [
+        578,
+        144
+      ],
+      "rotation": [
+        132.7813817853047,
+        -55.00797980144134,
+        180.0
+      ],
+      "pivot": [
+        -6.624,
+        119.0,
+        -7.56
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_4_2",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -9.2,
+        119.0,
+        -3.88
+      ],
+      "size": [
+        9,
+        6,
+        0
+      ],
+      "uv": [
+        590,
+        144
+      ],
+      "rotation": [
+        -42.02031395518755,
+        -84.80557109226521,
+        0.0
+      ],
+      "pivot": [
+        -9.2,
+        119.0,
+        -3.88
+      ]
+    }
+  },
+  {
+    "name": "black_face_plane_4_3",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -8.464,
+        119.0,
+        4.216
+      ],
+      "size": [
+        9,
+        5,
+        0
+      ],
+      "uv": [
+        610,
+        144
+      ],
+      "rotation": [
+        -30.314334971683312,
+        -19.17900802581072,
+        0.0
+      ],
+      "pivot": [
+        -8.464,
+        119.0,
+        4.216
+      ]
+    }
+  },
+  {
+    "name": "black_under_chin",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        99.2,
+        -6.16
+      ],
+      "size": [
+        4,
+        6,
+        0
+      ],
+      "uv": [
+        630,
+        144
+      ],
+      "rotation": [
+        90.0,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        99.2,
+        -6.16
+      ]
+    }
+  },
+  {
+    "name": "black_top_of_head",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        123.2,
+        -3.76
+      ],
+      "size": [
+        6,
+        9,
+        0
+      ],
+      "uv": [
+        640,
+        144
+      ],
+      "rotation": [
+        90.0,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        123.2,
+        -3.76
+      ]
+    }
+  },
+  {
+    "name": "black_swept_crown_0",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        118.0,
+        -9.0
+      ],
+      "size": [
+        8,
+        8,
+        0
+      ],
+      "uv": [
+        654,
+        144
+      ],
+      "rotation": [
+        144.39244934081896,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        118.0,
+        -9.0
+      ]
+    }
+  },
+  {
+    "name": "black_swept_crown_1",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.92,
+        118.0,
+        -9.0
+      ],
+      "size": [
+        6,
+        9,
+        0
+      ],
+      "uv": [
+        672,
+        144
+      ],
+      "rotation": [
+        139.06396032608015,
+        -55.00797980144133,
+        180.0
+      ],
+      "pivot": [
+        -7.92,
+        118.0,
+        -9.0
+      ]
+    }
+  },
+  {
+    "name": "black_swept_crown_2",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.0,
+        118.0,
+        -4.6
+      ],
+      "size": [
+        10,
+        8,
+        0
+      ],
+      "uv": [
+        686,
+        144
+      ],
+      "rotation": [
+        -36.28669966945932,
+        -84.80557109226528,
+        0.0
+      ],
+      "pivot": [
+        -11.0,
+        118.0,
+        -4.6
+      ]
+    }
+  },
+  {
+    "name": "black_swept_crown_3",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.12,
+        118.0,
+        5.08
+      ],
+      "size": [
+        11,
+        7,
+        0
+      ],
+      "uv": [
+        708,
+        144
+      ],
+      "rotation": [
+        -26.269829008883,
+        -19.179008025810724,
+        0.0
+      ],
+      "pivot": [
+        -10.12,
+        118.0,
+        5.08
+      ]
+    }
+  },
+  {
+    "name": "black_crown_top",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        124.2,
+        -4.56
+      ],
+      "size": [
+        7,
+        10,
+        0
+      ],
+      "uv": [
+        732,
+        144
+      ],
+      "rotation": [
+        90.0,
+        -0.0,
+        180.0
+      ],
+      "pivot": [
+        0.0,
+        124.2,
+        -4.56
+      ]
+    }
+  },
+  {
+    "name": "black_swept_crest_front",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.2,
+        118.8,
+        1.8
+      ],
+      "size": [
+        4,
+        11,
+        0
+      ],
+      "uv": [
+        748,
+        144
+      ],
+      "rotation": [
+        160.26815159169973,
+        -3.160420981763728,
+        173.65980825409
+      ],
+      "pivot": [
+        -7.2,
+        118.8,
+        1.8
+      ]
+    }
+  },
+  {
+    "name": "black_swept_crest_back",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.2,
+        118.8,
+        3.4
+      ],
+      "size": [
+        4,
+        11,
+        0
+      ],
+      "uv": [
+        758,
+        144
+      ],
+      "rotation": [
+        160.26815159169973,
+        -3.1604209817637243,
+        173.65980825409
+      ],
+      "pivot": [
+        -7.2,
+        118.8,
+        3.4
+      ]
+    }
+  },
+  {
+    "name": "black_crest_edge_0",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -7.2,
+        118.8,
+        1.8
+      ],
+      "size": [
+        4,
+        2,
+        0
+      ],
+      "uv": [
+        768,
+        144
+      ],
+      "rotation": [
+        90.0,
+        -3.160420981763728,
+        173.65980825409
+      ],
+      "pivot": [
+        -7.2,
+        118.8,
+        1.8
+      ]
+    }
+  },
+  {
+    "name": "black_crest_edge_1",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.8,
+        119.2,
+        2.0
+      ],
+      "size": [
+        11,
+        2,
+        0
+      ],
+      "uv": [
+        778,
+        144
+      ],
+      "rotation": [
+        90.0,
+        -19.805341410962733,
+        84.65172778856864
+      ],
+      "pivot": [
+        -10.8,
+        119.2,
+        2.0
+      ]
+    }
+  },
+  {
+    "name": "black_crest_edge_2",
+    "bone": "hair_cap_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.453887,
+        128.6,
+        5.4
+      ],
+      "size": [
+        12,
+        2,
+        0
+      ],
+      "uv": [
+        802,
+        144
+      ],
+      "rotation": [
+        90.0,
+        19.492234238641725,
+        -74.48795127243872
+      ],
+      "pivot": [
+        -9.92,
+        128.6,
+        5.4
+      ]
+    }
+  },
+  {
+    "name": "black_temple_lock",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "braid",
+    "cube": {
+      "origin": [
+        -10.5,
+        112.8,
+        -6.5
+      ],
+      "size": [
+        3,
+        7,
+        3
+      ],
+      "uv": [
+        828,
+        144
+      ],
+      "rotation": [
+        -24.229309805904496,
+        0,
+        175.20576793336943
+      ],
+      "pivot": [
+        -9.0,
+        112.8,
+        -5.0
+      ]
+    }
+  },
+  {
+    "name": "black_braid_0_-1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.6,
+        106.6,
+        -9.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        842,
+        144
+      ],
+      "rotation": [
+        19.005156945239296,
+        0,
+        -155.8208928533109
+      ],
+      "pivot": [
+        -10.6,
+        106.6,
+        -8.16
+      ]
+    }
+  },
+  {
+    "name": "black_braid_0_-1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.72,
+        104.64,
+        -8.42
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        852,
+        144
+      ],
+      "rotation": [
+        -18.04615585534452,
+        0,
+        -155.82089285331077
+      ],
+      "pivot": [
+        -9.72,
+        104.64,
+        -7.42
+      ]
+    }
+  },
+  {
+    "name": "black_braid_0_1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -9.44,
+        106.6,
+        -8.44
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        862,
+        144
+      ],
+      "rotation": [
+        -35.34109615161017,
+        0,
+        146.85300416774413
+      ],
+      "pivot": [
+        -8.44,
+        106.6,
+        -7.44
+      ]
+    }
+  },
+  {
+    "name": "black_braid_0_1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.72,
+        104.64,
+        -10.1
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        872,
+        144
+      ],
+      "rotation": [
+        6.337666621731491,
+        0,
+        146.8530041677439
+      ],
+      "pivot": [
+        -9.72,
+        104.64,
+        -9.1
+      ]
+    }
+  },
+  {
+    "name": "black_braid_1_-1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -9.84,
+        102.68,
+        -9.84
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        882,
+        144
+      ],
+      "rotation": [
+        17.54238786489334,
+        0,
+        146.8530041677439
+      ],
+      "pivot": [
+        -8.84,
+        102.68,
+        -8.84
+      ]
+    }
+  },
+  {
+    "name": "black_braid_1_-1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.12,
+        100.72,
+        -9.1
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        892,
+        144
+      ],
+      "rotation": [
+        -16.647989156271937,
+        0,
+        146.85300416774413
+      ],
+      "pivot": [
+        -10.12,
+        100.72,
+        -8.1
+      ]
+    }
+  },
+  {
+    "name": "black_braid_1_1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.0,
+        102.68,
+        -9.12
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        902,
+        144
+      ],
+      "rotation": [
+        -37.690981786296945,
+        0,
+        -155.82089285331077
+      ],
+      "pivot": [
+        -11.0,
+        102.68,
+        -8.12
+      ]
+    }
+  },
+  {
+    "name": "black_braid_1_1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.12,
+        100.72,
+        -10.78
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        912,
+        144
+      ],
+      "rotation": [
+        6.900115734362512,
+        0,
+        -155.8208928533109
+      ],
+      "pivot": [
+        -10.12,
+        100.72,
+        -9.78
+      ]
+    }
+  },
+  {
+    "name": "black_braid_2_-1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.4,
+        98.76,
+        -10.52
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        922,
+        144
+      ],
+      "rotation": [
+        19.005156945239317,
+        0,
+        -155.8208928533109
+      ],
+      "pivot": [
+        -11.4,
+        98.76,
+        -9.52
+      ]
+    }
+  },
+  {
+    "name": "black_braid_2_-1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.52,
+        96.8,
+        -9.78
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        932,
+        144
+      ],
+      "rotation": [
+        -18.046155855344534,
+        0,
+        -155.82089285331077
+      ],
+      "pivot": [
+        -10.52,
+        96.8,
+        -8.78
+      ]
+    }
+  },
+  {
+    "name": "black_braid_2_1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.24,
+        98.76,
+        -9.8
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        942,
+        144
+      ],
+      "rotation": [
+        -35.341096151610145,
+        0,
+        146.85300416774413
+      ],
+      "pivot": [
+        -9.24,
+        98.76,
+        -8.8
+      ]
+    }
+  },
+  {
+    "name": "black_braid_2_1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.52,
+        96.8,
+        -11.46
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        952,
+        144
+      ],
+      "rotation": [
+        6.337666621731493,
+        0,
+        146.85300416774393
+      ],
+      "pivot": [
+        -10.52,
+        96.8,
+        -10.46
+      ]
+    }
+  },
+  {
+    "name": "black_braid_3_-1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.64,
+        94.84,
+        -11.2
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        962,
+        144
+      ],
+      "rotation": [
+        17.542387864893342,
+        0,
+        146.85300416774393
+      ],
+      "pivot": [
+        -9.64,
+        94.84,
+        -10.2
+      ]
+    }
+  },
+  {
+    "name": "black_braid_3_-1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.92,
+        92.88,
+        -10.46
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        972,
+        144
+      ],
+      "rotation": [
+        -16.647989156271926,
+        0,
+        146.85300416774407
+      ],
+      "pivot": [
+        -10.92,
+        92.88,
+        -9.46
+      ]
+    }
+  },
+  {
+    "name": "black_braid_3_1_upper",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.8,
+        94.84,
+        -10.48
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        982,
+        144
+      ],
+      "rotation": [
+        -37.69098178629694,
+        0,
+        -155.82089285331077
+      ],
+      "pivot": [
+        -11.8,
+        94.84,
+        -9.48
+      ]
+    }
+  },
+  {
+    "name": "black_braid_3_1_lower",
+    "bone": "hair_black",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.92,
+        92.88,
+        -12.14
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        992,
+        144
+      ],
+      "rotation": [
+        6.9001157343625135,
+        0,
+        -155.82089285331094
+      ],
+      "pivot": [
+        -10.92,
+        92.88,
+        -11.14
+      ]
+    }
+  },
+  {
+    "name": "black_braid_4_-1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -13.2,
+        90.92,
+        -11.88
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        1002,
+        144
+      ],
+      "rotation": [
+        19.005156945239424,
+        0,
+        -155.82089285331077
+      ],
+      "pivot": [
+        -12.2,
+        90.92,
+        -10.88
+      ]
+    }
+  },
+  {
+    "name": "black_braid_4_-1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.32,
+        88.96,
+        -11.14
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        1012,
+        144
+      ],
+      "rotation": [
+        -18.046155855344534,
+        0,
+        -155.82089285331077
+      ],
+      "pivot": [
+        -11.32,
+        88.96,
+        -10.14
+      ]
+    }
+  },
+  {
+    "name": "black_braid_4_1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.04,
+        90.92,
+        -11.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        2,
+        181
+      ],
+      "rotation": [
+        -35.341096151610266,
+        0,
+        146.8530041677439
+      ],
+      "pivot": [
+        -10.04,
+        90.92,
+        -10.16
+      ]
+    }
+  },
+  {
+    "name": "black_braid_4_1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.32,
+        88.96,
+        -12.82
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        12,
+        181
+      ],
+      "rotation": [
+        6.337666621731493,
+        0,
+        146.85300416774393
+      ],
+      "pivot": [
+        -11.32,
+        88.96,
+        -11.82
+      ]
+    }
+  },
+  {
+    "name": "black_braid_5_-1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.44,
+        87.0,
+        -12.56
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        22,
+        181
+      ],
+      "rotation": [
+        28.27334568678388,
+        0,
+        155.33618528753652
+      ],
+      "pivot": [
+        -10.44,
+        87.0,
+        -11.56
+      ]
+    }
+  },
+  {
+    "name": "black_braid_5_-1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.34,
+        85.04,
+        -11.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        32,
+        181
+      ],
+      "rotation": [
+        -7.397026839756273,
+        0,
+        155.33618528753638
+      ],
+      "pivot": [
+        -11.34,
+        85.04,
+        -10.4
+      ]
+    }
+  },
+  {
+    "name": "black_braid_5_1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -13.6,
+        87.0,
+        -11.84
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        42,
+        181
+      ],
+      "rotation": [
+        -28.020753288843398,
+        0,
+        -147.26477372789253
+      ],
+      "pivot": [
+        -12.6,
+        87.0,
+        -10.84
+      ]
+    }
+  },
+  {
+    "name": "black_braid_5_1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.34,
+        85.04,
+        -13.08
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        52,
+        181
+      ],
+      "rotation": [
+        16.26922125791438,
+        0,
+        -147.26477372789233
+      ],
+      "pivot": [
+        -11.34,
+        85.04,
+        -12.08
+      ]
+    }
+  },
+  {
+    "name": "black_braid_6_-1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -13.24,
+        83.08,
+        -12.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        62,
+        181
+      ],
+      "rotation": [
+        26.465973345072452,
+        0,
+        -147.26477372789233
+      ],
+      "pivot": [
+        -12.24,
+        83.08,
+        -11.4
+      ]
+    }
+  },
+  {
+    "name": "black_braid_6_-1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.98,
+        81.12,
+        -11.24
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        72,
+        181
+      ],
+      "rotation": [
+        -6.852282245439314,
+        0,
+        -147.26477372789248
+      ],
+      "pivot": [
+        -10.98,
+        81.12,
+        -10.24
+      ]
+    }
+  },
+  {
+    "name": "black_braid_6_1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.08,
+        83.08,
+        -11.68
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        82,
+        181
+      ],
+      "rotation": [
+        -29.896203036948627,
+        0,
+        155.33618528753638
+      ],
+      "pivot": [
+        -10.08,
+        83.08,
+        -10.68
+      ]
+    }
+  },
+  {
+    "name": "black_braid_6_1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.98,
+        81.12,
+        -12.92
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        92,
+        181
+      ],
+      "rotation": [
+        17.49944871528557,
+        0,
+        155.33618528753658
+      ],
+      "pivot": [
+        -10.98,
+        81.12,
+        -11.92
+      ]
+    }
+  },
+  {
+    "name": "black_braid_7_-1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.72,
+        79.16,
+        -12.24
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        102,
+        181
+      ],
+      "rotation": [
+        28.27334568678388,
+        0,
+        155.33618528753652
+      ],
+      "pivot": [
+        -9.72,
+        79.16,
+        -11.24
+      ]
+    }
+  },
+  {
+    "name": "black_braid_7_-1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.62,
+        77.2,
+        -11.08
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        112,
+        181
+      ],
+      "rotation": [
+        -7.397026839756273,
+        0,
+        155.33618528753638
+      ],
+      "pivot": [
+        -10.62,
+        77.2,
+        -10.08
+      ]
+    }
+  },
+  {
+    "name": "black_braid_7_1_upper",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.88,
+        79.16,
+        -11.52
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        122,
+        181
+      ],
+      "rotation": [
+        -28.020753288843398,
+        0,
+        -147.26477372789253
+      ],
+      "pivot": [
+        -11.88,
+        79.16,
+        -10.52
+      ]
+    }
+  },
+  {
+    "name": "black_braid_7_1_lower",
+    "bone": "hair_black_lower",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -11.62,
+        77.2,
+        -12.76
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        132,
+        181
+      ],
+      "rotation": [
+        16.26922125791438,
+        0,
+        -147.26477372789233
+      ],
+      "pivot": [
+        -10.62,
+        77.2,
+        -11.76
+      ]
+    }
+  },
+  {
+    "name": "black_braid_clasp",
+    "bone": "hair_black_tip",
+    "material": "gold",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -12.44,
+        74.24,
+        -12.32
+      ],
+      "size": [
+        4,
+        2,
+        3
+      ],
+      "uv": [
+        142,
+        181
+      ]
+    }
+  },
+  {
+    "name": "black_tapered_tassel",
+    "bone": "hair_black_tip",
+    "material": "hair_light",
+    "pattern": "braid",
+    "cube": {
+      "origin": [
+        -11.44,
+        74.04,
+        -11.72
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        158,
+        181
+      ],
+      "rotation": [
+        -5.666783353597029,
+        0,
+        -172.8749836510982
+      ],
+      "pivot": [
+        -10.44,
+        74.04,
+        -10.72
+      ]
+    }
+  },
+  {
+    "name": "black_fine_tassel",
+    "bone": "hair_black_tip",
+    "material": "hair_light",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -10.54,
+        71.04,
+        -11.54
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        168,
+        181
+      ],
+      "rotation": [
+        -5.229191637323828,
+        0,
+        -168.6900675259798
+      ],
+      "pivot": [
+        -10.04,
+        71.04,
+        -11.04
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_0_0",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        99.2,
+        -6.16
+      ],
+      "size": [
+        5,
+        3,
+        0
+      ],
+      "uv": [
+        174,
+        181
+      ],
+      "rotation": [
+        -31.660751096636684,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        99.2,
+        -6.16
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_0_1",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        2.165058,
+        99.2,
+        -6.16
+      ],
+      "size": [
+        3,
+        4,
+        0
+      ],
+      "uv": [
+        186,
+        181
+      ],
+      "rotation": [
+        -44.78825856622536,
+        -55.00797980144133,
+        0.0
+      ],
+      "pivot": [
+        2.304,
+        99.2,
+        -6.16
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_0_2",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        2.526414,
+        99.2,
+        -4.88
+      ],
+      "size": [
+        6,
+        4,
+        0
+      ],
+      "uv": [
+        194,
+        181
+      ],
+      "rotation": [
+        133.2700531218505,
+        -84.80557109226521,
+        180.0
+      ],
+      "pivot": [
+        3.2,
+        99.2,
+        -4.88
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_0_3",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        1.29187,
+        99.2,
+        -2.064
+      ],
+      "size": [
+        6,
+        4,
+        0
+      ],
+      "uv": [
+        208,
+        181
+      ],
+      "rotation": [
+        133.4753612327927,
+        -19.179008025810717,
+        180.0
+      ],
+      "pivot": [
+        2.944,
+        99.2,
+        -2.064
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_1_0",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        101.6,
+        -7.64
+      ],
+      "size": [
+        7,
+        6,
+        0
+      ],
+      "uv": [
+        222,
+        181
+      ],
+      "rotation": [
+        -16.066400535196667,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        101.6,
+        -7.64
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_1_1",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        4.152406,
+        101.6,
+        -7.64
+      ],
+      "size": [
+        5,
+        6,
+        0
+      ],
+      "uv": [
+        238,
+        181
+      ],
+      "rotation": [
+        -26.357102677700837,
+        -55.00797980144134,
+        0.0
+      ],
+      "pivot": [
+        4.176,
+        101.6,
+        -7.64
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_1_2",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        5.227814,
+        101.6,
+        -5.32
+      ],
+      "size": [
+        8,
+        6,
+        0
+      ],
+      "uv": [
+        250,
+        181
+      ],
+      "rotation": [
+        151.1054345979172,
+        -84.80557109226528,
+        180.0
+      ],
+      "pivot": [
+        5.8,
+        101.6,
+        -5.32
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_1_3",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        3.607324,
+        101.6,
+        -0.216
+      ],
+      "size": [
+        9,
+        6,
+        0
+      ],
+      "uv": [
+        268,
+        181
+      ],
+      "rotation": [
+        150.13322849579882,
+        -19.17900802581072,
+        180.0
+      ],
+      "pivot": [
+        5.336,
+        101.6,
+        -0.216
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_2_0",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        106.6,
+        -9.08
+      ],
+      "size": [
+        8,
+        8,
+        0
+      ],
+      "uv": [
+        288,
+        181
+      ],
+      "rotation": [
+        -2.227046967413569,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        106.6,
+        -9.08
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_2_1",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        6.192,
+        106.6,
+        -9.08
+      ],
+      "size": [
+        6,
+        8,
+        0
+      ],
+      "uv": [
+        306,
+        181
+      ],
+      "rotation": [
+        -8.719980920524991,
+        -55.00797980144133,
+        0.0
+      ],
+      "pivot": [
+        6.192,
+        106.6,
+        -9.08
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_2_2",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.6,
+        106.6,
+        -5.64
+      ],
+      "size": [
+        10,
+        8,
+        0
+      ],
+      "uv": [
+        320,
+        181
+      ],
+      "rotation": [
+        167.2740122701947,
+        -84.80557109226521,
+        180.0
+      ],
+      "pivot": [
+        8.6,
+        106.6,
+        -5.64
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_2_3",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.102525,
+        106.6,
+        1.928
+      ],
+      "size": [
+        10,
+        8,
+        0
+      ],
+      "uv": [
+        342,
+        181
+      ],
+      "rotation": [
+        163.34856752475596,
+        -19.17900802581072,
+        180.0
+      ],
+      "pivot": [
+        7.912,
+        106.6,
+        1.928
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_3_0",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        113.8,
+        -9.36
+      ],
+      "size": [
+        8,
+        6,
+        0
+      ],
+      "uv": [
+        364,
+        181
+      ],
+      "rotation": [
+        19.093492000485593,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        113.8,
+        -9.36
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_3_1",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.344,
+        113.8,
+        -9.36
+      ],
+      "size": [
+        6,
+        6,
+        0
+      ],
+      "uv": [
+        382,
+        181
+      ],
+      "rotation": [
+        17.324700597826993,
+        -55.00797980144134,
+        0.0
+      ],
+      "pivot": [
+        7.344,
+        113.8,
+        -9.36
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_3_2",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.2,
+        113.8,
+        -5.28
+      ],
+      "size": [
+        10,
+        6,
+        0
+      ],
+      "uv": [
+        396,
+        181
+      ],
+      "rotation": [
+        -170.51113026867162,
+        -84.80557109226521,
+        180.0
+      ],
+      "pivot": [
+        10.2,
+        113.8,
+        -5.28
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_3_3",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.384,
+        113.8,
+        3.696
+      ],
+      "size": [
+        11,
+        6,
+        0
+      ],
+      "uv": [
+        418,
+        181
+      ],
+      "rotation": [
+        177.91954251135738,
+        -19.17900802581072,
+        180.0
+      ],
+      "pivot": [
+        9.384,
+        113.8,
+        3.696
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_4_0",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        119.0,
+        -7.56
+      ],
+      "size": [
+        7,
+        6,
+        0
+      ],
+      "uv": [
+        442,
+        181
+      ],
+      "rotation": [
+        42.13759477388824,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        119.0,
+        -7.56
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_4_1",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        6.624,
+        119.0,
+        -7.56
+      ],
+      "size": [
+        5,
+        7,
+        0
+      ],
+      "uv": [
+        458,
+        181
+      ],
+      "rotation": [
+        47.21861821469532,
+        -55.00797980144134,
+        0.0
+      ],
+      "pivot": [
+        6.624,
+        119.0,
+        -7.56
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_4_2",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.2,
+        119.0,
+        -3.88
+      ],
+      "size": [
+        9,
+        6,
+        0
+      ],
+      "uv": [
+        470,
+        181
+      ],
+      "rotation": [
+        -137.97968604481247,
+        -84.80557109226521,
+        180.0
+      ],
+      "pivot": [
+        9.2,
+        119.0,
+        -3.88
+      ]
+    }
+  },
+  {
+    "name": "white_face_plane_4_3",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.464,
+        119.0,
+        4.216
+      ],
+      "size": [
+        9,
+        5,
+        0
+      ],
+      "uv": [
+        490,
+        181
+      ],
+      "rotation": [
+        -149.6856650283167,
+        -19.17900802581072,
+        180.0
+      ],
+      "pivot": [
+        8.464,
+        119.0,
+        4.216
+      ]
+    }
+  },
+  {
+    "name": "white_under_chin",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        99.2,
+        -6.16
+      ],
+      "size": [
+        4,
+        6,
+        0
+      ],
+      "uv": [
+        510,
+        181
+      ],
+      "rotation": [
+        90.0,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        99.2,
+        -6.16
+      ]
+    }
+  },
+  {
+    "name": "white_top_of_head",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        123.2,
+        -3.76
+      ],
+      "size": [
+        6,
+        9,
+        0
+      ],
+      "uv": [
+        520,
+        181
+      ],
+      "rotation": [
+        90.0,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        123.2,
+        -3.76
+      ]
+    }
+  },
+  {
+    "name": "white_swept_crown_0",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        118.0,
+        -9.0
+      ],
+      "size": [
+        8,
+        8,
+        0
+      ],
+      "uv": [
+        534,
+        181
+      ],
+      "rotation": [
+        35.60755065918107,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        118.0,
+        -9.0
+      ]
+    }
+  },
+  {
+    "name": "white_swept_crown_1",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.92,
+        118.0,
+        -9.0
+      ],
+      "size": [
+        6,
+        9,
+        0
+      ],
+      "uv": [
+        552,
+        181
+      ],
+      "rotation": [
+        40.93603967391985,
+        -55.00797980144133,
+        0.0
+      ],
+      "pivot": [
+        7.92,
+        118.0,
+        -9.0
+      ]
+    }
+  },
+  {
+    "name": "white_swept_crown_2",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        11.0,
+        118.0,
+        -4.6
+      ],
+      "size": [
+        10,
+        8,
+        0
+      ],
+      "uv": [
+        566,
+        181
+      ],
+      "rotation": [
+        -143.71330033054068,
+        -84.80557109226528,
+        180.0
+      ],
+      "pivot": [
+        11.0,
+        118.0,
+        -4.6
+      ]
+    }
+  },
+  {
+    "name": "white_swept_crown_3",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.12,
+        118.0,
+        5.08
+      ],
+      "size": [
+        11,
+        7,
+        0
+      ],
+      "uv": [
+        588,
+        181
+      ],
+      "rotation": [
+        -153.730170991117,
+        -19.179008025810724,
+        180.0
+      ],
+      "pivot": [
+        10.12,
+        118.0,
+        5.08
+      ]
+    }
+  },
+  {
+    "name": "white_crown_top",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0.0,
+        124.2,
+        -4.56
+      ],
+      "size": [
+        7,
+        10,
+        0
+      ],
+      "uv": [
+        612,
+        181
+      ],
+      "rotation": [
+        90.0,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        0.0,
+        124.2,
+        -4.56
+      ]
+    }
+  },
+  {
+    "name": "white_swept_crest_front",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.2,
+        118.8,
+        1.8
+      ],
+      "size": [
+        4,
+        11,
+        0
+      ],
+      "uv": [
+        628,
+        181
+      ],
+      "rotation": [
+        19.731848408300277,
+        -3.160420981763728,
+        6.340191745909998
+      ],
+      "pivot": [
+        7.2,
+        118.8,
+        1.8
+      ]
+    }
+  },
+  {
+    "name": "white_swept_crest_back",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.2,
+        118.8,
+        3.4
+      ],
+      "size": [
+        4,
+        11,
+        0
+      ],
+      "uv": [
+        638,
+        181
+      ],
+      "rotation": [
+        19.73184840830027,
+        -3.1604209817637243,
+        6.340191745909998
+      ],
+      "pivot": [
+        7.2,
+        118.8,
+        3.4
+      ]
+    }
+  },
+  {
+    "name": "white_crest_edge_0",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.2,
+        118.8,
+        1.8
+      ],
+      "size": [
+        4,
+        2,
+        0
+      ],
+      "uv": [
+        648,
+        181
+      ],
+      "rotation": [
+        90.0,
+        -3.160420981763728,
+        6.340191745909998
+      ],
+      "pivot": [
+        7.2,
+        118.8,
+        1.8
+      ]
+    }
+  },
+  {
+    "name": "white_crest_edge_1",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.8,
+        119.2,
+        2.0
+      ],
+      "size": [
+        11,
+        2,
+        0
+      ],
+      "uv": [
+        658,
+        181
+      ],
+      "rotation": [
+        90.0,
+        -19.805341410962733,
+        95.34827221143136
+      ],
+      "pivot": [
+        10.8,
+        119.2,
+        2.0
+      ]
+    }
+  },
+  {
+    "name": "white_crest_edge_2",
+    "bone": "hair_cap_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.386113,
+        128.6,
+        5.4
+      ],
+      "size": [
+        12,
+        2,
+        0
+      ],
+      "uv": [
+        682,
+        181
+      ],
+      "rotation": [
+        90.0,
+        19.492234238641725,
+        -105.5120487275613
+      ],
+      "pivot": [
+        9.92,
+        128.6,
+        5.4
+      ]
+    }
+  },
+  {
+    "name": "white_temple_lock",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "braid",
+    "cube": {
+      "origin": [
+        7.5,
+        112.8,
+        -6.5
+      ],
+      "size": [
+        3,
+        7,
+        3
+      ],
+      "uv": [
+        708,
+        181
+      ],
+      "rotation": [
+        -24.229309805904496,
+        0,
+        -175.20576793336943
+      ],
+      "pivot": [
+        9.0,
+        112.8,
+        -5.0
+      ]
+    }
+  },
+  {
+    "name": "white_braid_0_-1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.44,
+        106.6,
+        -9.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        722,
+        181
+      ],
+      "rotation": [
+        17.542387864893243,
+        0,
+        -146.85300416774413
+      ],
+      "pivot": [
+        8.44,
+        106.6,
+        -8.16
+      ]
+    }
+  },
+  {
+    "name": "white_braid_0_-1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.72,
+        104.64,
+        -8.42
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        732,
+        181
+      ],
+      "rotation": [
+        -16.647989156271986,
+        0,
+        -146.8530041677439
+      ],
+      "pivot": [
+        9.72,
+        104.64,
+        -7.42
+      ]
+    }
+  },
+  {
+    "name": "white_braid_0_1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.6,
+        106.6,
+        -8.44
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        742,
+        181
+      ],
+      "rotation": [
+        -37.6909817862968,
+        0,
+        155.8208928533109
+      ],
+      "pivot": [
+        10.6,
+        106.6,
+        -7.44
+      ]
+    }
+  },
+  {
+    "name": "white_braid_0_1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.72,
+        104.64,
+        -10.1
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        752,
+        181
+      ],
+      "rotation": [
+        6.900115734362554,
+        0,
+        155.82089285331077
+      ],
+      "pivot": [
+        9.72,
+        104.64,
+        -9.1
+      ]
+    }
+  },
+  {
+    "name": "white_braid_1_-1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.0,
+        102.68,
+        -9.84
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        762,
+        181
+      ],
+      "rotation": [
+        19.005156945239424,
+        0,
+        155.82089285331077
+      ],
+      "pivot": [
+        11.0,
+        102.68,
+        -8.84
+      ]
+    }
+  },
+  {
+    "name": "white_braid_1_-1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.12,
+        100.72,
+        -9.1
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        772,
+        181
+      ],
+      "rotation": [
+        -18.046155855344434,
+        0,
+        155.8208928533109
+      ],
+      "pivot": [
+        10.12,
+        100.72,
+        -8.1
+      ]
+    }
+  },
+  {
+    "name": "white_braid_1_1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        7.84,
+        102.68,
+        -9.12
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        782,
+        181
+      ],
+      "rotation": [
+        -35.341096151610266,
+        0,
+        -146.8530041677439
+      ],
+      "pivot": [
+        8.84,
+        102.68,
+        -8.12
+      ]
+    }
+  },
+  {
+    "name": "white_braid_1_1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.12,
+        100.72,
+        -10.78
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        792,
+        181
+      ],
+      "rotation": [
+        6.337666621731462,
+        0,
+        -146.85300416774413
+      ],
+      "pivot": [
+        10.12,
+        100.72,
+        -9.78
+      ]
+    }
+  },
+  {
+    "name": "white_braid_2_-1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.24,
+        98.76,
+        -10.52
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        802,
+        181
+      ],
+      "rotation": [
+        17.542387864893264,
+        0,
+        -146.85300416774413
+      ],
+      "pivot": [
+        9.24,
+        98.76,
+        -9.52
+      ]
+    }
+  },
+  {
+    "name": "white_braid_2_-1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.52,
+        96.8,
+        -9.78
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        812,
+        181
+      ],
+      "rotation": [
+        -16.647989156272015,
+        0,
+        -146.85300416774393
+      ],
+      "pivot": [
+        10.52,
+        96.8,
+        -8.78
+      ]
+    }
+  },
+  {
+    "name": "white_braid_2_1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.4,
+        98.76,
+        -9.8
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        822,
+        181
+      ],
+      "rotation": [
+        -37.690981786296774,
+        0,
+        155.8208928533109
+      ],
+      "pivot": [
+        11.4,
+        98.76,
+        -8.8
+      ]
+    }
+  },
+  {
+    "name": "white_braid_2_1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.52,
+        96.8,
+        -11.46
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        832,
+        181
+      ],
+      "rotation": [
+        6.9001157343625525,
+        0,
+        155.82089285331077
+      ],
+      "pivot": [
+        10.52,
+        96.8,
+        -10.46
+      ]
+    }
+  },
+  {
+    "name": "white_braid_3_-1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.8,
+        94.84,
+        -11.2
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        842,
+        181
+      ],
+      "rotation": [
+        19.00515694523942,
+        0,
+        155.82089285331077
+      ],
+      "pivot": [
+        11.8,
+        94.84,
+        -10.2
+      ]
+    }
+  },
+  {
+    "name": "white_braid_3_-1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.92,
+        92.88,
+        -10.46
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        852,
+        181
+      ],
+      "rotation": [
+        -18.046155855344438,
+        0,
+        155.82089285331094
+      ],
+      "pivot": [
+        10.92,
+        92.88,
+        -9.46
+      ]
+    }
+  },
+  {
+    "name": "white_braid_3_1_upper",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.64,
+        94.84,
+        -10.48
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        862,
+        181
+      ],
+      "rotation": [
+        -35.34109615161028,
+        0,
+        -146.85300416774393
+      ],
+      "pivot": [
+        9.64,
+        94.84,
+        -9.48
+      ]
+    }
+  },
+  {
+    "name": "white_braid_3_1_lower",
+    "bone": "hair_white",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.92,
+        92.88,
+        -12.14
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        872,
+        181
+      ],
+      "rotation": [
+        6.337666621731459,
+        0,
+        -146.85300416774407
+      ],
+      "pivot": [
+        10.92,
+        92.88,
+        -11.14
+      ]
+    }
+  },
+  {
+    "name": "white_braid_4_-1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.04,
+        90.92,
+        -11.88
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        882,
+        181
+      ],
+      "rotation": [
+        17.54238786489334,
+        0,
+        -146.8530041677439
+      ],
+      "pivot": [
+        10.04,
+        90.92,
+        -10.88
+      ]
+    }
+  },
+  {
+    "name": "white_braid_4_-1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.32,
+        88.96,
+        -11.14
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        892,
+        181
+      ],
+      "rotation": [
+        -16.647989156272015,
+        0,
+        -146.85300416774393
+      ],
+      "pivot": [
+        11.32,
+        88.96,
+        -10.14
+      ]
+    }
+  },
+  {
+    "name": "white_braid_4_1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        11.2,
+        90.92,
+        -11.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        902,
+        181
+      ],
+      "rotation": [
+        -37.690981786296945,
+        0,
+        155.82089285331077
+      ],
+      "pivot": [
+        12.2,
+        90.92,
+        -10.16
+      ]
+    }
+  },
+  {
+    "name": "white_braid_4_1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.32,
+        88.96,
+        -12.82
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        912,
+        181
+      ],
+      "rotation": [
+        6.9001157343625525,
+        0,
+        155.82089285331077
+      ],
+      "pivot": [
+        11.32,
+        88.96,
+        -11.82
+      ]
+    }
+  },
+  {
+    "name": "white_braid_5_-1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        11.6,
+        87.0,
+        -12.56
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        922,
+        181
+      ],
+      "rotation": [
+        26.465973345072335,
+        0,
+        147.26477372789253
+      ],
+      "pivot": [
+        12.6,
+        87.0,
+        -11.56
+      ]
+    }
+  },
+  {
+    "name": "white_braid_5_-1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.34,
+        85.04,
+        -11.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        932,
+        181
+      ],
+      "rotation": [
+        -6.852282245439351,
+        0,
+        147.26477372789233
+      ],
+      "pivot": [
+        11.34,
+        85.04,
+        -10.4
+      ]
+    }
+  },
+  {
+    "name": "white_braid_5_1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.44,
+        87.0,
+        -11.84
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        942,
+        181
+      ],
+      "rotation": [
+        -29.89620303694848,
+        0,
+        -155.33618528753652
+      ],
+      "pivot": [
+        10.44,
+        87.0,
+        -10.84
+      ]
+    }
+  },
+  {
+    "name": "white_braid_5_1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.34,
+        85.04,
+        -13.08
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        952,
+        181
+      ],
+      "rotation": [
+        17.49944871528566,
+        0,
+        -155.33618528753638
+      ],
+      "pivot": [
+        11.34,
+        85.04,
+        -12.08
+      ]
+    }
+  },
+  {
+    "name": "white_braid_6_-1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.08,
+        83.08,
+        -12.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        962,
+        181
+      ],
+      "rotation": [
+        28.273345686784022,
+        0,
+        -155.33618528753638
+      ],
+      "pivot": [
+        10.08,
+        83.08,
+        -11.4
+      ]
+    }
+  },
+  {
+    "name": "white_braid_6_-1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.98,
+        81.12,
+        -11.24
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        972,
+        181
+      ],
+      "rotation": [
+        -7.397026839756231,
+        0,
+        -155.33618528753658
+      ],
+      "pivot": [
+        10.98,
+        81.12,
+        -10.24
+      ]
+    }
+  },
+  {
+    "name": "white_braid_6_1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        11.24,
+        83.08,
+        -11.68
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        982,
+        181
+      ],
+      "rotation": [
+        -28.02075328884352,
+        0,
+        147.26477372789233
+      ],
+      "pivot": [
+        12.24,
+        83.08,
+        -10.68
+      ]
+    }
+  },
+  {
+    "name": "white_braid_6_1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.98,
+        81.12,
+        -12.92
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        992,
+        181
+      ],
+      "rotation": [
+        16.269221257914296,
+        0,
+        147.26477372789248
+      ],
+      "pivot": [
+        10.98,
+        81.12,
+        -11.92
+      ]
+    }
+  },
+  {
+    "name": "white_braid_7_-1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        10.88,
+        79.16,
+        -12.24
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        1002,
+        181
+      ],
+      "rotation": [
+        26.465973345072335,
+        0,
+        147.26477372789253
+      ],
+      "pivot": [
+        11.88,
+        79.16,
+        -11.24
+      ]
+    }
+  },
+  {
+    "name": "white_braid_7_-1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.62,
+        77.2,
+        -11.08
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        1012,
+        181
+      ],
+      "rotation": [
+        -6.852282245439351,
+        0,
+        147.26477372789233
+      ],
+      "pivot": [
+        10.62,
+        77.2,
+        -10.08
+      ]
+    }
+  },
+  {
+    "name": "white_braid_7_1_upper",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.72,
+        79.16,
+        -11.52
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        2,
+        194
+      ],
+      "rotation": [
+        -29.89620303694848,
+        0,
+        -155.33618528753652
+      ],
+      "pivot": [
+        9.72,
+        79.16,
+        -10.52
+      ]
+    }
+  },
+  {
+    "name": "white_braid_7_1_lower",
+    "bone": "hair_white_lower",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.62,
+        77.2,
+        -12.76
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        12,
+        194
+      ],
+      "rotation": [
+        17.49944871528566,
+        0,
+        -155.33618528753638
+      ],
+      "pivot": [
+        10.62,
+        77.2,
+        -11.76
+      ]
+    }
+  },
+  {
+    "name": "white_braid_clasp",
+    "bone": "hair_white_tip",
+    "material": "gold",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        8.44,
+        74.24,
+        -12.32
+      ],
+      "size": [
+        4,
+        2,
+        3
+      ],
+      "uv": [
+        22,
+        194
+      ]
+    }
+  },
+  {
+    "name": "white_tapered_tassel",
+    "bone": "hair_white_tip",
+    "material": "hair_dark",
+    "pattern": "braid",
+    "cube": {
+      "origin": [
+        9.44,
+        74.04,
+        -11.72
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        38,
+        194
+      ],
+      "rotation": [
+        -5.666783353597029,
+        0,
+        172.8749836510982
+      ],
+      "pivot": [
+        10.44,
+        74.04,
+        -10.72
+      ]
+    }
+  },
+  {
+    "name": "white_fine_tassel",
+    "bone": "hair_white_tip",
+    "material": "hair_dark",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        9.54,
+        71.04,
+        -11.54
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        48,
+        194
+      ],
+      "rotation": [
+        -5.229191637323828,
+        0,
+        168.6900675259798
+      ],
+      "pivot": [
+        10.04,
+        71.04,
+        -11.04
+      ]
+    }
+  },
+  {
+    "name": "black_slender_mask",
+    "bone": "face_mask",
+    "material": "mask",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -15.0,
+        107.4,
+        -11.2
+      ],
+      "size": [
+        15,
+        11,
+        0
+      ],
+      "uv": [
+        54,
+        194
+      ],
+      "rotation": [
+        0,
+        11,
+        0
+      ],
+      "pivot": [
+        0,
+        112,
+        -11.2
+      ]
+    }
+  },
+  {
+    "name": "white_slender_mask",
+    "bone": "face_mask",
+    "material": "mask",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0,
+        107.4,
+        -11.2
+      ],
+      "size": [
+        15,
+        11,
+        0
+      ],
+      "uv": [
+        86,
+        194
+      ],
+      "rotation": [
+        0,
+        -11,
+        0
+      ],
+      "pivot": [
+        0,
+        112,
+        -11.2
+      ]
+    }
+  },
+  {
+    "name": "tapered_mask_bridge",
+    "bone": "face_mask",
+    "material": "mask",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -1.8,
+        109.6,
+        -11.8
+      ],
+      "size": [
+        4,
+        5,
+        0
+      ],
+      "uv": [
+        118,
+        194
+      ],
+      "rotation": [
+        4.573921259900866,
+        -0.0,
+        0.0
+      ],
+      "pivot": [
+        -1.8,
+        109.6,
+        -11.8
+      ]
+    }
+  },
+  {
+    "name": "black_small_nose",
+    "bone": "head",
+    "material": "face_black",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -1.0,
+        105.6,
+        -10.6
+      ],
+      "size": [
+        1,
+        3,
+        2
+      ],
+      "uv": [
+        128,
+        194
+      ]
+    }
+  },
+  {
+    "name": "white_small_nose",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        0,
+        105.6,
+        -10.6
+      ],
+      "size": [
+        1,
+        3,
+        2
+      ],
+      "uv": [
+        136,
+        194
+      ]
+    }
+  },
+  {
+    "name": "defined_small_lips",
+    "bone": "head",
+    "material": "face_white",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -3.0,
+        102.0,
+        -8.24
+      ],
+      "size": [
+        6,
+        2,
+        0
+      ],
+      "uv": [
+        144,
+        194
+      ],
+      "rotation": [
+        -12,
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        102.0,
+        -8.24
+      ]
+    }
+  },
+  {
+    "name": "paper_light_0_0_strip",
+    "bone": "paper_light_0_0",
+    "material": "paper_light",
+    "pattern": "paper_0",
+    "cube": {
+      "origin": [
+        -17.6,
+        114.4,
+        6.7
+      ],
+      "size": [
+        14,
+        45,
+        1
+      ],
+      "uv": [
+        158,
+        194
+      ],
+      "rotation": [
+        3.14809609956276,
+        0,
+        113.0
+      ],
+      "pivot": [
+        -10.6,
+        114.4,
+        7.2
+      ]
+    }
+  },
+  {
+    "name": "paper_light_0_1_strip",
+    "bone": "paper_light_0_1",
+    "material": "paper_light",
+    "pattern": "paper_0",
+    "cube": {
+      "origin": [
+        -58.838617,
+        96.895245,
+        9.164
+      ],
+      "size": [
+        14,
+        59,
+        1
+      ],
+      "uv": [
+        190,
+        194
+      ],
+      "rotation": [
+        0.14108615088178345,
+        0,
+        106.85544329772635
+      ],
+      "pivot": [
+        -51.838617,
+        96.895245,
+        9.664
+      ]
+    }
+  },
+  {
+    "name": "paper_light_0_2_strip",
+    "bone": "paper_light_0_2",
+    "material": "paper_light",
+    "pattern": "paper_0",
+    "cube": {
+      "origin": [
+        -114.805313,
+        79.938793,
+        9.308
+      ],
+      "size": [
+        14,
+        65,
+        1
+      ],
+      "uv": [
+        222,
+        194
+      ],
+      "rotation": [
+        11.671215067481674,
+        0,
+        127.23368856332175
+      ],
+      "pivot": [
+        -107.805313,
+        79.938793,
+        9.808
+      ]
+    }
+  },
+  {
+    "name": "paper_light_1_0_strip",
+    "bone": "paper_light_1_0",
+    "material": "paper_light",
+    "pattern": "paper_1",
+    "cube": {
+      "origin": [
+        -18.6,
+        114.4,
+        7.42
+      ],
+      "size": [
+        16,
+        49,
+        1
+      ],
+      "uv": [
+        254,
+        194
+      ],
+      "rotation": [
+        3.1480960995627587,
+        0,
+        97.0
+      ],
+      "pivot": [
+        -10.6,
+        114.4,
+        7.92
+      ]
+    }
+  },
+  {
+    "name": "paper_light_1_1_strip",
+    "bone": "paper_light_1_1",
+    "material": "paper_light",
+    "pattern": "paper_1",
+    "cube": {
+      "origin": [
+        -66.401023,
+        108.530772,
+        10.0688
+      ],
+      "size": [
+        16,
+        67,
+        1
+      ],
+      "uv": [
+        290,
+        194
+      ],
+      "rotation": [
+        0.33998871726902646,
+        0,
+        102.82236995805152
+      ],
+      "pivot": [
+        -58.401023,
+        108.530772,
+        10.5688
+      ]
+    }
+  },
+  {
+    "name": "paper_light_1_2_strip",
+    "bone": "paper_light_1_2",
+    "material": "paper_light",
+    "pattern": "paper_1",
+    "cube": {
+      "origin": [
+        -131.273839,
+        93.765392,
+        10.4636
+      ],
+      "size": [
+        16,
+        61,
+        1
+      ],
+      "uv": [
+        326,
+        194
+      ],
+      "rotation": [
+        12.658479415003628,
+        0,
+        80.53857646179881
+      ],
+      "pivot": [
+        -123.273839,
+        93.765392,
+        10.9636
+      ]
+    }
+  },
+  {
+    "name": "paper_light_2_0_strip",
+    "bone": "paper_light_2_0",
+    "material": "paper_light",
+    "pattern": "paper_2",
+    "cube": {
+      "origin": [
+        -19.6,
+        114.4,
+        8.14
+      ],
+      "size": [
+        18,
+        48,
+        1
+      ],
+      "uv": [
+        362,
+        194
+      ],
+      "rotation": [
+        3.1480960995627574,
+        0,
+        81.0
+      ],
+      "pivot": [
+        -10.6,
+        114.4,
+        8.64
+      ]
+    }
+  },
+  {
+    "name": "paper_light_2_1_strip",
+    "bone": "paper_light_2_1",
+    "material": "paper_light",
+    "pattern": "paper_2",
+    "cube": {
+      "origin": [
+        -66.06086,
+        121.758677,
+        10.7272
+      ],
+      "size": [
+        18,
+        66,
+        1
+      ],
+      "uv": [
+        402,
+        194
+      ],
+      "rotation": [
+        0.2732600891276326,
+        0,
+        75.0920253540754
+      ],
+      "pivot": [
+        -57.06086,
+        121.758677,
+        11.2272
+      ]
+    }
+  },
+  {
+    "name": "paper_light_2_2_strip",
+    "bone": "paper_light_2_2",
+    "material": "paper_light",
+    "pattern": "paper_2",
+    "cube": {
+      "origin": [
+        -129.114883,
+        138.545453,
+        11.0384
+      ],
+      "size": [
+        18,
+        59,
+        1
+      ],
+      "uv": [
+        442,
+        194
+      ],
+      "rotation": [
+        12.991236471260656,
+        0,
+        97.9358584115345
+      ],
+      "pivot": [
+        -120.114883,
+        138.545453,
+        11.5384
+      ]
+    }
+  },
+  {
+    "name": "paper_light_3_0_strip",
+    "bone": "paper_light_3_0",
+    "material": "paper_light",
+    "pattern": "paper_3",
+    "cube": {
+      "origin": [
+        -18.6,
+        114.4,
+        8.86
+      ],
+      "size": [
+        16,
+        43,
+        1
+      ],
+      "uv": [
+        482,
+        194
+      ],
+      "rotation": [
+        3.1480960995627583,
+        0,
+        65.0
+      ],
+      "pivot": [
+        -10.6,
+        114.4,
+        9.36
+      ]
+    }
+  },
+  {
+    "name": "paper_light_3_1_strip",
+    "bone": "paper_light_3_1",
+    "material": "paper_light",
+    "pattern": "paper_3",
+    "cube": {
+      "origin": [
+        -57.172459,
+        132.386633,
+        11.2008
+      ],
+      "size": [
+        16,
+        56,
+        1
+      ],
+      "uv": [
+        518,
+        194
+      ],
+      "rotation": [
+        -0.02406726854776135,
+        0,
+        71.40661815051554
+      ],
+      "pivot": [
+        -49.172459,
+        132.386633,
+        11.7008
+      ]
+    }
+  },
+  {
+    "name": "paper_light_3_2_strip",
+    "bone": "paper_light_3_2",
+    "material": "paper_light",
+    "pattern": "paper_3",
+    "cube": {
+      "origin": [
+        -109.520797,
+        149.997064,
+        11.1776
+      ],
+      "size": [
+        16,
+        63,
+        1
+      ],
+      "uv": [
+        554,
+        194
+      ],
+      "rotation": [
+        11.942178407128871,
+        0,
+        50.47767956063681
+      ],
+      "pivot": [
+        -101.520797,
+        149.997064,
+        11.6776
+      ]
+    }
+  },
+  {
+    "name": "paper_light_4_0_strip",
+    "bone": "paper_light_4_0",
+    "material": "paper_light",
+    "pattern": "paper_4",
+    "cube": {
+      "origin": [
+        -18.1,
+        114.4,
+        9.58
+      ],
+      "size": [
+        15,
+        35,
+        1
+      ],
+      "uv": [
+        590,
+        194
+      ],
+      "rotation": [
+        3.148096099562757,
+        0,
+        45.0
+      ],
+      "pivot": [
+        -10.6,
+        114.4,
+        10.08
+      ]
+    }
+  },
+  {
+    "name": "paper_light_4_1_strip",
+    "bone": "paper_light_4_1",
+    "material": "paper_light",
+    "pattern": "paper_4",
+    "cube": {
+      "origin": [
+        -42.650747,
+        138.950747,
+        11.4896
+      ],
+      "size": [
+        15,
+        53,
+        1
+      ],
+      "uv": [
+        624,
+        194
+      ],
+      "rotation": [
+        -0.6683961610904267,
+        0,
+        39.70975713851298
+      ],
+      "pivot": [
+        -35.150747,
+        138.950747,
+        11.9896
+      ]
+    }
+  },
+  {
+    "name": "paper_light_4_2_strip",
+    "bone": "paper_light_4_2",
+    "material": "paper_light",
+    "pattern": "paper_4",
+    "cube": {
+      "origin": [
+        -75.969619,
+        179.069619,
+        10.8812
+      ],
+      "size": [
+        15,
+        35,
+        1
+      ],
+      "uv": [
+        658,
+        194
+      ],
+      "rotation": [
+        20.74268449881953,
+        0,
+        66.42058904374207
+      ],
+      "pivot": [
+        -68.469619,
+        179.069619,
+        11.3812
+      ]
+    }
+  },
+  {
+    "name": "paper_light_5_0_strip",
+    "bone": "paper_light_5_0",
+    "material": "paper_light",
+    "pattern": "paper_5",
+    "cube": {
+      "origin": [
+        -16.6,
+        114.4,
+        10.3
+      ],
+      "size": [
+        12,
+        26,
+        1
+      ],
+      "uv": [
+        692,
+        194
+      ],
+      "rotation": [
+        3.1480960995627587,
+        0,
+        21.000000000000004
+      ],
+      "pivot": [
+        -10.6,
+        114.4,
+        10.8
+      ]
+    }
+  },
+  {
+    "name": "paper_light_5_1_strip",
+    "bone": "paper_light_5_1",
+    "material": "paper_light",
+    "pattern": "paper_5",
+    "cube": {
+      "origin": [
+        -25.831558,
+        138.449032,
+        11.7168
+      ],
+      "size": [
+        12,
+        29,
+        1
+      ],
+      "uv": [
+        720,
+        194
+      ],
+      "rotation": [
+        -2.546729986140586,
+        0,
+        25.868227753315466
+      ],
+      "pivot": [
+        -19.831558,
+        138.449032,
+        12.2168
+      ]
+    }
+  },
+  {
+    "name": "paper_light_5_2_strip",
+    "bone": "paper_light_5_2",
+    "material": "paper_light",
+    "pattern": "paper_5",
+    "cube": {
+      "origin": [
+        -38.360102,
+        164.287003,
+        10.4396
+      ],
+      "size": [
+        12,
+        49,
+        1
+      ],
+      "uv": [
+        748,
+        194
+      ],
+      "rotation": [
+        13.90323250959078,
+        0,
+        13.694796751158547
+      ],
+      "pivot": [
+        -32.360102,
+        164.287003,
+        10.9396
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_0_0_strip",
+    "bone": "paper_dark_0_0",
+    "material": "paper_dark",
+    "pattern": "paper_0",
+    "cube": {
+      "origin": [
+        3.6,
+        114.4,
+        6.7
+      ],
+      "size": [
+        14,
+        45,
+        1
+      ],
+      "uv": [
+        776,
+        194
+      ],
+      "rotation": [
+        3.14809609956276,
+        0,
+        -113.0
+      ],
+      "pivot": [
+        10.6,
+        114.4,
+        7.2
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_0_1_strip",
+    "bone": "paper_dark_0_1",
+    "material": "paper_dark",
+    "pattern": "paper_0",
+    "cube": {
+      "origin": [
+        44.838617,
+        96.895245,
+        9.164
+      ],
+      "size": [
+        14,
+        59,
+        1
+      ],
+      "uv": [
+        808,
+        194
+      ],
+      "rotation": [
+        0.14108615088178345,
+        0,
+        -106.85544329772635
+      ],
+      "pivot": [
+        51.838617,
+        96.895245,
+        9.664
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_0_2_strip",
+    "bone": "paper_dark_0_2",
+    "material": "paper_dark",
+    "pattern": "paper_0",
+    "cube": {
+      "origin": [
+        100.805313,
+        79.938793,
+        9.308
+      ],
+      "size": [
+        14,
+        65,
+        1
+      ],
+      "uv": [
+        840,
+        194
+      ],
+      "rotation": [
+        11.671215067481674,
+        0,
+        -127.23368856332175
+      ],
+      "pivot": [
+        107.805313,
+        79.938793,
+        9.808
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_1_0_strip",
+    "bone": "paper_dark_1_0",
+    "material": "paper_dark",
+    "pattern": "paper_1",
+    "cube": {
+      "origin": [
+        2.6,
+        114.4,
+        7.42
+      ],
+      "size": [
+        16,
+        49,
+        1
+      ],
+      "uv": [
+        872,
+        194
+      ],
+      "rotation": [
+        3.148096099562758,
+        0,
+        -95.0
+      ],
+      "pivot": [
+        10.6,
+        114.4,
+        7.92
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_1_1_strip",
+    "bone": "paper_dark_1_1",
+    "material": "paper_dark",
+    "pattern": "paper_1",
+    "cube": {
+      "origin": [
+        50.576737,
+        110.202579,
+        10.0688
+      ],
+      "size": [
+        16,
+        67,
+        1
+      ],
+      "uv": [
+        908,
+        194
+      ],
+      "rotation": [
+        0.341179938402238,
+        0,
+        -100.8643943581737
+      ],
+      "pivot": [
+        58.576737,
+        110.202579,
+        10.5688
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_1_2_strip",
+    "bone": "paper_dark_1_2",
+    "material": "paper_dark",
+    "pattern": "paper_1",
+    "cube": {
+      "origin": [
+        115.688022,
+        97.70608,
+        10.4636
+      ],
+      "size": [
+        16,
+        61,
+        1
+      ],
+      "uv": [
+        944,
+        194
+      ],
+      "rotation": [
+        12.539519065672986,
+        0,
+        -78.64124264540749
+      ],
+      "pivot": [
+        123.688022,
+        97.70608,
+        10.9636
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_2_0_strip",
+    "bone": "paper_dark_2_0",
+    "material": "paper_dark",
+    "pattern": "paper_2",
+    "cube": {
+      "origin": [
+        1.6,
+        114.4,
+        8.14
+      ],
+      "size": [
+        18,
+        48,
+        1
+      ],
+      "uv": [
+        980,
+        194
+      ],
+      "rotation": [
+        3.1480960995627574,
+        0,
+        -81.0
+      ],
+      "pivot": [
+        10.6,
+        114.4,
+        8.64
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_2_1_strip",
+    "bone": "paper_dark_2_1",
+    "material": "paper_dark",
+    "pattern": "paper_2",
+    "cube": {
+      "origin": [
+        48.06086,
+        121.758677,
+        10.7272
+      ],
+      "size": [
+        18,
+        66,
+        1
+      ],
+      "uv": [
+        2,
+        264
+      ],
+      "rotation": [
+        0.2732600891276326,
+        0,
+        -75.0920253540754
+      ],
+      "pivot": [
+        57.06086,
+        121.758677,
+        11.2272
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_2_2_strip",
+    "bone": "paper_dark_2_2",
+    "material": "paper_dark",
+    "pattern": "paper_2",
+    "cube": {
+      "origin": [
+        111.114883,
+        138.545453,
+        11.0384
+      ],
+      "size": [
+        18,
+        59,
+        1
+      ],
+      "uv": [
+        42,
+        264
+      ],
+      "rotation": [
+        12.991236471260656,
+        0,
+        -97.9358584115345
+      ],
+      "pivot": [
+        120.114883,
+        138.545453,
+        11.5384
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_3_0_strip",
+    "bone": "paper_dark_3_0",
+    "material": "paper_dark",
+    "pattern": "paper_3",
+    "cube": {
+      "origin": [
+        2.6,
+        114.4,
+        8.86
+      ],
+      "size": [
+        16,
+        43,
+        1
+      ],
+      "uv": [
+        82,
+        264
+      ],
+      "rotation": [
+        3.1480960995627583,
+        0,
+        -63.00000000000003
+      ],
+      "pivot": [
+        10.6,
+        114.4,
+        9.36
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_3_1_strip",
+    "bone": "paper_dark_3_1",
+    "material": "paper_dark",
+    "pattern": "paper_3",
+    "cube": {
+      "origin": [
+        40.521238,
+        133.721836,
+        11.2008
+      ],
+      "size": [
+        16,
+        56,
+        1
+      ],
+      "uv": [
+        118,
+        264
+      ],
+      "rotation": [
+        -0.024165078260995898,
+        0,
+        -69.3237126111524
+      ],
+      "pivot": [
+        48.521238,
+        133.721836,
+        11.7008
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_3_2_strip",
+    "bone": "paper_dark_3_2",
+    "material": "paper_dark",
+    "pattern": "paper_3",
+    "cube": {
+      "origin": [
+        91.985775,
+        153.144327,
+        11.1776
+      ],
+      "size": [
+        16,
+        63,
+        1
+      ],
+      "uv": [
+        154,
+        264
+      ],
+      "rotation": [
+        11.857396951088994,
+        0,
+        -48.83457893300089
+      ],
+      "pivot": [
+        99.985775,
+        153.144327,
+        11.6776
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_4_0_strip",
+    "bone": "paper_dark_4_0",
+    "material": "paper_dark",
+    "pattern": "paper_4",
+    "cube": {
+      "origin": [
+        3.1,
+        114.4,
+        9.58
+      ],
+      "size": [
+        15,
+        35,
+        1
+      ],
+      "uv": [
+        190,
+        264
+      ],
+      "rotation": [
+        3.148096099562757,
+        0,
+        -45.0
+      ],
+      "pivot": [
+        10.6,
+        114.4,
+        10.08
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_4_1_strip",
+    "bone": "paper_dark_4_1",
+    "material": "paper_dark",
+    "pattern": "paper_4",
+    "cube": {
+      "origin": [
+        27.650747,
+        138.950747,
+        11.4896
+      ],
+      "size": [
+        15,
+        53,
+        1
+      ],
+      "uv": [
+        224,
+        264
+      ],
+      "rotation": [
+        -0.6683961610904267,
+        0,
+        -39.70975713851298
+      ],
+      "pivot": [
+        35.150747,
+        138.950747,
+        11.9896
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_4_2_strip",
+    "bone": "paper_dark_4_2",
+    "material": "paper_dark",
+    "pattern": "paper_4",
+    "cube": {
+      "origin": [
+        60.969619,
+        179.069619,
+        10.8812
+      ],
+      "size": [
+        15,
+        35,
+        1
+      ],
+      "uv": [
+        258,
+        264
+      ],
+      "rotation": [
+        20.74268449881953,
+        0,
+        -66.42058904374207
+      ],
+      "pivot": [
+        68.469619,
+        179.069619,
+        11.3812
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_5_0_strip",
+    "bone": "paper_dark_5_0",
+    "material": "paper_dark",
+    "pattern": "paper_5",
+    "cube": {
+      "origin": [
+        4.6,
+        114.4,
+        10.3
+      ],
+      "size": [
+        12,
+        26,
+        1
+      ],
+      "uv": [
+        292,
+        264
+      ],
+      "rotation": [
+        3.14809609956276,
+        0,
+        -19.000000000000018
+      ],
+      "pivot": [
+        10.6,
+        114.4,
+        10.8
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_5_1_strip",
+    "bone": "paper_dark_5_1",
+    "material": "paper_dark",
+    "pattern": "paper_5",
+    "cube": {
+      "origin": [
+        12.986636,
+        138.756559,
+        11.7168
+      ],
+      "size": [
+        12,
+        29,
+        1
+      ],
+      "uv": [
+        320,
+        264
+      ],
+      "rotation": [
+        -2.5555293114051367,
+        0,
+        -23.43705781111624
+      ],
+      "pivot": [
+        18.986636,
+        138.756559,
+        12.2168
+      ]
+    }
+  },
+  {
+    "name": "paper_dark_5_2_strip",
+    "bone": "paper_dark_5_2",
+    "material": "paper_dark",
+    "pattern": "paper_5",
+    "cube": {
+      "origin": [
+        24.368498,
+        165.011888,
+        10.4396
+      ],
+      "size": [
+        12,
+        49,
+        1
+      ],
+      "uv": [
+        348,
+        264
+      ],
+      "rotation": [
+        13.865986129893114,
+        0,
+        -12.38513396246957
+      ],
+      "pivot": [
+        30.368498,
+        165.011888,
+        10.9396
+      ]
+    }
+  },
+  {
+    "name": "black_upper_arm_shape",
+    "bone": "black_upper_arm",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -19.7,
+        84,
+        -4.0
+      ],
+      "size": [
+        7,
+        35,
+        8
+      ],
+      "uv": [
+        376,
+        264
+      ],
+      "rotation": [
+        2.669088839298581,
+        0,
+        168.23171106797935
+      ],
+      "pivot": [
+        -16.2,
+        84,
+        0
+      ]
+    }
+  },
+  {
+    "name": "black_forearm_shape",
+    "bone": "black_forearm",
+    "material": "obsidian",
+    "pattern": "cuff",
+    "cube": {
+      "origin": [
+        -25.7,
+        50.4,
+        -1.4
+      ],
+      "size": [
+        5,
+        33,
+        6
+      ],
+      "uv": [
+        408,
+        264
+      ],
+      "rotation": [
+        -10.068727575568646,
+        0,
+        169.40266485497645
+      ],
+      "pivot": [
+        -23.2,
+        50.4,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "black_palm",
+    "bone": "black_hand",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -33.0,
+        10.4,
+        -6.0
+      ],
+      "size": [
+        8,
+        9,
+        3
+      ],
+      "uv": [
+        432,
+        264
+      ]
+    }
+  },
+  {
+    "name": "black_finger_0_base",
+    "bone": "black_finger_0",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -33.3,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        456,
+        264
+      ],
+      "rotation": [
+        -11.087406164616509,
+        0,
+        168.4698696111982
+      ],
+      "pivot": [
+        -32.3,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_0_tip",
+    "bone": "black_finger_0",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -34.32,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        466,
+        264
+      ],
+      "rotation": [
+        -33.02006798897865,
+        0,
+        167.12499844038763
+      ],
+      "pivot": [
+        -33.32,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_1_base",
+    "bone": "black_finger_1",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -31.1,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        476,
+        264
+      ],
+      "rotation": [
+        -11.284543647590217,
+        0,
+        176.10987559593818
+      ],
+      "pivot": [
+        -30.1,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_1_tip",
+    "bone": "black_finger_1",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -31.44,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        486,
+        264
+      ],
+      "rotation": [
+        -21.780794599451706,
+        0,
+        177.38258663673557
+      ],
+      "pivot": [
+        -30.44,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_2_base",
+    "bone": "black_finger_2",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -28.9,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        496,
+        264
+      ],
+      "rotation": [
+        -11.284543647590217,
+        0,
+        -176.10987559593818
+      ],
+      "pivot": [
+        -27.9,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_2_tip",
+    "bone": "black_finger_2",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -28.56,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        506,
+        264
+      ],
+      "rotation": [
+        -21.780794599451706,
+        0,
+        -177.38258663673557
+      ],
+      "pivot": [
+        -27.56,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_3_base",
+    "bone": "black_finger_3",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -26.7,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        516,
+        264
+      ],
+      "rotation": [
+        -11.08740616461651,
+        0,
+        -168.46986961119822
+      ],
+      "pivot": [
+        -25.7,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "black_finger_3_tip",
+    "bone": "black_finger_3",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -25.68,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        526,
+        264
+      ],
+      "rotation": [
+        -33.020067988978646,
+        0,
+        -167.12499844038751
+      ],
+      "pivot": [
+        -24.68,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "black_thumb",
+    "bone": "black_hand",
+    "material": "obsidian",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        -26.6,
+        15.2,
+        -5.9
+      ],
+      "size": [
+        2,
+        7,
+        3
+      ],
+      "uv": [
+        536,
+        264
+      ],
+      "rotation": [
+        -20.506360791887804,
+        0,
+        -144.6887865603668
+      ],
+      "pivot": [
+        -25.6,
+        15.2,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "white_upper_arm_shape",
+    "bone": "white_upper_arm",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        12.7,
+        84,
+        -4.0
+      ],
+      "size": [
+        7,
+        35,
+        8
+      ],
+      "uv": [
+        548,
+        264
+      ],
+      "rotation": [
+        2.669088839298581,
+        0,
+        -168.23171106797935
+      ],
+      "pivot": [
+        16.2,
+        84,
+        0
+      ]
+    }
+  },
+  {
+    "name": "white_forearm_shape",
+    "bone": "white_forearm",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        20.7,
+        50.4,
+        -1.4
+      ],
+      "size": [
+        5,
+        33,
+        6
+      ],
+      "uv": [
+        580,
+        264
+      ],
+      "rotation": [
+        -10.068727575568646,
+        0,
+        -169.40266485497645
+      ],
+      "pivot": [
+        23.2,
+        50.4,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "white_palm",
+    "bone": "white_hand",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        25.0,
+        10.4,
+        -6.0
+      ],
+      "size": [
+        8,
+        9,
+        3
+      ],
+      "uv": [
+        604,
+        264
+      ]
+    }
+  },
+  {
+    "name": "white_finger_0_base",
+    "bone": "white_finger_0",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        24.7,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        628,
+        264
+      ],
+      "rotation": [
+        -11.08740616461651,
+        0,
+        168.46986961119822
+      ],
+      "pivot": [
+        25.7,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_0_tip",
+    "bone": "white_finger_0",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        23.68,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        638,
+        264
+      ],
+      "rotation": [
+        -33.020067988978646,
+        0,
+        167.12499844038751
+      ],
+      "pivot": [
+        24.68,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_1_base",
+    "bone": "white_finger_1",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        26.9,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        648,
+        264
+      ],
+      "rotation": [
+        -11.284543647590217,
+        0,
+        176.10987559593818
+      ],
+      "pivot": [
+        27.9,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_1_tip",
+    "bone": "white_finger_1",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        26.56,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        658,
+        264
+      ],
+      "rotation": [
+        -21.780794599451706,
+        0,
+        177.38258663673557
+      ],
+      "pivot": [
+        27.56,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_2_base",
+    "bone": "white_finger_2",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        29.1,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        668,
+        264
+      ],
+      "rotation": [
+        -11.284543647590217,
+        0,
+        -176.10987559593818
+      ],
+      "pivot": [
+        30.1,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_2_tip",
+    "bone": "white_finger_2",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        29.44,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        4,
+        2
+      ],
+      "uv": [
+        678,
+        264
+      ],
+      "rotation": [
+        -21.780794599451706,
+        0,
+        -177.38258663673557
+      ],
+      "pivot": [
+        30.44,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_3_base",
+    "bone": "white_finger_3",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        31.3,
+        10.8,
+        -5.4
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        688,
+        264
+      ],
+      "rotation": [
+        -11.087406164616509,
+        0,
+        -168.4698696111982
+      ],
+      "pivot": [
+        32.3,
+        10.8,
+        -4.4
+      ]
+    }
+  },
+  {
+    "name": "white_finger_3_tip",
+    "bone": "white_finger_3",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        32.32,
+        5.8,
+        -6.4
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "uv": [
+        698,
+        264
+      ],
+      "rotation": [
+        -33.02006798897865,
+        0,
+        -167.12499844038763
+      ],
+      "pivot": [
+        33.32,
+        5.8,
+        -5.4
+      ]
+    }
+  },
+  {
+    "name": "white_thumb",
+    "bone": "white_hand",
+    "material": "ivory",
+    "pattern": "",
+    "cube": {
+      "origin": [
+        24.6,
+        15.2,
+        -5.9
+      ],
+      "size": [
+        2,
+        7,
+        3
+      ],
+      "uv": [
+        708,
+        264
+      ],
+      "rotation": [
+        -20.506360791887804,
+        0,
+        144.6887865603668
+      ],
+      "pivot": [
+        25.6,
+        15.2,
+        -4.4
+      ]
+    }
+  }
+]

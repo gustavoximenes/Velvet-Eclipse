@@ -14,6 +14,7 @@ public final class FusionRoomService {
  private static final Map<UUID,Long> greetings=new HashMap<>(),requests=new HashMap<>();
  private static boolean available(ServerPlayer p){return VelvetRoomService.inside(p)&&p.m_6084_()&&BattleService.current(p)==null&&Math.abs(p.m_20185_())<10&&p.m_20186_()>62&&p.m_20186_()<74&&p.m_20189_()>-10&&p.m_20189_()<13;}
  public static void greetLater(ServerPlayer p){greetings.put(p.m_20148_(),p.m_9236_().m_46467_()+15);}
+ public static void refresh(ServerPlayer p,String message){tickets.remove(p.m_20148_());if(available(p))reply(p,null,message,false);}
  public static void open(ServerPlayer p){if(available(p)){tickets.remove(p.m_20148_());reply(p,null,"Bem-vindo à Velvet Room. Gostaria de fundir suas Personas?",true);}}
  public static void handle(ServerPlayer p,FusionNetwork.Request r){
   var id=p.m_20148_();if(r.action().equals("close")){tickets.remove(id);return;}
