@@ -22,7 +22,7 @@ public final class TartarusPropEntity extends Entity implements GeoEntity {
  @Override protected void m_7380_(CompoundTag tag){}
  @Override public Packet<ClientGamePacketListener> m_5654_(){return NetworkHooks.getEntitySpawningPacket(this);}
  @Override public boolean m_6087_(){return true;}
- @Override public InteractionResult m_6096_(Player p,InteractionHand h){if(p instanceof ServerPlayer s)TartarusTerminals.interact(s,this);return InteractionResult.SUCCESS;}
+ @Override public InteractionResult m_6096_(Player p,InteractionHand h){if(getPersistentData().m_128471_(TartarusPropItem.PLACED)){if(p instanceof ServerPlayer s){if(p.m_150110_().f_35937_&&p.m_6144_())m_146870_();else s.m_5661_(net.minecraft.network.chat.Component.m_237113_("Peça decorativa • SHIFT + clique no criativo para remover."),true);}return InteractionResult.SUCCESS;}if(p instanceof ServerPlayer s)TartarusTerminals.interact(s,this);return InteractionResult.SUCCESS;}
  @Override public AnimatableInstanceCache getAnimatableInstanceCache(){return cache;}
  @Override public void registerControllers(AnimatableManager.ControllerRegistrar c){c.add(new AnimationController<TartarusPropEntity>(this,"idle",0,s->s.setAndContinue(RawAnimation.begin().thenLoop("misc.idle"))));}
 }

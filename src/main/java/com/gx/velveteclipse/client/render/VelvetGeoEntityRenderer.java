@@ -27,6 +27,10 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         if(izanagi||asset.equals("igor"))withScale(.25f);
         if(asset.equals("wealth_hand")||izanagi||asset.startsWith("tartarus_"))addRenderLayer(new AutoGlowingGeoLayer<T>(this));
     }
+    @Override protected void applyRotations(T entity,PoseStack stack,float age,float bodyYaw,float partial){
+        // GeckoLib supplies bodyYaw=0 for non-living entities. Props still have a saved world yaw.
+        super.applyRotations(entity,stack,age,entity instanceof com.gx.velveteclipse.darkhour.TartarusPropEntity?entity.m_146908_():bodyYaw,partial);
+    }
     @Override public void renderCubesOfBone(PoseStack stack,GeoBone bone,VertexConsumer out,int light,int overlay,float r,float g,float b,float a) {
         if(thanatos&&ThanatosMesh.draw(stack,bone,out,light,overlay,r,g,b,a))return;
         // Izanagi uses native GeckoLib cuboids and pixel UVs.

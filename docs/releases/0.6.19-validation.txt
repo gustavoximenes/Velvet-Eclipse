@@ -1,0 +1,7 @@
+PASS terminals: 665 focused checks; cycle renewal, fixed progress, chests, gate height, prop spacing, destination codec and actual GeckoLib models. Offline only.
+PASS tartarus fixes: 65 checks; asynchronous guardian load/recovery, no duplicates or resurrection, ten transition floors, migration persistence, native Monad wall clearance and creative resources. Offline only.
+BUILD SUCCESSFUL: jar and sourcesJar after focused checks.
+Native GeckoLib models/animations baked; real Monad geometry verified inside its wall plane. Placement icons generated from authored models.
+Jar version, classes, dimension, authored textures/geometry and new creative block resources verified.
+No Minecraft execution or two-client testing, per project preference.
+SHA256: 1E411B5A3B6AB7C6995764DF9A593C65221F08DB98239CCBCF82BE0DBB4F6F09

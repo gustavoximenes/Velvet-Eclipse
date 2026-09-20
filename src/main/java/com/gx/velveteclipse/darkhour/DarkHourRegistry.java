@@ -20,6 +20,6 @@ public final class DarkHourRegistry {
   for(String route:java.util.List.of("forward","back","exit","summit"))INTERIOR.put(route,BLOCKS.register("tartarus_"+route,()->new TartarusPortalBlock(route)));
  }
  public static void register(IEventBus bus){BLOCKS.register(bus);}
- public static java.util.List<RegistryObject<Block>> creativeBlocks(){var all=new java.util.ArrayList<RegistryObject<Block>>(java.util.List.of(STONE,TRIM,LIGHT,STAIRS,PORTAL));all.addAll(INTERIOR.values());return java.util.List.copyOf(all);}
+ public static java.util.List<RegistryObject<Block>> creativeBlocks(){return java.util.List.copyOf(BLOCKS.getEntries());}
  public static boolean temporary(Block b){return b==STONE.get()||b==TRIM.get()||b==LIGHT.get()||b==STAIRS.get()||b==PORTAL.get();}
 }

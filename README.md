@@ -1,3 +1,7 @@
+# Versão 0.6.19
+
+Correções de guardiões após teleporte e da rotação da porta de Monad. Salas de transição em todos os múltiplos de 25, inclusive nos andares já visitados. Aba criativa automática e itens de colocação de terminal, tesouro e porta. [Notas](docs/TARTARUS_FIXES_019.md).
+
 # Versão 0.6.18
 
 Terminais descobertos por jogador, guardiões a cada 10 andares, transições a cada 25, tesouros e renovação dos mapas comuns por Dark Hour. Proteção contra edição do Tártaro e Esc de combate corrigido. [Notas e validação](docs/TARTARUS_TERMINALS.md).

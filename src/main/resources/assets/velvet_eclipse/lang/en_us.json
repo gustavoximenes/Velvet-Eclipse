@@ -79,5 +79,14 @@
   "entity.velvet_eclipse.tartarus_treasure": "Tartarus Treasure",
   "entity.velvet_eclipse.tartarus_monad": "Monad Door",
   "block.velvet_eclipse.tartarus_amber": "Amber Window",
-  "block.velvet_eclipse.tartarus_rose": "Crimson Window"
+  "block.velvet_eclipse.tartarus_rose": "Crimson Window",
+  "item.velvet_eclipse.tartarus_terminal": "Tartarus Terminal",
+  "item.velvet_eclipse.tartarus_treasure": "Tartarus Treasure",
+  "item.velvet_eclipse.tartarus_monad": "Monad Door",
+  "item.velvet_eclipse.model_cinder_wisp": "Cinder Wisp • Model",
+  "item.velvet_eclipse.model_nocturne_knight": "Nocturne Knight • Model",
+  "item.velvet_eclipse.model_sylphid": "Sylphid • Model",
+  "item.velvet_eclipse.model_lumen_hare": "Lumen Hare • Model",
+  "item.velvet_eclipse.model_iron_oni": "Iron Oni • Model",
+  "item.velvet_eclipse.model_umbra_slime": "Umbra Slime • Model"
 }

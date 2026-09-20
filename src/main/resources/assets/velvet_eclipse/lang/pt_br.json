@@ -79,5 +79,14 @@
   "entity.velvet_eclipse.tartarus_treasure": "Tesouro do Tártaro",
   "entity.velvet_eclipse.tartarus_monad": "Porta de Monad",
   "block.velvet_eclipse.tartarus_amber": "Vitral âmbar",
-  "block.velvet_eclipse.tartarus_rose": "Vitral carmesim"
+  "block.velvet_eclipse.tartarus_rose": "Vitral carmesim",
+  "item.velvet_eclipse.tartarus_terminal": "Terminal do Tártaro",
+  "item.velvet_eclipse.tartarus_treasure": "Tesouro do Tártaro",
+  "item.velvet_eclipse.tartarus_monad": "Porta de Monad",
+  "item.velvet_eclipse.model_cinder_wisp": "Cinder Wisp • Modelo",
+  "item.velvet_eclipse.model_nocturne_knight": "Nocturne Knight • Modelo",
+  "item.velvet_eclipse.model_sylphid": "Sylphid • Modelo",
+  "item.velvet_eclipse.model_lumen_hare": "Lumen Hare • Modelo",
+  "item.velvet_eclipse.model_iron_oni": "Iron Oni • Modelo",
+  "item.velvet_eclipse.model_umbra_slime": "Umbra Slime • Modelo"
 }
