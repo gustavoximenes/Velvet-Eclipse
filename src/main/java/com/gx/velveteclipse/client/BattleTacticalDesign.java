@@ -21,10 +21,10 @@ public final class BattleTacticalDesign {
   }
   if(prompt){
    BattleGraphics.poly(c,new double[]{w*.40,h,w*.48,h-109*u,w,h-169*u,w,h},0xF4162CDD);
-   c.angled("ALL-OUT ATTACK",(int)(w*.50),h-(int)(116*u),(float)(2.1*u),0xFF04175F,-11);
+   c.angled("ALL-OUT ATTACK",(int)(w*.50),h-(int)(116*u),(float)(2.1*u),0xFF70F4FF,-11);
    c.angled("TODOS OS INIMIGOS CAÍDOS",(int)(w*.49),h-(int)(73*u),(float)(.9*u),0xFF70F4FF,-11);
    var yes=go(w,h);var no=cancel(w,h);c.fill(yes.x(),yes.y(),yes.w()-5,yes.h(),0xFF1548D6);c.fill(no.x(),no.y(),no.w(),no.h(),0xFF0B207A);
-   c.styled("[ENTER] GO!",yes.x()+8,yes.y()+10,(float)(1.4*u),0xFFB2FF38);c.styled("[ESC] CANCEL",no.x()+5,no.y()+12,(float)(1.05*u),0xFFFFD6DF);
+   c.styled("[ENTER] GO!",yes.x()+8,yes.y()+10,(float)(1.4*u),0xFFB2FF38);c.styled("[N] CANCEL",no.x()+5,no.y()+12,(float)(1.05*u),0xFFFFD6DF);
   }
  }
 }

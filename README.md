@@ -1,3 +1,7 @@
+# Versão 0.6.17
+
+All-Out Attack com novo enquadramento, arena e pose final; resultados de batalha com confirmação por Enter; bloqueio de menus em combate; salas de preparação, Guardião e transição a cada três andares. Teleporte: `/tp tartarus floor 0..250`. Veja [detalhes e validação](docs/BATTLE_RESULTS_AND_INTERVALS.md).
+
 # Velvet Eclipse 0.6.16 — Shuffle Time
 
 - Shuffle Time acumulável após vitória com All-Out Attack, HUD de disponibilidade e abertura por P.

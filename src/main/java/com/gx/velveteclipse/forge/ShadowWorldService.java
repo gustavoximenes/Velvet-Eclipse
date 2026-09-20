@@ -235,7 +235,7 @@ public final class ShadowWorldService {
    }
 
    private static void startEncounter(Object player,Object shadow) {
-      BattleService.startEncounter(player,1,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(player));
+      BattleService.startEncounter(player,1,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(player),com.gx.velveteclipse.darkhour.TartarusDungeonService.guardian(shadow));
       if(BattleService.current(player)!=null){com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterStarted(player,shadow);consumeShadow(shadow);}
    }
    private static void consumeShadow(Object var0) {

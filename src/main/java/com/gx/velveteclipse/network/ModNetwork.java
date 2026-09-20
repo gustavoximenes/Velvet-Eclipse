@@ -8,7 +8,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-   private static final String PROTOCOL = "10";
+   private static final String PROTOCOL = "11";
    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
       new ResourceLocation("velvet_eclipse", "main"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals
    );
@@ -33,8 +33,9 @@ public final class ModNetwork {
          CHANNEL.registerMessage(var0++,AllOutCueS2C.class,AllOutCueS2C::encode,AllOutCueS2C::decode,AllOutCueS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,DarkHourS2C.class,DarkHourS2C::encode,DarkHourS2C::decode,DarkHourS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,DarkHourViewC2S.class,DarkHourViewC2S::encode,DarkHourViewC2S::decode,DarkHourViewC2S::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER));
+         CHANNEL.registerMessage(var0++,BattleResultsS2C.class,BattleResultsS2C::encode,BattleResultsS2C::decode,BattleResultsS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          registered = true;
-         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 10, 12 packets).");
+         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 11, 13 packets).");
       }
    }
 

@@ -22,6 +22,7 @@ public final class ClientBattleCamera {
         PersonaCinematics.tick(e);if(e.phase!=TickEvent.Phase.END)return;
         ExplorationClient.tick();var mc=Minecraft.m_91087_();
         boolean valid=mc.f_91074_!=null&&mc.f_91073_!=null&&mc.f_91074_.m_6084_();
+        if(!valid){BattleResultsClient.reset();AllOutPresentation.reset();}
         boolean active=valid&&ClientBattleState.snapshot().active();
         if(active!=battle)ExplorationCamera.reset();
         boolean controlled=valid&&(active||VelvetRoomClient.seated()||ExplorationClient.enabled());

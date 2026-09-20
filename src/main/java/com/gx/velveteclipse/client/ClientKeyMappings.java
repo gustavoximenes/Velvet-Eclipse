@@ -249,7 +249,7 @@ public final class ClientKeyMappings {
 
       @SubscribeEvent
       public static void onKey(Key var0) {
-         if(BattleTacticsClient.key(var0))return;
+         if(BattleResultsClient.key(var0)||BattleTacticsClient.key(var0))return;
          var mc=net.minecraft.client.Minecraft.m_91087_();var snapshot=ClientBattleState.snapshot();
          if(mc.f_91080_==null&&snapshot.active()&&(var0.getAction()==1||var0.getAction()==2)){
             switch(var0.getKey()){

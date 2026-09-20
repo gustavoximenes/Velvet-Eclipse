@@ -16,6 +16,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         stack.m_85836_();
         try{
             if(com.gx.velveteclipse.client.BattleTacticsClient.downed(entity.m_19879_())){stack.m_85837_(0,.28,0);stack.m_252781_(new org.joml.Quaternionf().rotationZ(1.40f).rotateX(.12f));}
+            if(entity.m_7755_().getString().startsWith("Guardião do Tártaro"))stack.m_85841_(2.2f,2.2f,2.2f);
             super.m_7392_(entity,yaw,partial,stack,buffers,light);
         }finally{stack.m_85849_();}
     }

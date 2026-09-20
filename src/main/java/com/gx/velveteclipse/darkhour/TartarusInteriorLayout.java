@@ -15,6 +15,9 @@ public final class TartarusInteriorLayout {
  public static int floorAt(double x){return Math.max(0,Math.min(LAST_FLOOR,(int)Math.round(x/SPACING)));}
  public static int hp(int floor){return 85+Math.max(0,floor)*8;}
  public static int level(int floor){return 1+Math.max(0,floor);}
+ public static boolean bossFloor(int floor){return floor>0&&floor<=LAST_FLOOR&&floor%3==0;}
+ public static int shadowLimit(int floor){return bossFloor(floor)?1:7;}
+ public static final int BOSS_Z=256,GATE_Z=237;
  public static Plan hall(){
   var b=new TartarusInteriorLayout();
   for(int x=-28;x<=28;x++)for(int z=-30;z<=30;z++){
@@ -47,7 +50,7 @@ public final class TartarusInteriorLayout {
   return new Plan(List.copyOf(b.blocks.values()),new Point(0,23),new Point(0,-17),List.of(),Set.of());
  }
  public static Plan floor(long seed,int floor){
-  origin(floor);if(floor==0)return hall();
+  origin(floor);if(floor==0)return hall();if(bossFloor(floor))return interval(floor);
   var r=new Random(seed ^ (floor*0x9E3779B97F4A7C15L));var b=new TartarusInteriorLayout();
   int n=4;var centers=new ArrayList<Point>();for(int z=0;z<n;z++)for(int x=0;x<n;x++)centers.add(new Point(x*24-36,z*24-36));
   var links=new ArrayList<int[]>();var visited=new boolean[16];var stack=new ArrayDeque<Integer>();stack.push(0);visited[0]=true;
@@ -86,5 +89,25 @@ public final class TartarusInteriorLayout {
   b.box(start.x-3,0,backZ-1,start.x+3,5,backZ-1,"wall");
   b.box(start.x-2,1,backZ,start.x+2,4,backZ,"back");spawns.remove(start);
   return new Plan(List.copyOf(b.blocks.values()),new Point(start.x,start.z+3),stairs,List.copyOf(spawns),Set.copyOf(tiles));
+ }
+ /** Three rooms joined by one straight passage: preparation, guardian, transition. */
+ public static Plan interval(int floor){
+  var b=new TartarusInteriorLayout();var tiles=new HashSet<Point>();String accent=floor<=83?"window":floor<=166?"azure":"violet";
+  int[] centers={292,256,220},radii={9,14,10};
+  for(int i=0;i<3;i++)for(int x=-radii[i];x<=radii[i];x++)for(int z=centers[i]-radii[i];z<=centers[i]+radii[i];z++)tiles.add(new Point(x,z));
+  for(int x=-2;x<=2;x++)for(int z=220;z<=292;z++)tiles.add(new Point(x,z));
+  for(var p:tiles.stream().sorted(Comparator.comparingInt(Point::x).thenComparingInt(Point::z)).toList()){
+   b.put(p.x,0,p.z,((p.x+p.z)&1)==0?"tile":"tile_dark");b.put(p.x,13,p.z,"wall");
+   for(var d:List.of(new Point(1,0),new Point(-1,0),new Point(0,1),new Point(0,-1))){var s=new Point(p.x+d.x,p.z+d.z);if(!tiles.contains(s))for(int y=0;y<=13;y++)b.put(s.x,y,s.z,y==1||y==12?"trim":y>=5&&y<=10&&Math.floorMod(s.x+s.z,6)!=0?accent:"wall");}
+  }
+  for(int i=0;i<3;i++){int zc=centers[i],r=radii[i];for(int x=-r+1;x<r;x++)for(int z=-r+1;z<r;z++)if(Math.abs(x)==r-1||Math.abs(z)==r-1)b.put(x,0,zc+z,"border");
+   for(int x:new int[]{-r+1,r-1})for(int z:new int[]{zc-r+1,zc+r-1}){b.box(x,1,z,x,11,z,"column");b.put(x,12,z,"gold");}}
+  for(int x=-8;x<=8;x++)for(int z=-8;z<=8;z++){double r=Math.hypot(x,z);if(r<8.5)b.put(x,0,256+z,r>7||r>3.5&&r<4.5?accent:"seal");}
+  b.box(-9,1,289,-9,5,295,"ivory");b.box(-8,1,289,-8,4,290,"trim");b.box(-8,1,294,-8,4,295,"trim");b.put(-8,1,292,"velvet_door");
+  b.box(-3,0,303,3,5,303,"wall");b.box(-2,1,302,2,4,302,"back");
+  for(int step=0;step<8;step++){int z=224-step,y=step+1;b.box(-3,1,z,3,y-1,z,"wall");b.box(-3,y,z,3,y,z,"stairs");for(int x:new int[]{-4,4}){b.box(x,1,z,x,y,z,"column");b.put(x,y+1,z,accent);}}
+  b.box(-3,1,214,3,8,216,"wall");b.box(-2,9,214,2,12,214,"forward");
+  b.box(-2,1,GATE_Z,2,4,GATE_Z,"boss_gate");
+  return new Plan(List.copyOf(b.blocks.values()),new Point(0,297),new Point(0,220),List.of(new Point(0,256)),Set.copyOf(tiles));
  }
 }

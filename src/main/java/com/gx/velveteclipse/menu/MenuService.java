@@ -15,6 +15,7 @@ public final class MenuService {
     private static final String LINKS="velvet_eclipse:menu_links_v1";
     private static final MenuRequestGate REQUESTS=new MenuRequestGate();
     public static void handle(ServerPlayer player,String action,String argument){
+        if(BattleService.current(player)!=null)return;
         long now=player.m_9236_().m_46467_();UUID id=player.m_20148_();
         if(!REQUESTS.allow(id,action,now))return;
         PlayerPersonaData data=PlayerPersonaData.load(player);

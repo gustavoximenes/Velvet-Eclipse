@@ -14,7 +14,7 @@ public final class ClientBattleUiState {
  public static int selected(){return selected;}
  public static double age(){return (System.nanoTime()-opened)*1e-9;}
  public static boolean selector(){return page==Page.SKILLS||page==Page.PERSONAS;}
- public static boolean actionLocked(){return AllOutPresentation.active()||BattleTacticsClient.awaitingAllOut()||actionLocked||switchPending||PersonaCinematics.skillSequenceActive()||PersonaCinematics.meleeActive();}
+ public static boolean actionLocked(){return BattleResultsClient.active()||AllOutPresentation.active()||BattleTacticsClient.awaitingAllOut()||actionLocked||switchPending||PersonaCinematics.skillSequenceActive()||PersonaCinematics.meleeActive();}
  public static void onSnapshot(BattleSnapshotS2C old,BattleSnapshotS2C next){
   if(next==null||!next.active()){page=Page.MAIN;actionLocked=switchPending=false;selected=0;pendingSkill="";return;}
   if(old==null||old.playerTurn()!=next.playerTurn())page=Page.MAIN;
