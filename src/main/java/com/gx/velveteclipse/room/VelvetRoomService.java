@@ -22,6 +22,7 @@ public final class VelvetRoomService {
  public static void summonDoor(ServerPlayer p){
   if(!available(p)){tell(p,"Finalize a ação atual e levante-se antes de usar a Velvet Key.");return;}
   if(inside(p)){tell(p,"A porta de saída está atrás das cadeiras.");return;}
+  if(com.gx.velveteclipse.darkhour.TartarusDungeonService.inside(p)){tell(p,"Use as portas fixas da Velvet Room no Tártaro.");return;}
   long now=System.currentTimeMillis();var tag=p.getPersistentData();if(now-tag.m_128454_(COOLDOWN)<1500)return;
   Direction facing=p.m_6350_().m_122424_();BlockPos origin=p.m_20183_();
   for(int range:new int[]{3,2,4})for(int dy:new int[]{0,1,-1}){
@@ -54,6 +55,7 @@ public final class VelvetRoomService {
   var tag=p.getPersistentData();var back=tag.m_128469_(RETURN);ServerLevel target=null;
   try{target=p.m_20194_().m_129880_(ResourceKey.m_135785_(Registries.f_256858_,new ResourceLocation(back.m_128461_("dimension"))));}catch(RuntimeException ignored){}
   if(target==null||target.m_46472_().equals(DIMENSION))target=p.m_20194_().m_129783_();
+  if(target.m_46472_().equals(com.gx.velveteclipse.darkhour.TartarusDungeonService.DIMENSION)){com.gx.velveteclipse.darkhour.TartarusDungeonService.teleportToFloor(p,com.gx.velveteclipse.darkhour.TartarusInteriorLayout.floorAt(back.m_128459_("x")));return;}
   double x=back.m_128459_("x"),y=back.m_128459_("y"),z=back.m_128459_("z");if(!back.m_128441_("dimension")){var spawn=target.m_220360_();x=spawn.m_123341_()+.5;y=spawn.m_123342_();z=spawn.m_123343_()+.5;}
   var safe=safeExit(target,p,x,y,z);if(safe==null){tell(p,"A saída está bloqueada. Libere o espaço no mundo de origem.");return;}
   tag.m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(target,safe.f_82479_,safe.f_82480_,safe.f_82481_,back.m_128457_("yaw"),0);

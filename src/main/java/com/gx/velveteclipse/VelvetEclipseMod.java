@@ -19,6 +19,6 @@ public final class VelvetEclipseMod {
       PersonaRegistry.bootstrap();
       com.gx.velveteclipse.shuffle.SkillCardRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       ModNetwork.register();
-      LOGGER.info("Velvet Eclipse 0.6.17 All-Out presentation, battle results and Tartarus guardians initialized.");
+      LOGGER.info("Velvet Eclipse 0.6.18 Tartarus terminals, persistent treasures and Dark Hour renewal initialized.");
    }
 }

@@ -25,7 +25,7 @@ public final class DarkHourService {
   e.getDispatcher().register(m_82127_("locate").requires(s->s.m_6761_(2)).then(m_82127_("tartarus").executes(c->TartarusService.locate(c.getSource()))).then(m_82127_("structure").then(m_82127_("velvet_eclipse:tartarus").executes(c->TartarusService.locate(c.getSource())))));
   e.getDispatcher().register(m_82127_("velvet").then(m_82127_("tartarus").executes(c->TartarusService.locate(c.getSource())).then(m_82127_("owner").requires(s->s.m_6761_(4)).then(net.minecraft.commands.Commands.m_82129_("player",net.minecraft.commands.arguments.EntityArgument.m_91466_()).executes(c->TartarusService.owner(c.getSource(),net.minecraft.commands.arguments.EntityArgument.m_91474_(c,"player")))))));
  }
- @SubscribeEvent public static void levelTick(TickEvent.LevelTickEvent e){if(e.phase==TickEvent.Phase.END&&e.level instanceof ServerLevel level&&level.m_46472_().equals(Level.f_46428_))TartarusService.tick(level);}
+ @SubscribeEvent public static void levelTick(TickEvent.LevelTickEvent e){if(e.phase==TickEvent.Phase.END&&e.level instanceof ServerLevel level&&level.m_46472_().equals(Level.f_46428_)){TartarusService.tick(level);TartarusDungeonService.cycle(level);}}
  @SubscribeEvent public static void living(LivingEvent.LivingTickEvent e){
   var entity=e.getEntity();if(!(entity instanceof Mob mob)||entity.m_9236_().f_46443_)return;
   CompoundTag data=entity.getPersistentData();

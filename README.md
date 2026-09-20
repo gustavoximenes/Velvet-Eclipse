@@ -1,3 +1,7 @@
+# Versão 0.6.18
+
+Terminais descobertos por jogador, guardiões a cada 10 andares, transições a cada 25, tesouros e renovação dos mapas comuns por Dark Hour. Proteção contra edição do Tártaro e Esc de combate corrigido. [Notas e validação](docs/TARTARUS_TERMINALS.md).
+
 # Versão 0.6.17
 
 All-Out Attack com novo enquadramento, arena e pose final; resultados de batalha com confirmação por Enter; bloqueio de menus em combate; salas de preparação, Guardião e transição a cada três andares. Teleporte: `/tp tartarus floor 0..250`. Veja [detalhes e validação](docs/BATTLE_RESULTS_AND_INTERVALS.md).

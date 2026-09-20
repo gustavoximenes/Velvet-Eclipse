@@ -1,0 +1,8 @@
+PASS terminals: 785 focused checks; cycle renewal, fixed progress, chests, gate height, prop spacing, destination codec and actual GeckoLib models. Offline only.
+PASS interval: 14687 checks; guardian rooms/gate/Velvet access, persisted defeat, independent result acknowledgement and codec, native standard/slim poses. Offline previews generated.
+PASS tartarus: 7522 checks; 11 representative floors, connected rooms, stair/portal clearance, tier closure, seed stability, floor 250 cap, combat progression and saved state. Offline only.
+BUILD SUCCESSFUL: jar and sourcesJar after focused checks.
+Native GeckoLib models/animations baked. Actual model and terminal HUD previews inspected offline.
+Jar version, classes, dimension, authored textures/geometry and new creative block resources verified.
+No Minecraft execution or two-client testing, per project preference.
+SHA256: ACCC781899BC5E4DC4E903044615C35952780B651DAEA420451D84801FDF2523

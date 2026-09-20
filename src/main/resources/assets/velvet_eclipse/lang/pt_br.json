@@ -74,5 +74,10 @@
   "item.velvet_eclipse.skill_card_izanagi_cleave": "Skill Card • Cleave",
   "item.velvet_eclipse.skill_card_rakukaja": "Skill Card • Rakukaja",
   "item.velvet_eclipse.skill_card_rakunda": "Skill Card • Rakunda",
-  "item.velvet_eclipse.skill_card_tarukaja": "Skill Card • Tarukaja"
+  "item.velvet_eclipse.skill_card_tarukaja": "Skill Card • Tarukaja",
+  "entity.velvet_eclipse.tartarus_terminal": "Terminal do Tártaro",
+  "entity.velvet_eclipse.tartarus_treasure": "Tesouro do Tártaro",
+  "entity.velvet_eclipse.tartarus_monad": "Porta de Monad",
+  "block.velvet_eclipse.tartarus_amber": "Vitral âmbar",
+  "block.velvet_eclipse.tartarus_rose": "Vitral carmesim"
 }

@@ -96,10 +96,13 @@ public final class ClientHudEvents {
     @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
     public static final class InputHandler {
         @SubscribeEvent public static void hideOtherOverlays(net.minecraftforge.client.event.RenderGuiOverlayEvent.Pre event){
-            if((BattleResultsClient.active()||BattleTacticsClient.exclusiveHud()||com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!ClientBattleState.snapshot().active())&&!event.getOverlay().id().toString().equals("velvet_eclipse:persona_hud"))event.setCanceled(true);
+            if((ClientBattleState.snapshot().active()||BattleResultsClient.active()||BattleTacticsClient.exclusiveHud()||com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!ClientBattleState.snapshot().active())&&!event.getOverlay().id().toString().equals("velvet_eclipse:persona_hud"))event.setCanceled(true);
         }
         @SubscribeEvent public static void onScreen(net.minecraftforge.client.event.ScreenEvent.Opening event){
-            if(net.minecraft.client.Minecraft.m_91087_().f_91074_!=null&&net.minecraft.client.Minecraft.m_91087_().f_91073_!=null&&(ClientBattleState.snapshot().active()||AllOutPresentation.active())&&event.getNewScreen()!=null&&!(event.getNewScreen() instanceof net.minecraft.client.gui.screens.PauseScreen))event.setCanceled(true);
+            if(net.minecraft.client.Minecraft.m_91087_().f_91074_!=null&&net.minecraft.client.Minecraft.m_91087_().f_91073_!=null&&(ClientBattleState.snapshot().active()||AllOutPresentation.active())&&event.getNewScreen()!=null) {
+                event.setCanceled(true);
+                if(event.getNewScreen() instanceof net.minecraft.client.gui.screens.PauseScreen&&!BattleResultsClient.active()&&!ClientBattleUiState.actionLocked()){if(BattleTacticsClient.prompt())BattleTacticsClient.dismiss();else ClientBattleUiState.back();}
+            }
         }
 
         @SubscribeEvent public static void onMouse(InputEvent.MouseButton.Pre event) {

@@ -23,7 +23,7 @@ public final class TartarusAudit {
  }
  public static void main(String[] args)throws Exception {
   var shapes=new HashSet<Integer>();
-  for(int f:new int[]{1,2,4,7,20,83,85,166,167,248,250}){
+  for(int f:new int[]{1,2,4,7,21,83,85,166,167,248,249}){
    var p=TartarusInteriorLayout.floor(781241,f);reachable(p);shapes.add(p.walkable().hashCode());
    check(p.spawns().size()>=7,"seven distinct Shadow slots");check(p.cells().stream().map(c->key(c.x(),c.y(),c.z())).distinct().count()==p.cells().size(),"no duplicate blocks");
    for(var back:p.cells().stream().filter(c->c.material().equals("back")).toList())check(!p.walkable().contains(new TartarusInteriorLayout.Point(back.x(),back.z())),"return portal never occupies a corridor or room passage");

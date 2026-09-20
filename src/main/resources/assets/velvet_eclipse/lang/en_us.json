@@ -74,5 +74,10 @@
   "item.velvet_eclipse.skill_card_izanagi_cleave": "Skill Card • Cleave",
   "item.velvet_eclipse.skill_card_rakukaja": "Skill Card • Rakukaja",
   "item.velvet_eclipse.skill_card_rakunda": "Skill Card • Rakunda",
-  "item.velvet_eclipse.skill_card_tarukaja": "Skill Card • Tarukaja"
+  "item.velvet_eclipse.skill_card_tarukaja": "Skill Card • Tarukaja",
+  "entity.velvet_eclipse.tartarus_terminal": "Tartarus Terminal",
+  "entity.velvet_eclipse.tartarus_treasure": "Tartarus Treasure",
+  "entity.velvet_eclipse.tartarus_monad": "Monad Door",
+  "block.velvet_eclipse.tartarus_amber": "Amber Window",
+  "block.velvet_eclipse.tartarus_rose": "Crimson Window"
 }

@@ -22,9 +22,9 @@ public final class IntervalAudit {
   return found;
  }
  public static void main(String[] args)throws Exception{
-  for(int f=1;f<=250;f++)check(TartarusInteriorLayout.shadowLimit(f)==(f%3==0?1:7),"one guardian every third floor, seven ordinary Shadows otherwise");
+  for(int f=1;f<=250;f++)check(TartarusInteriorLayout.shadowLimit(f)==(f%10==0?1:f%25==0?0:7),"one guardian every tenth floor, seven ordinary Shadows otherwise");
   var out=Path.of("build/reports/interval");Files.createDirectories(out);
-  for(int f:new int[]{3,84,168,249}){
+  for(int f:new int[]{10,50,170,250}){
    var p=TartarusInteriorLayout.floor(481,f);var before=reachable(p,false);var after=reachable(p,true);
    check(p.spawns().equals(List.of(new TartarusInteriorLayout.Point(0,256))),"guardian exactly in second room center");
    check(before.contains(p.spawns().get(0)),"guardian reachable from preparation");
@@ -36,7 +36,7 @@ public final class IntervalAudit {
    check(p.cells().stream().allMatch(c->Math.abs(c.x())<96&&c.z()>180&&c.z()<320&&c.y()<=13),"new interval plot avoids old generated geometry");
    for(int z:new int[]{237,276})for(int x=-14;x<=14;x++)check(p.walkable().contains(new TartarusInteriorLayout.Point(x,z))==(Math.abs(x)<=2),"single centered corridor");
    for(int step=0;step<8;step++){int y=step+1,z=224-step;check(p.cells().stream().anyMatch(c->c.x()==0&&c.z()==z&&c.y()==y&&c.material().equals("stairs")),"continuous exit staircase");check(p.cells().stream().noneMatch(c->c.x()==0&&c.z()==z&&(c.y()==y+1||c.y()==y+2)),"stair head clearance");}
-   if(f==3)Files.writeString(out.resolve("floor.json"),new Gson().toJson(p.cells()));
+   if(f==10)Files.writeString(out.resolve("floor.json"),new Gson().toJson(p.cells()));
   }
   var state=new TartarusDungeonService.State();state.built.add(3);state.intervals.add(3);state.defeated.add(3);var restored=TartarusDungeonService.State.load(state.m_7176_(new CompoundTag()));check(restored.intervals.contains(3)&&restored.defeated.contains(3)&&restored.built.contains(3),"guardian defeat and migration persist on restart");
   var one=UUID.randomUUID();var two=UUID.randomUUID();var gate=new BattleResultsGate();check(gate.begin(List.of(one,two)),"first finish grants rewards");check(!gate.begin(List.of(one,two)),"repeat finish cannot grant rewards again");check(!gate.release(UUID.randomUUID()),"outsider cannot release results");check(gate.release(one)&&!gate.release(one)&&gate.waiting(two),"each member must confirm; repeated Enter harmless");check(gate.release(two)&&!gate.waiting(two),"last confirmation releases final member");
