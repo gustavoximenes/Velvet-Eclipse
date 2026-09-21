@@ -22,7 +22,7 @@ public final class VelvetCommands {
    }
 
    public static void register(CommandDispatcher<CommandSourceStack> var0) {
-      ProgressionCommands.register(var0);
+      ProgressionCommands.register(var0);YenCommands.register(var0);
       var0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal(
                                           "velvet"
@@ -159,6 +159,7 @@ public final class VelvetCommands {
 
    private static int help(Object var0) {
       RuntimeBridge.sendMessage(var0, "§5§lVELVET ECLIPSE §r§7v0.6.22 Shadow Encounters");
+      RuntimeBridge.sendMessage(var0,"§d/velvet yen add <quantidade> [jogador] §7- adiciona yen (OP)");
       RuntimeBridge.sendMessage(var0, "§d/velvet status §7- HP/SP, Persona ativa e roster");
       RuntimeBridge.sendMessage(var0, "§d/velvet player level <1..99> [jogador] §7- nível do jogador no mod (OP)");
       RuntimeBridge.sendMessage(var0, "§d/velvet persona level <id|active> <1..99> [jogador] §7- nível da Persona (OP)");

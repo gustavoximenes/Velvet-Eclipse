@@ -225,7 +225,7 @@ public final class ClientKeyMappings {
                   }
 
                   if (ClientKeyMappings.pressedCompat(ClientKeyMappings.ESCAPE)) {
-                     ModNetwork.sendAction("escape", "");
+                     ClientBattleUiState.escape();
                   }
 
                   if (ClientKeyMappings.pressedCompat(ClientKeyMappings.OPTION_7)) {
@@ -241,6 +241,8 @@ public final class ClientKeyMappings {
       public static void onKey(Key var0) {
          if(BattleResultsClient.key(var0)||BattleTacticsClient.key(var0))return;
          var mc=net.minecraft.client.Minecraft.m_91087_();var snapshot=ClientBattleState.snapshot();
+         if(mc.f_91080_==null&&snapshot.active()&&var0.getAction()==1&&var0.getKey()==290){com.gx.velveteclipse.client.equipment.ItemHelpHud.toggle();return;}
+         if(com.gx.velveteclipse.client.equipment.ItemHelpHud.active()){if(var0.getAction()==1&&(var0.getKey()==257||var0.getKey()==256))com.gx.velveteclipse.client.equipment.ItemHelpHud.close();return;}
          if(mc.f_91080_==null&&snapshot.active()&&(var0.getAction()==1||var0.getAction()==2)){
             switch(var0.getKey()){
                case 265 -> ClientBattleUiState.move(-1);case 264 -> ClientBattleUiState.move(1);

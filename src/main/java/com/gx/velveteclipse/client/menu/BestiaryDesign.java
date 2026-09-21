@@ -15,7 +15,8 @@ public final class BestiaryDesign {
   for(int i=0;i<elements.length;i++){
    int x=555+i%4*75,y=311+i/4*30;var affinity=known.get(elements[i]);
    c.fill(x,y,72,27,0xFF102950);PersonaGlyphs.draw(c,elements[i],x+10,y+12,6,PersonaDetails.color(elements[i]));
-   c.text(label(affinity),x+22,y+9,affinity==null?13:8,affinity==Affinity.WEAK?0xFFFFDD60:affinity==Affinity.DRAIN?0xFF63FFBD:MenuDesign.WHITE,0);
+   c.text(com.gx.velveteclipse.equipment.DamageItems.label(elements[i]),x+3,y+2,6,MenuDesign.CYAN,0);
+   c.text(label(affinity),x+22,y+14,affinity==null?11:8,affinity==Affinity.WEAK?0xFFFFDD60:affinity==Affinity.DRAIN?0xFF63FFBD:MenuDesign.WHITE,0);
   }
   c.text(e.changing()?"Afinidades observadas; este chefe muda de fraqueza.":"? = elemento ainda não testado contra este inimigo.",551,414,9,MenuDesign.MUTED,0);
  }

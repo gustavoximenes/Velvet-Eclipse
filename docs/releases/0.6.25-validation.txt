@@ -1,0 +1,7 @@
+PASS expedition: 1660 checks; invitations, transfers, shared-map persistence/reset, shop gates, damage items/affinities, escape success/failure, Dark Hour+ and creative assets. Offline only.
+PASS equipment: 685 checks; full catalog, purchase/ownership, wallet and death persistence, combat passives, supplies, native assets and creative models. Offline only.
+BUILD SUCCESSFUL: final jar and sourcesJar after focused checks.
+Native hall label and Dark Hour+ card preview inspected offline.
+20 new creative consumables include textures, models and localized names.
+No Minecraft launch or live multiplayer test, per project preference.
+SHA256: 12D533796A25CD55B8579928C01D21C3607A4735D7881B2F943C5C741197E595

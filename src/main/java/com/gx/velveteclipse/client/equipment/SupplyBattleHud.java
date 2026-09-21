@@ -14,7 +14,7 @@ public final class SupplyBattleHud {
    c.styled("x"+count,box.x()+box.w()-(int)(40*u),box.y()+4,(float)u,selected?0xFF021039:0xFF5BFFFF);
   }
   String detail=items.isEmpty()?"Nenhum consumível disponível.":items.get(ClientBattleUiState.selected()).equals("pulse_tonic")?"Recupera 30% do HP.":Supplies.get(items.get(ClientBattleUiState.selected())).description();
-  c.styled(detail,x,y+(int)(267*u),(float)u,0xFFFFFFFF);
-  c.styled("SETAS  Item    ENTER  Escolher aliado    ESC  Voltar",(int)(10*u),h-(int)(15*u),(float)u,0xFF70FFFF);
+  c.styled(detail.length()>61?detail.substring(0,58)+"…":detail,x,y+(int)(267*u),(float)u,0xFFFFFFFF);
+  c.styled("SETAS  Item    ENTER  Escolher alvo   F1  Detalhes    ESC  Voltar",(int)(10*u),h-(int)(15*u),(float)u,0xFF70FFFF);
  }
 }

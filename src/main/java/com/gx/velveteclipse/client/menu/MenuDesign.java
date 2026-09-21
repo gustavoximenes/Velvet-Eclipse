@@ -4,8 +4,8 @@ import java.util.*;
 /** Shared coordinates for drawing, pointer picking and offline layout validation. */
 public final class MenuDesign {
     public static final int W=900,H=500,WHITE=0xFFF6FFFF,CYAN=0xFF79F5FF,INK=0xFF03163D,RED=0xFFF11A4D,MUTED=0xFF9BBBDD;
-    public static final String[] TABS={"SKILL","ITEM","EQUIP","PERSONA","STATS","QUEST","SOCIAL LINK","CALENDAR","SYSTEM","BESTIÁRIO"};
-    public static final String[] HELP={"Habilidades da Persona","Itens e consumiveis","Armas e armaduras","Personas e afinidades","Atributos do jogador","Avancos do mundo","Vinculos com aldeoes","Dias e fases da lua","Opcoes do jogo","Inimigos encontrados"};
+    public static final String[] TABS={"SKILL","ITEM","EQUIP","PERSONA","STATS","QUEST","SOCIAL LINK","CALENDAR","SYSTEM","BESTIÁRIO","PARTY"};
+    public static final String[] HELP={"Habilidades da Persona","Itens e consumiveis","Armas e armaduras","Personas e afinidades","Atributos do jogador","Avancos do mundo","Vinculos com aldeoes","Dias e fases da lua","Opcoes do jogo","Inimigos encontrados","Grupo e compartilhamento"};
     public interface Canvas {
         void fill(double x,double y,double w,double h,int color);
         void poly(double[] xy,int color);
@@ -18,9 +18,9 @@ public final class MenuDesign {
     public record View(boolean home,int tab,int selected,int offset,List<Row> rows,String title,List<String> detail,
                        int[] stats,String action,String message,String player,long wallet,long day,long time,double seconds,boolean motion,
                        double selection,double entered,double pageAge){}
-    private static final int[] HOME_X={374,418,405,374,405,397,365,373,395,365};
-    private static final int[] HOME_WIDTH={116,101,137,186,137,141,266,224,182,242};
-    private static final int[] ANGLE={-20,-16,-14,-14,-11,-10,-9,-7,-5,-3};
+    private static final int[] HOME_X={374,418,405,374,405,397,365,373,395,365,387};
+    private static final int[] HOME_WIDTH={116,101,137,186,137,141,266,224,182,242,190};
+    private static final int[] ANGLE={-20,-16,-14,-14,-11,-10,-9,-7,-5,-3,-2};
     public static Rect tab(int i,boolean home){return home?new Rect(HOME_X[i],158+i*29,HOME_WIDTH[i],31):new Rect(25,145+i*28,185,25);}
     public static Rect row(int i){return new Rect(248,144+i*33,284,31);}
     public static Rect action(){return new Rect(551,410,300,33);}

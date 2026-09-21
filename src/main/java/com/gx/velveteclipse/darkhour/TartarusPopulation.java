@@ -3,7 +3,7 @@ import java.util.*;
 import net.minecraft.nbt.CompoundTag;
 /** A floor rolls once per generation; changing settings never resurrects defeated slots. */
 public final class TartarusPopulation {
- public int minimum=10,maximum=20;
+ public int minimum=5,maximum=10;
  private final Map<Integer,Integer> counts=new HashMap<>();
  public boolean initialized(int floor){return counts.containsKey(floor);}
  public void range(int min,int max){if(min<1||max>64||min>max)throw new IllegalArgumentException("Use 1 <= mínimo <= máximo <= 64.");minimum=min;maximum=max;}
@@ -15,6 +15,6 @@ public final class TartarusPopulation {
   out.addAll(new LinkedHashSet<>(plan.spawns()));
   return List.copyOf(out);
  }
- public CompoundTag save(){var t=new CompoundTag();t.m_128405_("min",minimum);t.m_128405_("max",maximum);var c=new CompoundTag();counts.forEach((f,n)->c.m_128405_(f.toString(),n));t.m_128365_("counts",c);return t;}
- public static TartarusPopulation load(CompoundTag t){var p=new TartarusPopulation();if(t.m_128441_("min"))try{p.range(t.m_128451_("min"),t.m_128451_("max"));}catch(IllegalArgumentException ignored){}var c=t.m_128469_("counts");for(String key:c.m_128431_())try{int f=Integer.parseInt(key),n=c.m_128451_(key);if(f>0&&f<=250&&n>0&&n<=64)p.counts.put(f,n);}catch(NumberFormatException ignored){}return p;}
+ public CompoundTag save(){var t=new CompoundTag();t.m_128379_("v25",true);t.m_128405_("min",minimum);t.m_128405_("max",maximum);var c=new CompoundTag();counts.forEach((f,n)->c.m_128405_(f.toString(),n));t.m_128365_("counts",c);return t;}
+ public static TartarusPopulation load(CompoundTag t){var p=new TartarusPopulation();if(t.m_128441_("min"))try{p.range(t.m_128451_("min"),t.m_128451_("max"));}catch(IllegalArgumentException ignored){}var c=t.m_128469_("counts");for(String key:c.m_128431_())try{int f=Integer.parseInt(key),n=c.m_128451_(key);if(f>0&&f<=250&&n>0&&n<=64)p.counts.put(f,n);}catch(NumberFormatException ignored){}if(!t.m_128441_("v25")&&p.minimum==10&&p.maximum==20){p.minimum=5;p.maximum=10;p.counts.replaceAll((f,n)->Math.min(10,n));}return p;}
 }

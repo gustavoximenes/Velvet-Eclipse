@@ -25,7 +25,7 @@ public final class BattleService {
         final double[] origin,center;
         final float yaw;
         final int enemyCount;
-        int delay=28;
+        int delay=28;final Map<UUID,Integer> escapeReady=new HashMap<>();
         boolean wasBusy;
         boolean shuffleVictory,boss,raid,rare;int enemyPoseUntil;Entity animatingEnemy;int raidStage,dungeonFloor;
         final BattleResultsGate results=new BattleResultsGate();
@@ -140,10 +140,10 @@ public final class BattleService {
         if(busy(g)&&(s.prepared()==null||!s.prepared().actor().equals(id)||!s.prepared().action().equals(action)))return false;
         if(s.currentActor()==null||!s.currentActor().id().equals(id)){sync(p,"Aguarde seu turno.");return false;}
         if(s.prepared()!=null&&!s.prepared().action().equals(action))return false;
-        if(action.type()==BattleActionType.ESCAPE){if(g.raid){sync(p,"Não é possível fugir dentro do trem.");return false;}if(s.attemptEscape(id)){ShadowWorldService.escapeGrace(p);stop(p);}else{g.delay=28;syncAll(g,"A fuga de "+RuntimeBridge.playerName(p)+" falhou! Turno consumido.");}return true;}
+        if(action.type()==BattleActionType.ESCAPE){if(g.raid){sync(p,"Não é possível fugir dentro do trem.");return false;}if(ticks<g.escapeReady.getOrDefault(id,0)){sync(p,"Aguarde antes de tentar fugir novamente.");return false;}g.escapeReady.put(id,ticks+40);if(s.attemptEscape(id)){ShadowWorldService.escapeGrace(p);stop(p);}else{g.delay=28;syncAll(g,"A fuga de "+RuntimeBridge.playerName(p)+" falhou! Turno consumido.");}return true;}
         if(action.type()==BattleActionType.ITEM){
             if(action.skillId().equals("pulse_tonic")){if(action.targetId()!=null&&s.find(action.targetId()).filter(c->c.side()==BattleSide.PLAYERS&&c.alive()).isEmpty())return false;var data=PlayerPersonaData.load(p);if(!data.consumePulseTonic()){sync(p,"Sem Pulse Tonic.");return false;}data.save(p);}
-            else {var supply=com.gx.velveteclipse.equipment.Supplies.get(action.skillId());var target=action.targetId()==null?s.currentActor():s.find(action.targetId()).orElse(null);if(target==null||target.side()!=BattleSide.PLAYERS||!com.gx.velveteclipse.equipment.Supplies.useful(supply,target)){sync(p,"Este item não tem efeito sobre o aliado selecionado.");return false;}var bag=com.gx.velveteclipse.equipment.EquipmentData.load(p);if(!bag.consume(action.skillId())){sync(p,"Você não possui este item.");return false;}com.gx.velveteclipse.equipment.EquipmentData.save(p,bag);}
+            else {var supply=com.gx.velveteclipse.equipment.Supplies.get(action.skillId());var target=action.targetId()==null?s.currentActor():s.find(action.targetId()).orElse(null);if(target==null||(com.gx.velveteclipse.equipment.DamageItems.get(action.skillId())!=null?target.side()!=BattleSide.ENEMIES||!target.alive():target.side()!=BattleSide.PLAYERS||!com.gx.velveteclipse.equipment.Supplies.useful(supply,target))){sync(p,"Este item não tem efeito sobre o aliado selecionado.");return false;}var bag=com.gx.velveteclipse.equipment.EquipmentData.load(p);if(!bag.consume(action.skillId())){sync(p,"Você não possui este item.");return false;}com.gx.velveteclipse.equipment.EquipmentData.save(p,bag);}
         }
         var reserved=s.prepared();if(reserved==null)reserved=s.prepare(id,action);var result=s.perform(id,action);
         if(reserved!=null&&s.prepared()==null)for(var entry:reserved.hits().entrySet()){
@@ -256,8 +256,8 @@ public final class BattleService {
             persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?com.gx.velveteclipse.shadow.ShadowEncounterRules.xp(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1):0;String items="NENHUM ITEM";xp=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().xp(xp);
             if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{long yen=com.gx.velveteclipse.shadow.ShadowEncounterRules.yen(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1);data.addYen(yen);items="YEN • ¥ "+yen;}}
             data.save(p);VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
-            if(g.shuffleVictory&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor));
-            var persona=data.activeInstance();ModNetwork.sendPresentation(p,new BattleResultsS2C(g.session.id().toString(),won,xp,before,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),items,g.shuffleVictory&&won));
+            if((g.shuffleVictory||g.rare)&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor),g.rare);
+            var persona=data.activeInstance();ModNetwork.sendPresentation(p,new BattleResultsS2C(g.session.id().toString(),won,xp,before,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),items,(g.shuffleVictory||g.rare)&&won));
         }
     }
     public static void acknowledge(Object p,String battle){var g=group(p);if(g==null||!g.session.id().toString().equals(battle)||!g.results.release(RuntimeBridge.playerUuid(p)))return;detach(g,p);sync(p,"Resultados confirmados.");if(g.players.isEmpty()){ShadowWorldService.release(g.session.id(),g.session.state()==BattleState.PLAYERS_WON);BATTLES.remove(g.session.id());}}

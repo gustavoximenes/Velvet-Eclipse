@@ -172,6 +172,7 @@ public final class PersonaMenuScreen extends Screen {
                 list.add(new MenuDesign.Row("Hoje","Dia "+data.day(),-1));list.add(new MenuDesign.Row("Fase da lua","Ciclo "+Math.floorMod(data.day()-1,8)+" / 7",-1));
                 list.add(new MenuDesign.Row("Vinculos","Reencontre seus aldeoes a cada dia",-1));list.add(new MenuDesign.Row("Calendario do mundo","Cada pagina mostra 28 dias",-1));
             }
+            case 10 -> {list.add(new MenuDesign.Row("Minha party","Criar, convidar e compartilhar",-1));detail.add("PARTY");detail.add("Convide jogadores do servidor, envie itens e yen e compartilhe a exploração do mapa.");action="Gerenciar party";}
             case 9 -> {
                 for(var e:data.bestiary())list.add(new MenuDesign.Row(e.name(),e.defeated()>0?"DERROTADO / "+e.defeated()+" vezes":"VISTO / Ainda não derrotado",-1));
                 if(list.isEmpty())detail.add("Encontre inimigos em batalha para registrá-los aqui. Teste os elementos para descobrir suas afinidades.");
@@ -193,6 +194,7 @@ public final class PersonaMenuScreen extends Screen {
             case 0 -> {var p=data.equipped();if(p!=null&&selected<p.skills().size()&&p.skills().get(selected).element()==Element.HEALING)request("heal",p.skills().get(selected).id());}
             case 1 -> {if(selected==0)request("tonic","");else if(selected==1)com.gx.velveteclipse.equipment.EquipmentNetwork.request("open","items","");else f_96541_.m_91152_(new InventoryScreen(f_96541_.f_91074_));}
             case 2 -> com.gx.velveteclipse.equipment.EquipmentNetwork.request("open","","");
+            case 10 -> com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");
             case 3 -> {if(selected<data.personas().size())request("equip",data.personas().get(selected).id());}
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
             case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else closeMenu();}

@@ -11,7 +11,8 @@ public final class DarkHourTimer {
   remaining=Math.max(0,remaining-Math.max(0,elapsed));if(remaining==0){running=false;return true;}return false;
  }
  // Reserve one tick for vanilla's increment so sunrise cannot expire us early.
- public long skyTime(){return day*24000+DarkHourCycle.START+Math.min(5998,(DURATION-Math.max(1,remaining))*6000/DURATION);}
+ public long skyTime(){return day*24000+DarkHourCycle.START+Math.min(5998,Math.max(0,DURATION-Math.max(1,remaining))*6000/DURATION);}
+ public boolean extend(long millis){if(!running||remaining<=0||millis<=0||millis>Integer.MAX_VALUE-remaining)return false;remaining+=millis;return true;}
  public CompoundTag save(){var t=new CompoundTag();t.m_128356_("remaining",remaining);t.m_128356_("day",day);t.m_128379_("running",running);return t;}
- public static DarkHourTimer load(CompoundTag t){var r=new DarkHourTimer();r.remaining=Math.max(0,Math.min(DURATION,t.m_128454_("remaining")));r.day=t.m_128454_("day");r.running=t.m_128471_("running");return r;}
+ public static DarkHourTimer load(CompoundTag t){var r=new DarkHourTimer();r.remaining=Math.max(0,Math.min(Integer.MAX_VALUE,t.m_128454_("remaining")));r.day=t.m_128454_("day");r.running=t.m_128471_("running");return r;}
 }

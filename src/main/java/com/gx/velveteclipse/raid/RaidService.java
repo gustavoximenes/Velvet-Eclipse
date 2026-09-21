@@ -87,7 +87,7 @@ public final class RaidService {
   }
  }
  public static boolean iceTurn(UUID id){for(var r:RUNS)if(id.equals(r.battle)&&r.rules!=null){boolean ice=r.rules.iceTurn();r.pulseUntil=now()+2800;if(r.actor!=null)r.actor.m_146926_(-45);return ice;}return false;}
- public static void finished(UUID id,boolean won){for(var r:List.copyOf(RUNS))if(id.equals(r.battle)){if(r.rules!=null)r.rules.stop(now());r.mode=won?"results":"failed";r.message=won?"Encontro vencido. Confirme os resultados para continuar.":"A operação fracassou.";broadcast(r);}}
+ public static void finished(UUID id,boolean won){if(won)for(var r:RUNS)if(id.equals(r.battle)&&r.stage==2)for(var p:players(r)){com.gx.velveteclipse.equipment.ShopProgress.unlock(p);break;}for(var r:List.copyOf(RUNS))if(id.equals(r.battle)){if(r.rules!=null)r.rules.stop(now());r.mode=won?"results":"failed";r.message=won?"Encontro vencido. Confirme os resultados para continuar.":"A operação fracassou.";broadcast(r);}}
  @SubscribeEvent public static void tick(TickEvent.ServerTickEvent e){
   if(e.phase!=TickEvent.Phase.END)return;ticks++;
   for(var r:List.copyOf(RUNS)){

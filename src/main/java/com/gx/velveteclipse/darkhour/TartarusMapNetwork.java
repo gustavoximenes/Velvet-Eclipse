@@ -18,7 +18,7 @@ public final class TartarusMapNetwork {
  }
  public record Clock(int milliseconds){
   public static void encode(Clock v,FriendlyByteBuf b){b.writeInt(v.milliseconds);}
-  public static Clock decode(FriendlyByteBuf b){return new Clock(Math.max(0,Math.min(DarkHourTimer.DURATION,b.readInt())));}
+  public static Clock decode(FriendlyByteBuf b){return new Clock(Math.max(0,b.readInt()));}
   static void handle(Clock v,Supplier<NetworkEvent.Context> s){var c=s.get();c.enqueueWork(()->DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->com.gx.velveteclipse.client.tartarus.TartarusMapClient.clock(v.milliseconds)));c.setPacketHandled(true);}
  }
 }

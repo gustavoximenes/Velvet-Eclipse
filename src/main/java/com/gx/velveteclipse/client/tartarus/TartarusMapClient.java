@@ -14,7 +14,7 @@ public final class TartarusMapClient {
  @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut e){view=TartarusMapNetwork.View.empty();clockMs=0;}
  @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){if(e.phase!=TickEvent.Phase.END)return;var m=Minecraft.m_91087_();while(MAP.m_90859_())if(m.f_91080_==null&&available())m.m_91152_(new Expanded());}
  @SubscribeEvent public static void hud(RenderGuiEvent.Post e){var m=Minecraft.m_91087_();if(m.f_91074_==null)return;int w=m.m_91268_().m_85445_(),h=m.m_91268_().m_85446_();var g=e.getGuiGraphics();var c=new MenuCanvas(g);g.m_286007_(() -> {
-  int ms=remaining();if(ms>0){double x=16;int sec=(ms+999)/1000;c.poly(new double[]{x,5,x+132,5,x+126,46,x-8,46},0xEB04221C);c.fill(x,12,2,26,0xFF73FF57);c.text("DARK HOUR",x+8,10,11,0xFF98FF58,0);c.text(String.format("%02d:%02d",sec/60,sec%60),x+8,23,22,ms<60000?0xFFFF5673:0xFFF0FFD7,0);}
+  int ms=remaining();if(ms>0){double x=16;int sec=(int)((ms+999L)/1000);c.poly(new double[]{x,5,x+132,5,x+126,46,x-8,46},0xEB04221C);c.fill(x,12,2,26,0xFF73FF57);c.text("DARK HOUR",x+8,10,11,0xFF98FF58,0);c.text(String.format("%02d:%02d",sec/60,sec%60),x+8,23,22,ms<60000?0xFFFF5673:0xFFF0FFD7,0);}
   if(available()&&m.f_91080_==null){double size=Math.min(100,h*.25),y=18,x=w-size-20;TartarusMapDesign.paint(c,view,x,y,size,m.f_91074_.m_20185_()-TartarusInteriorLayout.origin(view.floor()),m.f_91074_.m_20189_(),m.f_91074_.m_146908_(),false);c.text(ClientKeyMappings.label(MAP)+"  MAPA",x,y+size+36,9,0xFFCDEAFF,0);}
  });}
  public static final class Expanded extends Screen {

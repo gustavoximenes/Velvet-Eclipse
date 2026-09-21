@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class EquipmentNetwork {
  public static final Gson JSON=new Gson();
- private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","equipment"),()->"1","1"::equals,"1"::equals);
- public record Snapshot(EquipmentLoadout bag,long yen,String view,String message,int npc,boolean merchant,String token){}
+ private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","equipment"),()->"2","2"::equals,"2"::equals);
+ public record Snapshot(EquipmentLoadout bag,long yen,String view,String message,int npc,boolean merchant,String token,boolean shopUnlocked){public Snapshot(EquipmentLoadout bag,long yen,String view,String message,int npc,boolean merchant,String token){this(bag,yen,view,message,npc,merchant,token,false);}}
  @SubscribeEvent public static void setup(FMLCommonSetupEvent event){CHANNEL.registerMessage(0,Request.class,Request::encode,Request::decode,Request::handle,Optional.of(NetworkDirection.PLAY_TO_SERVER));CHANNEL.registerMessage(1,Response.class,Response::encode,Response::decode,Response::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));}
  public static void request(String action,String id,String token){CHANNEL.sendToServer(new Request(action,id,token));}
  public static void reply(ServerPlayer p,Snapshot d){CHANNEL.send(PacketDistributor.PLAYER.with(()->p),new Response(JSON.toJson(d)));}

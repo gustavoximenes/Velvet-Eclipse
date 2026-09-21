@@ -80,6 +80,7 @@ public final class ClientHudEvents {
             }else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);
             if(s.active())BattleTacticsClient.paint(canvas,w,h);
+            if(s.active())com.gx.velveteclipse.client.equipment.ItemHelpHud.paint(g,w,h);
             if(AllOutPresentation.active()){g.m_280262_();AllOutPresentation.paint(g,canvas,w,h,partial);}
             else if(!s.active())BattleEncounterClient.paint(canvas,w,h);
             if(com.gx.velveteclipse.client.exploration.EntryTransition.visible()){
@@ -109,6 +110,7 @@ public final class ClientHudEvents {
         @SubscribeEvent public static void onMouse(InputEvent.MouseButton.Pre event) {
             BattleSnapshotS2C s=ClientBattleState.snapshot();if(s==null||!s.active()||net.minecraft.client.Minecraft.m_91087_().f_91080_!=null)return;
             if(event.getButton()==0||event.getButton()==1)event.setCanceled(true);
+            if(com.gx.velveteclipse.client.equipment.ItemHelpHud.active()){if(event.getAction()==1)com.gx.velveteclipse.client.equipment.ItemHelpHud.close();return;}
             if(event.getAction()!=1||BattleResultsClient.active()||AllOutPresentation.active()||BattleTacticsClient.awaitingAllOut())return;
             if(BattleTacticsClient.prompt()){if(event.getButton()==1)BattleTacticsClient.dismiss();else if(event.getButton()==0)BattleTacticsClient.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight());return;}
             if(event.getButton()==1){ClientBattleUiState.back();return;}

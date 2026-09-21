@@ -55,7 +55,7 @@ public final class BattleSession {
       if(prepared!=null||state!=BattleState.ACTIVE||currentActor()==null||!currentActor().id().equals(actorId))return null;
       var actor=currentActor();
       if(action.type()==BattleActionType.ALL_OUT&&!canAllOut(actorId))return null;
-      var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ATTACK?basic(actor):action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
+      var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ITEM&&com.gx.velveteclipse.equipment.DamageItems.get(action.skillId())!=null?com.gx.velveteclipse.equipment.DamageItems.get(action.skillId()).skill():action.type()==BattleActionType.ATTACK?basic(actor):action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
       var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
       if(skill==null||target==null||!actor.alive())return null;
       if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<actor.spCost(skill.spCost())
@@ -66,7 +66,7 @@ public final class BattleSession {
          prepared=new Prepared(actorId,action,null,java.util.Map.of());return prepared;
       }
       var targets=skill.target()==SkillTarget.ALL_ENEMIES?enemiesOf(actor):List.of(target);
-      for(var victim:targets)hits.put(victim.id(),DamageCalculator.roll(actor,victim,skill,random));
+      for(var victim:targets)hits.put(victim.id(),action.type()==BattleActionType.ITEM?com.gx.velveteclipse.equipment.DamageItems.roll(com.gx.velveteclipse.equipment.DamageItems.get(action.skillId()),victim):DamageCalculator.roll(actor,victim,skill,random));
       prepared=new Prepared(actorId,action,hits.get(target.id()),java.util.Map.copyOf(hits));return prepared;
    }
    private DamageOutcome damage(BattleCombatant actor,BattleCombatant target,SkillDefinition skill){
@@ -119,7 +119,7 @@ public final class BattleSession {
       return this.turnOrder.stream().filter(BattleCombatant::alive).filter(var1x -> var1x.side() != var1.side()).toList();
    }
 
-   public double escapeChance(){var a=currentActor();if(a==null)return 0;double agility=enemiesOf(a).stream().mapToInt(c->c.stats().agility()).average().orElse(a.stats().agility());return Math.max(.20,Math.min(.80,.50+(a.stats().agility()-agility)*.02));}
+   public double escapeChance(){var a=currentActor();if(a==null)return 0;double agility=enemiesOf(a).stream().mapToInt(c->c.stats().agility()).average().orElse(a.stats().agility());return Math.max(.20,Math.min(.60,.35+(a.stats().agility()-agility)*.01));}
    /** A failed attempt consumes the turn; the caller detaches the successful player. */
    public boolean attemptEscape(UUID actor){
       if(state!=BattleState.ACTIVE||prepared!=null||currentActor()==null||!currentActor().id().equals(actor))return false;
@@ -152,6 +152,8 @@ public final class BattleSession {
                   }
                   break;
                case ITEM:
+                  var attackItem=com.gx.velveteclipse.equipment.DamageItems.get(var2.skillId());
+                  if(attackItem!=null){var first=validEnemyTarget(var4,var2.targetId());if(first==null)return new BattleResolution(state,false,List.of("Escolha um inimigo vivo."));for(var victim:attackItem.all()?enemiesOf(var4):List.of(first)){var roll=prepared==null?com.gx.velveteclipse.equipment.DamageItems.roll(attackItem,victim):prepared.hits().get(victim.id());var hit=DamageCalculator.apply(var4,victim,roll);weaknessHit|=isWeaknessHit(hit);var5|=appendOutcome(var3,var4,victim,attackItem.skill(),hit);if(victim.alive()&&hit.damage()>0&&!hit.drained()&&!hit.reflected()&&random.nextInt(100)<10){if(attackItem.element()==Element.ICE)victim.afflict("FREEZE");else if(attackItem.element()==Element.ELECTRIC)victim.afflict("SHOCK");}}break;}
                   if (!"pulse_tonic".equals(var2.skillId())) {
                      var supply=com.gx.velveteclipse.equipment.Supplies.get(var2.skillId());
                      var recipient=var2.targetId()==null?var4:find(var2.targetId()).filter(c->c.side()==var4.side()).orElse(null);

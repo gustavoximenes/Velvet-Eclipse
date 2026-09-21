@@ -28,6 +28,9 @@ public final class TartarusMapService {
    }
    if(chart.known(f,plan.stairs().x(),plan.stairs().z()+4))markers.add(new TartarusMapNetwork.Marker(1,plan.stairs().x()+.5f,plan.stairs().z()+4.5f));
    for(var slot:state.slots.entrySet())if(slot.getKey().startsWith(f+":")&&!slot.getValue().m_128471_("defeated")&&slot.getValue().m_128461_("battle").isEmpty())try{var e=l.m_8791_(UUID.fromString(slot.getValue().m_128461_("entity")));if(e!=null&&e.m_6084_()&&chart.known(f,e.m_20185_()-ox,e.m_20189_()))markers.add(new TartarusMapNetwork.Marker(0,(float)(e.m_20185_()-ox),(float)e.m_20189_()));}catch(IllegalArgumentException ignored){}
+   dirty|=com.gx.velveteclipse.party.PartyService.mergeMap(p,chart,state.progress.cycle);
+   // Refresh online peers immediately; the party chart also persists for offline members.
+   for(var peer:com.gx.velveteclipse.party.PartyService.members(p))if(peer!=p){var shared=charts.computeIfAbsent(peer.m_20148_(),id->TartarusMapData.load(peer.getPersistentData().m_128469_(KEY)));boolean peerDirty=shared.reset(state.progress.cycle);dirty|=chart.merge(shared);peerDirty|=shared.merge(chart);if(peerDirty)peer.getPersistentData().m_128365_(KEY,shared.save());}
    byte[] tiles=new byte[(shape.width*shape.height+7)/8];for(var at:shape.tiles)if(chart.known(f,at.x(),at.z())){int i=(at.z()-shape.minZ)*shape.width+at.x()-shape.minX;tiles[i/8]|=(byte)(1<<(i%8));}
    if(dirty)p.getPersistentData().m_128365_(KEY,chart.save());visible.add(p.m_20148_());TartarusMapNetwork.send(p,new TartarusMapNetwork.View(f,shape.minX,shape.minZ,shape.width,shape.height,tiles,List.copyOf(markers)));
   }

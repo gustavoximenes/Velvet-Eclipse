@@ -25,6 +25,7 @@ public final class ShuffleDesign {
   for(int row=0;row<9;row++)for(int col=0;col<5;col++){double a=x+9+col*24,b=y+9+row*21;c.poly(new double[]{a+11,b,a+22,b+10,a+11,b+20,a,b+10},(row+col)%2==0?0x55547C9B:0x55223859);}
   c.fill(x+8,y+h-30,w-16,21,0xE605173C);
   if(choice.kind()==ShuffleRules.Kind.PERSONA){c.text("PERSONA",x+14,y+13,16,CYAN,0);c.text("Lv "+choice.amount(),x+14,y+h-25,13,WHITE,0);}
+  else if(choice.kind()==ShuffleRules.Kind.DARK_HOUR){symbol(c,choice.kind(),x+w/2,y+90,43);c.text("+5 MIN",x+26,y+h-26,21,CYAN,0);}
   else {
    c.text(String.valueOf(choice.rank()),x+w-29,y+12,23,CYAN,0);c.text(String.valueOf(choice.rank()),x+13,y+h-29,20,WHITE,0);
    int count=Math.min(5,choice.rank());for(int i=0;i<count;i++)symbol(c,choice.kind(),x+w/2+(count>3?(i%2==0?-25:25):0),y+55+i*(count>3?21:37),count>3?17:24);
@@ -32,6 +33,7 @@ public final class ShuffleDesign {
  }
  private static void symbol(Canvas c,ShuffleRules.Kind kind,double x,double y,double s){
   switch(kind){
+   case DARK_HOUR->{com.gx.velveteclipse.client.menu.PersonaGlyphs.disc(c,x,y,s,0xFF74FF66);com.gx.velveteclipse.client.menu.PersonaGlyphs.disc(c,x,y,s*.84,0xFF061B32);c.fill(x-2,y-s*.65,4,s*.7,0xFFB7FF94);c.fill(x,y-2,s*.48,4,0xFFB7FF94);c.text("+",x+s*.55,y+s*.3,s*.6,0xFFDDFFAE,0);}
    case CUPS->{c.poly(new double[]{x-s,y-s*.6,x+s,y-s*.6,x+s*.55,y+s*.45,x,y+s*.75,x-s*.55,y+s*.45},0xFF52E7FF);c.fill(x-3,y+s*.5,6,s*.6,0xFFAEFFFF);c.fill(x-s*.55,y+s,s*1.1,5,0xFF52E7FF);}
    case COINS->{double[] p=new double[24];for(int i=0;i<12;i++){p[i*2]=x+Math.cos(i*Math.PI/6)*s;p[i*2+1]=y+Math.sin(i*Math.PI/6)*s;}c.poly(p,0xFFFFD94A);c.text("¥",x-s*.45,y-s*.68,s*1.25,0xFF80650B,0);}
    case WANDS->{c.fill(x-2,y-s,4,s*2.4,0xFF4FFA89);for(int i=0;i<4;i++){double yy=y-s+i*s*.55;c.poly(new double[]{x,yy,x-s*.8,yy-s*.2,x-s*.5,yy+s*.3},0xFF85EE8A);c.poly(new double[]{x,yy+s*.25,x+s*.8,yy,x+s*.5,yy+s*.65},0xFF43C97B);}}

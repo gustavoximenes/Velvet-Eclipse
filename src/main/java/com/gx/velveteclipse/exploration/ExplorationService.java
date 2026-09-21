@@ -27,6 +27,7 @@ public final class ExplorationService {
         final ServerPlayer player; final Level level;
         Mode mode=Mode.EXPLORATION; int tick,sequence; boolean commit;
         com.gx.velveteclipse.core.battle.EncounterOpening opening;
+        Entity flyingTarget;int impactTick;Vec3 impact;
         Entity shadow; Vec3 start,end,shadowAnchor; boolean previousNoAi; float yaw;
         State(ServerPlayer p){player=p;level=p.m_9236_();}
     }
@@ -57,7 +58,10 @@ public final class ExplorationService {
             if(s.mode==Mode.BATTLE){s.mode=Mode.EXPLORATION;s.tick=0;send(s);continue;}
             if(s.mode==Mode.EXPLORATION_ATTACK){
                 ++s.tick;
-                if(hitWindow(s.tick)){
+                boolean bow=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family()==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW;
+                if(bow&&s.tick==HIT_BEGIN){shoot(s);}
+                if(s.flyingTarget!=null&&s.tick>=s.impactTick){var target=s.flyingTarget;s.flyingTarget=null;if(target.m_6084_()&&target.m_9236_()==s.level&&target.m_20275_(s.impact.f_82479_,s.impact.f_82480_,s.impact.f_82481_)<9){prepare(s,target);continue;}RESERVATIONS.release(p.m_20148_());}
+                if(!bow&&hitWindow(s.tick)){
                     Entity target=findTarget(s);
                     if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){prepare(s,target);continue;}
                 }
@@ -80,6 +84,7 @@ public final class ExplorationService {
             }
         }
     }
+    private static void shoot(State s){var p=s.player;var from=p.m_146892_().m_82520_(0,-.18,0);Entity target=findTarget(s);Vec3 to=target==null?from.m_82549_(p.m_20154_().m_82490_(10)):target.m_20182_().m_82520_(0,Math.min(1,target.m_20206_()*.6),0);var hit=s.level.m_45547_(new ClipContext(from,to,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,p));if(hit.m_6662_()!=HitResult.Type.MISS){to=hit.m_82450_();target=null;}int duration=Math.max(4,Math.min(10,(int)Math.ceil(from.m_82554_(to))));ExplorationNetwork.shot(p,from,to,duration);if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){s.flyingTarget=target;s.impact=to;s.impactTick=s.tick+duration;}}
     private static Entity findTarget(State s){
         ServerPlayer p=s.player;double yaw=Math.toRadians(s.yaw),fx=-Math.sin(yaw),fz=Math.cos(yaw);
         var family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();
@@ -116,7 +121,7 @@ public final class ExplorationService {
     private static void release(State s){
         RESERVATIONS.release(s.player.m_20148_());
         if(s.shadow instanceof Mob mob&&!mob.m_213877_()&&!com.gx.velveteclipse.forge.ShadowWorldService.held(mob))mob.m_21557_(s.previousNoAi);
-        s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);
+        s.flyingTarget=null;s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);
     }
     public static void expire(ServerPlayer p){State s=PLAYERS.get(p.m_20148_());if(s!=null)cancel(s);}
     private static void cancel(State s){release(s);s.mode=Mode.EXPLORATION;s.tick=0;send(s);}

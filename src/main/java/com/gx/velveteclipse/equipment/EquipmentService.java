@@ -12,7 +12,7 @@ public final class EquipmentService {
  private static final Map<UUID,Long> GATE=new HashMap<>();
  public static void sync(ServerPlayer p,String view,String message){reply(p,view,message,null);}
  private static void reply(ServerPlayer p,String view,String message,ElizabethEntity npc){
-  Visit v=VISITS.get(p.m_20148_());EquipmentNetwork.reply(p,new EquipmentNetwork.Snapshot(EquipmentData.load(p),PlayerPersonaData.load(p).yen(),view,message,npc==null?-1:npc.m_19879_(),npc!=null&&npc.merchant(),v==null?"":v.token()));
+  Visit v=VISITS.get(p.m_20148_());EquipmentNetwork.reply(p,new EquipmentNetwork.Snapshot(EquipmentData.load(p),PlayerPersonaData.load(p).yen(),view,message,npc==null?-1:npc.m_19879_(),npc!=null&&npc.merchant(),v==null?"":v.token(),ShopProgress.unlocked(p)));
  }
  public static void talk(ServerPlayer p,ElizabethEntity npc){
   if(BattleService.current(p)!=null||!p.m_6084_()||p.m_20280_(npc)>36)return;
@@ -34,11 +34,13 @@ public final class EquipmentService {
    case "shop","buy" -> {
     npc=merchant(p,r.token());if(npc==null){sync(p,"closed","Aproxime-se da Elizabeth para comprar.");return;}
     if(r.action().equals("shop")){view="shop";break;}
+    if(!ShopStock.available(r.id(),ShopProgress.unlocked(p))){message="Este equipamento será liberado após a Sacerdotisa do trem (porta do andar 25).";break;}
     var result=EquipmentTransactions.buy(bag,data,r.id());
     message=switch(result){case BOUGHT->"Compra concluída.";case UNKNOWN->"Item desconhecido.";case OWNED->"Este equipamento já está na sua coleção.";case FULL->"Limite deste item atingido.";case NO_YEN->"Yen insuficiente.";};
     if(result==EquipmentTransactions.Result.BOUGHT)VISITS.put(p.m_20148_(),new Visit(npc.m_20148_(),UUID.randomUUID().toString(),now));
    }
-   case "use" -> {var s=Supplies.get(r.id());if(s==null)return;if(s.hp()==0&&s.sp()==0){message="Use este item em combate para curar o estado de um aliado.";break;}if(data.hp()>=data.maxHp()&&s.hp()!=0||data.sp()>=data.maxSp()&&s.sp()!=0){message="Você já está recuperado.";break;}if(bag.consume(s.id())){data.setResources(data.hp()+Supplies.amount(s.hp(),data.maxHp()),data.sp()+Supplies.amount(s.sp(),data.maxSp()));message=s.name()+" utilizado.";}}
+   case "heal" -> {npc=merchant(p,r.token());if(npc==null){sync(p,"closed","Aproxime-se da Elizabeth do hall para se curar.");return;}data.restore();p.m_21153_(p.m_21233_());for(var effect:java.util.List.copyOf(p.m_21220_()))if(!effect.m_19544_().m_19486_())p.m_21195_(effect.m_19544_());VISITS.put(p.m_20148_(),new Visit(npc.m_20148_(),UUID.randomUUID().toString(),now));message="HP, SP e estados negativos restaurados. Boa viagem!";}
+   case "use" -> {var s=Supplies.get(r.id());if(s==null)return;if(DamageItems.get(r.id())!=null){message="Use este item em combate, escolhendo um inimigo.";break;}if(s.hp()==0&&s.sp()==0){message="Use este item em combate para curar o estado de um aliado.";break;}if(data.hp()>=data.maxHp()&&s.hp()!=0||data.sp()>=data.maxSp()&&s.sp()!=0){message="Você já está recuperado.";break;}if(bag.consume(s.id())){data.setResources(data.hp()+Supplies.amount(s.hp(),data.maxHp()),data.sp()+Supplies.amount(s.sp(),data.maxSp()));message=s.name()+" utilizado.";}}
    default -> {return;}
   }
   EquipmentData.save(p,bag);data.save(p);var adjusted=PlayerPersonaData.load(p);adjusted.save(p);BattleService.sync(p,message);reply(p,view,message,npc);

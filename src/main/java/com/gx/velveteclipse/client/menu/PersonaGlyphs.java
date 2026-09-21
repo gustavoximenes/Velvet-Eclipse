@@ -12,7 +12,7 @@ public final class PersonaGlyphs {
     }
     public static void draw(Canvas c,Element e,double x,double y,double r,int color){
         switch(e){
-            case PHYSICAL -> {shape(c,x,y,r,color,-.8,.65,.3,-.75,.95,-.9,.5,-.15);shape(c,x,y,r,color,-.8,-.1,-.6,-.35,.2,.5,0,.72);}
+            case PHYSICAL -> {shape(c,x,y,r,color,-.8,-.6,.55,-.8,.9,-.25,.65,.55,-.3,.7,-.85,.1);shape(c,x,y,r,color,-.3,.55,.6,.5,.5,1,-.3,1);}
             case PIERCE -> {shape(c,x,y,r,color,-.2,.9,-.2,-.3,-.65,-.3,0,-1,.65,-.3,.2,-.3,.2,.9);}
             case SLASH -> {shape(c,x,y,r,color,-.95,.47,.82,-.8,.25,.10,.54,.16);shape(c,x,y,r,color,-.78,.70,.48,.20,.25,.60,-.48,.83);}
             case FIRE -> {shape(c,x,y,r,color,-.7,.45,-.2,-.2,-.1,-.95,.8,.35);shape(c,x,y,r,color,-.7,.45,.8,.35,.2,.85,-.35,.8);shape(c,x,y,r,0xFF080D43,-.18,.65,.2,-.03,.4,.55);}

@@ -28,11 +28,11 @@ public final class ClientBattleUiState {
   selected=Math.min(selected,Math.max(0,options(next).size()-1));
  }
  public static void open(Page next){if(!actionLocked()){page=next==Page.PERSONAS?Page.SKILLS:next==null?Page.MAIN:next;opened=System.nanoTime();pendingSkill="";selected=0;lastMouseX=lastMouseY=-1;}}
- public static void back(){if(page==Page.TARGET&&!pendingSkill.isBlank()&&!pendingSkill.equals("__baton_pass")){page=pendingSkill.startsWith("__item:")?Page.ITEMS:Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
+ public static void back(){if(com.gx.velveteclipse.client.equipment.ItemHelpHud.active()){com.gx.velveteclipse.client.equipment.ItemHelpHud.close();return;}if(page==Page.TARGET&&!pendingSkill.isBlank()&&!pendingSkill.equals("__baton_pass")){page=pendingSkill.startsWith("__item:")?Page.ITEMS:Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
  private static boolean canAct(BattleSnapshotS2C s){return s!=null&&s.active()&&s.playerTurn()&&!actionLocked()&&!BattleTacticsClient.prompt();}
  public static boolean affordable(SkillDefinition skill,BattleSnapshotS2C s){return skill!=null&&(skill.spCost()>0&&com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().has("spell master")?Math.max(1,skill.spCost()/2):skill.spCost())<=s.sp()&&(skill.hpPercentCost()==0||s.hp()>Math.max(1,s.maxHp()*(com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().has("arms master")?Math.max(1,skill.hpPercentCost()/2):skill.hpPercentCost())/100));}
  public static boolean selectIndex(int index,BattleSnapshotS2C s){
-  if(!canAct(s))return false;
+  if(!canAct(s)||com.gx.velveteclipse.client.equipment.ItemHelpHud.active())return false;
   if(page==Page.TARGET)return confirm(s);
   if(!selector()||index<0||index>=options(s).size())return false;
   if(page==Page.ITEMS){pendingSkill="__item:"+items().get(index);page=Page.TARGET;BattleTargetHud.chooseDefault();return true;}
@@ -59,10 +59,10 @@ public final class ClientBattleUiState {
  public static String pendingSkill(){return pendingSkill;}
  public static Element selectedElement(){
   String id=PersonaCinematics.skillSequenceActive()?PersonaCinematics.activeSkill():page==Page.TARGET?pendingSkill:selector()&&selected<ClientBattleState.snapshot().skills().size()?ClientBattleState.snapshot().skills().get(selected):"";
-  return id!=null&&id.startsWith("__item:")?Element.HEALING:"__baton_pass".equals(id)?Element.SUPPORT:PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::element).orElse(Element.SLASH);
+  return id!=null&&id.startsWith("__item:")?com.gx.velveteclipse.equipment.DamageItems.element(id.substring(7)):"__baton_pass".equals(id)?Element.SUPPORT:PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::element).orElse(com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().element());
  }
  public static boolean click(double x,double y,int w,int h,BattleSnapshotS2C s){
-  if(!canAct(s))return false;
+  if(!canAct(s)||com.gx.velveteclipse.client.equipment.ItemHelpHud.active())return false;
   if(page==Page.TARGET){if(BattleTargetHud.click(x,y)||y>h-28)return confirm(s);return false;}
   if(selector()){
    if(PersonaBattleDesign.previous(w,h,age()).contains(x,y)){cycle(-1);return true;}
@@ -77,5 +77,6 @@ public final class ClientBattleUiState {
  }
  public static String displaySkill(String id){return PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::displayName).orElse(id==null?"":id);}
  public static String displayPersona(String id){return PersonaRegistry.persona(id).map(PersonaDefinition::displayName).orElse(id==null?"":id);}
+ public static void escape(){if(canAct(ClientBattleState.snapshot()))send("escape","");}
  private static void send(String type,String id){var target=page==Page.TARGET?BattleTargetHud.selectedId():null;actionLocked=true;page=Page.MAIN;ModNetwork.sendAction(type,id,target);}
 }

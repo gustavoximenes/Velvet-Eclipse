@@ -21,7 +21,7 @@ public final class TartarusMapDesign {
   double a=left+(px-data.minX())*scale,b=top+(pz-data.minZ())*scale,angle=Math.toRadians(yaw),dx=-Math.sin(angle),dz=Math.cos(angle),r=expanded?7:4;
   c.poly(new double[]{a+dx*r,b+dz*r,a-dx*r*.7+dz*r*.7,b-dz*r*.7-dx*r*.7,a-dx*r*.3,b-dz*r*.3,a-dx*r*.7-dz*r*.7,b-dz*r*.7+dx*r*.7},0xFFFFE75A);
   c.poly(new double[]{x-15,y+size+4,x+size+10,y+size+4,x+size+3,y+size+30,x-18,y+size+30},0xEE113386);
-  c.text("TÁRTARO",x-5,y+size+12,10,0xFFDFEEFF,0);String label=data.floor()==0?"HALL":data.floor()+"F";c.text(label,x+size-c.width(label,24)-3,y+size+6,24,0xFFF4FFFF,-4);
+  String label=data.floor()==0?"HALL":data.floor()+"F";c.text("TÁRTARO",x-5,y+size+7,7,0xFFDFEEFF,0);double labelSize=data.floor()==0?17:20;c.text(label,x+size-c.width(label,labelSize)-3,y+size+13,labelSize,0xFFF4FFFF,-4);
   c.text("N",x+size-5,y-10,10,0xFF83F5FF,0);
  }
 }

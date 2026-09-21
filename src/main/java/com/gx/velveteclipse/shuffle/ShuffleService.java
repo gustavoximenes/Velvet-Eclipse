@@ -18,12 +18,14 @@ public final class ShuffleService {
  private static final Map<UUID,Teaching> teaching=new HashMap<>();
  private static final Map<UUID,Long> requests=new HashMap<>();
  private static boolean available(ServerPlayer p){return p.m_6084_()&&BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p);}
- public static void credit(Object object,int floor){if(object instanceof ServerPlayer p){var d=ShuffleData.load(p);d.add(ShuffleRules.roll(floor,PlayerPersonaData.load(p).rosterIds(),new Random()));d.save(p);status(p,"Shuffle Time disponível! Pressione P.");}}
+ public static void credit(Object object,int floor){credit(object,floor,false);}
+ public static void credit(Object object,int floor,boolean rare){if(object instanceof ServerPlayer p){var d=ShuffleData.load(p);d.add(ShuffleRules.roll(floor,PlayerPersonaData.load(p).rosterIds(),new Random(),rare));d.save(p);status(p,"Shuffle Time disponível! Pressione P.");}}
  public static void status(ServerPlayer p,String message){var d=PlayerPersonaData.load(p);ShuffleNetwork.reply(p,new ShuffleSnapshot("status",ShuffleData.load(p).rounds().size(),d.yen(),"",0,List.of(),List.of(),"",message));}
  private static ShuffleSnapshot.Choice describe(ShuffleRules.Card c,PlayerPersonaData d){
   String name="",detail="";com.gx.velveteclipse.menu.MenuSnapshot.Persona persona=null;
   switch(c.kind()){
    case PERSONA->{persona=MenuService.describe(ShuffleRules.personaReward(c,d.instance(c.id())));name=persona.name();detail=(d.rosterIds().contains(c.id())?"Fortalece sua Persona: ":"Receba a Persona ")+name+" • Lv "+persona.level();}
+   case DARK_HOUR->{name="DARK HOUR+";detail="Acrescenta 5 minutos à Dark Hour para todo o servidor.";}
    case CUPS->{name="CUPS • COPAS";detail="Recupera "+c.amount()+"% do HP máximo.";}
    case COINS->{name="COINS • YEN";detail="Receba ¥ "+c.amount()+" na carteira.";}
    case WANDS->{name="WANDS • EXPERIÊNCIA";detail="Receba "+c.amount()+" EXP de jogador e da Persona equipada.";}
@@ -45,6 +47,7 @@ public final class ShuffleService {
   if(!r.action().equals("choose"))return;
   var shuffle=ShuffleData.load(p);var round=shuffle.first();if(round==null||!round.token().equals(r.token())){status(p,"Essa seleção já foi utilizada.");return;}
   int index;try{index=Integer.parseInt(r.choice());}catch(NumberFormatException e){return;}if(index<0||index>=round.cards().size())return;
+  if(round.cards().get(index).kind()==ShuffleRules.Kind.DARK_HOUR&&!com.gx.velveteclipse.darkhour.DarkHourDeadline.extend(p,300000)){message(p,"Guarde esta carta e use durante a próxima Dark Hour.");return;}
   var data=PlayerPersonaData.load(p);var result=ShuffleRewards.claim(shuffle,data,r.token(),index,skill->deliver(p,skill));
   if(result.card()==null){message(p,result.message());return;}var card=result.card();data.save(p);shuffle.save(p);BattleService.sync(p,"Recompensa recebida.");
   ShuffleNetwork.reply(p,new ShuffleSnapshot("claimed",shuffle.rounds().size(),data.yen(),round.token(),round.floor(),List.of(describe(card,data)),List.of(),"","Recompensa recebida!"));
