@@ -22,12 +22,15 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         }finally{stack.m_85849_();}
     }
     public VelvetGeoEntityRenderer(EntityRendererProvider.Context context,String asset) {
-        super(context,new DefaultedEntityGeoModel<T>(new ResourceLocation("velvet_eclipse",asset)));
+        super(context,new DefaultedEntityGeoModel<T>(new ResourceLocation("velvet_eclipse",asset)){
+            @Override public ResourceLocation getTextureResource(T entity){if(entity instanceof com.gx.velveteclipse.shadow.FieldShadowEntity field&&field.rare())return new ResourceLocation("velvet_eclipse","textures/entity/red_shadow.png");return super.getTextureResource(entity);}
+        });
         thanatos=asset.equals("thanatos");izanagi=asset.equals("izanagi");this.f_114477_=thanatos?.45f:.55f;
         // Preserve authoring dimensions/Box UV; scale the model uniformly in both world and menus.
         if(izanagi||asset.equals("igor"))withScale(.25f);
         if(asset.equals("priestess"))withScale(.4f);
-        if(asset.equals("wealth_hand")||izanagi||asset.startsWith("tartarus_"))addRenderLayer(new AutoGlowingGeoLayer<T>(this));
+        if(asset.equals("field_shadow"))withScale(.48f);
+        if(asset.equals("field_shadow")||asset.equals("wealth_hand")||izanagi||asset.startsWith("tartarus_"))addRenderLayer(new AutoGlowingGeoLayer<T>(this));
     }
     @Override protected void applyRotations(T entity,PoseStack stack,float age,float bodyYaw,float partial){
         // GeckoLib supplies bodyYaw=0 for non-living entities. Props still have a saved world yaw.

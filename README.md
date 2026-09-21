@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.22 — Shadows e encontros
+
+Shadows com visão, busca e perseguição, aberturas por posicionamento, grupos de 1–5 inimigos, variante vermelha rara e recompensas em yen. Uma Shadow por sala; contador à esquerda e minimapa à direita. [Uso e validação](docs/SHADOW_ENCOUNTERS.md).
+
 # Velvet Eclipse 0.6.21 — Mapa e exploração
 
 Minimapa expansível por M, Shadows finitas e configuráveis, afinidades descobertas por acerto, fuga com chance de falha, chefes do trem fortalecidos e Dark Hour de 30 minutos com contador e saída automática. [Uso, comandos e validação](docs/TARTARUS_MAP.md).

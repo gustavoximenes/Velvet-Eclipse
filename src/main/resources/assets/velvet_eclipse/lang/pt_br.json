@@ -97,5 +97,8 @@
   "block.velvet_eclipse.train_rail": "Barra do Monorail",
   "item.velvet_eclipse.priestess_figure": "Figura da Sacerdotisa",
   "entity.velvet_eclipse.priestess": "Sacerdotisa",
-  "key.velvet_eclipse.tartarus_map": "Expandir mapa do Tártaro"
+  "key.velvet_eclipse.tartarus_map": "Expandir mapa do Tártaro",
+  "entity.velvet_eclipse.field_shadow": "Shadow",
+  "item.velvet_eclipse.field_shadow_spawn": "Invocar Shadow",
+  "item.velvet_eclipse.red_shadow_spawn": "Invocar Shadow Vermelha"
 }

@@ -42,7 +42,7 @@ public final class ForgeEvents {
       Player var1 = var0.getEntity();
       PlayerPersonaData var2 = PlayerPersonaData.load(var1);
       var2.save(var1);
-      RuntimeBridge.sendMessage(var1, "Velvet Eclipse v0.6.21 carregado. M expande o mapa do Tártaro.");
+      RuntimeBridge.sendMessage(var1, "Velvet Eclipse v0.6.22 carregado. Shadows com percepção, emboscadas e recompensas em yen.");
       RuntimeBridge.sendMessage(var1, "§7Shadows surgem durante a Dark Hour. Teste com §f/time set dark_hour§7 e localize a torre com §f/velvet tartarus§7.");
       ShadowWorldService.playerLogin(var1);
       BattleService.sync(var1, "Ready");

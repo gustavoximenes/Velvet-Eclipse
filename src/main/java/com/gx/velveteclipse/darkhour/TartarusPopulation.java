@@ -7,12 +7,12 @@ public final class TartarusPopulation {
  private final Map<Integer,Integer> counts=new HashMap<>();
  public boolean initialized(int floor){return counts.containsKey(floor);}
  public void range(int min,int max){if(min<1||max>64||min>max)throw new IllegalArgumentException("Use 1 <= mínimo <= máximo <= 64.");minimum=min;maximum=max;}
- public int count(long seed,int floor){if(TartarusInteriorLayout.fixedFloor(floor))return TartarusInteriorLayout.shadowLimit(floor);return counts.computeIfAbsent(floor,f->minimum+new Random(seed^f*0x51DE43L).nextInt(maximum-minimum+1));}
+ public int count(long seed,int floor){if(TartarusInteriorLayout.fixedFloor(floor))return TartarusInteriorLayout.shadowLimit(floor);return Math.min(14,counts.computeIfAbsent(floor,f->minimum+new Random(seed^f*0x51DE43L).nextInt(maximum-minimum+1)));}
  public void reset(int floor){counts.remove(floor);}
  public static List<TartarusInteriorLayout.Point> positions(TartarusInteriorLayout.Plan plan){
   var out=new ArrayList<TartarusInteriorLayout.Point>();
-  // Five separated positions per non-entry/non-stair room: enough for the 64-slot command cap.
-  for(int[] offset:new int[][]{{0,0},{-3,-3},{3,-3},{-3,3},{3,3}})for(var room:plan.spawns())out.add(new TartarusInteriorLayout.Point(room.x()+offset[0],room.z()+offset[1]));
+  // One encounter per room; entry and stair rooms remain safe.
+  out.addAll(new LinkedHashSet<>(plan.spawns()));
   return List.copyOf(out);
  }
  public CompoundTag save(){var t=new CompoundTag();t.m_128405_("min",minimum);t.m_128405_("max",maximum);var c=new CompoundTag();counts.forEach((f,n)->c.m_128405_(f.toString(),n));t.m_128365_("counts",c);return t;}

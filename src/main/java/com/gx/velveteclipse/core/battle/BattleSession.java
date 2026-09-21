@@ -16,6 +16,9 @@ public final class BattleSession {
    private final List<BattleCombatant> turnOrder;
    private final Random random;
    private int turnIndex;
+   private EncounterOpening opening=EncounterOpening.STANDARD;
+   private boolean openingRound;
+   private void agilityOrder(){turnOrder.sort(Comparator.<BattleCombatant>comparingInt(c->c.stats().agility()).reversed().thenComparing(c->c.id().toString()));}
    private UUID bonusActor;
    private final java.util.Set<UUID> batonChain=new java.util.HashSet<>();
    private int tacticalEvent;
@@ -75,11 +78,14 @@ public final class BattleSession {
       this(var1, new Random());
    }
 
-   public BattleSession(List<BattleCombatant> var1, Random var2) {
+   public BattleSession(List<BattleCombatant> var1, Random var2) { this(var1,var2,EncounterOpening.STANDARD); }
+   public BattleSession(List<BattleCombatant> var1, Random var2,EncounterOpening mode) {
       if (var1 != null && var1.size() >= 2) {
          this.random = var2;
          this.turnOrder = new ArrayList<>(var1);
          this.turnOrder.sort(Comparator.<BattleCombatant>comparingInt(var0 -> var0.stats().agility()).reversed().thenComparing(var0 -> var0.id().toString()));
+         this.opening=mode;this.openingRound=mode!=EncounterOpening.STANDARD;
+         if(openingRound){java.util.Collections.shuffle(turnOrder,random);if(mode!=EncounterOpening.NEUTRAL){var first=mode==EncounterOpening.ADVANTAGE?BattleSide.PLAYERS:BattleSide.ENEMIES;turnOrder.sort(Comparator.comparingInt(c->c.side()==first?0:1));}}
          this.turnIndex = this.firstLivingIndex(0);
          this.updateState();
       } else {
@@ -280,7 +286,8 @@ public final class BattleSession {
    /** Join at the end of the existing order; never steal the active or reserved turn. */
    public boolean join(BattleCombatant ally) {
       if(state!=BattleState.ACTIVE||ally==null||!ally.alive()||ally.side()!=BattleSide.PLAYERS||find(ally.id()).isPresent())return false;
-      turnOrder.add(ally);return true;
+      // Allies joining while the opening player phase is running share its advantage.
+      if(openingRound&&opening==EncounterOpening.ADVANTAGE&&turnOrder.get(turnIndex).side()==BattleSide.PLAYERS){int at=turnIndex+1;while(at<turnOrder.size()&&turnOrder.get(at).side()==BattleSide.PLAYERS)at++;turnOrder.add(at,ally);}else turnOrder.add(ally);return true;
    }
 
    public boolean leave(UUID id) {
@@ -312,7 +319,9 @@ public final class BattleSession {
       bonusActor=null;batonChain.clear();for(var actor:turnOrder)actor.setBatonBoost(false);
       if(state!=BattleState.ACTIVE)return;
       for(int attempts=0;attempts<=turnOrder.size();attempts++){
-         turnIndex=firstLivingIndex(turnIndex+1);if(beginCurrentTurn())return;
+         int next=firstLivingIndex(turnIndex+1);
+         if(openingRound&&next<=turnIndex){openingRound=false;agilityOrder();next=firstLivingIndex(0);}
+         turnIndex=next;if(beginCurrentTurn())return;
       }
    }
 

@@ -20,7 +20,7 @@ public final class BattleTacticsClient {
  public static void accept(BattleTacticsS2C packet){
   awaitingAllOut=false;
   if(packet.actor()==null&&packet.event()==0){reset();return;}
-  if(packet.oneMore()&&(!state.oneMore()||state.event()!=packet.event())){queued=packet.kind();dismissed=-1;}
+  if(!packet.kind().isEmpty()&&state.event()!=packet.event()){queued=packet.kind();dismissed=-1;}
   state=packet;
  }
  public static boolean oneMore(){return state.oneMore();}

@@ -18,7 +18,7 @@ public final class VisualBattleActors {
       double[] origin=RuntimeBridge.playerPosition(player);float yaw=RuntimeBridge.playerYaw(player);
       for(int i=0;i<enemies.size();i++){
          double[] at=RuntimeBridge.localOffset(origin,yaw,com.gx.velveteclipse.core.battle.BattleFormation.enemyX(i,enemies.size()),.05,5.25);
-         Object entity=spawnEnemy(player,at,yaw+180);if(entity instanceof net.minecraft.world.entity.Entity e)actors.put(enemies.get(i).id(),e);
+         Object entity=spawnEnemy(player,at,yaw+180,enemies.get(i).persona().definitionId());if(entity instanceof net.minecraft.world.entity.Entity e)actors.put(enemies.get(i).id(),e);
       }
       replacePersona(player,persona);
    }
@@ -94,11 +94,12 @@ public final class VisualBattleActors {
       RuntimeBridge.setEntityRotation(var1, var3, 0.0F);
    }
 
-   private static Object spawnEnemy(Object var0, double[] var1, float var2) {
+   private static Object spawnEnemy(Object var0, double[] var1, float var2,String persona) {
       try {
-         Object var3 = invokeStatic("com.gx.velveteclipse.forge.ShadowRegistry", "shadowType", new Class[0], new Object[0]);
+         Object var3 = PersonaMobRegistry.typeFor(persona);
          Object var4 = RuntimeBridge.createEntityFromType(var0, var3, var1[0], var1[1], var1[2]);
          if (var4 != null) {
+            PersonaMobRegistry.configurePersonaMob(var4,persona);
             RuntimeBridge.configureBattleActor(var4, false);
             RuntimeBridge.setEntityRotation(var4, var2, 0.0F);
          }

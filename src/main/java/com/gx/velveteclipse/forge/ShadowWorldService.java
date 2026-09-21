@@ -46,7 +46,7 @@ public final class ShadowWorldService {
       }
    }
 
-   @SubscribeEvent
+   @SubscribeEvent(priority=net.minecraftforge.eventbus.api.EventPriority.LOWEST)
    public static void onEntityJoin(EntityJoinLevelEvent var0) {
       if (!RuntimeBridge.isClientLevel(var0.getLevel())) {
          Entity var1 = var0.getEntity();
@@ -70,6 +70,7 @@ public final class ShadowWorldService {
       serverTicks++;
       if (serverTicks % 10L == 0L) {
          cleanupRemoved();
+         migrateShadows();
          detectEncounters();
       }
 
@@ -107,8 +108,9 @@ public final class ShadowWorldService {
    }
 
    private static Object spawnAt(Object var0, double var1, double var3, double var5, String var7, boolean var8) {
-      Object var9 = RuntimeBridge.createEntityFromType(var0, ShadowRegistry.shadowType(), var1, var3, var5);
+      Object var9 = RuntimeBridge.createEntityFromType(var0, com.gx.velveteclipse.shadow.FieldShadowRegistry.TYPE.get(), var1, var3, var5);
       if (var9 != null) {
+         if(var9 instanceof com.gx.velveteclipse.shadow.FieldShadowEntity e){e.initialize(e.m_20148_().getMostSignificantBits());e.getPersistentData().m_128379_("manual_shadow",!var8);}
          if (var8) {
             addEntityTag(var9, "velvet_encounter_shadow");
          }
@@ -148,7 +150,7 @@ public final class ShadowWorldService {
    }
 
    public static void escapeGrace(Object p){if(p instanceof Entity e)e.getPersistentData().m_128356_("velvet_escape_until",System.currentTimeMillis()+8000);}
-   private static boolean escaping(Object p){return p instanceof Entity e&&e.getPersistentData().m_128454_("velvet_escape_until")>System.currentTimeMillis();}
+   public static boolean escaping(Object p){return p instanceof Entity e&&e.getPersistentData().m_128454_("velvet_escape_until")>System.currentTimeMillis();}
    public static Object nearest(Object var0, double var1) {
       if(escaping(var0))return null;
       if(com.gx.velveteclipse.raid.RaidService.inside(var0))return null;
@@ -159,7 +161,7 @@ public final class ShadowWorldService {
          Object var5 = null;
 
          for (Object var7 : SHADOWS.values()) {
-            if (var7 != null && !RuntimeBridge.isEntityRemoved(var7) && RuntimeBridge.sameWorld(var0, var7)) {
+            if (worldShadow(var7) && !RuntimeBridge.isEntityRemoved(var7) && RuntimeBridge.sameWorld(var0, var7)) {
                double var8 = RuntimeBridge.distanceSquared(var0, var7);
                if (var8 <= var3) {
                   var3 = var8;
@@ -186,7 +188,7 @@ public final class ShadowWorldService {
    private static void ensureWorldShadows() {
       // Natural encounter Shadows dissolve at dawn. Explicit summons and battle
       // actors stay under their own lifecycle and are never removed here.
-      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.TartarusDungeonService.dungeonShadow(shadow)&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
+      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.TartarusDungeonService.dungeonShadow(shadow)&&!e.getPersistentData().m_128471_("manual_shadow")&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
       for (Object var1 : new ArrayList<>(PLAYERS.values())) {
          if (var1 instanceof Entity e && com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_()) && BattleService.current(var1) == null) {
             UUID var2 = RuntimeBridge.playerUuid(var1);
@@ -231,15 +233,17 @@ public final class ShadowWorldService {
       }
    }
 
-   public static void beginReservedEncounter(Object player, Object shadow) {
+   public static void beginReservedEncounter(Object player, Object shadow,com.gx.velveteclipse.core.battle.EncounterOpening opening) {
       if (!com.gx.velveteclipse.exploration.ExplorationService.preparing(player) || com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(player) ||
           !com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow) || !ShadowRegistry.isShadow(shadow) ||
           RuntimeBridge.isEntityRemoved(shadow) || !RuntimeBridge.sameWorld(player,shadow) || BattleService.current(player)!=null) return;
-      startEncounter(player,shadow);
+      startEncounter(player,shadow,opening);
    }
 
-   private static void startEncounter(Object player,Object shadow) {
-      BattleService.startEncounter(player,1,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(player),com.gx.velveteclipse.darkhour.TartarusDungeonService.guardian(shadow));
+   private static void startEncounter(Object player,Object shadow){startEncounter(player,shadow,opening(player,shadow));}
+   private static void startEncounter(Object player,Object shadow,com.gx.velveteclipse.core.battle.EncounterOpening mode) {
+      if(shadow instanceof com.gx.velveteclipse.shadow.FieldShadowEntity field)BattleService.startWorldEncounter(player,field,mode);
+      else BattleService.startEncounter(player,1,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(player),com.gx.velveteclipse.darkhour.TartarusDungeonService.guardian(shadow));
       if(BattleService.current(player)!=null){com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterStarted(player,shadow);consumeShadow(shadow);}
    }
    private static void consumeShadow(Object var0) {
@@ -258,7 +262,7 @@ public final class ShadowWorldService {
          Object var5 = null;
 
          for (Object var7 : SHADOWS.values()) {
-            if (var7 != null && !RuntimeBridge.isEntityRemoved(var7) && RuntimeBridge.sameWorld(var0, var7) && hasEntityTag(var7, "velvet_encounter_shadow")) {
+            if (!(var7 instanceof com.gx.velveteclipse.shadow.FieldShadowEntity) && worldShadow(var7) && !RuntimeBridge.isEntityRemoved(var7) && RuntimeBridge.sameWorld(var0, var7) && hasEntityTag(var7, "velvet_encounter_shadow")) {
                double var8 = RuntimeBridge.distanceSquared(var0, var7);
                if (var8 <= var3) {
                   var3 = var8;
@@ -300,6 +304,22 @@ public final class ShadowWorldService {
       }
    }
 
+   public static boolean worldShadow(Object object){return ShadowRegistry.isShadow(object)&&object instanceof Entity e&&!e.m_19880_().contains("velvet_battle_enemy")&&!e.getPersistentData().m_128471_("raid_actor")&&!e.m_19880_().contains("velvet_persona_actor");}
+   public static com.gx.velveteclipse.core.battle.EncounterOpening opening(Object p,Object shadow){
+      if(!(p instanceof Entity player)||!(shadow instanceof com.gx.velveteclipse.shadow.FieldShadowEntity e))return com.gx.velveteclipse.core.battle.EncounterOpening.STANDARD;
+      return com.gx.velveteclipse.shadow.ShadowAwareness.behind(e.m_146908_(),player.m_20185_()-e.m_20185_(),player.m_20189_()-e.m_20189_())?com.gx.velveteclipse.core.battle.EncounterOpening.ADVANTAGE:com.gx.velveteclipse.core.battle.EncounterOpening.NEUTRAL;
+   }
+   public static void attackShadow(net.minecraft.server.level.ServerPlayer p,Entity e){if(canBegin(p,e))startEncounter(p,e);}
+   public static void ambush(net.minecraft.server.level.ServerPlayer p,com.gx.velveteclipse.shadow.FieldShadowEntity e){if(canBegin(p,e))startEncounter(p,e,com.gx.velveteclipse.core.battle.EncounterOpening.AMBUSH);}
+   private static boolean canBegin(net.minecraft.server.level.ServerPlayer p,Entity e){return p.m_6084_()&&!p.m_5833_()&&PlayerPersonaData.load(p).hp()>0&&BattleService.current(p)==null&&worldShadow(e)&&e.m_6084_()&&p.m_9236_()==e.m_9236_()&&p.m_20280_(e)<36&&p.m_142582_(e)&&!escaping(p)&&!com.gx.velveteclipse.exploration.ExplorationService.preparing(p)&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(e);}
+   private static void migrateShadows(){
+      for(Object object:new ArrayList<>(SHADOWS.values()))if(object instanceof Entity old&&old.m_9236_() instanceof net.minecraft.server.level.ServerLevel l&&l.m_8791_(old.m_20148_())==old&&worldShadow(old)&&!(old instanceof com.gx.velveteclipse.shadow.FieldShadowEntity)&&!com.gx.velveteclipse.darkhour.TartarusDungeonService.guardian(old)&&!com.gx.velveteclipse.raid.RaidService.inside(old)&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(old)){
+         var replacement=com.gx.velveteclipse.shadow.FieldShadowRegistry.TYPE.get().m_20615_(old.m_9236_());if(replacement==null)continue;
+         replacement.m_6034_(old.m_20185_(),old.m_20186_(),old.m_20189_());replacement.m_146922_(old.m_146908_());replacement.initialize(old.m_20148_().getMostSignificantBits());replacement.getPersistentData().m_128391_(old.getPersistentData());
+         if(com.gx.velveteclipse.darkhour.TartarusDungeonService.dungeonShadow(old)){if(com.gx.velveteclipse.darkhour.TartarusDungeonService.replaceShadow(old,replacement))old.m_146870_();}
+         else if(old.m_9236_().m_7967_(replacement))old.m_146870_();
+      }
+   }
    private static void cleanupRemoved() {
       for (Entry var1 : new ArrayList<>(SHADOWS.entrySet())) {
          if (RuntimeBridge.isEntityRemoved(var1.getValue())) {

@@ -89,6 +89,7 @@ public final class ShadowRegistry {
    }
 
    public static boolean isShadow(Object var0) {
+      if(var0 instanceof com.gx.velveteclipse.shadow.FieldShadowEntity)return true;
       if (var0 != null && SHADOW != null) {
          try {
             Object var1 = invokeNoArg(var0, "getType", "m_6095_");

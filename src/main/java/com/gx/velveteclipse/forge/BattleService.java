@@ -25,7 +25,7 @@ public final class BattleService {
         final int enemyCount;
         int delay=28;
         boolean wasBusy;
-        boolean shuffleVictory,boss,raid;int raidStage,dungeonFloor;
+        boolean shuffleVictory,boss,raid,rare;int enemyPoseUntil;Entity animatingEnemy;int raidStage,dungeonFloor;
         final BattleResultsGate results=new BattleResultsGate();
         String ending="";
         Encounter(Object p,BattleSession s,int count){session=s;enemyCount=count;origin=RuntimeBridge.playerPosition(p);yaw=RuntimeBridge.playerYaw(p);center=RuntimeBridge.localOffset(origin,yaw,0,.05,5.25);level=p instanceof Entity e?e.m_9236_():null;}
@@ -57,6 +57,17 @@ public final class BattleService {
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"umbra_slime");
         if(boss)for(var c:s.participants())if(c.side()==BattleSide.ENEMIES){var e=targetActor(p,c.id());if(e!=null)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(e);}
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;
+    }
+    public static BattleSession startWorldEncounter(Object p,com.gx.velveteclipse.shadow.FieldShadowEntity field,EncounterOpening opening){
+        if(com.gx.velveteclipse.raid.RaidService.inside(p)||com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
+        int floor=Math.max(0,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(p));var roster=com.gx.velveteclipse.shadow.ShadowEncounterRules.roll(field.encounterSeed(),floor,field.rare());
+        var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));int index=0;
+        for(var enemy:roster){var def=PersonaRegistry.persona(enemy.persona()).orElseThrow();var persona=new PersonaInstance(def.id(),enemy.level(),0,enemy.skills());participants.add(new BattleCombatant(UUID.randomUUID(),(field.rare()?"Red • ":"")+def.displayName()+" "+(++index),BattleSide.ENEMIES,persona,enemy.hp(),enemy.hp(),enemy.sp(),enemy.sp()));}
+        var s=new BattleSession(participants,new Random(),opening);var g=new Encounter(p,s,roster.size());g.dungeonFloor=floor;g.rare=field.rare();BATTLES.put(s.id(),g);attach(g,p,g.origin);
+        VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"");
+        String message=switch(opening){case ADVANTAGE->"VANTAGEM DA EQUIPE • Aliados começam!";case AMBUSH->"EMBOSCADA • Inimigos começam!";default->"ENCONTRO NEUTRO • Ordem inicial sorteada.";};
+        if(g.rare)message+=" • SHADOW VERMELHA: inimigos poderosos, recompensas maiores.";
+        syncAll(g,message);return s;
     }
     public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
         if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null))return null;
@@ -169,6 +180,7 @@ public final class BattleService {
             for(Object p:new ArrayList<>(g.players.values()))if(p instanceof Entity e&&(!e.m_6084_()||e.m_9236_()!=g.level))stop(p);
             if(!BATTLES.containsKey(g.session.id()))continue;
             for(var entry:g.players.entrySet())if(!MeleeBattleServer.active(entry.getValue()))RuntimeBridge.freezePlayer(entry.getValue(),g.anchors.get(entry.getKey()));
+            if(g.animatingEnemy!=null&&ticks>=g.enemyPoseUntil){g.animatingEnemy.m_146926_(0);g.animatingEnemy=null;}
             boolean acting=busy(g);
             if(g.results.started())continue;
             if(!acting&&g.session.state()!=BattleState.ACTIVE){finish(g,g.ending);continue;}
@@ -179,11 +191,12 @@ public final class BattleService {
     private static void enemyTurn(Encounter g){
         var s=g.session;var actor=s.currentActor();var targets=s.enemiesOf(actor);if(targets.isEmpty())return;
         var target=targets.get(Math.floorMod(ticks+actor.id().hashCode(),targets.size()));
-        var skill=actor.persona().learnedSkills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(Objects::nonNull).filter(d->d.isDamageSkill()&&d.spCost()<=actor.sp()).findFirst().orElse(null);
+        var skill=com.gx.velveteclipse.shadow.EnemyTactics.choose(actor,java.util.concurrent.ThreadLocalRandom.current());
         if(g.raid&&g.raidStage==2){boolean ice=com.gx.velveteclipse.raid.RaidService.iceTurn(s.id());skill=ice?PersonaRegistry.skill("raid_ice_storm").orElseThrow():null;
             if(ice&&g.level instanceof net.minecraft.server.level.ServerLevel l)for(Object p:g.players.values())if(p instanceof Entity e)l.m_8767_(net.minecraft.core.particles.ParticleTypes.f_175821_,e.m_20185_(),e.m_20186_()+1,e.m_20189_(),45,.6,1,.6,.08);
         }
         if(g.raid&&!com.gx.velveteclipse.raid.RaidService.allowAction(s.id()))return;
+        if(!g.raid){g.animatingEnemy=VisualBattleActors.enemy(s.id(),actor.id());if(g.animatingEnemy!=null){g.animatingEnemy.m_146926_(skill!=null&&skill.usesMagicStat()?-45:45);g.enemyPoseUntil=ticks+22;}}
         var result=s.perform(actor.id(),skill==null?BattleAction.attack(target.id()):BattleAction.skill(skill.id(),target.id()));g.delay=28;
         if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(g.raid&&g.raidStage==2){g.delay=60;g.wasBusy=true;}
@@ -222,8 +235,8 @@ public final class BattleService {
         VisualBattleActors.clearEnemies(g.session.id());
         // Keep encounter and membership until each player's Enter acknowledgement.
         for(Object p:new ArrayList<>(g.players.values())){
-            persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?80*g.enemyCount*(g.boss?3:1):0;String items="NENHUM ITEM";
-            if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{boolean fresh=!data.rosterIds().contains("umbra_slime");data.givePersona("umbra_slime");if(fresh)items="PERSONA • Umbra Slime";}}
+            persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?com.gx.velveteclipse.shadow.ShadowEncounterRules.xp(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1):0;String items="NENHUM ITEM";
+            if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{long yen=com.gx.velveteclipse.shadow.ShadowEncounterRules.yen(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1);data.addYen(yen);items="YEN • ¥ "+yen;if(g.session.participants().stream().anyMatch(c->c.side()==BattleSide.ENEMIES&&c.persona().definitionId().equals("umbra_slime"))){boolean fresh=!data.rosterIds().contains("umbra_slime");data.givePersona("umbra_slime");if(fresh)items+=" / PERSONA • Umbra Slime";}}}
             data.save(p);VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
             if(g.shuffleVictory&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor));
             var persona=data.activeInstance();ModNetwork.sendPresentation(p,new BattleResultsS2C(g.session.id().toString(),won,xp,before,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),items,g.shuffleVictory&&won));

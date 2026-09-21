@@ -97,5 +97,8 @@
   "block.velvet_eclipse.train_rail": "Monorail Rail",
   "item.velvet_eclipse.priestess_figure": "Priestess Figure",
   "entity.velvet_eclipse.priestess": "Priestess",
-  "key.velvet_eclipse.tartarus_map": "Expand Tartarus map"
+  "key.velvet_eclipse.tartarus_map": "Expand Tartarus map",
+  "entity.velvet_eclipse.field_shadow": "Shadow",
+  "item.velvet_eclipse.field_shadow_spawn": "Spawn Shadow",
+  "item.velvet_eclipse.red_shadow_spawn": "Spawn Red Shadow"
 }

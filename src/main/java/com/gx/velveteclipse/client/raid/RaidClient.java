@@ -15,7 +15,7 @@ public final class RaidClient {
  @SubscribeEvent public static void hud(RenderGuiEvent.Post e){
   if(data.mode().isEmpty()||data.mode().equals("lobby")||data.mode().equals("building")||data.mode().equals("dialogue"))return;
   var m=Minecraft.m_91087_();if(m.f_91074_==null)return;var g=e.getGuiGraphics();int w=m.m_91268_().m_85445_();double scale=Math.min(w/900.0,m.m_91268_().m_85446_()/500.0);
-  var pose=g.m_280168_();pose.m_85836_();pose.m_85837_(w-310*scale,8+com.gx.velveteclipse.client.tartarus.TartarusMapClient.clockHeight(),200);pose.m_85841_((float)scale,(float)scale,1);
+  var pose=g.m_280168_();pose.m_85836_();pose.m_85837_(w-310*scale,8,200);pose.m_85841_((float)scale,(float)scale,1);
   try{g.m_286007_(() -> {var c=new MenuCanvas(g);c.poly(new double[]{12,0,304,0,288,85,0,85},0xED051333);c.fill(16,11,3,60,0xFF38E7F0);
    if(data.stage()==2&&!data.weakness().isEmpty()){
     long elapsed=data.mode().equals("battle")?(System.nanoTime()-received)/1_000_000:0;long ms=Math.max(0,data.milliseconds()-elapsed);long seconds=(ms+999)/1000;
