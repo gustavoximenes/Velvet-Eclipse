@@ -122,7 +122,7 @@ public final class TartarusDungeonService {
    String id=floor+":"+i;var slot=s.slots.computeIfAbsent(id,k->new CompoundTag());if(slot.m_128471_("defeated"))continue;String owner=slot.m_128461_("battle");
    if(!owner.isEmpty()){
     boolean active=false;try{active=BattleService.encounterActive(UUID.fromString(owner));}catch(IllegalArgumentException ignored){}
-    if(active)continue;slot.m_128473_("battle");slot.m_128473_("entity");s.m_77762_();
+    if(active)continue;TartarusEncounterSlot.recover(slot);s.m_77762_();
    }
    if(boss){
     var center=new BlockPos(TartarusInteriorLayout.origin(floor),65,TartarusInteriorLayout.BOSS_Z);var chunk=new ChunkPos(center);
@@ -154,7 +154,7 @@ public final class TartarusDungeonService {
  }
  public static void encounterStarted(Object player,Object shadow){
   if(!(player instanceof ServerPlayer p)||!(shadow instanceof Entity e)||!dungeonShadow(e))return;
-  var s=data(p.m_284548_());var slot=s.slots.get(e.getPersistentData().m_128461_(SLOT));var battle=BattleService.current(p);if(slot!=null&&battle!=null){slot.m_128359_("battle",battle.id().toString());s.m_77762_();}
+  var s=data(p.m_284548_());var slot=s.slots.get(e.getPersistentData().m_128461_(SLOT));var battle=BattleService.current(p);if(slot!=null&&battle!=null){TartarusEncounterSlot.begin(slot,battle.id());s.m_77762_();}
  }
  public static boolean guardian(Object e){return e instanceof Entity entity&&entity.getPersistentData().m_128471_("velvet_guardian");}
  public static void markGuardian(Entity e){e.getPersistentData().m_128379_("velvet_guardian",true);e.m_6593_(Component.m_237113_("Guardião do Tártaro"));e.m_20331_(true);}
@@ -163,6 +163,10 @@ public final class TartarusDungeonService {
   int f=floor(e);e.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);e.m_6034_(TartarusInteriorLayout.origin(f)+.5,65.05,TartarusInteriorLayout.BOSS_Z+.5);e.m_146922_(0);e.m_5616_(0);e.m_5618_(0);
  }
  private static void openGate(ServerLevel l,int floor){if(!TartarusInteriorLayout.bossFloor(floor))return;for(int x=-2;x<=2;x++)for(int y=1;y<=12;y++){var p=new BlockPos(TartarusInteriorLayout.origin(floor)+x,64+y,TartarusInteriorLayout.GATE_Z);if(!l.m_8055_(p).m_60795_())l.m_7731_(p,Blocks.f_50016_.m_49966_(),2);}}
+ public static void encounterReleased(UUID battle){
+  var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();if(server==null)return;var l=server.m_129880_(DIMENSION);if(l==null)return;var s=data(l);
+  for(var slot:s.slots.values())if(TartarusEncounterSlot.release(slot,battle))s.m_77762_();
+ }
  public static void encounterFinished(UUID battle,boolean won){
   if(!won)return;var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();if(server==null)return;var l=server.m_129880_(DIMENSION);if(l==null)return;var s=data(l);
   for(var slot:s.slots.entrySet())if(slot.getValue().m_128461_("battle").equals(battle.toString())){slot.getValue().m_128379_("defeated",true);s.m_77762_();int f=Integer.parseInt(slot.getKey().split(":")[0]);if(TartarusInteriorLayout.bossFloor(f)){s.defeated.add(f);openGate(l,f);s.m_77762_();}}
@@ -187,7 +191,7 @@ public final class TartarusDungeonService {
  @SubscribeEvent public static void retireOldShadows(net.minecraftforge.event.entity.EntityJoinLevelEvent event){
   var e=event.getEntity();if(!(event.getLevel() instanceof ServerLevel l)||!inside(e))return;
   if(dungeonShadow(e)||e instanceof TartarusPropEntity){var s=data(l);int f=floor(e);if(!s.progress.current(f)||!e.getPersistentData().m_128441_("tartarus_generation")||e.getPersistentData().m_128454_("tartarus_generation")!=s.progress.generation(f)||dungeonShadow(e)&&(TartarusInteriorLayout.shadowLimit(f)==0||guardian(e)!=TartarusInteriorLayout.bossFloor(f)))event.setCanceled(true);
-   if(dungeonShadow(e)){try{int index=Integer.parseInt(e.getPersistentData().m_128461_(SLOT).split(":")[1]);if(index>=s.population.count(s.progress.seed(l.m_7328_(),f),f))event.setCanceled(true);}catch(RuntimeException invalid){event.setCanceled(true);}var slot=s.slots.get(e.getPersistentData().m_128461_(SLOT));if(s.defeated.contains(f)||slot==null||slot.m_128471_("defeated")||!slot.m_128461_("battle").isEmpty()||!slot.m_128461_("entity").equals(e.m_20148_().toString()))event.setCanceled(true);}
+   if(dungeonShadow(e)){try{int index=Integer.parseInt(e.getPersistentData().m_128461_(SLOT).split(":")[1]);if(index>=s.population.count(s.progress.seed(l.m_7328_(),f),f))event.setCanceled(true);}catch(RuntimeException invalid){event.setCanceled(true);}var slot=s.slots.get(e.getPersistentData().m_128461_(SLOT));if(s.defeated.contains(f)||slot==null||slot.m_128471_("defeated")||!slot.m_128461_("battle").isEmpty()&&!com.gx.velveteclipse.forge.ShadowWorldService.held(e)||!slot.m_128461_("entity").equals(e.m_20148_().toString()))event.setCanceled(true);}
    if(e instanceof TartarusPropEntity){var prop=s.props.get(e.getPersistentData().m_128461_("tartarus_prop"));if(prop==null||!prop.m_128461_("entity").equals(e.m_20148_().toString()))event.setCanceled(true);}}
  }
  public static int teleportToFloor(ServerPlayer p,int target){

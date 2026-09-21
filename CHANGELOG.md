@@ -1,3 +1,12 @@
+# 0.6.23-reload-shadows
+
+- Bestiário no Tab com modelos, encontros, derrotas e afinidades descobertas persistentes por jogador.
+- 19 inimigos de Reload separados das Personas, com modelos, animações e itens criativos.
+- Shadows patrulham sua sala e olham para o jogador durante a busca.
+- Fuga preserva a Shadow original, a semente e a vaga finita; recuperação de reservas após interrupção.
+- Dano de perfuração e Skill Card Single Shot.
+- Verificação offline focada de combate, fontes de encontros, modelos e Bestiário.
+
 # Velvet Eclipse 0.6.14 — Dark Hour e correções de interface
 
 Igor apresentado de frente no menu de fusões; nível/EXP próprios do jogador com barra de progresso; atalhos no padrão azul/ciano e guia por F1. Seletor multiplayer passa a resolver um só marcador por quadro e centraliza suas instruções.

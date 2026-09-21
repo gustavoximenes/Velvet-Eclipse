@@ -1,6 +1,7 @@
 package com.gx.velveteclipse.forge;
 
 import com.gx.velveteclipse.core.battle.*;
+import com.gx.velveteclipse.shadow.*;
 import com.gx.velveteclipse.core.persona.*;
 import com.gx.velveteclipse.network.*;
 import com.gx.velveteclipse.util.RuntimeBridge;
@@ -19,6 +20,7 @@ public final class BattleService {
         final Map<UUID,double[]> anchors=new HashMap<>();
         final Map<UUID,UUID> targets=new HashMap<>();
         final Map<UUID,AffinityKnowledge> raidKnowledge=new HashMap<>();
+        final Set<UUID> recordedDefeats=new HashSet<>();
         final Object level;
         final double[] origin,center;
         final float yaw;
@@ -51,8 +53,11 @@ public final class BattleService {
         if(com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));
         int floor=Math.max(0,Math.min(250,dungeonFloor)),hp=com.gx.velveteclipse.darkhour.TartarusInteriorLayout.hp(floor);
-        for(int i=0;i<count;i++){var persona=new PersonaInstance(PersonaRegistry.persona("umbra_slime").orElseThrow());if(floor>0)persona=new PersonaInstance(persona.definitionId(),com.gx.velveteclipse.darkhour.TartarusInteriorLayout.level(floor),0,persona.learnedSkills());participants.add(new BattleCombatant(UUID.randomUUID(),(count==1?"Umbra Slime":"Umbra Slime "+(i+1))+(floor>0?" • "+floor+"F":""),BattleSide.ENEMIES,persona,hp,hp,30+floor,30+floor));}
-        if(boss){participants.removeIf(c->c.side()==BattleSide.ENEMIES);var def=PersonaRegistry.persona("umbra_slime").orElseThrow();var persona=new PersonaInstance(def.id(),com.gx.velveteclipse.darkhour.TartarusInteriorLayout.level(floor)+5,0,new PersonaInstance(def).learnedSkills());participants.add(new BattleCombatant(UUID.randomUUID(),"Guardião do Tártaro • "+floor+"F",BattleSide.ENEMIES,persona,hp*4,hp*4,80+floor,80+floor));}
+        for(int i=0;i<(boss?1:count);i++){
+            var def=boss?EnemyCatalog.guardian(floor):EnemyCatalog.pool(floor).get(i%EnemyCatalog.pool(floor).size());
+            int level=boss?Math.max(def.level(),com.gx.velveteclipse.darkhour.TartarusInteriorLayout.level(floor)+5):def.level();
+            participants.add(BattleCombatant.enemy(UUID.randomUUID(),(boss?"Guardião do Tártaro • ":"")+def.displayName(),def,level,boss?hp*4:def.hp(),boss?80+floor:def.sp(),def.skills()));
+        }
         var s=new BattleSession(participants);var g=new Encounter(p,s,count);g.dungeonFloor=floor;g.boss=boss;BATTLES.put(s.id(),g);attach(g,p,g.origin);
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"umbra_slime");
         if(boss)for(var c:s.participants())if(c.side()==BattleSide.ENEMIES){var e=targetActor(p,c.id());if(e!=null)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(e);}
@@ -62,7 +67,7 @@ public final class BattleService {
         if(com.gx.velveteclipse.raid.RaidService.inside(p)||com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         int floor=Math.max(0,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(p));var roster=com.gx.velveteclipse.shadow.ShadowEncounterRules.roll(field.encounterSeed(),floor,field.rare());
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));int index=0;
-        for(var enemy:roster){var def=PersonaRegistry.persona(enemy.persona()).orElseThrow();var persona=new PersonaInstance(def.id(),enemy.level(),0,enemy.skills());participants.add(new BattleCombatant(UUID.randomUUID(),(field.rare()?"Red • ":"")+def.displayName()+" "+(++index),BattleSide.ENEMIES,persona,enemy.hp(),enemy.hp(),enemy.sp(),enemy.sp()));}
+        for(var enemy:roster){var def=EnemyCatalog.get(enemy.persona());participants.add(BattleCombatant.enemy(UUID.randomUUID(),(field.rare()?"Red • ":"")+def.displayName()+" "+(++index),def,enemy.level(),enemy.hp(),enemy.sp(),enemy.skills()));}
         var s=new BattleSession(participants,new Random(),opening);var g=new Encounter(p,s,roster.size());g.dungeonFloor=floor;g.rare=field.rare();BATTLES.put(s.id(),g);attach(g,p,g.origin);
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"");
         String message=switch(opening){case ADVANTAGE->"VANTAGEM DA EQUIPE • Aliados começam!";case AMBUSH->"EMBOSCADA • Inimigos começam!";default->"ENCONTRO NEUTRO • Ordem inicial sorteada.";};
@@ -72,9 +77,9 @@ public final class BattleService {
     public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
         if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null))return null;
         var participants=new ArrayList<BattleCombatant>();for(var p:party)participants.add(combatant(p));
-        var def=PersonaRegistry.persona("umbra_slime").orElseThrow();var instance=new PersonaInstance(def.id(),stage==2?30:25,0,Set.of("raid_ice_storm","shade_bite"));
+        var def=EnemyCatalog.get(stage==0?"magic_hand":stage==1?"trance_twins":"grieving_tiara");
         int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):180+65*party.size();
-        var foe=new BattleCombatant(UUID.randomUUID(),stage==2?"Sacerdotisa":stage==0?"Sentinela do Trem":"Condutor Sombrio",BattleSide.ENEMIES,instance,hp,hp,9999,9999);
+        var foe=BattleCombatant.enemy(UUID.randomUUID(),stage==2?"Sacerdotisa":stage==0?"Sentinela do Trem":"Condutor Sombrio",def,stage==2?30:25,hp,9999,Set.of("raid_ice_storm","shade_bite"));
         if(stage==2)foe.setRaidBoss(Element.FIRE);participants.add(foe);
         var s=new BattleSession(participants);var g=new Encounter(party.get(0),s,1);g.raid=true;g.raidStage=stage;g.boss=true;g.dungeonFloor=25;
         BATTLES.put(s.id(),g);for(var p:party){attach(g,p,RuntimeBridge.playerPosition(p));VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());}
@@ -83,6 +88,7 @@ public final class BattleService {
     private static void attach(Encounter g,Object p,double[] anchor){
         if(p instanceof ServerPlayer sp)sp.m_6915_();
         UUID id=RuntimeBridge.playerUuid(p);g.players.put(id,p);g.anchors.put(id,anchor);MEMBERS.put(id,g);
+        for(var enemy:g.session.participants())if(enemy.side()==BattleSide.ENEMIES&&enemy.alive())BestiaryService.seen(p,knowledgeKey(g,enemy),enemy.persona().level());
         RuntimeBridge.setEntityRotation(p,g.yaw,2);
         if(p instanceof ServerPlayer sp)sp.f_8906_.m_9774_(anchor[0],anchor[1],anchor[2],g.yaw,2);else RuntimeBridge.freezePlayer(p,anchor);
         ModNetwork.sendPresentation(p,new BattleSceneS2C(List.of()));
@@ -115,10 +121,10 @@ public final class BattleService {
             Object acting=g.players.get(reserved.actor());if(acting!=null){MeleeBattleServer.clear(acting);PersonaCinematicServer.clear(acting);ModNetwork.sendPresentation(acting,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));}g.session.cancelPrepared();
         }
         detach(g,p);g.session.leave(id);sync(p,"Você saiu da batalha.");
-        if(g.players.isEmpty()){VisualBattleActors.clearEnemies(g.session.id());BATTLES.remove(g.session.id());}
+        if(g.players.isEmpty()){ShadowWorldService.release(g.session.id(),false);VisualBattleActors.clearEnemies(g.session.id());BATTLES.remove(g.session.id());}
         else if(g.session.state()!=BattleState.ACTIVE){if(!busy(g))finish(g,"Batalha encerrada.");}else syncAll(g,RuntimeBridge.playerName(p)+" saiu da batalha.");
     }
-    public static void abortEncounter(Object p){var g=group(p);if(g==null)return;BATTLES.remove(g.session.id());g.session.cancelPrepared();for(Object member:new ArrayList<>(g.players.values())){AllOutServer.cancel(member);PersonaCinematicServer.clear(member);ModNetwork.sendPresentation(member,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));persist(member,g.session);detach(g,member);sync(member,"A Dark Hour terminou.");}VisualBattleActors.clearEnemies(g.session.id());}
+    public static void abortEncounter(Object p){var g=group(p);if(g==null)return;ShadowWorldService.release(g.session.id(),false);BATTLES.remove(g.session.id());g.session.cancelPrepared();for(Object member:new ArrayList<>(g.players.values())){AllOutServer.cancel(member);PersonaCinematicServer.clear(member);ModNetwork.sendPresentation(member,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));persist(member,g.session);detach(g,member);sync(member,"A Dark Hour terminou.");}VisualBattleActors.clearEnemies(g.session.id());}
     private static void detach(Encounter g,Object p){UUID id=RuntimeBridge.playerUuid(p);MeleeBattleServer.clear(p);VisualBattleActors.clear(p);MEMBERS.remove(id);g.players.remove(id);g.anchors.remove(id);g.targets.remove(id);}
     public static Entity targetActor(Object p,UUID id){var g=group(p);if(g==null||id==null)return null;Object target=g.players.get(id);return target instanceof Entity e?e:VisualBattleActors.enemy(g.session.id(),id);}
     public static UUID targetId(Object p){var g=group(p);if(g==null)return null;UUID id=RuntimeBridge.playerUuid(p);var r=g.session.prepared();if(r!=null&&r.actor().equals(id))return r.action().targetId();if(g.targets.containsKey(id))return g.targets.get(id);return g.session.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null);}
@@ -140,9 +146,11 @@ public final class BattleService {
         if(reserved!=null&&s.prepared()==null)for(var entry:reserved.hits().entrySet()){
             var target=s.find(entry.getKey()).orElse(null);var hit=entry.getValue();if(target==null||target.side()!=BattleSide.ENEMIES||hit.missed()||hit.element()==Element.NONE)continue;
             String key=knowledgeKey(g,target);var known=knowledge(g,p);boolean discovered=known.get(key,hit.element())==null;
-            if(g.raid&&g.raidStage==2)known.learn(key,hit);else BattleKnowledge.learn(p,key,hit);
+            if(g.raid&&g.raidStage==2)known.learn(key,hit);
+            BattleKnowledge.learn(p,key,hit);
             if(discovered&&hit.affinity()==Affinity.WEAK)RuntimeBridge.sendMessage(p,"§bFraqueza descoberta: "+target.name()+" • "+hit.element().name());
         }
+        recordDefeats(g);
         if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(action.type()==BattleActionType.ALL_OUT&&s.state()==BattleState.PLAYERS_WON)g.shuffleVictory=true;
         for(Object member:g.players.values())persist(member,s);
@@ -198,10 +206,15 @@ public final class BattleService {
         if(g.raid&&!com.gx.velveteclipse.raid.RaidService.allowAction(s.id()))return;
         if(!g.raid){g.animatingEnemy=VisualBattleActors.enemy(s.id(),actor.id());if(g.animatingEnemy!=null){g.animatingEnemy.m_146926_(skill!=null&&skill.usesMagicStat()?-45:45);g.enemyPoseUntil=ticks+22;}}
         var result=s.perform(actor.id(),skill==null?BattleAction.attack(target.id()):BattleAction.skill(skill.id(),target.id()));g.delay=28;
+        recordDefeats(g);
         if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(g.raid&&g.raidStage==2){g.delay=60;g.wasBusy=true;}
         for(Object p:g.players.values())persist(p,s);
         if(s.state()!=BattleState.ACTIVE)finish(g,String.join(" • ",result.log()));else syncAll(g,String.join(" • ",result.log()));
+    }
+    private static void recordDefeats(Encounter g){
+        for(var enemy:g.session.participants())if(enemy.side()==BattleSide.ENEMIES&&!enemy.alive()&&g.recordedDefeats.add(enemy.id()))
+            for(Object p:g.players.values())BestiaryService.defeated(p,knowledgeKey(g,enemy),enemy.persona().level());
     }
     private static String knowledgeKey(Encounter g,BattleCombatant c){return g.raid?"raid_"+g.raidStage:c.persona().definitionId();}
     private static AffinityKnowledge knowledge(Encounter g,Object p){return g.raid&&g.raidStage==2?g.raidKnowledge.computeIfAbsent(RuntimeBridge.playerUuid(p),id->new AffinityKnowledge()):BattleKnowledge.load(p);}
@@ -232,17 +245,18 @@ public final class BattleService {
         boolean won=g.session.state()==BattleState.PLAYERS_WON;
         if(g.raid)com.gx.velveteclipse.raid.RaidService.finished(g.session.id(),won);
         com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterFinished(g.session.id(),won);
+        if(won)ShadowWorldService.release(g.session.id(),true);
         VisualBattleActors.clearEnemies(g.session.id());
         // Keep encounter and membership until each player's Enter acknowledgement.
         for(Object p:new ArrayList<>(g.players.values())){
             persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?com.gx.velveteclipse.shadow.ShadowEncounterRules.xp(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1):0;String items="NENHUM ITEM";
-            if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{long yen=com.gx.velveteclipse.shadow.ShadowEncounterRules.yen(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1);data.addYen(yen);items="YEN • ¥ "+yen;if(g.session.participants().stream().anyMatch(c->c.side()==BattleSide.ENEMIES&&c.persona().definitionId().equals("umbra_slime"))){boolean fresh=!data.rosterIds().contains("umbra_slime");data.givePersona("umbra_slime");if(fresh)items+=" / PERSONA • Umbra Slime";}}}
+            if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{long yen=com.gx.velveteclipse.shadow.ShadowEncounterRules.yen(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1);data.addYen(yen);items="YEN • ¥ "+yen;}}
             data.save(p);VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
             if(g.shuffleVictory&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor));
             var persona=data.activeInstance();ModNetwork.sendPresentation(p,new BattleResultsS2C(g.session.id().toString(),won,xp,before,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),items,g.shuffleVictory&&won));
         }
     }
-    public static void acknowledge(Object p,String battle){var g=group(p);if(g==null||!g.session.id().toString().equals(battle)||!g.results.release(RuntimeBridge.playerUuid(p)))return;detach(g,p);sync(p,"Resultados confirmados.");if(g.players.isEmpty())BATTLES.remove(g.session.id());}
+    public static void acknowledge(Object p,String battle){var g=group(p);if(g==null||!g.session.id().toString().equals(battle)||!g.results.release(RuntimeBridge.playerUuid(p)))return;detach(g,p);sync(p,"Resultados confirmados.");if(g.players.isEmpty()){ShadowWorldService.release(g.session.id(),g.session.state()==BattleState.PLAYERS_WON);BATTLES.remove(g.session.id());}}
     private static void syncObservers(){
         var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();if(server==null)return;
         for(ServerPlayer p:server.m_6846_().m_11314_()){

@@ -30,6 +30,7 @@ public final class ClientShadowRendererRegistration {
       registerOne(var0, ShadowRegistry.shadowType(), "wealth_hand");
       registerOne(var0,com.gx.velveteclipse.shadow.FieldShadowRegistry.TYPE.get(),"field_shadow");
 
+      com.gx.velveteclipse.shadow.EnemyRegistry.TYPES.forEach((id,type)->registerOne(var0,type.get(),"enemy_"+id));
       for (Entry var2 : PersonaMobRegistry.all().entrySet()) {
          String var4 = (String)var2.getKey();
 

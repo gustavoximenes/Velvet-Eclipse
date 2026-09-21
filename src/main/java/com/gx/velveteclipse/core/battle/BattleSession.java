@@ -49,12 +49,13 @@ public final class BattleSession {
    public Prepared prepared(){return prepared;}
    public void cancelPrepared(){prepared=null;}
    public static SkillDefinition sword(){return new SkillDefinition("__basic_attack","Attack",Element.SLASH,35,96,0,0,true,SkillTarget.ONE_ENEMY);}
+   private static SkillDefinition basic(BattleCombatant actor){return new SkillDefinition("__basic_attack","Attack",actor.attackElement(),35,96,0,0,true,SkillTarget.ONE_ENEMY);}
    /** Reserve one validated action and its random outcome until the animation reaches impact. */
    public Prepared prepare(UUID actorId,BattleAction action){
       if(prepared!=null||state!=BattleState.ACTIVE||currentActor()==null||!currentActor().id().equals(actorId))return null;
       var actor=currentActor();
       if(action.type()==BattleActionType.ALL_OUT&&!canAllOut(actorId))return null;
-      var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ATTACK?sword():action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
+      var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ATTACK?basic(actor):action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
       var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
       if(skill==null||target==null||!actor.alive())return null;
       if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<skill.spCost()
@@ -172,7 +173,7 @@ public final class BattleSession {
                      return new BattleResolution(this.state, false, List.of("Invalid target."));
                   }
 
-                  SkillDefinition var11 = sword();
+                  SkillDefinition var11 = basic(var4);
                   DamageOutcome var12 = damage(var4, var9, var11);
                   weaknessHit = isWeaknessHit(var12);
                   var5 = this.appendOutcome(var3, var4, var9, var11, var12);

@@ -4,8 +4,8 @@ import java.util.*;
 /** Shared coordinates for drawing, pointer picking and offline layout validation. */
 public final class MenuDesign {
     public static final int W=900,H=500,WHITE=0xFFF6FFFF,CYAN=0xFF79F5FF,INK=0xFF03163D,RED=0xFFF11A4D,MUTED=0xFF9BBBDD;
-    public static final String[] TABS={"SKILL","ITEM","EQUIP","PERSONA","STATS","QUEST","SOCIAL LINK","CALENDAR","SYSTEM"};
-    public static final String[] HELP={"Habilidades da Persona","Itens e consumiveis","Armas e armaduras","Personas e afinidades","Atributos do jogador","Avancos do mundo","Vinculos com aldeoes","Dias e fases da lua","Opcoes do jogo"};
+    public static final String[] TABS={"SKILL","ITEM","EQUIP","PERSONA","STATS","QUEST","SOCIAL LINK","CALENDAR","SYSTEM","BESTIÁRIO"};
+    public static final String[] HELP={"Habilidades da Persona","Itens e consumiveis","Armas e armaduras","Personas e afinidades","Atributos do jogador","Avancos do mundo","Vinculos com aldeoes","Dias e fases da lua","Opcoes do jogo","Inimigos encontrados"};
     public interface Canvas {
         void fill(double x,double y,double w,double h,int color);
         void poly(double[] xy,int color);
@@ -18,9 +18,9 @@ public final class MenuDesign {
     public record View(boolean home,int tab,int selected,int offset,List<Row> rows,String title,List<String> detail,
                        int[] stats,String action,String message,String player,long wallet,long day,long time,double seconds,boolean motion,
                        double selection,double entered,double pageAge){}
-    private static final int[] HOME_X={374,418,405,374,405,397,365,373,395};
-    private static final int[] HOME_WIDTH={116,101,137,186,137,141,266,224,182};
-    private static final int[] ANGLE={-20,-16,-14,-14,-11,-10,-9,-7,9};
+    private static final int[] HOME_X={374,418,405,374,405,397,365,373,395,365};
+    private static final int[] HOME_WIDTH={116,101,137,186,137,141,266,224,182,242};
+    private static final int[] ANGLE={-20,-16,-14,-14,-11,-10,-9,-7,-5,-3};
     public static Rect tab(int i,boolean home){return home?new Rect(HOME_X[i],158+i*29,HOME_WIDTH[i],31):new Rect(25,145+i*28,185,25);}
     public static Rect row(int i){return new Rect(248,144+i*33,284,31);}
     public static Rect action(){return new Rect(551,410,300,33);}
@@ -55,7 +55,7 @@ public final class MenuDesign {
             c.poly(new double[]{238,55,864,37,855,93,239,110},WHITE);
             c.text(TABS[v.tab],257,62,31,INK,-2);
         }
-        int lo=Math.max(0,Math.min(8,(int)v.selection)),hi=Math.min(8,lo+1);double f=v.selection-lo;
+        int lo=Math.max(0,Math.min(TABS.length-1,(int)v.selection)),hi=Math.min(TABS.length-1,lo+1);double f=v.selection-lo;
         Rect from=tab(lo,v.home),to=tab(hi,v.home);
         double ix=from.x+(to.x-from.x)*f,iy=from.y+(to.y-from.y)*f;
         double iw=v.home?Math.min(280,c.width(TABS[v.tab],39)+18):191;
@@ -65,7 +65,7 @@ public final class MenuDesign {
             ribbon(c,ix,iy,iw,angle,RED,intro,true);ribbon(c,ix,iy,iw,angle,WHITE,intro,false);}
         if(!v.home){
             // Compact tabs use a shallower ribbon, keeping adjacent labels readable.
-            c.fill(0,128,228,276,0xFF091C47);
+            c.fill(0,128,228,306,0xFF091C47);
             c.poly(new double[]{ix-4,iy-3,ix+186,iy-16,ix+178,iy+21,ix-8,iy+26},WHITE);
             c.fill(ix-9,iy+5,3,25,RED);
         }

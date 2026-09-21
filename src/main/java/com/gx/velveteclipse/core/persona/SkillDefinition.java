@@ -35,7 +35,7 @@ public record SkillDefinition(
 
    public boolean usesMagicStat() {
       return switch (this.element) {
-         case PHYSICAL, SLASH, NONE -> false;
+         case PHYSICAL, SLASH, PIERCE, NONE -> false;
          case HEALING, SUPPORT, AILMENT -> true;
          default -> true;
       };

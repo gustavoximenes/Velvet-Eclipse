@@ -7,7 +7,7 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
  private static final EntityDataAccessor<Boolean> RARE=SynchedEntityData.m_135353_(FieldShadowEntity.class,EntityDataSerializers.f_135035_);
  private static final EntityDataAccessor<Integer> MOOD=SynchedEntityData.m_135353_(FieldShadowEntity.class,EntityDataSerializers.f_135028_);
  private final AnimatableInstanceCache cache=GeckoLibUtil.createInstanceCache(this);private final ShadowAwareness brain=new ShadowAwareness();
- private UUID target;private long seed;private boolean initialized,home;private double homeX,homeZ;private float searchYaw;
+ private UUID target;private long seed;private boolean initialized,home;private double homeX,homeZ;private float searchYaw;private int wanderDelay;
  public FieldShadowEntity(EntityType<? extends FieldShadowEntity> type,Level level){super(type,level);m_21530_();m_20331_(true);m_20049_("velvet_encounter_shadow");}
  @Override protected void m_8099_(){} // No vanilla melee, random jump or automatic targeting goals.
  @Override protected void m_8097_(){super.m_8097_();f_19804_.m_135372_(RARE,false);f_19804_.m_135372_(MOOD,0);}
@@ -27,7 +27,7 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
  private void face(float yaw){m_146922_(yaw);m_5616_(yaw);m_5618_(yaw);}
  @Override public void m_8119_(){
   super.m_8119_();if(m_9236_().f_46443_)return;if(!initialized)initialize(m_20148_().getMostSignificantBits());if(!home){home=true;homeX=m_20185_();homeZ=m_20189_();}
-  if(ExplorationService.reserved(this)||m_21525_()){m_21573_().m_26573_();m_20256_(Vec3.f_82478_);return;}
+  if(ShadowWorldService.held(this)||ExplorationService.reserved(this)||m_21525_()){m_21573_().m_26573_();m_20256_(Vec3.f_82478_);return;}
   if(TartarusDungeonService.inside(this)&&TartarusInteriorLayout.fixedFloor(TartarusDungeonService.floor(this))){m_21573_().m_26573_();return;}
   var level=(net.minecraft.server.level.ServerLevel)m_9236_();ServerPlayer p=target==null?null:level.m_7654_().m_6846_().m_11259_(target);
   if(target!=null&&!available(p)){p=null;target=null;brain.reset();}
@@ -37,14 +37,27 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
   }
   boolean close=p!=null&&m_20280_(p)<9,visible=p!=null&&sees(p),valid=p!=null&&available(p)&&m_20280_(p)<24*24&&(!TartarusDungeonService.inside(this)||sameRoom(this,p));
   var before=brain.phase;brain.update(visible,close,valid);if(before!=ShadowAwareness.Phase.SEARCH&&brain.phase==ShadowAwareness.Phase.SEARCH)searchYaw=m_146908_();
-  if(brain.phase==ShadowAwareness.Phase.SEARCH){m_21573_().m_26573_();face(searchYaw+180*Math.min(1,brain.ticks/40f));}
-  else if(brain.phase==ShadowAwareness.Phase.NOTICE||brain.phase==ShadowAwareness.Phase.IDLE)m_21573_().m_26573_();
+  if(brain.phase==ShadowAwareness.Phase.SEARCH||brain.phase==ShadowAwareness.Phase.NOTICE){m_21573_().m_26573_();if(valid)facePlayer(p);else face(searchYaw+180*Math.min(1,brain.ticks/40f));}
+  else if(brain.phase==ShadowAwareness.Phase.IDLE)wander();
   else if(brain.phase==ShadowAwareness.Phase.CHASE&&p!=null){
-   if(f_19797_%10==0)m_21573_().m_26519_(p.m_20185_(),p.m_20186_(),p.m_20189_(),rare()?1.25:1.05);face((float)Math.toDegrees(Math.atan2(m_20185_()-p.m_20185_(),p.m_20189_()-m_20189_())));
+   if(f_19797_%10==0)m_21573_().m_26519_(p.m_20185_(),p.m_20186_(),p.m_20189_(),rare()?1.25:1.05);facePlayer(p);
    if(m_20280_(p)<=3.6&&m_142582_(p)){brain.attack();m_21573_().m_26573_();}
   }else if(brain.phase==ShadowAwareness.Phase.ATTACK){m_21573_().m_26573_();if(!valid){brain.reset();}else if(brain.ticks>=12){if(m_20280_(p)<=6.25&&m_142582_(p))ShadowWorldService.ambush(p,this);brain.reset();}}
   if(TartarusDungeonService.inside(this)&&(room(m_20185_())!=room(homeX)||room(m_20189_())!=room(homeZ))){m_6034_(homeX,m_20186_(),homeZ);m_21573_().m_26573_();brain.reset();}
   int mood=brain.phase.ordinal();if(mood!=mood()){boolean question=brain.phase==ShadowAwareness.Phase.NOTICE||brain.phase==ShadowAwareness.Phase.SEARCH;boolean danger=brain.phase==ShadowAwareness.Phase.CHASE||brain.phase==ShadowAwareness.Phase.ATTACK;m_6593_(net.minecraft.network.chat.Component.m_237113_(question?"§e§l?":danger?"§c§l!":"Shadow"));m_20340_(question||danger);}f_19804_.m_135381_(MOOD,mood);
+ }
+ public void resumeExploration(){target=null;brain.reset();wanderDelay=20;f_19804_.m_135381_(MOOD,0);m_20340_(false);m_6593_(net.minecraft.network.chat.Component.m_237113_("Shadow"));}
+ private void facePlayer(ServerPlayer p){face((float)Math.toDegrees(Math.atan2(m_20185_()-p.m_20185_(),p.m_20189_()-m_20189_())));}
+ private void wander(){
+  if(--wanderDelay>0)return;wanderDelay=45+m_217043_().m_188503_(65);
+  boolean dungeon=TartarusDungeonService.inside(this);int origin=dungeon?TartarusInteriorLayout.origin(TartarusDungeonService.floor(this)):0;
+  double cx=dungeon?origin+room(homeX-origin)*24-36:homeX,cz=dungeon?room(homeZ)*24-36:homeZ;
+  for(int i=0;i<12;i++){
+   double x=cx+m_217043_().m_188500_()*16-8,z=cz+m_217043_().m_188500_()*16-8,y=m_20186_();
+   var box=m_20191_().m_82386_(x-m_20185_(),0,z-m_20189_());
+   if(!m_9236_().m_45756_(this,box)||m_9236_().m_45756_(this,box.m_82386_(0,-.7,0)))continue;
+   if(m_21573_().m_26519_(x,y,z,.65))return;
+  }
  }
  @Override public AnimatableInstanceCache getAnimatableInstanceCache(){return cache;}
  @Override public void registerControllers(AnimatableManager.ControllerRegistrar c){c.add(new AnimationController<FieldShadowEntity>(this,"main",2,s->s.setAndContinue(mood()==ShadowAwareness.Phase.ATTACK.ordinal()?RawAnimation.begin().thenPlay("action.attack"):RawAnimation.begin().thenLoop("misc.idle"))));}

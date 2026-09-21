@@ -12,7 +12,7 @@ import software.bernie.geckolib.cache.object.GeoBone;
 public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> extends GeoEntityRenderer<T> {
     private final boolean thanatos,izanagi;
     @Override public void m_7392_(T entity,float yaw,float partial,PoseStack stack,net.minecraft.client.renderer.MultiBufferSource buffers,int light){
-        if(com.gx.velveteclipse.client.BattleEncounterClient.hidden(entity.m_19879_()))return;
+        if(entity.m_20145_()||com.gx.velveteclipse.client.BattleEncounterClient.hidden(entity.m_19879_()))return;
         stack.m_85836_();
         try{
             if(com.gx.velveteclipse.client.BattleTacticsClient.downed(entity.m_19879_())){stack.m_85837_(0,.28,0);stack.m_252781_(new org.joml.Quaternionf().rotationZ(1.40f).rotateX(.12f));}
@@ -30,6 +30,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         if(izanagi||asset.equals("igor"))withScale(.25f);
         if(asset.equals("priestess"))withScale(.4f);
         if(asset.equals("field_shadow"))withScale(.48f);
+        if(asset.startsWith("enemy_"))withScale(.6f);
         if(asset.equals("field_shadow")||asset.equals("wealth_hand")||izanagi||asset.startsWith("tartarus_"))addRenderLayer(new AutoGlowingGeoLayer<T>(this));
     }
     @Override protected void applyRotations(T entity,PoseStack stack,float age,float bodyYaw,float partial){

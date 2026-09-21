@@ -70,6 +70,7 @@ public final class ShadowWorldService {
       serverTicks++;
       if (serverTicks % 10L == 0L) {
          cleanupRemoved();
+         restoreInterruptedEncounters();
          migrateShadows();
          detectEncounters();
       }
@@ -188,7 +189,7 @@ public final class ShadowWorldService {
    private static void ensureWorldShadows() {
       // Natural encounter Shadows dissolve at dawn. Explicit summons and battle
       // actors stay under their own lifecycle and are never removed here.
-      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.TartarusDungeonService.dungeonShadow(shadow)&&!e.getPersistentData().m_128471_("manual_shadow")&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
+      for(Object shadow:new ArrayList<>(SHADOWS.values()))if(shadow instanceof Entity e&&hasEntityTag(shadow,"velvet_encounter_shadow")&&!com.gx.velveteclipse.darkhour.TartarusDungeonService.dungeonShadow(shadow)&&!held(e)&&!e.getPersistentData().m_128471_("manual_shadow")&&!com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_())&&!com.gx.velveteclipse.exploration.ExplorationService.reserved(shadow))consumeShadow(shadow);
       for (Object var1 : new ArrayList<>(PLAYERS.values())) {
          if (var1 instanceof Entity e && com.gx.velveteclipse.darkhour.DarkHourService.active(e.m_9236_()) && BattleService.current(var1) == null) {
             UUID var2 = RuntimeBridge.playerUuid(var1);
@@ -244,7 +245,32 @@ public final class ShadowWorldService {
    private static void startEncounter(Object player,Object shadow,com.gx.velveteclipse.core.battle.EncounterOpening mode) {
       if(shadow instanceof com.gx.velveteclipse.shadow.FieldShadowEntity field)BattleService.startWorldEncounter(player,field,mode);
       else BattleService.startEncounter(player,1,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(player),com.gx.velveteclipse.darkhour.TartarusDungeonService.guardian(shadow));
-      if(BattleService.current(player)!=null){com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterStarted(player,shadow);consumeShadow(shadow);}
+      if(BattleService.current(player)!=null){com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterStarted(player,shadow);reserve(shadow,BattleService.current(player).id());}
+   }
+   private static final String HELD="velvet_shadow_battle";
+   public static boolean held(Object object){return object instanceof Entity e&&!e.getPersistentData().m_128461_(HELD).isEmpty();}
+   private static void reserve(Object object,UUID battle){
+      if(!(object instanceof Entity e))return;
+      e.getPersistentData().m_128359_(HELD,battle.toString());e.m_6842_(true);e.m_20340_(false);e.m_20242_(true);e.f_19794_=true;e.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);
+      if(e instanceof net.minecraft.world.entity.Mob mob){mob.m_21557_(true);mob.m_21573_().m_26573_();}
+   }
+   /** Only victory consumes the roaming source. Escape restores that same entity and seed. */
+   public static void release(UUID battle,boolean won){
+      for(Object object:new ArrayList<>(SHADOWS.values()))if(object instanceof Entity e&&battle.toString().equals(e.getPersistentData().m_128461_(HELD))){
+         if(won)consumeShadow(e);else restore(e);
+      }
+      if(!won)com.gx.velveteclipse.darkhour.TartarusDungeonService.encounterReleased(battle);
+   }
+   private static void restore(Entity e){
+      if(e instanceof com.gx.velveteclipse.shadow.FieldShadowEntity field)field.resumeExploration();
+      e.getPersistentData().m_128473_(HELD);e.m_6842_(false);e.m_20242_(false);e.f_19794_=false;
+      if(e instanceof net.minecraft.world.entity.Mob mob)mob.m_21557_(com.gx.velveteclipse.darkhour.TartarusDungeonService.guardian(e));
+   }
+   private static void restoreInterruptedEncounters(){
+      for(Object object:new ArrayList<>(SHADOWS.values()))if(object instanceof Entity e&&held(e)){
+         try{UUID battle=UUID.fromString(e.getPersistentData().m_128461_(HELD));if(!BattleService.encounterActive(battle))release(battle,false);}
+         catch(IllegalArgumentException invalid){restore(e);}
+      }
    }
    private static void consumeShadow(Object var0) {
       if (var0 != null) {
@@ -304,7 +330,7 @@ public final class ShadowWorldService {
       }
    }
 
-   public static boolean worldShadow(Object object){return ShadowRegistry.isShadow(object)&&object instanceof Entity e&&!e.m_19880_().contains("velvet_battle_enemy")&&!e.getPersistentData().m_128471_("raid_actor")&&!e.m_19880_().contains("velvet_persona_actor");}
+   public static boolean worldShadow(Object object){return !held(object)&&ShadowRegistry.isShadow(object)&&object instanceof Entity e&&!e.m_19880_().contains("velvet_battle_enemy")&&!e.getPersistentData().m_128471_("raid_actor")&&!e.m_19880_().contains("velvet_persona_actor");}
    public static com.gx.velveteclipse.core.battle.EncounterOpening opening(Object p,Object shadow){
       if(!(p instanceof Entity player)||!(shadow instanceof com.gx.velveteclipse.shadow.FieldShadowEntity e))return com.gx.velveteclipse.core.battle.EncounterOpening.STANDARD;
       return com.gx.velveteclipse.shadow.ShadowAwareness.behind(e.m_146908_(),player.m_20185_()-e.m_20185_(),player.m_20189_()-e.m_20189_())?com.gx.velveteclipse.core.battle.EncounterOpening.ADVANTAGE:com.gx.velveteclipse.core.battle.EncounterOpening.NEUTRAL;

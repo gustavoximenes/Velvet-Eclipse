@@ -113,7 +113,7 @@ public final class ExplorationService {
     private static void freezeShadow(State s){s.shadow.m_20256_(Vec3.f_82478_);s.shadow.m_6034_(s.shadowAnchor.f_82479_,s.shadowAnchor.f_82480_,s.shadowAnchor.f_82481_);}
     private static void release(State s){
         RESERVATIONS.release(s.player.m_20148_());
-        if(s.shadow instanceof Mob mob&&!mob.m_213877_())mob.m_21557_(s.previousNoAi);
+        if(s.shadow instanceof Mob mob&&!mob.m_213877_()&&!com.gx.velveteclipse.forge.ShadowWorldService.held(mob))mob.m_21557_(s.previousNoAi);
         s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);
     }
     public static void expire(ServerPlayer p){State s=PLAYERS.get(p.m_20148_());if(s!=null)cancel(s);}

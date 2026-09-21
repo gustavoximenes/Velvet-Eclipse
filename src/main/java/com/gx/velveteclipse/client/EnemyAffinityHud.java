@@ -1,7 +1,7 @@
 package com.gx.velveteclipse.client;
 import com.gx.velveteclipse.core.persona.*;import java.util.*;
 public final class EnemyAffinityHud {
- public static final Element[] ELEMENTS={Element.SLASH,Element.PHYSICAL,Element.FIRE,Element.ICE,Element.ELECTRIC,Element.WIND,Element.PSY,Element.NUCLEAR,Element.LIGHT,Element.DARK,Element.ALMIGHTY};
+ public static final Element[] ELEMENTS={Element.SLASH,Element.PHYSICAL,Element.PIERCE,Element.FIRE,Element.ICE,Element.ELECTRIC,Element.WIND,Element.PSY,Element.NUCLEAR,Element.LIGHT,Element.DARK,Element.ALMIGHTY};
  public static void paint(HudDesign.Canvas c,String known,int w,int h,double u,boolean targeting){
   var table=new EnumMap<Element,Affinity>(Element.class);for(String pair:known.split(",")){String[] a=pair.split(":");if(a.length==2)try{table.put(Element.valueOf(a[0]),Affinity.valueOf(a[1]));}catch(IllegalArgumentException ignored){}}
   int step=(int)(25*u),width=step*ELEMENTS.length,x=(w-width)/2,y=targeting?h-(int)(110*u):(int)(36*u);

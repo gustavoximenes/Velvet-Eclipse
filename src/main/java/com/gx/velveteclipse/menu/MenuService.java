@@ -38,7 +38,7 @@ public final class MenuService {
         quests.sort(Comparator.comparing(MenuSnapshot.Quest::done).thenComparing(MenuSnapshot.Quest::name));
         if(quests.size()>180)quests=new ArrayList<>(quests.subList(0,180));
         long time=player.m_9236_().m_46468_();
-        return new MenuSnapshot(data.hp(),data.maxHp(),data.sp(),data.maxSp(),data.pulseTonics(),data.activePersona(),personas,quests,links(player),Math.floorDiv(time,24000)+1,time,message,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),data.yen());
+        return new MenuSnapshot(data.hp(),data.maxHp(),data.sp(),data.maxSp(),data.pulseTonics(),data.activePersona(),personas,quests,links(player),Math.floorDiv(time,24000)+1,time,message,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),data.yen(),com.gx.velveteclipse.forge.BestiaryService.entries(player));
     }
     public static MenuSnapshot.Persona describe(PersonaInstance instance){
             var def=PersonaRegistry.persona(instance.definitionId()).orElseThrow();var stats=def.baseStats();int n=Math.max(0,instance.level()-def.baseLevel());

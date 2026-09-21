@@ -22,6 +22,7 @@ public final class PersonaMenuScreen extends Screen {
     private MenuPortrait portrait;
     private final PersonaSheetState sheet=new PersonaSheetState();
     private final PersonaModelPreview personaPreview=new PersonaModelPreview();
+    private final BestiaryModelPreview bestiaryPreview=new BestiaryModelPreview();
     private boolean home=true,closing;
     private static boolean motion=true;
     private int tab,selected,offset,ticks;
@@ -63,7 +64,7 @@ public final class PersonaMenuScreen extends Screen {
     private double scale(){return Math.min(f_96543_/900.0,f_96544_/500.0);}
     private double left(){return (f_96543_-900*scale())/2;}
     private double top(){return (f_96544_-500*scale())/2;}
-    private void selectTab(int index,boolean enter){sheet.close();tab=Math.floorMod(index,9);selected=offset=0;if(enter)home=false;changed=now();}
+    private void selectTab(int index,boolean enter){sheet.close();tab=Math.floorMod(index,MenuDesign.TABS.length);selected=offset=0;if(enter)home=false;changed=now();}
     private void showPersona(){if(sheet.show(data.personas(),selected))changed=now();}
     private void cyclePersona(int delta){sheet.cycle(data.personas(),delta);selected=Math.max(0,sheet.index(data.personas()));adjustScroll();changed=now();}
     private void equipInspected(){var p=sheet.persona(data.personas());if(p!=null)request("equip",p.id());}
@@ -168,6 +169,10 @@ public final class PersonaMenuScreen extends Screen {
                 list.add(new MenuDesign.Row("Hoje","Dia "+data.day(),-1));list.add(new MenuDesign.Row("Fase da lua","Ciclo "+Math.floorMod(data.day()-1,8)+" / 7",-1));
                 list.add(new MenuDesign.Row("Vinculos","Reencontre seus aldeoes a cada dia",-1));list.add(new MenuDesign.Row("Calendario do mundo","Cada pagina mostra 28 dias",-1));
             }
+            case 9 -> {
+                for(var e:data.bestiary())list.add(new MenuDesign.Row(e.name(),e.defeated()>0?"DERROTADO / "+e.defeated()+" vezes":"VISTO / Ainda não derrotado",-1));
+                if(list.isEmpty())detail.add("Encontre inimigos em batalha para registrá-los aqui. Teste os elementos para descobrir suas afinidades.");
+            }
             case 8 -> {
                 list.add(new MenuDesign.Row("Opcoes do Minecraft","Video, audio, idioma e controles",-1));list.add(new MenuDesign.Row("Animacoes do menu",motion?"Ativadas":"Movimento reduzido",-1));list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
                 if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio, controles e idioma nas opcoes do Minecraft.");action="Abrir opcoes";}
@@ -222,6 +227,12 @@ public final class PersonaMenuScreen extends Screen {
             }
             pose.m_85837_(0,0,MenuDepth.FOREGROUND);
             g.m_286007_(() -> MenuDesign.foreground(canvas,view));
+            if(!home&&tab==9&&!data.bestiary().isEmpty()){
+                var enemy=data.bestiary().get(Math.min(selected,data.bestiary().size()-1));
+                g.m_286007_(() -> BestiaryDesign.paint(canvas,enemy));
+                g.m_280588_((int)(left()+552*scale()),(int)(top()+195*scale()),(int)Math.ceil(left()+850*scale()),(int)Math.ceil(top()+303*scale()));
+                try{bestiaryPreview.draw(g,enemy,seconds);}finally{g.m_280618_();}
+            }
             if(!home&&tab==3&&!data.personas().isEmpty())g.m_286007_(() -> PersonaSheetDesign.rosterHint(canvas));
             if(motion&&seconds-changed<.28&&!home){double p=MenuMotion.wipe(seconds-changed);double x=210+p*720;
                 canvas.poly(new double[]{x-175,40,x+100,40,x-45,445,x-210,445},MenuDesign.alpha(MenuDesign.CYAN,1-p));}

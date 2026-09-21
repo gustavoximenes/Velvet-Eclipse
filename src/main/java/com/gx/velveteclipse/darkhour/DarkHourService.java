@@ -18,7 +18,7 @@ import static net.minecraft.commands.Commands.m_82127_;
 public final class DarkHourService {
  private static final String FROZEN="velvet_eclipse_dark_hour";
  public static boolean active(Level level){return level!=null&&level.m_46472_().equals(Level.f_46428_)&&DarkHourCycle.active(level.m_46468_());}
- public static boolean eligibleType(Class<?> type){return Mob.class.isAssignableFrom(type)&&!com.gx.velveteclipse.entity.VelvetPersonaGeoEntity.class.isAssignableFrom(type)&&!com.gx.velveteclipse.entity.VelvetShadowGeoEntity.class.isAssignableFrom(type);}
+ public static boolean eligibleType(Class<?> type){return Mob.class.isAssignableFrom(type)&&!com.gx.velveteclipse.entity.VelvetPersonaGeoEntity.class.isAssignableFrom(type)&&!com.gx.velveteclipse.entity.VelvetShadowGeoEntity.class.isAssignableFrom(type)&&!com.gx.velveteclipse.shadow.EnemyEntity.class.isAssignableFrom(type);}
  public static boolean eligible(Entity entity){return eligibleType(entity.getClass())&&!ShadowRegistry.isShadow(entity)&&!entity.m_19880_().contains("velvet_persona_actor")&&!entity.m_19880_().contains("velvet_battle_actor");}
  @SubscribeEvent public static void commands(RegisterCommandsEvent e){
   for(String name:new String[]{"dark_hour","darkhour"})e.getDispatcher().register(m_82127_("time").requires(s->s.m_6761_(2)).then(m_82127_("set").then(m_82127_(name).executes(c->DarkHourDeadline.start(c.getSource())))));

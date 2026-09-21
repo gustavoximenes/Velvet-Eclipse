@@ -3,7 +3,10 @@ import java.util.List;
 import com.gx.velveteclipse.core.persona.SkillDefinition;
 
 public record MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,
-    List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message,int playerLevel,int playerXp,int playerNextXp,long yen) {
+    List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message,int playerLevel,int playerXp,int playerNextXp,long yen,List<Enemy> bestiary) {
+    public MenuSnapshot {bestiary=bestiary==null?List.of():List.copyOf(bestiary);}
+    public MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message,int playerLevel,int playerXp,int playerNextXp,long yen){this(hp,maxHp,sp,maxSp,tonics,active,personas,quests,links,day,time,message,playerLevel,playerXp,playerNextXp,yen,List.of());}
+    public record Enemy(String id,String name,String asset,int level,int seen,int defeated,String affinities,boolean changing) {}
     public MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message,int playerLevel,int playerXp,int playerNextXp){this(hp,maxHp,sp,maxSp,tonics,active,personas,quests,links,day,time,message,playerLevel,playerXp,playerNextXp,0);}
     public MenuSnapshot(int hp,int maxHp,int sp,int maxSp,int tonics,String active,List<Persona> personas,List<Quest> quests,List<Link> links,long day,long time,String message){this(hp,maxHp,sp,maxSp,tonics,active,personas,quests,links,day,time,message,1,0,58);}
     public record Persona(String id,String name,String arcana,int level,int xp,int nextXp,int[] stats,

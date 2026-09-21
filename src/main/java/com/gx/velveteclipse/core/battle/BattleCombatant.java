@@ -11,6 +11,12 @@ public final class BattleCombatant {
    private final String name;
    private final BattleSide side;
    private PersonaInstance persona;
+   private com.gx.velveteclipse.shadow.EnemyDefinition enemy;
+   public static BattleCombatant enemy(UUID id,String name,com.gx.velveteclipse.shadow.EnemyDefinition def,int level,int hp,int sp,java.util.Set<String> skills){
+      var c=new BattleCombatant(id,name,BattleSide.ENEMIES,new PersonaInstance(def.id(),level,0,skills),hp,hp,sp,sp);c.enemy=def;return c;
+   }
+   public com.gx.velveteclipse.core.persona.Element attackElement(){return enemy==null?com.gx.velveteclipse.core.persona.Element.SLASH:enemy.attack();}
+
    private int maxHp;
    private int hp;
    private int maxSp;
@@ -21,7 +27,7 @@ public final class BattleCombatant {
    private com.gx.velveteclipse.core.persona.Element raidWeakness;
    public void setRaidBoss(com.gx.velveteclipse.core.persona.Element weak){knockdownImmune=true;raidWeakness=weak;setDowned(false);}
    public boolean knockdownImmune(){return knockdownImmune;}
-   public com.gx.velveteclipse.core.persona.Affinity affinity(com.gx.velveteclipse.core.persona.Element e){return raidWeakness==null?personaDefinition().affinity(e):e==raidWeakness?com.gx.velveteclipse.core.persona.Affinity.WEAK:com.gx.velveteclipse.core.persona.Affinity.NORMAL;}
+   public com.gx.velveteclipse.core.persona.Affinity affinity(com.gx.velveteclipse.core.persona.Element e){return raidWeakness==null?(enemy==null?personaDefinition().affinity(e):enemy.affinity(e)):e==raidWeakness?com.gx.velveteclipse.core.persona.Affinity.WEAK:com.gx.velveteclipse.core.persona.Affinity.NORMAL;}
    private com.gx.velveteclipse.core.persona.Element downElement;
    private boolean skipNextTurn;
    private double batonMultiplier=1;
@@ -121,8 +127,8 @@ public final class BattleCombatant {
    }
 
    public PersonaStats stats() {
-      PersonaStats var1 = this.personaDefinition().baseStats();
-      int var2 = Math.max(0, this.persona.level() - this.personaDefinition().baseLevel());
+      PersonaStats var1 = enemy==null?this.personaDefinition().baseStats():enemy.stats();
+      int var2 = Math.max(0, this.persona.level() - (enemy==null?this.personaDefinition().baseLevel():enemy.level()));
       return new PersonaStats(
          var1.strength() + var2 / 2, var1.magic() + var2 / 2, var1.endurance() + var2 / 2, var1.agility() + var2 / 3, var1.luck() + var2 / 3
       );

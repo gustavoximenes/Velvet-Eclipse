@@ -14,7 +14,7 @@ public final class ShadowAudit {
  private static void check(boolean ok,String message){checks++;if(!ok)throw new AssertionError(message);}
  private static BattleCombatant fighter(int id,BattleSide side,String persona,Set<String> skills){return new BattleCombatant(new UUID(0,id),"Fighter "+id,side,new PersonaInstance(persona,15,0,skills),5000,5000,200,200);}
  public static void main(String[] args)throws Exception{
-  PersonaRegistry.bootstrap();awareness();openings();magic();encounters();population();assets();
+  PersonaRegistry.bootstrap();awareness();openings();magic();encounters();population();assets();reloadAssets();escapeSlots();
   System.out.println("PASS Shadows: "+checks+" checks; recognition/search, front/back, party opening order, enemy magic/One More, no enemy All-Out, stable 1..5 rosters, rare rewards, one Shadow per room and GeckoLib model/animation bake. Offline only.");
  }
  private static void awareness(){
@@ -46,9 +46,9 @@ public final class ShadowAudit {
   int red=0;var sizes=new HashSet<Integer>();var types=new HashSet<String>();
   for(int seed=0;seed<2000;seed++){
    if(ShadowEncounterRules.rare(seed))red++;int floor=seed%40+1;var roster=ShadowEncounterRules.roll(seed,floor,false);var rare=ShadowEncounterRules.roll(seed,floor,true);sizes.add(roster.size());check(roster.size()>=1&&roster.size()<=5&&roster.equals(ShadowEncounterRules.roll(seed,floor,false)),"roster persists across escape/re-entry");
-   for(int i=0;i<roster.size();i++){var e=roster.get(i);types.add(e.persona());check(ShadowEncounterRules.ORDINARY.contains(e.persona())&&PersonaRegistry.persona(e.persona()).orElseThrow().baseLevel()<=Math.max(2,floor+1),"ordinary floor appropriate enemy only");check(rare.get(i).level()>e.level()&&rare.get(i).hp()>e.hp()*2,"red encounter significantly stronger");check(e.skills().stream().map(id->PersonaRegistry.skill(id).orElseThrow()).anyMatch(d->d.isDamageSkill()&&d.usesMagicStat()),"every enemy has usable magic");}
+   for(int i=0;i<roster.size();i++){var e=roster.get(i);types.add(e.persona());check(ShadowEncounterRules.ORDINARY.contains(e.persona())&&PersonaRegistry.persona(e.persona()).isEmpty()&&EnemyCatalog.pool(floor).contains(EnemyCatalog.get(e.persona())),"ordinary floor appropriate enemy only");check(rare.get(i).level()>e.level()&&rare.get(i).hp()>e.hp()*2,"red encounter significantly stronger");check(e.skills().stream().allMatch(id->PersonaRegistry.skill(id).isPresent()),"every enemy uses registered skills");}
   }
-  check(red>=70&&red<=130,"rare spawn rate approximately five percent");check(sizes.size()==5&&types.size()==6,"all encounter sizes and ordinary types reachable");check(ShadowEncounterRules.xp(10,3,true)==ShadowEncounterRules.xp(10,3,false)*3&&ShadowEncounterRules.yen(10,3,true)==ShadowEncounterRules.yen(10,3,false)*4,"rare reward multipliers");check(ShadowEncounterRules.yen(1,1,false)>0,"ordinary victories grant yen");
+  check(red>=70&&red<=130,"rare spawn rate approximately five percent");check(sizes.size()==5&&types.size()==16,"all encounter sizes and ordinary types reachable");check(ShadowEncounterRules.xp(10,3,true)==ShadowEncounterRules.xp(10,3,false)*3&&ShadowEncounterRules.yen(10,3,true)==ShadowEncounterRules.yen(10,3,false)*4,"rare reward multipliers");check(ShadowEncounterRules.yen(1,1,false)>0,"ordinary victories grant yen");
  }
  private static void population(){
   var quota=new TartarusPopulation();quota.range(64,64);
@@ -65,4 +65,36 @@ public final class ShadowAudit {
   var attack=clips.getAnimation("action.attack");for(var track:attack.boneAnimations())if(track.boneName().equals("body"))check(Math.abs(IzanagiAudit.sample(track.rotationKeyFrames().xKeyframes(),11)-Math.toRadians(17))<.001,"native attack rotation matches authored forward impact");
   for(String stem:List.of("field_shadow","red_shadow")){check(javax.imageio.ImageIO.read(root.resolve("textures/entity/"+stem+".png").toFile()).getWidth()==512,"texture atlas exists");check(Files.exists(root.resolve("textures/entity/"+stem+"_glowmask.png")),"emissive eyes available");check(Files.exists(root.resolve("models/item/"+stem+"_spawn.json")),"creative placement item model exists");for(String locale:List.of("pt_br","en_us"))check(JsonParser.parseString(Files.readString(root.resolve("lang/"+locale+".json"))).getAsJsonObject().has("item.velvet_eclipse."+stem+"_spawn"),"localized creative item");}
  }
+ private static void escapeSlots(){
+  var slot=new net.minecraft.nbt.CompoundTag();var source=UUID.randomUUID().toString();var battle=UUID.randomUUID();slot.m_128359_("entity",source);slot.m_128356_("seed",876543);
+  TartarusEncounterSlot.begin(slot,battle);check(!TartarusEncounterSlot.release(slot,UUID.randomUUID()),"other battle cannot release a source");
+  check(TartarusEncounterSlot.release(slot,battle)&&source.equals(slot.m_128461_("entity"))&&!slot.m_128471_("defeated")&&slot.m_128454_("seed")==876543,"escape keeps source identity, seed and unspent encounter");
+  check(!TartarusEncounterSlot.release(slot,battle),"repeated cleanup cannot spend the encounter");
+  TartarusEncounterSlot.begin(slot,battle);TartarusEncounterSlot.recover(slot);check(source.equals(slot.m_128461_("entity"))&&slot.m_128461_("battle").isEmpty(),"restart recovers retained source without duplication");
+  slot.m_128359_("battle",battle.toString());TartarusEncounterSlot.recover(slot);check(slot.m_128461_("entity").isEmpty(),"legacy discarded pre-upgrade source can recover once");
+ }
+ private static void reloadAssets()throws Exception{
+  var root=Path.of("src/main/resources/assets/velvet_eclipse");check(EnemyCatalog.all().size()==19,"19 dedicated Reload definitions");
+  for(var def:EnemyCatalog.all()){
+   check(PersonaRegistry.persona(def.id()).isEmpty(),"enemies are not summonable Personas");
+   var fighter=BattleCombatant.enemy(UUID.randomUUID(),def.displayName(),def,def.level(),def.hp(),def.sp(),def.skills());
+   check(fighter.stats().equals(def.stats())&&fighter.attackElement()==def.attack(),"enemy combat attributes independent from PersonaRegistry");
+   for(var element:Element.values())check(fighter.affinity(element)==def.affinity(element),"runtime enemy affinities match data");
+   var raw=Files.readString(root.resolve("geo/entity/"+def.asset()+".geo.json"));var model=software.bernie.geckolib.util.JsonUtil.GEO_GSON.fromJson(raw,software.bernie.geckolib.loading.json.raw.Model.class);
+   var baked=software.bernie.geckolib.loading.object.BakedModelFactory.DEFAULT_FACTORY.constructGeoModel(software.bernie.geckolib.loading.object.GeometryTree.fromModel(model));check(baked.getBone("body").isPresent(),"native enemy model bakes "+def.id());
+   var json=JsonParser.parseString(raw).getAsJsonObject().getAsJsonArray("minecraft:geometry").get(0).getAsJsonObject();var bones=new HashSet<String>();
+   for(var value:json.getAsJsonArray("bones")){var b=value.getAsJsonObject();bones.add(b.get("name").getAsString());if(b.has("cubes"))for(var cube:b.getAsJsonArray("cubes")){var c=cube.getAsJsonObject();var size=c.getAsJsonArray("size");var uv=c.getAsJsonArray("uv");check(uv.get(0).getAsDouble()+2*(size.get(0).getAsDouble()+size.get(2).getAsDouble())<=512&&uv.get(1).getAsDouble()+size.get(1).getAsDouble()+size.get(2).getAsDouble()<=512,"enemy Box UV inside texture");}}
+   var animations=JsonParser.parseString(Files.readString(root.resolve("animations/entity/"+def.asset()+".animation.json"))).getAsJsonObject().getAsJsonObject("animations");
+   var clips=software.bernie.geckolib.util.JsonUtil.GEO_GSON.fromJson(animations,software.bernie.geckolib.loading.object.BakedAnimations.class);
+   for(String clip:List.of("misc.idle","action.physical","action.magic")){check(clips.getAnimation(clip)!=null,"idle/physical/magic animation bakes");for(String b:animations.getAsJsonObject(clip).getAsJsonObject("bones").keySet())check(bones.contains(b),"animation uses authored skeleton");}
+   check(javax.imageio.ImageIO.read(root.resolve("textures/entity/"+def.asset()+".png").toFile()).getWidth()==512,"enemy texture");check(Files.exists(root.resolve("models/item/"+def.asset()+"_spawn.json")),"creative item model");check(Files.exists(root.resolve("textures/item/"+def.asset()+"_spawn.png")),"creative icon");
+   for(String locale:List.of("pt_br","en_us"))check(JsonParser.parseString(Files.readString(root.resolve("lang/"+locale+".json"))).getAsJsonObject().has("item.velvet_eclipse."+def.asset()+"_spawn"),"creative enemy translated");
+  }
+  check(EnemyCatalog.get("wealth_hand").affinity(Element.PHYSICAL)==Affinity.WEAK&&EnemyCatalog.get("wealth_hand").affinity(Element.SLASH)==Affinity.NORMAL,"Reload Strike is distinct from Slash");
+  check(EnemyCatalog.get("laughing_table").affinity(Element.PIERCE)==Affinity.RESIST&&EnemyCatalog.get("grieving_tiara").affinity(Element.ICE)==Affinity.NULL,"Pierce resistance and ice immunity");
+  check(EnemyCatalog.pool(9).stream().noneMatch(EnemyDefinition::guardian),"bosses excluded from random encounters");
+  var e=EnemyCatalog.get("obsessed_cupid");var enemy=BattleCombatant.enemy(UUID.randomUUID(),e.displayName(),e,e.level(),999,99,e.skills());var player=fighter(99,BattleSide.PLAYERS,"cinder_wisp",Set.of("ember"));var session=new BattleSession(List.of(player,enemy),new Random(1),EncounterOpening.AMBUSH);
+  var action=session.prepare(enemy.id(),BattleAction.attack(player.id()));check(action!=null&&action.hits().values().stream().allMatch(h->h.element()==Element.PIERCE),"enemy basic attack uses its own damage type");
+ }
+
 }

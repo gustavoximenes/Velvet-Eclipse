@@ -15,5 +15,6 @@ public enum Element {
    HEALING,
    SUPPORT,
    AILMENT,
-   NONE;
+   NONE,
+   PIERCE; // Appended to preserve existing serialized ordinals.
 }

@@ -1,0 +1,97 @@
+[
+  {
+    "id": "cowardly_maya",
+    "name": "Cowardly Maya",
+    "family": "maya"
+  },
+  {
+    "id": "muttering_tiara",
+    "name": "Muttering Tiara",
+    "family": "tiara"
+  },
+  {
+    "id": "merciless_maya",
+    "name": "Merciless Maya",
+    "family": "maya"
+  },
+  {
+    "id": "magic_hand",
+    "name": "Magic Hand",
+    "family": "hand"
+  },
+  {
+    "id": "obsessed_cupid",
+    "name": "Obsessed Cupid",
+    "family": "cupid"
+  },
+  {
+    "id": "trance_twins",
+    "name": "Trance Twins",
+    "family": "twins"
+  },
+  {
+    "id": "wealth_hand",
+    "name": "Wealth Hand",
+    "family": "hand"
+  },
+  {
+    "id": "resolved_checkmate",
+    "name": "Resolved Checkmate",
+    "family": "checkmate"
+  },
+  {
+    "id": "grave_beetle",
+    "name": "Grave Beetle",
+    "family": "beetle"
+  },
+  {
+    "id": "heat_balance",
+    "name": "Heat Balance",
+    "family": "balance"
+  },
+  {
+    "id": "frivolous_maya",
+    "name": "Frivolous Maya",
+    "family": "maya"
+  },
+  {
+    "id": "treasure_hand",
+    "name": "Treasure Hand",
+    "family": "hand"
+  },
+  {
+    "id": "yearning_checkmate",
+    "name": "Yearning Checkmate",
+    "family": "checkmate"
+  },
+  {
+    "id": "laughing_table",
+    "name": "Laughing Table",
+    "family": "table"
+  },
+  {
+    "id": "grieving_tiara",
+    "name": "Grieving Tiara",
+    "family": "tiara"
+  },
+  {
+    "id": "black_raven",
+    "name": "Black Raven",
+    "family": "raven"
+  },
+  {
+    "id": "ruthless_ice_raven",
+    "name": "Ruthless Ice Raven",
+    "family": "raven"
+  },
+  {
+    "id": "barbaric_beast_wheel",
+    "name": "Barbaric Beast Wheel",
+    "family": "wheel"
+  },
+  {
+    "id": "swift_axle",
+    "name": "Swift Axle",
+    "family": "axle"
+  }
+]

@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.23 — Inimigos de Reload e Bestiário
+
+19 inimigos modelados separadamente das Personas, Shadows móveis na sala e preservadas após fuga. Bestiário no Tab com modelos, encontros, derrotas e apenas afinidades descobertas. [Uso, referências e validação](docs/SHADOWS-RELOAD.md).
+
 # Velvet Eclipse 0.6.22 — Shadows e encontros
 
 Shadows com visão, busca e perseguição, aberturas por posicionamento, grupos de 1–5 inimigos, variante vermelha rara e recompensas em yen. Uma Shadow por sala; contador à esquerda e minimapa à direita. [Uso e validação](docs/SHADOW_ENCOUNTERS.md).

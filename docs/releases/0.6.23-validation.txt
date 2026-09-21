@@ -1,0 +1,8 @@
+PASS Shadows: 24099 checks; recognition/search, front/back, party opening order, enemy magic/One More, no enemy All-Out, stable 1..5 rosters, rare rewards, one Shadow per room and GeckoLib model/animation bake. Offline only.
+PASS bestiary: 14 checks; persistent seen/defeated counters, private discoveries, death/reload, raid observations, menu transport and layout. Offline only.
+PASS tactics: 11091 checks; first/repeated weakness, bonus ownership, isolated Baton Pass damage, departure recovery, 1..5 elementless all-out targets, codecs, animation phases and HUD previews.
+BUILD SUCCESSFUL: final jar and sourcesJar after focused checks.
+Native cuboid models/UVs and Bestiary menu preview inspected offline.
+No Minecraft launch or live multiplayer test, per project preference.
+Jar version, 19 enemy model sets and Bestiary classes/resources checked.
+SHA256: 3969B2F56D5D655A79BBF88FBEDA39C674B300B47DCA182D3F1D704D5B822AD3
