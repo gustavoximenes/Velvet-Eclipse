@@ -82,10 +82,12 @@ public final class ExplorationService {
     }
     private static Entity findTarget(State s){
         ServerPlayer p=s.player;double yaw=Math.toRadians(s.yaw),fx=-Math.sin(yaw),fz=Math.cos(yaw);
+        var family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();
+        double reach=switch(family){case BOW,GUN->10;case SPEAR->4;case GREATSWORD,AXE->3.3;case FISTS,KNIFE->2.2;default->REACH;};
         Entity best=null;double distance=Double.MAX_VALUE;
-        for(Entity e:s.level.m_6443_(Entity.class,p.m_20191_().m_82400_(REACH),e->ShadowWorldService.worldShadow(e)&&e.m_6084_()&&!reserved(e))){
+        for(Entity e:s.level.m_6443_(Entity.class,p.m_20191_().m_82400_(reach),e->ShadowWorldService.worldShadow(e)&&e.m_6084_()&&!reserved(e))){
             double dx=e.m_20185_()-p.m_20185_(),dy=e.m_20186_()-p.m_20186_(),dz=e.m_20189_()-p.m_20189_();
-            if(!inSweep(dx,dy,dz,fx,fz)||dx*dx+dz*dz>=distance)continue;
+            if(!(Math.abs(dy)<=1.8&&dx*dx+dz*dz<=reach*reach&&dx*dx+dz*dz>.0001&&(dx*fx+dz*fz)/Math.sqrt(dx*dx+dz*dz)>=(family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW||family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.GUN?.98:CONE_COS))||dx*dx+dz*dz>=distance)continue;
             Vec3 aim=e.m_20182_().m_82520_(0,Math.min(1,e.m_20206_()*.6),0);
             if(s.level.m_45547_(new ClipContext(p.m_146892_(),aim,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,p)).m_6662_()!=HitResult.Type.MISS)continue;
             distance=dx*dx+dz*dz;best=e;

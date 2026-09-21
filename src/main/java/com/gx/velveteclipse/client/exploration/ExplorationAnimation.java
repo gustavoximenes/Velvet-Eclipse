@@ -42,8 +42,8 @@ public final class ExplorationAnimation implements IAnimation {
         double t=ExplorationClient.ticks()+partial;
         double attack=ExplorationClient.swordAttackTime(partial);
         Vec3f sample;
-        if(type==TransformType.ROTATION)sample=ExplorationPose.rotation(part,p,v,attack);
-        else if(type==TransformType.BEND)sample=ExplorationPose.bend(part,p,v,attack);
+        if(type==TransformType.ROTATION)sample=WeaponPose.rotation(com.gx.velveteclipse.client.equipment.EquipmentScreen.family(),part,p,v,attack);
+        else if(type==TransformType.BEND)sample=WeaponPose.bend(com.gx.velveteclipse.client.equipment.EquipmentScreen.family(),part,p,v,attack);
         else if(type==TransformType.POSITION&&part.equals("body"))sample=new Vec3f(0,(float)ExplorationPose.bodyBob(p,v,age+partial),0);
         else return base;
         double px=sample.getX(),py=sample.getY(),pz=sample.getZ();

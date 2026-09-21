@@ -34,6 +34,7 @@ public record SkillDefinition(
    }
 
    public boolean usesMagicStat() {
+      if(id.equals("__basic_attack"))return false;
       return switch (this.element) {
          case PHYSICAL, SLASH, PIERCE, NONE -> false;
          case HEALING, SUPPORT, AILMENT -> true;

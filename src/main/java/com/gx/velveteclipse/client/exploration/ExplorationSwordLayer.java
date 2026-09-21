@@ -34,9 +34,7 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
     }
     private static ModelPart.Cube cube(int u,float x,float y,float z,float w,float h,float d){return new ModelPart.Cube(u,0,x,y,z,w,h,d,0,0,0,false,64,64,EnumSet.allOf(Direction.class));}
     public void drawProp(PoseStack pose,MultiBufferSource buffers,int light){
-        var out=buffers.m_6299_(RenderType.m_110452_(TEXTURE));sword.m_104301_(pose,out,light,655360);
-        tip(out,pose,light,-.04f,1.1375f,.01f,.04f,1.1375f,.01f,0,1.36f,0);
-        tip(out,pose,light,.04f,1.1375f,-.01f,-.04f,1.1375f,-.01f,0,1.36f,0);
+        WeaponModels.draw(com.gx.velveteclipse.client.equipment.EquipmentScreen.family(),pose,buffers,light);
     }
     @SubscribeEvent public static void layers(EntityRenderersEvent.AddLayers e){
         for(String skin:e.getSkins()){
@@ -64,16 +62,15 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
     @Override public void m_6494_(PoseStack pose,MultiBufferSource buffers,int light,AbstractClientPlayer player,float walk,float amount,float partial,float age,float yaw,float pitch){
         if(player!=Minecraft.m_91087_().f_91074_||(!ExplorationClient.swordVisible()&&!EntryPlayerRenderer.drawing()))return;
         pose.m_85836_();
-        bindHand(pose,m_117386_().f_102811_,player);
-        if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()&&!EntryPlayerRenderer.drawing())gripBattle(pose,com.gx.velveteclipse.client.PersonaCinematics.meleeActive()?com.gx.velveteclipse.client.PersonaCinematics.meleeTicks()+partial:-1);
+        var family=com.gx.velveteclipse.client.equipment.EquipmentScreen.family();
+        boolean bow=family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW;
+        if(bow)bindOtherHand(pose,player);else bindHand(pose,m_117386_().f_102811_,player);
+        if(bow){pose.m_252781_(new Quaternionf().rotationZ((float)Math.PI/2).rotateX((float)Math.PI/2));pose.m_85841_(.82f,.82f,.82f);}
+        else if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()&&!EntryPlayerRenderer.drawing())gripBattle(pose,com.gx.velveteclipse.client.PersonaCinematics.meleeActive()?com.gx.velveteclipse.client.PersonaCinematics.meleeTicks()+partial:-1);
         else grip(pose,ExplorationClient.swordAttackTime(partial));
-        VertexConsumer out=buffers.m_6299_(RenderType.m_110452_(TEXTURE));
-        sword.m_104301_(pose,out,light,655360);
-        // A real tapered, double-sided tip rather than another rectangular blade block.
-        tip(out,pose,light,-.04f,1.1375f,.01f,.04f,1.1375f,.01f,0,1.36f,0);
-        tip(out,pose,light,.04f,1.1375f,-.01f,-.04f,1.1375f,-.01f,0,1.36f,0);
+        WeaponModels.draw(family,pose,buffers,light);
         double t=ExplorationClient.swordAttackTime(partial);
-        if(t>=3&&t<11){
+        if(!bow&&family!=com.gx.velveteclipse.equipment.EquipmentCatalog.Family.GUN&&t>=3&&t<11){
             VertexConsumer glow=buffers.m_6299_(RenderType.m_110502_());
             double fade=Math.min(1,(t-3)/2)*Math.max(0,(11-t)/4);
             for(int i=0;i<24;i++){
@@ -84,6 +81,11 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
             }
         }
         pose.m_85849_();
+        if(family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.FISTS){pose.m_85836_();bindOtherHand(pose,player);WeaponModels.draw(family,pose,buffers,light);pose.m_85849_();}
+    }
+    private void bindOtherHand(PoseStack p,AbstractClientPlayer player){
+        Vec3f bend=player instanceof IAnimatedPlayer animated?animated.playerAnimator_getAnimation().get3DTransform("leftArm",TransformType.BEND,Vec3f.ZERO):Vec3f.ZERO;
+        bindHand(p,m_117386_().f_102812_,bend);
     }
     private static void arc(VertexConsumer out,PoseStack pose,double angle,double radius,int alpha){
         out.m_252986_(pose.m_85850_().m_252922_(),(float)(Math.sin(angle)*radius),(float)(Math.cos(angle)*radius),0).m_6122_(95,225,255,alpha).m_5752_();

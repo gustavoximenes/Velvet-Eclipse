@@ -31,7 +31,7 @@ public final class BattleTargetHud {
     public static List<BattleRosterS2C.Target> candidates(){
         if(ClientBattleUiState.pendingSkill().equals("__baton_pass"))return roster.stream().filter(t->t.ally()&&t.hp()>0&&BattleTacticsClient.passTargets().contains(t.id())).toList();
         var skill=PersonaRegistry.skill(ClientBattleUiState.pendingSkill()).orElse(null);
-        boolean ally=skill!=null&&(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES||skill.target()==SkillTarget.SELF);
+        boolean ally=ClientBattleUiState.pendingSkill().startsWith("__item:")||skill!=null&&(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES||skill.target()==SkillTarget.SELF);
         return roster.stream().filter(t->t.hp()>0&&t.ally()==ally).filter(t->skill==null||skill.target()!=SkillTarget.SELF||t.id().equals(RuntimeBridge.playerUuid(Minecraft.m_91087_().f_91074_))).toList();
     }
     public static void chooseDefault(){var list=candidates();selected=list.isEmpty()?null:list.get(0).id();lastX=lastY=-1;}

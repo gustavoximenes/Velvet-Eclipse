@@ -1,0 +1,238 @@
+{
+  "cubes": [
+    {
+      "name": "wrapped_grip",
+      "origin": [
+        -1,
+        -4,
+        -1
+      ],
+      "size": [
+        2,
+        7,
+        2
+      ],
+      "material": "blue",
+      "uv": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "pommel",
+      "origin": [
+        -1.5,
+        -5,
+        -1.5
+      ],
+      "size": [
+        3,
+        2,
+        3
+      ],
+      "material": "gold",
+      "uv": [
+        11,
+        1
+      ]
+    },
+    {
+      "name": "crossguard",
+      "origin": [
+        -3,
+        2,
+        -1.5
+      ],
+      "size": [
+        6,
+        1,
+        3
+      ],
+      "material": "gold",
+      "uv": [
+        25,
+        1
+      ]
+    },
+    {
+      "name": "blade",
+      "origin": [
+        -0.5,
+        3,
+        -0.5
+      ],
+      "size": [
+        1,
+        24,
+        1
+      ],
+      "material": "steel",
+      "uv": [
+        45,
+        1
+      ]
+    },
+    {
+      "name": "bright_edge",
+      "origin": [
+        0.25,
+        3,
+        -0.7
+      ],
+      "size": [
+        0.5,
+        24,
+        0.5
+      ],
+      "material": "edge",
+      "uv": [
+        51,
+        1
+      ]
+    },
+    {
+      "name": "ridge",
+      "origin": [
+        -0.25,
+        3,
+        -0.75
+      ],
+      "size": [
+        0.5,
+        22,
+        0.5
+      ],
+      "material": "edge",
+      "uv": [
+        55,
+        1
+      ]
+    },
+    {
+      "name": "point",
+      "origin": [
+        -0.5,
+        27,
+        -0.5
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "material": "edge",
+      "uv": [
+        59,
+        1
+      ]
+    },
+    {
+      "name": "grip_wrap",
+      "origin": [
+        -1.1,
+        -3,
+        -1.1
+      ],
+      "size": [
+        2.2,
+        0.5,
+        2.2
+      ],
+      "material": "dark",
+      "uv": [
+        65,
+        1
+      ]
+    },
+    {
+      "name": "grip_wrap",
+      "origin": [
+        -1.1,
+        -1,
+        -1.1
+      ],
+      "size": [
+        2.2,
+        0.5,
+        2.2
+      ],
+      "material": "dark",
+      "uv": [
+        76,
+        1
+      ]
+    },
+    {
+      "name": "grip_wrap",
+      "origin": [
+        -1.1,
+        1,
+        -1.1
+      ],
+      "size": [
+        2.2,
+        0.5,
+        2.2
+      ],
+      "material": "dark",
+      "uv": [
+        87,
+        1
+      ]
+    },
+    {
+      "name": "basket_guard",
+      "origin": [
+        -3,
+        0,
+        -2
+      ],
+      "size": [
+        0.5,
+        5,
+        4
+      ],
+      "material": "gold",
+      "uv": [
+        98,
+        1
+      ]
+    },
+    {
+      "name": "basket_guard",
+      "origin": [
+        3,
+        0,
+        -2
+      ],
+      "size": [
+        0.5,
+        5,
+        4
+      ],
+      "material": "gold",
+      "uv": [
+        109,
+        1
+      ]
+    },
+    {
+      "name": "basket_bottom",
+      "origin": [
+        -3,
+        0,
+        -2
+      ],
+      "size": [
+        6,
+        0.5,
+        4
+      ],
+      "material": "gold",
+      "uv": [
+        1,
+        27
+      ]
+    }
+  ]
+}

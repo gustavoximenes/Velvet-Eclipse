@@ -49,7 +49,7 @@ public final class BattleSession {
    public Prepared prepared(){return prepared;}
    public void cancelPrepared(){prepared=null;}
    public static SkillDefinition sword(){return new SkillDefinition("__basic_attack","Attack",Element.SLASH,35,96,0,0,true,SkillTarget.ONE_ENEMY);}
-   private static SkillDefinition basic(BattleCombatant actor){return new SkillDefinition("__basic_attack","Attack",actor.attackElement(),35,96,0,0,true,SkillTarget.ONE_ENEMY);}
+   private static SkillDefinition basic(BattleCombatant actor){return new SkillDefinition("__basic_attack","Attack",actor.attackElement(),actor.equipment().attackPower(),96,0,0,true,SkillTarget.ONE_ENEMY);}
    /** Reserve one validated action and its random outcome until the animation reaches impact. */
    public Prepared prepare(UUID actorId,BattleAction action){
       if(prepared!=null||state!=BattleState.ACTIVE||currentActor()==null||!currentActor().id().equals(actorId))return null;
@@ -58,8 +58,8 @@ public final class BattleSession {
       var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ATTACK?basic(actor):action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
       var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
       if(skill==null||target==null||!actor.alive())return null;
-      if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<skill.spCost()
-         ||(skill.hpPercentCost()>0&&actor.hp()<=Math.max(1,actor.maxHp()*skill.hpPercentCost()/100))))return null;
+      if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<actor.spCost(skill.spCost())
+         ||(skill.hpPercentCost()>0&&actor.hp()<=Math.max(1,actor.maxHp()*actor.hpCost(skill.hpPercentCost())/100))))return null;
       var hits=new java.util.LinkedHashMap<UUID,DamageOutcome>();
       if(!skill.isDamageSkill()) {
          if(skill.element()!=Element.HEALING&&!SupportEffects.supported(skill.id()))return null;
@@ -84,6 +84,7 @@ public final class BattleSession {
       if (var1 != null && var1.size() >= 2) {
          this.random = var2;
          this.turnOrder = new ArrayList<>(var1);
+         for(var source:turnOrder)for(var ally:turnOrder)if(source.side()==ally.side())source.applyPartyPassives(ally);
          this.turnOrder.sort(Comparator.<BattleCombatant>comparingInt(var0 -> var0.stats().agility()).reversed().thenComparing(var0 -> var0.id().toString()));
          this.opening=mode;this.openingRound=mode!=EncounterOpening.STANDARD;
          if(openingRound){java.util.Collections.shuffle(turnOrder,random);if(mode!=EncounterOpening.NEUTRAL){var first=mode==EncounterOpening.ADVANTAGE?BattleSide.PLAYERS:BattleSide.ENEMIES;turnOrder.sort(Comparator.comparingInt(c->c.side()==first?0:1));}}
@@ -152,12 +153,16 @@ public final class BattleSession {
                   break;
                case ITEM:
                   if (!"pulse_tonic".equals(var2.skillId())) {
-                     return new BattleResolution(this.state, false, List.of("Unknown item."));
+                     var supply=com.gx.velveteclipse.equipment.Supplies.get(var2.skillId());
+                     var recipient=var2.targetId()==null?var4:find(var2.targetId()).filter(c->c.side()==var4.side()).orElse(null);
+                     if(recipient==null||!com.gx.velveteclipse.equipment.Supplies.useful(supply,recipient))return new BattleResolution(state,false,List.of("Item indisponível para este alvo."));
+                     com.gx.velveteclipse.equipment.Supplies.apply(supply,recipient);var3.add(var4.name()+" usou "+supply.name()+" em "+recipient.name()+".");break;
                   }
 
-                  int var10 = var4.hp();
-                  var4.heal(Math.max(1, var4.maxHp() * 30 / 100));
-                  var3.add(var4.name() + " used Pulse Tonic and recovered " + (var4.hp() - var10) + " HP.");
+                  var tonicTarget=var2.targetId()==null?var4:find(var2.targetId()).filter(c->c.alive()&&c.side()==var4.side()).orElse(null);
+                  if(tonicTarget==null)return new BattleResolution(state,false,List.of("Alvo inválido."));
+                  int var10 = tonicTarget.hp();tonicTarget.heal(Math.max(1,tonicTarget.maxHp()*30/100));
+                  var3.add(var4.name()+" usou Pulse Tonic em "+tonicTarget.name()+": +"+(tonicTarget.hp()-var10)+" HP.");
                   break;
                case GUARD:
                   var4.setGuarding(true);
@@ -175,7 +180,11 @@ public final class BattleSession {
 
                   SkillDefinition var11 = basic(var4);
                   DamageOutcome var12 = damage(var4, var9, var11);
-                  weaknessHit = isWeaknessHit(var12);
+                  if(!var12.missed()&&!var12.reflected()&&!var12.drained()&&var12.damage()>0&&var9.alive()){
+                     String ailment=var4.equipment().ailment();if(ailment.equals("RANDOM AILMENT"))ailment=List.of("POISON","CHARM","CONFUSE","FEAR","RAGE","DISTRESS").get(random.nextInt(6));
+                     if(!ailment.isEmpty()&&random.nextInt(100)<(var4.equipment().ailmentChance()+var4.equipment().ailmentBoost(ailment))/(var9.equipment().resistant(ailment)?2:1)){var9.afflict(ailment);var3.add(var9.name()+": "+ailment);}
+                  }
+                  var4.useCharge(false);weaknessHit = isWeaknessHit(var12);
                   var5 = this.appendOutcome(var3, var4, var9, var11, var12);
                   break;
                case SKILL:
@@ -214,9 +223,12 @@ public final class BattleSession {
                      DamageOutcome hit=damage(var4,victim,var6);
                      weaknessHit|=isWeaknessHit(hit);
                      var5|=this.appendOutcome(var3,var4,victim,var6,hit);
+                     String status=var6.element()==Element.ICE?"FREEZE":var6.element()==Element.ELECTRIC?"SHOCK":"";
+                     if(!status.isEmpty()&&victim.alive()&&!hit.missed()&&!hit.drained()&&!hit.reflected()&&hit.damage()>0&&random.nextInt(100)<(10+var4.equipment().ailmentBoost(status))/(victim.equipment().resistant(status)?2:1)){victim.afflict(status);if(!victim.ailment().isEmpty())var3.add(victim.name()+": "+victim.ailment());}
                   }
             }
 
+            if(var2.type()==BattleActionType.SKILL){var used=PersonaRegistry.skill(var2.skillId()).orElse(null);if(used!=null&&used.isDamageSkill())var4.useCharge(used.usesMagicStat());}
             prepared=null;
             var4.setBatonBoost(false);
             this.updateState();
@@ -326,7 +338,7 @@ public final class BattleSession {
       }
    }
 
-   private boolean beginCurrentTurn(){var actor=currentActor();actor.beginTurn();boolean skip=actor.skipsNextTurn();actor.setDowned(false);return !skip;}
+   private boolean beginCurrentTurn(){var actor=currentActor();actor.beginTurn();boolean skip=actor.skipsNextTurn()||actor.hasAilment("FREEZE,SHOCK,FEAR,CHARM,DIZZY");actor.setDowned(false);return !skip;}
 
    private int firstLivingIndex(int var1) {
       int var2 = this.turnOrder.size();

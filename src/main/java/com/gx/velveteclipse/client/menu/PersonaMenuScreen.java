@@ -36,7 +36,7 @@ public final class PersonaMenuScreen extends Screen {
     static double now(){return System.nanoTime()*1e-9;}
     @Override protected void m_7856_(){
         if(portrait==null&&f_96541_.f_91074_!=null)portrait=new MenuPortrait(f_96541_.f_91074_);
-        request("refresh","");
+        request("refresh","");com.gx.velveteclipse.equipment.EquipmentNetwork.request("sync","","");
     }
     public static void accept(String json){
         var mc=Minecraft.m_91087_();if(!(mc.f_91080_ instanceof PersonaMenuScreen screen))return;
@@ -130,16 +130,19 @@ public final class PersonaMenuScreen extends Screen {
             }
             case 1 -> {
                 list.add(new MenuDesign.Row("Pulse Tonic","x"+data.tonics()+"   Recupera 30% HP",-1));
+                list.add(new MenuDesign.Row("Suprimentos da Elizabeth","HP / SP / Estados negativos",-2));
                 for(int i=0;i<36;i++)if(!item(i).m_41619_())list.add(new MenuDesign.Row(item(i).m_41786_().getString(),"x"+item(i).m_41613_()+"   Inventario",i));
                 if(selected==0){detail.add("PULSE TONIC");detail.add("Recupera 30% do HP de batalha.");detail.add("HP "+data.hp()+" / "+data.maxHp());detail.add("Quantidade: "+data.tonics());action="Usar Pulse Tonic";}
+                else if(selected==1){detail.add("SUPRIMENTOS");detail.add("Veja os consumíveis comprados com yen.");action="Abrir coleção de itens";}
                 else{var row=list.get(Math.min(selected,list.size()-1));detail.add(row.title());detail.add("Use, organize ou mova este item no inventario.");action="Abrir inventario";}
             }
             case 2 -> {
-                int[] slots={player.m_150109_().f_35977_,40,39,38,37,36};String[] labels={"Mao principal","Mao secundaria","Cabeca","Peito","Pernas","Pes"};
-                for(int i=0;i<slots.length;i++){var stack=item(slots[i]);list.add(new MenuDesign.Row(labels[i],stack.m_41619_()?"Vazio":stack.m_41786_().getString(),slots[i]));}
-                var stack=item(slots[Math.min(selected,5)]);detail.add(list.get(Math.min(selected,5)).title());detail.add(stack.m_41619_()?"Nenhum equipamento":stack.m_41786_().getString());
-                if(stack.m_41763_())detail.add("Durabilidade: "+(stack.m_41776_()-stack.m_41773_())+" / "+stack.m_41776_());
-                detail.add("Armadura total: "+player.m_21230_());action="Abrir inventario e equipar";
+                var bag=com.gx.velveteclipse.client.equipment.EquipmentScreen.bag();
+                for(var slot:com.gx.velveteclipse.equipment.EquipmentCatalog.Slot.values()){
+                    var gear=com.gx.velveteclipse.equipment.EquipmentCatalog.get(bag.equipped.get(slot));
+                    list.add(new MenuDesign.Row(com.gx.velveteclipse.equipment.EquipmentCatalog.label(slot),gear==null?"Vazio":gear.name(),-1));
+                }
+                detail.add("EQUIPAMENTOS");detail.add("Arma, armadura, calçado e acessório.");detail.add("Selecione uma peça para comparar seus atributos e equipá-la.");detail.add("A aparência da roupa permanece a sua. H utiliza a categoria de arma equipada.");action="Gerenciar equipamentos";
             }
             case 3 -> {
                 for(var p:data.personas())list.add(new MenuDesign.Row(p.name(),"Lv "+p.level()+"  "+p.arcana()+(p.id().equals(data.active())?" / ATIVA":""),-1));
@@ -188,8 +191,8 @@ public final class PersonaMenuScreen extends Screen {
         if(action.isEmpty())return;
         switch(tab){
             case 0 -> {var p=data.equipped();if(p!=null&&selected<p.skills().size()&&p.skills().get(selected).element()==Element.HEALING)request("heal",p.skills().get(selected).id());}
-            case 1 -> {if(selected==0)request("tonic","");else f_96541_.m_91152_(new InventoryScreen(f_96541_.f_91074_));}
-            case 2 -> f_96541_.m_91152_(new InventoryScreen(f_96541_.f_91074_));
+            case 1 -> {if(selected==0)request("tonic","");else if(selected==1)com.gx.velveteclipse.equipment.EquipmentNetwork.request("open","items","");else f_96541_.m_91152_(new InventoryScreen(f_96541_.f_91074_));}
+            case 2 -> com.gx.velveteclipse.equipment.EquipmentNetwork.request("open","","");
             case 3 -> {if(selected<data.personas().size())request("equip",data.personas().get(selected).id());}
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
             case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else closeMenu();}

@@ -1,0 +1,3 @@
+92 cuboids; 29 bones; unique IDs; integer Box UV dimensions; no UV overlap; atlas 512x512.
+Idle 4.8 s closes continuously, named bones valid. Five dress rings, white bob, hat and book present.
+Actual geometry previews inspected offline. Standalone modeling only; no mod integration, JAR, commit or game testing.

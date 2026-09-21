@@ -20,6 +20,8 @@ public final class PlayerPersonaData {
    private int pulseTonics = 3;
    private int playerLevel=1, playerExperience;
    private long yen;
+   private com.gx.velveteclipse.equipment.EquipmentBonuses equipment=com.gx.velveteclipse.equipment.EquipmentBonuses.NONE;
+   public boolean spendYen(long price){if(price<0||yen<price)return false;yen-=price;return true;}
    public long yen(){return yen;}
    public void addYen(long amount){if(amount>0)yen=Math.min(9_999_999_999L,yen+Math.min(amount,9_999_999_999L));}
    public int playerLevel(){return playerLevel;}
@@ -46,7 +48,7 @@ public final class PlayerPersonaData {
    }
 
    public int maxHp() {
-      return this.maxHp;
+      return this.maxHp+equipment.hp();
    }
 
    public int hp() {
@@ -54,7 +56,7 @@ public final class PlayerPersonaData {
    }
 
    public int maxSp() {
-      return this.maxSp;
+      return this.maxSp+equipment.sp();
    }
 
    public int sp() {
@@ -162,13 +164,13 @@ public final class PlayerPersonaData {
    }
 
    public void setResources(int var1, int var2) {
-      this.hp = clamp(var1, 0, this.maxHp);
-      this.sp = clamp(var2, 0, this.maxSp);
+      this.hp = clamp(var1, 0, maxHp());
+      this.sp = clamp(var2, 0, maxSp());
    }
 
    public void restore() {
-      this.hp = this.maxHp;
-      this.sp = this.maxSp;
+      this.hp = maxHp();
+      this.sp = maxSp();
    }
 
    public boolean consumePulseTonic() {
@@ -184,7 +186,8 @@ public final class PlayerPersonaData {
       this.pulseTonics = Math.max(0, this.pulseTonics + var1);
    }
 
-   public static PlayerPersonaData load(Object var0) {
+   public static PlayerPersonaData load(Object p){var d=loadBase(p);d.equipment=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses();d.setResources(d.hp,d.sp);return d;}
+   private static PlayerPersonaData loadBase(Object var0) {
       PlayerPersonaData var1 = new PlayerPersonaData();
       Object var2 = RuntimeBridge.persistentData(var0);
       String var3 = RuntimeBridge.tagGetString(var2, "velvet_eclipse:data_v1");
@@ -219,8 +222,8 @@ public final class PlayerPersonaData {
                   var1.activePersona = var1.roster.keySet().iterator().next();
                }
 
-               var1.hp = clamp(var1.hp, 0, var1.maxHp);
-               var1.sp = clamp(var1.sp, 0, var1.maxSp);
+               var1.hp = Math.max(0,var1.hp);
+               var1.sp = Math.max(0,var1.sp);
                return var1;
             } else {
                return var1;
@@ -240,6 +243,7 @@ public final class PlayerPersonaData {
 
    public static void copyPersisted(Object var0, Object var1) {
       BattleKnowledge.copy(var0,var1);
+      com.gx.velveteclipse.equipment.EquipmentData.copy(var0,var1);
       Object var2 = RuntimeBridge.persistentData(var0);
       Object var3 = RuntimeBridge.persistentData(var1);
       String var4 = RuntimeBridge.tagGetString(var2, "velvet_eclipse:data_v1");

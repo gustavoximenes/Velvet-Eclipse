@@ -1,0 +1,111 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.weapon_gun",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 6,
+        "visible_bounds_height": 6,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "grip",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -2,
+                -1
+              ],
+              "size": [
+                2,
+                5,
+                2
+              ],
+              "uv": [
+                1,
+                1
+              ]
+            },
+            {
+              "origin": [
+                -1.5,
+                1,
+                -5
+              ],
+              "size": [
+                3,
+                3,
+                8
+              ],
+              "uv": [
+                11,
+                1
+              ]
+            },
+            {
+              "origin": [
+                -0.75,
+                1.5,
+                -13
+              ],
+              "size": [
+                1.5,
+                1.5,
+                8
+              ],
+              "uv": [
+                35,
+                1
+              ]
+            },
+            {
+              "origin": [
+                -1,
+                1.25,
+                -14
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                56,
+                1
+              ]
+            },
+            {
+              "origin": [
+                -0.5,
+                0,
+                -5
+              ],
+              "size": [
+                1,
+                1,
+                2
+              ],
+              "uv": [
+                64,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

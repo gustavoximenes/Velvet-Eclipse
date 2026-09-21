@@ -74,8 +74,9 @@ public final class ClientHudEvents {
                 return;
             }
             if(s.active()&&ClientBattleUiState.selector()){
-                List<com.gx.velveteclipse.core.persona.SkillDefinition> choices=s.skills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(java.util.Objects::nonNull).toList();
-                PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),w,h);
+                if(ClientBattleUiState.page()==ClientBattleUiState.Page.ITEMS){com.gx.velveteclipse.client.equipment.SupplyBattleHud.paint(canvas,w,h);}
+                else {List<com.gx.velveteclipse.core.persona.SkillDefinition> choices=s.skills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(java.util.Objects::nonNull).map(skill->com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().displayCost(skill)).toList();
+                PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),w,h);}
             }else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);
             if(s.active())BattleTacticsClient.paint(canvas,w,h);

@@ -39,7 +39,7 @@ public final class BattleService {
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
     private static boolean busy(Encounter g){return g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
     public static boolean actionBusy(Object p){var g=group(p);return g!=null&&(g.results.started()||g.session.state()!=BattleState.ACTIVE||g.session.prepared()!=null||busy(g));}
-    private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);return new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp());}
+    private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);return new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp()).equipment(com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses());}
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
 
     public static BattleSession startDemo(Object p){return startDemo(p,1);}
@@ -141,7 +141,10 @@ public final class BattleService {
         if(s.currentActor()==null||!s.currentActor().id().equals(id)){sync(p,"Aguarde seu turno.");return false;}
         if(s.prepared()!=null&&!s.prepared().action().equals(action))return false;
         if(action.type()==BattleActionType.ESCAPE){if(g.raid){sync(p,"Não é possível fugir dentro do trem.");return false;}if(s.attemptEscape(id)){ShadowWorldService.escapeGrace(p);stop(p);}else{g.delay=28;syncAll(g,"A fuga de "+RuntimeBridge.playerName(p)+" falhou! Turno consumido.");}return true;}
-        if(action.type()==BattleActionType.ITEM){var data=PlayerPersonaData.load(p);if(!data.consumePulseTonic()){sync(p,"Sem Pulse Tonic.");return false;}data.save(p);}
+        if(action.type()==BattleActionType.ITEM){
+            if(action.skillId().equals("pulse_tonic")){if(action.targetId()!=null&&s.find(action.targetId()).filter(c->c.side()==BattleSide.PLAYERS&&c.alive()).isEmpty())return false;var data=PlayerPersonaData.load(p);if(!data.consumePulseTonic()){sync(p,"Sem Pulse Tonic.");return false;}data.save(p);}
+            else {var supply=com.gx.velveteclipse.equipment.Supplies.get(action.skillId());var target=action.targetId()==null?s.currentActor():s.find(action.targetId()).orElse(null);if(target==null||target.side()!=BattleSide.PLAYERS||!com.gx.velveteclipse.equipment.Supplies.useful(supply,target)){sync(p,"Este item não tem efeito sobre o aliado selecionado.");return false;}var bag=com.gx.velveteclipse.equipment.EquipmentData.load(p);if(!bag.consume(action.skillId())){sync(p,"Você não possui este item.");return false;}com.gx.velveteclipse.equipment.EquipmentData.save(p,bag);}
+        }
         var reserved=s.prepared();if(reserved==null)reserved=s.prepare(id,action);var result=s.perform(id,action);
         if(reserved!=null&&s.prepared()==null)for(var entry:reserved.hits().entrySet()){
             var target=s.find(entry.getKey()).orElse(null);var hit=entry.getValue();if(target==null||target.side()!=BattleSide.ENEMIES||hit.missed()||hit.element()==Element.NONE)continue;
@@ -176,7 +179,7 @@ public final class BattleService {
             case "persona"->switchPersona(p,value);
             case "baton_pass"->{var g=group(p);if(g!=null&&g.session.batonPass(RuntimeBridge.playerUuid(p),target)){syncAll(g,"SHIFT! Turno passado com bônus de dano de 50%.");}else sync(p,"Baton Pass indisponível para este alvo.");}
             case "all_out"->{if(!AllOutServer.start(p))sync(p,"All-Out Attack indisponível.");}
-            case "guard"->act(p,BattleAction.guard());case "item"->act(p,BattleAction.item("pulse_tonic"));case "escape"->act(p,BattleAction.escape());
+            case "guard"->act(p,BattleAction.guard());case "item"->act(p,new BattleAction(BattleActionType.ITEM,value==null||value.isBlank()?"pulse_tonic":value,target));case "escape"->act(p,BattleAction.escape());
         }
     }
     public static boolean actFirstTarget(Object p,String ignored){if(actionBusy(p))return false;var s=current(p);if(s==null)return false;var enemy=s.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).findFirst().orElse(null);return enemy!=null&&MeleeBattleServer.start(p,BattleAction.attack(enemy.id()));}
@@ -222,11 +225,12 @@ public final class BattleService {
     public static String knownRaidWeakness(Object p){var g=group(p);if(g==null||!g.raid||g.raidStage!=2)return "UNKNOWN";var k=knowledge(g,p);return Arrays.stream(Element.values()).filter(e->k.get("raid_2",e)==Affinity.WEAK).map(Enum::name).findFirst().orElse("UNKNOWN");}
     private static void syncAll(Encounter g,String message){for(Object p:g.players.values())sync(p,message);}
     public static void sync(Object p,String message){
+        if(p instanceof net.minecraft.server.level.ServerPlayer sp)com.gx.velveteclipse.equipment.EquipmentService.sync(sp,"sync","");
         if(p==null)return;var data=PlayerPersonaData.load(p);var g=group(p);var actor=g==null?null:g.session.find(RuntimeBridge.playerUuid(p)).orElse(null);
         var persona=actor==null?data.activeInstance():actor.persona();var targets=new ArrayList<BattleRosterS2C.Target>();
         if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;
             String affinities=ally?"":knowledge(g,p).forEnemy(knowledgeKey(g,c));
-            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name(),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
+            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name()+(c.ailment().isEmpty()?"":" ["+c.ailment()+"]"),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
         ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));
         if(g==null)ModNetwork.sendPresentation(p,BattleTacticsS2C.empty());
         else {
@@ -249,7 +253,7 @@ public final class BattleService {
         VisualBattleActors.clearEnemies(g.session.id());
         // Keep encounter and membership until each player's Enter acknowledgement.
         for(Object p:new ArrayList<>(g.players.values())){
-            persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?com.gx.velveteclipse.shadow.ShadowEncounterRules.xp(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1):0;String items="NENHUM ITEM";
+            persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?com.gx.velveteclipse.shadow.ShadowEncounterRules.xp(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1):0;String items="NENHUM ITEM";xp=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().xp(xp);
             if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{long yen=com.gx.velveteclipse.shadow.ShadowEncounterRules.yen(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1);data.addYen(yen);items="YEN • ¥ "+yen;}}
             data.save(p);VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
             if(g.shuffleVictory&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor));

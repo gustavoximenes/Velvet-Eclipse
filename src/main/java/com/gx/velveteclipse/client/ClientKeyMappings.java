@@ -217,7 +217,7 @@ public final class ClientKeyMappings {
                   }
 
                   if (ClientKeyMappings.pressedCompat(ClientKeyMappings.ITEM)) {
-                     ModNetwork.sendAction("item", "pulse_tonic");
+                     ClientBattleUiState.open(ClientBattleUiState.Page.ITEMS);
                   }
 
                   if (ClientKeyMappings.pressedCompat(ClientKeyMappings.GUARD)) {

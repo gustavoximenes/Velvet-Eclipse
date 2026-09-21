@@ -1,0 +1,148 @@
+{
+  "cubes": [
+    {
+      "name": "padded_glove",
+      "origin": [
+        -2.5,
+        -3,
+        -2
+      ],
+      "size": [
+        5,
+        3.5,
+        4
+      ],
+      "material": "blue",
+      "uv": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "wrist_guard",
+      "origin": [
+        -2.75,
+        -4,
+        -2.25
+      ],
+      "size": [
+        5.5,
+        2,
+        4.5
+      ],
+      "material": "gold",
+      "uv": [
+        21,
+        1
+      ]
+    },
+    {
+      "name": "knuckle_plate",
+      "origin": [
+        -2.5,
+        0.5,
+        -2.5
+      ],
+      "size": [
+        5,
+        2,
+        5
+      ],
+      "material": "steel",
+      "uv": [
+        43,
+        1
+      ]
+    },
+    {
+      "name": "thumb",
+      "origin": [
+        2,
+        -1,
+        -1
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "material": "leather",
+      "uv": [
+        65,
+        1
+      ]
+    },
+    {
+      "name": "knuckle",
+      "origin": [
+        -2.15,
+        2,
+        -2.2
+      ],
+      "size": [
+        0.8,
+        1,
+        1.2
+      ],
+      "material": "gold",
+      "uv": [
+        75,
+        1
+      ]
+    },
+    {
+      "name": "knuckle",
+      "origin": [
+        -0.9,
+        2,
+        -2.2
+      ],
+      "size": [
+        0.8,
+        1,
+        1.2
+      ],
+      "material": "gold",
+      "uv": [
+        81,
+        1
+      ]
+    },
+    {
+      "name": "knuckle",
+      "origin": [
+        0.35,
+        2,
+        -2.2
+      ],
+      "size": [
+        0.8,
+        1,
+        1.2
+      ],
+      "material": "gold",
+      "uv": [
+        87,
+        1
+      ]
+    },
+    {
+      "name": "knuckle",
+      "origin": [
+        1.6,
+        2,
+        -2.2
+      ],
+      "size": [
+        0.8,
+        1,
+        1.2
+      ],
+      "material": "gold",
+      "uv": [
+        93,
+        1
+      ]
+    }
+  ]
+}

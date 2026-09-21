@@ -27,7 +27,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         });
         thanatos=asset.equals("thanatos");izanagi=asset.equals("izanagi");this.f_114477_=thanatos?.45f:.55f;
         // Preserve authoring dimensions/Box UV; scale the model uniformly in both world and menus.
-        if(izanagi||asset.equals("igor"))withScale(.25f);
+        if(izanagi||asset.equals("igor")||asset.equals("elizabeth"))withScale(.25f);
         if(asset.equals("priestess"))withScale(.4f);
         if(asset.equals("field_shadow"))withScale(.48f);
         if(asset.startsWith("enemy_"))withScale(.6f);
@@ -35,7 +35,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
     }
     @Override protected void applyRotations(T entity,PoseStack stack,float age,float bodyYaw,float partial){
         // GeckoLib supplies bodyYaw=0 for non-living entities. Props still have a saved world yaw.
-        super.applyRotations(entity,stack,age,entity instanceof com.gx.velveteclipse.darkhour.TartarusPropEntity||entity instanceof com.gx.velveteclipse.raid.PriestessEntity?entity.m_146908_():bodyYaw,partial);
+        super.applyRotations(entity,stack,age,entity instanceof com.gx.velveteclipse.darkhour.TartarusPropEntity||entity instanceof com.gx.velveteclipse.raid.PriestessEntity||entity instanceof com.gx.velveteclipse.equipment.ElizabethEntity?entity.m_146908_():bodyYaw,partial);
     }
     @Override public void renderCubesOfBone(PoseStack stack,GeoBone bone,VertexConsumer out,int light,int overlay,float r,float g,float b,float a) {
         if(thanatos&&ThanatosMesh.draw(stack,bone,out,light,overlay,r,g,b,a))return;
