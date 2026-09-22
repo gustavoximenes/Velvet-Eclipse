@@ -15,7 +15,7 @@ public final class TartarusTerminals {
  public static void discoverFloor(ServerLevel l,int f){for(var p:l.m_6907_())if(TartarusDungeonService.floor(p)==f)discover(p,f);}
  public static void ensureProps(ServerLevel l,TartarusDungeonService.State s,int f){
   for(var spec:TartarusInteriorLayout.props(s.progress.seed(l.m_7328_(),f),f,s.plan(l,f))){
-   String id=f+":"+spec.kind()+":"+spec.index();if(spec.kind().equals("treasure")&&s.progress.treasures.contains(f+":"+spec.index()))continue;
+   String id=f+":"+spec.kind()+":"+spec.index();if(spec.kind().equals("treasure")&&s.progress.treasures.contains(f+":"+spec.index())&&!com.gx.velveteclipse.progression.RewardLedger.permitChest(f,spec.index()))continue;
    if(s.props.containsKey(id))continue;
    var e=TartarusPropRegistry.type(spec.kind()).m_20615_(l);if(e==null)continue;double x=TartarusInteriorLayout.origin(f)+spec.at().x()+.5,z=spec.at().z()+.5;l.m_46745_(new BlockPos((int)x,65,(int)z));e.m_6034_(x,65,z);e.m_146922_(spec.yaw());
    e.getPersistentData().m_128359_(PROP,id);e.getPersistentData().m_128356_("tartarus_generation",s.progress.generation(f));
@@ -29,8 +29,10 @@ public final class TartarusTerminals {
   if(e.m_6095_()==TartarusPropRegistry.TERMINAL.get()){discover(p,f);var floors=new ArrayList<>(TartarusProgress.discovered(p.getPersistentData().m_128465_(DISCOVERED)));Collections.reverse(floors);TartarusTerminalNetwork.reply(p,floors);return;}
   if(e.m_6095_()==TartarusPropRegistry.MONAD.get()){com.gx.velveteclipse.raid.RaidService.open(p);return;}
   if(e.m_6095_()!=TartarusPropRegistry.TREASURE.get())return;String key=f+":"+id.substring(id.lastIndexOf(':')+1);
-  if(!s.progress.treasures.add(key))return;
-  var data=PlayerPersonaData.load(p);long yen=250L+f*45L;data.addYen(yen);data.addPulseTonics(1);data.save(p);s.props.remove(id);s.m_77762_();e.m_146870_();BattleService.sync(p,"Tesouro • ¥ "+yen+" e 1 Pulse Tonic");com.gx.velveteclipse.shuffle.ShuffleService.status(p,"");p.m_5661_(Component.m_237113_("Tesouro recolhido: ¥ "+yen+" e 1 Pulse Tonic"),false);
+  boolean permitChest=com.gx.velveteclipse.progression.RewardLedger.permitChest(f,Integer.parseInt(id.substring(id.lastIndexOf(':')+1)));
+  boolean reward=permitChest&&com.gx.velveteclipse.progression.ProgressionRewards.chest(p,f);
+  if(!s.progress.treasures.add(key)){if(permitChest&&!reward)p.m_5661_(Component.m_237113_("Você já recolheu a permissão deste andar."),true);return;}
+  var data=PlayerPersonaData.load(p);long yen=250L+f*45L;data.addYen(yen);data.addPulseTonics(1);data.save(p);if(!permitChest){s.props.remove(id);e.m_146870_();}s.m_77762_();BattleService.sync(p,"Tesouro • ¥ "+yen+" e 1 Pulse Tonic");com.gx.velveteclipse.shuffle.ShuffleService.status(p,"");p.m_5661_(Component.m_237113_("Tesouro recolhido: ¥ "+yen+" e 1 Pulse Tonic"),false);
  }
  public static void request(ServerPlayer p,TartarusTerminalNetwork.Request r){
   if(!available(p))return;

@@ -24,7 +24,7 @@ public final class ShuffleService {
  private static ShuffleSnapshot.Choice describe(ShuffleRules.Card c,PlayerPersonaData d){
   String name="",detail="";com.gx.velveteclipse.menu.MenuSnapshot.Persona persona=null;
   switch(c.kind()){
-   case PERSONA->{persona=MenuService.describe(ShuffleRules.personaReward(c,d.instance(c.id())));name=persona.name();detail=(d.rosterIds().contains(c.id())?"Fortalece sua Persona: ":"Receba a Persona ")+name+" • Lv "+persona.level();}
+   case PERSONA->{persona=MenuService.describe(ShuffleRules.personaReward(c,d.rewardInstance(c.id())));name=persona.name();detail=(d.canReceivePersona(c.id())?"":"LIMITE ATINGIDO • ")+(d.rosterIds().contains(c.id())?"Fortalece sua Persona: ":"Receba a Persona ")+name+" • Lv "+persona.level();}
    case DARK_HOUR->{name="DARK HOUR+";detail="Acrescenta 5 minutos à Dark Hour para todo o servidor.";}
    case CUPS->{name="CUPS • COPAS";detail="Recupera "+c.amount()+"% do HP máximo.";}
    case COINS->{name="COINS • YEN";detail="Receba ¥ "+c.amount()+" na carteira.";}

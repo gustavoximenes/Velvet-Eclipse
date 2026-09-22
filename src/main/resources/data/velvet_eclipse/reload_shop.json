@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "saber",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "gladius",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "short_bow",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "rainbow",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "bastard_sword",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "kishido_blade",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "fudo_masamune",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "iron_edge",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "shigetou_yumi",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "siren_s_song",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "great_sword",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "raikou",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "bladefist",
+    "tier": 1,
+    "date": "-"
+  },
+  {
+    "id": "sonic_fist",
+    "tier": 1,
+    "date": "-"
+  },
+  {
+    "id": "silver_saber",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "pleiades",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "all_purpose_katana",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "beast_fangs",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "quarter_pike",
+    "tier": 2,
+    "date": "-"
+  },
+  {
+    "id": "tizona",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "aroundight",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "kamatha",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "uta",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "zanbatou",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "assassin_s_blade",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "meteor_knuckles",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "gusto_gloves",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "ga_boo",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "malice_mary",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "six_shot",
+    "tier": 3,
+    "date": "-"
+  },
+  {
+    "id": "grenade_launcher",
+    "tier": 3,
+    "date": "-"
+  },
+  {
+    "id": "shishiou",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "yggdrasword",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "higo_yumi",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "heavenly_windbow",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "tsubaki_maru",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "two_handed_sword",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "wicked_cestus",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "blood_baghnakh",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "serpent_sword",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "skrep",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "orgone_rifle",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "heavy_cannon_x",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "blitz_kunai",
+    "tier": 4,
+    "date": "-"
+  },
+  {
+    "id": "lucky_knife",
+    "tier": 4,
+    "date": "-"
+  },
+  {
+    "id": "glaive",
+    "tier": 5,
+    "date": "-"
+  },
+  {
+    "id": "sexy_lance",
+    "tier": 5,
+    "date": "-"
+  },
+  {
+    "id": "ogre_hammer",
+    "tier": 5,
+    "date": "-"
+  },
+  {
+    "id": "night_stalker",
+    "tier": 5,
+    "date": "-"
+  },
+  {
+    "id": "sin_blade",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "omokage",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "composite_bow",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "magic_bow",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "buster_blade",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "orochito",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "titanic_knuckles",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "pugilist_s_fists",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "ithuriel_spear",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "elegant_fleuret",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "ingels_cannon",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "five_barrel_medusa",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "silver_moon",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "karasu_maru",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "rhongowennan",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "lance_of_death",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "guillotine_axe",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "megaton_rod",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "kogarasumaru",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "pulsing_blade",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "great_bow",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "lightning_bow",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "kaketsushinto",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "deathbringer",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "crusher_fist",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "wings_of_vanth",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "noble_saber",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "main_gauche",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "railgun",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "supersonic_minigun",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "sword_breaker",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "raven_claw",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "ranseur",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "ningen_mukotsu",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "qi_xing_dao",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "tajikarao_sword",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "hero_s_bow",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "bow_of_serenity",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "caladbolg",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "apocalypse",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "supreme_gloves",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "diamond_knuckles",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "rose_flamberge",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "witch_saber",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "maxima_sniper",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "angel_shot",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "shadowrend",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "pesh_kabz",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "voulge",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "poison_glaive",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "translucent_blade",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "envenomed_blade",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "dreadnought",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "kishin_bow",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "berserker",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "crimson_greatsword",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "heaven_s_fists",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "spirit_gloves",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "charlotte",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "espada_ropera",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "kiss_of_athena",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "frigid_grenade",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "howl",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "dagger_of_protection",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "king_spear",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "bolt_lance",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "gimlet",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "dual_sword",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "yoichi_s_bow",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "dhanush",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "tobi_botaru",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "elixir_sword",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "golden_gloves",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "dragon_fangs",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "damascus_rapier",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "illuminati",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "megido_fire",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "infanterie",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "athame",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "full_moon_kunai",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "nihon_gou",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "romulus_s_spear",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "rash_guard",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "chest_protector",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "bulletproof_shirt",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "camo_shirt",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "master_s_garment",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "amigo_poncho",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "army_vest",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "robe_of_salvation",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "aramid_full_shell",
+    "tier": 3,
+    "date": "-"
+  },
+  {
+    "id": "aramid_vest",
+    "tier": 3,
+    "date": "-"
+  },
+  {
+    "id": "hard_dog_suit",
+    "tier": 4,
+    "date": "-"
+  },
+  {
+    "id": "leather_dog_suit",
+    "tier": 4,
+    "date": "-"
+  },
+  {
+    "id": "robe_of_warding",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "mantle_of_wind",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "aramid_plate",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "aramid_white_shell",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "gigantic_armor",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "defender_cloak",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "aramid_compound",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "aramid_harness",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "metal_dog_suit",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "light_dog_suit",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "kaiser_armor",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "kukai_s_vestment",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "ergo_lamellar",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "ergo_vest",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "titanium_dog_suit",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "soul_dog_suit",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "final_armor",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "phantom_robe",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "ergo_scale",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "ergo_plate",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "cross_dog_suit",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "platinum_dog_suit",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "vaudevillian_cape",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "angel_armor",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "ergo_armor",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "ergo_shell",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "shining_dog_suit",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "sun_dog_suit",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "silver_plate",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "demon_s_mail",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "ergo_alloy",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "ergo_compound",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "dark_dog_suit",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "lunar_dog_suit",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "high_tech_sandals",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "rubber_sole",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "leather_boots",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "inline_skates",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "combat_boots",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "mechanical_geta",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "crimson_greaves",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "magic_sandals",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "fullerene_legs",
+    "tier": 3,
+    "date": "-"
+  },
+  {
+    "id": "alnico_legs",
+    "tier": 3,
+    "date": "-"
+  },
+  {
+    "id": "cyber_shoes",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "thunder_zori",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "ceramic_legs",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "civilized_legs",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "jet_boots",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "needle_shoes",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "cobalt_legs",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "fiber_legs",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "greaves_of_dawn",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "assassin_s_shoes",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "titanium_legs",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "niello_legs",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "lion_sandals",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "killer_cleats",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "cermet_legs",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "zircaloy_legs",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "conqueror_s_shoes",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "lucky_boots",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "ergo_legs",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "mica_legs",
+    "tier": 8,
+    "date": "12/10"
+  },
+  {
+    "id": "war_god_s_boots",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "idaten_s_sandals",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "aigis_legs_v_100",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "aigis_legs_v_0",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "pixie_dust_talisman",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "micro_sash",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "power_band",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "magic_band",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "guard_band",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "speed_band",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "luck_band",
+    "tier": 0,
+    "date": "-"
+  },
+  {
+    "id": "small_sash",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "valor_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "reason_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "ascetic_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "sangfroid_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "immunity_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "quietude_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "defrosting_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "antistatic_charm",
+    "tier": 1,
+    "date": "5/10"
+  },
+  {
+    "id": "amulet_of_dismay",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "amulet_of_terror",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "amulet_of_perplexity",
+    "tier": 2,
+    "date": "6/14"
+  },
+  {
+    "id": "fairy_talisman",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "flame_charm",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "ice_charm",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "thunder_charm",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "wind_charm",
+    "tier": 3,
+    "date": "7/18"
+  },
+  {
+    "id": "light_charm",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "dark_charm",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "slash_ward",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "strike_ward",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "pierce_ward",
+    "tier": 4,
+    "date": "8/8"
+  },
+  {
+    "id": "ice_armlet",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "lightning_armlet",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "master_band",
+    "tier": 5,
+    "date": "9/10"
+  },
+  {
+    "id": "maim_earrings",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "enchanted_earrings",
+    "tier": 6,
+    "date": "10/6"
+  },
+  {
+    "id": "rosary",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "prayer_beads",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "sanative_sandalwood",
+    "tier": 7,
+    "date": "11/6"
+  },
+  {
+    "id": "physical_ward",
+    "tier": 9,
+    "date": "1/1"
+  },
+  {
+    "id": "mystic_charm",
+    "tier": 9,
+    "date": "1/1"
+  }
+]

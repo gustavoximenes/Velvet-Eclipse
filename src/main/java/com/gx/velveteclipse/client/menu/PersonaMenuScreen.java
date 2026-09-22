@@ -145,10 +145,10 @@ public final class PersonaMenuScreen extends Screen {
                 detail.add("EQUIPAMENTOS");detail.add("Arma, armadura, calçado e acessório.");detail.add("Selecione uma peça para comparar seus atributos e equipá-la.");detail.add("A aparência da roupa permanece a sua. H utiliza a categoria de arma equipada.");action="Gerenciar equipamentos";
             }
             case 3 -> {
-                for(var p:data.personas())list.add(new MenuDesign.Row(p.name(),"Lv "+p.level()+"  "+p.arcana()+(p.id().equals(data.active())?" / ATIVA":""),-1));
+                for(var p:data.personas())list.add(new MenuDesign.Row(p.name(),"Lv "+p.level()+"  "+p.arcana()+(data.reserveIds().contains(p.id())?" / RESERVA":p.id().equals(data.active())?" / ATIVA":""),-1));
                 if(!list.isEmpty()){var p=data.personas().get(Math.min(selected,list.size()-1));detail.add(p.name()+" / "+PersonaDetails.arcana(p.arcana()));detail.add("Lv "+p.level()+"   Próximo nível: "+PersonaDetails.remainingXp(p)+" EXP");
-                    detail.add(p.skills().size()+" habilidade(s) aprendida(s)");
-                    detail.add("ENTER equipa a Persona selecionada.");detail.add("X abre o modelo 3D, os atributos, as afinidades e a descrição de cada habilidade.");
+                    detail.add("Capacidade: "+(data.personas().size()-data.reserveIds().size())+" / "+data.personaCapacity()+" (máximo 8)");
+                    detail.add(data.reserveIds().contains(p.id())?"Reserva do save anterior: ENTER troca pela equipada se não houver espaço.":"ENTER equipa. Contratos de Igor ampliam o limite.");detail.add("X abre modelo, atributos e habilidades.");
                     action=p.id().equals(data.active())?"Persona equipada":"Equipar Persona";}
                 else detail.add("Você ainda não possui Personas. As Personas obtidas aparecerão nesta lista.");
             }

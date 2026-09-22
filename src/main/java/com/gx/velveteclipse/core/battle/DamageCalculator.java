@@ -66,8 +66,10 @@ public final class DamageCalculator {
          if(hit.reflected())attacker.elementalDamage(hit.damage(),hit.element());
          else if(hit.drained())target.heal(hit.damage());
          else {
+            boolean eligible=target.alive()&&!target.downed()&&!target.knockdownImmune()&&hit.damage()>0&&(hit.affinity()==Affinity.WEAK||hit.critical());
             target.elementalDamage(hit.damage(),hit.element());
             if(target.alive()&&hit.damage()>0&&(hit.affinity()==Affinity.WEAK||hit.critical()))down=target.knockDown(hit.element(),hit.affinity()==Affinity.WEAK);
+            else if(!target.alive())down=eligible; // A lethal weakness/critical hit still earns 1 More; no corpse knockdown.
          }
       }
       return new DamageOutcome(hit.element(),hit.affinity(),hit.damage(),hit.critical(),down,hit.reflected(),hit.drained(),hit.missed());

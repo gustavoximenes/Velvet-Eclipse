@@ -19,7 +19,7 @@ public final class FusionAudit {
         int pairs=0;
         for(int i=0;i<ids.size();i++) for(int j=i+1;j<ids.size();j++){
             String a=ids.get(i),b=ids.get(j);pairs++;
-            var data=new PlayerPersonaData();data.givePersona(a);data.givePersona(b);
+            var data=new PlayerPersonaData();data.expandPersonaCapacity();data.givePersona(a);data.givePersona(b);
             var first=FusionTransaction.preview(data,a,b,null);
             var reverse=FusionTransaction.preview(data,b,a,null);
             check(first!=null&&reverse!=null,"every pair has a deterministic result");
@@ -29,7 +29,7 @@ public final class FusionAudit {
             check(FusionTransaction.commit(data,a,b,null)==(data.playerLevel()>=first.requiredLevel()),"level gate is enforced");
         }
         check(pairs==21,"catalog pair count");
-        var high=new PlayerPersonaData();high.givePersona("iron_oni");high.givePersona("lumen_hare");
+        var high=new PlayerPersonaData();high.expandPersonaCapacity();high.givePersona("iron_oni");high.givePersona("lumen_hare");
         var gated=FusionTransaction.preview(high,"iron_oni","lumen_hare",null);check(gated!=null,"high-level pair preview");
         String before=FusionTransaction.fingerprint(high);
         check(!FusionTransaction.commit(high,"iron_oni","lumen_hare",null),"level-one player cannot consume a high result");

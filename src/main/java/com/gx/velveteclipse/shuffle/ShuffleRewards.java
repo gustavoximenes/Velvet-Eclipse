@@ -9,9 +9,10 @@ public final class ShuffleRewards {
  public static Result claim(ShuffleData shuffle,PlayerPersonaData data,String token,int index,Predicate<String> deliverSkillCard){
   var round=shuffle.first();if(round==null||!round.token().equals(token)||index<0||index>=round.cards().size())return new Result(null,"Essa seleção não está mais disponível.");
   var card=round.cards().get(index);
+  if(card.kind()==ShuffleRules.Kind.PERSONA&&!data.canReceivePersona(card.id()))return new Result(null,"Limite de "+data.personaCapacity()+" Personas atingido. Use um Contrato de Igor ou faça uma fusão. Sua seleção foi preservada.");
   if(card.kind()==ShuffleRules.Kind.SWORDS&&!deliverSkillCard.test(card.id()))return new Result(null,"Libere um espaço no inventário para receber o Skill Card.");
   switch(card.kind()){
-   case PERSONA->data.givePersonaInstance(ShuffleRules.personaReward(card,data.instance(card.id())));
+   case PERSONA->data.givePersonaInstance(ShuffleRules.personaReward(card,data.rewardInstance(card.id())));
    case CUPS->data.setResources(data.hp()+Math.max(1,data.maxHp()*card.amount()/100),data.sp());
    case COINS->data.addYen(card.amount());
    case WANDS->{data.addPlayerExperience(card.amount());var persona=data.activeInstance();persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),card.amount());data.updatePersona(persona);}

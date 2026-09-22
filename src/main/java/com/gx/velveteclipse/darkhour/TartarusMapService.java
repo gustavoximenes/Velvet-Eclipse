@@ -22,7 +22,7 @@ public final class TartarusMapService {
    var state=TartarusDungeonService.data(l);var plan=state.plan(l,f);var shape=outline(plan);int ox=TartarusInteriorLayout.origin(f);
    var chart=charts.computeIfAbsent(p.m_20148_(),id->TartarusMapData.load(p.getPersistentData().m_128469_(KEY)));boolean dirty=chart.reset(state.progress.cycle);
    dirty|=chart.reveal(f,p.m_20185_()-ox,p.m_20189_());var markers=new ArrayList<TartarusMapNetwork.Marker>();
-   for(var prop:TartarusInteriorLayout.props(state.progress.seed(l.m_7328_(),f),f,plan))if(prop.kind().equals("treasure")&&!state.progress.treasures.contains(f+":"+prop.index())){
+   for(var prop:TartarusInteriorLayout.props(state.progress.seed(l.m_7328_(),f),f,plan))if(prop.kind().equals("treasure")&&(!state.progress.treasures.contains(f+":"+prop.index())||(com.gx.velveteclipse.progression.RewardLedger.permitChest(f,prop.index())&&!com.gx.velveteclipse.progression.ProgressionRewards.claimed(p,f)))){
     if(chart.known(f,prop.at().x(),prop.at().z())&&p.m_20275_(ox+prop.at().x()+.5,65,prop.at().z()+.5)<196){var saved=state.props.get(f+":treasure:"+prop.index());Entity chest=null;try{if(saved!=null)chest=l.m_8791_(UUID.fromString(saved.m_128461_("entity")));}catch(IllegalArgumentException ignored){}if(chest!=null&&p.m_142582_(chest))dirty|=chart.seeChest(f,prop.index());}
     if(chart.chest(f,prop.index()))markers.add(new TartarusMapNetwork.Marker(2,prop.at().x()+.5f,prop.at().z()+.5f));
    }

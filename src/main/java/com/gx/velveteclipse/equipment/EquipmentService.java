@@ -12,7 +12,7 @@ public final class EquipmentService {
  private static final Map<UUID,Long> GATE=new HashMap<>();
  public static void sync(ServerPlayer p,String view,String message){reply(p,view,message,null);}
  private static void reply(ServerPlayer p,String view,String message,ElizabethEntity npc){
-  Visit v=VISITS.get(p.m_20148_());EquipmentNetwork.reply(p,new EquipmentNetwork.Snapshot(EquipmentData.load(p),PlayerPersonaData.load(p).yen(),view,message,npc==null?-1:npc.m_19879_(),npc!=null&&npc.merchant(),v==null?"":v.token(),ShopProgress.unlocked(p)));
+  Visit v=VISITS.get(p.m_20148_());EquipmentNetwork.reply(p,new EquipmentNetwork.Snapshot(EquipmentData.load(p),PlayerPersonaData.load(p).yen(),view,message,npc==null?-1:npc.m_19879_(),npc!=null&&npc.merchant(),v==null?"":v.token(),ShopProgress.tier(p)));
  }
  public static void talk(ServerPlayer p,ElizabethEntity npc){
   if(BattleService.current(p)!=null||!p.m_6084_()||p.m_20280_(npc)>36)return;
@@ -34,7 +34,7 @@ public final class EquipmentService {
    case "shop","buy" -> {
     npc=merchant(p,r.token());if(npc==null){sync(p,"closed","Aproxime-se da Elizabeth para comprar.");return;}
     if(r.action().equals("shop")){view="shop";break;}
-    if(!ShopStock.available(r.id(),ShopProgress.unlocked(p))){message="Este equipamento será liberado após a Sacerdotisa do trem (porta do andar 25).";break;}
+    if(!ShopStock.available(r.id(),ShopProgress.tier(p))){message="Este equipamento exige uma Permissão de Compra posterior ou não faz parte do estoque da loja.";break;}
     var result=EquipmentTransactions.buy(bag,data,r.id());
     message=switch(result){case BOUGHT->"Compra concluída.";case UNKNOWN->"Item desconhecido.";case OWNED->"Este equipamento já está na sua coleção.";case FULL->"Limite deste item atingido.";case NO_YEN->"Yen insuficiente.";};
     if(result==EquipmentTransactions.Result.BOUGHT)VISITS.put(p.m_20148_(),new Visit(npc.m_20148_(),UUID.randomUUID().toString(),now));

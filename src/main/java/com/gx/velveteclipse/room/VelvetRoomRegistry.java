@@ -28,6 +28,16 @@ public final class VelvetRoomRegistry {
  static {for(var block:com.gx.velveteclipse.darkhour.DarkHourRegistry.creativeBlocks())ITEMS.register(block.getId().m_135815_(),()->new BlockItem(block.get(),new Item.Properties()));}
  public static final RegistryObject<EntityType<VelvetSeatEntity>> SEAT=ENTITIES.register("velvet_seat",()->EntityType.Builder.<VelvetSeatEntity>m_20704_(VelvetSeatEntity::new,MobCategory.MISC).m_20699_(.1f,.1f).m_20702_(8).m_20717_(1).m_20712_("velvet_eclipse:velvet_seat"));
  public static final RegistryObject<EntityType<IgorEntity>> IGOR=ENTITIES.register("igor",()->EntityType.Builder.<IgorEntity>m_20704_(IgorEntity::new,MobCategory.MISC).m_20699_(.9f,2f).m_20702_(10).m_20717_(3).m_20712_("velvet_eclipse:igor"));
- public static final RegistryObject<CreativeModeTab> TAB=TABS.register("velvet_eclipse",()->CreativeModeTab.builder().m_257941_(Component.m_237115_("itemGroup.velvet_eclipse")).m_257737_(()->new ItemStack(KEY.get())).m_257501_((parameters,output)->{ForgeRegistries.ITEMS.getEntries().stream().filter(e->e.getKey().m_135782_().m_135827_().equals("velvet_eclipse")).sorted(java.util.Comparator.comparing(e->e.getKey().toString())).forEach(e->output.m_246326_(e.getValue()));}).m_257652_());
- public static void register(IEventBus bus){com.gx.velveteclipse.equipment.EquipmentRegistry.init();com.gx.velveteclipse.shadow.FieldShadowRegistry.init();com.gx.velveteclipse.shadow.EnemyRegistry.init();com.gx.velveteclipse.darkhour.TartarusPropRegistry.init();com.gx.velveteclipse.raid.RaidRegistry.init();BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);TABS.register(bus);}
+ private static RegistryObject<CreativeModeTab> tab(CreativeCategory category){
+  return TABS.register(category==CreativeCategory.GENERAL?"velvet_eclipse":"velvet_"+category.name().toLowerCase(java.util.Locale.ROOT),()->CreativeModeTab.builder()
+   .m_257941_(Component.m_237115_("itemGroup.velvet_eclipse."+category.name().toLowerCase(java.util.Locale.ROOT)))
+   .m_257737_(()->new ItemStack(ForgeRegistries.ITEMS.getValue(new net.minecraft.resources.ResourceLocation("velvet_eclipse",category.icon))))
+   .m_257501_((parameters,output)->ForgeRegistries.ITEMS.getEntries().stream()
+    .filter(e->e.getKey().m_135782_().m_135827_().equals("velvet_eclipse")&&CreativeCategory.of(e.getKey().m_135782_().m_135815_(),e.getValue() instanceof BlockItem)==category)
+    .sorted(java.util.Comparator.comparing(e->e.getKey().toString())).forEach(e->output.m_246326_(e.getValue())))
+   .m_257652_());
+ }
+ public static final RegistryObject<CreativeModeTab> TAB=tab(CreativeCategory.GENERAL);
+ static {for(var category:CreativeCategory.values())if(category!=CreativeCategory.GENERAL)tab(category);}
+ public static void register(IEventBus bus){com.gx.velveteclipse.progression.ProgressionItems.init();com.gx.velveteclipse.equipment.EquipmentRegistry.init();com.gx.velveteclipse.shadow.FieldShadowRegistry.init();com.gx.velveteclipse.shadow.EnemyRegistry.init();com.gx.velveteclipse.darkhour.TartarusPropRegistry.init();com.gx.velveteclipse.raid.RaidRegistry.init();BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);TABS.register(bus);}
 }

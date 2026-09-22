@@ -255,7 +255,7 @@ public final class BattleService {
         for(Object p:new ArrayList<>(g.players.values())){
             persist(p,g.session);var data=PlayerPersonaData.load(p);int before=data.playerLevel(),xp=won?com.gx.velveteclipse.shadow.ShadowEncounterRules.xp(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1):0;String items="NENHUM ITEM";xp=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().xp(xp);
             if(won){var persona=data.activeInstance();data.addPlayerExperience(xp);persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),xp);data.updatePersona(persona);if(g.raid){long yen=g.raidStage==2?2000:500;data.addYen(yen);items="YEN • ¥ "+yen;}else{long yen=com.gx.velveteclipse.shadow.ShadowEncounterRules.yen(g.dungeonFloor,g.enemyCount,g.rare)*(g.boss?3:1);data.addYen(yen);items="YEN • ¥ "+yen;}}
-            data.save(p);VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
+            data.save(p);if(won&&g.raid&&g.raidStage==2&&p instanceof ServerPlayer player&&com.gx.velveteclipse.progression.ProgressionRewards.boss(player))items+=" • Permissão 25F • Contrato de Igor";VisualBattleActors.clear(p);sync(p,"Resultados • pressione Enter para continuar.");
             if((g.shuffleVictory||g.rare)&&won)com.gx.velveteclipse.shuffle.ShuffleService.credit(p,Math.max(1,g.dungeonFloor),g.rare);
             var persona=data.activeInstance();ModNetwork.sendPresentation(p,new BattleResultsS2C(g.session.id().toString(),won,xp,before,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),items,(g.shuffleVictory||g.rare)&&won));
         }

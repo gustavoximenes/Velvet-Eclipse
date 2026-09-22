@@ -242,7 +242,7 @@ public final class BattleSession {
             }
 
             this.updateState();
-            return new BattleResolution(this.state, var5, List.copyOf(var3), weaknessHit);
+            return new BattleResolution(this.state, this.state==BattleState.ACTIVE&&var5, List.copyOf(var3), weaknessHit);
          }
       }
    }

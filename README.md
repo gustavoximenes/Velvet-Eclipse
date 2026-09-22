@@ -1,3 +1,11 @@
+# Velvet Eclipse 0.6.26 — Permissões e Contrato de Igor
+
+Loja em etapas com Permissões de Compra, prêmios únicos do chefe do trem e dos baús fixos, capacidade inicial de duas Personas ampliável até oito, onze abas criativas e 1 More corrigido para golpes letais. [Uso, migração de saves e estoque por andar](docs/PURCHASE-PERMITS.md).
+
+# Velvet Eclipse 0.6.25 — Party e expedição
+
+Party, compartilhamento de itens/yen/mapa, flecha visível, cura com Elizabeth, itens de dano, ajuda F1, Dark Hour+ e ajustes de fuga/HUD. [Notas](docs/PARTY-EXPEDITION.md). A loja desta versão foi substituída pela progressão por permissões da 0.6.26.
+
 # Velvet Eclipse 0.6.23 — Inimigos de Reload e Bestiário
 
 19 inimigos modelados separadamente das Personas, Shadows móveis na sala e preservadas após fuga. Bestiário no Tab com modelos, encontros, derrotas e apenas afinidades descobertas. [Uso, referências e validação](docs/SHADOWS-RELOAD.md).

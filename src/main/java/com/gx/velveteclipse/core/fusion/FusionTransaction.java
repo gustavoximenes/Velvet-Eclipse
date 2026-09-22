@@ -8,7 +8,7 @@ public final class FusionTransaction {
  public static Preview preview(PlayerPersonaData data,String a,String b,String skill){
   var recipe=FusionService.preview(data.instance(a),data.instance(b)).orElse(null);if(recipe==null)return null;
   if(skill!=null&&!skill.isBlank()&&!recipe.inheritableSkills().contains(skill))return null;
-  var def=PersonaRegistry.persona(recipe.personaId()).orElseThrow();var old=data.instance(def.id());
+  var def=PersonaRegistry.persona(recipe.personaId()).orElseThrow();var old=data.rewardInstance(def.id());
   var result=old==null?new PersonaInstance(def):old;
   String inherited=skill==null||skill.isBlank()?recipe.inheritableSkills().stream().findFirst().orElse(null):skill;
   if(inherited!=null)result.inheritSkill(inherited);

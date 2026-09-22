@@ -20,6 +20,18 @@ public final class PlayerPersonaData {
    private int pulseTonics = 3;
    private int playerLevel=1, playerExperience;
    private long yen;
+   private int personaCapacity=2;
+   // Only migration/switching old overflow uses this reserve. New acquisitions cannot bypass the cap.
+   private final LinkedHashMap<String,PersonaInstance> reserve=new LinkedHashMap<>();
+   public int personaCapacity(){return personaCapacity;}
+   public Set<String> reserveIds(){return Set.copyOf(reserve.keySet());}
+   public Collection<PersonaInstance> reserveInstances(){return reserve.values().stream().map(PlayerPersonaData::copy).toList();}
+   public boolean canReceivePersona(String id){return roster.containsKey(id)||roster.size()<personaCapacity;}
+   public boolean expandPersonaCapacity(){if(personaCapacity>=8)return false;personaCapacity++;return true;}
+   private void enforceCapacity(){
+      for(String id:new ArrayList<>(roster.keySet()))if(roster.size()>personaCapacity&&!id.equals(activePersona))reserve.put(id,roster.remove(id));
+      reserve.keySet().removeAll(roster.keySet());
+   }
    private com.gx.velveteclipse.equipment.EquipmentBonuses equipment=com.gx.velveteclipse.equipment.EquipmentBonuses.NONE;
    public boolean spendYen(long price){if(price<0||yen<price)return false;yen-=price;return true;}
    public long yen(){return yen;}
@@ -81,7 +93,7 @@ public final class PlayerPersonaData {
 
    public boolean givePersona(String var1) {
       PersonaDefinition var2 = PersonaRegistry.persona(var1).orElse(null);
-      if (var2 != null && !this.roster.containsKey(var1)) {
+      if (var2 != null && !this.roster.containsKey(var1) && canReceivePersona(var1) && !reserve.containsKey(var1)) {
          this.roster.put(var1, new PersonaInstance(var2));
          return true;
       } else {
@@ -90,7 +102,8 @@ public final class PlayerPersonaData {
    }
 
    public boolean givePersonaInstance(PersonaInstance var1) {
-      if (var1 != null && !PersonaRegistry.persona(var1.definitionId()).isEmpty()) {
+      if (var1 != null && !PersonaRegistry.persona(var1.definitionId()).isEmpty() && canReceivePersona(var1.definitionId())) {
+         reserve.remove(var1.definitionId());
          this.roster.put(var1.definitionId(), copy(var1));
          return true;
       } else {
@@ -121,6 +134,7 @@ public final class PlayerPersonaData {
          this.roster.remove(var1);
          this.roster.remove(var2);
          this.roster.put(var3.definitionId(), copy(var3));
+         reserve.remove(var3.definitionId());
          if (var4 || !this.roster.containsKey(this.activePersona)) {
             this.activePersona = var3.definitionId();
          }
@@ -132,6 +146,11 @@ public final class PlayerPersonaData {
    }
 
    public boolean equipPersona(String var1) {
+      if(reserve.containsKey(var1)){
+         var selected=reserve.remove(var1);
+         if(roster.size()>=personaCapacity)reserve.put(activePersona,roster.remove(activePersona));
+         roster.put(var1,selected);
+      }
       if (!this.roster.containsKey(var1)) {
          return false;
       } else {
@@ -156,6 +175,7 @@ public final class PlayerPersonaData {
       PersonaInstance var2 = this.roster.get(var1);
       return var2 == null ? null : copy(var2);
    }
+   public PersonaInstance rewardInstance(String id){var held=roster.get(id);if(held==null)held=reserve.get(id);return held==null?null:copy(held);}
 
    public void updatePersona(PersonaInstance var1) {
       if (var1 != null && this.roster.containsKey(var1.definitionId())) {
@@ -203,6 +223,8 @@ public final class PlayerPersonaData {
                var1.pulseTonics = Math.max(0, Integer.parseInt(var4[6]));
                if(var4.length>=10){var1.playerLevel=clamp(Integer.parseInt(var4[8]),1,99);var1.playerExperience=clamp(Integer.parseInt(var4[9]),0,var1.playerNextExperience()-1);}
                if(var4.length>=11)var1.yen=Math.max(0,Math.min(9_999_999_999L,Long.parseLong(var4[10])));
+               if(var4.length>=12)var1.personaCapacity=clamp(Integer.parseInt(var4[11]),2,8);
+               if(var4.length>=13&&!var4[12].isBlank())for(String row:var4[12].split(";")){var saved=decodePersona(row);if(saved!=null)var1.reserve.put(saved.definitionId(),saved);}
                var1.roster.clear();
                if (!var4[7].isBlank()) {
                   for (String var8 : var4[7].split(";")) {
@@ -221,6 +243,7 @@ public final class PlayerPersonaData {
                if (!var1.roster.containsKey(var1.activePersona)) {
                   var1.activePersona = var1.roster.keySet().iterator().next();
                }
+               var1.enforceCapacity();
 
                var1.hp = Math.max(0,var1.hp);
                var1.sp = Math.max(0,var1.sp);
@@ -283,7 +306,7 @@ public final class PlayerPersonaData {
          + "|"
          + this.pulseTonics
          + "|"
-         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen;
+         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen + "|" + personaCapacity + "|" + reserve.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";"));
    }
 
    private static String encodePersona(PersonaInstance var0) {

@@ -264,7 +264,7 @@ public final class VelvetCommands {
       } else {
          PlayerPersonaData var3 = PlayerPersonaData.load(var2);
          if (!var3.givePersona(var1)) {
-            RuntimeBridge.sendMessage(var2, "§eEssa Persona já está no roster.");
+            RuntimeBridge.sendMessage(var2, "§ePersona já possuída ou limite atingido. Use Contratos de Igor para ampliar a capacidade (máximo 8).");
             return 0;
          } else {
             var3.save(var2);
