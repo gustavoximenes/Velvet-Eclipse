@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "cuboids": 220,
+  "bones": 31,
+  "integer_cuboid_sizes": true,
+  "box_uv_nonoverlapping": true,
+  "blockbench_hierarchy_and_clips": true,
+  "single_texture_all_clips": true,
+  "embedded_png_matches": true,
+  "closed_clip_boundaries": true,
+  "max_rotation_coordinate_delta_degrees": 13.8822,
+  "max_actual_joint_rotation_delta_degrees": 13.8086,
+  "grip_wrist_error_logical_units": {
+    "magic": 0.0008,
+    "physical": 0.004
+  },
+  "lyre_idle_center": [
+    0.0,
+    32.0,
+    4.0
+  ],
+  "lyre_magic_center": [
+    4.0,
+    29.0,
+    -8.5
+  ],
+  "mod_integration": false,
+  "render_source": "exported geometry, texture and animation JSON"
+}

@@ -21,6 +21,7 @@ public final class ShuffleRewards {
   shuffle.consume(token);return new Result(card,"Recompensa recebida!");
  }
  public static boolean teach(PlayerPersonaData data,String personaId,String skill){
+  skill=PersonaRegistry.canonicalSkillId(skill);
   var persona=data.instance(personaId);if(persona==null||PersonaRegistry.skill(skill).isEmpty()||persona.learnedSkills().contains(skill))return false;
   persona.inheritSkill(skill);data.updatePersona(persona);return true;
  }

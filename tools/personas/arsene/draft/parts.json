@@ -1,0 +1,7756 @@
+[
+  {
+    "name": "pelvis",
+    "bone": "hips",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -10.0,
+        104,
+        -6.4
+      ],
+      "size": [
+        20,
+        14,
+        13
+      ],
+      "uv": [
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "name": "waist",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -8,
+        114.0,
+        -6.0
+      ],
+      "size": [
+        16,
+        16,
+        12
+      ],
+      "uv": [
+        70,
+        2
+      ]
+    }
+  },
+  {
+    "name": "vest_lower",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -9.6,
+        128,
+        -6.8
+      ],
+      "size": [
+        19,
+        15,
+        14
+      ],
+      "uv": [
+        128,
+        2
+      ]
+    }
+  },
+  {
+    "name": "vest_ribcage",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -12,
+        142.0,
+        -7.4
+      ],
+      "size": [
+        24,
+        14,
+        15
+      ],
+      "uv": [
+        196,
+        2
+      ]
+    }
+  },
+  {
+    "name": "shoulders",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -14.8,
+        156,
+        -7.2
+      ],
+      "size": [
+        30,
+        10,
+        14
+      ],
+      "uv": [
+        276,
+        2
+      ]
+    }
+  },
+  {
+    "name": "corset_lacing",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -5.6,
+        118.0,
+        -7.76
+      ],
+      "size": [
+        11,
+        33,
+        1
+      ],
+      "uv": [
+        366,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_coat_ribs",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -14.7,
+        136,
+        -7.6
+      ],
+      "size": [
+        7,
+        24,
+        15
+      ],
+      "uv": [
+        392,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "pivot": [
+        -12,
+        160,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_lapel",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -8.1,
+        140,
+        -9.8
+      ],
+      "size": [
+        5,
+        24,
+        2
+      ],
+      "uv": [
+        438,
+        2
+      ],
+      "rotation": [
+        0.0,
+        0,
+        14.500166766552573
+      ],
+      "pivot": [
+        -5.6,
+        140,
+        -8.8
+      ]
+    }
+  },
+  {
+    "name": "right_vest_point",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -6.2,
+        108,
+        -7.6
+      ],
+      "size": [
+        6,
+        16,
+        2
+      ],
+      "uv": [
+        454,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        18
+      ],
+      "pivot": [
+        -3.4,
+        124,
+        -6.4
+      ]
+    }
+  },
+  {
+    "name": "right_brass_button_0",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -9.68,
+        142.0,
+        -9.92
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "uv": [
+        472,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        -8.8,
+        143.0,
+        -9.4
+      ]
+    }
+  },
+  {
+    "name": "right_brass_button_1",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -10.16,
+        152,
+        -9.92
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "uv": [
+        480,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        -9.28,
+        153.0,
+        -9.4
+      ]
+    }
+  },
+  {
+    "name": "right_brass_button_2",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -10.64,
+        160,
+        -9.92
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "uv": [
+        488,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        -9.76,
+        161.0,
+        -9.4
+      ]
+    }
+  },
+  {
+    "name": "right_tail_top",
+    "bone": "right_coat_tail",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -17.2,
+        90.0,
+        1.6
+      ],
+      "size": [
+        11,
+        40,
+        4
+      ],
+      "uv": [
+        496,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -8
+      ],
+      "pivot": [
+        -10.0,
+        128,
+        4
+      ]
+    }
+  },
+  {
+    "name": "right_tail_taper",
+    "bone": "right_coat_tail",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        -16.6,
+        76,
+        2.0
+      ],
+      "size": [
+        7,
+        20,
+        3
+      ],
+      "uv": [
+        528,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        8
+      ],
+      "pivot": [
+        -13.0,
+        96,
+        4
+      ]
+    }
+  },
+  {
+    "name": "right_side_front_tail",
+    "bone": "right_coat_tail",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -16.6,
+        88,
+        -7.2
+      ],
+      "size": [
+        8,
+        36,
+        2
+      ],
+      "uv": [
+        550,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -7
+      ],
+      "pivot": [
+        -10.0,
+        124,
+        -7.2
+      ]
+    }
+  },
+  {
+    "name": "right_tail_rivet_0",
+    "bone": "right_coat_tail",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -14.1,
+        114.0,
+        -8.2
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "uv": [
+        572,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_tail_rivet_1",
+    "bone": "right_coat_tail",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -14.1,
+        108.8,
+        -8.2
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "uv": [
+        578,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_tail_rivet_2",
+    "bone": "right_coat_tail",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -14.1,
+        103.6,
+        -8.2
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "uv": [
+        584,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_chain_0_0",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -1.3,
+        134.0,
+        -8.98
+      ],
+      "size": [
+        1,
+        5,
+        1
+      ],
+      "uv": [
+        590,
+        2
+      ],
+      "rotation": [
+        -1.537038275395022,
+        0,
+        116.56505117707799
+      ],
+      "pivot": [
+        -0.8,
+        134.0,
+        -8.48
+      ]
+    }
+  },
+  {
+    "name": "right_chain_0_1",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -5.3,
+        132,
+        -9.1
+      ],
+      "size": [
+        1,
+        6,
+        1
+      ],
+      "uv": [
+        596,
+        2
+      ],
+      "rotation": [
+        -1.2152447619670592,
+        0,
+        45.00000000000001
+      ],
+      "pivot": [
+        -4.8,
+        132,
+        -8.6
+      ]
+    }
+  },
+  {
+    "name": "right_chain_1_0",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -1.3,
+        142.0,
+        -8.98
+      ],
+      "size": [
+        1,
+        5,
+        1
+      ],
+      "uv": [
+        602,
+        2
+      ],
+      "rotation": [
+        -1.537038275395022,
+        0,
+        116.56505117707799
+      ],
+      "pivot": [
+        -0.8,
+        142.0,
+        -8.48
+      ]
+    }
+  },
+  {
+    "name": "right_chain_1_1",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -5.3,
+        140,
+        -9.1
+      ],
+      "size": [
+        1,
+        6,
+        1
+      ],
+      "uv": [
+        608,
+        2
+      ],
+      "rotation": [
+        -1.2152447619670592,
+        0,
+        45.00000000000001
+      ],
+      "pivot": [
+        -4.8,
+        140,
+        -8.6
+      ]
+    }
+  },
+  {
+    "name": "left_coat_ribs",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        7.7,
+        136,
+        -7.6
+      ],
+      "size": [
+        7,
+        24,
+        15
+      ],
+      "uv": [
+        614,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -9
+      ],
+      "pivot": [
+        12,
+        160,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_lapel",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        3.1,
+        140,
+        -9.8
+      ],
+      "size": [
+        5,
+        24,
+        2
+      ],
+      "uv": [
+        660,
+        2
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -14.500166766552573
+      ],
+      "pivot": [
+        5.6,
+        140,
+        -8.8
+      ]
+    }
+  },
+  {
+    "name": "left_vest_point",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        0.6,
+        108,
+        -7.6
+      ],
+      "size": [
+        6,
+        16,
+        2
+      ],
+      "uv": [
+        676,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -18
+      ],
+      "pivot": [
+        3.4,
+        124,
+        -6.4
+      ]
+    }
+  },
+  {
+    "name": "left_brass_button_0",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        7.92,
+        142.0,
+        -9.92
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "uv": [
+        694,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        8.8,
+        143.0,
+        -9.4
+      ]
+    }
+  },
+  {
+    "name": "left_brass_button_1",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        8.4,
+        152,
+        -9.92
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "uv": [
+        702,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        9.28,
+        153.0,
+        -9.4
+      ]
+    }
+  },
+  {
+    "name": "left_brass_button_2",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        8.88,
+        160,
+        -9.92
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "uv": [
+        710,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        9.76,
+        161.0,
+        -9.4
+      ]
+    }
+  },
+  {
+    "name": "left_tail_top",
+    "bone": "left_coat_tail",
+    "material": "red",
+    "cube": {
+      "origin": [
+        6.0,
+        90.0,
+        1.6
+      ],
+      "size": [
+        11,
+        40,
+        4
+      ],
+      "uv": [
+        718,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        8
+      ],
+      "pivot": [
+        10.0,
+        128,
+        4
+      ]
+    }
+  },
+  {
+    "name": "left_tail_taper",
+    "bone": "left_coat_tail",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        9.4,
+        76,
+        2.0
+      ],
+      "size": [
+        7,
+        20,
+        3
+      ],
+      "uv": [
+        750,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -8
+      ],
+      "pivot": [
+        13.0,
+        96,
+        4
+      ]
+    }
+  },
+  {
+    "name": "left_side_front_tail",
+    "bone": "left_coat_tail",
+    "material": "red",
+    "cube": {
+      "origin": [
+        8.6,
+        88,
+        -7.2
+      ],
+      "size": [
+        8,
+        36,
+        2
+      ],
+      "uv": [
+        772,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        7
+      ],
+      "pivot": [
+        10.0,
+        124,
+        -7.2
+      ]
+    }
+  },
+  {
+    "name": "left_tail_rivet_0",
+    "bone": "left_coat_tail",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        13.1,
+        114.0,
+        -8.2
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "uv": [
+        794,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_tail_rivet_1",
+    "bone": "left_coat_tail",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        13.1,
+        108.8,
+        -8.2
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "uv": [
+        800,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_tail_rivet_2",
+    "bone": "left_coat_tail",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        13.1,
+        103.6,
+        -8.2
+      ],
+      "size": [
+        1,
+        2,
+        1
+      ],
+      "uv": [
+        806,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_chain_0_0",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        0.3,
+        134.0,
+        -8.98
+      ],
+      "size": [
+        1,
+        5,
+        1
+      ],
+      "uv": [
+        812,
+        2
+      ],
+      "rotation": [
+        -1.537038275395022,
+        0,
+        -116.56505117707799
+      ],
+      "pivot": [
+        0.8,
+        134.0,
+        -8.48
+      ]
+    }
+  },
+  {
+    "name": "left_chain_0_1",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        4.3,
+        132,
+        -9.1
+      ],
+      "size": [
+        1,
+        6,
+        1
+      ],
+      "uv": [
+        818,
+        2
+      ],
+      "rotation": [
+        -1.2152447619670592,
+        0,
+        -45.00000000000001
+      ],
+      "pivot": [
+        4.8,
+        132,
+        -8.6
+      ]
+    }
+  },
+  {
+    "name": "left_chain_1_0",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        0.3,
+        142.0,
+        -8.98
+      ],
+      "size": [
+        1,
+        5,
+        1
+      ],
+      "uv": [
+        824,
+        2
+      ],
+      "rotation": [
+        -1.537038275395022,
+        0,
+        -116.56505117707799
+      ],
+      "pivot": [
+        0.8,
+        142.0,
+        -8.48
+      ]
+    }
+  },
+  {
+    "name": "left_chain_1_1",
+    "bone": "body",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        4.3,
+        140,
+        -9.1
+      ],
+      "size": [
+        1,
+        6,
+        1
+      ],
+      "uv": [
+        830,
+        2
+      ],
+      "rotation": [
+        -1.2152447619670592,
+        0,
+        -45.00000000000001
+      ],
+      "pivot": [
+        4.8,
+        140,
+        -8.6
+      ]
+    }
+  },
+  {
+    "name": "cravat_knot",
+    "bone": "cravat",
+    "material": "ivory",
+    "cube": {
+      "origin": [
+        -3.6,
+        160,
+        -11.6
+      ],
+      "size": [
+        7,
+        6,
+        4
+      ],
+      "uv": [
+        836,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        15
+      ],
+      "pivot": [
+        0,
+        163.2,
+        -9.6
+      ]
+    }
+  },
+  {
+    "name": "r_cravat_fold",
+    "bone": "cravat",
+    "material": "ivory",
+    "cube": {
+      "origin": [
+        -6.6,
+        151.2,
+        -10.0
+      ],
+      "size": [
+        7,
+        13,
+        2
+      ],
+      "uv": [
+        860,
+        2
+      ],
+      "rotation": [
+        -12,
+        -12,
+        -18
+      ],
+      "pivot": [
+        0,
+        162.4,
+        -9.2
+      ]
+    }
+  },
+  {
+    "name": "r_cravat_tip",
+    "bone": "cravat",
+    "material": "ivory",
+    "cube": {
+      "origin": [
+        -3.8,
+        147.2,
+        -11.0
+      ],
+      "size": [
+        3,
+        8,
+        1
+      ],
+      "uv": [
+        880,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        12
+      ],
+      "pivot": [
+        -2.2,
+        152,
+        -10.0
+      ]
+    }
+  },
+  {
+    "name": "l_cravat_fold",
+    "bone": "cravat",
+    "material": "ivory",
+    "cube": {
+      "origin": [
+        -0.2,
+        151.2,
+        -10.0
+      ],
+      "size": [
+        7,
+        13,
+        2
+      ],
+      "uv": [
+        890,
+        2
+      ],
+      "rotation": [
+        -12,
+        12,
+        18
+      ],
+      "pivot": [
+        0,
+        162.4,
+        -9.2
+      ]
+    }
+  },
+  {
+    "name": "l_cravat_tip",
+    "bone": "cravat",
+    "material": "ivory",
+    "cube": {
+      "origin": [
+        0.6,
+        147.2,
+        -11.0
+      ],
+      "size": [
+        3,
+        8,
+        1
+      ],
+      "uv": [
+        910,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -12
+      ],
+      "pivot": [
+        2.2,
+        152,
+        -10.0
+      ]
+    }
+  },
+  {
+    "name": "neck",
+    "bone": "body",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -3.6,
+        164,
+        -3.2
+      ],
+      "size": [
+        7,
+        11,
+        7
+      ],
+      "uv": [
+        920,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_high_scarlet_collar",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -9.3,
+        163.2,
+        -2.4
+      ],
+      "size": [
+        5,
+        20,
+        7
+      ],
+      "uv": [
+        950,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        17
+      ],
+      "pivot": [
+        -6.8,
+        164,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_collar_tip",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -11.8,
+        176,
+        0.2
+      ],
+      "size": [
+        2,
+        13,
+        2
+      ],
+      "uv": [
+        976,
+        2
+      ],
+      "rotation": [
+        0.0,
+        0,
+        20.13630342824813
+      ],
+      "pivot": [
+        -10.8,
+        176,
+        1.2
+      ]
+    }
+  },
+  {
+    "name": "left_high_scarlet_collar",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        4.3,
+        163.2,
+        -2.4
+      ],
+      "size": [
+        5,
+        20,
+        7
+      ],
+      "uv": [
+        986,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -17
+      ],
+      "pivot": [
+        6.8,
+        164,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_collar_tip",
+    "bone": "body",
+    "material": "red",
+    "cube": {
+      "origin": [
+        9.8,
+        176,
+        0.2
+      ],
+      "size": [
+        2,
+        13,
+        2
+      ],
+      "uv": [
+        1012,
+        2
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -20.13630342824813
+      ],
+      "pivot": [
+        10.8,
+        176,
+        1.2
+      ]
+    }
+  },
+  {
+    "name": "mask_center",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -6.0,
+        173.0,
+        -6.4
+      ],
+      "size": [
+        12,
+        18,
+        11
+      ],
+      "uv": [
+        2,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_mask_cheek",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -7.8,
+        173.6,
+        -4.4
+      ],
+      "size": [
+        4,
+        15,
+        8
+      ],
+      "uv": [
+        50,
+        48
+      ],
+      "rotation": [
+        0,
+        -27,
+        15
+      ],
+      "pivot": [
+        -4.4,
+        180,
+        -1.2
+      ]
+    }
+  },
+  {
+    "name": "right_temple_red_crest",
+    "bone": "head",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -4.6,
+        185.0,
+        -8.4
+      ],
+      "size": [
+        2,
+        11,
+        2
+      ],
+      "uv": [
+        76,
+        48
+      ],
+      "rotation": [
+        20.201619989555684,
+        0,
+        40.85537625889569
+      ],
+      "pivot": [
+        -3.6,
+        185.0,
+        -7.4
+      ]
+    }
+  },
+  {
+    "name": "right_narrow_ember_eye",
+    "bone": "head",
+    "material": "eye",
+    "cube": {
+      "origin": [
+        -1.9,
+        183.0,
+        -8.18
+      ],
+      "size": [
+        1,
+        5,
+        1
+      ],
+      "uv": [
+        86,
+        48
+      ],
+      "rotation": [
+        6.55675567408701,
+        0,
+        73.30075576600653
+      ],
+      "pivot": [
+        -1.4,
+        183.0,
+        -7.68
+      ]
+    }
+  },
+  {
+    "name": "right_cheek_filagree",
+    "bone": "head",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -2.5,
+        175.2,
+        -7.82
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        92,
+        48
+      ],
+      "rotation": [
+        -2.5349369959602197,
+        0,
+        34.69515353123388
+      ],
+      "pivot": [
+        -2.0,
+        175.2,
+        -7.32
+      ]
+    }
+  },
+  {
+    "name": "right_jaw_mark_0",
+    "bone": "head",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        -1.5,
+        173.6,
+        -7.78
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        98,
+        48
+      ],
+      "rotation": [
+        -0.8814039965821385,
+        0,
+        67.38013505195957
+      ],
+      "pivot": [
+        -1.0,
+        173.6,
+        -7.28
+      ]
+    }
+  },
+  {
+    "name": "right_jaw_mark_1",
+    "bone": "head",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -1.5,
+        176.2,
+        -7.78
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        104,
+        48
+      ],
+      "rotation": [
+        -0.8814039965821385,
+        0,
+        67.38013505195957
+      ],
+      "pivot": [
+        -1.0,
+        176.2,
+        -7.28
+      ]
+    }
+  },
+  {
+    "name": "right_mask_spike_0",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -6.6,
+        176.8,
+        0.6
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        110,
+        48
+      ],
+      "rotation": [
+        19.31677525661505,
+        0,
+        96.70983680775703
+      ],
+      "pivot": [
+        -5.6,
+        176.8,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "right_mask_spike_1",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -6.6,
+        180.2,
+        0.6
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        120,
+        48
+      ],
+      "rotation": [
+        15.906926625827893,
+        0,
+        85.91438322002516
+      ],
+      "pivot": [
+        -5.6,
+        180.2,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "right_mask_spike_2",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -6.6,
+        183.6,
+        0.6
+      ],
+      "size": [
+        2,
+        11,
+        2
+      ],
+      "uv": [
+        130,
+        48
+      ],
+      "rotation": [
+        13.242976219823516,
+        0,
+        78.69006752597994
+      ],
+      "pivot": [
+        -5.6,
+        183.6,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "left_mask_cheek",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        3.8,
+        173.6,
+        -4.4
+      ],
+      "size": [
+        4,
+        15,
+        8
+      ],
+      "uv": [
+        140,
+        48
+      ],
+      "rotation": [
+        0,
+        27,
+        -15
+      ],
+      "pivot": [
+        4.4,
+        180,
+        -1.2
+      ]
+    }
+  },
+  {
+    "name": "left_temple_red_crest",
+    "bone": "head",
+    "material": "red",
+    "cube": {
+      "origin": [
+        2.6,
+        185.0,
+        -8.4
+      ],
+      "size": [
+        2,
+        11,
+        2
+      ],
+      "uv": [
+        166,
+        48
+      ],
+      "rotation": [
+        20.201619989555684,
+        0,
+        -40.85537625889569
+      ],
+      "pivot": [
+        3.6,
+        185.0,
+        -7.4
+      ]
+    }
+  },
+  {
+    "name": "left_narrow_ember_eye",
+    "bone": "head",
+    "material": "eye",
+    "cube": {
+      "origin": [
+        0.9,
+        183.0,
+        -8.18
+      ],
+      "size": [
+        1,
+        5,
+        1
+      ],
+      "uv": [
+        176,
+        48
+      ],
+      "rotation": [
+        6.55675567408701,
+        0,
+        -73.30075576600653
+      ],
+      "pivot": [
+        1.4,
+        183.0,
+        -7.68
+      ]
+    }
+  },
+  {
+    "name": "left_cheek_filagree",
+    "bone": "head",
+    "material": "red",
+    "cube": {
+      "origin": [
+        1.5,
+        175.2,
+        -7.82
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        182,
+        48
+      ],
+      "rotation": [
+        -2.5349369959602197,
+        0,
+        -34.69515353123388
+      ],
+      "pivot": [
+        2.0,
+        175.2,
+        -7.32
+      ]
+    }
+  },
+  {
+    "name": "left_jaw_mark_0",
+    "bone": "head",
+    "material": "gold",
+    "cube": {
+      "origin": [
+        0.5,
+        173.6,
+        -7.78
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        188,
+        48
+      ],
+      "rotation": [
+        -0.8814039965821385,
+        0,
+        -67.38013505195957
+      ],
+      "pivot": [
+        1.0,
+        173.6,
+        -7.28
+      ]
+    }
+  },
+  {
+    "name": "left_jaw_mark_1",
+    "bone": "head",
+    "material": "red",
+    "cube": {
+      "origin": [
+        0.5,
+        176.2,
+        -7.78
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        194,
+        48
+      ],
+      "rotation": [
+        -0.8814039965821385,
+        0,
+        -67.38013505195957
+      ],
+      "pivot": [
+        1.0,
+        176.2,
+        -7.28
+      ]
+    }
+  },
+  {
+    "name": "left_mask_spike_0",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        4.6,
+        176.8,
+        0.6
+      ],
+      "size": [
+        2,
+        8,
+        2
+      ],
+      "uv": [
+        200,
+        48
+      ],
+      "rotation": [
+        19.31677525661505,
+        0,
+        -96.70983680775703
+      ],
+      "pivot": [
+        5.6,
+        176.8,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "left_mask_spike_1",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        4.6,
+        180.2,
+        0.6
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        210,
+        48
+      ],
+      "rotation": [
+        15.906926625827893,
+        0,
+        -85.91438322002516
+      ],
+      "pivot": [
+        5.6,
+        180.2,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "left_mask_spike_2",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        4.6,
+        183.6,
+        0.6
+      ],
+      "size": [
+        2,
+        11,
+        2
+      ],
+      "uv": [
+        220,
+        48
+      ],
+      "rotation": [
+        13.242976219823516,
+        0,
+        -78.69006752597994
+      ],
+      "pivot": [
+        5.6,
+        183.6,
+        1.6
+      ]
+    }
+  },
+  {
+    "name": "pointed_chin",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -2.6,
+        170.8,
+        -6.6
+      ],
+      "size": [
+        5,
+        6,
+        6
+      ],
+      "uv": [
+        230,
+        48
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0,
+        174.0,
+        -2.8
+      ]
+    }
+  },
+  {
+    "name": "nose_ridge",
+    "bone": "head",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -1.0,
+        177.6,
+        -7.8
+      ],
+      "size": [
+        2,
+        5,
+        2
+      ],
+      "uv": [
+        254,
+        48
+      ]
+    }
+  },
+  {
+    "name": "hat_base",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -8.6,
+        190.0,
+        -7.6
+      ],
+      "size": [
+        17,
+        4,
+        15
+      ],
+      "uv": [
+        264,
+        48
+      ]
+    }
+  },
+  {
+    "name": "hat_band",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -7.2,
+        192,
+        -6.6
+      ],
+      "size": [
+        14,
+        4,
+        13
+      ],
+      "uv": [
+        330,
+        48
+      ]
+    }
+  },
+  {
+    "name": "crown_middle",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -7.6,
+        195.2,
+        -6.4
+      ],
+      "size": [
+        15,
+        60,
+        13
+      ],
+      "uv": [
+        386,
+        48
+      ]
+    }
+  },
+  {
+    "name": "crown_upper",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -8.6,
+        244,
+        -7.0
+      ],
+      "size": [
+        17,
+        18,
+        14
+      ],
+      "uv": [
+        444,
+        48
+      ]
+    }
+  },
+  {
+    "name": "crown_front_facet",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -5.0,
+        196,
+        -7.2
+      ],
+      "size": [
+        10,
+        65,
+        1
+      ],
+      "uv": [
+        508,
+        48
+      ],
+      "rotation": [
+        0,
+        0,
+        -1.8
+      ],
+      "pivot": [
+        0,
+        196,
+        -6.8
+      ]
+    }
+  },
+  {
+    "name": "top_silver_rim",
+    "bone": "hat",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        -8.8,
+        261.0,
+        -7.4
+      ],
+      "size": [
+        18,
+        1,
+        15
+      ],
+      "uv": [
+        532,
+        48
+      ]
+    }
+  },
+  {
+    "name": "top_black_inset",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -7.6,
+        261.88,
+        -6.2
+      ],
+      "size": [
+        15,
+        1,
+        12
+      ],
+      "uv": [
+        600,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_swept_brim_0",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -3.9,
+        191.6,
+        -8.7
+      ],
+      "size": [
+        3,
+        12,
+        3
+      ],
+      "uv": [
+        656,
+        48
+      ],
+      "rotation": [
+        18.237744759202005,
+        0,
+        66.25050550713321
+      ],
+      "pivot": [
+        -2.4,
+        191.6,
+        -7.2
+      ]
+    }
+  },
+  {
+    "name": "right_brim_scarlet_inlay_0",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -2.9,
+        192.2,
+        -9.42
+      ],
+      "size": [
+        1,
+        12,
+        1
+      ],
+      "uv": [
+        670,
+        48
+      ],
+      "rotation": [
+        18.237744759202002,
+        0,
+        66.25050550713321
+      ],
+      "pivot": [
+        -2.4,
+        192.2,
+        -8.92
+      ]
+    }
+  },
+  {
+    "name": "right_swept_brim_1",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -13.9,
+        196,
+        -5.1
+      ],
+      "size": [
+        3,
+        18,
+        3
+      ],
+      "uv": [
+        676,
+        48
+      ],
+      "rotation": [
+        7.763185776996251,
+        0,
+        88.69804732742111
+      ],
+      "pivot": [
+        -12.4,
+        196,
+        -3.6
+      ]
+    }
+  },
+  {
+    "name": "right_brim_scarlet_inlay_1",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -12.9,
+        196.6,
+        -5.82
+      ],
+      "size": [
+        1,
+        18,
+        1
+      ],
+      "uv": [
+        690,
+        48
+      ],
+      "rotation": [
+        7.763185776996251,
+        0,
+        88.69804732742111
+      ],
+      "pivot": [
+        -12.4,
+        196.6,
+        -5.32
+      ]
+    }
+  },
+  {
+    "name": "right_swept_brim_2",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -31.0,
+        196.4,
+        -2.7
+      ],
+      "size": [
+        2,
+        8,
+        3
+      ],
+      "uv": [
+        696,
+        48
+      ],
+      "rotation": [
+        15.6862277701699,
+        0,
+        51.84277341263091
+      ],
+      "pivot": [
+        -30.0,
+        196.4,
+        -1.2
+      ]
+    }
+  },
+  {
+    "name": "right_brim_scarlet_inlay_2",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -30.5,
+        197.0,
+        -3.42
+      ],
+      "size": [
+        1,
+        8,
+        1
+      ],
+      "uv": [
+        708,
+        48
+      ],
+      "rotation": [
+        15.6862277701699,
+        0,
+        51.84277341263091
+      ],
+      "pivot": [
+        -30.0,
+        197.0,
+        -2.92
+      ]
+    }
+  },
+  {
+    "name": "right_swept_brim_3",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -36.6,
+        200.8,
+        -0.7
+      ],
+      "size": [
+        2,
+        8,
+        3
+      ],
+      "uv": [
+        714,
+        48
+      ],
+      "rotation": [
+        6.301726373997205,
+        0,
+        6.340191745909897
+      ],
+      "pivot": [
+        -35.6,
+        200.8,
+        0.8
+      ]
+    }
+  },
+  {
+    "name": "left_swept_brim_0",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        0.9,
+        191.6,
+        -8.7
+      ],
+      "size": [
+        3,
+        12,
+        3
+      ],
+      "uv": [
+        726,
+        48
+      ],
+      "rotation": [
+        18.237744759202005,
+        0,
+        -66.25050550713321
+      ],
+      "pivot": [
+        2.4,
+        191.6,
+        -7.2
+      ]
+    }
+  },
+  {
+    "name": "left_brim_scarlet_inlay_0",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        1.9,
+        192.2,
+        -9.42
+      ],
+      "size": [
+        1,
+        12,
+        1
+      ],
+      "uv": [
+        740,
+        48
+      ],
+      "rotation": [
+        18.237744759202002,
+        0,
+        -66.25050550713321
+      ],
+      "pivot": [
+        2.4,
+        192.2,
+        -8.92
+      ]
+    }
+  },
+  {
+    "name": "left_swept_brim_1",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        10.9,
+        196,
+        -5.1
+      ],
+      "size": [
+        3,
+        18,
+        3
+      ],
+      "uv": [
+        746,
+        48
+      ],
+      "rotation": [
+        7.763185776996251,
+        0,
+        -88.69804732742111
+      ],
+      "pivot": [
+        12.4,
+        196,
+        -3.6
+      ]
+    }
+  },
+  {
+    "name": "left_brim_scarlet_inlay_1",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        11.9,
+        196.6,
+        -5.82
+      ],
+      "size": [
+        1,
+        18,
+        1
+      ],
+      "uv": [
+        760,
+        48
+      ],
+      "rotation": [
+        7.763185776996251,
+        0,
+        -88.69804732742111
+      ],
+      "pivot": [
+        12.4,
+        196.6,
+        -5.32
+      ]
+    }
+  },
+  {
+    "name": "left_swept_brim_2",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        29.0,
+        196.4,
+        -2.7
+      ],
+      "size": [
+        2,
+        8,
+        3
+      ],
+      "uv": [
+        766,
+        48
+      ],
+      "rotation": [
+        15.6862277701699,
+        0,
+        -51.84277341263091
+      ],
+      "pivot": [
+        30.0,
+        196.4,
+        -1.2
+      ]
+    }
+  },
+  {
+    "name": "left_brim_scarlet_inlay_2",
+    "bone": "hat",
+    "material": "red",
+    "cube": {
+      "origin": [
+        29.5,
+        197.0,
+        -3.42
+      ],
+      "size": [
+        1,
+        8,
+        1
+      ],
+      "uv": [
+        778,
+        48
+      ],
+      "rotation": [
+        15.6862277701699,
+        0,
+        -51.84277341263091
+      ],
+      "pivot": [
+        30.0,
+        197.0,
+        -2.92
+      ]
+    }
+  },
+  {
+    "name": "left_swept_brim_3",
+    "bone": "hat",
+    "material": "black",
+    "cube": {
+      "origin": [
+        34.6,
+        200.8,
+        -0.7
+      ],
+      "size": [
+        2,
+        8,
+        3
+      ],
+      "uv": [
+        784,
+        48
+      ],
+      "rotation": [
+        6.301726373997205,
+        0,
+        -6.340191745909897
+      ],
+      "pivot": [
+        35.6,
+        200.8,
+        0.8
+      ]
+    }
+  },
+  {
+    "name": "right_shoulder_cap",
+    "bone": "right_upper_arm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -22.6,
+        154.0,
+        -5.0
+      ],
+      "size": [
+        9,
+        10,
+        10
+      ],
+      "uv": [
+        796,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_sleeve",
+    "bone": "right_upper_arm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -21.4,
+        128.8,
+        -3.4
+      ],
+      "size": [
+        7,
+        30,
+        7
+      ],
+      "uv": [
+        836,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_glove_cuff",
+    "bone": "right_forearm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -22.0,
+        123.6,
+        -4
+      ],
+      "size": [
+        8,
+        6,
+        8
+      ],
+      "uv": [
+        866,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_glove",
+    "bone": "right_forearm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -20.8,
+        96.8,
+        -2.8
+      ],
+      "size": [
+        6,
+        28,
+        6
+      ],
+      "uv": [
+        900,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_palm",
+    "bone": "right_hand",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -22.0,
+        87.2,
+        -1.8
+      ],
+      "size": [
+        8,
+        10,
+        4
+      ],
+      "uv": [
+        926,
+        48
+      ]
+    }
+  },
+  {
+    "name": "right_finger_base_0",
+    "bone": "right_finger_0",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -21.7,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        9,
+        2
+      ],
+      "uv": [
+        952,
+        48
+      ],
+      "rotation": [
+        -9.937666144807576,
+        0,
+        171.36286858492926
+      ],
+      "pivot": [
+        -21.2,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_talon_0",
+    "bone": "right_finger_0",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -22.9,
+        80.1,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        960,
+        48
+      ],
+      "rotation": [
+        -35.48181578104744,
+        0,
+        176.32176127800662
+      ],
+      "pivot": [
+        -22.4,
+        80.1,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_base_1",
+    "bone": "right_finger_1",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -19.7,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        10,
+        2
+      ],
+      "uv": [
+        966,
+        48
+      ],
+      "rotation": [
+        -8.553099046495621,
+        0,
+        177.53718332408317
+      ],
+      "pivot": [
+        -19.2,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_talon_1",
+    "bone": "right_finger_1",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -20.1,
+        78.7,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        974,
+        48
+      ],
+      "rotation": [
+        -35.53145766086163,
+        0,
+        178.77242116786542
+      ],
+      "pivot": [
+        -19.6,
+        78.7,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_base_2",
+    "bone": "right_finger_2",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -17.7,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        10,
+        2
+      ],
+      "uv": [
+        980,
+        48
+      ],
+      "rotation": [
+        -8.553099046495621,
+        0,
+        -177.53718332408317
+      ],
+      "pivot": [
+        -17.2,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_talon_2",
+    "bone": "right_finger_2",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -17.3,
+        78.7,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        988,
+        48
+      ],
+      "rotation": [
+        -35.53145766086163,
+        0,
+        -178.77242116786542
+      ],
+      "pivot": [
+        -16.8,
+        78.7,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "right_finger_base_3",
+    "bone": "right_finger_3",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -15.7,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        9,
+        2
+      ],
+      "uv": [
+        994,
+        48
+      ],
+      "rotation": [
+        -9.937666144807576,
+        0,
+        -171.36286858492926
+      ],
+      "pivot": [
+        -15.2,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_talon_3",
+    "bone": "right_finger_3",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -14.5,
+        80.1,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        1002,
+        48
+      ],
+      "rotation": [
+        -35.48181578104744,
+        0,
+        -176.32176127800656
+      ],
+      "pivot": [
+        -14.0,
+        80.1,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "right_thumb",
+    "bone": "right_hand",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -15.8,
+        94.8,
+        -1.0
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        1008,
+        48
+      ],
+      "rotation": [
+        -9.177321049018474,
+        0,
+        -136.63657704161668
+      ],
+      "pivot": [
+        -14.8,
+        94.8,
+        0
+      ]
+    }
+  },
+  {
+    "name": "right_thumb_talon",
+    "bone": "right_hand",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -11.9,
+        91.2,
+        -1.8
+      ],
+      "size": [
+        1,
+        6,
+        2
+      ],
+      "uv": [
+        2,
+        123
+      ],
+      "rotation": [
+        -16.24685216822647,
+        0,
+        -177.61405596961117
+      ],
+      "pivot": [
+        -11.4,
+        91.2,
+        -0.8
+      ]
+    }
+  },
+  {
+    "name": "left_shoulder_cap",
+    "bone": "left_upper_arm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        13.4,
+        154.0,
+        -5.0
+      ],
+      "size": [
+        9,
+        10,
+        10
+      ],
+      "uv": [
+        10,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_sleeve",
+    "bone": "left_upper_arm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        14.6,
+        128.8,
+        -3.4
+      ],
+      "size": [
+        7,
+        30,
+        7
+      ],
+      "uv": [
+        50,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_glove_cuff",
+    "bone": "left_forearm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        14.0,
+        123.6,
+        -4
+      ],
+      "size": [
+        8,
+        6,
+        8
+      ],
+      "uv": [
+        80,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_glove",
+    "bone": "left_forearm",
+    "material": "red",
+    "cube": {
+      "origin": [
+        15.2,
+        96.8,
+        -2.8
+      ],
+      "size": [
+        6,
+        28,
+        6
+      ],
+      "uv": [
+        114,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_palm",
+    "bone": "left_hand",
+    "material": "red",
+    "cube": {
+      "origin": [
+        14.0,
+        87.2,
+        -1.8
+      ],
+      "size": [
+        8,
+        10,
+        4
+      ],
+      "uv": [
+        140,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_finger_base_0",
+    "bone": "left_finger_0",
+    "material": "black",
+    "cube": {
+      "origin": [
+        14.3,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        9,
+        2
+      ],
+      "uv": [
+        166,
+        123
+      ],
+      "rotation": [
+        -9.937666144807576,
+        0,
+        171.36286858492926
+      ],
+      "pivot": [
+        14.8,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_talon_0",
+    "bone": "left_finger_0",
+    "material": "black",
+    "cube": {
+      "origin": [
+        13.1,
+        80.1,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        174,
+        123
+      ],
+      "rotation": [
+        -35.48181578104744,
+        0,
+        176.32176127800656
+      ],
+      "pivot": [
+        13.6,
+        80.1,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "left_finger_base_1",
+    "bone": "left_finger_1",
+    "material": "black",
+    "cube": {
+      "origin": [
+        16.3,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        10,
+        2
+      ],
+      "uv": [
+        180,
+        123
+      ],
+      "rotation": [
+        -8.553099046495621,
+        0,
+        177.53718332408317
+      ],
+      "pivot": [
+        16.8,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_talon_1",
+    "bone": "left_finger_1",
+    "material": "black",
+    "cube": {
+      "origin": [
+        15.9,
+        78.7,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        188,
+        123
+      ],
+      "rotation": [
+        -35.53145766086163,
+        0,
+        178.77242116786542
+      ],
+      "pivot": [
+        16.4,
+        78.7,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "left_finger_base_2",
+    "bone": "left_finger_2",
+    "material": "black",
+    "cube": {
+      "origin": [
+        18.3,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        10,
+        2
+      ],
+      "uv": [
+        194,
+        123
+      ],
+      "rotation": [
+        -8.553099046495621,
+        0,
+        -177.53718332408317
+      ],
+      "pivot": [
+        18.8,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_talon_2",
+    "bone": "left_finger_2",
+    "material": "black",
+    "cube": {
+      "origin": [
+        18.7,
+        78.7,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        202,
+        123
+      ],
+      "rotation": [
+        -35.53145766086163,
+        0,
+        -178.77242116786542
+      ],
+      "pivot": [
+        19.2,
+        78.7,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "left_finger_base_3",
+    "bone": "left_finger_3",
+    "material": "black",
+    "cube": {
+      "origin": [
+        20.3,
+        88,
+        -1.0
+      ],
+      "size": [
+        1,
+        9,
+        2
+      ],
+      "uv": [
+        208,
+        123
+      ],
+      "rotation": [
+        -9.937666144807576,
+        0,
+        -171.36286858492926
+      ],
+      "pivot": [
+        20.8,
+        88,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_talon_3",
+    "bone": "left_finger_3",
+    "material": "black",
+    "cube": {
+      "origin": [
+        21.5,
+        80.1,
+        -1.9
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        216,
+        123
+      ],
+      "rotation": [
+        -35.48181578104744,
+        0,
+        -176.32176127800662
+      ],
+      "pivot": [
+        22.0,
+        80.1,
+        -1.4
+      ]
+    }
+  },
+  {
+    "name": "left_thumb",
+    "bone": "left_hand",
+    "material": "red",
+    "cube": {
+      "origin": [
+        13.8,
+        94.8,
+        -1.0
+      ],
+      "size": [
+        2,
+        6,
+        2
+      ],
+      "uv": [
+        222,
+        123
+      ],
+      "rotation": [
+        -9.177321049018474,
+        0,
+        136.63657704161668
+      ],
+      "pivot": [
+        14.8,
+        94.8,
+        0
+      ]
+    }
+  },
+  {
+    "name": "left_thumb_talon",
+    "bone": "left_hand",
+    "material": "black",
+    "cube": {
+      "origin": [
+        10.9,
+        91.2,
+        -1.8
+      ],
+      "size": [
+        1,
+        6,
+        2
+      ],
+      "uv": [
+        232,
+        123
+      ],
+      "rotation": [
+        -16.24685216822647,
+        0,
+        177.61405596961117
+      ],
+      "pivot": [
+        11.4,
+        91.2,
+        -0.8
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh",
+    "bone": "right_thigh",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        -13.0,
+        84,
+        -5.0
+      ],
+      "size": [
+        10,
+        28,
+        10
+      ],
+      "uv": [
+        240,
+        123
+      ]
+    }
+  },
+  {
+    "name": "right_lower_thigh",
+    "bone": "right_thigh",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        -11.8,
+        64,
+        -4
+      ],
+      "size": [
+        8,
+        24,
+        8
+      ],
+      "uv": [
+        282,
+        123
+      ]
+    }
+  },
+  {
+    "name": "right_knee_cap",
+    "bone": "right_shin",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -12.4,
+        58.0,
+        -5.2
+      ],
+      "size": [
+        9,
+        8,
+        7
+      ],
+      "uv": [
+        316,
+        123
+      ]
+    }
+  },
+  {
+    "name": "right_boot_calf",
+    "bone": "right_shin",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        -11.8,
+        32,
+        -3.6
+      ],
+      "size": [
+        8,
+        28,
+        7
+      ],
+      "uv": [
+        350,
+        123
+      ]
+    }
+  },
+  {
+    "name": "right_boot_ankle",
+    "bone": "right_shin",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -10.6,
+        14.0,
+        -2.6
+      ],
+      "size": [
+        5,
+        20,
+        6
+      ],
+      "uv": [
+        382,
+        123
+      ]
+    }
+  },
+  {
+    "name": "right_boot_foot",
+    "bone": "right_foot",
+    "material": "red",
+    "cube": {
+      "origin": [
+        -11.2,
+        8,
+        -10.4
+      ],
+      "size": [
+        6,
+        8,
+        14
+      ],
+      "uv": [
+        406,
+        123
+      ]
+    }
+  },
+  {
+    "name": "right_pointed_toe",
+    "bone": "right_foot",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        -10.0,
+        6.8,
+        -15.6
+      ],
+      "size": [
+        4,
+        4,
+        9
+      ],
+      "uv": [
+        448,
+        123
+      ],
+      "rotation": [
+        -12,
+        0,
+        0
+      ],
+      "pivot": [
+        -8,
+        8,
+        -8
+      ]
+    }
+  },
+  {
+    "name": "right_steel_toe",
+    "bone": "right_foot",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        -9.0,
+        6.2,
+        -20.2
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        476,
+        123
+      ],
+      "rotation": [
+        88.56790381583535,
+        0,
+        -180.0
+      ],
+      "pivot": [
+        -8,
+        6.2,
+        -19.2
+      ]
+    }
+  },
+  {
+    "name": "right_dagger_heel",
+    "bone": "right_foot",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        -9.0,
+        11.2,
+        1.7
+      ],
+      "size": [
+        2,
+        13,
+        3
+      ],
+      "uv": [
+        486,
+        123
+      ],
+      "rotation": [
+        14.931417178137554,
+        0,
+        -180.0
+      ],
+      "pivot": [
+        -8,
+        11.2,
+        3.2
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh",
+    "bone": "left_thigh",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        3.0,
+        84,
+        -5.0
+      ],
+      "size": [
+        10,
+        28,
+        10
+      ],
+      "uv": [
+        498,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_lower_thigh",
+    "bone": "left_thigh",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        4.2,
+        64,
+        -4
+      ],
+      "size": [
+        8,
+        24,
+        8
+      ],
+      "uv": [
+        540,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_knee_cap",
+    "bone": "left_shin",
+    "material": "red",
+    "cube": {
+      "origin": [
+        3.6,
+        58.0,
+        -5.2
+      ],
+      "size": [
+        9,
+        8,
+        7
+      ],
+      "uv": [
+        574,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_boot_calf",
+    "bone": "left_shin",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        4.2,
+        32,
+        -3.6
+      ],
+      "size": [
+        8,
+        28,
+        7
+      ],
+      "uv": [
+        608,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_boot_ankle",
+    "bone": "left_shin",
+    "material": "red",
+    "cube": {
+      "origin": [
+        5.4,
+        14.0,
+        -2.6
+      ],
+      "size": [
+        5,
+        20,
+        6
+      ],
+      "uv": [
+        640,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_boot_foot",
+    "bone": "left_foot",
+    "material": "red",
+    "cube": {
+      "origin": [
+        4.8,
+        8,
+        -10.4
+      ],
+      "size": [
+        6,
+        8,
+        14
+      ],
+      "uv": [
+        664,
+        123
+      ]
+    }
+  },
+  {
+    "name": "left_pointed_toe",
+    "bone": "left_foot",
+    "material": "ruby",
+    "cube": {
+      "origin": [
+        6.0,
+        6.8,
+        -15.6
+      ],
+      "size": [
+        4,
+        4,
+        9
+      ],
+      "uv": [
+        706,
+        123
+      ],
+      "rotation": [
+        -12,
+        0,
+        0
+      ],
+      "pivot": [
+        8,
+        8,
+        -8
+      ]
+    }
+  },
+  {
+    "name": "left_steel_toe",
+    "bone": "left_foot",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        7.0,
+        6.2,
+        -20.2
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        734,
+        123
+      ],
+      "rotation": [
+        88.56790381583535,
+        0,
+        -180.0
+      ],
+      "pivot": [
+        8,
+        6.2,
+        -19.2
+      ]
+    }
+  },
+  {
+    "name": "left_dagger_heel",
+    "bone": "left_foot",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        7.0,
+        11.2,
+        1.7
+      ],
+      "size": [
+        2,
+        13,
+        3
+      ],
+      "uv": [
+        744,
+        123
+      ],
+      "rotation": [
+        14.931417178137554,
+        0,
+        -180.0
+      ],
+      "pivot": [
+        8,
+        11.2,
+        3.2
+      ]
+    }
+  },
+  {
+    "name": "right_wing_shoulder",
+    "bone": "right_wing",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -16.0,
+        160,
+        4.0
+      ],
+      "size": [
+        8,
+        44,
+        8
+      ],
+      "uv": [
+        756,
+        123
+      ],
+      "rotation": [
+        2.646614364836003,
+        0,
+        56.309932474020215
+      ],
+      "pivot": [
+        -12,
+        160,
+        8
+      ]
+    }
+  },
+  {
+    "name": "right_leading_edge",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -15.5,
+        162.4,
+        3.3
+      ],
+      "size": [
+        3,
+        42,
+        3
+      ],
+      "uv": [
+        790,
+        123
+      ],
+      "rotation": [
+        2.21387346398446,
+        0,
+        55.23480276342322
+      ],
+      "pivot": [
+        -14.0,
+        162.4,
+        4.8
+      ]
+    }
+  },
+  {
+    "name": "right_shoulder_highlight",
+    "bone": "right_wing",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        -42.2,
+        182.4,
+        4.0
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        804,
+        123
+      ],
+      "rotation": [
+        9.067161778882529,
+        0,
+        65.77225468204587
+      ],
+      "pivot": [
+        -41.2,
+        182.4,
+        5.0
+      ]
+    }
+  },
+  {
+    "name": "right_inner_feather_0",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -24.0,
+        138.0,
+        10.2
+      ],
+      "size": [
+        8,
+        24,
+        2
+      ],
+      "uv": [
+        814,
+        123
+      ],
+      "rotation": [
+        -0.9573705215896993,
+        0,
+        -9.619727799698856
+      ],
+      "pivot": [
+        -20.0,
+        138.0,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "right_inner_feather_1",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -29.0,
+        135.4,
+        10.2
+      ],
+      "size": [
+        8,
+        30,
+        2
+      ],
+      "uv": [
+        836,
+        123
+      ],
+      "rotation": [
+        -0.768709005574111,
+        0,
+        -6.161912373161219
+      ],
+      "pivot": [
+        -25.0,
+        135.4,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "right_inner_feather_2",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -34.0,
+        132.8,
+        10.2
+      ],
+      "size": [
+        8,
+        36,
+        2
+      ],
+      "uv": [
+        858,
+        123
+      ],
+      "rotation": [
+        -0.6408544362812967,
+        0,
+        -3.848179460925052
+      ],
+      "pivot": [
+        -30.0,
+        132.8,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "right_inner_feather_3",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -39.0,
+        130.2,
+        10.2
+      ],
+      "size": [
+        8,
+        42,
+        2
+      ],
+      "uv": [
+        880,
+        123
+      ],
+      "rotation": [
+        -0.5489160035597948,
+        0,
+        -2.196269001376968
+      ],
+      "pivot": [
+        -35.0,
+        130.2,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "right_inner_feather_4",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -44.0,
+        127.6,
+        10.2
+      ],
+      "size": [
+        8,
+        48,
+        2
+      ],
+      "uv": [
+        902,
+        123
+      ],
+      "rotation": [
+        -0.4797856301874095,
+        0,
+        -0.9596385560808813
+      ],
+      "pivot": [
+        -40.0,
+        127.6,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "right_inner_feather_5",
+    "bone": "right_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -49.0,
+        125.0,
+        10.2
+      ],
+      "size": [
+        8,
+        54,
+        2
+      ],
+      "uv": [
+        924,
+        123
+      ],
+      "rotation": [
+        -0.42598307664314927,
+        0,
+        -0.0
+      ],
+      "pivot": [
+        -45.0,
+        125.0,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "right_wing_spar",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -51.5,
+        184,
+        7.0
+      ],
+      "size": [
+        7,
+        97,
+        6
+      ],
+      "uv": [
+        946,
+        123
+      ],
+      "rotation": [
+        1.1852889985262907,
+        0,
+        155.55604521958347
+      ],
+      "pivot": [
+        -48,
+        184,
+        10.0
+      ]
+    }
+  },
+  {
+    "name": "right_wing_ridge",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -49.5,
+        186.0,
+        5.3
+      ],
+      "size": [
+        3,
+        99,
+        3
+      ],
+      "uv": [
+        974,
+        123
+      ],
+      "rotation": [
+        1.163341108289043,
+        0,
+        156.03751102542182
+      ],
+      "pivot": [
+        -48,
+        186.0,
+        6.8
+      ]
+    }
+  },
+  {
+    "name": "right_primary_0_vane",
+    "bone": "right_primary_0",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        -56.536,
+        149.84,
+        9.632
+      ],
+      "size": [
+        10,
+        31,
+        2
+      ],
+      "uv": [
+        988,
+        123
+      ],
+      "rotation": [
+        1.0745064548871086,
+        0,
+        -5.183466355584443
+      ],
+      "pivot": [
+        -51.536,
+        149.84,
+        10.632
+      ]
+    }
+  },
+  {
+    "name": "right_primary_0_taper",
+    "bone": "right_primary_0",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -51.628,
+        136.32,
+        10.536
+      ],
+      "size": [
+        7,
+        13,
+        2
+      ],
+      "uv": [
+        2,
+        228
+      ],
+      "rotation": [
+        -3.963202718005527,
+        0,
+        15.20538279583389
+      ],
+      "pivot": [
+        -48.128,
+        136.32,
+        11.536
+      ]
+    }
+  },
+  {
+    "name": "right_primary_0_tip",
+    "bone": "right_primary_0",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -49.5,
+        128.0,
+        11.1
+      ],
+      "size": [
+        3,
+        8,
+        1
+      ],
+      "uv": [
+        22,
+        228
+      ],
+      "rotation": [
+        -0.44067592690612284,
+        0,
+        0.8814039965821524
+      ],
+      "pivot": [
+        -48.0,
+        128.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_0",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -48.696,
+        163.44,
+        6.552
+      ],
+      "size": [
+        8,
+        20,
+        2
+      ],
+      "uv": [
+        32,
+        228
+      ],
+      "rotation": [
+        2.4346772229176756,
+        0,
+        7.792078078218442
+      ],
+      "pivot": [
+        -44.696,
+        163.44,
+        7.552
+      ]
+    }
+  },
+  {
+    "name": "right_primary_1_vane",
+    "bone": "right_primary_1",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -59.7192,
+        142.428,
+        9.6992
+      ],
+      "size": [
+        10,
+        32,
+        2
+      ],
+      "uv": [
+        54,
+        228
+      ],
+      "rotation": [
+        1.2174229073699958,
+        0,
+        -5.090864904508863
+      ],
+      "pivot": [
+        -54.7192,
+        142.428,
+        10.6992
+      ]
+    }
+  },
+  {
+    "name": "right_primary_1_taper",
+    "bone": "right_primary_1",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -54.8216,
+        128.544,
+        10.5616
+      ],
+      "size": [
+        7,
+        14,
+        2
+      ],
+      "uv": [
+        80,
+        228
+      ],
+      "rotation": [
+        -3.7019313698482526,
+        0,
+        14.78439786533649
+      ],
+      "pivot": [
+        -51.3216,
+        128.544,
+        11.5616
+      ]
+    }
+  },
+  {
+    "name": "right_primary_1_tip",
+    "bone": "right_primary_1",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -52.7,
+        120.0,
+        11.1
+      ],
+      "size": [
+        3,
+        8,
+        1
+      ],
+      "uv": [
+        100,
+        228
+      ],
+      "rotation": [
+        -0.2574813120845867,
+        0,
+        0.8153905000725516
+      ],
+      "pivot": [
+        -51.2,
+        120.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_1",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -51.8712,
+        156.308,
+        6.6512
+      ],
+      "size": [
+        8,
+        21,
+        2
+      ],
+      "uv": [
+        110,
+        228
+      ],
+      "rotation": [
+        2.542151696167871,
+        0,
+        7.548031007016008
+      ],
+      "pivot": [
+        -47.8712,
+        156.308,
+        7.6512
+      ]
+    }
+  },
+  {
+    "name": "right_primary_2_vane",
+    "bone": "right_primary_2",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -61.5104,
+        132.696,
+        9.7664
+      ],
+      "size": [
+        10,
+        35,
+        2
+      ],
+      "uv": [
+        132,
+        228
+      ],
+      "rotation": [
+        1.2648150309566737,
+        0,
+        -2.334622275056866
+      ],
+      "pivot": [
+        -56.5104,
+        132.696,
+        10.7664
+      ]
+    }
+  },
+  {
+    "name": "right_primary_2_taper",
+    "bone": "right_primary_2",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -55.9992,
+        117.408,
+        10.5872
+      ],
+      "size": [
+        7,
+        15,
+        2
+      ],
+      "uv": [
+        158,
+        228
+      ],
+      "rotation": [
+        -3.1996518490746038,
+        0,
+        15.63260784288726
+      ],
+      "pivot": [
+        -52.4992,
+        117.408,
+        11.5872
+      ]
+    }
+  },
+  {
+    "name": "right_primary_2_tip",
+    "bone": "right_primary_2",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -53.5,
+        108.0,
+        11.1
+      ],
+      "size": [
+        3,
+        9,
+        1
+      ],
+      "uv": [
+        178,
+        228
+      ],
+      "rotation": [
+        -0.07784388609595022,
+        0,
+        3.03733582295252
+      ],
+      "pivot": [
+        -52.0,
+        108.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_2",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -54.1344,
+        147.656,
+        6.7504
+      ],
+      "size": [
+        8,
+        23,
+        2
+      ],
+      "uv": [
+        188,
+        228
+      ],
+      "rotation": [
+        2.453396262744849,
+        0,
+        9.116677628329644
+      ],
+      "pivot": [
+        -50.1344,
+        147.656,
+        7.7504
+      ]
+    }
+  },
+  {
+    "name": "right_primary_3_vane",
+    "bone": "right_primary_3",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        -65.1576,
+        120.644,
+        9.8336
+      ],
+      "size": [
+        10,
+        40,
+        2
+      ],
+      "uv": [
+        210,
+        228
+      ],
+      "rotation": [
+        1.2244219167137904,
+        0,
+        -2.717612230877906
+      ],
+      "pivot": [
+        -60.1576,
+        120.644,
+        10.8336
+      ]
+    }
+  },
+  {
+    "name": "right_primary_3_taper",
+    "bone": "right_primary_3",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -59.8648,
+        102.912,
+        10.6128
+      ],
+      "size": [
+        7,
+        17,
+        2
+      ],
+      "uv": [
+        236,
+        228
+      ],
+      "rotation": [
+        -2.6623270630792364,
+        0,
+        12.89476994548972
+      ],
+      "pivot": [
+        -56.3648,
+        102.912,
+        11.6128
+      ]
+    }
+  },
+  {
+    "name": "right_primary_3_tip",
+    "bone": "right_primary_3",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -57.5,
+        92.0,
+        11.1
+      ],
+      "size": [
+        3,
+        10,
+        1
+      ],
+      "uv": [
+        256,
+        228
+      ],
+      "rotation": [
+        0.0671715684890021,
+        0,
+        1.9147469590700696
+      ],
+      "pivot": [
+        -56.0,
+        92.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_3",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -57.6136,
+        137.484,
+        6.8496
+      ],
+      "size": [
+        8,
+        27,
+        2
+      ],
+      "uv": [
+        266,
+        228
+      ],
+      "rotation": [
+        2.258983205158621,
+        0,
+        7.183565139655331
+      ],
+      "pivot": [
+        -53.6136,
+        137.484,
+        7.8496
+      ]
+    }
+  },
+  {
+    "name": "right_primary_4_vane",
+    "bone": "right_primary_4",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -68.8048,
+        108.592,
+        9.9008
+      ],
+      "size": [
+        10,
+        46,
+        2
+      ],
+      "uv": [
+        288,
+        228
+      ],
+      "rotation": [
+        1.1937943258233168,
+        0,
+        -3.0076560410390183
+      ],
+      "pivot": [
+        -63.8048,
+        108.592,
+        10.9008
+      ]
+    }
+  },
+  {
+    "name": "right_primary_4_taper",
+    "bone": "right_primary_4",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -63.7304,
+        88.416,
+        10.6384
+      ],
+      "size": [
+        7,
+        19,
+        2
+      ],
+      "uv": [
+        314,
+        228
+      ],
+      "rotation": [
+        -2.2425122374179014,
+        0,
+        10.778869217781317
+      ],
+      "pivot": [
+        -60.2304,
+        88.416,
+        11.6384
+      ]
+    }
+  },
+  {
+    "name": "right_primary_4_tip",
+    "bone": "right_primary_4",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -61.5,
+        76.0,
+        11.1
+      ],
+      "size": [
+        3,
+        11,
+        1
+      ],
+      "uv": [
+        334,
+        228
+      ],
+      "rotation": [
+        0.1771723748586703,
+        0,
+        1.0630986355478698
+      ],
+      "pivot": [
+        -60.0,
+        76.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_4",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -61.0928,
+        127.312,
+        6.9488
+      ],
+      "size": [
+        8,
+        30,
+        2
+      ],
+      "uv": [
+        344,
+        228
+      ],
+      "rotation": [
+        2.1087600138393703,
+        0,
+        5.707515069172337
+      ],
+      "pivot": [
+        -57.0928,
+        127.312,
+        7.9488
+      ]
+    }
+  },
+  {
+    "name": "right_primary_5_vane",
+    "bone": "right_primary_5",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -74.772,
+        96.54,
+        9.968
+      ],
+      "size": [
+        10,
+        51,
+        2
+      ],
+      "uv": [
+        366,
+        228
+      ],
+      "rotation": [
+        1.1655362916481542,
+        0,
+        -5.8522104392977585
+      ],
+      "pivot": [
+        -69.772,
+        96.54,
+        10.968
+      ]
+    }
+  },
+  {
+    "name": "right_primary_5_taper",
+    "bone": "right_primary_5",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -70.956,
+        73.92,
+        10.664
+      ],
+      "size": [
+        7,
+        22,
+        2
+      ],
+      "uv": [
+        392,
+        228
+      ],
+      "rotation": [
+        -1.9186242951443073,
+        0,
+        6.513610424552526
+      ],
+      "pivot": [
+        -67.456,
+        73.92,
+        11.664
+      ]
+    }
+  },
+  {
+    "name": "right_primary_5_tip",
+    "bone": "right_primary_5",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -69.5,
+        60.0,
+        11.1
+      ],
+      "size": [
+        3,
+        13,
+        1
+      ],
+      "uv": [
+        412,
+        228
+      ],
+      "rotation": [
+        0.2632260844004015,
+        0,
+        -2.238006513980275
+      ],
+      "pivot": [
+        -68.0,
+        60.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_5",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -66.092,
+        117.14,
+        7.048
+      ],
+      "size": [
+        8,
+        34,
+        2
+      ],
+      "uv": [
+        422,
+        228
+      ],
+      "rotation": [
+        1.9945870833637958,
+        0,
+        1.9195393371197769
+      ],
+      "pivot": [
+        -62.092,
+        117.14,
+        8.048
+      ]
+    }
+  },
+  {
+    "name": "right_primary_6_vane",
+    "bone": "right_primary_6",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        -79.5792,
+        84.488,
+        10.0352
+      ],
+      "size": [
+        10,
+        57,
+        2
+      ],
+      "uv": [
+        444,
+        228
+      ],
+      "rotation": [
+        1.1440076222049178,
+        0,
+        -6.953627338468843
+      ],
+      "pivot": [
+        -74.5792,
+        84.488,
+        11.0352
+      ]
+    }
+  },
+  {
+    "name": "right_primary_6_taper",
+    "bone": "right_primary_6",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -76.5016,
+        59.424,
+        10.6896
+      ],
+      "size": [
+        7,
+        24,
+        2
+      ],
+      "uv": [
+        470,
+        228
+      ],
+      "rotation": [
+        -1.6434481300745687,
+        0,
+        4.208370738843855
+      ],
+      "pivot": [
+        -73.0016,
+        59.424,
+        11.6896
+      ]
+    }
+  },
+  {
+    "name": "right_primary_6_tip",
+    "bone": "right_primary_6",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -75.5,
+        44.0,
+        11.1
+      ],
+      "size": [
+        3,
+        14,
+        1
+      ],
+      "uv": [
+        490,
+        228
+      ],
+      "rotation": [
+        0.3321397178102848,
+        0,
+        -3.703605501504372
+      ],
+      "pivot": [
+        -74.0,
+        44.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_6",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -70.3312,
+        106.968,
+        7.1472
+      ],
+      "size": [
+        8,
+        37,
+        2
+      ],
+      "uv": [
+        500,
+        228
+      ],
+      "rotation": [
+        1.8962362825957988,
+        0,
+        0.04504580994741827
+      ],
+      "pivot": [
+        -66.3312,
+        106.968,
+        8.1472
+      ]
+    }
+  },
+  {
+    "name": "right_primary_7_vane",
+    "bone": "right_primary_7",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -84.3864,
+        74.756,
+        10.1024
+      ],
+      "size": [
+        10,
+        60,
+        2
+      ],
+      "uv": [
+        522,
+        228
+      ],
+      "rotation": [
+        1.16942314822272,
+        0,
+        -8.160096841637461
+      ],
+      "pivot": [
+        -79.3864,
+        74.756,
+        11.1024
+      ]
+    }
+  },
+  {
+    "name": "right_primary_7_taper",
+    "bone": "right_primary_7",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -82.0472,
+        48.288,
+        10.7152
+      ],
+      "size": [
+        7,
+        25,
+        2
+      ],
+      "uv": [
+        548,
+        228
+      ],
+      "rotation": [
+        -1.469250055892164,
+        0,
+        2.3924989329788744
+      ],
+      "pivot": [
+        -78.5472,
+        48.288,
+        11.7152
+      ]
+    }
+  },
+  {
+    "name": "right_primary_7_tip",
+    "bone": "right_primary_7",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -81.5,
+        32.0,
+        11.1
+      ],
+      "size": [
+        3,
+        15,
+        1
+      ],
+      "uv": [
+        568,
+        228
+      ],
+      "rotation": [
+        0.4036262963939238,
+        0,
+        -5.096980294426748
+      ],
+      "pivot": [
+        -80.0,
+        32.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_7",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -74.5704,
+        98.316,
+        7.2464
+      ],
+      "size": [
+        8,
+        39,
+        2
+      ],
+      "uv": [
+        578,
+        228
+      ],
+      "rotation": [
+        1.8849834308216022,
+        0,
+        -1.5553898811475566
+      ],
+      "pivot": [
+        -70.5704,
+        98.316,
+        8.2464
+      ]
+    }
+  },
+  {
+    "name": "right_primary_8_vane",
+    "bone": "right_primary_8",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -92.6736,
+        67.344,
+        10.1696
+      ],
+      "size": [
+        10,
+        62,
+        2
+      ],
+      "uv": [
+        600,
+        228
+      ],
+      "rotation": [
+        1.2230166803979967,
+        0,
+        -12.795130516464345
+      ],
+      "pivot": [
+        -87.6736,
+        67.344,
+        11.1696
+      ]
+    }
+  },
+  {
+    "name": "right_primary_8_taper",
+    "bone": "right_primary_8",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -92.6328,
+        40.512,
+        10.7408
+      ],
+      "size": [
+        7,
+        25,
+        2
+      ],
+      "uv": [
+        626,
+        228
+      ],
+      "rotation": [
+        -1.360471205319304,
+        0,
+        -2.544804379813078
+      ],
+      "pivot": [
+        -89.1328,
+        40.512,
+        11.7408
+      ]
+    }
+  },
+  {
+    "name": "right_primary_8_tip",
+    "bone": "right_primary_8",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -93.5,
+        24.0,
+        11.1
+      ],
+      "size": [
+        3,
+        15,
+        1
+      ],
+      "uv": [
+        646,
+        228
+      ],
+      "rotation": [
+        0.4813541576298322,
+        0,
+        -9.85081099249747
+      ],
+      "pivot": [
+        -92.0,
+        24.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_8",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -81.0896,
+        91.184,
+        7.3456
+      ],
+      "size": [
+        8,
+        40,
+        2
+      ],
+      "uv": [
+        656,
+        228
+      ],
+      "rotation": [
+        1.936652119481882,
+        0,
+        -6.415612615087929
+      ],
+      "pivot": [
+        -77.0896,
+        91.184,
+        8.3456
+      ]
+    }
+  },
+  {
+    "name": "right_primary_9_vane",
+    "bone": "right_primary_9",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        -100.9608,
+        59.932,
+        10.2368
+      ],
+      "size": [
+        10,
+        64,
+        2
+      ],
+      "uv": [
+        678,
+        228
+      ],
+      "rotation": [
+        1.2660798498340387,
+        0,
+        -17.149066258944597
+      ],
+      "pivot": [
+        -95.9608,
+        59.932,
+        11.2368
+      ]
+    }
+  },
+  {
+    "name": "right_primary_9_taper",
+    "bone": "right_primary_9",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -103.2184,
+        32.736,
+        10.7664
+      ],
+      "size": [
+        7,
+        26,
+        2
+      ],
+      "uv": [
+        704,
+        228
+      ],
+      "rotation": [
+        -1.2457788362897055,
+        0,
+        -7.31460289610318
+      ],
+      "pivot": [
+        -99.7184,
+        32.736,
+        11.7664
+      ]
+    }
+  },
+  {
+    "name": "right_primary_9_tip",
+    "bone": "right_primary_9",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -105.5,
+        16.0,
+        11.1
+      ],
+      "size": [
+        3,
+        16,
+        1
+      ],
+      "uv": [
+        724,
+        228
+      ],
+      "rotation": [
+        0.5518796036326499,
+        0,
+        -14.35028853487572
+      ],
+      "pivot": [
+        -104.0,
+        16.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_9",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -87.6088,
+        84.052,
+        7.4448
+      ],
+      "size": [
+        8,
+        41,
+        2
+      ],
+      "uv": [
+        734,
+        228
+      ],
+      "rotation": [
+        1.9730193194212615,
+        0,
+        -11.059119657157945
+      ],
+      "pivot": [
+        -83.6088,
+        84.052,
+        8.4448
+      ]
+    }
+  },
+  {
+    "name": "right_primary_10_vane",
+    "bone": "right_primary_10",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -106.928,
+        52.52,
+        10.304
+      ],
+      "size": [
+        10,
+        66,
+        2
+      ],
+      "uv": [
+        756,
+        228
+      ],
+      "rotation": [
+        1.3156150305588568,
+        0,
+        -19.29834817458267
+      ],
+      "pivot": [
+        -101.928,
+        52.52,
+        11.304
+      ]
+    }
+  },
+  {
+    "name": "right_primary_10_taper",
+    "bone": "right_primary_10",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -110.444,
+        24.96,
+        10.792
+      ],
+      "size": [
+        7,
+        26,
+        2
+      ],
+      "uv": [
+        782,
+        228
+      ],
+      "rotation": [
+        -1.1362238708732864,
+        0,
+        -9.777580091674356
+      ],
+      "pivot": [
+        -106.944,
+        24.96,
+        11.792
+      ]
+    }
+  },
+  {
+    "name": "right_primary_10_tip",
+    "bone": "right_primary_10",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -113.5,
+        8.0,
+        11.1
+      ],
+      "size": [
+        3,
+        16,
+        1
+      ],
+      "uv": [
+        802,
+        228
+      ],
+      "rotation": [
+        0.6215737467982508,
+        0,
+        -16.60001367939145
+      ],
+      "pivot": [
+        -112.0,
+        8.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_10",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -92.608,
+        76.92,
+        7.544
+      ],
+      "size": [
+        8,
+        42,
+        2
+      ],
+      "uv": [
+        812,
+        228
+      ],
+      "rotation": [
+        2.013721482395765,
+        0,
+        -13.416084702996784
+      ],
+      "pivot": [
+        -88.608,
+        76.92,
+        8.544
+      ]
+    }
+  },
+  {
+    "name": "right_primary_11_vane",
+    "bone": "right_primary_11",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -112.8952,
+        47.428,
+        10.3712
+      ],
+      "size": [
+        10,
+        65,
+        2
+      ],
+      "uv": [
+        834,
+        228
+      ],
+      "rotation": [
+        1.406234083009655,
+        0,
+        -22.08613493135895
+      ],
+      "pivot": [
+        -107.8952,
+        47.428,
+        11.3712
+      ]
+    }
+  },
+  {
+    "name": "right_primary_11_taper",
+    "bone": "right_primary_11",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -117.6696,
+        20.544,
+        10.8176
+      ],
+      "size": [
+        7,
+        26,
+        2
+      ],
+      "uv": [
+        860,
+        228
+      ],
+      "rotation": [
+        -1.0670148203027117,
+        0,
+        -12.596848419412321
+      ],
+      "pivot": [
+        -114.1696,
+        20.544,
+        11.8176
+      ]
+    }
+  },
+  {
+    "name": "right_primary_11_tip",
+    "bone": "right_primary_11",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -121.5,
+        4.0,
+        11.1
+      ],
+      "size": [
+        3,
+        16,
+        1
+      ],
+      "uv": [
+        880,
+        228
+      ],
+      "rotation": [
+        0.7107179168969022,
+        0,
+        -19.413364596170666
+      ],
+      "pivot": [
+        -120.0,
+        4.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_11",
+    "bone": "right_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        -97.6072,
+        71.308,
+        7.6432
+      ],
+      "size": [
+        8,
+        41,
+        2
+      ],
+      "uv": [
+        890,
+        228
+      ],
+      "rotation": [
+        2.122549474927143,
+        0,
+        -16.242777499994276
+      ],
+      "pivot": [
+        -93.6072,
+        71.308,
+        8.6432
+      ]
+    }
+  },
+  {
+    "name": "right_primary_12_vane",
+    "bone": "right_primary_12",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        -116.5424,
+        49.296,
+        10.4384
+      ],
+      "size": [
+        10,
+        58,
+        2
+      ],
+      "uv": [
+        912,
+        228
+      ],
+      "rotation": [
+        1.6847096746710934,
+        0,
+        -25.731784575488668
+      ],
+      "pivot": [
+        -111.5424,
+        49.296,
+        11.4384
+      ]
+    }
+  },
+  {
+    "name": "right_primary_12_taper",
+    "bone": "right_primary_12",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -121.5352,
+        26.208,
+        10.8432
+      ],
+      "size": [
+        7,
+        23,
+        2
+      ],
+      "uv": [
+        938,
+        228
+      ],
+      "rotation": [
+        -1.1295033105637897,
+        0,
+        -15.091933117819055
+      ],
+      "pivot": [
+        -118.0352,
+        26.208,
+        11.8432
+      ]
+    }
+  },
+  {
+    "name": "right_primary_12_tip",
+    "bone": "right_primary_12",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -125.5,
+        12.0,
+        11.1
+      ],
+      "size": [
+        3,
+        14,
+        1
+      ],
+      "uv": [
+        958,
+        228
+      ],
+      "rotation": [
+        0.9042064980997817,
+        0,
+        -22.773629610170296
+      ],
+      "pivot": [
+        -124.0,
+        12.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "right_covert_12",
+    "bone": "right_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        -101.0864,
+        70.256,
+        7.7424
+      ],
+      "size": [
+        8,
+        36,
+        2
+      ],
+      "uv": [
+        968,
+        228
+      ],
+      "rotation": [
+        2.5276924311742306,
+        0,
+        -19.22346238358615
+      ],
+      "pivot": [
+        -97.0864,
+        70.256,
+        8.7424
+      ]
+    }
+  },
+  {
+    "name": "left_wing_shoulder",
+    "bone": "left_wing",
+    "material": "black",
+    "cube": {
+      "origin": [
+        8.0,
+        160,
+        4.0
+      ],
+      "size": [
+        8,
+        44,
+        8
+      ],
+      "uv": [
+        990,
+        228
+      ],
+      "rotation": [
+        2.646614364836003,
+        0,
+        -56.309932474020215
+      ],
+      "pivot": [
+        12,
+        160,
+        8
+      ]
+    }
+  },
+  {
+    "name": "left_leading_edge",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        12.5,
+        162.4,
+        3.3
+      ],
+      "size": [
+        3,
+        42,
+        3
+      ],
+      "uv": [
+        2,
+        298
+      ],
+      "rotation": [
+        2.21387346398446,
+        0,
+        -55.23480276342322
+      ],
+      "pivot": [
+        14.0,
+        162.4,
+        4.8
+      ]
+    }
+  },
+  {
+    "name": "left_shoulder_highlight",
+    "bone": "left_wing",
+    "material": "silver",
+    "cube": {
+      "origin": [
+        40.2,
+        182.4,
+        4.0
+      ],
+      "size": [
+        2,
+        9,
+        2
+      ],
+      "uv": [
+        16,
+        298
+      ],
+      "rotation": [
+        9.067161778882529,
+        0,
+        -65.77225468204587
+      ],
+      "pivot": [
+        41.2,
+        182.4,
+        5.0
+      ]
+    }
+  },
+  {
+    "name": "left_inner_feather_0",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        16.0,
+        138.0,
+        10.2
+      ],
+      "size": [
+        8,
+        24,
+        2
+      ],
+      "uv": [
+        26,
+        298
+      ],
+      "rotation": [
+        -0.9573705215896993,
+        0,
+        9.619727799698856
+      ],
+      "pivot": [
+        20.0,
+        138.0,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "left_inner_feather_1",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        21.0,
+        135.4,
+        10.2
+      ],
+      "size": [
+        8,
+        30,
+        2
+      ],
+      "uv": [
+        48,
+        298
+      ],
+      "rotation": [
+        -0.768709005574111,
+        0,
+        6.161912373161219
+      ],
+      "pivot": [
+        25.0,
+        135.4,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "left_inner_feather_2",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        26.0,
+        132.8,
+        10.2
+      ],
+      "size": [
+        8,
+        36,
+        2
+      ],
+      "uv": [
+        70,
+        298
+      ],
+      "rotation": [
+        -0.6408544362812967,
+        0,
+        3.848179460925052
+      ],
+      "pivot": [
+        30.0,
+        132.8,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "left_inner_feather_3",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        31.0,
+        130.2,
+        10.2
+      ],
+      "size": [
+        8,
+        42,
+        2
+      ],
+      "uv": [
+        92,
+        298
+      ],
+      "rotation": [
+        -0.5489160035597948,
+        0,
+        2.196269001376968
+      ],
+      "pivot": [
+        35.0,
+        130.2,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "left_inner_feather_4",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        36.0,
+        127.6,
+        10.2
+      ],
+      "size": [
+        8,
+        48,
+        2
+      ],
+      "uv": [
+        114,
+        298
+      ],
+      "rotation": [
+        -0.4797856301874095,
+        0,
+        0.9596385560808813
+      ],
+      "pivot": [
+        40.0,
+        127.6,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "left_inner_feather_5",
+    "bone": "left_wing",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        41.0,
+        125.0,
+        10.2
+      ],
+      "size": [
+        8,
+        54,
+        2
+      ],
+      "uv": [
+        136,
+        298
+      ],
+      "rotation": [
+        -0.42598307664314927,
+        0,
+        -0.0
+      ],
+      "pivot": [
+        45.0,
+        125.0,
+        11.2
+      ]
+    }
+  },
+  {
+    "name": "left_wing_spar",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        44.5,
+        184,
+        7.0
+      ],
+      "size": [
+        7,
+        97,
+        6
+      ],
+      "uv": [
+        158,
+        298
+      ],
+      "rotation": [
+        1.1852889985262907,
+        0,
+        -155.55604521958347
+      ],
+      "pivot": [
+        48,
+        184,
+        10.0
+      ]
+    }
+  },
+  {
+    "name": "left_wing_ridge",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        46.5,
+        186.0,
+        5.3
+      ],
+      "size": [
+        3,
+        99,
+        3
+      ],
+      "uv": [
+        186,
+        298
+      ],
+      "rotation": [
+        1.163341108289043,
+        0,
+        -156.03751102542182
+      ],
+      "pivot": [
+        48,
+        186.0,
+        6.8
+      ]
+    }
+  },
+  {
+    "name": "left_primary_0_vane",
+    "bone": "left_primary_0",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        46.536,
+        149.84,
+        9.632
+      ],
+      "size": [
+        10,
+        31,
+        2
+      ],
+      "uv": [
+        200,
+        298
+      ],
+      "rotation": [
+        1.0745064548871086,
+        0,
+        5.183466355584443
+      ],
+      "pivot": [
+        51.536,
+        149.84,
+        10.632
+      ]
+    }
+  },
+  {
+    "name": "left_primary_0_taper",
+    "bone": "left_primary_0",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        44.628,
+        136.32,
+        10.536
+      ],
+      "size": [
+        7,
+        13,
+        2
+      ],
+      "uv": [
+        226,
+        298
+      ],
+      "rotation": [
+        -3.963202718005527,
+        0,
+        -15.20538279583389
+      ],
+      "pivot": [
+        48.128,
+        136.32,
+        11.536
+      ]
+    }
+  },
+  {
+    "name": "left_primary_0_tip",
+    "bone": "left_primary_0",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        46.5,
+        128.0,
+        11.1
+      ],
+      "size": [
+        3,
+        8,
+        1
+      ],
+      "uv": [
+        246,
+        298
+      ],
+      "rotation": [
+        -0.44067592690612284,
+        0,
+        -0.8814039965821524
+      ],
+      "pivot": [
+        48.0,
+        128.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_0",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        40.696,
+        163.44,
+        6.552
+      ],
+      "size": [
+        8,
+        20,
+        2
+      ],
+      "uv": [
+        256,
+        298
+      ],
+      "rotation": [
+        2.4346772229176756,
+        0,
+        -7.792078078218442
+      ],
+      "pivot": [
+        44.696,
+        163.44,
+        7.552
+      ]
+    }
+  },
+  {
+    "name": "left_primary_1_vane",
+    "bone": "left_primary_1",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        49.7192,
+        142.428,
+        9.6992
+      ],
+      "size": [
+        10,
+        32,
+        2
+      ],
+      "uv": [
+        278,
+        298
+      ],
+      "rotation": [
+        1.2174229073699958,
+        0,
+        5.090864904508863
+      ],
+      "pivot": [
+        54.7192,
+        142.428,
+        10.6992
+      ]
+    }
+  },
+  {
+    "name": "left_primary_1_taper",
+    "bone": "left_primary_1",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        47.8216,
+        128.544,
+        10.5616
+      ],
+      "size": [
+        7,
+        14,
+        2
+      ],
+      "uv": [
+        304,
+        298
+      ],
+      "rotation": [
+        -3.7019313698482526,
+        0,
+        -14.78439786533649
+      ],
+      "pivot": [
+        51.3216,
+        128.544,
+        11.5616
+      ]
+    }
+  },
+  {
+    "name": "left_primary_1_tip",
+    "bone": "left_primary_1",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        49.7,
+        120.0,
+        11.1
+      ],
+      "size": [
+        3,
+        8,
+        1
+      ],
+      "uv": [
+        324,
+        298
+      ],
+      "rotation": [
+        -0.2574813120845867,
+        0,
+        -0.8153905000725516
+      ],
+      "pivot": [
+        51.2,
+        120.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_1",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        43.8712,
+        156.308,
+        6.6512
+      ],
+      "size": [
+        8,
+        21,
+        2
+      ],
+      "uv": [
+        334,
+        298
+      ],
+      "rotation": [
+        2.542151696167871,
+        0,
+        -7.548031007016008
+      ],
+      "pivot": [
+        47.8712,
+        156.308,
+        7.6512
+      ]
+    }
+  },
+  {
+    "name": "left_primary_2_vane",
+    "bone": "left_primary_2",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        51.5104,
+        132.696,
+        9.7664
+      ],
+      "size": [
+        10,
+        35,
+        2
+      ],
+      "uv": [
+        356,
+        298
+      ],
+      "rotation": [
+        1.2648150309566737,
+        0,
+        2.334622275056866
+      ],
+      "pivot": [
+        56.5104,
+        132.696,
+        10.7664
+      ]
+    }
+  },
+  {
+    "name": "left_primary_2_taper",
+    "bone": "left_primary_2",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        48.9992,
+        117.408,
+        10.5872
+      ],
+      "size": [
+        7,
+        15,
+        2
+      ],
+      "uv": [
+        382,
+        298
+      ],
+      "rotation": [
+        -3.1996518490746038,
+        0,
+        -15.63260784288726
+      ],
+      "pivot": [
+        52.4992,
+        117.408,
+        11.5872
+      ]
+    }
+  },
+  {
+    "name": "left_primary_2_tip",
+    "bone": "left_primary_2",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        50.5,
+        108.0,
+        11.1
+      ],
+      "size": [
+        3,
+        9,
+        1
+      ],
+      "uv": [
+        402,
+        298
+      ],
+      "rotation": [
+        -0.07784388609595022,
+        0,
+        -3.03733582295252
+      ],
+      "pivot": [
+        52.0,
+        108.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_2",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        46.1344,
+        147.656,
+        6.7504
+      ],
+      "size": [
+        8,
+        23,
+        2
+      ],
+      "uv": [
+        412,
+        298
+      ],
+      "rotation": [
+        2.453396262744849,
+        0,
+        -9.116677628329644
+      ],
+      "pivot": [
+        50.1344,
+        147.656,
+        7.7504
+      ]
+    }
+  },
+  {
+    "name": "left_primary_3_vane",
+    "bone": "left_primary_3",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        55.1576,
+        120.644,
+        9.8336
+      ],
+      "size": [
+        10,
+        40,
+        2
+      ],
+      "uv": [
+        434,
+        298
+      ],
+      "rotation": [
+        1.2244219167137904,
+        0,
+        2.717612230877906
+      ],
+      "pivot": [
+        60.1576,
+        120.644,
+        10.8336
+      ]
+    }
+  },
+  {
+    "name": "left_primary_3_taper",
+    "bone": "left_primary_3",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        52.8648,
+        102.912,
+        10.6128
+      ],
+      "size": [
+        7,
+        17,
+        2
+      ],
+      "uv": [
+        460,
+        298
+      ],
+      "rotation": [
+        -2.6623270630792364,
+        0,
+        -12.89476994548972
+      ],
+      "pivot": [
+        56.3648,
+        102.912,
+        11.6128
+      ]
+    }
+  },
+  {
+    "name": "left_primary_3_tip",
+    "bone": "left_primary_3",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        54.5,
+        92.0,
+        11.1
+      ],
+      "size": [
+        3,
+        10,
+        1
+      ],
+      "uv": [
+        480,
+        298
+      ],
+      "rotation": [
+        0.0671715684890021,
+        0,
+        -1.9147469590700696
+      ],
+      "pivot": [
+        56.0,
+        92.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_3",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        49.6136,
+        137.484,
+        6.8496
+      ],
+      "size": [
+        8,
+        27,
+        2
+      ],
+      "uv": [
+        490,
+        298
+      ],
+      "rotation": [
+        2.258983205158621,
+        0,
+        -7.183565139655331
+      ],
+      "pivot": [
+        53.6136,
+        137.484,
+        7.8496
+      ]
+    }
+  },
+  {
+    "name": "left_primary_4_vane",
+    "bone": "left_primary_4",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        58.8048,
+        108.592,
+        9.9008
+      ],
+      "size": [
+        10,
+        46,
+        2
+      ],
+      "uv": [
+        512,
+        298
+      ],
+      "rotation": [
+        1.1937943258233168,
+        0,
+        3.0076560410390183
+      ],
+      "pivot": [
+        63.8048,
+        108.592,
+        10.9008
+      ]
+    }
+  },
+  {
+    "name": "left_primary_4_taper",
+    "bone": "left_primary_4",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        56.7304,
+        88.416,
+        10.6384
+      ],
+      "size": [
+        7,
+        19,
+        2
+      ],
+      "uv": [
+        538,
+        298
+      ],
+      "rotation": [
+        -2.2425122374179014,
+        0,
+        -10.778869217781317
+      ],
+      "pivot": [
+        60.2304,
+        88.416,
+        11.6384
+      ]
+    }
+  },
+  {
+    "name": "left_primary_4_tip",
+    "bone": "left_primary_4",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        58.5,
+        76.0,
+        11.1
+      ],
+      "size": [
+        3,
+        11,
+        1
+      ],
+      "uv": [
+        558,
+        298
+      ],
+      "rotation": [
+        0.1771723748586703,
+        0,
+        -1.0630986355478698
+      ],
+      "pivot": [
+        60.0,
+        76.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_4",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        53.0928,
+        127.312,
+        6.9488
+      ],
+      "size": [
+        8,
+        30,
+        2
+      ],
+      "uv": [
+        568,
+        298
+      ],
+      "rotation": [
+        2.1087600138393703,
+        0,
+        -5.707515069172337
+      ],
+      "pivot": [
+        57.0928,
+        127.312,
+        7.9488
+      ]
+    }
+  },
+  {
+    "name": "left_primary_5_vane",
+    "bone": "left_primary_5",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        64.772,
+        96.54,
+        9.968
+      ],
+      "size": [
+        10,
+        51,
+        2
+      ],
+      "uv": [
+        590,
+        298
+      ],
+      "rotation": [
+        1.1655362916481542,
+        0,
+        5.8522104392977585
+      ],
+      "pivot": [
+        69.772,
+        96.54,
+        10.968
+      ]
+    }
+  },
+  {
+    "name": "left_primary_5_taper",
+    "bone": "left_primary_5",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        63.956,
+        73.92,
+        10.664
+      ],
+      "size": [
+        7,
+        22,
+        2
+      ],
+      "uv": [
+        616,
+        298
+      ],
+      "rotation": [
+        -1.9186242951443073,
+        0,
+        -6.513610424552526
+      ],
+      "pivot": [
+        67.456,
+        73.92,
+        11.664
+      ]
+    }
+  },
+  {
+    "name": "left_primary_5_tip",
+    "bone": "left_primary_5",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        66.5,
+        60.0,
+        11.1
+      ],
+      "size": [
+        3,
+        13,
+        1
+      ],
+      "uv": [
+        636,
+        298
+      ],
+      "rotation": [
+        0.2632260844004015,
+        0,
+        2.238006513980275
+      ],
+      "pivot": [
+        68.0,
+        60.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_5",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        58.092,
+        117.14,
+        7.048
+      ],
+      "size": [
+        8,
+        34,
+        2
+      ],
+      "uv": [
+        646,
+        298
+      ],
+      "rotation": [
+        1.9945870833637958,
+        0,
+        -1.9195393371197769
+      ],
+      "pivot": [
+        62.092,
+        117.14,
+        8.048
+      ]
+    }
+  },
+  {
+    "name": "left_primary_6_vane",
+    "bone": "left_primary_6",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        69.5792,
+        84.488,
+        10.0352
+      ],
+      "size": [
+        10,
+        57,
+        2
+      ],
+      "uv": [
+        668,
+        298
+      ],
+      "rotation": [
+        1.1440076222049178,
+        0,
+        6.953627338468843
+      ],
+      "pivot": [
+        74.5792,
+        84.488,
+        11.0352
+      ]
+    }
+  },
+  {
+    "name": "left_primary_6_taper",
+    "bone": "left_primary_6",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        69.5016,
+        59.424,
+        10.6896
+      ],
+      "size": [
+        7,
+        24,
+        2
+      ],
+      "uv": [
+        694,
+        298
+      ],
+      "rotation": [
+        -1.6434481300745687,
+        0,
+        -4.208370738843855
+      ],
+      "pivot": [
+        73.0016,
+        59.424,
+        11.6896
+      ]
+    }
+  },
+  {
+    "name": "left_primary_6_tip",
+    "bone": "left_primary_6",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        72.5,
+        44.0,
+        11.1
+      ],
+      "size": [
+        3,
+        14,
+        1
+      ],
+      "uv": [
+        714,
+        298
+      ],
+      "rotation": [
+        0.3321397178102848,
+        0,
+        3.703605501504372
+      ],
+      "pivot": [
+        74.0,
+        44.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_6",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        62.3312,
+        106.968,
+        7.1472
+      ],
+      "size": [
+        8,
+        37,
+        2
+      ],
+      "uv": [
+        724,
+        298
+      ],
+      "rotation": [
+        1.8962362825957988,
+        0,
+        -0.04504580994741827
+      ],
+      "pivot": [
+        66.3312,
+        106.968,
+        8.1472
+      ]
+    }
+  },
+  {
+    "name": "left_primary_7_vane",
+    "bone": "left_primary_7",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        74.3864,
+        74.756,
+        10.1024
+      ],
+      "size": [
+        10,
+        60,
+        2
+      ],
+      "uv": [
+        746,
+        298
+      ],
+      "rotation": [
+        1.16942314822272,
+        0,
+        8.160096841637461
+      ],
+      "pivot": [
+        79.3864,
+        74.756,
+        11.1024
+      ]
+    }
+  },
+  {
+    "name": "left_primary_7_taper",
+    "bone": "left_primary_7",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        75.0472,
+        48.288,
+        10.7152
+      ],
+      "size": [
+        7,
+        25,
+        2
+      ],
+      "uv": [
+        772,
+        298
+      ],
+      "rotation": [
+        -1.469250055892164,
+        0,
+        -2.3924989329788744
+      ],
+      "pivot": [
+        78.5472,
+        48.288,
+        11.7152
+      ]
+    }
+  },
+  {
+    "name": "left_primary_7_tip",
+    "bone": "left_primary_7",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        78.5,
+        32.0,
+        11.1
+      ],
+      "size": [
+        3,
+        15,
+        1
+      ],
+      "uv": [
+        792,
+        298
+      ],
+      "rotation": [
+        0.4036262963939238,
+        0,
+        5.096980294426748
+      ],
+      "pivot": [
+        80.0,
+        32.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_7",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        66.5704,
+        98.316,
+        7.2464
+      ],
+      "size": [
+        8,
+        39,
+        2
+      ],
+      "uv": [
+        802,
+        298
+      ],
+      "rotation": [
+        1.8849834308216022,
+        0,
+        1.5553898811475566
+      ],
+      "pivot": [
+        70.5704,
+        98.316,
+        8.2464
+      ]
+    }
+  },
+  {
+    "name": "left_primary_8_vane",
+    "bone": "left_primary_8",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        82.6736,
+        67.344,
+        10.1696
+      ],
+      "size": [
+        10,
+        62,
+        2
+      ],
+      "uv": [
+        824,
+        298
+      ],
+      "rotation": [
+        1.2230166803979967,
+        0,
+        12.795130516464345
+      ],
+      "pivot": [
+        87.6736,
+        67.344,
+        11.1696
+      ]
+    }
+  },
+  {
+    "name": "left_primary_8_taper",
+    "bone": "left_primary_8",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        85.6328,
+        40.512,
+        10.7408
+      ],
+      "size": [
+        7,
+        25,
+        2
+      ],
+      "uv": [
+        850,
+        298
+      ],
+      "rotation": [
+        -1.360471205319304,
+        0,
+        2.544804379813078
+      ],
+      "pivot": [
+        89.1328,
+        40.512,
+        11.7408
+      ]
+    }
+  },
+  {
+    "name": "left_primary_8_tip",
+    "bone": "left_primary_8",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        90.5,
+        24.0,
+        11.1
+      ],
+      "size": [
+        3,
+        15,
+        1
+      ],
+      "uv": [
+        870,
+        298
+      ],
+      "rotation": [
+        0.4813541576298322,
+        0,
+        9.85081099249747
+      ],
+      "pivot": [
+        92.0,
+        24.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_8",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        73.0896,
+        91.184,
+        7.3456
+      ],
+      "size": [
+        8,
+        40,
+        2
+      ],
+      "uv": [
+        880,
+        298
+      ],
+      "rotation": [
+        1.936652119481882,
+        0,
+        6.415612615087929
+      ],
+      "pivot": [
+        77.0896,
+        91.184,
+        8.3456
+      ]
+    }
+  },
+  {
+    "name": "left_primary_9_vane",
+    "bone": "left_primary_9",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        90.9608,
+        59.932,
+        10.2368
+      ],
+      "size": [
+        10,
+        64,
+        2
+      ],
+      "uv": [
+        902,
+        298
+      ],
+      "rotation": [
+        1.2660798498340387,
+        0,
+        17.149066258944597
+      ],
+      "pivot": [
+        95.9608,
+        59.932,
+        11.2368
+      ]
+    }
+  },
+  {
+    "name": "left_primary_9_taper",
+    "bone": "left_primary_9",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        96.2184,
+        32.736,
+        10.7664
+      ],
+      "size": [
+        7,
+        26,
+        2
+      ],
+      "uv": [
+        928,
+        298
+      ],
+      "rotation": [
+        -1.2457788362897055,
+        0,
+        7.31460289610318
+      ],
+      "pivot": [
+        99.7184,
+        32.736,
+        11.7664
+      ]
+    }
+  },
+  {
+    "name": "left_primary_9_tip",
+    "bone": "left_primary_9",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        102.5,
+        16.0,
+        11.1
+      ],
+      "size": [
+        3,
+        16,
+        1
+      ],
+      "uv": [
+        948,
+        298
+      ],
+      "rotation": [
+        0.5518796036326499,
+        0,
+        14.35028853487572
+      ],
+      "pivot": [
+        104.0,
+        16.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_9",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        79.6088,
+        84.052,
+        7.4448
+      ],
+      "size": [
+        8,
+        41,
+        2
+      ],
+      "uv": [
+        958,
+        298
+      ],
+      "rotation": [
+        1.9730193194212615,
+        0,
+        11.059119657157945
+      ],
+      "pivot": [
+        83.6088,
+        84.052,
+        8.4448
+      ]
+    }
+  },
+  {
+    "name": "left_primary_10_vane",
+    "bone": "left_primary_10",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        96.928,
+        52.52,
+        10.304
+      ],
+      "size": [
+        10,
+        66,
+        2
+      ],
+      "uv": [
+        980,
+        298
+      ],
+      "rotation": [
+        1.3156150305588568,
+        0,
+        19.29834817458267
+      ],
+      "pivot": [
+        101.928,
+        52.52,
+        11.304
+      ]
+    }
+  },
+  {
+    "name": "left_primary_10_taper",
+    "bone": "left_primary_10",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        103.444,
+        24.96,
+        10.792
+      ],
+      "size": [
+        7,
+        26,
+        2
+      ],
+      "uv": [
+        2,
+        403
+      ],
+      "rotation": [
+        -1.1362238708732864,
+        0,
+        9.777580091674356
+      ],
+      "pivot": [
+        106.944,
+        24.96,
+        11.792
+      ]
+    }
+  },
+  {
+    "name": "left_primary_10_tip",
+    "bone": "left_primary_10",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        110.5,
+        8.0,
+        11.1
+      ],
+      "size": [
+        3,
+        16,
+        1
+      ],
+      "uv": [
+        22,
+        403
+      ],
+      "rotation": [
+        0.6215737467982508,
+        0,
+        16.60001367939145
+      ],
+      "pivot": [
+        112.0,
+        8.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_10",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        84.608,
+        76.92,
+        7.544
+      ],
+      "size": [
+        8,
+        42,
+        2
+      ],
+      "uv": [
+        32,
+        403
+      ],
+      "rotation": [
+        2.013721482395765,
+        0,
+        13.416084702996784
+      ],
+      "pivot": [
+        88.608,
+        76.92,
+        8.544
+      ]
+    }
+  },
+  {
+    "name": "left_primary_11_vane",
+    "bone": "left_primary_11",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        102.8952,
+        47.428,
+        10.3712
+      ],
+      "size": [
+        10,
+        65,
+        2
+      ],
+      "uv": [
+        54,
+        403
+      ],
+      "rotation": [
+        1.406234083009655,
+        0,
+        22.08613493135895
+      ],
+      "pivot": [
+        107.8952,
+        47.428,
+        11.3712
+      ]
+    }
+  },
+  {
+    "name": "left_primary_11_taper",
+    "bone": "left_primary_11",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        110.6696,
+        20.544,
+        10.8176
+      ],
+      "size": [
+        7,
+        26,
+        2
+      ],
+      "uv": [
+        80,
+        403
+      ],
+      "rotation": [
+        -1.0670148203027117,
+        0,
+        12.596848419412321
+      ],
+      "pivot": [
+        114.1696,
+        20.544,
+        11.8176
+      ]
+    }
+  },
+  {
+    "name": "left_primary_11_tip",
+    "bone": "left_primary_11",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        118.5,
+        4.0,
+        11.1
+      ],
+      "size": [
+        3,
+        16,
+        1
+      ],
+      "uv": [
+        100,
+        403
+      ],
+      "rotation": [
+        0.7107179168969022,
+        0,
+        19.413364596170666
+      ],
+      "pivot": [
+        120.0,
+        4.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_11",
+    "bone": "left_wing_outer",
+    "material": "black",
+    "cube": {
+      "origin": [
+        89.6072,
+        71.308,
+        7.6432
+      ],
+      "size": [
+        8,
+        41,
+        2
+      ],
+      "uv": [
+        110,
+        403
+      ],
+      "rotation": [
+        2.122549474927143,
+        0,
+        16.242777499994276
+      ],
+      "pivot": [
+        93.6072,
+        71.308,
+        8.6432
+      ]
+    }
+  },
+  {
+    "name": "left_primary_12_vane",
+    "bone": "left_primary_12",
+    "material": "violet",
+    "cube": {
+      "origin": [
+        106.5424,
+        49.296,
+        10.4384
+      ],
+      "size": [
+        10,
+        58,
+        2
+      ],
+      "uv": [
+        132,
+        403
+      ],
+      "rotation": [
+        1.6847096746710934,
+        0,
+        25.731784575488668
+      ],
+      "pivot": [
+        111.5424,
+        49.296,
+        11.4384
+      ]
+    }
+  },
+  {
+    "name": "left_primary_12_taper",
+    "bone": "left_primary_12",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        114.5352,
+        26.208,
+        10.8432
+      ],
+      "size": [
+        7,
+        23,
+        2
+      ],
+      "uv": [
+        158,
+        403
+      ],
+      "rotation": [
+        -1.1295033105637897,
+        0,
+        15.091933117819055
+      ],
+      "pivot": [
+        118.0352,
+        26.208,
+        11.8432
+      ]
+    }
+  },
+  {
+    "name": "left_primary_12_tip",
+    "bone": "left_primary_12",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        122.5,
+        12.0,
+        11.1
+      ],
+      "size": [
+        3,
+        14,
+        1
+      ],
+      "uv": [
+        178,
+        403
+      ],
+      "rotation": [
+        0.9042064980997817,
+        0,
+        22.773629610170296
+      ],
+      "pivot": [
+        124.0,
+        12.0,
+        11.6
+      ]
+    }
+  },
+  {
+    "name": "left_covert_12",
+    "bone": "left_wing_outer",
+    "material": "feather",
+    "cube": {
+      "origin": [
+        93.0864,
+        70.256,
+        7.7424
+      ],
+      "size": [
+        8,
+        36,
+        2
+      ],
+      "uv": [
+        188,
+        403
+      ],
+      "rotation": [
+        2.5276924311742306,
+        0,
+        19.22346238358615
+      ],
+      "pivot": [
+        97.0864,
+        70.256,
+        8.7424
+      ]
+    }
+  }
+]

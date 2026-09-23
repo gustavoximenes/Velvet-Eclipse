@@ -25,9 +25,9 @@ public final class ShuffleAudit {
    check(r.cards().stream().map(ShuffleRules.Card::kind).distinct().count()==r.cards().size(),"different card suits per offer");
    for(var card:r.cards()){kinds.add(card.kind());if(card.kind()==ShuffleRules.Kind.PERSONA){check(PersonaRegistry.persona(card.id()).orElseThrow().baseLevel()<=ShuffleRules.level(floor),"no high-level Persona on low floors");check(card.amount()==ShuffleRules.level(floor),"acquired Persona matches floor level");}if(card.kind()==ShuffleRules.Kind.SWORDS)check(ShuffleRules.skillLevel(card.id())<=ShuffleRules.level(floor),"no high-tier Skill Cards on low floors");}
   }
-  check(kinds.size()==5&&sizes.size()==5,"all types and deck sizes reachable");
+  check(kinds.equals(EnumSet.allOf(ShuffleRules.Kind.class))&&sizes.size()==5,"all types and deck sizes reachable");
   var player=new Player();var data=new PlayerPersonaData();data.addYen(123456789L);data.save(player);check(PlayerPersonaData.load(player).yen()==123456789L,"yen persists separately from inventory");
-  String encoded=player.tag.m_128461_("velvet_eclipse:data_v1");player.tag.m_128359_("velvet_eclipse:data_v1",encoded.substring(0,encoded.lastIndexOf('|')));check(PlayerPersonaData.load(player).yen()==0,"old saves migrate to zero yen without loss of Personas");
+  String encoded=player.tag.m_128461_("velvet_eclipse:data_v1");player.tag.m_128359_("velvet_eclipse:data_v1",String.join("|",Arrays.copyOf(encoded.split("\\|",-1),10)));check(PlayerPersonaData.load(player).yen()==0,"old saves migrate to zero yen without loss of Personas");
   data.addYen(Long.MAX_VALUE);check(data.yen()==9_999_999_999L,"currency saturates safely");
   var ledger=ShuffleData.load(player);var round=ShuffleRules.roll(20,Set.of(),new Random(31));ledger.add(round);ledger.save(player);var reopened=ShuffleData.load(player);check(reopened.first().equals(round),"reopening/reconnecting preserves exact cards and token");
   var clone=new Player();ShuffleData.copy(player,clone);check(ShuffleData.load(clone).first().equals(round),"pending offers survive player cloning");
@@ -47,7 +47,7 @@ public final class ShuffleAudit {
   ShuffleDesign.footer(c,"WANDS • EXPERIÊNCIA","Receba 260 EXP de jogador e da Persona equipada.","",false,false);c.save(out.resolve("cards.png"));
   c=new Preview();ShuffleDesign.background(c,.5,2,false);ShuffleDesign.intro(c,.5);c.save(out.resolve("intro.png"));
   c=new Preview();ShuffleDesign.badge(c,3,"P",900,500);c.save(out.resolve("badge.png"));
-  System.out.println("PASS shuffle: "+checks+" checks; persisted offers, replay protection, five reward types, floor gates, yen migration, learning and card layout. Offline UI previews generated.");
+  System.out.println("PASS shuffle: "+checks+" checks; persisted offers, replay protection, all reward types, floor gates, yen migration, learning and card layout. Offline UI previews generated.");
  }
  private static final class Preview implements MenuDesign.Canvas{
   final BufferedImage image=new BufferedImage(900,500,BufferedImage.TYPE_INT_ARGB);final Graphics2D g=image.createGraphics();final Font display,body;

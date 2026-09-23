@@ -28,7 +28,7 @@ public final class FusionAudit {
             check(before.equals(FusionTransaction.fingerprint(data)),"preview is read-only");
             check(FusionTransaction.commit(data,a,b,null)==(data.playerLevel()>=first.requiredLevel()),"level gate is enforced");
         }
-        check(pairs==21,"catalog pair count");
+        check(pairs==ids.size()*(ids.size()-1)/2,"catalog pair count");
         var high=new PlayerPersonaData();high.expandPersonaCapacity();high.givePersona("iron_oni");high.givePersona("lumen_hare");
         var gated=FusionTransaction.preview(high,"iron_oni","lumen_hare",null);check(gated!=null,"high-level pair preview");
         String before=FusionTransaction.fingerprint(high);
@@ -47,7 +47,7 @@ public final class FusionAudit {
         for(int i=0;i<4;i++){var r=FusionDesign.card(i);check(r.x()>=0&&r.x()+r.w()<=900&&r.y()>=0&&r.y()+r.h()<=415,"mode button bounds");}
         for(int i=0;i<6;i++){var r=FusionDesign.row(i);check(r.x()>=0&&r.x()+r.w()<=900&&r.y()>=0&&r.y()+r.h()<=415,"list row bounds");}
         check(!canvas.commands.isEmpty(),"fusion states paint commands");
-        System.out.println("PASS fusion: "+checks+" checks; 21 pairs, atomic level gate, read-only previews and navigation layout.");
+        System.out.println("PASS fusion: "+checks+" checks; "+pairs+" pairs, atomic level gate, read-only previews and navigation layout.");
     }
     private static final class Canvas implements MenuDesign.Canvas{
         final List<String> commands=new ArrayList<>();

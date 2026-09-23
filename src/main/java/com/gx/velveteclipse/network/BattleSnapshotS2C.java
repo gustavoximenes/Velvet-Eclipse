@@ -68,7 +68,7 @@ public record BattleSnapshotS2C(
    }
 
    public static BattleSnapshotS2C empty() {
-      return new BattleSnapshotS2C(false, false, "cinder_wisp", "Cinder Wisp", 120, 120, 45, 45, "", 0, 0, 3, List.of("ember"), List.of("cinder_wisp"), "");
+      return new BattleSnapshotS2C(false, false, "cinder_wisp", "Cinder Wisp", 120, 120, 45, 45, "", 0, 0, 3, List.of("agi"), List.of("cinder_wisp"), "");
    }
 
    public static void encode(BattleSnapshotS2C var0, FriendlyByteBuf var1) {

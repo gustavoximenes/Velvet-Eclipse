@@ -22,7 +22,7 @@ import net.minecraftforge.registries.ForgeRegistries.Keys;
    bus = Bus.MOD
 )
 public final class PersonaMobRegistry {
-   private static final String[] IDS = new String[]{"cinder_wisp", "umbra_slime", "nocturne_knight", "sylphid", "iron_oni", "lumen_hare", "izanagi", "evoker_fx"};
+   private static final String[] IDS = new String[]{"cinder_wisp", "umbra_slime", "nocturne_knight", "sylphid", "iron_oni", "lumen_hare", "izanagi", "arsene", "orpheus", "evoker_fx"};
    private static final Map<String, EntityType<?>> TYPES = new LinkedHashMap<>();
 
    private PersonaMobRegistry() {

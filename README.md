@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.27 — Arsène e Orpheus
+
+Modelos aprovados integrados com idle e ataques, progressão de habilidades, efeitos próprios de Eiga/Agi e migração de Ember para Agi. [Habilidades, comandos e compatibilidade](docs/ARSENE-ORPHEUS.md).
+
 # Velvet Eclipse 0.6.26 — Permissões e Contrato de Igor
 
 Loja em etapas com Permissões de Compra, prêmios únicos do chefe do trem e dos baús fixos, capacidade inicial de duas Personas ampliável até oito, onze abas criativas e 1 More corrigido para golpes letais. [Uso, migração de saves e estoque por andar](docs/PURCHASE-PERMITS.md).

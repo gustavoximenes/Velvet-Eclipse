@@ -118,10 +118,10 @@ public final class PersonaCinematicServer {
                     PersonaCinematicServer.movePersona(sequence, PersonaCinematicServer.lerp((double)object[0], dArray[0], d), PersonaCinematicServer.lerp((double)object[1], dArray[1], d), PersonaCinematicServer.lerp((double)object[2], dArray[2], d), sequence.yaw);
                     PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);
                 }
-                if (sequence.tick >= 55 && sequence.tick <= ("izanagi".equals(sequence.personaId)?107:94)) {
+                if (sequence.tick >= 55 && sequence.tick <= (fullAttack(sequence.personaId)?107:94)) {
                     PersonaCinematicServer.movePersonaAttack(sequence, dArray2[0], dArray2[1], dArray2[2], sequence.yaw, sequence.magic);
                 }
-                if (!"izanagi".equals(sequence.personaId) && sequence.tick >= 95 && sequence.tick <= 107) {
+                if (!fullAttack(sequence.personaId) && sequence.tick >= 95 && sequence.tick <= 107) {
                     PersonaCinematicServer.movePersona(sequence, dArray[0], dArray[1], dArray[2], sequence.yaw);
                     PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);
                 }
@@ -158,6 +158,8 @@ public final class PersonaCinematicServer {
             sequence.evoker = null;
         }
     }
+
+    private static boolean fullAttack(String id){return id.equals("izanagi")||id.equals("arsene")||id.equals("orpheus");}
 
     private static boolean isMagicSkill(String string) {
         Object object;

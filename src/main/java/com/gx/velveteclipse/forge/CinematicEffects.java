@@ -22,7 +22,7 @@ public final class CinematicEffects {
         if(!(actor instanceof ServerPlayer player)||!(player.m_9236_() instanceof ServerLevel level)||base==null)return;
         try {
             double[] origin=RuntimeBridge.localOffset(base,yaw,0,.7,1.95);
-            String id=skill==null?"":skill.toLowerCase(Locale.ROOT);
+            String id=PersonaRegistry.canonicalSkillId(skill==null?"":skill.toLowerCase(Locale.ROOT));
             var definition=PersonaRegistry.skill(id).orElse(null);
             Element element=definition==null?Element.ALMIGHTY:definition.element();
             boolean heal=definition!=null&&(definition.target()==SkillTarget.SELF||definition.target()==SkillTarget.ONE_ALLY||definition.target()==SkillTarget.ALL_ALLIES);
@@ -31,6 +31,13 @@ public final class CinematicEffects {
             if(tick==82&&element==Element.ELECTRIC){
                 var strikes=BattleService.effectTargets(player,skill).stream().map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
                 for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleLightningS2C(strikes));
+            }
+            if(id.equals("agi")||id.equals("eiga")){
+                if(tick==82){
+                    var targets=BattleService.effectTargets(player,id).stream().limit(5).map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
+                    for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleSpellS2C(id,targets));
+                }
+                return;
             }
             if(id.equals("zio"))return;
             DustParticleOptions color=color(element);

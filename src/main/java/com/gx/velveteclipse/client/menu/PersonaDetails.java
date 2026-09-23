@@ -26,7 +26,7 @@ public final class PersonaDetails {
             .flatMap(e->e.getValue().stream().filter(id->p.skills().stream().noneMatch(s->s.id().equals(id)))
                 .flatMap(id->PersonaRegistry.skill(id).stream()).map(s->new Next(e.getKey(),s))).findFirst();
     }
-    public static String cost(SkillDefinition s){return s.spCost()>0?s.spCost()+" SP":s.hpPercentCost()>0?s.hpPercentCost()+"% HP":"Sem custo";}
+    public static String cost(SkillDefinition s){return s.isPassive()?"Passiva":s.spCost()>0?s.spCost()+" SP":s.hpPercentCost()>0?s.hpPercentCost()+"% HP":"Sem custo";}
     public static String element(Element e){return switch(e){
         case PIERCE -> "Perfuração";case SLASH -> "Corte";case PHYSICAL -> "Impacto";case FIRE -> "Fogo";case ICE -> "Gelo";case ELECTRIC -> "Elétrico";
         case WIND -> "Vento";case PSY -> "Psíquico";case NUCLEAR -> "Nuclear";case LIGHT -> "Luz";
@@ -34,6 +34,10 @@ public final class PersonaDetails {
     public static String target(SkillTarget t){return switch(t){case ONE_ENEMY -> "um inimigo";case ALL_ENEMIES -> "todos os inimigos";
         case SELF -> "o usuário";case ONE_ALLY -> "um aliado";case ALL_ALLIES -> "todos os aliados";};}
     public static String description(SkillDefinition s){
+        if(s.id().equals("adverse_resolve"))return "Passiva: aumenta a chance de crítico em 20 pontos enquanto esta Persona está equipada numa batalha iniciada por emboscada inimiga.";
+        if(s.id().equals("dream_needle"))return "Dano leve de perfuração. Chance base de 40% de causar sono por até 3 turnos; receber dano desperta o alvo.";
+        if(s.id().equals("tarunda"))return "Reduz o ataque de um inimigo por 3 turnos. Cancela Tarukaja.";
+        if(s.id().equals("sukunda"))return "Reduz a precisão e a evasão de um inimigo por 3 turnos.";
         if(s.id().equals("rakukaja"))return "Aumenta a defesa de um aliado por 3 turnos.";
         if(s.id().equals("rakunda"))return "Reduz a defesa de um inimigo por 3 turnos.";
         if(s.id().equals("tarukaja"))return "Aumenta o ataque de um aliado por 3 turnos.";

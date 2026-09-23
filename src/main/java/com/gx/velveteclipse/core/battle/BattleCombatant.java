@@ -62,14 +62,27 @@ public final class BattleCombatant {
       if(weakness){if(downed&&element==downElement)skipNextTurn=true;else if(fresh||downElement==null)downElement=element;}
       downed=true;return fresh;
    }
-   private int attackTurns, defenseTurns, defenseStage;
+   private int attackTurns, attackStage=1, defenseTurns, defenseStage, accuracyTurns, accuracyStage;
+   private boolean accuracyWaiting, ambushed;
+   public void ambushed(boolean value){ambushed=value;}
+   public int passiveCritical(){return ambushed&&persona.learnedSkills().contains("adverse_resolve")?20:0;}
+   public double accuracyMultiplier(){return accuracyTurns>0?(accuracyStage<0?.75:1.25):1;}
+   public int accuracyTurns(){return accuracyTurns;}
+   public void accuracyStatus(int stage,boolean waiting){
+      if(accuracyTurns>0&&accuracyStage!=stage){accuracyTurns=0;accuracyStage=0;accuracyWaiting=false;}
+      else {accuracyTurns=3;accuracyStage=stage;accuracyWaiting=waiting;}
+   }
    private boolean attackWaiting, defenseWaiting;
 
-   public double attackMultiplier(){return (attackTurns>0?1.33:1)*(hasAilment("RAGE")?(equipment.has("attack when enraged")?2.5:1.5):1);}
+   public double attackMultiplier(){return (attackTurns>0?(attackStage>0?1.33:.66):1)*(hasAilment("RAGE")?(equipment.has("attack when enraged")?2.5:1.5):1);}
    public double defenseMultiplier(){return (defenseTurns>0?(defenseStage>0?1.33:.66):1)*equipment.armor()*(hasAilment("DISTRESS")?.8:1);}
    public int attackTurns(){return attackTurns;}
    public int defenseTurns(){return defenseTurns;}
-   public void attackStatus(boolean waiting){attackTurns=3;attackWaiting=waiting;}
+   public void attackStatus(boolean waiting){attackStatus(1,waiting);}
+   public void attackStatus(int stage,boolean waiting){
+      if(attackTurns>0&&attackStage!=stage){attackTurns=0;attackStage=0;attackWaiting=false;}
+      else {attackStage=stage;attackTurns=3;attackWaiting=waiting;}
+   }
    public void defenseStatus(int stage,boolean waiting){
       // Opposing effects cancel; repeated effects refresh duration without stacking.
       if(defenseTurns>0&&defenseStage!=stage){defenseTurns=0;defenseStage=0;defenseWaiting=false;}
@@ -82,6 +95,7 @@ public final class BattleCombatant {
       if(openingTurns>0)openingTurns--;if(partyEvasionTurns>0)partyEvasionTurns--;
       if(ailmentTurns>0){ailmentTurns-=equipment.has("fast heal")||equipment.has("faster overheat recovery")?2:1;if(ailmentTurns<=0)cure("ALL");}
       if(attackWaiting)attackWaiting=false;else if(attackTurns>0)--attackTurns;
+      if(accuracyWaiting)accuracyWaiting=false;else if(accuracyTurns>0)--accuracyTurns;
       if(defenseWaiting)defenseWaiting=false;else if(defenseTurns>0)--defenseTurns;
    }
 
@@ -165,6 +179,7 @@ public final class BattleCombatant {
    }
    public void damage(int var1) {
       int var2 = Math.max(0, var1);
+      if(var2>0)cure("SLEEP");
       if (this.guarding) {
          var2 = Math.max(1, var2 / 2);
       }

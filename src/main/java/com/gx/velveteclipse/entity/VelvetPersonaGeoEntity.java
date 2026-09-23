@@ -43,7 +43,7 @@ implements GeoEntity {
         super(entityType, level);
         String string = String.valueOf(entityType).toLowerCase();
         this.evokerFxType = string.contains("evoker");
-        this.personaId = this.evokerFxType ? "evoker_fx" : string.contains("izanagi") ? "izanagi" : "cinder_wisp";
+        this.personaId = this.evokerFxType ? "evoker_fx" : string.contains("arsene") ? "arsene" : string.contains("orpheus") ? "orpheus" : string.contains("izanagi") ? "izanagi" : "cinder_wisp";
     }
 
     public void setPersonaId(String string) {

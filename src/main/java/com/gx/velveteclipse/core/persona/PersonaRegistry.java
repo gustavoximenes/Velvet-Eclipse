@@ -18,7 +18,7 @@ public final class PersonaRegistry {
       if (!bootstrapped) {
          registerSkill(new SkillDefinition("single_shot","Single Shot",Element.PIERCE,48,95,0,8,true,SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("raid_ice_storm","Tempestade Glacial",Element.ICE,40,100,10,0,false,SkillTarget.ALL_ENEMIES));
-         registerSkill(new SkillDefinition("ember", "Ember", Element.FIRE, 44, 96, 4, 0, false, SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("agi", "Agi", Element.FIRE, 44, 96, 3, 0, false, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("frost_shard", "Frost Shard", Element.ICE, 42, 96, 4, 0, false, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("volt_spark", "Volt Spark", Element.ELECTRIC, 43, 95, 4, 0, false, SkillTarget.ONE_ENEMY));
          registerSkill(new SkillDefinition("gale_cut", "Gale Cut", Element.WIND, 42, 98, 4, 0, false, SkillTarget.ONE_ENEMY));
@@ -35,7 +35,7 @@ public final class PersonaRegistry {
                1,
                new PersonaStats(2, 5, 3, 4, 3),
                Map.of(Element.FIRE, Affinity.RESIST, Element.ICE, Affinity.WEAK),
-               Map.of(1, List.of("ember"), 4, List.of("cleave"))
+               Map.of(1, List.of("agi"), 4, List.of("cleave"))
             )
          );
          registerPersona(
@@ -107,6 +107,20 @@ public final class PersonaRegistry {
          registerPersona(persona("izanagi","Izanagi",Arcana.FOOL,1,new PersonaStats(3,2,2,3,2),
              Map.of(Element.ELECTRIC,Affinity.RESIST,Element.WIND,Affinity.WEAK,Element.DARK,Affinity.NULL),
              Map.of(1,List.of("zio","izanagi_cleave","rakukaja"),3,List.of("rakunda"),5,List.of("tarukaja"))));
+         // Royal learnset; the user-facing name Eiga is used for Arsène's initial curse spell.
+         registerSkill(new SkillDefinition("eiga","Eiga",Element.DARK,44,96,4,0,false,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("arsene_cleave","Cleave",Element.SLASH,52,95,0,6,true,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("sukunda","Sukunda",Element.SUPPORT,0,100,8,0,false,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("dream_needle","Dream Needle",Element.PIERCE,48,90,0,8,true,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("adverse_resolve","Adverse Resolve",Element.SUPPORT,0,100,0,0,false,SkillTarget.SELF));
+         registerSkill(new SkillDefinition("bash","Bash",Element.PHYSICAL,48,90,0,7,true,SkillTarget.ONE_ENEMY));
+         registerSkill(new SkillDefinition("tarunda","Tarunda",Element.SUPPORT,0,100,8,0,false,SkillTarget.ONE_ENEMY));
+         registerPersona(persona("arsene","Arsène",Arcana.FOOL,1,new PersonaStats(2,2,2,3,1),
+             Map.of(Element.ICE,Affinity.WEAK,Element.LIGHT,Affinity.WEAK,Element.DARK,Affinity.RESIST),
+             Map.of(1,List.of("eiga"),2,List.of("arsene_cleave"),4,List.of("sukunda"),5,List.of("dream_needle"),7,List.of("adverse_resolve"))));
+         registerPersona(persona("orpheus","Orpheus",Arcana.FOOL,1,new PersonaStats(2,2,2,3,2),
+             Map.of(Element.FIRE,Affinity.RESIST,Element.ELECTRIC,Affinity.WEAK,Element.DARK,Affinity.WEAK),
+             Map.of(1,List.of("agi"),3,List.of("dia"),4,List.of("bash"),5,List.of("tarunda"))));
          bootstrapped = true;
       }
    }
@@ -125,9 +139,11 @@ public final class PersonaRegistry {
       PERSONAS.put(var0.id(), var0);
    }
 
+   public static String canonicalSkillId(String id) { return "ember".equals(id)?"agi":id; }
+
    public static Optional<SkillDefinition> skill(String var0) {
       bootstrap();
-      return Optional.ofNullable(SKILLS.get(var0));
+      return Optional.ofNullable(SKILLS.get(canonicalSkillId(var0)));
    }
 
    public static Optional<PersonaDefinition> persona(String var0) {

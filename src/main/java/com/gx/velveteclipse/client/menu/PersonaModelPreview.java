@@ -66,7 +66,7 @@ public final class PersonaModelPreview {
         g.m_280262_();pose.m_85836_();
         try{
             // Identical coordinate convention to the vanilla inventory renderer, with an independent Gecko renderer.
-            float size=id.equals("cinder_wisp")?186:id.equals("umbra_slime")?219:id.equals("izanagi")?160:185;
+            float size=id.equals("cinder_wisp")?186:id.equals("umbra_slime")?219:id.equals("izanagi")?160:id.equals("arsene")||id.equals("orpheus")?170:185;
             pose.m_85837_(PersonaSheetDesign.modelX(v),440+(v.motion()?Math.sin(time*1.25)*3:0),MenuDepth.MODEL);
             pose.m_252931_(new Matrix4f().scaling(size,size,-size));
             var tilt=new Quaternionf().rotationX(.06f);

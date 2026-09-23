@@ -241,7 +241,7 @@ public final class BattleService {
         }
         var enemy=targets.stream().filter(t->!t.ally()&&t.hp()>0).findFirst().orElse(null);
         boolean turn=actor!=null&&g.session.state()==BattleState.ACTIVE&&!g.results.started()&&g.session.currentActor()==actor&&!busy(g)&&g.session.prepared()==null;
-        ModNetwork.sendToPlayer(p,new BattleSnapshotS2C(g!=null,turn,persona.definitionId(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),actor==null?data.hp():actor.hp(),actor==null?data.maxHp():actor.maxHp(),actor==null?data.sp():actor.sp(),actor==null?data.maxSp():actor.maxSp(),enemy==null?"":enemy.name(),enemy==null?0:enemy.hp(),enemy==null?0:enemy.maxHp(),data.pulseTonics(),new ArrayList<>(persona.learnedSkills()),new ArrayList<>(data.rosterIds()),message==null?"":message));
+        ModNetwork.sendToPlayer(p,new BattleSnapshotS2C(g!=null,turn,persona.definitionId(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),actor==null?data.hp():actor.hp(),actor==null?data.maxHp():actor.maxHp(),actor==null?data.sp():actor.sp(),actor==null?data.maxSp():actor.maxSp(),enemy==null?"":enemy.name(),enemy==null?0:enemy.hp(),enemy==null?0:enemy.maxHp(),data.pulseTonics(),persona.learnedSkills().stream().filter(id->PersonaRegistry.skill(id).map(s->!s.isPassive()).orElse(false)).sorted().toList(),new ArrayList<>(data.rosterIds()),message==null?"":message));
     }
     private static void persist(Object p,BattleSession s){s.find(RuntimeBridge.playerUuid(p)).ifPresent(c->{var d=PlayerPersonaData.load(p);d.setResources(c.hp(),c.sp());d.updatePersona(c.persona());d.equipPersona(c.persona().definitionId());d.save(p);});}
     private static void finish(Encounter g,String message){

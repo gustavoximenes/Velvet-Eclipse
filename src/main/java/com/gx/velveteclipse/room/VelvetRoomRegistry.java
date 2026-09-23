@@ -33,11 +33,11 @@ public final class VelvetRoomRegistry {
    .m_257941_(Component.m_237115_("itemGroup.velvet_eclipse."+category.name().toLowerCase(java.util.Locale.ROOT)))
    .m_257737_(()->new ItemStack(ForgeRegistries.ITEMS.getValue(new net.minecraft.resources.ResourceLocation("velvet_eclipse",category.icon))))
    .m_257501_((parameters,output)->ForgeRegistries.ITEMS.getEntries().stream()
-    .filter(e->e.getKey().m_135782_().m_135827_().equals("velvet_eclipse")&&CreativeCategory.of(e.getKey().m_135782_().m_135815_(),e.getValue() instanceof BlockItem)==category)
+    .filter(e->e.getKey().m_135782_().m_135827_().equals("velvet_eclipse")&&!e.getKey().m_135782_().m_135815_().equals("skill_card_ember")&&CreativeCategory.of(e.getKey().m_135782_().m_135815_(),e.getValue() instanceof BlockItem)==category)
     .sorted(java.util.Comparator.comparing(e->e.getKey().toString())).forEach(e->output.m_246326_(e.getValue())))
    .m_257652_());
  }
  public static final RegistryObject<CreativeModeTab> TAB=tab(CreativeCategory.GENERAL);
  static {for(var category:CreativeCategory.values())if(category!=CreativeCategory.GENERAL)tab(category);}
- public static void register(IEventBus bus){com.gx.velveteclipse.progression.ProgressionItems.init();com.gx.velveteclipse.equipment.EquipmentRegistry.init();com.gx.velveteclipse.shadow.FieldShadowRegistry.init();com.gx.velveteclipse.shadow.EnemyRegistry.init();com.gx.velveteclipse.darkhour.TartarusPropRegistry.init();com.gx.velveteclipse.raid.RaidRegistry.init();BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);TABS.register(bus);}
+ public static void register(IEventBus bus){com.gx.velveteclipse.forge.PersonaModelItems.init();com.gx.velveteclipse.progression.ProgressionItems.init();com.gx.velveteclipse.equipment.EquipmentRegistry.init();com.gx.velveteclipse.shadow.FieldShadowRegistry.init();com.gx.velveteclipse.shadow.EnemyRegistry.init();com.gx.velveteclipse.darkhour.TartarusPropRegistry.init();com.gx.velveteclipse.raid.RaidRegistry.init();BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);TABS.register(bus);}
 }

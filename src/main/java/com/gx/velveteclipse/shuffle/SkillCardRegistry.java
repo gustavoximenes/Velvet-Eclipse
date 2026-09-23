@@ -14,6 +14,8 @@ public final class SkillCardRegistry {
  private static final DeferredRegister<Item> ITEMS=DeferredRegister.create(ForgeRegistries.ITEMS,"velvet_eclipse");
  public static final Map<String,RegistryObject<Item>> CARDS=new LinkedHashMap<>();
  static{for(String skill:PersonaRegistry.skills().keySet())CARDS.put(skill,ITEMS.register("skill_card_"+skill,()->new SkillCard(skill)));}
+ // Retain old inventory stacks. They now teach Agi and are hidden from the creative catalogue.
+ static{CARDS.put("ember",ITEMS.register("skill_card_ember",()->new SkillCard("agi")));}
  public static void register(IEventBus bus){ITEMS.register(bus);}
  public static final class SkillCard extends Item {
   private final String skill;

@@ -19,6 +19,6 @@ public final class VelvetEclipseMod {
       PersonaRegistry.bootstrap();
       com.gx.velveteclipse.shuffle.SkillCardRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       ModNetwork.register();
-      LOGGER.info("Velvet Eclipse 0.6.26 purchase permits, Persona capacity and lethal One More initialized.");
+      LOGGER.info("Velvet Eclipse 0.6.27 Arsène, Orpheus, Eiga and Agi initialized.");
    }
 }

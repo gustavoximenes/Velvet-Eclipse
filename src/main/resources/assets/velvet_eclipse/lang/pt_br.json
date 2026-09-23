@@ -55,7 +55,7 @@
   "block.velvet_eclipse.tartarus_violet": "Tartarus • Vitral violeta",
   "block.velvet_eclipse.tartarus_wall": "Tartarus • Parede",
   "block.velvet_eclipse.tartarus_window": "Tartarus • Vitral verde",
-  "item.velvet_eclipse.skill_card_ember": "Skill Card • Ember",
+  "item.velvet_eclipse.skill_card_ember": "Skill Card • Agi",
   "item.velvet_eclipse.skill_card_frost_shard": "Skill Card • Frost Shard",
   "item.velvet_eclipse.skill_card_volt_spark": "Skill Card • Volt Spark",
   "item.velvet_eclipse.skill_card_gale_cut": "Skill Card • Gale Cut",
@@ -829,5 +829,17 @@
   "item.velvet_eclipse.purchase_permit_175": "Permissão de Compra • 175F",
   "item.velvet_eclipse.purchase_permit_200": "Permissão de Compra • 200F",
   "item.velvet_eclipse.purchase_permit_225": "Permissão de Compra • 225F",
-  "item.velvet_eclipse.purchase_permit_250": "Permissão de Compra • 250F"
+  "item.velvet_eclipse.purchase_permit_250": "Permissão de Compra • 250F",
+  "item.velvet_eclipse.skill_card_agi": "Skill Card • Agi",
+  "item.velvet_eclipse.skill_card_eiga": "Skill Card • Eiga",
+  "item.velvet_eclipse.skill_card_arsene_cleave": "Skill Card • Cleave",
+  "item.velvet_eclipse.skill_card_sukunda": "Skill Card • Sukunda",
+  "item.velvet_eclipse.skill_card_dream_needle": "Skill Card • Dream Needle",
+  "item.velvet_eclipse.skill_card_adverse_resolve": "Skill Card • Adverse Resolve",
+  "item.velvet_eclipse.skill_card_bash": "Skill Card • Bash",
+  "item.velvet_eclipse.skill_card_tarunda": "Skill Card • Tarunda",
+  "item.velvet_eclipse.arsene_model": "Modelo • Arsène",
+  "entity.velvet_eclipse.persona_arsene": "Arsène",
+  "item.velvet_eclipse.orpheus_model": "Modelo • Orpheus",
+  "entity.velvet_eclipse.persona_orpheus": "Orpheus"
 }

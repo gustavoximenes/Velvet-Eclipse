@@ -21,7 +21,7 @@ public final class PersonaInstance {
       this.level = Math.max(1, var2);
       this.experience = Math.max(0, var3);
       if (var4 != null) {
-         this.learnedSkills.addAll(var4);
+         var4.forEach(this::inheritSkill);
       }
    }
 
@@ -61,7 +61,7 @@ public final class PersonaInstance {
 
    public void inheritSkill(String var1) {
       if (var1 != null && !var1.isBlank()) {
-         this.learnedSkills.add(var1);
+         this.learnedSkills.add(PersonaRegistry.canonicalSkillId(var1));
       }
    }
 

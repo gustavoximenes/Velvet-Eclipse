@@ -28,6 +28,8 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         thanatos=asset.equals("thanatos");izanagi=asset.equals("izanagi");this.f_114477_=thanatos?.45f:.55f;
         // Preserve authoring dimensions/Box UV; scale the model uniformly in both world and menus.
         if(izanagi||asset.equals("igor")||asset.equals("elizabeth"))withScale(.25f);
+        if(asset.equals("arsene"))withScale(.125f);
+        if(asset.equals("orpheus"))withScale(.16f);
         if(asset.equals("priestess"))withScale(.4f);
         if(asset.equals("field_shadow"))withScale(.48f);
         if(asset.startsWith("enemy_"))withScale(.6f);

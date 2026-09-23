@@ -86,6 +86,7 @@ public final class BattleSession {
          this.turnOrder = new ArrayList<>(var1);
          for(var source:turnOrder)for(var ally:turnOrder)if(source.side()==ally.side())source.applyPartyPassives(ally);
          this.turnOrder.sort(Comparator.<BattleCombatant>comparingInt(var0 -> var0.stats().agility()).reversed().thenComparing(var0 -> var0.id().toString()));
+         for(var c:turnOrder)c.ambushed(mode==EncounterOpening.AMBUSH&&c.side()==BattleSide.PLAYERS);
          this.opening=mode;this.openingRound=mode!=EncounterOpening.STANDARD;
          if(openingRound){java.util.Collections.shuffle(turnOrder,random);if(mode!=EncounterOpening.NEUTRAL){var first=mode==EncounterOpening.ADVANTAGE?BattleSide.PLAYERS:BattleSide.ENEMIES;turnOrder.sort(Comparator.comparingInt(c->c.side()==first?0:1));}}
          this.turnIndex = this.firstLivingIndex(0);
@@ -225,8 +226,8 @@ public final class BattleSession {
                      DamageOutcome hit=damage(var4,victim,var6);
                      weaknessHit|=isWeaknessHit(hit);
                      var5|=this.appendOutcome(var3,var4,victim,var6,hit);
-                     String status=var6.element()==Element.ICE?"FREEZE":var6.element()==Element.ELECTRIC?"SHOCK":"";
-                     if(!status.isEmpty()&&victim.alive()&&!hit.missed()&&!hit.drained()&&!hit.reflected()&&hit.damage()>0&&random.nextInt(100)<(10+var4.equipment().ailmentBoost(status))/(victim.equipment().resistant(status)?2:1)){victim.afflict(status);if(!victim.ailment().isEmpty())var3.add(victim.name()+": "+victim.ailment());}
+                     String status=var6.id().equals("dream_needle")?"SLEEP":var6.element()==Element.ICE?"FREEZE":var6.element()==Element.ELECTRIC?"SHOCK":"";
+                     if(!status.isEmpty()&&victim.alive()&&!hit.missed()&&!hit.drained()&&!hit.reflected()&&hit.damage()>0&&random.nextInt(100)<((status.equals("SLEEP")?40:10)+var4.equipment().ailmentBoost(status))/(victim.equipment().resistant(status)?2:1)){victim.afflict(status);if(!victim.ailment().isEmpty())var3.add(victim.name()+": "+victim.ailment());}
                   }
             }
 
@@ -301,6 +302,7 @@ public final class BattleSession {
    /** Join at the end of the existing order; never steal the active or reserved turn. */
    public boolean join(BattleCombatant ally) {
       if(state!=BattleState.ACTIVE||ally==null||!ally.alive()||ally.side()!=BattleSide.PLAYERS||find(ally.id()).isPresent())return false;
+      ally.ambushed(opening==EncounterOpening.AMBUSH);
       // Allies joining while the opening player phase is running share its advantage.
       if(openingRound&&opening==EncounterOpening.ADVANTAGE&&turnOrder.get(turnIndex).side()==BattleSide.PLAYERS){int at=turnIndex+1;while(at<turnOrder.size()&&turnOrder.get(at).side()==BattleSide.PLAYERS)at++;turnOrder.add(at,ally);}else turnOrder.add(ally);return true;
    }
@@ -333,14 +335,16 @@ public final class BattleSession {
    private void advanceTurn() {
       bonusActor=null;batonChain.clear();for(var actor:turnOrder)actor.setBatonBoost(false);
       if(state!=BattleState.ACTIVE)return;
-      for(int attempts=0;attempts<=turnOrder.size();attempts++){
+      // Everyone may be asleep. Advance through the three disabled rounds before
+      // yielding an actor; never accidentally offer a turn to a sleeping fighter.
+      for(int attempts=0;attempts<turnOrder.size()*4;attempts++){
          int next=firstLivingIndex(turnIndex+1);
          if(openingRound&&next<=turnIndex){openingRound=false;agilityOrder();next=firstLivingIndex(0);}
          turnIndex=next;if(beginCurrentTurn())return;
       }
    }
 
-   private boolean beginCurrentTurn(){var actor=currentActor();actor.beginTurn();boolean skip=actor.skipsNextTurn()||actor.hasAilment("FREEZE,SHOCK,FEAR,CHARM,DIZZY");actor.setDowned(false);return !skip;}
+   private boolean beginCurrentTurn(){var actor=currentActor();boolean asleep=actor.hasAilment("SLEEP")&&!actor.equipment().has("insta-heal");actor.beginTurn();boolean skip=asleep||actor.skipsNextTurn()||actor.hasAilment("FREEZE,SHOCK,FEAR,CHARM,DIZZY");actor.setDowned(false);return !skip;}
 
    private int firstLivingIndex(int var1) {
       int var2 = this.turnOrder.size();

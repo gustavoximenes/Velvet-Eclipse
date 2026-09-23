@@ -33,6 +33,8 @@ public record SkillDefinition(
       }
    }
 
+   public boolean isPassive() { return id.equals("adverse_resolve"); }
+
    public boolean usesMagicStat() {
       if(id.equals("__basic_attack"))return false;
       return switch (this.element) {

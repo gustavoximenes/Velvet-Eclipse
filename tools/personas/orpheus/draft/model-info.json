@@ -1,0 +1,16 @@
+{
+  "cuboids": 220,
+  "bones": 31,
+  "atlas": [
+    1024,
+    1024
+  ],
+  "atlas_height_used": 345,
+  "uniform_density": 4,
+  "clips": {
+    "animation.orpheus.ground_idle": 4.8,
+    "animation.orpheus.magic_attack": 3.2,
+    "animation.orpheus.physical_attack": 2.8
+  },
+  "color_variants": 1
+}

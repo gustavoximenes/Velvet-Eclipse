@@ -15,7 +15,7 @@ public final class DamageCalculator {
 
    /** Roll once on the authoritative server; no resources or entity state change here. */
    public static DamageOutcome roll(BattleCombatant var0, BattleCombatant var1, SkillDefinition var2, Random var3) {
-      if (var3.nextInt(100) >= Math.max(5,(var1.equipment().has("firm stance")?100:var2.accuracy()*(1-Math.min(.8,var1.equipment().evade(var2.element())+var1.extraEvasion(var2.element()))))*(var0.hasAilment("DISTRESS,CONFUSE")?.6:1))) {
+      if (var3.nextInt(100) >= Math.max(5,(var1.equipment().has("firm stance")?100:var2.accuracy()*var0.accuracyMultiplier()/var1.accuracyMultiplier()*(1-Math.min(.8,var1.equipment().evade(var2.element())+var1.extraEvasion(var2.element()))))*(var0.hasAilment("DISTRESS,CONFUSE")?.6:1))) {
          return new DamageOutcome(var2.element(), var1.affinity(var2.element()), 0, false, false, false, false, true);
       } else {
          int var4 = var2.usesMagicStat() ? var0.stats().magic() : var0.stats().strength();
@@ -25,7 +25,7 @@ public final class DamageCalculator {
          Affinity var7 = var2.element() == Element.ALMIGHTY || var2.element() == Element.NONE ? Affinity.NORMAL : var1.affinity(var2.element());
          if(var2.id().equals("__basic_attack")&&var0.equipment().has("ignore enemy resistances")&&var7==Affinity.RESIST)var7=Affinity.NORMAL;
          if(com.gx.velveteclipse.equipment.EquipmentBonuses.physical(var2.element())&&var1.equipment().counter()>0&&var3.nextInt(100)<var1.equipment().counter())var7=Affinity.REPEL;
-         boolean var8 = var2.canCritical() && var3.nextInt(100) < Math.min(60,(4 + var0.stats().luck()*2 + var0.equipment().critical()+var0.openingCritical())*(var0.equipment().has("apt pupil")?2:1)/(var1.equipment().has("sharp student")?2:1));
+         boolean var8 = var2.canCritical() && var3.nextInt(100) < Math.min(60,(4 + var0.stats().luck()*2 + var0.equipment().critical()+var0.openingCritical()+var0.passiveCritical())*(var0.equipment().has("apt pupil")?2:1)/(var1.equipment().has("sharp student")?2:1));
          if (var8) {
             var6 = (int)Math.ceil((double)var6 * 1.35);
          }
