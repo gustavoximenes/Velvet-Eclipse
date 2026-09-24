@@ -23,7 +23,8 @@ public record BattleSnapshotS2C(
    int pulseTonics,
    List<String> skills,
    List<String> roster,
-   String message
+   String message,
+   List<String> passives
 ) {
    private static final String SEP = "\u001f";
 
@@ -44,27 +45,11 @@ public record BattleSnapshotS2C(
       List<String> roster,
       String message
    ) {
-      skills = skills == null ? List.of() : List.copyOf(skills);
-      roster = roster == null ? List.of() : List.copyOf(roster);
-      personaId = safe(personaId);
-      personaName = safe(personaName);
-      enemyName = safe(enemyName);
-      message = safe(message);
-      this.active = active;
-      this.playerTurn = playerTurn;
-      this.personaId = personaId;
-      this.personaName = personaName;
-      this.hp = hp;
-      this.maxHp = maxHp;
-      this.sp = sp;
-      this.maxSp = maxSp;
-      this.enemyName = enemyName;
-      this.enemyHp = enemyHp;
-      this.enemyMaxHp = enemyMaxHp;
-      this.pulseTonics = pulseTonics;
-      this.skills = skills;
-      this.roster = roster;
-      this.message = message;
+      this(active,playerTurn,personaId,personaName,hp,maxHp,sp,maxSp,enemyName,enemyHp,enemyMaxHp,pulseTonics,skills,roster,message,List.of());
+   }
+   public BattleSnapshotS2C {
+      skills=skills==null?List.of():List.copyOf(skills);roster=roster==null?List.of():List.copyOf(roster);passives=passives==null?List.of():List.copyOf(passives);
+      personaId=safe(personaId);personaName=safe(personaName);enemyName=safe(enemyName);message=safe(message);
    }
 
    public static BattleSnapshotS2C empty() {
@@ -102,7 +87,8 @@ public record BattleSnapshotS2C(
          Integer.toString(this.pulseTonics),
          String.join(",", this.skills),
          String.join(",", this.roster),
-         this.message.replace("\u001f", " ")
+         this.message.replace("\u001f", " "),
+         String.join(",",this.passives)
       );
    }
 
@@ -129,7 +115,8 @@ public record BattleSnapshotS2C(
                Integer.parseInt(var1[11]),
                var2,
                var3,
-               var1[14]
+               var1[14],
+               var1.length>15&&!var1[15].isBlank()?Arrays.asList(var1[15].split(",")):List.of()
             );
          }
       } catch (Throwable var4) {

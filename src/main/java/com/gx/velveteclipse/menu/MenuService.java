@@ -44,7 +44,8 @@ public final class MenuService {
     public static MenuSnapshot.Persona describe(PersonaInstance instance){
             var def=PersonaRegistry.persona(instance.definitionId()).orElseThrow();var stats=def.baseStats();int n=Math.max(0,instance.level()-def.baseLevel());
             var skills=instance.learnedSkills().stream().sorted().map(k->PersonaRegistry.skill(k).orElse(null)).filter(Objects::nonNull).toList();
-            List<String> affinities=def.affinities().entrySet().stream().filter(e->e.getValue()!=Affinity.NORMAL).map(e->e.getKey()+"  "+e.getValue()).toList();
+              var bonuses=com.gx.velveteclipse.equipment.EquipmentBonuses.NONE.withSkills(instance.learnedSkills());
+              List<String> affinities=java.util.Arrays.stream(com.gx.velveteclipse.core.persona.Element.values()).map(e->java.util.Map.entry(e,bonuses.affinity(e,def.affinity(e)))).filter(e->e.getValue()!=Affinity.NORMAL).map(e->e.getKey()+"  "+e.getValue()).toList();
             return new MenuSnapshot.Persona(def.id(),def.id().equals("cinder_wisp")?"Thanatos":def.displayName(),def.arcana().name(),instance.level(),instance.experience(),PersonaInstance.experienceForNextLevel(instance.level()),
                 new int[]{stats.strength()+n/2,stats.magic()+n/2,stats.endurance()+n/2,stats.agility()+n/3,stats.luck()+n/3},skills,affinities);
     }

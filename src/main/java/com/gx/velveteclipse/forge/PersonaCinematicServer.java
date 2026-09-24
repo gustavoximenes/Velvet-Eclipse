@@ -159,7 +159,7 @@ public final class PersonaCinematicServer {
         }
     }
 
-    private static boolean fullAttack(String id){return id.equals("izanagi")||id.equals("arsene")||id.equals("orpheus");}
+    private static boolean fullAttack(String id){return id.equals("izanagi")||id.equals("arsene")||id.equals("orpheus")||com.gx.velveteclipse.core.persona.ReloadCatalogue.provisional(id);}
 
     private static boolean isMagicSkill(String string) {
         Object object;

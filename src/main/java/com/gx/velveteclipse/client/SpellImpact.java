@@ -15,9 +15,54 @@ public final class SpellImpact {
         if(age<0||age>=LIFETIME)return List.of();
         var out=new ArrayList<Stroke>();var r=new Random(seed);
         double grow=Math.min(1,(age+1)/5),fade=age<8?1:Math.max(0,(LIFETIME-age)/(LIFETIME-8.0));
-        if(id.equals("eiga"))curse(out,age,grow,fade,r);
-        else if(id.equals("agi"))fire(out,age,grow,fade,r);
-        return List.copyOf(out);
+        switch(com.gx.velveteclipse.core.persona.SpellVisuals.family(id)){
+            case DARK->curse(out,age,grow,fade,r);
+            case FIRE->fire(out,age,grow,fade,r);
+            case WIND->wind(out,age,grow,fade);
+            case ICE->ice(out,age,grow,fade,r);
+            case LIGHT->light(out,age,grow,fade,r);
+            case NUCLEAR->nuclear(out,age,grow,fade,r);
+            case PSY->psy(out,age,grow,fade);
+            case ALMIGHTY->almighty(out,age,grow,fade,r);
+            default->{}
+        }
+        float scale=com.gx.velveteclipse.core.persona.SpellVisuals.scale(id);
+        return out.stream().map(s->new Stroke(new Vector3f(s.from()).mul(scale),new Vector3f(s.to()).mul(scale),s.width()*scale,s.color(),s.alpha())).toList();
+    }
+    private static void wind(List<Stroke> out,double age,double grow,double fade){
+        // Three green crescent ribbons spiral upward as a narrow tornado.
+        for(int arm=0;arm<3;arm++)for(int n=0;n<56;n++){
+            double t=n/56.0,u=(n+1)/56.0,a=t*TAU*1.7+arm*TAU/3-age*.25,b=u*TAU*1.7+arm*TAU/3-age*.25;
+            double ra=(.35+t*.9)*grow,rb=(.35+u*.9)*grow;
+            var p=p(Math.cos(a)*ra,.1+t*2.6,Math.sin(a)*ra);var q=p(Math.cos(b)*rb,.1+u*2.6,Math.sin(b)*rb);
+            add(out,p,q,.14*(1-t*.6),0x37DF89,fade*.55);add(out,p,q,.027,0xD9FFE9,fade);
+        }ring(out,1.3*grow,.05,.06,0x69FF93,fade*.6);
+    }
+    private static void ice(List<Stroke> out,double age,double grow,double fade,Random r){
+        ring(out,.95*grow,.05,.04,0x93E9FF,fade);
+        for(int j=0;j<8;j++){double angle=j*TAU/8,rad=.35+r.nextDouble()*.55,h=(1.0+r.nextDouble()*1.25)*grow;
+            var base=p(Math.cos(angle)*rad,.06,Math.sin(angle)*rad);var tip=p(base.x*1.15,h,base.z*1.15);
+            for(int side=0;side<4;side++){double a=side*Math.PI/2;var edge=new Vector3f(base).add((float)Math.cos(a)*.20f,.08f,(float)Math.sin(a)*.20f);add(out,edge,tip,.16,0x259ED5,fade*.65);add(out,edge,tip,.028,0xD7FFFF,fade);}
+        }if(age>8)sparks(out,age,fade,r,0xA7F5FF,24);
+    }
+    private static void light(List<Stroke> out,double age,double grow,double fade,Random r){
+        ring(out,1.1*grow,.05,.05,0xFFD852,fade);ring(out,.7*grow,.06,.03,0xFFF5BA,fade);
+        for(int i=0;i<6;i++){double a=i*TAU/6,x=Math.cos(a)*.7,z=Math.sin(a)*.7;var top=p(x,4.8,z);var foot=p(x,Math.max(.1,4.8*(1-grow)),z);add(out,top,foot,.16,0xFFCF42,fade*.35);add(out,top,foot,.045,0xFFFFDE,fade);add(out,p(x-.23,.8,z),p(x+.23,.8,z),.035,0xFFFFDF,fade);}
+        if(age>=4)sparks(out,age,fade,r,0xFFE18C,18);
+    }
+    private static void nuclear(List<Stroke> out,double age,double grow,double fade,Random r){
+        for(int axis=0;axis<3;axis++)for(int i=0;i<48;i++){double a=i*TAU/48+age*.15,b=(i+1)*TAU/48+age*.15;double tilt=axis*TAU/3;var p=p(Math.cos(a)*grow,1+Math.sin(a)*Math.cos(tilt)*grow,Math.sin(a)*Math.sin(tilt)*grow);var q=p(Math.cos(b)*grow,1+Math.sin(b)*Math.cos(tilt)*grow,Math.sin(b)*Math.sin(tilt)*grow);add(out,p,q,.045,axis==0?0xFFCD34:0x66E7FF,fade);}
+        for(int i=0;i<10;i++){double a=i*TAU/10;add(out,p(0,1,0),p(Math.cos(a)*.3,1+Math.sin(a)*.3,0),.13,0xFFEEDD,fade);}
+        if(age>=4){ring(out,.5+(age-4)*.15,.08,.12,0xFF892C,fade);sparks(out,age,fade,r,0x69DEFF,24);}
+    }
+    private static void psy(List<Stroke> out,double age,double grow,double fade){
+        for(int band=0;band<5;band++)for(int i=0;i<48;i++){double a=i*TAU/48,b=(i+1)*TAU/48,rad=(.35+band*.23)*grow;double y=1+Math.sin(age*.24+band*.8)*.3;var p=p(Math.cos(a)*rad,y+Math.sin(a)*rad*.65,Math.sin(a)*rad*.4);var q=p(Math.cos(b)*rad,y+Math.sin(b)*rad*.65,Math.sin(b)*rad*.4);add(out,p,q,.09,band%2==0?0xEE3FCF:0x813CF2,fade*.65);add(out,p,q,.02,0xFBD5FF,fade);}
+        add(out,p(0,.1,0),p(0,2.3,0),.045,0xFFD7FF,fade);
+    }
+    private static void almighty(List<Stroke> out,double age,double grow,double fade,Random r){
+        double rad=(age<4?.45:Math.min(2.1,.45+(age-4)*.16))*grow;
+        for(int lat=1;lat<=5;lat++){double y=1.2+Math.cos(lat*Math.PI/6)*rad;ring(out,Math.sin(lat*Math.PI/6)*rad,y,.11,lat%2==0?0x92CAFF:0xEAE6FF,fade*.6);}
+        if(age>=4){ring(out,rad*1.35,.07,.1,0xB69AFF,fade);sparks(out,age,fade,r,0xDEE9FF,32);}
     }
     private static void ring(List<Stroke> out,double radius,double y,double width,int color,double alpha){
         for(int i=0;i<48;i++){double a=i*TAU/48,b=(i+1)*TAU/48;add(out,p(Math.cos(a)*radius,y,Math.sin(a)*radius),p(Math.cos(b)*radius,y,Math.sin(b)*radius),width,color,alpha);}

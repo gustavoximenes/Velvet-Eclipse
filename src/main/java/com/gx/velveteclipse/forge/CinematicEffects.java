@@ -32,14 +32,14 @@ public final class CinematicEffects {
                 var strikes=BattleService.effectTargets(player,skill).stream().map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
                 for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleLightningS2C(strikes));
             }
-            if(id.equals("agi")||id.equals("eiga")){
+            if(com.gx.velveteclipse.core.persona.SpellVisuals.supported(id)){
                 if(tick==82){
                     var targets=BattleService.effectTargets(player,id).stream().limit(5).map(e->new com.gx.velveteclipse.network.BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
                     for(Object member:BattleService.members(player))com.gx.velveteclipse.network.ModNetwork.sendPresentation(member,new com.gx.velveteclipse.network.BattleSpellS2C(id,targets));
                 }
                 return;
             }
-            if(id.equals("zio"))return;
+            if(element==Element.ELECTRIC)return;
             DustParticleOptions color=color(element);
             if(tick==38) {
                 double[] muzzle=RuntimeBridge.localOffset(base,yaw,.25,1.55,0);

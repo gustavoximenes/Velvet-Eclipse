@@ -33,7 +33,7 @@ public final class BattleSession {
    }
    public boolean batonPass(UUID actor,UUID target){
       if(prepared!=null||!oneMore()||currentActor()==null||!currentActor().id().equals(actor)||batonTargets().stream().noneMatch(a->a.id().equals(target)))return false;
-      currentActor().setBatonBoost(false);batonChain.add(actor);batonChain.add(target);bonusActor=target;currentActor().setBatonBoost(true);
+      boolean soulShift=currentActor().equipment().has("soul shift");currentActor().setBatonBoost(false);batonChain.add(actor);batonChain.add(target);bonusActor=target;currentActor().setBatonBoost(true);if(soulShift)currentActor().restoreSp(5);
       tacticalKind="SHIFT";tacticalEvent++;return true;
    }
    public boolean canAllOut(UUID actor){
@@ -57,12 +57,12 @@ public final class BattleSession {
       if(action.type()==BattleActionType.ALL_OUT&&!canAllOut(actorId))return null;
       var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ITEM&&com.gx.velveteclipse.equipment.DamageItems.get(action.skillId())!=null?com.gx.velveteclipse.equipment.DamageItems.get(action.skillId()).skill():action.type()==BattleActionType.ATTACK?basic(actor):action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
       var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
-      if(skill==null||target==null||!actor.alive())return null;
+      if(skill==null||skill.isPassive()||target==null||!actor.alive())return null;
       if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<actor.spCost(skill.spCost())
          ||(skill.hpPercentCost()>0&&actor.hp()<=Math.max(1,actor.maxHp()*actor.hpCost(skill.hpPercentCost())/100))))return null;
       var hits=new java.util.LinkedHashMap<UUID,DamageOutcome>();
       if(!skill.isDamageSkill()) {
-         if(skill.element()!=Element.HEALING&&!SupportEffects.supported(skill.id()))return null;
+         if(!SkillEffects.supported(skill))return null;
          prepared=new Prepared(actorId,action,null,java.util.Map.of());return prepared;
       }
       var targets=skill.target()==SkillTarget.ALL_ENEMIES?enemiesOf(actor):List.of(target);
@@ -84,6 +84,7 @@ public final class BattleSession {
       if (var1 != null && var1.size() >= 2) {
          this.random = var2;
          this.turnOrder = new ArrayList<>(var1);
+         for(var c:turnOrder)c.startPassives();
          for(var source:turnOrder)for(var ally:turnOrder)if(source.side()==ally.side())source.applyPartyPassives(ally);
          this.turnOrder.sort(Comparator.<BattleCombatant>comparingInt(var0 -> var0.stats().agility()).reversed().thenComparing(var0 -> var0.id().toString()));
          for(var c:turnOrder)c.ambushed(mode==EncounterOpening.AMBUSH&&c.side()==BattleSide.PLAYERS);
@@ -202,7 +203,7 @@ public final class BattleSession {
 
                   BattleCombatant var7 = this.validSkillTarget(var4, var2.targetId(), var6);
                   if (var7 == null) return new BattleResolution(this.state,false,List.of("Invalid target."));
-                  if(!var6.isDamageSkill()&&var6.element()!=Element.HEALING&&!SupportEffects.supported(var6.id()))
+                  if(var6.isPassive()||!var6.isDamageSkill()&&!SkillEffects.supported(var6))
                      return new BattleResolution(this.state,false,List.of("Unsupported skill."));
                   if (var6.spCost() > 0 && !var4.spendSp(var6.spCost())) {
                      return new BattleResolution(this.state, false, List.of("Not enough SP."));
@@ -213,11 +214,10 @@ public final class BattleSession {
                   }
 
                   if(!var6.isDamageSkill()) {
-                     var allies=var6.target()==SkillTarget.ALL_ALLIES?alliesOf(var4):List.of(var7);
-                     for(var ally:allies){
-                        if(var6.element()==Element.HEALING){int before=ally.hp();ally.heal(Math.max(1,var6.power()));var3.add(var4.name()+" usou "+var6.displayName()+" em "+ally.name()+": +"+(ally.hp()-before)+" HP.");}
-                        else var3.add(var4.name()+" usou "+var6.displayName()+" em "+ally.name()+". "+SupportEffects.apply(var6.id(),var4,ally));
-                     }
+                     var info=com.gx.velveteclipse.core.persona.ReloadCatalogue.info(var6.id());
+                     var targets=info!=null&&info.universal()?turnOrder.stream().filter(BattleCombatant::alive).toList():var6.target()==SkillTarget.ALL_ALLIES?alliesOf(var4):var6.target()==SkillTarget.ALL_ENEMIES?enemiesOf(var4):List.of(var7);
+                     for(var recipient:targets)var3.add(SkillEffects.apply(var6,var4,recipient,random));
+                      if(var6.id().equals("recarmdra"))var4.sacrificeHp();
                      break;
                   }
 
@@ -226,12 +226,12 @@ public final class BattleSession {
                      DamageOutcome hit=damage(var4,victim,var6);
                      weaknessHit|=isWeaknessHit(hit);
                      var5|=this.appendOutcome(var3,var4,victim,var6,hit);
-                     String status=var6.id().equals("dream_needle")?"SLEEP":var6.element()==Element.ICE?"FREEZE":var6.element()==Element.ELECTRIC?"SHOCK":"";
-                     if(!status.isEmpty()&&victim.alive()&&!hit.missed()&&!hit.drained()&&!hit.reflected()&&hit.damage()>0&&random.nextInt(100)<((status.equals("SLEEP")?40:10)+var4.equipment().ailmentBoost(status))/(victim.equipment().resistant(status)?2:1)){victim.afflict(status);if(!victim.ailment().isEmpty())var3.add(victim.name()+": "+victim.ailment());}
+                     SkillEffects.afterHit(var6,var4,victim,hit,random);
+                     if(!victim.ailment().isEmpty())var3.add(victim.name()+": "+victim.ailment());
                   }
             }
 
-            if(var2.type()==BattleActionType.SKILL){var used=PersonaRegistry.skill(var2.skillId()).orElse(null);if(used!=null&&used.isDamageSkill())var4.useCharge(used.usesMagicStat());}
+            if(var2.type()==BattleActionType.SKILL){var used=PersonaRegistry.skill(var2.skillId()).orElse(null);if(used!=null&&used.isDamageSkill())var4.useCharge(used.usesMagicStat());if(used!=null&&used.id().equals("armageddon"))var4.sacrifice();}
             prepared=null;
             var4.setBatonBoost(false);
             this.updateState();
@@ -295,7 +295,7 @@ public final class BattleSession {
    public BattleCombatant validSkillTarget(BattleCombatant actor,UUID id,SkillDefinition skill) {
       if(skill.target()==SkillTarget.SELF)return id==null||id.equals(actor.id())?actor:null;
       if(skill.target()==SkillTarget.ONE_ALLY||skill.target()==SkillTarget.ALL_ALLIES)
-         return id==null?actor:find(id).filter(BattleCombatant::alive).filter(t->t.side()==actor.side()).orElse(null);
+         return id==null?(SkillEffects.revival(skill)?null:actor):find(id).filter(t->SkillEffects.revival(skill)?!t.alive():t.alive()).filter(t->t.side()==actor.side()).orElse(null);
       return validEnemyTarget(actor,id);
    }
 

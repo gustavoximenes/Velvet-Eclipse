@@ -23,6 +23,28 @@ public final class PlayerPersonaData {
    private int personaCapacity=2;
    // Only migration/switching old overflow uses this reserve. New acquisitions cannot bypass the cap.
    private final LinkedHashMap<String,PersonaInstance> reserve=new LinkedHashMap<>();
+   private final LinkedHashMap<String,PersonaInstance> compendium=new LinkedHashMap<>();
+   public Collection<PersonaInstance> compendiumInstances(){registerOwned();return compendium.values().stream().map(PlayerPersonaData::copy).toList();}
+   public PersonaInstance registeredPersona(String id){registerOwned();var p=compendium.get(id);return p==null?null:copy(p);}
+   public static long summonPrice(PersonaInstance p){return 200L+40L*p.level()*p.level()+50L*p.learnedSkills().size();}
+   public boolean summon(String id){var p=registeredPersona(id);if(p==null||roster.containsKey(id)||reserve.containsKey(id)||!canReceivePersona(id)||yen<summonPrice(p))return false;yen-=summonPrice(p);return givePersonaInstance(p);}
+   private void register(PersonaInstance p){
+      var old=compendium.get(p.definitionId());if(old==null){compendium.put(p.definitionId(),copy(p));return;}
+      var skills=new LinkedHashSet<>(old.learnedSkills());skills.addAll(p.learnedSkills());
+      int level=Math.max(old.level(),p.level()),xp=old.level()>p.level()?old.experience():p.level()>old.level()?p.experience():Math.max(old.experience(),p.experience());
+      compendium.put(p.definitionId(),new PersonaInstance(p.definitionId(),level,xp,skills));
+   }
+   private void registerOwned(){roster.values().forEach(this::register);reserve.values().forEach(this::register);}
+   public boolean canExchange(Collection<String> consumed,PersonaInstance result){
+      if(new java.util.HashSet<>(consumed).size()!=consumed.size()||!roster.keySet().containsAll(consumed))return false;
+      var left=new java.util.HashSet<>(roster.keySet());left.removeAll(consumed);if(result!=null)left.add(result.definitionId());
+      return !left.isEmpty()&&left.size()<=personaCapacity&&(result==null||PersonaRegistry.persona(result.definitionId()).isPresent());
+   }
+   public boolean exchangeFusion(Collection<String> consumed,PersonaInstance result){
+      if(!canExchange(consumed,result))return false;registerOwned();consumed.forEach(roster::remove);
+      if(result!=null){roster.put(result.definitionId(),copy(result));reserve.remove(result.definitionId());register(result);}
+      if(!roster.containsKey(activePersona))activePersona=result==null?roster.keySet().iterator().next():result.definitionId();return true;
+   }
    public int personaCapacity(){return personaCapacity;}
    public Set<String> reserveIds(){return Set.copyOf(reserve.keySet());}
    public Collection<PersonaInstance> reserveInstances(){return reserve.values().stream().map(PlayerPersonaData::copy).toList();}
@@ -95,6 +117,7 @@ public final class PlayerPersonaData {
       PersonaDefinition var2 = PersonaRegistry.persona(var1).orElse(null);
       if (var2 != null && !this.roster.containsKey(var1) && canReceivePersona(var1) && !reserve.containsKey(var1)) {
          this.roster.put(var1, new PersonaInstance(var2));
+         register(this.roster.get(var1));
          return true;
       } else {
          return false;
@@ -105,6 +128,7 @@ public final class PlayerPersonaData {
       if (var1 != null && !PersonaRegistry.persona(var1.definitionId()).isEmpty() && canReceivePersona(var1.definitionId())) {
          reserve.remove(var1.definitionId());
          this.roster.put(var1.definitionId(), copy(var1));
+         register(var1);
          return true;
       } else {
          return false;
@@ -113,6 +137,7 @@ public final class PlayerPersonaData {
 
    public boolean removePersona(String var1) {
       if (var1 != null && this.roster.size() > 1 && this.roster.containsKey(var1)) {
+         registerOwned();
          this.roster.remove(var1);
          if (var1.equals(this.activePersona)) {
             this.activePersona = this.roster.keySet().iterator().next();
@@ -131,6 +156,7 @@ public final class PlayerPersonaData {
            && !var3.definitionId().equals(var1) && !var3.definitionId().equals(var2) && var3.level()<=playerLevel
            && PersonaRegistry.persona(var3.definitionId()).isPresent()) {
          boolean var4 = this.activePersona.equals(var1) || this.activePersona.equals(var2);
+         registerOwned();register(var3);
          this.roster.remove(var1);
          this.roster.remove(var2);
          this.roster.put(var3.definitionId(), copy(var3));
@@ -206,7 +232,7 @@ public final class PlayerPersonaData {
       this.pulseTonics = Math.max(0, this.pulseTonics + var1);
    }
 
-   public static PlayerPersonaData load(Object p){var d=loadBase(p);d.equipment=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses();d.setResources(d.hp,d.sp);return d;}
+   public static PlayerPersonaData load(Object p){var d=loadBase(p);d.equipment=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses();d.setResources(d.hp,d.sp);d.registerOwned();return d;}
    private static PlayerPersonaData loadBase(Object var0) {
       PlayerPersonaData var1 = new PlayerPersonaData();
       Object var2 = RuntimeBridge.persistentData(var0);
@@ -225,6 +251,7 @@ public final class PlayerPersonaData {
                if(var4.length>=11)var1.yen=Math.max(0,Math.min(9_999_999_999L,Long.parseLong(var4[10])));
                if(var4.length>=12)var1.personaCapacity=clamp(Integer.parseInt(var4[11]),2,8);
                if(var4.length>=13&&!var4[12].isBlank())for(String row:var4[12].split(";")){var saved=decodePersona(row);if(saved!=null)var1.reserve.put(saved.definitionId(),saved);}
+               if(var4.length>=14&&!var4[13].isBlank())for(String row:var4[13].split(";")){var saved=decodePersona(row);if(saved!=null)var1.compendium.put(saved.definitionId(),saved);}
                var1.roster.clear();
                if (!var4[7].isBlank()) {
                   for (String var8 : var4[7].split(";")) {
@@ -260,6 +287,7 @@ public final class PlayerPersonaData {
    }
 
    public void save(Object var1) {
+      registerOwned();
       Object var2 = RuntimeBridge.persistentData(var1);
       RuntimeBridge.tagPutString(var2, "velvet_eclipse:data_v1", this.encode());
    }
@@ -287,6 +315,7 @@ public final class PlayerPersonaData {
    }
 
    private String encode() {
+      registerOwned();
       ArrayList var1 = new ArrayList();
 
       for (PersonaInstance var3 : this.roster.values()) {
@@ -306,7 +335,7 @@ public final class PlayerPersonaData {
          + "|"
          + this.pulseTonics
          + "|"
-         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen + "|" + personaCapacity + "|" + reserve.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";"));
+         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen + "|" + personaCapacity + "|" + reserve.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";")) + "|" + compendium.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";"));
    }
 
    private static String encodePersona(PersonaInstance var0) {

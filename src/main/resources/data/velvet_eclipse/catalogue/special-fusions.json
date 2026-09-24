@@ -1,0 +1,128 @@
+{
+  "shiva": [
+    "rangda",
+    "barong"
+  ],
+  "messiah": [
+    "orpheus",
+    "thanatos"
+  ],
+  "fortuna": [
+    "angel",
+    "silky",
+    "unicorn"
+  ],
+  "pale_rider": [
+    "berith",
+    "gurulu",
+    "matador"
+  ],
+  "arsene": [
+    "tam_lin",
+    "jack_o_lantern",
+    "neko_shogun"
+  ],
+  "flauros": [
+    "forneus",
+    "berith",
+    "eligor"
+  ],
+  "black_frost": [
+    "jack_frost",
+    "jack_o_lantern",
+    "king_frost"
+  ],
+  "parvati": [
+    "sati",
+    "sarasvati",
+    "dakini"
+  ],
+  "mada": [
+    "hanuman",
+    "vasuki",
+    "naga_raja",
+    "ganesha"
+  ],
+  "norn": [
+    "clotho",
+    "lachesis",
+    "atropos"
+  ],
+  "alice": [
+    "pixie",
+    "lilim",
+    "narcissus",
+    "titania"
+  ],
+  "kohryu": [
+    "genbu",
+    "seiryu",
+    "suzaku",
+    "byakko"
+  ],
+  "mara": [
+    "incubus",
+    "pazuzu",
+    "mot",
+    "kumbhanda",
+    "attis"
+  ],
+  "susano_o": [
+    "take_minakata",
+    "take_mikazuchi",
+    "okuninushi",
+    "shiki_ouji",
+    "kikuri_hime"
+  ],
+  "thanatos": [
+    "pisaca",
+    "pale_rider",
+    "loa",
+    "samael",
+    "mot",
+    "alice"
+  ],
+  "masakado": [
+    "zouchouten",
+    "jikokuten",
+    "koumokuten",
+    "bishamonten"
+  ],
+  "beelzebub": [
+    "incubus",
+    "succubus",
+    "pazuzu",
+    "lilith",
+    "baal_zebul",
+    "abaddon"
+  ],
+  "asura": [
+    "rakshasa",
+    "girimekhala",
+    "bishamonten",
+    "qitian_dasheng",
+    "atavaka",
+    "vishnu"
+  ],
+  "metatron": [
+    "uriel",
+    "raphael",
+    "gabriel",
+    "michael"
+  ],
+  "lucifer": [
+    "samael",
+    "abaddon",
+    "beelzebub",
+    "satan",
+    "helel"
+  ],
+  "orpheus_telos": [
+    "thanatos",
+    "asura",
+    "chi_you",
+    "metatron",
+    "helel",
+    "messiah"
+  ]
+}

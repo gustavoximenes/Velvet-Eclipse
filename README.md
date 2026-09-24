@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.28 — Catálogo Reload e Compendium
+
+173 Personas do jogo base, 345 skills no total incluindo conteúdo anterior e Frei/Psi, Skill Cards, modelos provisórios, passivas funcionais, fusões especiais/cooperativas com até duas skills herdadas e Compendium de Igor. Efeitos próprios por elemento e caminho de renderização compatível com OptiFine. [Uso, adaptações e validação](docs/RELOAD-CATALOGUE.md).
+
 # Velvet Eclipse 0.6.27 — Arsène e Orpheus
 
 Modelos aprovados integrados com idle e ataques, progressão de habilidades, efeitos próprios de Eiga/Agi e migração de Ember para Agi. [Habilidades, comandos e compatibilidade](docs/ARSENE-ORPHEUS.md).

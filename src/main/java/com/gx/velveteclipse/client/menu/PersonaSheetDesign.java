@@ -10,7 +10,7 @@ import static com.gx.velveteclipse.client.menu.MenuDesign.*;
 public final class PersonaSheetDesign {
     public record View(Persona persona,boolean equipped,int index,int count,int skill,int affinity,double age,double seconds,boolean motion,String message,String modelError){}
     public static Rect skill(int visibleIndex){return new Rect(25+(visibleIndex%2)*229,267+(visibleIndex/2)*27,222,25);}
-    public static Rect affinity(int index){return new Rect(36+index*46,174-index*7.7,40,62);}
+    public static Rect affinity(int index){return new Rect(36+index*38,174-index*6.4,35,62);}
     public static Rect back(){return new Rect(20,477,99,21);}
     public static Rect previous(){return new Rect(26,109,59,42);}
     public static Rect next(){return new Rect(494,18,58,42);}
@@ -18,7 +18,7 @@ public final class PersonaSheetDesign {
     public static Rect details(){return new Rect(551,367,300,33);}
     public static Rect model(){return new Rect(492,10,400,452);}
     public static int pickSkill(double x,double y){for(int i=0;i<8;i++)if(skill(i).contains(x,y))return i;return -1;}
-    public static int pickAffinity(double x,double y){for(int i=0;i<10;i++)if(affinity(i).contains(x,y))return i;return -1;}
+    public static int pickAffinity(double x,double y){for(int i=0;i<PersonaDetails.ELEMENTS.length;i++)if(affinity(i).contains(x,y))return i;return -1;}
     public static double reveal(View v){return v.motion?MenuMotion.ease(v.age/.42):1;}
     public static double modelX(View v){return 691+80*(1-reveal(v));}
     public static void background(Canvas c,View v){
@@ -53,7 +53,7 @@ public final class PersonaSheetDesign {
             String mark=switch(a){case WEAK -> "!";case RESIST -> "R";case NULL -> "N";case REPEL -> "Rf";case DRAIN -> "Ab";default -> "-";};
             if(a==Affinity.RESIST)c.poly(new double[]{x-8,y+36,x+8,y+36,x+7,y+48,x,y+53,x-7,y+48},0xFFC7D9E8);
             c.text(mark,x-c.width(mark,a==Affinity.WEAK?22:12)/2,y+35,a==Affinity.WEAK?22:12,a==Affinity.WEAK?0xFFFF759F:a==Affinity.RESIST?INK:WHITE,0);
-            c.text(new String[]{"FIS","FOG","GEL","ELE","VEN","PSI","NUC","LUZ","TRV","ONI"}[i],x-9,y+55,7,MUTED,0);
+            c.text(new String[]{"COR","IMP","PER","FOG","GEL","ELE","VEN","PSI","NUC","LUZ","TRV","ONI"}[i],x-9,y+55,7,MUTED,0);
         }
         c.text("SKILLS",27,244,20,CYAN,-4);
         int page=v.skill/8,pages=Math.max(1,(p.skills().size()+7)/8);
@@ -65,14 +65,14 @@ public final class PersonaSheetDesign {
             c.fill(r.x()+shift,r.y(),r.w(),r.h(),MenuDesign.alpha(selected?WHITE:0xFF242655,entry));
             if(index<p.skills().size()){
                 var s=p.skills().get(index);if(selected)c.fill(r.x()-4+shift,r.y(),3,r.h(),RED);
-                PersonaGlyphs.disc(c,r.x()+15+shift,r.y()+12,10,0xFF080D43);PersonaGlyphs.draw(c,s.element(),r.x()+15+shift,r.y()+12,8,PersonaDetails.color(s.element()));
+                PersonaGlyphs.disc(c,r.x()+15+shift,r.y()+12,10,0xFF080D43);PersonaGlyphs.skill(c,s,r.x()+15+shift,r.y()+12,8);
                 c.text(fit(c,s.displayName(),175,15),r.x()+31+shift,r.y()+4,15,MenuDesign.alpha(selected?INK:WHITE,entry),0);
             }else c.text("-",r.x()+14+shift,r.y()+4,15,MenuDesign.alpha(0xFF62698F,entry),0);
         }
         c.text("NEXT SKILL",29,386,15,0xFF597EFF,-4);
         var next=PersonaDetails.next(p);
         if(next.isPresent()){
-            var n=next.get();c.text("Lv "+n.level(),150,386,15,CYAN,0);PersonaGlyphs.draw(c,n.skill().element(),214,396,9,PersonaDetails.color(n.skill().element()));
+            var n=next.get();c.text("Lv "+n.level(),150,386,15,CYAN,0);PersonaGlyphs.skill(c,n.skill(),214,396,9);
             c.text(fit(c,n.skill().displayName(),239,14),234,388,14,CYAN,0);
         }else c.text("Nenhuma habilidade futura",154,389,11,MUTED,0);
         stats(c,p,show);

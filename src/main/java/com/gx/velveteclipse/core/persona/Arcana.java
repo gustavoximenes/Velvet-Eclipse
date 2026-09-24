@@ -22,5 +22,6 @@ public enum Arcana {
    MOON,
    SUN,
    JUDGEMENT,
-   WORLD;
+   WORLD,
+   AEON;
 }

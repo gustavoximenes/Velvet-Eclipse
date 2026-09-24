@@ -14,7 +14,7 @@ public final class StarterPersonasAudit {
     private static int checks;
     private static void check(boolean ok,String message){checks++;if(!ok)throw new AssertionError(message);}
     public static final class Player {final net.minecraft.nbt.CompoundTag tag=new net.minecraft.nbt.CompoundTag();public net.minecraft.nbt.CompoundTag getPersistentData(){return tag;}}
-    private static final Random HIT=new Random(){@Override public int nextInt(int bound){return 0;}};
+    private static final Random HIT=new Random(){@Override public int nextInt(int bound){return 0;}@Override public double nextDouble(){return 0;}};
     private static BattleCombatant fighter(int id,String persona,int level,Set<String> skills){return new BattleCombatant(new UUID(0,id),persona,id<10?BattleSide.PLAYERS:BattleSide.ENEMIES,new PersonaInstance(persona,level,0,skills),2000,2000,200,200);}
     public static void main(String[] args)throws Exception{
         PersonaRegistry.bootstrap();catalog();migration();combat();models();effects();

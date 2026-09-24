@@ -48,7 +48,7 @@ public final class EquipmentHelp {
    case "Auto Masuku"->"Aumenta a esquiva dos aliados por três turnos.";
    case "Auto Rebellion"->"Acrescenta 12 pontos à chance de crítico nos turnos iniciais.";
    case "Auto Tarukabellion"->"Começa com ataque e chance de crítico aumentados.";
-   case "Anti-Electric Master","Anti-Fire Master","Anti-Ice Master","Anti-Wind Master"->"Acrescenta 20% de esquiva contra o elemento indicado.";
+   case "Anti-Electric Master","Anti-Fire Master","Anti-Ice Master","Anti-Wind Master"->"Reduz pela metade o dano do elemento indicado nos três primeiros turnos.";
    case "Shift Boost"->"Ao receber Shift, o multiplicador de dano passa a 1,75x.";
    case "Shift Amp"->"Ao receber Shift, o multiplicador de dano passa a 2x.";
    case "Soul Link"->"Recupera 10 SP ao receber Shift.";

@@ -44,6 +44,7 @@ implements GeoEntity {
         String string = String.valueOf(entityType).toLowerCase();
         this.evokerFxType = string.contains("evoker");
         this.personaId = this.evokerFxType ? "evoker_fx" : string.contains("arsene") ? "arsene" : string.contains("orpheus") ? "orpheus" : string.contains("izanagi") ? "izanagi" : "cinder_wisp";
+        var key=net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES.getKey(entityType);if(key!=null&&key.m_135815_().startsWith("persona_"))this.personaId=key.m_135815_().substring(8);
     }
 
     public void setPersonaId(String string) {

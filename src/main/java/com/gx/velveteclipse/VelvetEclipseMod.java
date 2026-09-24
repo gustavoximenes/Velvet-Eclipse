@@ -19,6 +19,6 @@ public final class VelvetEclipseMod {
       PersonaRegistry.bootstrap();
       com.gx.velveteclipse.shuffle.SkillCardRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       ModNetwork.register();
-      LOGGER.info("Velvet Eclipse 0.6.27 Arsène, Orpheus, Eiga and Agi initialized.");
+      LOGGER.info("Velvet Eclipse 0.6.28 Reload catalogue, cooperative fusion, Compendium and spell effects initialized.");
    }
 }

@@ -22,7 +22,7 @@ import net.minecraftforge.registries.ForgeRegistries.Keys;
    bus = Bus.MOD
 )
 public final class PersonaMobRegistry {
-   private static final String[] IDS = new String[]{"cinder_wisp", "umbra_slime", "nocturne_knight", "sylphid", "iron_oni", "lumen_hare", "izanagi", "arsene", "orpheus", "evoker_fx"};
+   private static final String[] IDS = java.util.stream.Stream.concat(com.gx.velveteclipse.core.persona.PersonaRegistry.personas().keySet().stream(),java.util.stream.Stream.of("evoker_fx")).toArray(String[]::new);
    private static final Map<String, EntityType<?>> TYPES = new LinkedHashMap<>();
 
    private PersonaMobRegistry() {

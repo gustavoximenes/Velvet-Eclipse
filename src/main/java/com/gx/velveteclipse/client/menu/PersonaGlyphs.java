@@ -4,6 +4,11 @@ import com.gx.velveteclipse.client.menu.MenuDesign.Canvas;
 
 /** Original geometric icons, drawn as convex polygons by both the game and the audit renderer. */
 public final class PersonaGlyphs {
+    public static void skill(Canvas c,com.gx.velveteclipse.core.persona.SkillDefinition s,double x,double y,double r){
+        if(!s.isPassive()){draw(c,s.element(),x,y,r,PersonaDetails.color(s.element()));return;}
+        int gold=0xFFE9D96F;for(int i=0;i<4;i++){double a=i*Math.PI/2;disc(c,x+Math.cos(a)*r*.45,y+Math.sin(a)*r*.45,r*.44,gold);disc(c,x+Math.cos(a)*r*.45,y+Math.sin(a)*r*.45,r*.23,0xFF080D43);}
+        shape(c,x,y,r,gold,0,-.53,.53,0,0,.53,-.53,0);disc(c,x,y,r*.14,0xFF080D43);
+    }
     static void shape(Canvas c,double x,double y,double r,int color,double... xy){
         double[] points=xy.clone();for(int i=0;i<points.length;i+=2){points[i]=x+points[i]*r;points[i+1]=y+points[i+1]*r;}c.poly(points,color);
     }

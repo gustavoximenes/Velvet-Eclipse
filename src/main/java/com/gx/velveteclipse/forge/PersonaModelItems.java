@@ -8,7 +8,8 @@ import net.minecraft.world.item.context.UseOnContext;
 /** Creative display figures use the same approved rig and idle as summoned Personas. */
 public final class PersonaModelItems {
     static {
-        for(String id:new String[]{"arsene","orpheus"})VelvetRoomRegistry.ITEMS.register(id+"_model",()->new Item(new Item.Properties()){
+        var ids=new java.util.LinkedHashSet<>(com.gx.velveteclipse.core.persona.ReloadCatalogue.ids());ids.add("arsene");
+        for(String id:ids)VelvetRoomRegistry.ITEMS.register(id+"_model",()->new Item(new Item.Properties()){
             @Override public InteractionResult m_6225_(UseOnContext c){
                 var player=c.m_43723_();var level=c.m_43725_();
                 if(player==null||BattleService.current(player)!=null)return InteractionResult.FAIL;

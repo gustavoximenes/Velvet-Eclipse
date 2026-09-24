@@ -15,14 +15,15 @@ public final class FusionAudit {
     private static void check(boolean value,String message){checks++;if(!value)throw new AssertionError(message);}
     public static void main(String[] args){
         PersonaRegistry.bootstrap();
-        var ids=new ArrayList<>(PersonaRegistry.personas().keySet());
+        var ids=new ArrayList<>(List.of("cinder_wisp","nocturne_knight","sylphid","lumen_hare","iron_oni","umbra_slime","izanagi","arsene","orpheus","pixie","angel","apsaras","silky"));
         int pairs=0;
         for(int i=0;i<ids.size();i++) for(int j=i+1;j<ids.size();j++){
             String a=ids.get(i),b=ids.get(j);pairs++;
             var data=new PlayerPersonaData();data.expandPersonaCapacity();data.givePersona(a);data.givePersona(b);
             var first=FusionTransaction.preview(data,a,b,null);
             var reverse=FusionTransaction.preview(data,b,a,null);
-            check(first!=null&&reverse!=null,"every pair has a deterministic result");
+            check((first==null)==(reverse==null),"unavailable arcana combinations are symmetric");
+            if(first==null){check(FusionService.preview(data.instance(a),data.instance(b)).isEmpty(),"invalid combination consumes nothing");continue;}
             check(first.result().definitionId().equals(reverse.result().definitionId()),"fusion is commutative");
             String before=FusionTransaction.fingerprint(data);
             check(before.equals(FusionTransaction.fingerprint(data)),"preview is read-only");

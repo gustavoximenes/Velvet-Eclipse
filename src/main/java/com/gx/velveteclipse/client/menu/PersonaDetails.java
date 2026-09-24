@@ -6,7 +6,7 @@ import java.util.*;
 
 /** Presentation derived from the synced combat values, with no invented skill effects. */
 public final class PersonaDetails {
-    public static final Element[] ELEMENTS={Element.PHYSICAL,Element.FIRE,Element.ICE,Element.ELECTRIC,Element.WIND,
+    public static final Element[] ELEMENTS={Element.SLASH,Element.PHYSICAL,Element.PIERCE,Element.FIRE,Element.ICE,Element.ELECTRIC,Element.WIND,
         Element.PSY,Element.NUCLEAR,Element.LIGHT,Element.DARK,Element.ALMIGHTY};
     public record Next(int level,SkillDefinition skill){}
     public static String asset(String id){return switch(id){case "cinder_wisp" -> "thanatos";case "umbra_slime" -> "wealth_hand";default -> id;};}
@@ -34,6 +34,7 @@ public final class PersonaDetails {
     public static String target(SkillTarget t){return switch(t){case ONE_ENEMY -> "um inimigo";case ALL_ENEMIES -> "todos os inimigos";
         case SELF -> "o usuário";case ONE_ALLY -> "um aliado";case ALL_ALLIES -> "todos os aliados";};}
     public static String description(SkillDefinition s){
+        String description=SkillDescriptions.describe(s);if(!description.isBlank())return description;
         if(s.id().equals("adverse_resolve"))return "Passiva: aumenta a chance de crítico em 20 pontos enquanto esta Persona está equipada numa batalha iniciada por emboscada inimiga.";
         if(s.id().equals("dream_needle"))return "Dano leve de perfuração. Chance base de 40% de causar sono por até 3 turnos; receber dano desperta o alvo.";
         if(s.id().equals("tarunda"))return "Reduz o ataque de um inimigo por 3 turnos. Cancela Tarukaja.";

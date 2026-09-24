@@ -75,7 +75,7 @@ public final class ClientHudEvents {
             }
             if(s.active()&&ClientBattleUiState.selector()){
                 if(ClientBattleUiState.page()==ClientBattleUiState.Page.ITEMS){com.gx.velveteclipse.client.equipment.SupplyBattleHud.paint(canvas,w,h);}
-                else {List<com.gx.velveteclipse.core.persona.SkillDefinition> choices=s.skills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(java.util.Objects::nonNull).map(skill->com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().displayCost(skill)).toList();
+                else {List<com.gx.velveteclipse.core.persona.SkillDefinition> choices=s.skills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(java.util.Objects::nonNull).map(skill->ClientBattleUiState.bonuses(s).displayCost(skill)).toList();
                 PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),w,h);}
             }else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);

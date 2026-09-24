@@ -121,6 +121,7 @@ public final class PersonaRegistry {
          registerPersona(persona("orpheus","Orpheus",Arcana.FOOL,1,new PersonaStats(2,2,2,3,2),
              Map.of(Element.FIRE,Affinity.RESIST,Element.ELECTRIC,Affinity.WEAK,Element.DARK,Affinity.WEAK),
              Map.of(1,List.of("agi"),3,List.of("dia"),4,List.of("bash"),5,List.of("tarunda"))));
+         ReloadCatalogue.register();
          bootstrapped = true;
       }
    }
@@ -139,7 +140,9 @@ public final class PersonaRegistry {
       PERSONAS.put(var0.id(), var0);
    }
 
-   public static String canonicalSkillId(String id) { return "ember".equals(id)?"agi":id; }
+   static void registerCatalogueSkill(SkillDefinition skill){SKILLS.putIfAbsent(skill.id(),skill);}
+   static void registerCataloguePersona(PersonaDefinition persona){PERSONAS.putIfAbsent(persona.id(),persona);}
+   public static String canonicalSkillId(String id) { return switch(id){case "ember"->"agi";case "eiha"->"eiga";case "maeiha"->"maeiga";default->id;}; }
 
    public static Optional<SkillDefinition> skill(String var0) {
       bootstrap();

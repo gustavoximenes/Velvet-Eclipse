@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "velvet_eclipse:item/baal_zebul_model"
+  }
+}

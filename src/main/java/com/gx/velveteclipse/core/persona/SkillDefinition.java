@@ -33,7 +33,7 @@ public record SkillDefinition(
       }
    }
 
-   public boolean isPassive() { return id.equals("adverse_resolve"); }
+   public boolean isPassive() { var info=ReloadCatalogue.info(id);return id.equals("adverse_resolve")||info!=null&&info.passive(); }
 
    public boolean usesMagicStat() {
       if(id.equals("__basic_attack"))return false;
@@ -45,6 +45,7 @@ public record SkillDefinition(
    }
 
    public boolean isDamageSkill() {
-      return this.power > 0 && this.element != Element.HEALING && this.element != Element.SUPPORT;
+      var info=ReloadCatalogue.info(id);
+      return this.power > 0 && this.element != Element.HEALING && this.element != Element.SUPPORT || info!=null&&(info.detail().equals("Instakill")||info.effect().equals("FMTInstakillWhen")||info.effect().equals("FMTFracDamage")||info.effect().equals("FMTPersonaLifeDrainN"));
    }
 }

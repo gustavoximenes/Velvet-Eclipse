@@ -1,0 +1,481 @@
+[
+  {
+    "first": 2,
+    "last": 5,
+    "personas": {
+      "pixie": 50,
+      "apsaras": 20,
+      "angel": 30
+    }
+  },
+  {
+    "first": 6,
+    "last": 11,
+    "personas": {
+      "pixie": 25,
+      "apsaras": 25,
+      "angel": 35,
+      "silky": 15
+    }
+  },
+  {
+    "first": 12,
+    "last": 22,
+    "personas": {
+      "pixie": 15,
+      "apsaras": 15,
+      "angel": 20,
+      "silky": 20,
+      "forneus": 15
+    }
+  },
+  {
+    "first": 23,
+    "last": 28,
+    "personas": {
+      "omoikane": 5,
+      "forneus": 15,
+      "onmoraki": 10,
+      "lilim": 10,
+      "jack_frost": 15,
+      "chimera": 15,
+      "archangel": 15,
+      "unicorn": 15
+    }
+  },
+  {
+    "first": 29,
+    "last": 36,
+    "personas": {
+      "omoikane": 10,
+      "forneus": 10,
+      "onmoraki": 15,
+      "chimera": 15,
+      "archangel": 20,
+      "valkyrie": 20,
+      "unicorn": 10
+    }
+  },
+  {
+    "first": 37,
+    "last": 43,
+    "personas": {
+      "chimera": 10,
+      "unicorn": 15,
+      "archangel": 15,
+      "inugami": 15,
+      "valkyrie": 20,
+      "slime": 15,
+      "nigi_mitama": 10
+    }
+  },
+  {
+    "first": 44,
+    "last": 47,
+    "personas": {
+      "inugami": 10,
+      "slime": 20,
+      "nigi_mitama": 15,
+      "tam_lin": 15,
+      "berith": 15,
+      "gurulu": 15,
+      "zouchouten": 10
+    }
+  },
+  {
+    "first": 48,
+    "last": 54,
+    "personas": {
+      "nigi_mitama": 10,
+      "tam_lin": 12,
+      "berith": 13,
+      "gurulu": 13,
+      "zouchouten": 13,
+      "jack_o_lantern": 15,
+      "rakshasa": 12,
+      "oberon": 12
+    }
+  },
+  {
+    "first": 55,
+    "last": 60,
+    "personas": {
+      "zouchouten": 12,
+      "rakshasa": 15,
+      "jack_o_lantern": 15,
+      "oberon": 16,
+      "principality": 18,
+      "naga": 12,
+      "neko_shogun": 12
+    }
+  },
+  {
+    "first": 61,
+    "last": 69,
+    "personas": {
+      "gurulu": 10,
+      "rakshasa": 12,
+      "jack_o_lantern": 12,
+      "oberon": 13,
+      "principality": 13,
+      "naga": 15,
+      "neko_shogun": 15,
+      "mokoi": 10
+    }
+  },
+  {
+    "first": 70,
+    "last": 77,
+    "personas": {
+      "oberon": 5,
+      "principality": 5,
+      "naga": 10,
+      "neko_shogun": 15,
+      "mokoi": 20,
+      "take_minakata": 20,
+      "high_pixie": 15,
+      "leanan_sidhe": 10
+    }
+  },
+  {
+    "first": 78,
+    "last": 82,
+    "personas": {
+      "take_minakata": 10,
+      "high_pixie": 15,
+      "leanan_sidhe": 20,
+      "mitra": 20,
+      "shiisaa": 15,
+      "take_mikazuchi": 10,
+      "narcissus": 10
+    }
+  },
+  {
+    "first": 83,
+    "last": 92,
+    "personas": {
+      "high_pixie": 5,
+      "leanan_sidhe": 10,
+      "mitra": 15,
+      "shiisaa": 15,
+      "take_mikazuchi": 15,
+      "narcissus": 20,
+      "mithras": 10,
+      "yatagarasu": 10
+    }
+  },
+  {
+    "first": 93,
+    "last": 98,
+    "personas": {
+      "take_mikazuchi": 8,
+      "narcissus": 8,
+      "mithras": 10,
+      "yatagarasu": 15,
+      "power": 15,
+      "yamata_no_orochi": 12,
+      "lamia": 12,
+      "jikokuten": 10,
+      "legion": 10
+    }
+  },
+  {
+    "first": 100,
+    "last": 104,
+    "personas": {
+      "yatagarasu": 8,
+      "mithras": 8,
+      "power": 10,
+      "yamata_no_orochi": 10,
+      "lamia": 10,
+      "jikokuten": 12,
+      "legion": 12,
+      "orthrus": 10,
+      "queen_medb": 10,
+      "kushi_mitama": 10
+    }
+  },
+  {
+    "first": 106,
+    "last": 118,
+    "personas": {
+      "jikokuten": 8,
+      "legion": 8,
+      "orthrus": 11,
+      "queen_medb": 10,
+      "kushi_mitama": 10,
+      "sati": 13,
+      "setanta": 13,
+      "genbu": 12,
+      "eligor": 5,
+      "oni": 5,
+      "baphomet": 5
+    }
+  },
+  {
+    "first": 119,
+    "last": 124,
+    "personas": {
+      "genbu": 10,
+      "eligor": 13,
+      "oni": 13,
+      "baphomet": 13,
+      "virtue": 13,
+      "sarasvati": 10,
+      "yakshini": 10,
+      "hanuman": 10,
+      "thunderbird": 8
+    }
+  },
+  {
+    "first": 127,
+    "last": 135,
+    "personas": {
+      "oni": 5,
+      "baphomet": 5,
+      "virtue": 10,
+      "sarasvati": 10,
+      "yakshini": 10,
+      "hanuman": 10,
+      "thunderbird": 10,
+      "saki_mitama": 9,
+      "clotho": 8,
+      "dakini": 8,
+      "incubus": 5,
+      "vasuki": 5,
+      "seiryu": 5
+    }
+  },
+  {
+    "first": 137,
+    "last": 142,
+    "personas": {
+      "thunderbird": 5,
+      "saki_mitama": 8,
+      "clotho": 10,
+      "incubus": 10,
+      "dakini": 10,
+      "vasuki": 10,
+      "seiryu": 10,
+      "orobas": 9,
+      "girimekhala": 9,
+      "cu_chulainn": 7,
+      "anubis": 7,
+      "ganga": 5
+    }
+  },
+  {
+    "first": 145,
+    "last": 155,
+    "personas": {
+      "girimekhala": 6,
+      "orobas": 6,
+      "cu_chulainn": 7,
+      "anubis": 7,
+      "ganga": 9,
+      "ose": 9,
+      "kaiwan": 10,
+      "dominion": 10,
+      "naga_raja": 10,
+      "okuninushi": 8,
+      "lachesis": 8,
+      "quetzalcoatl": 5,
+      "shiki_ouji": 5
+    }
+  },
+  {
+    "first": 156,
+    "last": 161,
+    "personas": {
+      "ose": 5,
+      "kaiwan": 5,
+      "dominion": 5,
+      "naga_raja": 6,
+      "okuninushi": 9,
+      "lachesis": 9,
+      "quetzalcoatl": 10,
+      "shiki_ouji": 10,
+      "kurama_tengu": 11,
+      "white_rider": 11,
+      "succubus": 7,
+      "hecatoncheires": 7,
+      "hariti": 5
+    }
+  },
+  {
+    "first": 162,
+    "last": 172,
+    "personas": {
+      "quetzalcoatl": 5,
+      "shiki_ouji": 5,
+      "kurama_tengu": 9,
+      "white_rider": 9,
+      "succubus": 12,
+      "hecatoncheires": 12,
+      "hariti": 13,
+      "mishaguji": 13,
+      "dionysus": 8,
+      "titania": 8,
+      "rangda": 6
+    }
+  },
+  {
+    "first": 173,
+    "last": 178,
+    "personas": {
+      "succubus": 8,
+      "hariti": 8,
+      "mishaguji": 10,
+      "dionysus": 12,
+      "titania": 12,
+      "rangda": 15,
+      "ganesha": 10,
+      "koumokuten": 10,
+      "throne": 10,
+      "belphegor": 5
+    }
+  },
+  {
+    "first": 180,
+    "last": 187,
+    "personas": {
+      "titania": 5,
+      "rangda": 8,
+      "ganesha": 10,
+      "koumokuten": 10,
+      "throne": 15,
+      "belphegor": 17,
+      "siegfried": 15,
+      "jatayu": 10,
+      "suzaku": 10
+    }
+  },
+  {
+    "first": 189,
+    "last": 197,
+    "personas": {
+      "throne": 11,
+      "belphegor": 13,
+      "siegfried": 14,
+      "jatayu": 14,
+      "suzaku": 13,
+      "atropos": 11,
+      "pazuzu": 11,
+      "chernobog": 9,
+      "trumpeter": 4
+    }
+  },
+  {
+    "first": 199,
+    "last": 212,
+    "personas": {
+      "siegfried": 5,
+      "jatayu": 7,
+      "suzaku": 7,
+      "atropos": 9,
+      "pazuzu": 9,
+      "chernobog": 9,
+      "trumpeter": 10,
+      "daisoujou": 10,
+      "bishamonten": 9,
+      "raphael": 9,
+      "kikuri_hime": 8,
+      "kumbhanda": 8
+    }
+  },
+  {
+    "first": 213,
+    "last": 217,
+    "personas": {
+      "pazuzu": 5,
+      "chernobog": 7,
+      "trumpeter": 9,
+      "daisoujou": 9,
+      "bishamonten": 11,
+      "raphael": 11,
+      "kikuri_hime": 10,
+      "kumbhanda": 10,
+      "gabriel": 8,
+      "seth": 8,
+      "barong": 5,
+      "kali": 5,
+      "garuda": 2
+    }
+  },
+  {
+    "first": 219,
+    "last": 224,
+    "personas": {
+      "trumpeter": 4,
+      "daisoujou": 4,
+      "bishamonten": 8,
+      "raphael": 8,
+      "kikuri_hime": 10,
+      "kumbhanda": 10,
+      "gabriel": 12,
+      "seth": 12,
+      "barong": 11,
+      "kali": 11,
+      "garuda": 10
+    }
+  },
+  {
+    "first": 227,
+    "last": 235,
+    "personas": {
+      "raphael": 6,
+      "kikuri_hime": 6,
+      "kumbhanda": 8,
+      "gabriel": 10,
+      "seth": 10,
+      "barong": 10,
+      "kali": 12,
+      "garuda": 14,
+      "qitian_dasheng": 10,
+      "skadi": 8,
+      "loki": 6
+    }
+  },
+  {
+    "first": 237,
+    "last": 245,
+    "personas": {
+      "gabriel": 10,
+      "seth": 10,
+      "barong": 12,
+      "kali": 12,
+      "garuda": 14,
+      "qitian_dasheng": 14,
+      "skadi": 14,
+      "loki": 10,
+      "baal_zebul": 4
+    }
+  },
+  {
+    "first": 248,
+    "last": 252,
+    "personas": {
+      "seth": 10,
+      "barong": 12,
+      "kali": 12,
+      "garuda": 15,
+      "skadi": 16,
+      "loki": 16,
+      "baal_zebul": 13,
+      "abaddon": 6
+    }
+  },
+  {
+    "first": 257,
+    "last": 261,
+    "personas": {
+      "kali": 10,
+      "garuda": 11,
+      "skadi": 15,
+      "loki": 20,
+      "baal_zebul": 20,
+      "abaddon": 18,
+      "mother_harlot": 6
+    }
+  }
+]

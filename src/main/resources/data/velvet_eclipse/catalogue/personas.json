@@ -1,0 +1,7719 @@
+[
+  {
+    "id": "abaddon",
+    "name": "Abaddon",
+    "arcana": "DEVIL",
+    "level": 76,
+    "stats": [
+      53,
+      61,
+      48,
+      33,
+      46
+    ],
+    "affinities": {
+      "SLASH": "DRAIN",
+      "PHYSICAL": "DRAIN",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "76": [
+        "deathbound",
+        "evil_smile",
+        "virus_breath"
+      ],
+      "78": [
+        "ailment_boost"
+      ],
+      "79": [
+        "vile_assault"
+      ],
+      "81": [
+        "maragidyne"
+      ],
+      "83": [
+        "drain_ice"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "alice",
+    "name": "Alice",
+    "arcana": "DEATH",
+    "level": 68,
+    "stats": [
+      35,
+      62,
+      31,
+      51,
+      44
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "68": [
+        "maeigaon",
+        "mudoon",
+        "spirit_drain"
+      ],
+      "69": [
+        "die_for_me"
+      ],
+      "70": [
+        "mudo_boost"
+      ],
+      "72": [
+        "endure_light"
+      ],
+      "74": [
+        "megidolaon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "alilat",
+    "name": "Alilat",
+    "arcana": "EMPRESS",
+    "level": 84,
+    "stats": [
+      51,
+      70,
+      60,
+      51,
+      51
+    ],
+    "affinities": {
+      "SLASH": "REPEL",
+      "PHYSICAL": "REPEL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "84": [
+        "mabufudyne",
+        "makarakarn",
+        "maziodyne"
+      ],
+      "86": [
+        "repel_fire"
+      ],
+      "87": [
+        "diamond_dust"
+      ],
+      "89": [
+        "inferno"
+      ],
+      "91": [
+        "repel_pierce"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "ananta",
+    "name": "Ananta",
+    "arcana": "AEON",
+    "level": 73,
+    "stats": [
+      51,
+      51,
+      68,
+      35,
+      42
+    ],
+    "affinities": {
+      "SLASH": "WEAK",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "DRAIN",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "73": [
+        "auto_maraku",
+        "dekunda",
+        "vile_assault"
+      ],
+      "74": [
+        "evade_slash"
+      ],
+      "75": [
+        "resist_ailments"
+      ],
+      "77": [
+        "growth_3"
+      ],
+      "80": [
+        "drain_slash"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "angel",
+    "name": "Angel",
+    "arcana": "JUSTICE",
+    "level": 4,
+    "stats": [
+      4,
+      5,
+      3,
+      4,
+      3
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "4": [
+        "garu",
+        "sukukaja"
+      ],
+      "5": [
+        "single_shot"
+      ],
+      "6": [
+        "patra"
+      ],
+      "8": [
+        "resist_charm"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "anubis",
+    "name": "Anubis",
+    "arcana": "JUDGEMENT",
+    "level": 40,
+    "stats": [
+      27,
+      35,
+      30,
+      21,
+      26
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "40": [
+        "hamaon",
+        "maeiga",
+        "mudoon"
+      ],
+      "41": [
+        "makouga"
+      ],
+      "43": [
+        "makarakarn"
+      ],
+      "44": [
+        "growth_2"
+      ],
+      "45": [
+        "resist_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "apsaras",
+    "name": "Apsaras",
+    "arcana": "PRIESTESS",
+    "level": 2,
+    "stats": [
+      2,
+      4,
+      2,
+      3,
+      2
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "2": [
+        "bufu"
+      ],
+      "3": [
+        "baisudi"
+      ],
+      "4": [
+        "sukunda"
+      ],
+      "5": [
+        "patra"
+      ],
+      "7": [
+        "resist_freeze"
+      ],
+      "5217": [
+        "cadenza"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "ara_mitama",
+    "name": "Ara Mitama",
+    "arcana": "CHARIOT",
+    "level": 6,
+    "stats": [
+      8,
+      3,
+      4,
+      5,
+      5
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "6": [
+        "bash",
+        "provoke",
+        "rakukaja"
+      ],
+      "7": [
+        "agi"
+      ],
+      "8": [
+        "rakunda"
+      ],
+      "10": [
+        "rage_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "arahabaki",
+    "name": "Arahabaki",
+    "arcana": "HERMIT",
+    "level": 68,
+    "stats": [
+      47,
+      52,
+      53,
+      32,
+      36
+    ],
+    "affinities": {
+      "SLASH": "REPEL",
+      "PHYSICAL": "WEAK",
+      "PIERCE": "REPEL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "68": [
+        "herculean_strike",
+        "makarakarn",
+        "null_charm"
+      ],
+      "70": [
+        "repel_dark"
+      ],
+      "71": [
+        "auto_maraku"
+      ],
+      "72": [
+        "virus_breath"
+      ],
+      "76": [
+        "repel_strike"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "archangel",
+    "name": "Archangel",
+    "arcana": "JUSTICE",
+    "level": 10,
+    "stats": [
+      8,
+      8,
+      8,
+      7,
+      6
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "10": [
+        "baisudi",
+        "kouha",
+        "single_shot"
+      ],
+      "11": [
+        "sukukaja"
+      ],
+      "13": [
+        "holy_arrow"
+      ],
+      "15": [
+        "apt_pupil"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "asura",
+    "name": "Asura",
+    "arcana": "SUN",
+    "level": 85,
+    "stats": [
+      75,
+      55,
+      58,
+      50,
+      54
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NULL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "85": [
+        "agidyne",
+        "akasha_arts",
+        "unshaken_will"
+      ],
+      "86": [
+        "heat_riser"
+      ],
+      "88": [
+        "strike_amp"
+      ],
+      "90": [
+        "god_s_hand"
+      ],
+      "91": [
+        "firm_stance"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "atavaka",
+    "name": "Atavaka",
+    "arcana": "STRENGTH",
+    "level": 72,
+    "stats": [
+      63,
+      37,
+      64,
+      39,
+      35
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NULL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "72": [
+        "brave_blade",
+        "maragidyne",
+        "null_dizzy"
+      ],
+      "74": [
+        "god_s_hand"
+      ],
+      "75": [
+        "auto_mataru"
+      ],
+      "77": [
+        "mediarahan"
+      ],
+      "79": [
+        "firm_stance"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "atropos",
+    "name": "Atropos",
+    "arcana": "FORTUNE",
+    "level": 56,
+    "stats": [
+      26,
+      45,
+      32,
+      36,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NULL",
+      "LIGHT": "RESIST",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "56": [
+        "dekunda",
+        "magarula",
+        "marakunda"
+      ],
+      "57": [
+        "ziodyne"
+      ],
+      "59": [
+        "garudyne"
+      ],
+      "61": [
+        "wind_amp"
+      ],
+      "62": [
+        "soul_link"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "attis",
+    "name": "Attis",
+    "arcana": "HANGED",
+    "level": 73,
+    "stats": [
+      45,
+      53,
+      51,
+      57,
+      32
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "RESIST",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "REPEL",
+      "LIGHT": "WEAK",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "73": [
+        "mahamaon",
+        "recarmdra",
+        "samarecarm"
+      ],
+      "74": [
+        "survival_trick"
+      ],
+      "75": [
+        "endure"
+      ],
+      "77": [
+        "megidolaon"
+      ],
+      "79": [
+        "enduring_soul"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "baal_zebul",
+    "name": "Baal Zebul",
+    "arcana": "MOON",
+    "level": 72,
+    "stats": [
+      51,
+      56,
+      45,
+      42,
+      41
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "RESIST",
+      "LIGHT": "WEAK",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "72": [
+        "eigaon",
+        "magarudyne",
+        "megidola"
+      ],
+      "73": [
+        "matarukaja"
+      ],
+      "74": [
+        "ziodyne"
+      ],
+      "76": [
+        "maeigaon"
+      ],
+      "78": [
+        "panta_rhei"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "baphomet",
+    "name": "Baphomet",
+    "arcana": "DEVIL",
+    "level": 30,
+    "stats": [
+      20,
+      25,
+      22,
+      16,
+      19
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "30": [
+        "dodge_fire",
+        "eiga",
+        "maragi"
+      ],
+      "31": [
+        "fire_boost"
+      ],
+      "33": [
+        "maeiga"
+      ],
+      "34": [
+        "dark_boost"
+      ],
+      "36": [
+        "endure_light"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "barong",
+    "name": "Barong",
+    "arcana": "EMPEROR",
+    "level": 63,
+    "stats": [
+      43,
+      55,
+      41,
+      31,
+      32
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "63": [
+        "elec_boost",
+        "elec_break",
+        "ziodyne"
+      ],
+      "64": [
+        "maziodyne"
+      ],
+      "65": [
+        "eerie_sound"
+      ],
+      "67": [
+        "auto_masuku"
+      ],
+      "69": [
+        "drain_elec"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "beelzebub",
+    "name": "Beelzebub",
+    "arcana": "DEVIL",
+    "level": 81,
+    "stats": [
+      50,
+      62,
+      50,
+      60,
+      52
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NULL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "NULL",
+      "LIGHT": "WEAK",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "81": [
+        "evil_smile",
+        "maeigaon",
+        "mamudoon"
+      ],
+      "82": [
+        "demonic_decree"
+      ],
+      "84": [
+        "megidolaon"
+      ],
+      "85": [
+        "concentrate"
+      ],
+      "87": [
+        "dark_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "belphegor",
+    "name": "Belphegor",
+    "arcana": "EMPEROR",
+    "level": 53,
+    "stats": [
+      34,
+      43,
+      38,
+      28,
+      29
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "53": [
+        "dodge_light",
+        "mabufula",
+        "maeiga"
+      ],
+      "54": [
+        "mudoon"
+      ],
+      "55": [
+        "stagnant_air"
+      ],
+      "57": [
+        "endure_light"
+      ],
+      "59": [
+        "maeigaon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "berith",
+    "name": "Berith",
+    "arcana": "HIEROPHANT",
+    "level": 13,
+    "stats": [
+      12,
+      7,
+      10,
+      11,
+      6
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "13": [
+        "agi",
+        "rakukaja",
+        "single_shot"
+      ],
+      "14": [
+        "power_slash"
+      ],
+      "16": [
+        "dodge_fire"
+      ],
+      "18": [
+        "assault_dive"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "bishamonten",
+    "name": "Bishamonten",
+    "arcana": "TOWER",
+    "level": 60,
+    "stats": [
+      50,
+      38,
+      45,
+      36,
+      30
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NULL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "60": [
+        "maragidyne",
+        "pierce_boost",
+        "vile_assault"
+      ],
+      "61": [
+        "myriad_arrows"
+      ],
+      "62": [
+        "crit_rate_amp"
+      ],
+      "64": [
+        "primal_force"
+      ],
+      "66": [
+        "pierce_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "black_frost",
+    "name": "Black Frost",
+    "arcana": "FOOL",
+    "level": 37,
+    "stats": [
+      22,
+      34,
+      23,
+      25,
+      20
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "DRAIN",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "37": [
+        "bufula",
+        "maeiga",
+        "matarukaja"
+      ],
+      "38": [
+        "agidyne"
+      ],
+      "39": [
+        "dark_boost"
+      ],
+      "40": [
+        "bufudyne"
+      ],
+      "42": [
+        "fast_heal"
+      ],
+      "43": [
+        "resist_light"
+      ],
+      "5217": [
+        "king_and_i"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "byakko",
+    "name": "Byakko",
+    "arcana": "TEMPERANCE",
+    "level": 63,
+    "stats": [
+      45,
+      44,
+      50,
+      39,
+      30
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "REPEL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "63": [
+        "freeze_boost",
+        "heat_wave",
+        "mabufula"
+      ],
+      "64": [
+        "soul_shift"
+      ],
+      "66": [
+        "evade_fire"
+      ],
+      "67": [
+        "mabufudyne"
+      ],
+      "69": [
+        "enduring_soul"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "chernobog",
+    "name": "Chernobog",
+    "arcana": "MOON",
+    "level": 56,
+    "stats": [
+      48,
+      41,
+      31,
+      35,
+      32
+    ],
+    "affinities": {
+      "SLASH": "NULL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "56": [
+        "apt_pupil",
+        "maeiga",
+        "tempest_slash"
+      ],
+      "57": [
+        "eigaon"
+      ],
+      "58": [
+        "poison_mist"
+      ],
+      "60": [
+        "shift_amp"
+      ],
+      "61": [
+        "brave_blade"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "chi_you",
+    "name": "Chi You",
+    "arcana": "TOWER",
+    "level": 86,
+    "stats": [
+      69,
+      50,
+      63,
+      53,
+      60
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "86": [
+        "primal_force",
+        "shift_amp",
+        "vorpal_blade"
+      ],
+      "88": [
+        "akasha_arts"
+      ],
+      "89": [
+        "charge"
+      ],
+      "91": [
+        "arms_master"
+      ],
+      "93": [
+        "drain_strike"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "chimera",
+    "name": "Chimera",
+    "arcana": "CHARIOT",
+    "level": 9,
+    "stats": [
+      8,
+      4,
+      12,
+      4,
+      6
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "9": [
+        "bewilder",
+        "power_slash"
+      ],
+      "10": [
+        "agi"
+      ],
+      "11": [
+        "sonic_punch"
+      ],
+      "12": [
+        "sukunda"
+      ],
+      "14": [
+        "auto_tarukaja"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "clotho",
+    "name": "Clotho",
+    "arcana": "FORTUNE",
+    "level": 37,
+    "stats": [
+      20,
+      29,
+      22,
+      24,
+      26
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "37": [
+        "garula",
+        "rakunda",
+        "wind_break"
+      ],
+      "38": [
+        "masukunda"
+      ],
+      "39": [
+        "me_patra"
+      ],
+      "40": [
+        "soul_chain"
+      ],
+      "42": [
+        "samarecarm"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "cu_chulainn",
+    "name": "Cu Chulainn",
+    "arcana": "TOWER",
+    "level": 40,
+    "stats": [
+      33,
+      29,
+      24,
+      26,
+      21
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "RESIST",
+      "WIND": "REPEL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "40": [
+        "dekaja",
+        "matarukaja",
+        "torrent_shot"
+      ],
+      "41": [
+        "charge"
+      ],
+      "42": [
+        "fast_heal"
+      ],
+      "44": [
+        "magarula"
+      ],
+      "45": [
+        "myriad_arrows"
+      ],
+      "46": [
+        "shift_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "cybele",
+    "name": "Cybele",
+    "arcana": "LOVERS",
+    "level": 67,
+    "stats": [
+      39,
+      54,
+      40,
+      42,
+      45
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NULL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "67": [
+        "diarahan",
+        "garudyne",
+        "makougaon"
+      ],
+      "68": [
+        "mediarahan"
+      ],
+      "69": [
+        "auto_maraku"
+      ],
+      "71": [
+        "light_amp"
+      ],
+      "73": [
+        "spell_master"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "daisoujou",
+    "name": "Daisoujou",
+    "arcana": "HIEROPHANT",
+    "level": 59,
+    "stats": [
+      33,
+      49,
+      38,
+      31,
+      42
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "59": [
+        "diarahan",
+        "growth_3",
+        "hamaon"
+      ],
+      "60": [
+        "samsara"
+      ],
+      "61": [
+        "invigorate_3"
+      ],
+      "63": [
+        "hama_boost"
+      ],
+      "65": [
+        "null_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "dakini",
+    "name": "Dakini",
+    "arcana": "HERMIT",
+    "level": 38,
+    "stats": [
+      36,
+      22,
+      16,
+      29,
+      18
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "38": [
+        "counterstrike",
+        "herculean_strike"
+      ],
+      "39": [
+        "auto_tarukaja"
+      ],
+      "40": [
+        "getsu_ei"
+      ],
+      "41": [
+        "strike_boost"
+      ],
+      "43": [
+        "high_counter"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "decarabia",
+    "name": "Decarabia",
+    "arcana": "FOOL",
+    "level": 54,
+    "stats": [
+      35,
+      35,
+      35,
+      35,
+      35
+    ],
+    "affinities": {
+      "SLASH": "WEAK",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "54": [
+        "invigorate_2",
+        "megido",
+        "tetrakarn"
+      ],
+      "55": [
+        "agidyne"
+      ],
+      "56": [
+        "fast_heal"
+      ],
+      "58": [
+        "megidola"
+      ],
+      "60": [
+        "null_slash"
+      ],
+      "5217": [
+        "best_friends"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "dionysus",
+    "name": "Dionysus",
+    "arcana": "MOON",
+    "level": 49,
+    "stats": [
+      30,
+      38,
+      26,
+      30,
+      33
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "REPEL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "49": [
+        "makarakarn",
+        "marakukaja",
+        "ziodyne"
+      ],
+      "50": [
+        "resist_slash"
+      ],
+      "51": [
+        "mazionga"
+      ],
+      "52": [
+        "heat_wave"
+      ],
+      "54": [
+        "regenerate_3"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "dominion",
+    "name": "Dominion",
+    "arcana": "JUSTICE",
+    "level": 42,
+    "stats": [
+      25,
+      32,
+      24,
+      26,
+      26
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "RESIST",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "42": [
+        "hamaon",
+        "infuriate",
+        "makouga"
+      ],
+      "43": [
+        "hama_boost"
+      ],
+      "44": [
+        "samarecarm"
+      ],
+      "46": [
+        "light_boost"
+      ],
+      "47": [
+        "kougaon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "eligor",
+    "name": "Eligor",
+    "arcana": "TOWER",
+    "level": 31,
+    "stats": [
+      26,
+      21,
+      24,
+      20,
+      15
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "31": [
+        "revolution",
+        "torrent_shot"
+      ],
+      "32": [
+        "cruel_attack"
+      ],
+      "33": [
+        "pierce_boost"
+      ],
+      "35": [
+        "maragion"
+      ],
+      "36": [
+        "life_aid"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "flauros",
+    "name": "Flauros",
+    "arcana": "HIEROPHANT",
+    "level": 33,
+    "stats": [
+      27,
+      25,
+      20,
+      18,
+      16
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "33": [
+        "agilao",
+        "auto_sukukaja",
+        "swift_strike"
+      ],
+      "34": [
+        "crit_rate_boost"
+      ],
+      "35": [
+        "apt_pupil"
+      ],
+      "36": [
+        "herculean_strike"
+      ],
+      "38": [
+        "evade_wind"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "forneus",
+    "name": "Forneus",
+    "arcana": "EMPEROR",
+    "level": 7,
+    "stats": [
+      5,
+      6,
+      7,
+      6,
+      4
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "7": [
+        "bash",
+        "bufu",
+        "tarukaja"
+      ],
+      "9": [
+        "single_shot"
+      ],
+      "10": [
+        "sharp_student"
+      ],
+      "12": [
+        "dodge_ice"
+      ],
+      "5217": [
+        "best_friends"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "fortuna",
+    "name": "Fortuna",
+    "arcana": "FORTUNE",
+    "level": 15,
+    "stats": [
+      7,
+      17,
+      10,
+      13,
+      11
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "15": [
+        "bufu",
+        "garu",
+        "patra"
+      ],
+      "16": [
+        "magaru"
+      ],
+      "17": [
+        "dodge_wind"
+      ],
+      "18": [
+        "rakukaja"
+      ],
+      "20": [
+        "wind_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "futsunushi",
+    "name": "Futsunushi",
+    "arcana": "MAGICIAN",
+    "level": 74,
+    "stats": [
+      62,
+      49,
+      50,
+      42,
+      35
+    ],
+    "affinities": {
+      "SLASH": "NULL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "74": [
+        "apt_pupil",
+        "bloody_charge",
+        "vorpal_blade"
+      ],
+      "75": [
+        "matarukaja"
+      ],
+      "76": [
+        "sharp_student"
+      ],
+      "78": [
+        "brave_blade"
+      ],
+      "81": [
+        "unshaken_will"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "gabriel",
+    "name": "Gabriel",
+    "arcana": "EMPRESS",
+    "level": 62,
+    "stats": [
+      40,
+      52,
+      35,
+      41,
+      37
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "DRAIN",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "62": [
+        "diarahan",
+        "mabufudyne",
+        "ziodyne"
+      ],
+      "64": [
+        "divine_judgment"
+      ],
+      "65": [
+        "evade_wind"
+      ],
+      "66": [
+        "ice_amp"
+      ],
+      "68": [
+        "diamond_dust"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "ganesha",
+    "name": "Ganesha",
+    "arcana": "STAR",
+    "level": 51,
+    "stats": [
+      39,
+      31,
+      34,
+      20,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NULL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "DRAIN",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "51": [
+        "deathbound",
+        "garudyne",
+        "revolution"
+      ],
+      "52": [
+        "gigantic_fist"
+      ],
+      "54": [
+        "charge"
+      ],
+      "55": [
+        "endure"
+      ],
+      "57": [
+        "repel_pierce"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "ganga",
+    "name": "Ganga",
+    "arcana": "PRIESTESS",
+    "level": 41,
+    "stats": [
+      24,
+      30,
+      26,
+      22,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "41": [
+        "confuse_boost",
+        "media",
+        "tentarafoo"
+      ],
+      "42": [
+        "neuro_slash"
+      ],
+      "43": [
+        "bufula"
+      ],
+      "44": [
+        "diarama"
+      ],
+      "46": [
+        "endure_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "garuda",
+    "name": "Garuda",
+    "arcana": "STAR",
+    "level": 64,
+    "stats": [
+      45,
+      41,
+      35,
+      51,
+      36
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "WEAK",
+      "ELECTRIC": "WEAK",
+      "WIND": "RESIST",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "64": [
+        "garudyne",
+        "masukukaja",
+        "tentarafoo"
+      ],
+      "65": [
+        "amrita_shower"
+      ],
+      "67": [
+        "magarudyne"
+      ],
+      "70": [
+        "panta_rhei"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "genbu",
+    "name": "Genbu",
+    "arcana": "TEMPERANCE",
+    "level": 30,
+    "stats": [
+      18,
+      17,
+      30,
+      12,
+      20
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "30": [
+        "auto_rakukaja",
+        "dekunda",
+        "null_confuse"
+      ],
+      "31": [
+        "resist_strike"
+      ],
+      "32": [
+        "null_rage"
+      ],
+      "33": [
+        "anti_ice_master"
+      ],
+      "35": [
+        "resist_wind"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "girimekhala",
+    "name": "Girimekhala",
+    "arcana": "MOON",
+    "level": 39,
+    "stats": [
+      36,
+      26,
+      28,
+      20,
+      20
+    ],
+    "affinities": {
+      "SLASH": "REPEL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "REPEL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "WEAK",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "39": [
+        "cruel_attack",
+        "marakunda",
+        "mudoon"
+      ],
+      "40": [
+        "virus_breath"
+      ],
+      "42": [
+        "heat_wave"
+      ],
+      "44": [
+        "mamudoon"
+      ],
+      "46": [
+        "repel_slash"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "gurulu",
+    "name": "Gurulu",
+    "arcana": "MOON",
+    "level": 14,
+    "stats": [
+      13,
+      8,
+      10,
+      12,
+      6
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "14": [
+        "eiga",
+        "growth_1",
+        "power_slash"
+      ],
+      "15": [
+        "raging_tiger"
+      ],
+      "16": [
+        "auto_sukukaja"
+      ],
+      "18": [
+        "poison_mist"
+      ],
+      "19": [
+        "poison_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "hanuman",
+    "name": "Hanuman",
+    "arcana": "STRENGTH",
+    "level": 36,
+    "stats": [
+      30,
+      17,
+      24,
+      22,
+      22
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "36": [
+        "blade_of_fury",
+        "getsu_ei",
+        "shift_boost"
+      ],
+      "37": [
+        "recarm"
+      ],
+      "38": [
+        "fatal_end"
+      ],
+      "40": [
+        "evade_slash"
+      ],
+      "41": [
+        "endure"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "hariti",
+    "name": "Hariti",
+    "arcana": "EMPRESS",
+    "level": 48,
+    "stats": [
+      24,
+      42,
+      31,
+      28,
+      33
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "DRAIN",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "DRAIN",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "48": [
+        "me_patra",
+        "mediarama",
+        "samarecarm"
+      ],
+      "50": [
+        "diarahan"
+      ],
+      "52": [
+        "amrita_shower"
+      ],
+      "54": [
+        "invigorate_3"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "hecatoncheires",
+    "name": "Hecatoncheires",
+    "arcana": "HANGED",
+    "level": 47,
+    "stats": [
+      37,
+      24,
+      48,
+      20,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "47": [
+        "evade_strike",
+        "regenerate_2",
+        "vile_assault"
+      ],
+      "48": [
+        "endure"
+      ],
+      "49": [
+        "recarmdra"
+      ],
+      "51": [
+        "heat_wave"
+      ],
+      "53": [
+        "auto_maraku"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "helel",
+    "name": "Helel",
+    "arcana": "STAR",
+    "level": 88,
+    "stats": [
+      63,
+      63,
+      62,
+      58,
+      58
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "DRAIN",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "88": [
+        "heat_riser",
+        "makougaon",
+        "salvation"
+      ],
+      "90": [
+        "morning_star"
+      ],
+      "92": [
+        "life_aid"
+      ],
+      "94": [
+        "spell_master"
+      ],
+      "95": [
+        "almighty_boost"
+      ],
+      "5217": [
+        "armageddon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "hell_biker",
+    "name": "Hell Biker",
+    "arcana": "HANGED",
+    "level": 65,
+    "stats": [
+      48,
+      51,
+      50,
+      40,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "REPEL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "REPEL",
+      "LIGHT": "WEAK",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "65": [
+        "eigaon",
+        "life_aid",
+        "maragidyne"
+      ],
+      "66": [
+        "bloody_charge"
+      ],
+      "68": [
+        "maeigaon"
+      ],
+      "70": [
+        "evade_light"
+      ],
+      "71": [
+        "enduring_soul"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "high_pixie",
+    "name": "High Pixie",
+    "arcana": "PRIESTESS",
+    "level": 20,
+    "stats": [
+      11,
+      20,
+      10,
+      13,
+      13
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "20": [
+        "arrow_rain",
+        "mabufu",
+        "media"
+      ],
+      "22": [
+        "bufula"
+      ],
+      "23": [
+        "tarukaja"
+      ],
+      "25": [
+        "dodge_wind"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "horus",
+    "name": "Horus",
+    "arcana": "SUN",
+    "level": 67,
+    "stats": [
+      42,
+      53,
+      34,
+      48,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "REPEL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "67": [
+        "auto_masuku",
+        "growth_3",
+        "mahamaon"
+      ],
+      "68": [
+        "samarecarm"
+      ],
+      "70": [
+        "kougaon"
+      ],
+      "71": [
+        "amrita_shower"
+      ],
+      "73": [
+        "evade_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "houou",
+    "name": "Houou",
+    "arcana": "STAR",
+    "level": 70,
+    "stats": [
+      35,
+      57,
+      39,
+      54,
+      41
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "WEAK",
+      "FIRE": "DRAIN",
+      "ICE": "RESIST",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "DRAIN",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "70": [
+        "maragidyne",
+        "mediarama",
+        "samarecarm"
+      ],
+      "71": [
+        "divine_grace"
+      ],
+      "72": [
+        "regenerate_3"
+      ],
+      "74": [
+        "null_pierce"
+      ],
+      "77": [
+        "salvation"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "hua_po",
+    "name": "Hua Po",
+    "arcana": "MAGICIAN",
+    "level": 19,
+    "stats": [
+      8,
+      21,
+      13,
+      17,
+      11
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "19": [
+        "baisudi",
+        "maragi",
+        "rakunda"
+      ],
+      "20": [
+        "agilao"
+      ],
+      "21": [
+        "resist_freeze"
+      ],
+      "23": [
+        "fire_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "incubus",
+    "name": "Incubus",
+    "arcana": "DEVIL",
+    "level": 37,
+    "stats": [
+      22,
+      30,
+      20,
+      21,
+      28
+    ],
+    "affinities": {
+      "SLASH": "WEAK",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "37": [
+        "eiga",
+        "evil_touch",
+        "life_drain"
+      ],
+      "38": [
+        "stagnant_air"
+      ],
+      "39": [
+        "spirit_drain"
+      ],
+      "40": [
+        "maragion"
+      ],
+      "42": [
+        "drain_ability"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "inugami",
+    "name": "Inugami",
+    "arcana": "HANGED",
+    "level": 10,
+    "stats": [
+      4,
+      8,
+      7,
+      7,
+      11
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "10": [
+        "foul_breath",
+        "poisma"
+      ],
+      "11": [
+        "poison_boost"
+      ],
+      "12": [
+        "maragi"
+      ],
+      "14": [
+        "media"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "jack_frost",
+    "name": "Jack Frost",
+    "arcana": "MAGICIAN",
+    "level": 8,
+    "stats": [
+      5,
+      9,
+      8,
+      6,
+      4
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "8": [
+        "bufu",
+        "pulinpa"
+      ],
+      "10": [
+        "mabufu"
+      ],
+      "11": [
+        "sonic_punch"
+      ],
+      "12": [
+        "freeze_boost"
+      ],
+      "13": [
+        "ice_boost"
+      ],
+      "5217": [
+        "jack_brothers"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "jack_o_lantern",
+    "name": "Jack-o'-Lantern",
+    "arcana": "MAGICIAN",
+    "level": 15,
+    "stats": [
+      8,
+      15,
+      9,
+      9,
+      11
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "15": [
+        "agi",
+        "maragi",
+        "provoke"
+      ],
+      "17": [
+        "rage_boost"
+      ],
+      "19": [
+        "dodge_ice"
+      ],
+      "21": [
+        "agilao"
+      ],
+      "5217": [
+        "jack_brothers"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "jatayu",
+    "name": "Jatayu",
+    "arcana": "SUN",
+    "level": 55,
+    "stats": [
+      33,
+      40,
+      30,
+      50,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "WEAK",
+      "FIRE": "RESIST",
+      "ICE": "RESIST",
+      "ELECTRIC": "WEAK",
+      "WIND": "DRAIN",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "55": [
+        "garudyne",
+        "growth_3",
+        "magarula"
+      ],
+      "56": [
+        "masukunda"
+      ],
+      "58": [
+        "evade_pierce"
+      ],
+      "59": [
+        "amrita_shower"
+      ],
+      "61": [
+        "magarudyne"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "jikokuten",
+    "name": "Jikokuten",
+    "arcana": "STRENGTH",
+    "level": 29,
+    "stats": [
+      27,
+      13,
+      25,
+      12,
+      17
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "REPEL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "29": [
+        "auto_sukukaja",
+        "crit_rate_boost",
+        "zan_ei"
+      ],
+      "31": [
+        "getsu_ei"
+      ],
+      "32": [
+        "revolution"
+      ],
+      "34": [
+        "slash_boost"
+      ],
+      "35": [
+        "endure_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kaiwan",
+    "name": "Kaiwan",
+    "arcana": "STAR",
+    "level": 42,
+    "stats": [
+      23,
+      28,
+      25,
+      25,
+      32
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "WEAK",
+      "FIRE": "RESIST",
+      "ICE": "RESIST",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "42": [
+        "eerie_sound",
+        "spirit_drain",
+        "virus_breath"
+      ],
+      "43": [
+        "vile_assault"
+      ],
+      "44": [
+        "evil_smile"
+      ],
+      "46": [
+        "invigorate_2"
+      ],
+      "47": [
+        "evade_pierce"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kali",
+    "name": "Kali",
+    "arcana": "STRENGTH",
+    "level": 63,
+    "stats": [
+      53,
+      30,
+      34,
+      48,
+      34
+    ],
+    "affinities": {
+      "SLASH": "REPEL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "63": [
+        "deathbound",
+        "heat_wave",
+        "marakunda"
+      ],
+      "64": [
+        "brave_blade"
+      ],
+      "66": [
+        "charge"
+      ],
+      "67": [
+        "high_counter"
+      ],
+      "70": [
+        "vorpal_blade"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kikuri_hime",
+    "name": "Kikuri-Hime",
+    "arcana": "PRIESTESS",
+    "level": 61,
+    "stats": [
+      29,
+      50,
+      34,
+      41,
+      39
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "61": [
+        "bufudyne",
+        "mabufula",
+        "mediarama"
+      ],
+      "62": [
+        "amrita_shower"
+      ],
+      "63": [
+        "marakukaja"
+      ],
+      "65": [
+        "samarecarm"
+      ],
+      "67": [
+        "mediarahan"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "king_frost",
+    "name": "King Frost",
+    "arcana": "EMPEROR",
+    "level": 34,
+    "stats": [
+      18,
+      31,
+      26,
+      14,
+      20
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "DRAIN",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "34": [
+        "bufula",
+        "freeze_boost",
+        "rakukaja"
+      ],
+      "35": [
+        "mabufula"
+      ],
+      "36": [
+        "ice_break"
+      ],
+      "37": [
+        "marakukaja"
+      ],
+      "39": [
+        "null_ice"
+      ],
+      "5217": [
+        "king_and_i"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kohryu",
+    "name": "Kohryu",
+    "arcana": "HIEROPHANT",
+    "level": 71,
+    "stats": [
+      44,
+      53,
+      58,
+      31,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "REPEL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "71": [
+        "invigorate_3",
+        "makougaon",
+        "mediarahan"
+      ],
+      "73": [
+        "concentrate"
+      ],
+      "74": [
+        "makarakarn"
+      ],
+      "75": [
+        "tetrakarn"
+      ],
+      "77": [
+        "spell_master"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "koumokuten",
+    "name": "Koumokuten",
+    "arcana": "CHARIOT",
+    "level": 52,
+    "stats": [
+      40,
+      35,
+      40,
+      25,
+      29
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "52": [
+        "herculean_strike",
+        "magarula",
+        "masukukaja"
+      ],
+      "53": [
+        "gigantic_fist"
+      ],
+      "54": [
+        "auto_tarukaja"
+      ],
+      "56": [
+        "vile_assault"
+      ],
+      "57": [
+        "enduring_soul"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kumbhanda",
+    "name": "Kumbhanda",
+    "arcana": "HERMIT",
+    "level": 61,
+    "stats": [
+      48,
+      44,
+      39,
+      45,
+      20
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NULL",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "61": [
+        "garudyne",
+        "poison_arrow",
+        "poison_boost"
+      ],
+      "62": [
+        "dekunda"
+      ],
+      "64": [
+        "myriad_arrows"
+      ],
+      "65": [
+        "magarudyne"
+      ],
+      "67": [
+        "insta_heal"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kurama_tengu",
+    "name": "Kurama Tengu",
+    "arcana": "HERMIT",
+    "level": 46,
+    "stats": [
+      26,
+      32,
+      25,
+      37,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "DRAIN",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "46": [
+        "dodge_pierce",
+        "magarula",
+        "masukunda"
+      ],
+      "47": [
+        "tentarafoo"
+      ],
+      "49": [
+        "garudyne"
+      ],
+      "51": [
+        "null_dizzy"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "kushi_mitama",
+    "name": "Kushi Mitama",
+    "arcana": "FORTUNE",
+    "level": 28,
+    "stats": [
+      16,
+      22,
+      18,
+      13,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "28": [
+        "garula",
+        "magaru",
+        "recarm"
+      ],
+      "29": [
+        "wind_break"
+      ],
+      "30": [
+        "regenerate_2"
+      ],
+      "32": [
+        "magarula"
+      ],
+      "33": [
+        "marakunda"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "lachesis",
+    "name": "Lachesis",
+    "arcana": "FORTUNE",
+    "level": 44,
+    "stats": [
+      22,
+      37,
+      23,
+      30,
+      29
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "44": [
+        "magarula",
+        "makarakarn",
+        "masukukaja"
+      ],
+      "45": [
+        "soul_chain"
+      ],
+      "46": [
+        "mediarama"
+      ],
+      "47": [
+        "marakunda"
+      ],
+      "49": [
+        "evade_elec"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "lakshmi",
+    "name": "Lakshmi",
+    "arcana": "FORTUNE",
+    "level": 73,
+    "stats": [
+      39,
+      61,
+      38,
+      45,
+      52
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "73": [
+        "amrita_shower",
+        "bufudyne",
+        "diarahan"
+      ],
+      "74": [
+        "soul_link"
+      ],
+      "75": [
+        "sexy_dance"
+      ],
+      "77": [
+        "mabufudyne"
+      ],
+      "80": [
+        "salvation"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "lamia",
+    "name": "Lamia",
+    "arcana": "HERMIT",
+    "level": 25,
+    "stats": [
+      15,
+      20,
+      16,
+      14,
+      17
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "WEAK",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "25": [
+        "agilao",
+        "poisma",
+        "resist_charm"
+      ],
+      "27": [
+        "poison_boost"
+      ],
+      "28": [
+        "poison_mist"
+      ],
+      "30": [
+        "stagnant_air"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "leanan_sidhe",
+    "name": "Leanan Sidhe",
+    "arcana": "EMPRESS",
+    "level": 21,
+    "stats": [
+      12,
+      22,
+      13,
+      15,
+      14
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "21": [
+        "diarama",
+        "media",
+        "patra"
+      ],
+      "22": [
+        "spirit_drain"
+      ],
+      "24": [
+        "me_patra"
+      ],
+      "25": [
+        "marin_karin"
+      ],
+      "26": [
+        "null_charm"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "legion",
+    "name": "Legion",
+    "arcana": "FOOL",
+    "level": 26,
+    "stats": [
+      16,
+      14,
+      26,
+      9,
+      20
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "WEAK",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "26": [
+        "assault_dive",
+        "pulinpa",
+        "rebellion"
+      ],
+      "27": [
+        "null_distress"
+      ],
+      "28": [
+        "sexy_dance"
+      ],
+      "30": [
+        "confuse_boost"
+      ],
+      "31": [
+        "resist_pierce"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "lilim",
+    "name": "Lilim",
+    "arcana": "DEVIL",
+    "level": 8,
+    "stats": [
+      4,
+      10,
+      4,
+      6,
+      7
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "8": [
+        "agi",
+        "zio"
+      ],
+      "9": [
+        "marin_karin"
+      ],
+      "11": [
+        "life_drain"
+      ],
+      "13": [
+        "mazio"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "lilith",
+    "name": "Lilith",
+    "arcana": "DEVIL",
+    "level": 65,
+    "stats": [
+      35,
+      56,
+      38,
+      44,
+      35
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "DRAIN",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "65": [
+        "mabufudyne",
+        "maziodyne",
+        "sexy_dance"
+      ],
+      "66": [
+        "megidola"
+      ],
+      "68": [
+        "makarakarn"
+      ],
+      "70": [
+        "demonic_decree"
+      ],
+      "72": [
+        "drain_wind"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "loa",
+    "name": "Loa",
+    "arcana": "DEATH",
+    "level": 33,
+    "stats": [
+      21,
+      26,
+      24,
+      19,
+      18
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "33": [
+        "life_drain",
+        "maeiga",
+        "mamudo"
+      ],
+      "34": [
+        "survive_light"
+      ],
+      "36": [
+        "zionga"
+      ],
+      "37": [
+        "marakunda"
+      ],
+      "38": [
+        "mudo_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "loki",
+    "name": "Loki",
+    "arcana": "FOOL",
+    "level": 69,
+    "stats": [
+      48,
+      60,
+      45,
+      42,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "DRAIN",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "69": [
+        "agidyne",
+        "bufudyne",
+        "garudyne",
+        "ziodyne"
+      ],
+      "72": [
+        "megidola"
+      ],
+      "73": [
+        "single_target_boost"
+      ],
+      "74": [
+        "soul_shift"
+      ],
+      "76": [
+        "spell_master"
+      ],
+      "5217": [
+        "trickster"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "lucifer",
+    "name": "Lucifer",
+    "arcana": "JUDGEMENT",
+    "level": 89,
+    "stats": [
+      70,
+      70,
+      61,
+      51,
+      55
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "NORMAL",
+      "ELECTRIC": "DRAIN",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "89": [
+        "brave_blade",
+        "debilitate",
+        "megidolaon"
+      ],
+      "90": [
+        "inferno"
+      ],
+      "92": [
+        "panta_rhei"
+      ],
+      "94": [
+        "diamond_dust"
+      ],
+      "96": [
+        "resist_phys"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mada",
+    "name": "Mada",
+    "arcana": "HANGED",
+    "level": 57,
+    "stats": [
+      42,
+      48,
+      45,
+      33,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "WEAK",
+      "ELECTRIC": "RESIST",
+      "WIND": "WEAK",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "57": [
+        "agidyne",
+        "endure",
+        "gigantic_fist"
+      ],
+      "58": [
+        "maragidyne"
+      ],
+      "59": [
+        "vile_assault"
+      ],
+      "61": [
+        "null_wind"
+      ],
+      "62": [
+        "amrita_shower"
+      ],
+      "64": [
+        "strike_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mara",
+    "name": "Mara",
+    "arcana": "TOWER",
+    "level": 75,
+    "stats": [
+      60,
+      50,
+      50,
+      48,
+      39
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "DRAIN",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "75": [
+        "maralagidyne",
+        "myriad_arrows",
+        "spirit_drain"
+      ],
+      "76": [
+        "primal_force"
+      ],
+      "78": [
+        "charge"
+      ],
+      "80": [
+        "pierce_amp"
+      ],
+      "82": [
+        "drain_light"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "masakado",
+    "name": "Masakado",
+    "arcana": "TOWER",
+    "level": 79,
+    "stats": [
+      67,
+      46,
+      55,
+      43,
+      48
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "REPEL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "79": [
+        "magarudyne",
+        "myriad_arrows",
+        "tempest_slash"
+      ],
+      "81": [
+        "debilitate"
+      ],
+      "83": [
+        "crit_rate_amp"
+      ],
+      "84": [
+        "arms_master"
+      ],
+      "86": [
+        "unshaken_will"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "matador",
+    "name": "Matador",
+    "arcana": "STRENGTH",
+    "level": 22,
+    "stats": [
+      17,
+      14,
+      12,
+      23,
+      10
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "22": [
+        "dodge_pierce",
+        "torrent_shot",
+        "vacuum_slash"
+      ],
+      "23": [
+        "auto_sukukaja"
+      ],
+      "25": [
+        "dodge_fire"
+      ],
+      "26": [
+        "dekunda"
+      ],
+      "28": [
+        "blade_of_fury"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "melchizedek",
+    "name": "Melchizedek",
+    "arcana": "JUSTICE",
+    "level": 66,
+    "stats": [
+      54,
+      47,
+      47,
+      35,
+      31
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "REPEL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "REPEL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "66": [
+        "gigantic_fist",
+        "hamaon",
+        "revolution"
+      ],
+      "67": [
+        "mahamaon"
+      ],
+      "69": [
+        "hama_boost"
+      ],
+      "71": [
+        "god_s_hand"
+      ],
+      "73": [
+        "akasha_arts"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "messiah",
+    "name": "Messiah",
+    "arcana": "JUDGEMENT",
+    "level": 91,
+    "stats": [
+      65,
+      70,
+      62,
+      59,
+      59
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "RESIST",
+      "LIGHT": "REPEL",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "91": [
+        "god_s_hand",
+        "megidolaon",
+        "salvation"
+      ],
+      "92": [
+        "enduring_soul"
+      ],
+      "93": [
+        "regenerate_3"
+      ],
+      "94": [
+        "invigorate_3"
+      ],
+      "96": [
+        "null_phys"
+      ],
+      "98": [
+        "magic_ability"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "metatron",
+    "name": "Metatron",
+    "arcana": "AEON",
+    "level": 87,
+    "stats": [
+      60,
+      65,
+      65,
+      55,
+      53
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "REPEL",
+      "ICE": "RESIST",
+      "ELECTRIC": "WEAK",
+      "WIND": "REPEL",
+      "LIGHT": "REPEL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "87": [
+        "divine_judgment",
+        "god_s_hand",
+        "makougaon"
+      ],
+      "89": [
+        "megidolaon"
+      ],
+      "90": [
+        "salvation"
+      ],
+      "92": [
+        "light_amp"
+      ],
+      "94": [
+        "repel_elec"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "michael",
+    "name": "Michael",
+    "arcana": "JUDGEMENT",
+    "level": 70,
+    "stats": [
+      56,
+      48,
+      46,
+      37,
+      42
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "REPEL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "70": [
+        "angelic_grace",
+        "divine_judgment",
+        "heaven_s_blade"
+      ],
+      "72": [
+        "makougaon"
+      ],
+      "73": [
+        "maziodyne"
+      ],
+      "75": [
+        "heat_riser"
+      ],
+      "77": [
+        "drain_pierce"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mishaguji",
+    "name": "Mishaguji",
+    "arcana": "HIEROPHANT",
+    "level": 48,
+    "stats": [
+      36,
+      35,
+      30,
+      24,
+      26
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "48": [
+        "deathbound",
+        "marin_karin",
+        "mazionga"
+      ],
+      "49": [
+        "ziodyne"
+      ],
+      "50": [
+        "matarukaja"
+      ],
+      "52": [
+        "vile_assault"
+      ],
+      "54": [
+        "null_strike"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mithras",
+    "name": "Mithras",
+    "arcana": "CHARIOT",
+    "level": 24,
+    "stats": [
+      16,
+      19,
+      15,
+      14,
+      15
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "24": [
+        "makouha",
+        "rakunda",
+        "zan_ei"
+      ],
+      "25": [
+        "agilao"
+      ],
+      "26": [
+        "hama"
+      ],
+      "27": [
+        "tentarafoo"
+      ],
+      "29": [
+        "swift_strike"
+      ],
+      "5217": [
+        "scarlet_havoc"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mitra",
+    "name": "Mitra",
+    "arcana": "TEMPERANCE",
+    "level": 22,
+    "stats": [
+      13,
+      19,
+      16,
+      10,
+      15
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "22": [
+        "bufu",
+        "makouha"
+      ],
+      "23": [
+        "counter"
+      ],
+      "24": [
+        "diarama"
+      ],
+      "26": [
+        "kouga"
+      ],
+      "27": [
+        "dodge_elec"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mokoi",
+    "name": "Mokoi",
+    "arcana": "DEVIL",
+    "level": 18,
+    "stats": [
+      7,
+      7,
+      12,
+      16,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "18": [
+        "evil_touch",
+        "marin_karin",
+        "sonic_punch"
+      ],
+      "19": [
+        "fear_boost"
+      ],
+      "21": [
+        "charm_boost"
+      ],
+      "23": [
+        "evil_smile"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mot",
+    "name": "Mot",
+    "arcana": "DEATH",
+    "level": 58,
+    "stats": [
+      37,
+      42,
+      44,
+      29,
+      33
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "58": [
+        "evil_smile",
+        "mamudoon",
+        "null_fear"
+      ],
+      "59": [
+        "ghastly_wail"
+      ],
+      "60": [
+        "mazionga"
+      ],
+      "61": [
+        "mudo_boost"
+      ],
+      "63": [
+        "megidola"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mother_harlot",
+    "name": "Mother Harlot",
+    "arcana": "EMPRESS",
+    "level": 77,
+    "stats": [
+      44,
+      65,
+      60,
+      36,
+      42
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NULL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "REPEL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "77": [
+        "mamudoon",
+        "sexy_dance",
+        "ziodyne"
+      ],
+      "78": [
+        "mudo_boost"
+      ],
+      "80": [
+        "maziodyne"
+      ],
+      "82": [
+        "debilitate"
+      ],
+      "83": [
+        "diamond_dust"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "mothman",
+    "name": "Mothman",
+    "arcana": "HERMIT",
+    "level": 31,
+    "stats": [
+      15,
+      25,
+      18,
+      27,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "WEAK",
+      "FIRE": "RESIST",
+      "ICE": "WEAK",
+      "ELECTRIC": "REPEL",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "31": [
+        "eerie_sound",
+        "stagnant_air"
+      ],
+      "32": [
+        "zionga"
+      ],
+      "33": [
+        "distress_boost"
+      ],
+      "34": [
+        "elec_boost"
+      ],
+      "36": [
+        "megido"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "naga",
+    "name": "Naga",
+    "arcana": "HERMIT",
+    "level": 17,
+    "stats": [
+      14,
+      10,
+      11,
+      14,
+      9
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "WEAK",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "17": [
+        "bewilder",
+        "single_shot"
+      ],
+      "18": [
+        "distress_boost"
+      ],
+      "19": [
+        "torrent_shot"
+      ],
+      "21": [
+        "eerie_sound"
+      ],
+      "22": [
+        "invigorate_1"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "naga_raja",
+    "name": "Naga Raja",
+    "arcana": "EMPEROR",
+    "level": 43,
+    "stats": [
+      33,
+      31,
+      22,
+      27,
+      23
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "43": [
+        "cruel_attack",
+        "mazionga",
+        "tentarafoo"
+      ],
+      "44": [
+        "revolution"
+      ],
+      "45": [
+        "elec_break"
+      ],
+      "46": [
+        "confuse_boost"
+      ],
+      "48": [
+        "null_pierce"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "narcissus",
+    "name": "Narcissus",
+    "arcana": "LOVERS",
+    "level": 23,
+    "stats": [
+      12,
+      18,
+      10,
+      17,
+      20
+    ],
+    "affinities": {
+      "SLASH": "WEAK",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "23": [
+        "charm_boost",
+        "magaru",
+        "marin_karin"
+      ],
+      "24": [
+        "sexy_dance"
+      ],
+      "25": [
+        "sharp_student"
+      ],
+      "27": [
+        "growth_1"
+      ],
+      "28": [
+        "dodge_slash"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "nebiros",
+    "name": "Nebiros",
+    "arcana": "HERMIT",
+    "level": 52,
+    "stats": [
+      28,
+      42,
+      31,
+      31,
+      37
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "REPEL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "52": [
+        "eigaon",
+        "evil_touch",
+        "ghastly_wail"
+      ],
+      "53": [
+        "resist_ailments"
+      ],
+      "54": [
+        "evil_smile"
+      ],
+      "55": [
+        "fear_boost"
+      ],
+      "57": [
+        "mamudoon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "neko_shogun",
+    "name": "Neko Shogun",
+    "arcana": "STAR",
+    "level": 17,
+    "stats": [
+      15,
+      12,
+      10,
+      14,
+      8
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "WEAK",
+      "LIGHT": "NULL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "17": [
+        "assault_dive",
+        "rebellion",
+        "regenerate_1"
+      ],
+      "18": [
+        "sharp_student"
+      ],
+      "20": [
+        "swift_strike"
+      ],
+      "22": [
+        "resist_dizzy"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "nekomata",
+    "name": "Nekomata",
+    "arcana": "MAGICIAN",
+    "level": 3,
+    "stats": [
+      4,
+      4,
+      2,
+      5,
+      2
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "3": [
+        "agi",
+        "rakunda"
+      ],
+      "4": [
+        "power_slash"
+      ],
+      "5": [
+        "resist_distress"
+      ],
+      "6": [
+        "marin_karin"
+      ],
+      "8": [
+        "maragi"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "nidhoggr",
+    "name": "Nidhoggr",
+    "arcana": "AEON",
+    "level": 47,
+    "stats": [
+      36,
+      29,
+      43,
+      21,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "47": [
+        "heat_wave",
+        "matarunda",
+        "mudoon"
+      ],
+      "48": [
+        "virus_breath"
+      ],
+      "49": [
+        "stagnant_air"
+      ],
+      "51": [
+        "ailment_boost"
+      ],
+      "53": [
+        "null_light"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "nigi_mitama",
+    "name": "Nigi Mitama",
+    "arcana": "TEMPERANCE",
+    "level": 12,
+    "stats": [
+      6,
+      10,
+      9,
+      10,
+      8
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "RESIST",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "12": [
+        "baisudi",
+        "garu",
+        "media"
+      ],
+      "14": [
+        "magaru"
+      ],
+      "15": [
+        "sharp_student"
+      ],
+      "17": [
+        "recarm"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "norn",
+    "name": "Norn",
+    "arcana": "FORTUNE",
+    "level": 65,
+    "stats": [
+      37,
+      60,
+      40,
+      37,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "REPEL",
+      "ELECTRIC": "WEAK",
+      "WIND": "DRAIN",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "65": [
+        "magarudyne",
+        "panta_rhei",
+        "wind_amp"
+      ],
+      "66": [
+        "invigorate_3"
+      ],
+      "68": [
+        "mediarahan"
+      ],
+      "70": [
+        "soul_link"
+      ],
+      "72": [
+        "salvation"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "oberon",
+    "name": "Oberon",
+    "arcana": "EMPEROR",
+    "level": 16,
+    "stats": [
+      11,
+      15,
+      9,
+      12,
+      8
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "16": [
+        "media",
+        "zio"
+      ],
+      "17": [
+        "mazio"
+      ],
+      "18": [
+        "zan_ei"
+      ],
+      "19": [
+        "survive_dark"
+      ],
+      "21": [
+        "zionga"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "odin",
+    "name": "Odin",
+    "arcana": "EMPEROR",
+    "level": 74,
+    "stats": [
+      44,
+      63,
+      42,
+      46,
+      49
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "DRAIN",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "74": [
+        "marakunda",
+        "maziodyne",
+        "primal_force"
+      ],
+      "75": [
+        "thunder_reign"
+      ],
+      "76": [
+        "elec_amp"
+      ],
+      "78": [
+        "concentrate"
+      ],
+      "80": [
+        "spell_master"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "okuninushi",
+    "name": "Okuninushi",
+    "arcana": "TEMPERANCE",
+    "level": 44,
+    "stats": [
+      35,
+      32,
+      29,
+      24,
+      19
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "REPEL",
+      "WIND": "WEAK",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "44": [
+        "deathbound",
+        "getsu_ei",
+        "maragion"
+      ],
+      "45": [
+        "marakukaja"
+      ],
+      "46": [
+        "fire_break"
+      ],
+      "47": [
+        "agidyne"
+      ],
+      "49": [
+        "evade_fire"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "omoikane",
+    "name": "Omoikane",
+    "arcana": "HIEROPHANT",
+    "level": 7,
+    "stats": [
+      4,
+      8,
+      6,
+      4,
+      6
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "7": [
+        "dia",
+        "zio"
+      ],
+      "8": [
+        "rebellion"
+      ],
+      "10": [
+        "resist_shock"
+      ],
+      "12": [
+        "auto_rakukaja"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "oni",
+    "name": "Oni",
+    "arcana": "CHARIOT",
+    "level": 31,
+    "stats": [
+      30,
+      13,
+      26,
+      21,
+      19
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "31": [
+        "bash",
+        "counter",
+        "regenerate_1"
+      ],
+      "32": [
+        "swift_strike"
+      ],
+      "33": [
+        "anti_electric_master"
+      ],
+      "34": [
+        "counterstrike"
+      ],
+      "36": [
+        "dizzy_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "onmoraki",
+    "name": "Onmoraki",
+    "arcana": "HERMIT",
+    "level": 8,
+    "stats": [
+      4,
+      7,
+      6,
+      10,
+      4
+    ],
+    "affinities": {
+      "SLASH": "WEAK",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "WEAK",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "8": [
+        "evil_touch",
+        "garu",
+        "tarunda"
+      ],
+      "10": [
+        "eiga"
+      ],
+      "11": [
+        "growth_1"
+      ],
+      "13": [
+        "magaru"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "orobas",
+    "name": "Orobas",
+    "arcana": "MAGICIAN",
+    "level": 39,
+    "stats": [
+      22,
+      33,
+      22,
+      28,
+      19
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "39": [
+        "magarula",
+        "torrent_shot",
+        "wind_break"
+      ],
+      "40": [
+        "wind_boost"
+      ],
+      "42": [
+        "masukukaja"
+      ],
+      "44": [
+        "resist_ice"
+      ],
+      "45": [
+        "survival_trick"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "orpheus",
+    "name": "Orpheus",
+    "arcana": "FOOL",
+    "level": 1,
+    "stats": [
+      2,
+      2,
+      2,
+      3,
+      2
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "1": [
+        "agi"
+      ],
+      "3": [
+        "dia"
+      ],
+      "4": [
+        "bash"
+      ],
+      "5": [
+        "tarunda"
+      ],
+      "5217": [
+        "cadenza"
+      ]
+    },
+    "provisional": false
+  },
+  {
+    "id": "orpheus_telos",
+    "name": "Orpheus Telos",
+    "arcana": "FOOL",
+    "level": 91,
+    "stats": [
+      63,
+      63,
+      63,
+      63,
+      63
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "RESIST",
+      "FIRE": "RESIST",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "RESIST",
+      "LIGHT": "RESIST",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "91": [
+        "victory_cry"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "orthrus",
+    "name": "Orthrus",
+    "arcana": "HANGED",
+    "level": 27,
+    "stats": [
+      22,
+      14,
+      20,
+      18,
+      15
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "27": [
+        "agilao",
+        "fatal_end",
+        "raging_tiger"
+      ],
+      "28": [
+        "counter"
+      ],
+      "29": [
+        "resist_poison"
+      ],
+      "31": [
+        "eerie_sound"
+      ],
+      "32": [
+        "matarukaja"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "ose",
+    "name": "Ose",
+    "arcana": "FOOL",
+    "level": 41,
+    "stats": [
+      32,
+      23,
+      28,
+      25,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "41": [
+        "blade_of_fury",
+        "matarunda",
+        "multi_target_boost"
+      ],
+      "42": [
+        "deathbound"
+      ],
+      "43": [
+        "null_rage"
+      ],
+      "45": [
+        "life_aid"
+      ],
+      "47": [
+        "tempest_slash"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "pale_rider",
+    "name": "Pale Rider",
+    "arcana": "DEATH",
+    "level": 23,
+    "stats": [
+      20,
+      18,
+      13,
+      17,
+      11
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "WEAK",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "23": [
+        "fatal_end",
+        "maeiga",
+        "resist_fear"
+      ],
+      "24": [
+        "mamudo"
+      ],
+      "25": [
+        "eiga"
+      ],
+      "26": [
+        "survive_light"
+      ],
+      "28": [
+        "null_fear"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "parvati",
+    "name": "Parvati",
+    "arcana": "PRIESTESS",
+    "level": 48,
+    "stats": [
+      26,
+      40,
+      26,
+      31,
+      31
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "48": [
+        "diarama",
+        "mabaisudi",
+        "mabufula"
+      ],
+      "49": [
+        "amrita_drop"
+      ],
+      "50": [
+        "mediarama"
+      ],
+      "52": [
+        "divine_grace"
+      ],
+      "53": [
+        "bufudyne"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "pazuzu",
+    "name": "Pazuzu",
+    "arcana": "DEVIL",
+    "level": 56,
+    "stats": [
+      34,
+      42,
+      35,
+      32,
+      34
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "REPEL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "56": [
+        "eigaon",
+        "poison_arrow",
+        "poison_mist"
+      ],
+      "57": [
+        "infuriate"
+      ],
+      "58": [
+        "neuro_slash"
+      ],
+      "59": [
+        "masukunda"
+      ],
+      "61": [
+        "ailment_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "pisaca",
+    "name": "Pisaca",
+    "arcana": "DEATH",
+    "level": 15,
+    "stats": [
+      10,
+      13,
+      16,
+      9,
+      7
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "WEAK",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "15": [
+        "eiga",
+        "mudo"
+      ],
+      "16": [
+        "dekaja"
+      ],
+      "17": [
+        "foul_breath"
+      ],
+      "18": [
+        "maeiga"
+      ],
+      "19": [
+        "mamudo"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "pixie",
+    "name": "Pixie",
+    "arcana": "LOVERS",
+    "level": 2,
+    "stats": [
+      2,
+      2,
+      2,
+      4,
+      3
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "2": [
+        "dia",
+        "pulinpa"
+      ],
+      "4": [
+        "zio"
+      ],
+      "5": [
+        "tarukaja"
+      ],
+      "6": [
+        "resist_confuse"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "power",
+    "name": "Power",
+    "arcana": "JUSTICE",
+    "level": 25,
+    "stats": [
+      20,
+      16,
+      15,
+      16,
+      15
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "25": [
+        "arrow_rain",
+        "hama",
+        "magaru"
+      ],
+      "26": [
+        "mahama"
+      ],
+      "27": [
+        "torrent_shot"
+      ],
+      "29": [
+        "dodge_dark"
+      ],
+      "30": [
+        "revolution"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "principality",
+    "name": "Principality",
+    "arcana": "JUSTICE",
+    "level": 16,
+    "stats": [
+      11,
+      13,
+      7,
+      12,
+      12
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "16": [
+        "hama",
+        "holy_arrow",
+        "kouha"
+      ],
+      "18": [
+        "recarm"
+      ],
+      "19": [
+        "dodge_elec"
+      ],
+      "21": [
+        "mahama"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "qitian_dasheng",
+    "name": "Qitian Dasheng",
+    "arcana": "TOWER",
+    "level": 67,
+    "stats": [
+      52,
+      38,
+      39,
+      50,
+      41
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NULL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "67": [
+        "apt_pupil",
+        "myriad_arrows",
+        "regenerate_3"
+      ],
+      "68": [
+        "primal_force"
+      ],
+      "70": [
+        "revolution"
+      ],
+      "72": [
+        "akasha_arts"
+      ],
+      "73": [
+        "evade_strike"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "queen_medb",
+    "name": "Queen Medb",
+    "arcana": "LOVERS",
+    "level": 28,
+    "stats": [
+      14,
+      26,
+      15,
+      19,
+      17
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "28": [
+        "maragi",
+        "mazio",
+        "me_patra"
+      ],
+      "29": [
+        "multi_target_boost"
+      ],
+      "30": [
+        "dodge_strike"
+      ],
+      "31": [
+        "dodge_pierce"
+      ],
+      "33": [
+        "matarunda"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "quetzalcoatl",
+    "name": "Quetzalcoatl",
+    "arcana": "SUN",
+    "level": 45,
+    "stats": [
+      25,
+      35,
+      33,
+      30,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "45": [
+        "bufula",
+        "garudyne",
+        "growth_3"
+      ],
+      "46": [
+        "single_target_boost"
+      ],
+      "48": [
+        "bufudyne"
+      ],
+      "50": [
+        "resist_ailments"
+      ],
+      "51": [
+        "ice_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "rakshasa",
+    "name": "Rakshasa",
+    "arcana": "STRENGTH",
+    "level": 15,
+    "stats": [
+      17,
+      8,
+      13,
+      11,
+      6
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "WEAK",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "15": [
+        "dodge_slash",
+        "regenerate_1",
+        "vacuum_slash"
+      ],
+      "16": [
+        "fatal_end"
+      ],
+      "18": [
+        "counter"
+      ],
+      "20": [
+        "getsu_ei"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "rangda",
+    "name": "Rangda",
+    "arcana": "MAGICIAN",
+    "level": 50,
+    "stats": [
+      33,
+      39,
+      28,
+      30,
+      30
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "REPEL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "WEAK",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "50": [
+        "counterstrike",
+        "matarunda",
+        "myriad_arrows"
+      ],
+      "51": [
+        "agidyne"
+      ],
+      "53": [
+        "high_counter"
+      ],
+      "54": [
+        "maeiga"
+      ],
+      "56": [
+        "evade_ice"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "raphael",
+    "name": "Raphael",
+    "arcana": "LOVERS",
+    "level": 60,
+    "stats": [
+      46,
+      42,
+      37,
+      31,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "60": [
+        "dekaja",
+        "mediarama",
+        "tempest_slash"
+      ],
+      "61": [
+        "auto_maraku"
+      ],
+      "62": [
+        "magarudyne"
+      ],
+      "64": [
+        "angelic_grace"
+      ],
+      "66": [
+        "heat_riser"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "saki_mitama",
+    "name": "Saki Mitama",
+    "arcana": "LOVERS",
+    "level": 36,
+    "stats": [
+      16,
+      30,
+      20,
+      22,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "WEAK",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "36": [
+        "diarama",
+        "ice_break",
+        "mabufu"
+      ],
+      "37": [
+        "mediarama"
+      ],
+      "38": [
+        "dekunda"
+      ],
+      "39": [
+        "null_shock"
+      ],
+      "41": [
+        "divine_grace"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "samael",
+    "name": "Samael",
+    "arcana": "DEATH",
+    "level": 41,
+    "stats": [
+      26,
+      31,
+      27,
+      21,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "41": [
+        "maeiga",
+        "masukunda",
+        "poison_mist"
+      ],
+      "42": [
+        "dekunda"
+      ],
+      "43": [
+        "mudoon"
+      ],
+      "44": [
+        "megido"
+      ],
+      "46": [
+        "ghastly_wail"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "sandalphon",
+    "name": "Sandalphon",
+    "arcana": "MOON",
+    "level": 80,
+    "stats": [
+      53,
+      53,
+      67,
+      46,
+      49
+    ],
+    "affinities": {
+      "SLASH": "NULL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "REPEL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "80": [
+        "akasha_arts",
+        "divine_judgment",
+        "mediarahan"
+      ],
+      "81": [
+        "angelic_grace"
+      ],
+      "83": [
+        "makougaon"
+      ],
+      "84": [
+        "salvation"
+      ],
+      "87": [
+        "drain_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "sandman",
+    "name": "Sandman",
+    "arcana": "FORTUNE",
+    "level": 20,
+    "stats": [
+      13,
+      13,
+      15,
+      15,
+      20
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "20": [
+        "garula",
+        "tentarafoo"
+      ],
+      "21": [
+        "null_confuse"
+      ],
+      "22": [
+        "agilao"
+      ],
+      "24": [
+        "confuse_boost"
+      ],
+      "26": [
+        "resist_elec"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "sarasvati",
+    "name": "Sarasvati",
+    "arcana": "PRIESTESS",
+    "level": 32,
+    "stats": [
+      17,
+      26,
+      16,
+      24,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "32": [
+        "bufula",
+        "diarama",
+        "mabaisudi"
+      ],
+      "33": [
+        "dodge_elec"
+      ],
+      "34": [
+        "anti_wind_master"
+      ],
+      "35": [
+        "mediarama"
+      ],
+      "36": [
+        "masukukaja"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "satan",
+    "name": "Satan",
+    "arcana": "JUDGEMENT",
+    "level": 82,
+    "stats": [
+      55,
+      68,
+      52,
+      43,
+      53
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "REPEL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "82": [
+        "diamond_dust",
+        "maeigaon",
+        "resist_ailments"
+      ],
+      "83": [
+        "megidolaon"
+      ],
+      "84": [
+        "concentrate"
+      ],
+      "86": [
+        "debilitate"
+      ],
+      "88": [
+        "repel_wind"
+      ],
+      "89": [
+        "black_viper"
+      ],
+      "5217": [
+        "armageddon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "sati",
+    "name": "Sati",
+    "arcana": "MAGICIAN",
+    "level": 29,
+    "stats": [
+      13,
+      27,
+      13,
+      21,
+      20
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "29": [
+        "agilao",
+        "maragi",
+        "media"
+      ],
+      "30": [
+        "baisudi"
+      ],
+      "32": [
+        "maragion"
+      ],
+      "33": [
+        "anti_fire_master"
+      ],
+      "35": [
+        "evade_ice"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "saturnus",
+    "name": "Saturnus",
+    "arcana": "STAR",
+    "level": 76,
+    "stats": [
+      43,
+      70,
+      45,
+      51,
+      41
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NULL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "76": [
+        "concentrate",
+        "inferno",
+        "maragidyne"
+      ],
+      "77": [
+        "fire_amp"
+      ],
+      "78": [
+        "primal_force"
+      ],
+      "80": [
+        "heat_riser"
+      ],
+      "82": [
+        "repel_ice"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "scathach",
+    "name": "Scathach",
+    "arcana": "PRIESTESS",
+    "level": 75,
+    "stats": [
+      55,
+      58,
+      40,
+      49,
+      42
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NULL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "75": [
+        "mabufudyne",
+        "magarudyne",
+        "myriad_arrows"
+      ],
+      "76": [
+        "auto_masuku"
+      ],
+      "77": [
+        "freeze_boost"
+      ],
+      "79": [
+        "invigorate_3"
+      ],
+      "81": [
+        "auto_mataru"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "seiryu",
+    "name": "Seiryu",
+    "arcana": "TEMPERANCE",
+    "level": 38,
+    "stats": [
+      24,
+      31,
+      27,
+      21,
+      18
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "38": [
+        "mabufula",
+        "mediarama"
+      ],
+      "39": [
+        "matarunda"
+      ],
+      "40": [
+        "tetrakarn"
+      ],
+      "41": [
+        "amrita_drop"
+      ],
+      "43": [
+        "bufudyne"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "setanta",
+    "name": "Setanta",
+    "arcana": "STAR",
+    "level": 29,
+    "stats": [
+      26,
+      19,
+      17,
+      21,
+      15
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "29": [
+        "auto_tarukaja",
+        "sharp_student",
+        "torrent_shot"
+      ],
+      "30": [
+        "zionga"
+      ],
+      "31": [
+        "charge"
+      ],
+      "33": [
+        "shift_boost"
+      ],
+      "34": [
+        "resist_fire"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "seth",
+    "name": "Seth",
+    "arcana": "MOON",
+    "level": 62,
+    "stats": [
+      47,
+      49,
+      42,
+      29,
+      35
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "REPEL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "62": [
+        "agidyne",
+        "garudyne",
+        "tetrakarn"
+      ],
+      "63": [
+        "makarakarn"
+      ],
+      "64": [
+        "fire_break"
+      ],
+      "66": [
+        "maragidyne"
+      ],
+      "68": [
+        "repel_ice"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "shiisaa",
+    "name": "Shiisaa",
+    "arcana": "HIEROPHANT",
+    "level": 23,
+    "stats": [
+      15,
+      15,
+      19,
+      16,
+      11
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "23": [
+        "assault_dive",
+        "mabufu"
+      ],
+      "24": [
+        "rakukaja"
+      ],
+      "26": [
+        "ice_boost"
+      ],
+      "27": [
+        "dodge_fire"
+      ],
+      "29": [
+        "herculean_strike"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "shiki_ouji",
+    "name": "Shiki-Ouji",
+    "arcana": "CHARIOT",
+    "level": 45,
+    "stats": [
+      33,
+      28,
+      28,
+      25,
+      28
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "REPEL",
+      "PIERCE": "NULL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "RESIST",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "45": [
+        "dekaja",
+        "kouga",
+        "torrent_shot"
+      ],
+      "46": [
+        "tetrakarn"
+      ],
+      "47": [
+        "matarukaja"
+      ],
+      "49": [
+        "evade_wind"
+      ],
+      "51": [
+        "null_fire"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "shiva",
+    "name": "Shiva",
+    "arcana": "TOWER",
+    "level": 82,
+    "stats": [
+      63,
+      57,
+      48,
+      57,
+      55
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NULL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "DRAIN",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "82": [
+        "enduring_soul",
+        "invigorate_3",
+        "maziodyne"
+      ],
+      "83": [
+        "pralaya"
+      ],
+      "84": [
+        "life_aid"
+      ],
+      "86": [
+        "god_s_hand"
+      ],
+      "88": [
+        "ali_dance"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "siegfried",
+    "name": "Siegfried",
+    "arcana": "STRENGTH",
+    "level": 54,
+    "stats": [
+      44,
+      29,
+      38,
+      36,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NULL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "54": [
+        "auto_rebellion",
+        "charge",
+        "deathbound"
+      ],
+      "55": [
+        "auto_masuku"
+      ],
+      "57": [
+        "crit_rate_amp"
+      ],
+      "59": [
+        "brave_blade"
+      ],
+      "61": [
+        "slash_amp"
+      ],
+      "5217": [
+        "scarlet_havoc"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "silky",
+    "name": "Silky",
+    "arcana": "LOVERS",
+    "level": 5,
+    "stats": [
+      3,
+      7,
+      3,
+      4,
+      5
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "WEAK",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "5": [
+        "bewilder",
+        "bufu"
+      ],
+      "6": [
+        "dia"
+      ],
+      "7": [
+        "baisudi"
+      ],
+      "9": [
+        "sharp_student"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "skadi",
+    "name": "Skadi",
+    "arcana": "EMPRESS",
+    "level": 68,
+    "stats": [
+      52,
+      58,
+      33,
+      40,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "DRAIN",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "68": [
+        "mabufudyne",
+        "tetrakarn",
+        "vorpal_blade"
+      ],
+      "69": [
+        "diamond_dust"
+      ],
+      "70": [
+        "maeigaon"
+      ],
+      "72": [
+        "ice_amp"
+      ],
+      "75": [
+        "drain_fire"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "slime",
+    "name": "Slime",
+    "arcana": "FOOL",
+    "level": 12,
+    "stats": [
+      10,
+      6,
+      14,
+      6,
+      7
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "RESIST",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "12": [
+        "bash",
+        "evil_touch",
+        "raging_tiger"
+      ],
+      "13": [
+        "mudo"
+      ],
+      "15": [
+        "fire_break"
+      ],
+      "16": [
+        "survive_light"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "succubus",
+    "name": "Succubus",
+    "arcana": "DEVIL",
+    "level": 47,
+    "stats": [
+      26,
+      41,
+      28,
+      33,
+      27
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "WEAK",
+      "FIRE": "REPEL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "DRAIN",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "47": [
+        "maeiga",
+        "sexy_dance",
+        "spirit_drain"
+      ],
+      "48": [
+        "drain_ability"
+      ],
+      "49": [
+        "maragion"
+      ],
+      "51": [
+        "eigaon"
+      ],
+      "53": [
+        "evade_light"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "surt",
+    "name": "Surt",
+    "arcana": "MAGICIAN",
+    "level": 60,
+    "stats": [
+      43,
+      51,
+      40,
+      28,
+      34
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "60": [
+        "agidyne",
+        "auto_tarukaja",
+        "deathbound"
+      ],
+      "61": [
+        "maragidyne"
+      ],
+      "62": [
+        "marakunda"
+      ],
+      "64": [
+        "inferno"
+      ],
+      "66": [
+        "fire_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "susano_o",
+    "name": "Susano-o",
+    "arcana": "FOOL",
+    "level": 77,
+    "stats": [
+      71,
+      35,
+      43,
+      49,
+      55
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "REPEL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "WEAK",
+      "WIND": "NULL",
+      "LIGHT": "WEAK",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "77": [
+        "brave_blade",
+        "charge",
+        "vorpal_blade"
+      ],
+      "78": [
+        "auto_mataru"
+      ],
+      "79": [
+        "high_counter"
+      ],
+      "81": [
+        "slash_amp"
+      ],
+      "84": [
+        "repel_light"
+      ],
+      "5217": [
+        "trickster"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "suzaku",
+    "name": "Suzaku",
+    "arcana": "TEMPERANCE",
+    "level": 55,
+    "stats": [
+      31,
+      40,
+      32,
+      42,
+      31
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "REPEL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "55": [
+        "diarahan",
+        "maragion",
+        "samarecarm"
+      ],
+      "56": [
+        "regenerate_3"
+      ],
+      "57": [
+        "agidyne"
+      ],
+      "59": [
+        "fast_heal"
+      ],
+      "61": [
+        "fire_amp"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "take_mikazuchi",
+    "name": "Take-Mikazuchi",
+    "arcana": "EMPEROR",
+    "level": 23,
+    "stats": [
+      18,
+      17,
+      13,
+      15,
+      14
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "23": [
+        "elec_break",
+        "fatal_end",
+        "mazio"
+      ],
+      "24": [
+        "zionga"
+      ],
+      "26": [
+        "auto_tarukaja"
+      ],
+      "27": [
+        "getsu_ei"
+      ],
+      "28": [
+        "mazionga"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "take_minakata",
+    "name": "Take-Minakata",
+    "arcana": "HANGED",
+    "level": 20,
+    "stats": [
+      14,
+      14,
+      21,
+      10,
+      10
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "WEAK",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "20": [
+        "auto_rakukaja",
+        "dekaja",
+        "zio"
+      ],
+      "21": [
+        "survive_dark"
+      ],
+      "22": [
+        "zionga"
+      ],
+      "24": [
+        "dodge_strike"
+      ],
+      "25": [
+        "elec_boost"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "tam_lin",
+    "name": "Tam Lin",
+    "arcana": "LOVERS",
+    "level": 13,
+    "stats": [
+      12,
+      11,
+      8,
+      10,
+      5
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "13": [
+        "power_slash",
+        "sukukaja",
+        "zio"
+      ],
+      "15": [
+        "fatal_end"
+      ],
+      "17": [
+        "mazio"
+      ],
+      "18": [
+        "survive_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "thanatos",
+    "name": "Thanatos",
+    "arcana": "DEATH",
+    "level": 78,
+    "stats": [
+      52,
+      66,
+      53,
+      45,
+      40
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "RESIST",
+      "LIGHT": "WEAK",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "78": [
+        "ghastly_wail",
+        "maeigaon",
+        "mamudoon"
+      ],
+      "79": [
+        "dark_amp"
+      ],
+      "80": [
+        "enduring_soul"
+      ],
+      "82": [
+        "brave_blade"
+      ],
+      "84": [
+        "megidolaon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "thor",
+    "name": "Thor",
+    "arcana": "CHARIOT",
+    "level": 64,
+    "stats": [
+      54,
+      50,
+      42,
+      30,
+      35
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NULL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "64": [
+        "gigantic_fist",
+        "maziodyne",
+        "ziodyne"
+      ],
+      "66": [
+        "high_counter"
+      ],
+      "68": [
+        "elec_amp"
+      ],
+      "71": [
+        "god_s_hand"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "thoth",
+    "name": "Thoth",
+    "arcana": "HIEROPHANT",
+    "level": 40,
+    "stats": [
+      20,
+      40,
+      20,
+      25,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "WEAK",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "40": [
+        "diarama",
+        "mahama",
+        "zionga"
+      ],
+      "41": [
+        "mazionga"
+      ],
+      "43": [
+        "soul_shift"
+      ],
+      "44": [
+        "megido"
+      ],
+      "45": [
+        "concentrate"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "throne",
+    "name": "Throne",
+    "arcana": "JUSTICE",
+    "level": 52,
+    "stats": [
+      39,
+      35,
+      30,
+      30,
+      33
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "WEAK",
+      "PIERCE": "NORMAL",
+      "FIRE": "NULL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "REPEL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "52": [
+        "mahama",
+        "maragion",
+        "recarmdra"
+      ],
+      "53": [
+        "samarecarm"
+      ],
+      "54": [
+        "kougaon"
+      ],
+      "55": [
+        "hama_boost"
+      ],
+      "57": [
+        "mahamaon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "thunderbird",
+    "name": "Thunderbird",
+    "arcana": "SUN",
+    "level": 35,
+    "stats": [
+      18,
+      28,
+      18,
+      32,
+      21
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "WEAK",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "DRAIN",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "35": [
+        "mazionga",
+        "shock_boost"
+      ],
+      "36": [
+        "counterstrike"
+      ],
+      "37": [
+        "rebellion"
+      ],
+      "39": [
+        "ziodyne"
+      ],
+      "41": [
+        "null_elec"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "titania",
+    "name": "Titania",
+    "arcana": "LOVERS",
+    "level": 49,
+    "stats": [
+      19,
+      45,
+      23,
+      34,
+      36
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "49": [
+        "bufudyne",
+        "mabufula"
+      ],
+      "50": [
+        "magarula"
+      ],
+      "51": [
+        "freeze_boost"
+      ],
+      "53": [
+        "concentrate"
+      ],
+      "55": [
+        "mabufudyne"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "trumpeter",
+    "name": "Trumpeter",
+    "arcana": "JUDGEMENT",
+    "level": 59,
+    "stats": [
+      44,
+      44,
+      37,
+      35,
+      33
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "REPEL",
+      "DARK": "NULL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "59": [
+        "hamaon",
+        "high_counter",
+        "mudoon"
+      ],
+      "60": [
+        "makougaon"
+      ],
+      "62": [
+        "resist_ailments"
+      ],
+      "63": [
+        "mediarahan"
+      ],
+      "65": [
+        "debilitate"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "unicorn",
+    "name": "Unicorn",
+    "arcana": "PRIESTESS",
+    "level": 11,
+    "stats": [
+      5,
+      10,
+      12,
+      8,
+      7
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "11": [
+        "dia",
+        "kouha"
+      ],
+      "12": [
+        "hama"
+      ],
+      "13": [
+        "patra"
+      ],
+      "15": [
+        "auto_rakukaja"
+      ],
+      "16": [
+        "resist_rage"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "uriel",
+    "name": "Uriel",
+    "arcana": "AEON",
+    "level": 57,
+    "stats": [
+      47,
+      42,
+      35,
+      36,
+      30
+    ],
+    "affinities": {
+      "SLASH": "RESIST",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "DRAIN",
+      "ICE": "WEAK",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "57": [
+        "kougaon",
+        "sharp_student",
+        "vorpal_blade"
+      ],
+      "58": [
+        "agidyne"
+      ],
+      "60": [
+        "angelic_grace"
+      ],
+      "61": [
+        "mahamaon"
+      ],
+      "63": [
+        "heaven_s_blade"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "valkyrie",
+    "name": "Valkyrie",
+    "arcana": "STRENGTH",
+    "level": 10,
+    "stats": [
+      11,
+      7,
+      6,
+      8,
+      5
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "WEAK",
+      "ICE": "RESIST",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "10": [
+        "bufu",
+        "dodge_slash",
+        "power_slash"
+      ],
+      "12": [
+        "auto_sukukaja"
+      ],
+      "13": [
+        "vacuum_slash"
+      ],
+      "15": [
+        "fatal_end"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "vasuki",
+    "name": "Vasuki",
+    "arcana": "HANGED",
+    "level": 38,
+    "stats": [
+      27,
+      27,
+      35,
+      15,
+      17
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "RESIST",
+      "ELECTRIC": "RESIST",
+      "WIND": "WEAK",
+      "LIGHT": "REPEL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "38": [
+        "mahama",
+        "neuro_slash",
+        "poison_mist"
+      ],
+      "39": [
+        "recarmdra"
+      ],
+      "40": [
+        "hama_boost"
+      ],
+      "42": [
+        "counterstrike"
+      ],
+      "44": [
+        "mahamaon"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "virtue",
+    "name": "Virtue",
+    "arcana": "JUSTICE",
+    "level": 32,
+    "stats": [
+      21,
+      24,
+      15,
+      22,
+      22
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "REPEL",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "32": [
+        "kouga",
+        "magaru"
+      ],
+      "33": [
+        "null_poison"
+      ],
+      "34": [
+        "mahama"
+      ],
+      "35": [
+        "light_boost"
+      ],
+      "37": [
+        "makouga"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "vishnu",
+    "name": "Vishnu",
+    "arcana": "SUN",
+    "level": 78,
+    "stats": [
+      65,
+      55,
+      50,
+      53,
+      42
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "DRAIN",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "78": [
+        "akasha_arts",
+        "bufudyne",
+        "ziodyne"
+      ],
+      "79": [
+        "panta_rhei"
+      ],
+      "80": [
+        "concentrate"
+      ],
+      "82": [
+        "ali_dance"
+      ],
+      "84": [
+        "salvation"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "white_rider",
+    "name": "White Rider",
+    "arcana": "STRENGTH",
+    "level": 46,
+    "stats": [
+      36,
+      27,
+      30,
+      27,
+      25
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NULL",
+      "DARK": "REPEL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "46": [
+        "arrow_rain",
+        "maeiga",
+        "mudoon"
+      ],
+      "47": [
+        "poison_arrow"
+      ],
+      "48": [
+        "pierce_boost"
+      ],
+      "49": [
+        "null_fear"
+      ],
+      "51": [
+        "evade_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "yakshini",
+    "name": "Yakshini",
+    "arcana": "EMPRESS",
+    "level": 32,
+    "stats": [
+      33,
+      16,
+      13,
+      25,
+      18
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "RESIST",
+      "FIRE": "WEAK",
+      "ICE": "NULL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "32": [
+        "fatal_end",
+        "sexy_dance"
+      ],
+      "33": [
+        "blade_of_fury"
+      ],
+      "35": [
+        "charm_boost"
+      ],
+      "36": [
+        "multi_target_boost"
+      ],
+      "37": [
+        "deathbound"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "yamata_no_orochi",
+    "name": "Yamata-no-Orochi",
+    "arcana": "MOON",
+    "level": 25,
+    "stats": [
+      19,
+      19,
+      17,
+      13,
+      14
+    ],
+    "affinities": {
+      "SLASH": "WEAK",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NULL",
+      "ELECTRIC": "NULL",
+      "WIND": "NORMAL",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "25": [
+        "bufula",
+        "single_shot",
+        "zio"
+      ],
+      "26": [
+        "single_target_boost"
+      ],
+      "27": [
+        "null_freeze"
+      ],
+      "29": [
+        "marakukaja"
+      ],
+      "30": [
+        "cruel_attack"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "yatagarasu",
+    "name": "Yatagarasu",
+    "arcana": "SUN",
+    "level": 24,
+    "stats": [
+      16,
+      16,
+      14,
+      24,
+      13
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "WEAK",
+      "ELECTRIC": "NORMAL",
+      "WIND": "RESIST",
+      "LIGHT": "NULL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "24": [
+        "growth_1",
+        "sukunda",
+        "zan_ei"
+      ],
+      "25": [
+        "sukukaja"
+      ],
+      "26": [
+        "diarama"
+      ],
+      "28": [
+        "infuriate"
+      ],
+      "30": [
+        "masukunda"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "yurlungur",
+    "name": "Yurlungur",
+    "arcana": "TEMPERANCE",
+    "level": 71,
+    "stats": [
+      41,
+      45,
+      63,
+      42,
+      38
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "NORMAL",
+      "PIERCE": "NORMAL",
+      "FIRE": "RESIST",
+      "ICE": "NORMAL",
+      "ELECTRIC": "RESIST",
+      "WIND": "NORMAL",
+      "LIGHT": "RESIST",
+      "DARK": "WEAK",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "71": [
+        "evade_elec",
+        "evade_fire",
+        "kougaon"
+      ],
+      "72": [
+        "maziodyne"
+      ],
+      "74": [
+        "revolution"
+      ],
+      "75": [
+        "makougaon"
+      ],
+      "77": [
+        "evade_dark"
+      ]
+    },
+    "provisional": true
+  },
+  {
+    "id": "zouchouten",
+    "name": "Zouchouten",
+    "arcana": "CHARIOT",
+    "level": 14,
+    "stats": [
+      14,
+      7,
+      13,
+      6,
+      10
+    ],
+    "affinities": {
+      "SLASH": "NORMAL",
+      "PHYSICAL": "RESIST",
+      "PIERCE": "NORMAL",
+      "FIRE": "NORMAL",
+      "ICE": "NORMAL",
+      "ELECTRIC": "NORMAL",
+      "WIND": "WEAK",
+      "LIGHT": "NORMAL",
+      "DARK": "NORMAL",
+      "ALMIGHTY": "NORMAL"
+    },
+    "learnset": {
+      "14": [
+        "bash",
+        "crit_rate_boost",
+        "zio"
+      ],
+      "15": [
+        "auto_tarukaja"
+      ],
+      "16": [
+        "assault_dive"
+      ],
+      "18": [
+        "rebellion"
+      ],
+      "19": [
+        "swift_strike"
+      ]
+    },
+    "provisional": true
+  }
+]

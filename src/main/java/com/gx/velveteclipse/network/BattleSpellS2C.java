@@ -10,7 +10,7 @@ import net.minecraftforge.fml.DistExecutor;
 /** Server-selected impact positions. Cosmetic only; the server alone applies damage. */
 public record BattleSpellS2C(String skill,List<BattleLightningS2C.Strike> targets) {
     public BattleSpellS2C {
-        if(!skill.equals("agi")&&!skill.equals("eiga"))throw new IllegalArgumentException("Unknown spell visual");
+        if(!com.gx.velveteclipse.core.persona.SpellVisuals.supported(skill))throw new IllegalArgumentException("Unknown spell visual");
         if(targets.size()>5)throw new IllegalArgumentException("Too many spell targets");
         targets=List.copyOf(targets);
         if(targets.stream().anyMatch(p->!Double.isFinite(p.x())||!Double.isFinite(p.y())||!Double.isFinite(p.z())))throw new IllegalArgumentException("Invalid spell position");

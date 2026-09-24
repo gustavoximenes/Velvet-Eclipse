@@ -23,7 +23,7 @@ public final class ShuffleAudit {
   for(int floor:new int[]{1,2,5,8,20,50,99,250})for(int seed=0;seed<40;seed++){
    var r=ShuffleRules.roll(floor,Set.of("cinder_wisp"),new Random(seed));check(r.cards().size()>=1&&r.cards().size()<=5,"1..5 cards");sizes.add(r.cards().size());
    check(r.cards().stream().map(ShuffleRules.Card::kind).distinct().count()==r.cards().size(),"different card suits per offer");
-   for(var card:r.cards()){kinds.add(card.kind());if(card.kind()==ShuffleRules.Kind.PERSONA){check(PersonaRegistry.persona(card.id()).orElseThrow().baseLevel()<=ShuffleRules.level(floor),"no high-level Persona on low floors");check(card.amount()==ShuffleRules.level(floor),"acquired Persona matches floor level");}if(card.kind()==ShuffleRules.Kind.SWORDS)check(ShuffleRules.skillLevel(card.id())<=ShuffleRules.level(floor),"no high-tier Skill Cards on low floors");}
+   for(var card:r.cards()){kinds.add(card.kind());if(card.kind()==ShuffleRules.Kind.PERSONA){check(ReloadShuffle.personas(floor).containsKey(card.id()),"Persona belongs to exact floor pool");check(card.amount()==PersonaRegistry.persona(card.id()).orElseThrow().baseLevel(),"acquired Persona starts at its native level");}if(card.kind()==ShuffleRules.Kind.SWORDS)check(ReloadShuffle.cards(card.rank()).contains(card.id()),"skill belongs to the floor's card rank");}
   }
   check(kinds.equals(EnumSet.allOf(ShuffleRules.Kind.class))&&sizes.size()==5,"all types and deck sizes reachable");
   var player=new Player();var data=new PlayerPersonaData();data.addYen(123456789L);data.save(player);check(PlayerPersonaData.load(player).yen()==123456789L,"yen persists separately from inventory");
