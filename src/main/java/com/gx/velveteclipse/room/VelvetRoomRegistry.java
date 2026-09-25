@@ -24,6 +24,7 @@ public final class VelvetRoomRegistry {
   @Override public net.minecraft.world.phys.shapes.VoxelShape m_5940_(net.minecraft.world.level.block.state.BlockState s,net.minecraft.world.level.BlockGetter l,net.minecraft.core.BlockPos p,net.minecraft.world.phys.shapes.CollisionContext c){return Block.m_49796_(-8,0,-8,24,14,24);}
  });
  public static final RegistryObject<Item> KEY=ITEMS.register("velvet_key",VelvetKeyItem::new);
+ public static final RegistryObject<Item> EVOKER=ITEMS.register("model_evoker",()->new SpyglassItem(new Item.Properties().m_41487_(1)));
  static {for(var block:BLOCKS.getEntries())ITEMS.register(block.getId().m_135815_(),()->new BlockItem(block.get(),new Item.Properties()));}
  static {for(var block:com.gx.velveteclipse.darkhour.DarkHourRegistry.creativeBlocks())ITEMS.register(block.getId().m_135815_(),()->new BlockItem(block.get(),new Item.Properties()));}
  public static final RegistryObject<EntityType<VelvetSeatEntity>> SEAT=ENTITIES.register("velvet_seat",()->EntityType.Builder.<VelvetSeatEntity>m_20704_(VelvetSeatEntity::new,MobCategory.MISC).m_20699_(.1f,.1f).m_20702_(8).m_20717_(1).m_20712_("velvet_eclipse:velvet_seat"));
