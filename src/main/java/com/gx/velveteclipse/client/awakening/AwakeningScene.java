@@ -108,7 +108,8 @@ public final class AwakeningScene {
         for(int x:new int[]{-5,5})quad(b,x,.008,-12,x+.06,.008,-12,x+.06,.008,8,x,.008,8,0xFF306049);
         BufferUploader.m_231202_(b.m_231175_());RenderSystem.enableCull();
     }
-    private static void quad(BufferBuilder b,double ax,double ay,double az,double bx,double by,double bz,double cx,double cy,double cz,double dx,double dy,double dz,int color){b.m_5483_(ax,ay,az).m_85969_(color).m_5752_();b.m_5483_(bx,by,bz).m_85969_(color).m_5752_();b.m_5483_(cx,cy,cz).m_85969_(color).m_5752_();b.m_5483_(dx,dy,dz).m_85969_(color).m_5752_();}
+    private static void quad(BufferBuilder b,double ax,double ay,double az,double bx,double by,double bz,double cx,double cy,double cz,double dx,double dy,double dz,int color){vertex(b,ax,ay,az,color);vertex(b,bx,by,bz,color);vertex(b,cx,cy,cz,color);vertex(b,dx,dy,dz,color);}
+    private static void vertex(BufferBuilder b,double x,double y,double z,int color){b.m_5483_(x,y,z).m_6122_((color>>16)&255,(color>>8)&255,color&255,color>>>24).m_5752_();}
     public double[] project(double x,double y,double z){var f=sample;double dx=x-f[0],dy=y-f[1],dz=z-f[2],depth=dx*f[9]+dy*f[10]+dz*f[11];double px=(dx*f[3]+dy*f[4]+dz*f[5])*f[12]/Math.max(.08,depth),py=-(dx*f[6]+dy*f[7]+dz*f[8])*f[12]/Math.max(.08,depth),c=Math.cos(f[13]),s=Math.sin(f[13]);return new double[]{480+c*px-s*py,270+s*px+c*py};}
     static double smooth(double t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);}
 }
