@@ -42,7 +42,7 @@ public final class PermitAudit {
   r.delivered("a","igor_contract");r=gson.fromJson(gson.toJson(r),RewardLedger.class);check(!r.pending("a").contains("igor_contract")&&r.pending("b").contains("igor_contract"),"delivery removes only the correct player's pending item");
  }
  private static void capacity(){
-  var d=new PlayerPersonaData();check(d.personaCapacity()==2&&d.givePersona("izanagi"),"initial capacity includes starter");check(!d.givePersona("iron_oni")&&!d.givePersonaInstance(new PersonaInstance(PersonaRegistry.persona("iron_oni").orElseThrow())),"all acquisition APIs enforce cap");
+  var d=new PlayerPersonaData();d.givePersona("cinder_wisp");check(d.personaCapacity()==2&&d.givePersona("izanagi"),"initial capacity includes starter");check(!d.givePersona("iron_oni")&&!d.givePersonaInstance(new PersonaInstance(PersonaRegistry.persona("iron_oni").orElseThrow())),"all acquisition APIs enforce cap");
   var shuffle=new ShuffleData();var card=new ShuffleRules.Card(ShuffleRules.Kind.PERSONA,"iron_oni",20,1);shuffle.add(new ShuffleRules.Round("limit",25,List.of(card)));
   check(ShuffleRewards.claim(shuffle,d,"limit",0,x->true).card()==null&&shuffle.first()!=null,"full roster does not consume shuffle reward");
   check(d.expandPersonaCapacity()&&d.personaCapacity()==3,"contract adds exactly one slot");check(ShuffleRewards.claim(shuffle,d,"limit",0,x->true).card()!=null&&d.rosterIds().size()==3,"claim works after capacity increase");
@@ -56,8 +56,8 @@ public final class PermitAudit {
   String reserve=d.reserveIds().iterator().next();check(d.equipPersona(reserve)&&d.rosterIds().size()==2&&d.reserveIds().contains("iron_oni"),"reserve selection exchanges active persona without bypassing capacity");
   d.save(p);d=PlayerPersonaData.load(p);check(d.rewardInstance("iron_oni").level()==37&&d.rewardInstance("iron_oni").learnedSkills().contains("media"),"reserved levels and inherited skills persist");
   check(d.expandPersonaCapacity()&&d.equipPersona("iron_oni")&&d.rosterIds().size()==3&&d.instance("iron_oni").level()==37,"contract makes room for preserved reserve");
-  d=new PlayerPersonaData();d.givePersona("izanagi");d.setPlayerLevel(99);check(d.replaceFusion("cinder_wisp","izanagi",new PersonaInstance(PersonaRegistry.persona("iron_oni").orElseThrow()))&&d.rosterIds().size()==1&&d.personaCapacity()==2,"fusion remains possible at cap and releases a slot");
-  d=new PlayerPersonaData();d.givePersona("izanagi");d.setPlayerLevel(99);var recipe=com.gx.velveteclipse.core.fusion.FusionTransaction.preview(d,"cinder_wisp","izanagi",null);String resultId=recipe.result().definitionId();d.save(p);parts=p.data.m_128461_("velvet_eclipse:data_v1").split("\\|",-1);parts[12]=resultId+",80,0,media";p.data.m_128359_("velvet_eclipse:data_v1",String.join("|",parts));d=PlayerPersonaData.load(p);
+  d=new PlayerPersonaData();d.givePersona("cinder_wisp");d.givePersona("izanagi");d.setPlayerLevel(99);check(d.replaceFusion("cinder_wisp","izanagi",new PersonaInstance(PersonaRegistry.persona("iron_oni").orElseThrow()))&&d.rosterIds().size()==1&&d.personaCapacity()==2,"fusion remains possible at cap and releases a slot");
+  d=new PlayerPersonaData();d.givePersona("cinder_wisp");d.givePersona("izanagi");d.setPlayerLevel(99);var recipe=com.gx.velveteclipse.core.fusion.FusionTransaction.preview(d,"cinder_wisp","izanagi",null);String resultId=recipe.result().definitionId();d.save(p);parts=p.data.m_128461_("velvet_eclipse:data_v1").split("\\|",-1);parts[12]=resultId+",80,0,media";p.data.m_128359_("velvet_eclipse:data_v1",String.join("|",parts));d=PlayerPersonaData.load(p);
   check(com.gx.velveteclipse.core.fusion.FusionTransaction.commit(d,"cinder_wisp","izanagi",null)&&d.instance(resultId).level()==80&&d.instance(resultId).learnedSkills().contains("media")&&!d.reserveIds().contains(resultId),"fusion preserves a previously archived result and promotes it once");
  }
  private static UUID id(int n){return new UUID(0,n);}

@@ -19,7 +19,7 @@ public final class MenuActions {
         }
         if(action.equals("heal")){
             SkillDefinition skill=PersonaRegistry.skill(argument).orElse(null);
-            if(skill==null||!data.activeInstance().learnedSkills().contains(argument)||skill.element()!=Element.HEALING||skill.hpPercentCost()>0)
+            if(skill==null||!data.hasPersona()||!data.activeInstance().learnedSkills().contains(argument)||skill.element()!=Element.HEALING||skill.hpPercentCost()>0)
                 return new Result("Habilidade indisponivel fora do combate.",false);
             if(data.hp()<=0||data.hp()>=data.maxHp())return new Result("Nao ha HP para recuperar.",false);
             if(data.sp()<skill.spCost())return new Result("SP insuficiente.",false);

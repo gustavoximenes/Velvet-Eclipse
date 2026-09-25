@@ -49,6 +49,7 @@ public final class BattleService {
     }
     public static BattleSession startEncounter(Object p,int count,int dungeonFloor,boolean boss){
         if(com.gx.velveteclipse.raid.RaidService.inside(p))return current(p);
+        if(!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p))return null;
         BattleFormation.validateCount(count);
         if(com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));
@@ -64,6 +65,7 @@ public final class BattleService {
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;
     }
     public static BattleSession startWorldEncounter(Object p,com.gx.velveteclipse.shadow.FieldShadowEntity field,EncounterOpening opening){
+        if(!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p))return null;
         if(com.gx.velveteclipse.raid.RaidService.inside(p)||com.gx.velveteclipse.room.VelvetRoomService.inside(p)||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||current(p)!=null)return current(p);
         int floor=Math.max(0,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(p));var roster=com.gx.velveteclipse.shadow.ShadowEncounterRules.roll(field.encounterSeed(),floor,field.rare());
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));int index=0;
@@ -75,7 +77,7 @@ public final class BattleService {
         syncAll(g,message);return s;
     }
     public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
-        if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null))return null;
+        if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null||!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)))return null;
         var participants=new ArrayList<BattleCombatant>();for(var p:party)participants.add(combatant(p));
         var def=EnemyCatalog.get(stage==0?"magic_hand":stage==1?"trance_twins":"grieving_tiara");
         int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):180+65*party.size();
@@ -110,7 +112,7 @@ public final class BattleService {
         if(!g.session.join(combatant(p)))return false;
         attach(g,p,anchor);VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());syncAll(g,RuntimeBridge.playerName(p)+" entrou na batalha!");return true;
     }
-    private static boolean canJoin(ServerPlayer p,Encounter g){return !g.raid&&g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
+    private static boolean canJoin(ServerPlayer p,Encounter g){return com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)&&!g.raid&&g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
 
     /** Leaving/disconnecting removes only that participant; an interrupted reservation costs nothing. */
     public static void stop(Object p){
@@ -240,6 +242,7 @@ public final class BattleService {
             ModNetwork.sendPresentation(p,new BattleTacticsS2C(turnId,own&&g.session.oneMore(),g.session.tacticalEvent(),g.session.tacticalKind(),own&&g.session.canAllOut(turnId),own?g.session.batonTargets().stream().map(BattleCombatant::id).toList():List.of(),downed));
         }
         var enemy=targets.stream().filter(t->!t.ally()&&t.hp()>0).findFirst().orElse(null);
+        if(persona==null){ModNetwork.sendToPlayer(p,new BattleSnapshotS2C(false,false,"","Sem Persona",data.hp(),data.maxHp(),data.sp(),data.maxSp(),"",0,0,data.pulseTonics(),List.of(),List.of(),message==null?"":message));return;}
         boolean turn=actor!=null&&g.session.state()==BattleState.ACTIVE&&!g.results.started()&&g.session.currentActor()==actor&&!busy(g)&&g.session.prepared()==null;
         ModNetwork.sendToPlayer(p,new BattleSnapshotS2C(g!=null,turn,persona.definitionId(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),actor==null?data.hp():actor.hp(),actor==null?data.maxHp():actor.maxHp(),actor==null?data.sp():actor.sp(),actor==null?data.maxSp():actor.maxSp(),enemy==null?"":enemy.name(),enemy==null?0:enemy.hp(),enemy==null?0:enemy.maxHp(),data.pulseTonics(),persona.learnedSkills().stream().filter(id->PersonaRegistry.skill(id).map(s->!s.isPassive()).orElse(false)).sorted().toList(),new ArrayList<>(data.rosterIds()),message==null?"":message,persona.learnedSkills().stream().filter(id->PersonaRegistry.skill(id).map(SkillDefinition::isPassive).orElse(false)).sorted().toList()));
     }

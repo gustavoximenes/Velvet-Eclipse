@@ -26,7 +26,7 @@ public final class PartyService {
  private static ServerPlayer online(ServerPlayer p,String id){try{return p.m_20194_().m_6846_().m_11259_(UUID.fromString(id));}catch(IllegalArgumentException e){return null;}}
  public static List<ServerPlayer> members(ServerPlayer p){var g=state(p).roster.group(id(p));return g==null?List.of(p):g.members().stream().map(s->online(p,s)).filter(Objects::nonNull).toList();}
  public static boolean mergeMap(ServerPlayer p,com.gx.velveteclipse.darkhour.TartarusMapData chart,long cycle){var s=state(p);var g=s.roster.group(id(p));if(g==null)return false;var common=s.maps.computeIfAbsent(g.id(),key->new com.gx.velveteclipse.darkhour.TartarusMapData());boolean dirty=common.reset(cycle);dirty|=common.merge(chart);boolean changed=chart.merge(common);if(dirty)s.m_77762_();return changed;}
- private static boolean available(ServerPlayer p){return p!=null&&p.m_6084_()&&BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.preparing(p);}
+ private static boolean available(ServerPlayer p){return p!=null&&!com.gx.velveteclipse.awakening.AwakeningService.active(p)&&p.m_6084_()&&BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.preparing(p);}
  private static PartyNetwork.Person person(ServerPlayer p,State s,String id){var other=online(p,id);return new PartyNetwork.Person(id,other==null?s.names.getOrDefault(id,"Jogador offline"):other.m_7755_().getString(),other!=null);}
  public static void view(ServerPlayer p,boolean open,String message){
   var s=state(p);s.names.put(id(p),p.m_7755_().getString());s.m_77762_();var group=s.roster.group(id(p));var bag=EquipmentData.load(p);var items=new ArrayList<PartyNetwork.Asset>();var stacks=new HashMap<String,ItemStack>();

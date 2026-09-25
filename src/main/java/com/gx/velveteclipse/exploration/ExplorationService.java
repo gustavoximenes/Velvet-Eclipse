@@ -36,6 +36,7 @@ public final class ExplorationService {
     public static boolean blocksBattleStart(Object p){State s=p instanceof ServerPlayer player?PLAYERS.get(player.m_20148_()):null;return s!=null&&s.mode==Mode.BATTLE_ENTRY&&!s.commit;}
     public static boolean reserved(Object entity){return entity instanceof Entity e&&RESERVATIONS.reserved(e.m_20148_());}
     public static void request(ServerPlayer p,int action){
+        if(com.gx.velveteclipse.awakening.AwakeningService.active(p))return;
         if(!p.m_6084_()||p.m_5833_()||p.m_20159_())return;
         State s=PLAYERS.get(p.m_20148_());
         if(action==ExplorationNetwork.TOGGLE){
@@ -100,6 +101,7 @@ public final class ExplorationService {
         return best;
     }
     private static void prepare(State s,Entity target){
+        if(!com.gx.velveteclipse.awakening.AwakeningService.canBattle(s.player)){RESERVATIONS.release(s.player.m_20148_());return;}
         s.opening=ShadowWorldService.opening(s.player,target);s.shadow=target;s.shadowAnchor=target.m_20182_();
         if(target instanceof Mob mob){s.previousNoAi=mob.m_21525_();mob.m_21557_(true);mob.m_21573_().m_26573_();}
         s.start=s.player.m_20182_();s.end=s.start;

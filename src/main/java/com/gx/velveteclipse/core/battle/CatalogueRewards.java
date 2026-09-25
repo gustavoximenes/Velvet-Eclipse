@@ -7,7 +7,7 @@ import com.gx.velveteclipse.forge.PlayerPersonaData;
 /** Victory-only recovery and experience for inactive stock. */
 public final class CatalogueRewards {
  public static void victory(PlayerPersonaData data,int xp){
-  var active=data.activeInstance();var bonuses=EquipmentBonuses.NONE.withSkills(active.learnedSkills());
+  var active=data.activeInstance();if(active==null)return;var bonuses=EquipmentBonuses.NONE.withSkills(active.learnedSkills());
   int restore=bonuses.has("victory cry")?100:bonuses.has("life aid")?8:0;
   if(data.hp()>0&&restore>0)data.setResources(data.hp()+data.maxHp()*restore/100,data.sp()+data.maxSp()*restore/100);
   for(var p:data.rosterInstances())if(!p.definitionId().equals(active.definitionId())){

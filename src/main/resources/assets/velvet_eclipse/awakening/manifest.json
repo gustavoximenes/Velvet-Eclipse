@@ -1,0 +1,30 @@
+[
+  {
+    "file": "intro.bin.gz",
+    "meshes": 95,
+    "frames": 321,
+    "seconds": 16,
+    "bytes": 786294
+  },
+  {
+    "file": "orpheus.bin.gz",
+    "meshes": 125,
+    "frames": 781,
+    "seconds": 39.0,
+    "bytes": 1724857
+  },
+  {
+    "file": "izanagi.bin.gz",
+    "meshes": 128,
+    "frames": 642,
+    "seconds": 32.04,
+    "bytes": 1767626
+  },
+  {
+    "file": "arsene.bin.gz",
+    "meshes": 152,
+    "frames": 1025,
+    "seconds": 51.16,
+    "bytes": 3407497
+  }
+]

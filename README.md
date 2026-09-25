@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.29 — Despertar da primeira Persona
+
+Jogadores novos começam sem Persona. Use a Evoker com o botão direito durante a Dark Hour para assistir à cutscene aprovada, escolher Orpheus, Izanagi ou Arsène e receber a conquista **I am thou Thou art I**. Skin do próprio jogador, vozes e trilhas revisadas, receita da Evoker e proteção contra recompensas duplicadas. [Controles, receita e validação](docs/AWAKENING.md). Saves existentes preservam suas Personas.
+
 # Velvet Eclipse 0.6.28 — Catálogo Reload e Compendium
 
 173 Personas do jogo base, 345 skills no total incluindo conteúdo anterior e Frei/Psi, Skill Cards, modelos provisórios, passivas funcionais, fusões especiais/cooperativas com até duas skills herdadas e Compendium de Igor. Efeitos próprios por elemento e caminho de renderização compatível com OptiFine. [Uso, adaptações e validação](docs/RELOAD-CATALOGUE.md).

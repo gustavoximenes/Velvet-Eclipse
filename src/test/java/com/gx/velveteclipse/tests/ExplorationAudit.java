@@ -35,7 +35,9 @@ public final class ExplorationAudit {
             for(int rows=1;rows<=7;rows++){var panel=BattleMenuLayout.submenuPanel(w,h,rows);check(panel.y()>=0,"submenu fits");for(int row=0;row<rows;row++){var r=BattleMenuLayout.submenuRow(w,h,rows,row);check(r.y()+r.h()<=panel.y()+panel.h(),"submenu click bounds");}}
         }
         String digest=java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(CombatScenario.run().getBytes(java.nio.charset.StandardCharsets.UTF_8)));
-        var golden=ExplorationAudit.class.getResourceAsStream("/combat-0.5.30.sha256");if(golden!=null)check(digest.equals(new String(golden.readAllBytes()).trim()),"battle behavior differs from 0.5.30");
+        // Captured from the published 0.6.28 JAR. The 0.5.30 fixture predates the approved combat updates.
+        var golden=ExplorationAudit.class.getResourceAsStream("/combat-0.6.28.sha256");check(golden!=null,"published combat baseline exists");
+        try(golden){check(digest.equals(new String(golden.readAllBytes()).trim()),"battle behavior differs from 0.6.28");}
         System.out.println("PASS "+checks+" checks; 20 HUD sizes/scales; 120 seeded battle regressions; digest "+digest);
     }
 }

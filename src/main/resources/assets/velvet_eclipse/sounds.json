@@ -1,0 +1,58 @@
+{
+  "awakening.intro": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/intro",
+        "stream": true
+      }
+    ]
+  },
+  "awakening.orpheus_choice": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/orpheus_choice",
+        "stream": true
+      }
+    ]
+  },
+  "awakening.orpheus_continuation": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/orpheus_continuation",
+        "stream": true
+      }
+    ]
+  },
+  "awakening.izanagi_choice": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/izanagi_choice",
+        "stream": true
+      }
+    ]
+  },
+  "awakening.izanagi_continuation": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/izanagi_continuation",
+        "stream": true
+      }
+    ]
+  },
+  "awakening.arsene_choice": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/arsene_choice",
+        "stream": true
+      }
+    ]
+  },
+  "awakening.arsene_continuation": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:awakening/arsene_continuation",
+        "stream": true
+      }
+    ]
+  }
+}

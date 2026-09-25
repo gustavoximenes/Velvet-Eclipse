@@ -19,7 +19,7 @@ public final class ReloadCatalogueAudit {
  private static void check(boolean ok,String message){checks++;if(!ok)throw new AssertionError(message);}
  private static PersonaInstance persona(String id){return new PersonaInstance(PersonaRegistry.persona(id).orElseThrow());}
  private static BattleCombatant fighter(int id,Set<String> skills){return new BattleCombatant(new UUID(0,id),"Fighter "+id,id<10?BattleSide.PLAYERS:BattleSide.ENEMIES,new PersonaInstance("orpheus",60,0,skills),4000,4000,500,500);}
- private static PlayerPersonaData stock(String... ids){var d=new PlayerPersonaData();while(d.expandPersonaCapacity()){}d.setPlayerLevel(99);for(String id:ids)check(d.givePersona(id),"acquire "+id);return d;}
+ private static PlayerPersonaData stock(String... ids){var d=new PlayerPersonaData();d.givePersona("cinder_wisp");while(d.expandPersonaCapacity()){}d.setPlayerLevel(99);for(String id:ids)check(d.givePersona(id),"acquire "+id);return d;}
  public static final class Player {final net.minecraft.nbt.CompoundTag tag=new net.minecraft.nbt.CompoundTag();public net.minecraft.nbt.CompoundTag getPersistentData(){return tag;}}
  public static void main(String[] args)throws Exception{Files.createDirectories(REPORT);catalogue();combat();fusion();compendium();shuffle();assets();effects();System.out.println("PASS Reload catalogue: "+checks+" checks; "+ReloadCatalogue.ids().size()+" Personas, "+PersonaRegistry.skills().size()+" skills, party fusion, two-skill inheritance, Compendium, floor pools, GeckoLib and VFX.");}
  private static void catalogue()throws Exception{

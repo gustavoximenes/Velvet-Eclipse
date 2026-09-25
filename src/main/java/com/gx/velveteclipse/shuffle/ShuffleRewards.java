@@ -15,7 +15,7 @@ public final class ShuffleRewards {
    case PERSONA->data.givePersonaInstance(ShuffleRules.personaReward(card,data.rewardInstance(card.id())));
    case CUPS->data.setResources(data.hp()+Math.max(1,data.maxHp()*card.amount()/100),data.sp());
    case COINS->data.addYen(card.amount());
-   case WANDS->{data.addPlayerExperience(card.amount());var persona=data.activeInstance();persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),card.amount());data.updatePersona(persona);}
+   case WANDS->{data.addPlayerExperience(card.amount());var persona=data.activeInstance();if(persona!=null){persona.addExperience(PersonaRegistry.persona(persona.definitionId()).orElseThrow(),card.amount());data.updatePersona(persona);}}
    default->{}
   }
   shuffle.consume(token);return new Result(card,"Recompensa recebida!");

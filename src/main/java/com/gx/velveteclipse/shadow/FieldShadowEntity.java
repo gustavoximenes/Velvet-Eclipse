@@ -16,7 +16,7 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
  public void initialize(long value){seed=value;initialized=true;rare(ShadowEncounterRules.rare(seed));}
  @Override public void m_7380_(CompoundTag t){super.m_7380_(t);t.m_128356_("encounter_seed",seed);t.m_128379_("seeded",initialized);t.m_128379_("rare",rare());t.m_128379_("home",home);t.m_128347_("home_x",homeX);t.m_128347_("home_z",homeZ);}
  @Override public void m_7378_(CompoundTag t){super.m_7378_(t);seed=t.m_128454_("encounter_seed");initialized=t.m_128471_("seeded");rare(t.m_128471_("rare"));home=t.m_128471_("home");homeX=t.m_128459_("home_x");homeZ=t.m_128459_("home_z");}
- private boolean available(ServerPlayer p){return p!=null&&p.m_6084_()&&!p.m_5833_()&&p.m_9236_()==m_9236_()&&BattleService.current(p)==null&&!ExplorationService.preparing(p)&&!ShadowWorldService.escaping(p)&&PlayerPersonaData.load(p).hp()>0;}
+ private boolean available(ServerPlayer p){return p!=null&&!com.gx.velveteclipse.awakening.AwakeningService.active(p)&&p.m_6084_()&&!p.m_5833_()&&p.m_9236_()==m_9236_()&&BattleService.current(p)==null&&!ExplorationService.preparing(p)&&!ShadowWorldService.escaping(p)&&PlayerPersonaData.load(p).hp()>0;}
  public static boolean sameRoom(Entity a,Entity b){
   if(a.m_9236_()!=b.m_9236_())return false;if(!TartarusDungeonService.inside(a))return Math.abs(a.m_20186_()-b.m_20186_())<3;
   int f=TartarusDungeonService.floor(a);if(f!=TartarusDungeonService.floor(b)||TartarusInteriorLayout.fixedFloor(f))return false;int ox=TartarusInteriorLayout.origin(f);

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "velvet_eclipse:model_evoker"
+    },
+    "title": "I am thou Thou art I",
+    "description": {
+      "translate": "advancement.velvet_eclipse.awakening.description"
+    },
+    "background": "minecraft:textures/block/blue_concrete.png",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "awakened": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "awakened"
+    ]
+  ]
+}

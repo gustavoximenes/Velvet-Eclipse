@@ -31,7 +31,7 @@ public final class ShuffleAudit {
   data.addYen(Long.MAX_VALUE);check(data.yen()==9_999_999_999L,"currency saturates safely");
   var ledger=ShuffleData.load(player);var round=ShuffleRules.roll(20,Set.of(),new Random(31));ledger.add(round);ledger.save(player);var reopened=ShuffleData.load(player);check(reopened.first().equals(round),"reopening/reconnecting preserves exact cards and token");
   var clone=new Player();ShuffleData.copy(player,clone);check(ShuffleData.load(clone).first().equals(round),"pending offers survive player cloning");
-  var d=new PlayerPersonaData();var money=offer(ShuffleRules.Kind.COINS,"",475);check(ShuffleRewards.claim(money,d,"wrong",0,k->true).card()==null&&d.yen()==0,"forged token rejected");
+  var d=new PlayerPersonaData();d.givePersona("cinder_wisp");var money=offer(ShuffleRules.Kind.COINS,"",475);check(ShuffleRewards.claim(money,d,"wrong",0,k->true).card()==null&&d.yen()==0,"forged token rejected");
   check(ShuffleRewards.claim(money,d,"offer",-1,k->true).card()==null,"invalid choice rejected");check(ShuffleRewards.claim(money,d,"offer",0,k->true).card()!=null&&d.yen()==475,"one monetary reward");
   check(ShuffleRewards.claim(money,d,"offer",0,k->true).card()==null&&d.yen()==475,"replay grants nothing");
   var skill=offer(ShuffleRules.Kind.SWORDS,"zio",1);check(ShuffleRewards.claim(skill,d,"offer",0,k->false).card()==null&&skill.first()!=null,"full inventory preserves activation");int[] delivered={0};check(ShuffleRewards.claim(skill,d,"offer",0,k->{delivered[0]++;return true;}).card()!=null&&delivered[0]==1&&skill.first()==null,"skill item delivered exactly once");

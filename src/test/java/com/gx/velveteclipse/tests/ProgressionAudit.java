@@ -6,7 +6,7 @@ public final class ProgressionAudit {
  private static void check(boolean b,String m){checks++;if(!b)throw new AssertionError(m);}
  public static final class Player {private final CompoundTag data=new CompoundTag();public CompoundTag getPersistentData(){return data;}}
  public static void main(String[] args){
-  PersonaRegistry.bootstrap();var data=new PlayerPersonaData();data.addPlayerExperience(100);data.addYen(750);data.setResources(75,20);
+  PersonaRegistry.bootstrap();var data=new PlayerPersonaData();data.givePersona("cinder_wisp");data.addPlayerExperience(100);data.addYen(750);data.setResources(75,20);
   data.givePersona("izanagi");var persona=data.instance("izanagi");persona.inheritSkill("media");persona.addExperience(PersonaRegistry.persona("izanagi").orElseThrow(),20);data.updatePersona(persona);
   data.setPlayerLevel(25);check(data.playerLevel()==25&&data.playerExperience()==0,"player exact level with zero partial XP");
   check(data.setPersonaLevel("izanagi",5),"owned persona changes");persona=data.instance("izanagi");

@@ -22,7 +22,7 @@ public final class TartarusTerminals {
    var t=new CompoundTag();t.m_128359_("entity",e.m_20148_().toString());s.props.put(id,t);if(!l.m_7967_(e))s.props.remove(id);s.m_77762_();
   }
  }
- private static boolean available(ServerPlayer p){return p.m_6084_()&&TartarusDungeonService.inside(p)&&BattleService.current(p)==null&&!p.m_20159_()&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p);}
+ private static boolean available(ServerPlayer p){return !com.gx.velveteclipse.awakening.AwakeningService.active(p)&&p.m_6084_()&&TartarusDungeonService.inside(p)&&BattleService.current(p)==null&&!p.m_20159_()&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p);}
  private static boolean near(ServerPlayer p,TartarusPropEntity e){if(!available(p)||e.m_20275_(p.m_20185_(),p.m_20186_(),p.m_20189_())>25||TartarusDungeonService.floor(e)!=TartarusDungeonService.floor(p))return false;var s=TartarusDungeonService.data(p.m_284548_());var slot=s.props.get(e.getPersistentData().m_128461_(PROP));return TartarusDungeonService.ready(s,TartarusDungeonService.floor(p))&&slot!=null&&slot.m_128461_("entity").equals(e.m_20148_().toString());}
  public static void interact(ServerPlayer p,TartarusPropEntity e){
   if(!near(p,e))return;int f=TartarusDungeonService.floor(p);var s=TartarusDungeonService.data(p.m_284548_());String id=e.getPersistentData().m_128461_(PROP);

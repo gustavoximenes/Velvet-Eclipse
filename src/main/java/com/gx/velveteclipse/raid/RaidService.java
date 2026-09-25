@@ -32,6 +32,7 @@ public final class RaidService {
  private static ServerLevel world(){var s=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();return s==null?null:s.m_129880_(DIMENSION);}
  private static void say(ServerPlayer p,String text){p.m_5661_(Component.m_237113_(text),false);}
  public static void open(ServerPlayer p){
+  if(!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)){say(p,"Desperte sua Persona com a Evoker antes de entrar na raid.");return;}
   if(!p.m_6084_()||BattleService.current(p)!=null||TartarusDungeonService.floor(p)!=25)return;
   var old=MEMBERS.get(p.m_20148_());if(old!=null){send(old,p);return;}
   var r=RUNS.stream().filter(a->a.mode.equals("lobby")).findFirst().orElse(null);

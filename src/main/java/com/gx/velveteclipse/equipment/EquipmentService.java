@@ -15,7 +15,7 @@ public final class EquipmentService {
   Visit v=VISITS.get(p.m_20148_());EquipmentNetwork.reply(p,new EquipmentNetwork.Snapshot(EquipmentData.load(p),PlayerPersonaData.load(p).yen(),view,message,npc==null?-1:npc.m_19879_(),npc!=null&&npc.merchant(),v==null?"":v.token(),ShopProgress.tier(p)));
  }
  public static void talk(ServerPlayer p,ElizabethEntity npc){
-  if(BattleService.current(p)!=null||!p.m_6084_()||p.m_20280_(npc)>36)return;
+  if(com.gx.velveteclipse.awakening.AwakeningService.active(p)||BattleService.current(p)!=null||!p.m_6084_()||p.m_20280_(npc)>36)return;
   VISITS.put(p.m_20148_(),new Visit(npc.m_20148_(),UUID.randomUUID().toString(),System.currentTimeMillis()));reply(p,"dialogue","",npc);
  }
  private static ElizabethEntity merchant(ServerPlayer p,String token){
@@ -23,7 +23,7 @@ public final class EquipmentService {
   var e=p.m_284548_().m_8791_(v.npc());return e instanceof ElizabethEntity npc&&npc.merchant()&&p.m_20280_(npc)<=36?npc:null;
  }
  public static void handle(ServerPlayer p,EquipmentNetwork.Request r){
-  if(BattleService.current(p)!=null||!p.m_6084_())return;
+  if(com.gx.velveteclipse.awakening.AwakeningService.active(p)||BattleService.current(p)!=null||!p.m_6084_())return;
   long now=System.currentTimeMillis();if(now-GATE.getOrDefault(p.m_20148_(),0L)<120)return;GATE.put(p.m_20148_(),now);
   var bag=EquipmentData.load(p);var data=PlayerPersonaData.load(p);String message="";ElizabethEntity npc=null;String view="update";
   switch(r.action()){

@@ -17,7 +17,7 @@ public final class VelvetRoomService {
  public static final ResourceKey<Level> DIMENSION=ResourceKey.m_135785_(Registries.f_256858_,new ResourceLocation("velvet_eclipse","velvet_room"));
  private static final String RETURN="velvet_eclipse:room_return",COOLDOWN="velvet_eclipse:room_cooldown";
  public static boolean inside(Object p){return p instanceof net.minecraft.world.entity.Entity e&&e.m_9236_().m_46472_().equals(DIMENSION);}
- private static boolean available(ServerPlayer p){return BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&!p.m_20159_();}
+ private static boolean available(ServerPlayer p){return !com.gx.velveteclipse.awakening.AwakeningService.active(p)&&BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&!p.m_20159_();}
  private static void tell(ServerPlayer p,String message){p.m_5661_(Component.m_237113_(message),false);}
  public static void summonDoor(ServerPlayer p){
   if(!available(p)){tell(p,"Finalize a ação atual e levante-se antes de usar a Velvet Key.");return;}

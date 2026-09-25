@@ -150,7 +150,7 @@ public final class PersonaMenuScreen extends Screen {
                     detail.add("Capacidade: "+(data.personas().size()-data.reserveIds().size())+" / "+data.personaCapacity()+" (máximo 8)");
                     detail.add(data.reserveIds().contains(p.id())?"Reserva do save anterior: ENTER troca pela equipada se não houver espaço.":"ENTER equipa. Contratos de Igor ampliam o limite.");detail.add("X abre modelo, atributos e habilidades.");
                     action=p.id().equals(data.active())?"Persona equipada":"Equipar Persona";}
-                else detail.add("Você ainda não possui Personas. As Personas obtidas aparecerão nesta lista.");
+                else {detail.add("Você ainda não despertou uma Persona.");detail.add("Crie uma Evoker e use-a com o botão direito durante a Dark Hour.");detail.add("Seu primeiro vínculo será escolhido no despertar.");}
             }
             case 4 -> {
                 list.add(new MenuDesign.Row(player.m_36316_().getName(),"Jogador / Lv "+data.playerLevel(),-1));if(current!=null)list.add(new MenuDesign.Row(current.name(),"Persona / Atributos de batalha",-1));

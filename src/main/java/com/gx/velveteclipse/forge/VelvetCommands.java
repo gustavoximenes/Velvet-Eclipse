@@ -181,6 +181,7 @@ public final class VelvetCommands {
       } else {
          PlayerPersonaData var2 = PlayerPersonaData.load(var1);
          PersonaInstance var3 = var2.activeInstance();
+         if(var3==null){RuntimeBridge.sendMessage(var1,"Você ainda não despertou uma Persona. Use a Evoker durante a Dark Hour.");return 1;}
          PersonaDefinition var4 = PersonaRegistry.persona(var3.definitionId()).orElse(null);
          String var5 = var4 == null ? var3.definitionId() : var4.displayName();
          RuntimeBridge.sendMessage(

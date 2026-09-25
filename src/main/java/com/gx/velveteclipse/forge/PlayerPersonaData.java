@@ -72,13 +72,19 @@ public final class PlayerPersonaData {
       while(playerLevel<99&&xp>=playerNextExperience()){xp-=playerNextExperience();playerLevel++;}
       playerExperience=playerLevel==99?0:(int)xp;
    }
-   private String activePersona = "cinder_wisp";
+   private String activePersona = "";
+   private boolean awakened;
+   public boolean hasPersona(){return !roster.isEmpty();}
+   public boolean awakened(){return awakened;}
+   public boolean completeAwakening(String id){
+      if(awakened||hasPersona()||!com.gx.velveteclipse.awakening.AwakeningTimeline.STARTERS.contains(id))return false;
+      if(!givePersona(id))return false;activePersona=id;awakened=true;return true;
+   }
    private final LinkedHashMap<String, PersonaInstance> roster = new LinkedHashMap<>();
 
    public PlayerPersonaData() {
       PersonaRegistry.bootstrap();
-      PersonaDefinition var1 = PersonaRegistry.persona(this.activePersona).orElseThrow();
-      this.roster.put(this.activePersona, new PersonaInstance(var1));
+
    }
 
    public int maxHp() {
@@ -117,6 +123,7 @@ public final class PlayerPersonaData {
       PersonaDefinition var2 = PersonaRegistry.persona(var1).orElse(null);
       if (var2 != null && !this.roster.containsKey(var1) && canReceivePersona(var1) && !reserve.containsKey(var1)) {
          this.roster.put(var1, new PersonaInstance(var2));
+         if(activePersona.isBlank())activePersona=var1;
          register(this.roster.get(var1));
          return true;
       } else {
@@ -128,6 +135,7 @@ public final class PlayerPersonaData {
       if (var1 != null && !PersonaRegistry.persona(var1.definitionId()).isEmpty() && canReceivePersona(var1.definitionId())) {
          reserve.remove(var1.definitionId());
          this.roster.put(var1.definitionId(), copy(var1));
+         if(activePersona.isBlank())activePersona=var1.definitionId();
          register(var1);
          return true;
       } else {
@@ -187,14 +195,7 @@ public final class PlayerPersonaData {
 
    public PersonaInstance activeInstance() {
       PersonaInstance var1 = this.roster.get(this.activePersona);
-      if (var1 == null) {
-         PersonaDefinition var2 = PersonaRegistry.persona("cinder_wisp").orElseThrow();
-         var1 = new PersonaInstance(var2);
-         this.roster.put(var2.id(), var1);
-         this.activePersona = var2.id();
-      }
-
-      return copy(var1);
+      return var1==null?null:copy(var1);
    }
 
    public PersonaInstance instance(String var1) {
@@ -262,14 +263,10 @@ public final class PlayerPersonaData {
                   }
                }
 
-               if (var1.roster.isEmpty()) {
-                  PersonaDefinition var11 = PersonaRegistry.persona("cinder_wisp").orElseThrow();
-                  var1.roster.put(var11.id(), new PersonaInstance(var11));
-               }
-
                if (!var1.roster.containsKey(var1.activePersona)) {
-                  var1.activePersona = var1.roster.keySet().iterator().next();
+                  var1.activePersona = var1.roster.isEmpty()?"":var1.roster.keySet().iterator().next();
                }
+               var1.awakened=var4.length>=15?Boolean.parseBoolean(var4[14]):!var1.roster.isEmpty();
                var1.enforceCapacity();
 
                var1.hp = Math.max(0,var1.hp);
@@ -335,7 +332,7 @@ public final class PlayerPersonaData {
          + "|"
          + this.pulseTonics
          + "|"
-         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen + "|" + personaCapacity + "|" + reserve.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";")) + "|" + compendium.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";"));
+         + String.join(";", var1) + "|" + playerLevel + "|" + playerExperience + "|" + yen + "|" + personaCapacity + "|" + reserve.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";")) + "|" + compendium.values().stream().map(PlayerPersonaData::encodePersona).collect(java.util.stream.Collectors.joining(";"))+"|"+awakened;
    }
 
    private static String encodePersona(PersonaInstance var0) {
