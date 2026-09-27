@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.31 — Inicialização com OptiFine e LDLib
+
+Corrige o conflito de inicialização `ModelBakeryMixin` entre OptiFine I6 pre6 e LDLib 1.0.52.a. O mod adapta uma chamada de log antes da injeção da LDLib, preservando os JARs originais do OptiFine, LDLib e Photon. [Diagnóstico e validação offline](docs/OPTIFINE-COMPAT.md). Apresentação da 0.6.30 e protocolo 17 mantidos.
+
 # Velvet Eclipse 0.6.30 — Apresentação de combate Reload
 
 Cutscene de despertar em tela inteira, Evoker com a geometria aprovada, efeitos de combate emitidos pelo Photon e HUD de combate composta com widgets LDLib. Câmeras acompanham o jogador que está agindo, com animações da equipe e HP/SP sincronizados. Clientes precisam dos JARs **LDLib 1.0.52.a** e **Photon 1.1.17** fornecidos em `dependencies/`, além das dependências anteriores. Cliente e servidor devem usar esta versão (protocolo 17). [Instalação, mudanças e limites da validação](docs/RELOAD-PRESENTATION.md).

@@ -1,3 +1,10 @@
+# 0.6.31-optifine-compat
+
+- Corrige o crash de inicialização `ldlib-common.mixins.json:ModelBakeryMixin`, causado pela troca da assinatura de `Logger.warn` no OptiFine I6 pre6.
+- Ponte de compatibilidade de cliente executada antes das injeções: restaura a chamada equivalente com array de argumentos. Sem editar bibliotecas ou remover o OptiFine; sem mudanças de carregamento de modelos, HUD ou shaders.
+- Regressão offline na classe real do OptiFine reconstruída e conferida pelo checksum original: 158 verificações, execução da adaptação numa classe de teste, integridade de fluxo ASM e preservação dos demais métodos.
+- Mensagem de inicialização deixa de mostrar a antiga versão 0.6.28. Protocolo 17 mantido. Não houve inicialização do Minecraft nesta verificação.
+
 # 0.6.30-reload-presentation
 
 - Despertar sem barras internas ou laterais, incluindo fundo e fades em toda a tela; composição dos personagens preservada em telas 4:3 e ultrawide.

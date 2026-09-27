@@ -12,7 +12,7 @@ tasks.register('reloadPresentationPreview', JavaExec) {
     jvmArgs '-Djava.awt.headless=true'
 }
 group = 'com.gx.velveteclipse'
-version = '0.6.30-reload-presentation'
+version = '0.6.31-optifine-compat'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -20,15 +20,22 @@ dependencies {
     testImplementation sourceSets.main.output
 }
 configurations.testImplementation.extendsFrom(configurations.compileOnly)
-tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17 }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.release = 17; options.compilerArgs += ['-proc:none'] }
 tasks.named('jar') {
-    manifest { attributes 'Implementation-Title': 'Velvet Eclipse', 'Implementation-Version': project.version }
+    manifest { attributes 'Implementation-Title': 'Velvet Eclipse', 'Implementation-Version': project.version, 'MixinConfigs': 'velvet_eclipse.compat.mixins.json' }
     preserveFileTimestamps = false
     reproducibleFileOrder = true
 }
 tasks.named('processResources') {
     inputs.property('modVersion', project.version)
     filesMatching('META-INF/mods.toml') { filter { line -> line.startsWith('version=') ? 'version="' + project.version + '"' : line } }
+}
+
+tasks.register('optifineCompatTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.OptifineCompatAudit'
+    if (project.hasProperty('optifineClass')) systemProperty 'velvet.compat.optifineClass', project.property('optifineClass')
 }
 tasks.register('logicTest', JavaExec) {
     dependsOn testClasses
