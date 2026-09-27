@@ -1,3 +1,14 @@
+# 0.6.30-reload-presentation
+
+- Despertar sem barras internas ou laterais, incluindo fundo e fades em toda a tela; composição dos personagens preservada em telas 4:3 e ultrawide.
+- Item Evoker usa a mesma geometria texturizada da arma aprovada, com renderizador próprio e posições para inventário e mãos.
+- Photon emite os efeitos dos elementos, cura, suporte, golpes físicos e invocação azul. Emissores finitos com limite por cliente e limpeza na troca de mundo.
+- HUD de combate em LDLib: comandos clicáveis, retratos das skins reais, coluna da equipe, HP/SP interpolados, nome da skill e números de dano/cura.
+- Direção de câmera por ação compartilhada entre os participantes; close da Evoker, abertura da invocação e enquadramento do impacto. Animações por jogador e família de arma; flecha visível no ataque básico do arco.
+- Personas de combate materializam-se no feixe azul a uma altura fixa. O dano do inimigo é aplicado durante sua animação e a próxima ação aguarda o fim da apresentação.
+- Correção da ordem de sorteio dos resultados em ataques de área, mantendo consistência entre ações reservadas e imediatas.
+- Protocolo 17. Novas dependências de cliente: LDLib 1.0.52.a e Photon 1.1.17. Auditorias offline focadas aprovadas; sem execução do Minecraft nesta entrega.
+
 # 0.6.23-reload-shadows
 
 - Bestiário no Tab com modelos, encontros, derrotas e afinidades descobertas persistentes por jogador.

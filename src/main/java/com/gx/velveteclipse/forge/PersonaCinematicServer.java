@@ -105,9 +105,9 @@ public final class PersonaCinematicServer {
                 if (sequence.tick < 46 && VisualBattleActors.personaActor(sequence.player) != null) {
                     RuntimeBridge.setEntityPosition(VisualBattleActors.personaActor(sequence.player), sequence.base[0], sequence.base[1] - 40.0, sequence.base[2]);
                 }
-                object = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.08, 1.85);
-                double[] dArray = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, 1.95);
-                double[] dArray2 = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.98, 1.95);
+                object = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, -1.4);
+                double[] dArray = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, -1.4);
+                double[] dArray2 = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, sequence.magic?-1.4:1.4);
                 if (sequence.tick == 46) {
                     VisualBattleActors.replacePersona(sequence.player, sequence.personaId);
                     PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);

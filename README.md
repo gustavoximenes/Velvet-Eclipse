@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.30 — Apresentação de combate Reload
+
+Cutscene de despertar em tela inteira, Evoker com a geometria aprovada, efeitos de combate emitidos pelo Photon e HUD de combate composta com widgets LDLib. Câmeras acompanham o jogador que está agindo, com animações da equipe e HP/SP sincronizados. Clientes precisam dos JARs **LDLib 1.0.52.a** e **Photon 1.1.17** fornecidos em `dependencies/`, além das dependências anteriores. Cliente e servidor devem usar esta versão (protocolo 17). [Instalação, mudanças e limites da validação](docs/RELOAD-PRESENTATION.md).
+
 # Velvet Eclipse 0.6.29 — Despertar da primeira Persona
 
 Jogadores novos começam sem Persona. Use a Evoker com o botão direito durante a Dark Hour para assistir à cutscene aprovada, escolher Orpheus, Izanagi ou Arsène e receber a conquista **I am thou Thou art I**. Skin do próprio jogador, vozes e trilhas revisadas, receita da Evoker e proteção contra recompensas duplicadas. [Controles, receita e validação](docs/AWAKENING.md). Saves existentes preservam suas Personas.

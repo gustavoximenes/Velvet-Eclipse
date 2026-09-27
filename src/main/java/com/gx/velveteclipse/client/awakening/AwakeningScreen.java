@@ -87,15 +87,17 @@ public final class AwakeningScreen extends Screen {
     private void stopAudio(){if(sound!=null){Minecraft.m_91087_().m_91106_().m_120399_(sound);sound=null;}}
     @Override public void m_88315_(GuiGraphics g,int mx,int my,float partial){
         try{
-            g.m_280509_(0,0,f_96543_,f_96544_,0xFF02070F);
+            g.m_280509_(0,0,f_96543_,f_96544_,menu?new int[]{0xFF030F39,0xFF1C1807,0xFF0E030D}[index]:0xFF02070F);
+            // Cover the viewport; interface cards keep a safe centered layout.
+            if(!menu){var bg=g.m_280168_();bg.m_85836_();bg.m_85841_(f_96543_/960f,f_96544_/540f,1);AwakeningEffects.sky(new MenuCanvas(g),time());g.m_280262_();bg.m_85849_();}
             var p=g.m_280168_();p.m_85836_();p.m_85837_(left(),top(),0);p.m_85841_((float)scale(),(float)scale(),1);
             var canvas=new MenuCanvas(g);double real=time();
             if(menu){selection(g,canvas);p.m_85849_();return;}
-            AwakeningEffects.sky(canvas,real);g.m_280262_();p.m_85849_();
+            g.m_280262_();p.m_85849_();
             scene.draw(g,f_96543_,f_96544_,real,chosen);
             p.m_85836_();p.m_85837_(left(),top(),0);p.m_85841_((float)scale(),(float)scale(),1);
             double t=AwakeningTimeline.visualTime(real,chosen);AwakeningEffects.paint(canvas,scene,real,t,chosen,COLORS[index]);
-            canvas.fill(0,0,960,24,0xFF030710);canvas.fill(0,516,960,24,0xFF030710);
+
             canvas.text("VELVET ECLIPSE",22,7,11,0xFF91BECF,0);canvas.text("DESPERTAR",810,7,11,0xFF91BECF,0);
             if(t<2.4){canvas.text("DARK HOUR",42,331,64,0xFFA7E071,0);canvas.text("QUANDO O MUNDO PARA, ALGO EM VOCÊ DESPERTA.",44,401,17,0xFFCFECDD,0);}
             if(t>8.8&&t<10.6)caption(canvas,"Eu não vou recuar.");
@@ -103,12 +105,11 @@ public final class AwakeningScreen extends Screen {
             if(t>=30&&t<32.2){canvas.poly(new double[]{29,384,431,365,410,458,29,466},0xEF040D21);canvas.text(NAMES[index],46,381,53,COLORS[index],0);canvas.text("PACTO / "+new String[]{"A VOZ QUE DESPERTA","A FORÇA DA VERDADE","A CHAMA DA REBELDIA"}[index],48,436,13,0xFFE8F2F9,0);}
             if(t>33.35&&t<35.2){canvas.poly(new double[]{40,54,262,44,245,97,33,108},COLORS[index]);canvas.text(new String[]{"AGI","ZIO","EIGA"}[index],65,54,30,0xFF060B19,0);}
             if(t>39){canvas.poly(new double[]{520,368,960,346,960,485,507,485},0xEE040D21);canvas.text("EU SOU VOCÊ.",548,375,36,COLORS[index],0);canvas.text(NAMES[index]+" • CONTRATO FIRMADO",549,418,18,0xFFECF6F9,0);canvas.text("Seu primeiro vínculo foi despertado.",550,454,16,0xFFB9D2E7,0);}
-            if(t<.7)canvas.fill(0,0,960,540,((int)(255*(1-AwakeningScene.smooth(t/.7)))<<24)|0x02070F);
-            if(t>41.4)canvas.fill(0,0,960,540,((int)(255*AwakeningScene.smooth((t-41.4)/.6))<<24)|0x02070F);
             g.m_280262_();p.m_85849_();
-            // Preserve the 16:9 framing at any window / GUI scale.
-            if(top()>0){g.m_280509_(0,0,f_96543_,(int)top(),0xFF02070F);g.m_280509_(0,(int)(f_96544_-top()),f_96543_,f_96544_,0xFF02070F);}
-            if(left()>0){g.m_280509_(0,0,(int)left(),f_96544_,0xFF02070F);g.m_280509_((int)(f_96543_-left()),0,f_96543_,f_96544_,0xFF02070F);}
+            // Fade the real viewport, including 4:3 and ultrawide edges.
+            if(t<.7)g.m_280509_(0,0,f_96543_,f_96544_,((int)(255*(1-AwakeningScene.smooth(t/.7)))<<24)|0x02070F);
+            if(t>41.4)g.m_280509_(0,0,f_96543_,f_96544_,((int)(255*AwakeningScene.smooth((t-41.4)/.6))<<24)|0x02070F);
+
         }catch(RuntimeException|LinkageError e){VelvetEclipseMod.LOGGER.error("Awakening renderer failed",e);m_7379_();}
     }
     private void caption(MenuCanvas c,String text){double w=c.width(text,24),x=(960-w)/2;c.fill(x-18,437,w+36,63,0xFF040D1F);c.fill(x-18,437,w+36,2,COLORS[index]);c.text(f_96541_.f_91074_.m_36316_().getName(),x,444,11,COLORS[index],0);c.text(text,x,463,24,0xFFEFF9FB,0);}

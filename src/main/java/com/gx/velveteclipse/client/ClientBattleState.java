@@ -17,7 +17,7 @@ public final class ClientBattleState {
          BattleSnapshotS2C var1 = snapshot;
          snapshot = var0;
          if(!var0.active())BattleResultsClient.reset();
-         else {var mc=net.minecraft.client.Minecraft.m_91087_();if(mc.f_91080_!=null&&!(mc.f_91080_ instanceof net.minecraft.client.gui.screens.PauseScreen))mc.m_91152_(null);}
+         else {var mc=net.minecraft.client.Minecraft.m_91087_();if(mc!=null&&mc.f_91080_!=null&&!(mc.f_91080_ instanceof net.minecraft.client.gui.screens.PauseScreen))mc.m_91152_(null);}
          ClientBattleUiState.onSnapshot(var1, var0);
       }
    }

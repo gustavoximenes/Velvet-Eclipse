@@ -30,6 +30,9 @@ public final class EvokerHandLayer extends RenderLayer<AbstractClientPlayer, Pla
   }catch(Exception e){throw new IllegalStateException("Cannot attach Evoker hand layer",e);}
  }
  public EvokerHandLayer(RenderLayerParent<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>> parent){super(parent);
+  var parts=createParts();gun=parts.get("root");slide=parts.get("slide");
+ }
+ public static Map<String,ModelPart> createParts(){
   Map<String,ModelPart> parts=new LinkedHashMap<>();
   parts.put("markings",part(List.of(cube(0,32,-0.855f,-0.08999999999999989f,-0.4275f,0.1575f,0.099f,0.027f),cube(0,32,-0.4949999999999999f,-0.08999999999999989f,-0.4275f,0.1575f,0.099f,0.027f),cube(0,32,-0.135f,-0.08999999999999989f,-0.4275f,0.1575f,0.099f,0.027f),cube(0,32,0.22499999999999998f,-0.08999999999999989f,-0.4275f,0.1575f,0.099f,0.027f),cube(0,32,-0.855f,-0.08999999999999989f,0.4005f,0.1575f,0.099f,0.027f),cube(0,32,-0.4949999999999999f,-0.08999999999999989f,0.4005f,0.1575f,0.099f,0.027f),cube(0,32,-0.135f,-0.08999999999999989f,0.4005f,0.1575f,0.099f,0.027f),cube(0,32,0.22499999999999998f,-0.08999999999999989f,0.4005f,0.1575f,0.099f,0.027f)),Map.of()));
 parts.get("markings").m_104227_(0f,-0.405f,0f);
@@ -45,13 +48,14 @@ parts.get("weapon").m_104227_(0f,-1.53f,0f);
 parts.put("root",part(List.of(),Map.of("weapon",parts.get("weapon"))));
 parts.get("root").m_104227_(-0.9675f,0.405f,0f);
 
-  gun=parts.get("root");slide=parts.get("slide");
+  return parts;
  }
+
  private static ModelPart part(List<ModelPart.Cube> cubes,Map<String,ModelPart> children){return new ModelPart(cubes,children);}
  private static ModelPart.Cube cube(int u,int v,float x,float y,float z,float dx,float dy,float dz){return new ModelPart.Cube(u,v,x,y,z,dx,dy,dz,0,0,0,false,64,64,EnumSet.allOf(Direction.class));}
  @Override public void m_6494_(PoseStack ps, MultiBufferSource buffers,int light,AbstractClientPlayer player,float walk,float amount,float partial,float age,float headYaw,float headPitch){
-  if(player!=com.gx.velveteclipse.util.RuntimeBridge.clientPlayer()||!PersonaCinematics.skillSequenceActive())return;
-  float t=PersonaCinematics.skillTicks()+partial;
+  if(!com.gx.velveteclipse.client.presentation.BattleDirector.summoning(player.m_20148_()))return;
+  float t=(float)com.gx.velveteclipse.client.presentation.BattleDirector.age(partial);
   if(t<1||t>59)return;
   ModelPart arm=m_117386_().f_102811_;
   Vec3f bend=Vec3f.ZERO;

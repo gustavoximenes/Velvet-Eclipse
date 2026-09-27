@@ -40,7 +40,7 @@ public final class PersonaBattleDesign {
   BattleGraphics.poly(c,new double[]{0,8,480,8,570,145,495,282,185,360,0,360},BLUE);
   BattleGraphics.poly(c,new double[]{38,8,156,8,327,298,241,360},0xFF0739C3);
   for(int i=0;i<3;i++)BattleGraphics.poly(c,new double[]{58+i*92,8,67+i*92,8,264+i*43,340,257+i*43,351},0x2833B8FF);
-  c.angled("PERSONA",133,216,9.2f,INK,-16);
+  c.angled("PERSONA",94,236,8.4f,0xFF071453,-16);
   float portrait=(float)EvokerPose.smooth((v.age-.035)/.27);
   c.personaPortrait(-8-(int)(20*(1-portrait)),59,190,279,portrait);
   BattleGraphics.poly(c,new double[]{8,13,524,13,508,53,8,53},WHITE);
@@ -52,8 +52,8 @@ public final class PersonaBattleDesign {
    var skill=v.skills.get(i);boolean chosen=i==v.selected;
    boolean affordable=skill.spCost()<=v.sp&&(skill.hpPercentCost()==0||v.hp>Math.max(1,v.maxHp*skill.hpPercentCost()/100));
    int rx=187+rowOffset(i-first,v.age),ry=76+(i-first)*24,rw=330,rh=22;
-   if(chosen){BattleHudDesign.ribbon(c,rx-3,ry-2,rw+6,rh+4,0xFFFF2066);BattleHudDesign.ribbon(c,rx,ry,rw,rh,WHITE);}
-   else BattleHudDesign.ribbon(c,rx+4,ry,rw-4,rh,0xCC030A48);
+   if(chosen){BattleHudDesign.ribbon(c,rx-3,ry-2,rw+6,rh+4,0xFF33DAFF);BattleHudDesign.ribbon(c,rx,ry,rw,rh,WHITE);}
+   else BattleHudDesign.ribbon(c,rx+4,ry,rw-4,rh,0xE8021747);
    BattleGraphics.poly(c,new double[]{rx+8,ry+3,rx+51,ry+3,rx+45,ry+rh-3,rx+2,ry+rh-3},INK);
    BattleGraphics.icon(c,skill.element(),rx+27,ry+rh*.5,8);
    c.text(HudDesign.fit(c,skill.displayName(),190),rx+57,ry+7,chosen?INK:affordable?CYAN:0xFF7F98BD);

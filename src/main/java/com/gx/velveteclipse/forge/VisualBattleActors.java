@@ -119,6 +119,7 @@ public final class VisualBattleActors {
             invokeStatic(
                "com.gx.velveteclipse.forge.PersonaMobRegistry", "configurePersonaMob", new Class[]{Object.class, String.class}, new Object[]{var5, var1}
             );
+            if(var5 instanceof com.gx.velveteclipse.entity.VelvetPersonaGeoEntity persona)persona.summoner(RuntimeBridge.playerUuid(var0));
             RuntimeBridge.configureBattleActor(var5, true);
             RuntimeBridge.setEntityRotation(var5, var3, 0.0F);
          }

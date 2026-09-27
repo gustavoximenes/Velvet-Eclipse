@@ -30,14 +30,16 @@ public final class BattleService {
         boolean shuffleVictory,boss,raid,rare;int enemyPoseUntil;Entity animatingEnemy;int raidStage,dungeonFloor;
         final BattleResultsGate results=new BattleResultsGate();
         String ending="";
+        PendingEnemy pendingEnemy;int enemyImpactAt;
         Encounter(Object p,BattleSession s,int count){session=s;enemyCount=count;origin=RuntimeBridge.playerPosition(p);yaw=RuntimeBridge.playerYaw(p);center=RuntimeBridge.localOffset(origin,yaw,0,.05,5.25);level=p instanceof Entity e?e.m_9236_():null;}
     }
+    private record PendingEnemy(UUID actor,BattleAction action,String skill){}
     private static Encounter group(Object p){return p==null?null:MEMBERS.get(RuntimeBridge.playerUuid(p));}
     public static BattleSession current(Object p){var g=group(p);return g==null?null:g.session;}
     public static boolean encounterActive(UUID id){return BATTLES.containsKey(id);}
     public static boolean hasActiveBattle(Object p){var s=current(p);return s!=null&&s.state()==BattleState.ACTIVE;}
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
-    private static boolean busy(Encounter g){return g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
+    private static boolean busy(Encounter g){return g.pendingEnemy!=null||ticks<g.enemyPoseUntil||g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
     public static boolean actionBusy(Object p){var g=group(p);return g!=null&&(g.results.started()||g.session.state()!=BattleState.ACTIVE||g.session.prepared()!=null||busy(g));}
     private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);var combatant=new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp()).equipment(com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses());if(p instanceof ServerPlayer player)combatant.moonDay(player.m_9236_().m_46468_()/24000L);return combatant;}
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
@@ -133,7 +135,7 @@ public final class BattleService {
     public static void beginAction(Object p,BattleAction action){var g=group(p);if(g!=null){g.targets.put(RuntimeBridge.playerUuid(p),action.targetId());g.wasBusy=true;syncAll(g,RuntimeBridge.playerName(p)+" está agindo.");}}
     public static List<Entity> effectTargets(Object p,String skillId){
         var g=group(p);if(g==null)return List.of();var skill=PersonaRegistry.skill(skillId).orElse(null);var actor=g.session.find(RuntimeBridge.playerUuid(p)).orElse(null);if(actor==null)return List.of();
-        List<BattleCombatant> targets=skill!=null&&skill.target()==SkillTarget.ALL_ENEMIES?g.session.enemiesOf(actor):skill!=null&&skill.target()==SkillTarget.ALL_ALLIES?g.session.alliesOf(actor):g.session.find(targetId(p)).map(List::of).orElse(List.of());
+        List<BattleCombatant> targets=skill!=null&&skill.target()==SkillTarget.SELF?List.of(actor):skill!=null&&skill.target()==SkillTarget.ALL_ENEMIES?g.session.enemiesOf(actor):skill!=null&&skill.target()==SkillTarget.ALL_ALLIES?g.session.alliesOf(actor):g.session.find(targetId(p)).map(List::of).orElse(List.of());
         return targets.stream().map(c->targetActor(p,c.id())).filter(Objects::nonNull).toList();
     }
     public static boolean act(Object p,BattleAction action){
@@ -194,6 +196,7 @@ public final class BattleService {
             if(!BATTLES.containsKey(g.session.id()))continue;
             for(var entry:g.players.entrySet())if(!MeleeBattleServer.active(entry.getValue()))RuntimeBridge.freezePlayer(entry.getValue(),g.anchors.get(entry.getKey()));
             if(g.animatingEnemy!=null&&ticks>=g.enemyPoseUntil){g.animatingEnemy.m_146926_(0);g.animatingEnemy=null;}
+            if(g.pendingEnemy!=null&&ticks>=g.enemyImpactAt)resolveEnemy(g);
             boolean acting=busy(g);
             if(g.results.started())continue;
             if(!acting&&g.session.state()!=BattleState.ACTIVE){finish(g,g.ending);continue;}
@@ -206,16 +209,37 @@ public final class BattleService {
         var target=targets.get(Math.floorMod(ticks+actor.id().hashCode(),targets.size()));
         var skill=com.gx.velveteclipse.shadow.EnemyTactics.choose(actor,java.util.concurrent.ThreadLocalRandom.current());
         if(g.raid&&g.raidStage==2){boolean ice=com.gx.velveteclipse.raid.RaidService.iceTurn(s.id());skill=ice?PersonaRegistry.skill("raid_ice_storm").orElseThrow():null;
-            if(ice&&g.level instanceof net.minecraft.server.level.ServerLevel l)for(Object p:g.players.values())if(p instanceof Entity e)l.m_8767_(net.minecraft.core.particles.ParticleTypes.f_175821_,e.m_20185_(),e.m_20186_()+1,e.m_20189_(),45,.6,1,.6,.08);
+
         }
         if(g.raid&&!com.gx.velveteclipse.raid.RaidService.allowAction(s.id()))return;
-        if(!g.raid){g.animatingEnemy=VisualBattleActors.enemy(s.id(),actor.id());if(g.animatingEnemy!=null){g.animatingEnemy.m_146926_(skill!=null&&skill.usesMagicStat()?-45:45);g.enemyPoseUntil=ticks+22;}}
-        var result=s.perform(actor.id(),skill==null?BattleAction.attack(target.id()):BattleAction.skill(skill.id(),target.id()));g.delay=28;
+        BattleAction action=skill==null?BattleAction.attack(target.id()):BattleAction.skill(skill.id(),target.id());
+        if(s.prepare(actor.id(),action)==null)return;
+        g.pendingEnemy=new PendingEnemy(actor.id(),action,skill==null?"":skill.id());g.enemyImpactAt=ticks+10;g.enemyPoseUntil=ticks+28;g.wasBusy=true;
+        if(!g.raid){g.animatingEnemy=VisualBattleActors.enemy(s.id(),actor.id());if(g.animatingEnemy!=null){g.animatingEnemy.m_146926_(skill!=null&&skill.usesMagicStat()?-45:45);g.enemyPoseUntil=ticks+28;}}
+        // All participants receive the same enemy actor and selected targets before the hit.
+        Object viewer=g.players.values().stream().findFirst().orElse(null);var visual=targetActor(viewer,actor.id());var victim=targetActor(viewer,target.id());
+        if(visual!=null&&victim!=null){
+            var cue=new BattleDirectionS2C(actor.id(),visual.m_19879_(),victim.m_19879_(),"enemy",skill==null?"":skill.id(),"SWORD",visual.m_20185_(),visual.m_20186_(),visual.m_20189_(),victim.m_20185_(),victim.m_20186_(),victim.m_20189_(),28);
+            for(Object member:g.players.values())ModNetwork.sendPresentation(member,cue);
+        }
+        syncAll(g,actor.name()+" está preparando uma ação.");
+    }
+    private static void resolveEnemy(Encounter g){
+        var pending=g.pendingEnemy;g.pendingEnemy=null;if(pending==null)return;var s=g.session;
+        var actor=s.find(pending.actor()).orElse(null);var target=s.find(pending.action().targetId()).orElse(null);
+        if(actor==null||target==null||s.state()!=BattleState.ACTIVE){s.cancelPrepared();return;}
+        var skill=PersonaRegistry.skill(pending.skill()).orElse(null);Object viewer=g.players.values().stream().findFirst().orElse(null);
+        if(skill!=null&&com.gx.velveteclipse.core.persona.SpellVisuals.supported(skill.id())){
+            var hits=skill.target()==SkillTarget.SELF?List.of(actor):skill.target()==SkillTarget.ALL_ENEMIES?s.enemiesOf(actor):skill.target()==SkillTarget.ALL_ALLIES?s.alliesOf(actor):List.of(target);
+            var points=hits.stream().map(c->targetActor(viewer,c.id())).filter(Objects::nonNull).limit(5).map(e->new BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
+            for(Object member:g.players.values())ModNetwork.sendPresentation(member,new BattleSpellS2C(skill.id(),points));
+        }
+        var result=s.perform(pending.actor(),pending.action());g.delay=10;
         recordDefeats(g);
         if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(g.raid&&g.raidStage==2){g.delay=60;g.wasBusy=true;}
         for(Object p:g.players.values())persist(p,s);
-        if(s.state()!=BattleState.ACTIVE)finish(g,String.join(" • ",result.log()));else syncAll(g,String.join(" • ",result.log()));
+        if(s.state()!=BattleState.ACTIVE){g.ending=String.join(" • ",result.log());syncAll(g,g.ending);}else syncAll(g,String.join(" • ",result.log()));
     }
     private static void recordDefeats(Encounter g){
         for(var enemy:g.session.participants())if(enemy.side()==BattleSide.ENEMIES&&!enemy.alive()&&g.recordedDefeats.add(enemy.id()))
@@ -232,7 +256,7 @@ public final class BattleService {
         var persona=actor==null?data.activeInstance():actor.persona();var targets=new ArrayList<BattleRosterS2C.Target>();
         if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;
             String affinities=ally?"":knowledge(g,p).forEnemy(knowledgeKey(g,c));
-            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name()+(c.ailment().isEmpty()?"":" ["+c.ailment()+"]"),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id())));}
+            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name()+(c.ailment().isEmpty()?"":" ["+c.ailment()+"]"),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id()),c.sp(),c.maxSp()));}
         ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));
         if(g==null)ModNetwork.sendPresentation(p,BattleTacticsS2C.empty());
         else {

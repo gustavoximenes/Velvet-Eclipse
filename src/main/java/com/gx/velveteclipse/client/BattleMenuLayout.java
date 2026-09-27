@@ -6,9 +6,9 @@ public final class BattleMenuLayout {
 
     public static Rect[] main(int width, int height) {
         double u=unit(width,height);
-        return new Rect[]{at(64,40,126,27,"ATTACK",1,height,u),at(24,11,80,9,"SWAP",2,height,u),
-            at(33,91,124,25,"PERSONA",3,height,u),at(28,64,67,20,"ITEM",4,height,u),
-            at(101,64,84,20,"GUARD",5,height,u),at(111,11,80,9,"ESCAPE",6,height,u)};
+        return new Rect[]{at(37,89,145,28,"ATTACK",1,height,u),at(54,123,94,16,"SWAP",2,height,u),
+            at(22,58,156,27,"PERSONA",3,height,u),at(12,26,84,20,"ITEM",4,height,u),
+            at(101,26,96,20,"GUARD",5,height,u),at(153,119,89,16,"ESCAPE",6,height,u)};
     }
     public static double unit(int w,int h){return Math.min(1.5,Math.min(w/427.0,h/240.0));}
     private static Rect at(int x,int bottom,int w,int h,String label,int key,int height,double u){return new Rect((int)(x*u),height-(int)(bottom*u),(int)(w*u),Math.max(3,(int)(h*u)),label,key);}

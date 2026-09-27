@@ -8,18 +8,17 @@ import net.minecraft.client.player.AbstractClientPlayer;
 
 /** The player and the prop sample the same time, including partial frames. */
 public final class EvokerPlayerAnimation {
-    private static AbstractClientPlayer owner;
-    private static ModifierLayer<IAnimation> layer;
+    private static final java.util.Map<AbstractClientPlayer,ModifierLayer<IAnimation>> layers=new java.util.WeakHashMap<>();
     public static boolean play(Object object){
         if(!(object instanceof AbstractClientPlayer player))return false;
-        if(owner==player&&layer!=null)return true;
-        clear();owner=player;layer=new ModifierLayer<>();
+        if(layers.containsKey(player))return true;
+        var layer=new ModifierLayer<IAnimation>();layers.put(player,layer);
         final boolean slim="slim".equals(player.m_108564_());
         layer.setAnimation(new IAnimation(){
             public void tick(){}public void setupAnim(float partial){}
-            public boolean isActive(){return PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()<=60;}
+            public boolean isActive(){return com.gx.velveteclipse.client.presentation.BattleDirector.summoning(player.m_20148_())&&com.gx.velveteclipse.client.presentation.BattleDirector.age(0)<=60;}
             public Vec3f get3DTransform(String part,TransformType type,float partial,Vec3f base){
-                double t=PersonaCinematics.skillTicks()+partial,w=EvokerPose.blend(t);Vec3f value;
+                double t=com.gx.velveteclipse.client.presentation.BattleDirector.age(partial),w=EvokerPose.blend(t);Vec3f value;
                 if(part.equals("rightArm")){
                     var arm=EvokerPose.arm(t,slim);
                     if(type==TransformType.ROTATION)value=arm.rotation();else if(type==TransformType.BEND)value=arm.bend();else return base;
@@ -33,7 +32,7 @@ public final class EvokerPlayerAnimation {
         });
         PlayerAnimationAccess.getPlayerAnimLayer(player).addAnimLayer(900,layer);return true;
     }
-    public static boolean isPlaying(Object player){return owner==player&&layer!=null;}
-    public static void stop(Object player){if(owner==player)clear();}
-    public static void clear(){if(owner!=null&&layer!=null)PlayerAnimationAccess.getPlayerAnimLayer(owner).removeLayer(layer);owner=null;layer=null;}
+    public static boolean isPlaying(Object player){return layers.containsKey(player);}
+    public static void stop(Object player){var layer=layers.remove(player);if(layer!=null&&player instanceof AbstractClientPlayer p)PlayerAnimationAccess.getPlayerAnimLayer(p).removeLayer(layer);}
+    public static void clear(){for(var p:java.util.List.copyOf(layers.keySet()))stop(p);}
 }

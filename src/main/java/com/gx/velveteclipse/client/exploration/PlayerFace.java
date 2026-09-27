@@ -6,7 +6,10 @@ import net.minecraft.world.entity.player.PlayerModelPart;
 
 public final class PlayerFace {
     public static void draw(GuiGraphics g,int x,int y,int size){
-        var player=Minecraft.m_91087_().f_91074_;if(player==null)return;
+        draw(g,Minecraft.m_91087_().f_91074_,x,y,size);
+    }
+    public static void draw(GuiGraphics g,net.minecraft.client.player.AbstractClientPlayer player,int x,int y,int size){
+        if(player==null||size<1)return;
         // Managed GUI fills are deferred, whereas blit submits immediately.
         // Finish the blue backing first; otherwise it overwrites the skin later.
         g.m_280262_();var pose=g.m_280168_();pose.m_85836_();pose.m_252880_(0,0,50);

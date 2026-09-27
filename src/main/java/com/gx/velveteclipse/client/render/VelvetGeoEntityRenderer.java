@@ -35,6 +35,16 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         if(asset.startsWith("enemy_"))withScale(.6f);
         if(asset.equals("field_shadow")||asset.equals("wealth_hand")||izanagi||asset.startsWith("tartarus_"))addRenderLayer(new AutoGlowingGeoLayer<T>(this));
     }
+    @Override public net.minecraft.client.renderer.RenderType getRenderType(T entity,ResourceLocation texture,net.minecraft.client.renderer.MultiBufferSource buffers,float partial){
+        if(entity instanceof com.gx.velveteclipse.entity.VelvetPersonaGeoEntity persona&&!persona.summoner().isEmpty())return net.minecraft.client.renderer.RenderType.m_110473_(texture);
+        return super.getRenderType(entity,texture,buffers,partial);
+    }
+    @Override public software.bernie.geckolib.core.object.Color getRenderColor(T entity,float partial,int light){
+        if(entity instanceof com.gx.velveteclipse.entity.VelvetPersonaGeoEntity persona&&!persona.summoner().isEmpty()){
+            float alpha=com.gx.velveteclipse.client.presentation.BattleDirector.personaAlpha(persona.summoner(),partial);
+            return software.bernie.geckolib.core.object.Color.ofRGBA(.55f+.45f*alpha,.85f+.15f*alpha,1f,alpha);
+        }return super.getRenderColor(entity,partial,light);
+    }
     @Override protected void applyRotations(T entity,PoseStack stack,float age,float bodyYaw,float partial){
         // GeckoLib supplies bodyYaw=0 for non-living entities. Props still have a saved world yaw.
         super.applyRotations(entity,stack,age,entity instanceof com.gx.velveteclipse.darkhour.TartarusPropEntity||entity instanceof com.gx.velveteclipse.raid.PriestessEntity||entity instanceof com.gx.velveteclipse.equipment.ElizabethEntity?entity.m_146908_():bodyYaw,partial);

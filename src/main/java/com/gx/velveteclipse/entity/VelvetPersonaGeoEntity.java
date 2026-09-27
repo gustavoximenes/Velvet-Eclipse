@@ -37,6 +37,10 @@ extends Vex
 implements GeoEntity {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache((GeoAnimatable)this);
     private String personaId;
+    private static final net.minecraft.network.syncher.EntityDataAccessor<String> SUMMONER=net.minecraft.network.syncher.SynchedEntityData.m_135353_(VelvetPersonaGeoEntity.class,net.minecraft.network.syncher.EntityDataSerializers.f_135030_);
+    @Override protected void m_8097_(){super.m_8097_();f_19804_.m_135372_(SUMMONER,"");}
+    public void summoner(java.util.UUID id){f_19804_.m_135381_(SUMMONER,id.toString());}
+    public String summoner(){return f_19804_.m_135370_(SUMMONER);}
     private final boolean evokerFxType;
 
     public VelvetPersonaGeoEntity(EntityType<? extends Vex> entityType, Level level) {

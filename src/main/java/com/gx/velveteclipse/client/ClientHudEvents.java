@@ -73,12 +73,10 @@ public final class ClientHudEvents {
                 else BattleTacticsClient.paint(canvas,w,h);
                 return;
             }
-            if(s.active()&&ClientBattleUiState.selector()){
-                if(ClientBattleUiState.page()==ClientBattleUiState.Page.ITEMS){com.gx.velveteclipse.client.equipment.SupplyBattleHud.paint(canvas,w,h);}
-                else {List<com.gx.velveteclipse.core.persona.SkillDefinition> choices=s.skills().stream().map(id->PersonaRegistry.skill(id).orElse(null)).filter(java.util.Objects::nonNull).map(skill->ClientBattleUiState.bonuses(s).displayCost(skill)).toList();
-                PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),w,h);}
-            }else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
+            if(s.active())com.gx.velveteclipse.client.presentation.ReloadBattleHud.render(g,canvas,view,w,h,partial);
+            else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);
+            if(s.active())com.gx.velveteclipse.client.presentation.BattleHitNumbers.paint(canvas,w,h,partial);
             if(s.active())BattleTacticsClient.paint(canvas,w,h);
             if(s.active())com.gx.velveteclipse.client.equipment.ItemHelpHud.paint(g,w,h);
             if(AllOutPresentation.active()){g.m_280262_();AllOutPresentation.paint(g,canvas,w,h,partial);}
@@ -115,7 +113,7 @@ public final class ClientHudEvents {
             if(BattleTacticsClient.prompt()){if(event.getButton()==1)BattleTacticsClient.dismiss();else if(event.getButton()==0)BattleTacticsClient.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight());return;}
             if(event.getButton()==1){ClientBattleUiState.back();return;}
             if(event.getButton()==0&&BattleTacticsClient.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight()))return;
-            if(event.getButton()==0)ClientBattleUiState.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight(),s);
+            if(event.getButton()==0&&!com.gx.velveteclipse.client.presentation.ReloadBattleHud.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight()))ClientBattleUiState.click(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),RuntimeBridge.guiScaledWidth(),RuntimeBridge.guiScaledHeight(),s);
         }
     }
     @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)

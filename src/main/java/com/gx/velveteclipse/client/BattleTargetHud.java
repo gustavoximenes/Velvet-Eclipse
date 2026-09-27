@@ -19,13 +19,16 @@ public final class BattleTargetHud {
     private static final Map<UUID,double[]> positions=new HashMap<>();
     private static double lastX=-1,lastY=-1;
     public static int entityId(){return roster.stream().filter(t->t.id().equals(selected)).mapToInt(BattleRosterS2C.Target::entityId).findFirst().orElse(-1);}
+    public static List<BattleRosterS2C.Target> roster(){return roster;}
     public static UUID selectedId(){return selected;}
     public static void lockActionTarget(UUID id){if(id!=null)selected=id;}
-    public static void reset(){roster=List.of();selected=null;boxes.clear();positions.clear();cards.clear();}
+    public static double[] projected(UUID id){return positions.get(id);}
+    public static void reset(){roster=List.of();selected=null;boxes.clear();positions.clear();cards.clear();com.gx.velveteclipse.client.presentation.BattleHitNumbers.reset();com.gx.velveteclipse.client.presentation.ReloadBattleHud.reset();}
     public static void accept(BattleTargetS2C ignored){}
     public static void accept(BattleRosterS2C p){
         // Defensive normalization of the authoritative roster.
         var seen=new HashSet<UUID>();roster=p.targets().stream().filter(t->t!=null&&seen.add(t.id())).toList();
+        com.gx.velveteclipse.client.presentation.BattleHitNumbers.accept(roster);
         if(roster.isEmpty()){reset();return;}if(ClientBattleUiState.page()==ClientBattleUiState.Page.TARGET&&candidates().stream().noneMatch(t->t.id().equals(selected)))chooseDefault();
     }
     public static List<BattleRosterS2C.Target> candidates(){

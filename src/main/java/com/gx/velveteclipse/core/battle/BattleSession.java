@@ -128,6 +128,9 @@ public final class BattleSession {
       currentActor().setGuarding(false);boolean success=random.nextDouble()<escapeChance();if(!success)advanceTurn();return success;
    }
    public BattleResolution perform(UUID var1, BattleAction var2) {
+      // Roll area hits before applying status effects in both immediate and animated actions.
+      // Otherwise Shock/Freeze RNG between victims changes later damage when a turn is reserved.
+      if(prepared==null&&(var2.type()==BattleActionType.ATTACK||var2.type()==BattleActionType.SKILL))prepare(var1,var2);
       if(prepared!=null&&(!prepared.actor().equals(var1)||!prepared.action().equals(var2)))
          return new BattleResolution(state,false,List.of("An action is already in progress."));
       ArrayList var3 = new ArrayList();

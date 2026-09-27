@@ -16,7 +16,8 @@ public final class MeleeBattleServer {
   var session=BattleService.current(p);if(session==null||BattleService.actionBusy(p))return false;
   Entity enemy=BattleService.targetActor(p,action.targetId());if(enemy==null){BattleService.sync(p,"O alvo ainda não está disponível para o ataque.");return false;}
   Vec3 start=p.m_20182_(),delta=enemy.m_20182_().m_82546_(start);double distance=Math.sqrt(delta.f_82479_*delta.f_82479_+delta.f_82481_*delta.f_82481_);
-  double travel=Math.max(0,distance-1.35);
+  var family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();boolean ranged=family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW||family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.GUN;
+  double travel=ranged?0:Math.max(0,distance-1.35);
   Vec3 direction=distance<.001?Vec3.f_82478_:new Vec3(delta.f_82479_/distance,0,delta.f_82481_/distance);
   boolean supported=!p.m_9236_().m_45756_(p,p.m_20191_().m_82386_(0,-.65,0));
   // Terrain constrains presentation, never the validity of a turn-based attack.

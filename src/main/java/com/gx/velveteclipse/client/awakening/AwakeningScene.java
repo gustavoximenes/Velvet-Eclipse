@@ -21,6 +21,7 @@ public final class AwakeningScene {
     final float[][] frames;
     final float start,fps;
     private final float[] sample;
+    private final BufferBuilder buffer=new BufferBuilder(262144);
     public AwakeningScene(String name)throws IOException{
         try(var raw=AwakeningScene.class.getResourceAsStream("/assets/velvet_eclipse/awakening/"+name+".bin.gz")){
             if(raw==null)throw new IOException("Missing awakening scene: "+name);
@@ -70,7 +71,7 @@ public final class AwakeningScene {
             for(String texture:textures){
                 RenderSystem.setShader(GameRenderer::m_172820_);
                 RenderSystem.setShaderTexture(0,texture.equals("player")?mc.f_91074_.m_108560_():new ResourceLocation("velvet_eclipse","textures/entity/"+texture+".png"));
-                var buffer=Tesselator.m_85913_().m_85915_();buffer.m_166779_(VertexFormat.Mode.QUADS,DefaultVertexFormat.f_85819_);
+                buffer.m_166779_(VertexFormat.Mode.QUADS,DefaultVertexFormat.f_85819_);
                 for(int j=0;j<meshes.size();j++){
                     var mesh=meshes.get(j);int offset=14+j*16;
                     if(!texture.equals(mesh.texture)||mesh.variant!=0&&mesh.variant!=variant||frame[offset+15]<.5||!skinVisible(mesh.skinSlot))continue;
@@ -100,9 +101,9 @@ public final class AwakeningScene {
             for(int n=0;n<4;n++){int k=i+n*5;b.m_5483_(q[n*3],q[n*3+1],q[n*3+2]).m_7421_(v[k+3],v[k+4]).m_85950_(shade,Math.min(1,shade+(hero&&alpha<1?.12f:0)),Math.min(1,shade+(hero&&alpha<1?.25f:0)),reveal).m_5752_();}
         }
     }
-    private static void stage(){
+    private void stage(){
         RenderSystem.setShader(GameRenderer::m_172811_);RenderSystem.disableCull();
-        var b=Tesselator.m_85913_().m_85915_();b.m_166779_(VertexFormat.Mode.QUADS,DefaultVertexFormat.f_85815_);
+        var b=buffer;b.m_166779_(VertexFormat.Mode.QUADS,DefaultVertexFormat.f_85815_);
         for(int x=-12;x<12;x++)for(int z=-15;z<10;z++)quad(b,x,0,z,x+1,0,z,x+1,0,z+1,x,0,z+1,(x+z)%2==0?0xFF0D1D2B:0xFF1A313D);
         for(int x=-12;x<12;x+=2){quad(b,x,0,8.5,x+1.88,0,8.5,x+1.88,1.05,8.5,x,1.05,8.5,0xFF132A2E);quad(b,x,1.05,8.35,x+1.92,1.05,8.35,x+1.92,1.05,8.65,x,1.05,8.65,0xFF3A513F);}
         for(int x:new int[]{-5,5})quad(b,x,.008,-12,x+.06,.008,-12,x+.06,.008,8,x,.008,8,0xFF306049);

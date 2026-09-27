@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="velvet_eclipse"
-version="0.6.29-awakening"
+version="0.6.30-reload-presentation"
 displayName="Velvet Eclipse"
 authors="Gustavo Ximenes"
 description='''An original Minecraft RPG mod inspired by stylish monster-collecting and social JRPG combat systems.'''
@@ -41,5 +41,19 @@ side="CLIENT"
 modId="bendylib"
 mandatory=true
 versionRange="[4.0.0,5)"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.velvet_eclipse]]
+modId="ldlib"
+mandatory=true
+versionRange="[1.0.52,)"
+ordering="AFTER"
+side="CLIENT"
+
+[[dependencies.velvet_eclipse]]
+modId="photon"
+mandatory=true
+versionRange="[1.1.17,)"
 ordering="AFTER"
 side="CLIENT"

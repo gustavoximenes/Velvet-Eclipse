@@ -52,7 +52,7 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
             for(var it=layers.listIterator();it.hasNext();){var original=it.next();if(!(original instanceof ItemInHandLayer))continue;
                 it.set(new RenderLayer<AbstractClientPlayer,PlayerModel<AbstractClientPlayer>>(renderer){
                     @Override public void m_6494_(PoseStack pose,MultiBufferSource buffers,int light,AbstractClientPlayer player,float walk,float amount,float partial,float age,float yaw,float pitch){
-                        if(player==Minecraft.m_91087_().f_91074_&&(ExplorationClient.swordVisible()||com.gx.velveteclipse.client.PersonaCinematics.skillSequenceActive()))return;
+                        if(com.gx.velveteclipse.client.presentation.BattleDirector.attacking(player.m_20148_())||com.gx.velveteclipse.client.presentation.BattleDirector.summoning(player.m_20148_())||player==Minecraft.m_91087_().f_91074_&&(ExplorationClient.swordVisible()||com.gx.velveteclipse.client.PersonaCinematics.skillSequenceActive()))return;
                         original.m_6494_(pose,buffers,light,player,walk,amount,partial,age,yaw,pitch);
                     }
                 });
@@ -60,13 +60,15 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
         }catch(IllegalAccessException ex){throw new IllegalStateException("Cannot wrap held item renderer",ex);}
     }
     @Override public void m_6494_(PoseStack pose,MultiBufferSource buffers,int light,AbstractClientPlayer player,float walk,float amount,float partial,float age,float yaw,float pitch){
-        if(player!=Minecraft.m_91087_().f_91074_||(!ExplorationClient.swordVisible()&&!EntryPlayerRenderer.drawing()))return;
+        boolean directed=com.gx.velveteclipse.client.presentation.BattleDirector.attacking(player.m_20148_());
+        if(!directed&&(player!=Minecraft.m_91087_().f_91074_||(!ExplorationClient.swordVisible()&&!EntryPlayerRenderer.drawing())))return;
+        if(com.gx.velveteclipse.client.presentation.BattleDirector.summoning(player.m_20148_()))return;
         pose.m_85836_();
-        var family=com.gx.velveteclipse.client.equipment.EquipmentScreen.family();
+        var family=directed?com.gx.velveteclipse.client.presentation.BattleDirector.weapon():com.gx.velveteclipse.client.equipment.EquipmentScreen.family();
         boolean bow=family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW;
         if(bow)bindOtherHand(pose,player);else bindHand(pose,m_117386_().f_102811_,player);
         if(bow){pose.m_252781_(new Quaternionf().rotationZ((float)Math.PI/2).rotateX((float)Math.PI/2));pose.m_85841_(.82f,.82f,.82f);}
-        else if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()&&!EntryPlayerRenderer.drawing())gripBattle(pose,com.gx.velveteclipse.client.PersonaCinematics.meleeActive()?com.gx.velveteclipse.client.PersonaCinematics.meleeTicks()+partial:-1);
+        else if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()&&!EntryPlayerRenderer.drawing())gripBattle(pose,directed?com.gx.velveteclipse.client.presentation.BattleDirector.age(partial):-1);
         else grip(pose,ExplorationClient.swordAttackTime(partial));
         WeaponModels.draw(family,pose,buffers,light);
         if(bow&&ExplorationClient.swordAttackTime(partial)>=0&&ExplorationClient.swordAttackTime(partial)<4)WeaponModels.arrow(pose,buffers,light);

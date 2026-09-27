@@ -20,7 +20,7 @@ public final class ClientBattleCamera {
     private static float lockedYaw;
     @SubscribeEvent public static void onClientTick(TickEvent.ClientTickEvent e){
         PersonaCinematics.tick(e);if(e.phase!=TickEvent.Phase.END)return;
-        ExplorationClient.tick();var mc=Minecraft.m_91087_();
+        com.gx.velveteclipse.client.presentation.BattleDirector.tick();ExplorationClient.tick();var mc=Minecraft.m_91087_();
         boolean valid=mc.f_91074_!=null&&mc.f_91073_!=null&&mc.f_91074_.m_6084_();
         if(!valid){BattleResultsClient.reset();AllOutPresentation.reset();}
         boolean active=valid&&ClientBattleState.snapshot().active();
@@ -31,7 +31,7 @@ public final class ClientBattleCamera {
         if(active){
             if(!battle){anchor=RuntimeBridge.playerPosition(mc.f_91074_);lockedYaw=mc.f_91074_.m_146908_();}
             if(anchor!=null&&!PersonaCinematics.meleeActive())RuntimeBridge.freezeLocalClientPlayerPosition(anchor);
-            RuntimeBridge.setEntityRotation(mc.f_91074_,lockedYaw,2);
+            if(!PersonaCinematics.meleeActive())RuntimeBridge.setEntityRotation(mc.f_91074_,lockedYaw,2);
         }else anchor=null;
         if(active&&mc.f_91080_==null){if(mc.f_91067_.m_91600_()){mc.f_91067_.m_91602_();releasedCursor=true;}}
         else if(!active&&releasedCursor){if(mc.f_91080_==null&&valid)mc.f_91067_.m_91601_();releasedCursor=false;}
@@ -45,10 +45,11 @@ public final class ClientBattleCamera {
         if(previousCamera==null)return;
         if(VelvetRoomClient.seated()){VelvetRoomClient.camera(e);return;}
         Mode mode=ExplorationClient.mode();
-        if(mode==Mode.SKILL_CINEMATIC||mode==Mode.BATTLE)PersonaCinematics.applyCamera(e);
+        if(mode==Mode.SKILL_CINEMATIC||mode==Mode.BATTLE){if(!AllOutPresentation.active()&&!com.gx.velveteclipse.client.presentation.BattleDirector.camera(e))PersonaCinematics.applyCamera(e);}
         else if(mode!=Mode.NORMAL)ExplorationCamera.apply(e,mode==Mode.BATTLE_ENTRY);
     }
     @SubscribeEvent public static void fov(ViewportEvent.ComputeFov e){
+        if(previousCamera!=null&&ClientBattleState.snapshot().active()){e.setFOV(com.gx.velveteclipse.client.presentation.BattleDirector.fov());return;}
         if(previousCamera!=null&&ExplorationClient.swordVisible())e.setFOV(ExplorationClient.entry()?66:ExplorationCamera.PARAMETERS.fov());
     }
 }
