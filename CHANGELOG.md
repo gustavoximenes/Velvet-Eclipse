@@ -1,3 +1,11 @@
+# 0.6.33-all-out-refinement
+
+- Substitui a animação de All-Out pela prévia aprovada, com close do iniciador, aliados em profundidades separadas, braço livre abaixado, corrida, fumaça texturizada, impactos e cinco encerramentos.
+- Confirma o resultado no servidor depois do impacto. Inimigos sobreviventes, inclusive por passivas, impedem a pose final de vitória.
+- Reúne os estilos em um único seletor no System, com navegação por mouse/teclado e preferência persistida.
+- Remove os textos superiores de identificação do All-Out e da cutscene de despertar.
+- Protocolo 19; bibliotecas e compatibilidade OptiFine preservadas.
+
 # 0.6.32-battle-choreography
 
 - Câmera da Evoker em plano de cintura, de frente em três quartos; abertura para incluir a Persona. Procura ângulos alternativos livres quando há paredes. Invocador orientado ao alvo reservado.

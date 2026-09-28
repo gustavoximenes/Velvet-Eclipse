@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.33 — All-Out Attack revisado
+
+Animação aprovada integrada: iniciador em close, aliados ao lado, braço corrigido, corrida e fumaça texturizada. A pose final só aparece após vitória confirmada pelo servidor. **TAB → System → Animação All-Out** agora usa um único seletor. Retirados os textos superiores do All-Out e do despertar. Cliente e servidor na versão 0.6.33, protocolo **19**. [Detalhes e validação offline](docs/ALL-OUT-REFINEMENT.md).
+
 # Velvet Eclipse 0.6.32 — Câmeras, impactos e All-Out Attack
 
 Invocação com enquadramento mais aberto, aproximação dos inimigos em ataques físicos e efeitos vinculados à identidade do alvo. All-Out Attack com entrada da equipe, corrida, nuvem de impactos e cinco finais selecionáveis em **TAB → System → All-Out**, usando a skin de cada jogador. Photon mantido para emissores e faíscas, com corpos de magia próprios no caminho de renderização compatível com OptiFine. Cliente e servidor precisam da versão 0.6.32, protocolo **18**. [Uso, referências e validação offline](docs/BATTLE-CHOREOGRAPHY.md).

@@ -9,22 +9,26 @@ import java.util.*;
 public final class AllOutServer {
  private static final Map<UUID,Sequence> sequences=new HashMap<>();
  private static final class Sequence {
-  final Object leader;final UUID battle;final List<Object> viewers;final boolean victory;int tick;
-  Sequence(Object leader,BattleSession session,boolean victory){this.leader=leader;this.battle=session.id();this.viewers=BattleService.members(leader);this.victory=victory;}
+  final Object leader;final UUID battle;final List<Object> viewers;boolean victory;int tick;AllOutCueS2C cue;
+  Sequence(Object leader,BattleSession session){this.leader=leader;this.battle=session.id();this.viewers=BattleService.members(leader);}
  }
  public static boolean active(Object p){var s=BattleService.current(p);return s!=null&&sequences.containsKey(s.id());}
  public static boolean start(Object p){
   var s=BattleService.current(p);if(!(p instanceof Entity leader)||s==null||BattleService.actionBusy(p)||!s.canAllOut(RuntimeBridge.playerUuid(p)))return false;
   var fighters=s.allOutFighters();var reserved=s.prepare(RuntimeBridge.playerUuid(p),BattleAction.allOut());if(reserved==null)return false;
-  boolean victory=reserved.hits().entrySet().stream().allMatch(e->s.find(e.getKey()).map(t->(t.guarding()?Math.max(1,e.getValue().damage()/2):e.getValue().damage())>=t.hp()).orElse(false));
-  var seq=new Sequence(p,s,victory);sequences.put(s.id(),seq);BattleService.beginAction(p,BattleAction.allOut());
+  var seq=new Sequence(p,s);sequences.put(s.id(),seq);BattleService.beginAction(p,BattleAction.allOut());
   var ids=fighters.stream().map(c->BattleService.targetActor(p,c.id())).filter(Objects::nonNull).map(Entity::m_19879_).toList();
   var weapons=new HashMap<Integer,String>();for(Object member:seq.viewers)if(member instanceof Entity e)weapons.put(e.m_19879_(),com.gx.velveteclipse.equipment.EquipmentData.load(member).bonuses().family().name());
-  var cue=new AllOutCueS2C(true,leader.m_19879_(),ids,victory,AllOutPreferences.get(p).id(),weapons);for(Object member:seq.viewers)ModNetwork.sendPresentation(member,cue);return true;
+  seq.cue=new AllOutCueS2C(true,leader.m_19879_(),ids,false,AllOutPreferences.get(p).id(),weapons);for(Object member:seq.viewers)ModNetwork.sendPresentation(member,seq.cue);return true;
  }
  public static void tick(){for(var seq:new ArrayList<>(sequences.values())){
   var s=BattleService.current(seq.leader);if(s==null||!s.id().equals(seq.battle)){end(seq);continue;}
-  if(++seq.tick==AllOutTimeline.IMPACT)BattleService.act(seq.leader,BattleAction.allOut());
+  if(++seq.tick==AllOutTimeline.IMPACT){
+   boolean applied=BattleService.act(seq.leader,BattleAction.allOut());
+   seq.victory=applied&&s.state()==BattleState.PLAYERS_WON;
+   var p=seq.cue;var result=new AllOutCueS2C(true,p.leader(),p.fighters(),seq.victory,p.style(),p.weapons(),AllOutTimeline.IMPACT);
+   for(Object member:seq.viewers)ModNetwork.sendPresentation(member,result);
+  }
   if(seq.tick>=AllOutTimeline.duration(seq.victory))end(seq);
  }}
  public static void cancel(Object player){var s=BattleService.current(player);if(s!=null){var seq=sequences.get(s.id());if(seq!=null){s.cancelPrepared();end(seq);}}}

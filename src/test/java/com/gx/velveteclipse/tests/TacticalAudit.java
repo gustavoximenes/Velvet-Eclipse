@@ -54,12 +54,24 @@ public final class TacticalAudit {
    check((s.state()==BattleState.PLAYERS_WON)==lethal,"lethal and nonlethal results");
   }
   for(boolean skip:new boolean[]{false,true}){s=battle(1);var next=s.find(id(2)).orElseThrow();next.knockDown(Element.FIRE,true);if(skip)next.knockDown(Element.FIRE,true);s.leave(id(1));check(s.currentActor().id().equals(id(skip?3:2)),"departure honors next actor's recovery/skip");}
+  // Raw reserved damage is insufficient to decide whether the finisher may play.
+  for(String passive:List.of("endure","enduring_soul","firm_stance")){
+   s=battle(1);down(s,10);var enemy=s.find(id(10)).orElseThrow();
+   var hit=s.prepare(id(1),BattleAction.allOut()).hits().get(id(10));
+   int remaining=passive.equals("firm_stance")?Math.max(2,hit.damage()*3/4):1;
+   enemy.damage(enemy.hp()-remaining);
+   enemy.setPersona(new PersonaInstance(enemy.persona().definitionId(),enemy.persona().level(),0,Set.of(passive)));
+   check(hit.damage()>=enemy.hp(),"old damage-only prediction would report victory");
+   s.perform(id(1),BattleAction.allOut());
+   check(enemy.alive()&&s.state()==BattleState.ACTIVE,"survival passive prevents victory finisher: "+passive);
+  }
   packets();presentation();
   System.out.println("PASS tactics: "+checks+" checks; first/repeated weakness, bonus ownership, isolated Baton Pass damage, departure recovery, 1..5 elementless all-out targets, codecs, animation phases and HUD previews.");
  }
  private static void packets(){var b=new FriendlyByteBuf(Unpooled.buffer());try{
   for(var p:List.of(BattleTacticsS2C.empty(),new BattleTacticsS2C(id(1),true,12,"SHIFT",true,List.of(id(2)),List.of(new BattleTacticsS2C.Down(20,false),new BattleTacticsS2C.Down(21,true))))){BattleTacticsS2C.encode(p,b);check(p.equals(BattleTacticsS2C.decode(b)),"tactics codec");}
   for(boolean victory:new boolean[]{false,true}){var p=new AllOutCueS2C(true,10,List.of(10,11,12),victory);AllOutCueS2C.encode(p,b);check(p.equals(AllOutCueS2C.decode(b)),"all-out codec");}
+  for(boolean victory:new boolean[]{false,true}){var p=new AllOutCueS2C(true,10,List.of(10,11,12),victory,"junpei",Map.of(10,"BOW"),AllOutTimeline.IMPACT);AllOutCueS2C.encode(p,b);check(p.equals(AllOutCueS2C.decode(b)),"server outcome confirmation roundtrip");}
   for(UUID target:new UUID[]{null,id(10)}){var p=new BattleCueS2C("skill","zio",true,1,2,3,4,5,6,target);BattleCueS2C.encode(p,b);check(p.equals(BattleCueS2C.decode(b)),"cue preserves actual target");}
   check(!b.isReadable(),"no trailing codec bytes");
   BattleTargetHud.lockActionTarget(id(10));check(BattleTargetHud.selectedId().equals(id(10)),"authoritative action target remains enemy");BattleTargetHud.reset();

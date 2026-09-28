@@ -98,7 +98,6 @@ public final class AwakeningScreen extends Screen {
             p.m_85836_();p.m_85837_(left(),top(),0);p.m_85841_((float)scale(),(float)scale(),1);
             double t=AwakeningTimeline.visualTime(real,chosen);AwakeningEffects.paint(canvas,scene,real,t,chosen,COLORS[index]);
 
-            canvas.text("VELVET ECLIPSE",22,7,11,0xFF91BECF,0);canvas.text("DESPERTAR",810,7,11,0xFF91BECF,0);
             if(t<2.4){canvas.text("DARK HOUR",42,331,64,0xFFA7E071,0);canvas.text("QUANDO O MUNDO PARA, ALGO EM VOCÊ DESPERTA.",44,401,17,0xFFCFECDD,0);}
             if(t>8.8&&t<10.6)caption(canvas,"Eu não vou recuar.");
             if(t>23.35&&t<24.7)caption(canvas,"Persona!");

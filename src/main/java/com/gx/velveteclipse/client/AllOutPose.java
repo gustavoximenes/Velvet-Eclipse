@@ -3,6 +3,22 @@ import dev.kosmx.playerAnim.core.util.Vec3f;
 import com.gx.velveteclipse.core.battle.AllOutTimeline;
 import com.gx.velveteclipse.core.battle.AllOutStyle;
 public final class AllOutPose {
+ public static Vec3f rotation(String bone,double tick,boolean victory,AllOutStyle style,com.gx.velveteclipse.equipment.EquipmentCatalog.Family family,int participant){
+  if(tick<38&&participant>0&&bone.equals("left_arm")&&family!=com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW)return v(.12,.02,-.08);
+  return rotation(bone,tick,victory,style,family);
+ }
+ public static float bend(String bone,double tick,boolean victory,AllOutStyle style,com.gx.velveteclipse.equipment.EquipmentCatalog.Family family,int participant){
+  if(tick<38&&participant>0&&bone.equals("left_arm")&&family!=com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW)return -.35f;
+  return bend(bone,tick,victory,style,family);
+ }
+ public static Vec3f rotation(String bone,double tick,boolean victory,AllOutStyle style,com.gx.velveteclipse.equipment.EquipmentCatalog.Family family){
+  if(family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW&&bone.equals("left_arm")&&tick<90)return v(.12,-.10,-.12);
+  return rotation(bone,tick,victory,style);
+ }
+ public static float bend(String bone,double tick,boolean victory,AllOutStyle style,com.gx.velveteclipse.equipment.EquipmentCatalog.Family family){
+  if(family==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW&&bone.equals("left_arm")&&tick<90)return -.18f;
+  return bend(bone,tick,victory,style);
+ }
  public static Vec3f rotation(String bone,double tick,boolean victory){
   double boundary=boundary(tick,victory);
   if(boundary>=0){var a=rawRotation(bone,boundary-.001,victory);var b=rawRotation(bone,tick,victory);float f=(float)AllOutTimeline.ease((tick-boundary)/8);return v(a.getX()+(b.getX()-a.getX())*f,a.getY()+(b.getY()-a.getY())*f,a.getZ()+(b.getZ()-a.getZ())*f);}
@@ -13,8 +29,8 @@ public final class AllOutPose {
   var base=rotation(bone,tick,victory);if(!victory||tick<90||style==AllOutStyle.MAKOTO)return base;
   boolean card=tick>=130;double f=AllOutTimeline.ease((tick-90)/12),gesture=Math.sin(Math.min(1,(tick-90)/40)*Math.PI);
   Vec3f to=switch(style){
-   case YUKARI->switch(bone){case "head"->v(-.06,.30,-.12);case "right_arm"->v(-1.30,.1,.45+gesture*.35);case "left_arm"->v(.05,0,-.24);case "right_leg"->v(-.12,.15,.04);case "left_leg"->v(.20,-.1,-.12);default->base;};
-   case JUNPEI->switch(bone){case "head"->v(-.15,-.3,-.1);case "right_arm"->v(-1.2,-.45,.85);case "left_arm"->v(-1.75,.1,-.60);case "left_leg"->v(-.08,0,-.16);case "right_leg"->v(.1,0,.16);default->base;};
+   case YUKARI->switch(bone){case "head"->v(-.06,.30,-.12);case "right_arm"->v(-1.30,.1,.95+gesture*.25);case "left_arm"->v(.05,0,-.24);case "right_leg"->v(-.12,.15,.04);case "left_leg"->v(.20,-.1,-.12);default->base;};
+   case JUNPEI->switch(bone){case "head"->v(-.15,-.3,-.1);case "right_arm"->v(.15,-.20,.20);case "left_arm"->v(-2.2,.1,-.60);case "left_leg"->v(-.08,0,-.16);case "right_leg"->v(.1,0,.16);default->base;};
    case AKIHIKO->switch(bone){case "head"->v(.1,-.3,0);case "right_arm"->v(-1.15-gesture*.5,-.35,.25);case "left_arm"->v(-1.2,.45,-.3);case "right_leg"->v(-.3,0,.1);case "left_leg"->v(.2,0,-.16);default->base;};
    case MITSURU->switch(bone){case "head"->v(-.1,-.5,.08);case "right_arm"->v(-.4+.56*AllOutTimeline.ease((tick-130)/8),0,.12);case "left_arm"->v(-.30,.15,-.5);case "left_leg"->v(-.14,-.18,-.06);case "right_leg"->v(.10,.2,.05);default->base;};
    default->base;
@@ -22,7 +38,7 @@ public final class AllOutPose {
  }
  public static float bend(String bone,double tick,boolean victory,AllOutStyle style){
   float base=bend(bone,tick,victory);if(!victory||tick<90||style==AllOutStyle.MAKOTO)return base;
-  boolean right=bone.equals("right_arm");float target=switch(style){case YUKARI->right?-1.2f:.15f;case JUNPEI->right?-.85f:-1.55f;case AKIHIKO->-1.40f;case MITSURU->right?.12f:-.85f;default->base;};return base+(target-base)*(float)AllOutTimeline.ease((tick-90)/12);
+  boolean right=bone.equals("right_arm");float target=switch(style){case YUKARI->right?-.65f:.15f;case JUNPEI->right?-.35f:-.60f;case AKIHIKO->-1.40f;case MITSURU->right?.12f:-.85f;default->base;};return base+(target-base)*(float)AllOutTimeline.ease((tick-90)/12);
  }
  private static Vec3f rawRotation(String bone,double tick,boolean victory){
   var phase=AllOutTimeline.phase(tick,victory);double run=Math.sin((tick-38)*.64);
@@ -35,9 +51,14 @@ public final class AllOutPose {
   if(phase==AllOutTimeline.Phase.FINISH)return switch(bone){
    case "head"->v(-.08,-.18,.08);case "right_arm"->v(-1.48,-.48,-.18);case "left_arm"->v(-.4,.4,-.4);
    case "right_leg"->v(-.3,.22,.14);case "left_leg"->v(.45,-.28,-.13);default->v(0,0,0);};
-  return switch(bone){case "head"->v(-.13,-.15,.04);case "body"->v(0,0,0);case "right_arm"->v(-1.12,-.5,.55);case "left_arm"->v(-.42,.32,-.38);case "right_leg"->v(.1,.12,.16);case "left_leg"->v(-.12,-.18,-.18);default->v(0,0,0);};
+  return switch(bone){case "head"->v(-.07,.28,.02);case "body"->v(0,0,0);case "right_arm"->v(.22,-.18,.18);case "left_arm"->v(-.45,.25,-.35);case "right_leg"->v(-.12,.12,.10);case "left_leg"->v(.20,-.14,-.10);default->v(0,0,0);};
  }
  public static float bend(String bone,double tick,boolean victory){double boundary=boundary(tick,victory);if(boundary>=0){float a=rawBend(bone,boundary-.001,victory),b=rawBend(bone,tick,victory);return a+(b-a)*(float)AllOutTimeline.ease((tick-boundary)/8);}return rawBend(bone,tick,victory);}
- private static float rawBend(String bone,double tick,boolean victory){var phase=AllOutTimeline.phase(tick,victory);return phase==AllOutTimeline.Phase.VICTORY?(bone.equals("right_arm")?-1.89f:.14f):phase==AllOutTimeline.Phase.FINISH?(bone.equals("right_arm")?.36f:1.0f):(phase==AllOutTimeline.Phase.RUSH||phase==AllOutTimeline.Phase.CLOUD)?.95f:.65f;}
+ private static float rawBend(String bone,double tick,boolean victory){var phase=AllOutTimeline.phase(tick,victory);return phase==AllOutTimeline.Phase.VICTORY?(bone.equals("right_arm")?-1.89f:.14f):phase==AllOutTimeline.Phase.FINISH?(bone.equals("right_arm")?.36f:1.0f):(phase==AllOutTimeline.Phase.RUSH||phase==AllOutTimeline.Phase.CLOUD)?-.85f:bone.equals("right_arm")?-.38f:-1.05f;}
  private static Vec3f v(double x,double y,double z){return new Vec3f((float)x,(float)y,(float)z);}
+ public static float knee(String bone,double tick,boolean victory){
+  double run=AllOutTimeline.ease((tick-38)/6)*(1-AllOutTimeline.ease((tick-62)/7));
+  double walk=victory?AllOutTimeline.ease((tick-90)/8)*(1-AllOutTimeline.ease((tick-117)/10)):0;
+  return (float)(.04+Math.max(0,Math.sin((tick-38)*.64+(bone.equals("left_leg")?Math.PI:0)))*(run*.95+walk*.45));
+ }
 }
