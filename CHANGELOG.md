@@ -1,3 +1,12 @@
+# 0.6.32-battle-choreography
+
+- Câmera da Evoker em plano de cintura, de frente em três quartos; abertura para incluir a Persona. Procura ângulos alternativos livres quando há paredes. Invocador orientado ao alvo reservado.
+- Inimigos aproximam-se, atacam e retornam em ataques físicos. Colisão e apoio limitam o percurso. As 19 Shadows modeladas receberam animação de deslocamento; Sacerdotisa continua parada. Corrigida a disputa de animação dos subchefes do trem.
+- Pacotes de efeitos incluem ID e UUID do alvo. O impacto acompanha seus pés interpolados e preserva a última posição após remoção, sem migrar para outro inimigo. Corpos animados de fogo, maldição, vento, gelo, luz, nuclear, psíquico e onipotente junto aos emissores Photon; raios também dispõem do caminho emissivo compatível.
+- All-Out Attack: palco em tela inteira, corrida, nuvem com bordas suaves, fragmentos e saída do líder. Cinco finais inspirados em Makoto, Yukari, Junpei, Akihiko e Mitsuru, selecionáveis e salvos em System. Skin standard/slim real e família de arma de cada membro sincronizadas.
+- Polígonos da HUD enviados como triângulos em lote, evitando milhares de faixas por nuvem. Protocolo principal 18; bibliotecas e ponte OptiFine/LDLib preservadas.
+- Auditorias offline de apresentação, turnos, multiplayer, alvos, poses e geometrias aprovadas. Sem execução do Minecraft; as prévias offline não comprovam a renderização final com shaders.
+
 # 0.6.31-optifine-compat
 
 - Corrige o crash de inicialização `ldlib-common.mixins.json:ModelBakeryMixin`, causado pela troca da assinatura de `Logger.warn` no OptiFine I6 pre6.

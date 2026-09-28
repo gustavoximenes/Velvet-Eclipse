@@ -47,6 +47,7 @@ public final class ClientHudEvents {
             s.enemyName(),s.enemyHp(),s.enemyMaxHp(),hp,sp,enemy,trail,s.message(),ClientBattleUiState.page().name(),entries,keys,ClientKeyMappings.label(ClientKeyMappings.BACK),
             now*1e-9,PersonaCinematics.skillSequenceActive(),PersonaCinematics.skillTicks()+partial,ClientBattleUiState.displaySkill(PersonaCinematics.activeSkill()));
         HudDesign.Canvas canvas=new HudDesign.Canvas(){
+            public void poly(double[] points,int color){com.gx.velveteclipse.client.menu.MenuGeometry.draw(g.m_280091_().m_6299_(net.minecraft.client.renderer.RenderType.m_285907_()),g.m_280168_().m_85850_().m_252922_(),points,color);}
             public void fill(int x,int y,int width,int height,int color){if(width>0&&height>0&&(color>>>24)>0)g.m_280509_(x,y,x+width,y+height,color);}
             public void text(String text,int x,int y,int color){if((color>>>24)>3)g.m_280056_(font,text,x,y,color,false);}
             public int width(String text){return font.m_92895_(text);}

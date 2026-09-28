@@ -8,7 +8,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-   private static final String PROTOCOL = "17";
+   private static final String PROTOCOL = "18";
    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
       new ResourceLocation("velvet_eclipse", "main"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals
    );
@@ -37,7 +37,7 @@ public final class ModNetwork {
          CHANNEL.registerMessage(var0++,BattleSpellS2C.class,BattleSpellS2C::encode,BattleSpellS2C::decode,BattleSpellS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleDirectionS2C.class,BattleDirectionS2C::encode,BattleDirectionS2C::decode,BattleDirectionS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          registered = true;
-         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 17, 15 packets).");
+         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 18, 15 packets).");
       }
    }
 

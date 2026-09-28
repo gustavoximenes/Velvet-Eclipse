@@ -1,9 +1,10 @@
 package com.gx.velveteclipse.client;
 import com.gx.velveteclipse.client.menu.*;
 import com.gx.velveteclipse.core.persona.Element;
-/** Convex scan conversion shared by the live HUD and the headless preview. */
+/** Convex polygons: batched triangles in game, scan conversion in headless previews. */
 public final class BattleGraphics {
- public static void poly(HudDesign.Canvas c,double[] xy,int color){
+ public static void poly(HudDesign.Canvas c,double[] xy,int color){c.poly(xy,color);}
+ public static void scan(HudDesign.Canvas c,double[] xy,int color){
   double min=Double.POSITIVE_INFINITY,max=Double.NEGATIVE_INFINITY;for(int i=1;i<xy.length;i+=2){min=Math.min(min,xy[i]);max=Math.max(max,xy[i]);}
   for(int y=(int)Math.floor(min);y<Math.ceil(max);y++){
    double left=Double.POSITIVE_INFINITY,right=Double.NEGATIVE_INFINITY;

@@ -30,7 +30,7 @@ public final class BattleService {
         boolean shuffleVictory,boss,raid,rare;int enemyPoseUntil;Entity animatingEnemy;int raidStage,dungeonFloor;
         final BattleResultsGate results=new BattleResultsGate();
         String ending="";
-        PendingEnemy pendingEnemy;int enemyImpactAt;
+        PendingEnemy pendingEnemy;int enemyImpactAt;EnemyBattleMotion enemyMotion;
         Encounter(Object p,BattleSession s,int count){session=s;enemyCount=count;origin=RuntimeBridge.playerPosition(p);yaw=RuntimeBridge.playerYaw(p);center=RuntimeBridge.localOffset(origin,yaw,0,.05,5.25);level=p instanceof Entity e?e.m_9236_():null;}
     }
     private record PendingEnemy(UUID actor,BattleAction action,String skill){}
@@ -195,6 +195,7 @@ public final class BattleService {
             for(Object p:new ArrayList<>(g.players.values()))if(p instanceof Entity e&&(!e.m_6084_()||e.m_9236_()!=g.level))stop(p);
             if(!BATTLES.containsKey(g.session.id()))continue;
             for(var entry:g.players.entrySet())if(!MeleeBattleServer.active(entry.getValue()))RuntimeBridge.freezePlayer(entry.getValue(),g.anchors.get(entry.getKey()));
+            if(g.enemyMotion!=null){g.enemyMotion.tick(ticks);if(ticks>=g.enemyPoseUntil){g.enemyMotion.restore();g.enemyMotion=null;}}
             if(g.animatingEnemy!=null&&ticks>=g.enemyPoseUntil){g.animatingEnemy.m_146926_(0);g.animatingEnemy=null;}
             if(g.pendingEnemy!=null&&ticks>=g.enemyImpactAt)resolveEnemy(g);
             boolean acting=busy(g);
@@ -215,11 +216,17 @@ public final class BattleService {
         BattleAction action=skill==null?BattleAction.attack(target.id()):BattleAction.skill(skill.id(),target.id());
         if(s.prepare(actor.id(),action)==null)return;
         g.pendingEnemy=new PendingEnemy(actor.id(),action,skill==null?"":skill.id());g.enemyImpactAt=ticks+10;g.enemyPoseUntil=ticks+28;g.wasBusy=true;
-        if(!g.raid){g.animatingEnemy=VisualBattleActors.enemy(s.id(),actor.id());if(g.animatingEnemy!=null){g.animatingEnemy.m_146926_(skill!=null&&skill.usesMagicStat()?-45:45);g.enemyPoseUntil=ticks+28;}}
         // All participants receive the same enemy actor and selected targets before the hit.
         Object viewer=g.players.values().stream().findFirst().orElse(null);var visual=targetActor(viewer,actor.id());var victim=targetActor(viewer,target.id());
         if(visual!=null&&victim!=null){
-            var cue=new BattleDirectionS2C(actor.id(),visual.m_19879_(),victim.m_19879_(),"enemy",skill==null?"":skill.id(),"SWORD",visual.m_20185_(),visual.m_20186_(),visual.m_20189_(),victim.m_20185_(),victim.m_20186_(),victim.m_20189_(),28);
+            if(!(g.raid&&g.raidStage==2)){
+                g.animatingEnemy=visual;
+                float facing=(float)Math.toDegrees(Math.atan2(visual.m_20185_()-victim.m_20185_(),victim.m_20189_()-visual.m_20189_()));
+                RuntimeBridge.setEntityRotation(visual,facing,skill!=null&&skill.usesMagicStat()?-45:45);
+            }
+            boolean melee=!(g.raid&&g.raidStage==2)&&(skill==null||(!skill.usesMagicStat()&&skill.element()!=Element.PIERCE));
+            if(melee){g.enemyMotion=new EnemyBattleMotion(visual,victim,ticks);g.enemyImpactAt=ticks+MeleeTimeline.IMPACT;g.enemyPoseUntil=ticks+MeleeTimeline.END;visual.m_146926_(0);}
+            var cue=new BattleDirectionS2C(actor.id(),visual.m_19879_(),victim.m_19879_(),melee?"enemy_melee":"enemy",skill==null?"":skill.id(),"SWORD",visual.m_20185_(),visual.m_20186_(),visual.m_20189_(),victim.m_20185_(),victim.m_20186_(),victim.m_20189_(),melee?MeleeTimeline.END:28);
             for(Object member:g.players.values())ModNetwork.sendPresentation(member,cue);
         }
         syncAll(g,actor.name()+" está preparando uma ação.");
@@ -231,7 +238,7 @@ public final class BattleService {
         var skill=PersonaRegistry.skill(pending.skill()).orElse(null);Object viewer=g.players.values().stream().findFirst().orElse(null);
         if(skill!=null&&com.gx.velveteclipse.core.persona.SpellVisuals.supported(skill.id())){
             var hits=skill.target()==SkillTarget.SELF?List.of(actor):skill.target()==SkillTarget.ALL_ENEMIES?s.enemiesOf(actor):skill.target()==SkillTarget.ALL_ALLIES?s.alliesOf(actor):List.of(target);
-            var points=hits.stream().map(c->targetActor(viewer,c.id())).filter(Objects::nonNull).limit(5).map(e->new BattleLightningS2C.Strike(e.m_20185_(),e.m_20186_(),e.m_20189_(),e.m_19879_()*31L)).toList();
+            var points=hits.stream().map(c->targetActor(viewer,c.id())).filter(Objects::nonNull).limit(5).map(BattleLightningS2C.Strike::at).toList();
             for(Object member:g.players.values())ModNetwork.sendPresentation(member,new BattleSpellS2C(skill.id(),points));
         }
         var result=s.perform(pending.actor(),pending.action());g.delay=10;

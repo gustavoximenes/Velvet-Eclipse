@@ -178,9 +178,12 @@ public final class PersonaMenuScreen extends Screen {
                 if(list.isEmpty())detail.add("Encontre inimigos em batalha para registrá-los aqui. Teste os elementos para descobrir suas afinidades.");
             }
             case 8 -> {
-                list.add(new MenuDesign.Row("Opcoes do Minecraft","Video, audio, idioma e controles",-1));list.add(new MenuDesign.Row("Animacoes do menu",motion?"Ativadas":"Movimento reduzido",-1));list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
+                list.add(new MenuDesign.Row("Opcoes do Minecraft","Video, audio, idioma e controles",-1));list.add(new MenuDesign.Row("Animacoes do menu",motion?"Ativadas":"Movimento reduzido",-1));
+                for(var style:com.gx.velveteclipse.core.battle.AllOutStyle.values())list.add(new MenuDesign.Row("All-Out / "+style.label,style.id().equals(data.allOutStyle())?"SELECIONADO":"Prévia / ENTER para escolher",-1));
+                list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
                 if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio, controles e idioma nas opcoes do Minecraft.");action="Abrir opcoes";}
                 else if(selected==1){detail.add("Movimento do menu");detail.add("Alterna flutuacao do retrato, entrada das opcoes e transicoes.");detail.add("Preferencia valida nesta sessao.");action=motion?"Reduzir movimento":"Ativar animacoes";}
+                else if(selected>=2&&selected<7){var style=com.gx.velveteclipse.core.battle.AllOutStyle.values()[selected-2];detail.add("ALL-OUT / "+style.label);detail.add(style.description);action=style.id().equals(data.allOutStyle())?"Estilo selecionado":"Usar este estilo";}
                 else{detail.add("Retornar ao mundo.");action="Fechar menu";}
             }
         }
@@ -197,7 +200,7 @@ public final class PersonaMenuScreen extends Screen {
             case 10 -> com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");
             case 3 -> {if(selected<data.personas().size())request("equip",data.personas().get(selected).id());}
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
-            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else closeMenu();}
+            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected>=2&&selected<7)request("all_out_style",com.gx.velveteclipse.core.battle.AllOutStyle.values()[selected-2].id());else closeMenu();}
         }
     }
     @Override public void m_88315_(GuiGraphics g,int mouseX,int mouseY,float partial){
@@ -239,6 +242,13 @@ public final class PersonaMenuScreen extends Screen {
                 try{bestiaryPreview.draw(g,enemy,seconds);}finally{g.m_280618_();}
             }
             if(!home&&tab==3&&!data.personas().isEmpty())g.m_286007_(() -> PersonaSheetDesign.rosterHint(canvas));
+            if(!home&&tab==8&&selected>=2&&selected<7){
+                var style=com.gx.velveteclipse.core.battle.AllOutStyle.values()[selected-2];double age=motion?90+((seconds-changed)*20)%86:145;
+                canvas.fill(553,240,298,158,style.color);canvas.poly(new double[]{553,280,851,250,851,284,553,314},0x46031340);
+                g.m_280588_((int)(left()+553*scale()),(int)(top()+240*scale()),(int)Math.ceil(left()+851*scale()),(int)Math.ceil(top()+398*scale()));
+                try{com.gx.velveteclipse.client.AllOutPlayerRenderer.draw(g,f_96541_.f_91074_,754,317,87,age,true,-.20f,false,style,com.gx.velveteclipse.client.equipment.EquipmentScreen.family());}finally{g.m_280618_();}
+                canvas.text("SUA SKIN / PRÉVIA",561,381,8,MenuDesign.WHITE,0);
+            }
             if(motion&&seconds-changed<.28&&!home){double p=MenuMotion.wipe(seconds-changed);double x=210+p*720;
                 canvas.poly(new double[]{x-175,40,x+100,40,x-45,445,x-210,445},MenuDesign.alpha(MenuDesign.CYAN,1-p));}
             if(closing){double p=MenuMotion.ease((seconds-closedAt)/.23);canvas.poly(new double[]{-300,0,1100*p,0,1100*p-180,500,-300,500},MenuDesign.INK);}

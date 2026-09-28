@@ -19,7 +19,8 @@ public final class AllOutServer {
   boolean victory=reserved.hits().entrySet().stream().allMatch(e->s.find(e.getKey()).map(t->(t.guarding()?Math.max(1,e.getValue().damage()/2):e.getValue().damage())>=t.hp()).orElse(false));
   var seq=new Sequence(p,s,victory);sequences.put(s.id(),seq);BattleService.beginAction(p,BattleAction.allOut());
   var ids=fighters.stream().map(c->BattleService.targetActor(p,c.id())).filter(Objects::nonNull).map(Entity::m_19879_).toList();
-  var cue=new AllOutCueS2C(true,leader.m_19879_(),ids,victory);for(Object member:seq.viewers)ModNetwork.sendPresentation(member,cue);return true;
+  var weapons=new HashMap<Integer,String>();for(Object member:seq.viewers)if(member instanceof Entity e)weapons.put(e.m_19879_(),com.gx.velveteclipse.equipment.EquipmentData.load(member).bonuses().family().name());
+  var cue=new AllOutCueS2C(true,leader.m_19879_(),ids,victory,AllOutPreferences.get(p).id(),weapons);for(Object member:seq.viewers)ModNetwork.sendPresentation(member,cue);return true;
  }
  public static void tick(){for(var seq:new ArrayList<>(sequences.values())){
   var s=BattleService.current(seq.leader);if(s==null||!s.id().equals(seq.battle)){end(seq);continue;}

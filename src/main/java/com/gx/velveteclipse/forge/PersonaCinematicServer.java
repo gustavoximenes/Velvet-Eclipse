@@ -97,7 +97,6 @@ public final class PersonaCinematicServer {
                 }
                 ++sequence.tick;
                 sequence.base = RuntimeBridge.playerPosition(sequence.player);
-                sequence.yaw = RuntimeBridge.playerYaw(sequence.player);
                 RuntimeBridge.hardFreezePlayer(sequence.player, sequence.base, sequence.yaw, 0.0f);
                 if (VisualBattleActors.enemyActor(sequence.player) != null) {
                     VisualBattleActors.pulseEnemy(sequence.player);
@@ -264,6 +263,10 @@ public final class PersonaCinematicServer {
             this.player = object;
             this.skillId = string;
             this.personaId = string2;
+            this.yaw = RuntimeBridge.playerYaw(object);
+            var session=BattleService.current(object);
+            var target=session==null||session.prepared()==null?null:BattleService.targetActor(object,session.prepared().action().targetId());
+            if(target!=null){var origin=RuntimeBridge.playerPosition(object);double dx=target.m_20185_()-origin[0],dz=target.m_20189_()-origin[2];if(dx*dx+dz*dz>.001)this.yaw=(float)Math.toDegrees(Math.atan2(-dx,dz));}
         }
     }
 }

@@ -10,6 +10,7 @@ public final class HudDesign {
         CYAN=0xFF66EEFF, WHITE=0xFFF3FCFF, MUTED=0xFF9FBDD8, RED=0xFFFF637F;
     public interface Canvas {
         void fill(int x, int y, int w, int h, int color);
+        default void poly(double[] points,int color){BattleGraphics.scan(this,points,color);}
         void text(String text, int x, int y, int color);
         int width(String text);
         default void styled(String text,int x,int y,float scale,int color){text(text,x,y,color);}

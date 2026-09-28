@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.32 — Câmeras, impactos e All-Out Attack
+
+Invocação com enquadramento mais aberto, aproximação dos inimigos em ataques físicos e efeitos vinculados à identidade do alvo. All-Out Attack com entrada da equipe, corrida, nuvem de impactos e cinco finais selecionáveis em **TAB → System → All-Out**, usando a skin de cada jogador. Photon mantido para emissores e faíscas, com corpos de magia próprios no caminho de renderização compatível com OptiFine. Cliente e servidor precisam da versão 0.6.32, protocolo **18**. [Uso, referências e validação offline](docs/BATTLE-CHOREOGRAPHY.md).
+
 # Velvet Eclipse 0.6.31 — Inicialização com OptiFine e LDLib
 
 Corrige o conflito de inicialização `ModelBakeryMixin` entre OptiFine I6 pre6 e LDLib 1.0.52.a. O mod adapta uma chamada de log antes da injeção da LDLib, preservando os JARs originais do OptiFine, LDLib e Photon. [Diagnóstico e validação offline](docs/OPTIFINE-COMPAT.md). Apresentação da 0.6.30 e protocolo 17 mantidos.

@@ -26,6 +26,7 @@ public final class BattleDirector {
  public static double age(float partial){var w=Minecraft.m_91087_().f_91073_;return cue==null||w==null||w!=level?1000:w.m_46467_()-started+partial;}
  public static String skill(){return cue==null?"":cue.skill();}
  public static boolean summoning(UUID id){return active()&&cue.kind().equals("skill")&&cue.actor().equals(id);}
+ public static float castingYaw(UUID id,float fallback){if(!summoning(id))return fallback;double x=cue.tx()-cue.x(),z=cue.tz()-cue.z();return x*x+z*z<.001?fallback:(float)Math.toDegrees(Math.atan2(-x,z));}
  public static boolean attacking(UUID id){return active()&&cue.kind().equals("attack")&&cue.actor().equals(id);}
  public static double hitAge(float partial){return age(partial)-(cue!=null&&cue.kind().equals("skill")?86:cue!=null&&cue.kind().equals("enemy")?10:19);}
  public static boolean hitPlayer(UUID id){var w=Minecraft.m_91087_().f_91073_;if(!active()||w==null||cue.targetEntity()<0)return false;var target=w.m_6815_(cue.targetEntity());return target!=null&&target.m_20148_().equals(id)&&hitAge(0)>=0&&hitAge(0)<12;}
@@ -40,12 +41,14 @@ public final class BattleDirector {
   int t=(int)age(0);if(lastTick==t)return;
   if(cue.kind().equals("skill")&&lastTick<38&&t>=38){var a=actor();if(a!=null)PhotonBattleEffects.trigger(a.m_20185_(),a.m_20186_()+1.55,a.m_20189_());}
   if(cue.kind().equals("skill")&&lastTick<46&&t>=46){var a=actor();if(a!=null){double yaw=Math.toRadians(a.m_146908_());PhotonBattleEffects.summon(a.m_20185_()+Math.sin(yaw)*1.4,a.m_20186_(),a.m_20189_()-Math.cos(yaw)*1.4);}}
-  if(cue.kind().equals("attack")&&lastTick<19&&t>=19)PhotonBattleEffects.impact(weapon()==Family.BOW||weapon()==Family.GUN||weapon()==Family.SPEAR?Element.PIERCE:weapon()==Family.FISTS?Element.PHYSICAL:Element.SLASH,1,cue.tx(),cue.ty(),cue.tz(),cue.actor().getLeastSignificantBits());
-  if(cue.kind().equals("attack")&&weapon()==Family.BOW&&lastTick<12&&t>=12){var a=actor();if(a!=null)com.gx.velveteclipse.client.exploration.ArrowFlight.accept(new com.gx.velveteclipse.exploration.ExplorationNetwork.Shot(a.m_20185_(),a.m_20186_()+1.3,a.m_20189_(),cue.tx(),cue.ty()+.8,cue.tz(),7));}
-  if(cue.kind().equals("enemy")&&cue.skill().isEmpty()&&lastTick<10&&t>=10)PhotonBattleEffects.impact(Element.PHYSICAL,1,cue.tx(),cue.ty(),cue.tz(),cue.actor().getLeastSignificantBits());
+  if(cue.kind().equals("attack")&&lastTick<19&&t>=19){var at=targetPosition(1);PhotonBattleEffects.impact(weapon()==Family.BOW||weapon()==Family.GUN||weapon()==Family.SPEAR?Element.PIERCE:weapon()==Family.FISTS?Element.PHYSICAL:Element.SLASH,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
+  if(cue.kind().equals("attack")&&weapon()==Family.BOW&&lastTick<12&&t>=12){var a=actor();var at=targetPosition(1);if(a!=null)com.gx.velveteclipse.client.exploration.ArrowFlight.accept(new com.gx.velveteclipse.exploration.ExplorationNetwork.Shot(a.m_20185_(),a.m_20186_()+1.3,a.m_20189_(),at.f_82479_,at.f_82480_+.8,at.f_82481_,7));}
+  int enemyHit=cue.kind().equals("enemy_melee")?19:10;
+  if(cue.kind().startsWith("enemy")&&cue.skill().isEmpty()&&lastTick<enemyHit&&t>=enemyHit){var at=targetPosition(1);PhotonBattleEffects.impact(Element.PHYSICAL,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
   lastTick=t;
  }
  private static Entity actor(){var w=Minecraft.m_91087_().f_91073_;return cue==null||w==null?null:w.m_6815_(cue.actorEntity());}
+ private static Vec3 targetPosition(float partial){var w=Minecraft.m_91087_().f_91073_;var e=w==null?null:w.m_6815_(cue.targetEntity());return e==null?new Vec3(cue.tx(),cue.ty(),cue.tz()):e.m_20318_(partial);}
  public static boolean camera(ViewportEvent.ComputeCameraAngles event){
   var mc=Minecraft.m_91087_();if(!ClientBattleState.snapshot().active()||mc.f_91073_==null||mc.f_91074_==null)return false;
   float partial=(float)event.getPartialTick();Vec3 a,b;String kind="command";double time=0;
@@ -62,6 +65,7 @@ public final class BattleDirector {
   var shot=BattleShot.sample(kind,time);Vec3 focus=a.m_165921_(b,shot.focus()).m_82520_(0,shot.focusHeight(),0);
   Vec3 desired=focus.m_82549_(side.m_82490_(shot.side())).m_82549_(forward.m_82490_(shot.depth())).m_82520_(0,shot.height()-shot.focusHeight(),0);
   double hit=hitAge(partial);if(active()&&hit>=0&&hit<5)desired=desired.m_82520_(Math.sin(hit*5)*.035*(1-hit/5),Math.cos(hit*6)*.025*(1-hit/5),0);
-  ExplorationCamera.place(event,ExplorationCamera.collide(focus,desired),focus,shot.roll());fov=shot.fov();return true;
+  Vec3 position=BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);
+  ExplorationCamera.place(event,position,focus,shot.roll());fov=shot.fov();return true;
  }
 }

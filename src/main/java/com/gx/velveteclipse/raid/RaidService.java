@@ -102,7 +102,7 @@ public final class RaidService {
     if(r.built==PLAN.size())enter(r);continue;
    }
    if(r.mode.equals("failed")){fail(r,"A equipe foi derrotada. A próxima tentativa começa do início.",true);continue;}
-   if(r.actor!=null&&now()>r.pulseUntil)r.actor.m_146926_(0);
+   if(r.stage==2&&r.actor!=null&&now()>r.pulseUntil)r.actor.m_146926_(0);
    if(r.rules!=null&&r.mode.equals("battle")&&r.rules.remaining(now())==0){fail(r,"TEMPO ESGOTADO! O trem saiu de controle.",true);continue;}
    if(r.mode.equals("results")&&players(r).stream().allMatch(p->BattleService.current(p)==null)){
     if(r.stage==2){finish(r);continue;}

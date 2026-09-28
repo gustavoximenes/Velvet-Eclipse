@@ -12,5 +12,5 @@ public final class EnemyEntity extends PathfinderMob implements GeoEntity {
  public EnemyEntity(EntityType<? extends EnemyEntity> type,Level level){super(type,level);m_21530_();m_21557_(true);m_20242_(true);m_20331_(true);}
  @Override protected void m_8099_(){}
  @Override public AnimatableInstanceCache getAnimatableInstanceCache(){return cache;}
- @Override public void registerControllers(AnimatableManager.ControllerRegistrar c){c.add(new AnimationController<EnemyEntity>(this,"main",3,s->{String clip=m_146909_()<=-30?"action.magic":m_146909_()>=30?"action.physical":"misc.idle";return s.setAndContinue(clip.startsWith("action")?RawAnimation.begin().thenPlay(clip):RawAnimation.begin().thenLoop(clip));}));}
+ @Override public void registerControllers(AnimatableManager.ControllerRegistrar c){c.add(new AnimationController<EnemyEntity>(this,"main",2,s->{String clip=m_146909_()<=-30?"action.magic":m_146909_()>=30?"action.physical":m_146909_()>5?"misc.walk":"misc.idle";return s.setAndContinue(clip.startsWith("action")?RawAnimation.begin().thenPlay(clip):RawAnimation.begin().thenLoop(clip));}));}
 }

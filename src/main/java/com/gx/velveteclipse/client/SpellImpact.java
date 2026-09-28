@@ -3,7 +3,7 @@ package com.gx.velveteclipse.client;
 import java.util.*;
 import org.joml.Vector3f;
 
-/** Original, bounded procedural geometry. Time zero is cinematic tick 82; impact is tick 86. */
+/** Animated, bounded spell bodies relative to the selected target. Time zero is the authoritative impact. */
 public final class SpellImpact {
     public record Stroke(Vector3f from,Vector3f to,float width,int color,float alpha){}
     public static final int LIFETIME=23;
