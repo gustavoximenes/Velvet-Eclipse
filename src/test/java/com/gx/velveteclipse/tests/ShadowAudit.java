@@ -54,7 +54,7 @@ public final class ShadowAudit {
   var quota=new TartarusPopulation();quota.range(64,64);
   for(int floor:List.of(1,9,10,25,26,50,250)){var plan=TartarusInteriorLayout.floor(763,floor);var positions=TartarusPopulation.positions(plan);check(new HashSet<>(positions).size()==positions.size(),"unique rooms only");check(quota.count(763,floor)<=positions.size(),"configured high population never exceeds rooms");}
   var plan=TartarusInteriorLayout.floor(763,1);var rooms=new HashSet<String>();for(var p:TartarusPopulation.positions(plan))check(rooms.add(Math.floorDiv(p.x()+48,24)+":"+Math.floorDiv(p.z()+48,24)),"one Shadow per logical room");
-  var legacy=new net.minecraft.nbt.CompoundTag();legacy.m_128405_("min",10);legacy.m_128405_("max",20);var counts=new net.minecraft.nbt.CompoundTag();counts.m_128405_("1",20);legacy.m_128365_("counts",counts);check(TartarusPopulation.load(legacy).count(0,1)==14,"legacy excessive counts capped safely");
+  var legacy=new net.minecraft.nbt.CompoundTag();legacy.m_128405_("min",10);legacy.m_128405_("max",20);var counts=new net.minecraft.nbt.CompoundTag();counts.m_128405_("1",20);legacy.m_128365_("counts",counts);check(TartarusPopulation.load(legacy).count(0,1)==10,"legacy 10..20 population migrates to the existing 5..10 range");
  }
  private static void assets()throws Exception{
   var root=Path.of("src/main/resources/assets/velvet_eclipse");var raw=Files.readString(root.resolve("geo/entity/field_shadow.geo.json"));var model=software.bernie.geckolib.util.JsonUtil.GEO_GSON.fromJson(raw,software.bernie.geckolib.loading.json.raw.Model.class);var baked=software.bernie.geckolib.loading.object.BakedModelFactory.DEFAULT_FACTORY.constructGeoModel(software.bernie.geckolib.loading.object.GeometryTree.fromModel(model));

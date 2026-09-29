@@ -7,7 +7,7 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
  private static final EntityDataAccessor<Boolean> RARE=SynchedEntityData.m_135353_(FieldShadowEntity.class,EntityDataSerializers.f_135035_);
  private static final EntityDataAccessor<Integer> MOOD=SynchedEntityData.m_135353_(FieldShadowEntity.class,EntityDataSerializers.f_135028_);
  private final AnimatableInstanceCache cache=GeckoLibUtil.createInstanceCache(this);private final ShadowAwareness brain=new ShadowAwareness();
- private UUID target;private long seed;private boolean initialized,home;private double homeX,homeZ;private float searchYaw;private int wanderDelay;
+ private UUID target;private long seed;private boolean initialized,home;private double homeX,homeZ;private float searchYaw,noticeYaw;private int wanderDelay;
  public FieldShadowEntity(EntityType<? extends FieldShadowEntity> type,Level level){super(type,level);m_21530_();m_20331_(true);m_20049_("velvet_encounter_shadow");}
  @Override protected void m_8099_(){} // No vanilla melee, random jump or automatic targeting goals.
  @Override protected void m_8097_(){super.m_8097_();f_19804_.m_135372_(RARE,false);f_19804_.m_135372_(MOOD,0);}
@@ -36,8 +36,8 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
    if(candidate!=null){if(current!=candidate)brain.seen=0;p=candidate;target=p.m_20148_();}
   }
   boolean close=p!=null&&m_20280_(p)<9,visible=p!=null&&sees(p),valid=p!=null&&available(p)&&m_20280_(p)<24*24&&(!TartarusDungeonService.inside(this)||sameRoom(this,p));
-  var before=brain.phase;brain.update(visible,close,valid);if(before!=ShadowAwareness.Phase.SEARCH&&brain.phase==ShadowAwareness.Phase.SEARCH)searchYaw=m_146908_();
-  if(brain.phase==ShadowAwareness.Phase.SEARCH||brain.phase==ShadowAwareness.Phase.NOTICE){m_21573_().m_26573_();if(valid)facePlayer(p);else face(searchYaw+180*Math.min(1,brain.ticks/40f));}
+  boolean wasQuestion=brain.questioning();var before=brain.phase;brain.update(visible,close,valid);if(!wasQuestion&&brain.questioning())noticeYaw=m_146908_();if(before!=ShadowAwareness.Phase.SEARCH&&brain.phase==ShadowAwareness.Phase.SEARCH)searchYaw=m_146908_();
+  if(brain.phase==ShadowAwareness.Phase.SEARCH||brain.phase==ShadowAwareness.Phase.NOTICE){m_21573_().m_26573_();m_20256_(new Vec3(0,m_20184_().f_82480_,0));if(!brain.canTurn())face(noticeYaw);else if(valid)facePlayer(p);else turn(searchYaw+180*Math.min(1,(brain.alertTicks-ShadowAwareness.TURN_DELAY)/40f));}
   else if(brain.phase==ShadowAwareness.Phase.IDLE)wander();
   else if(brain.phase==ShadowAwareness.Phase.CHASE&&p!=null){
    if(f_19797_%10==0)m_21573_().m_26519_(p.m_20185_(),p.m_20186_(),p.m_20189_(),rare()?1.25:1.05);facePlayer(p);
@@ -47,7 +47,8 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
   int mood=brain.phase.ordinal();if(mood!=mood()){boolean question=brain.phase==ShadowAwareness.Phase.NOTICE||brain.phase==ShadowAwareness.Phase.SEARCH;boolean danger=brain.phase==ShadowAwareness.Phase.CHASE||brain.phase==ShadowAwareness.Phase.ATTACK;m_6593_(net.minecraft.network.chat.Component.m_237113_(question?"§e§l?":danger?"§c§l!":"Shadow"));m_20340_(question||danger);}f_19804_.m_135381_(MOOD,mood);
  }
  public void resumeExploration(){target=null;brain.reset();wanderDelay=20;f_19804_.m_135381_(MOOD,0);m_20340_(false);m_6593_(net.minecraft.network.chat.Component.m_237113_("Shadow"));}
- private void facePlayer(ServerPlayer p){face((float)Math.toDegrees(Math.atan2(m_20185_()-p.m_20185_(),p.m_20189_()-m_20189_())));}
+ private void turn(float yaw){float delta=(yaw-m_146908_())%360;if(delta>180)delta-=360;if(delta< -180)delta+=360;face(m_146908_()+Math.max(-6,Math.min(6,delta)));}
+ private void facePlayer(ServerPlayer p){turn((float)Math.toDegrees(Math.atan2(m_20185_()-p.m_20185_(),p.m_20189_()-m_20189_())));}
  private void wander(){
   if(--wanderDelay>0)return;wanderDelay=45+m_217043_().m_188503_(65);
   boolean dungeon=TartarusDungeonService.inside(this);int origin=dungeon?TartarusInteriorLayout.origin(TartarusDungeonService.floor(this)):0;

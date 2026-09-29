@@ -23,9 +23,8 @@ public final class CombatActorAnimation implements IAnimation {
    if(sample==null)return base;float w=(float)ShiftPresentation.weight(t);return new Vec3f(base.getX()*(1-w)+sample.getX(),base.getY()*(1-w)+sample.getY(),base.getZ()*(1-w)+sample.getZ());
   }
   if(BattleDirector.hitPlayer(player)){float recoil=(float)Math.sin(Math.min(1,BattleDirector.hitAge(partial)/12)*Math.PI);if(type==TransformType.ROTATION&&part.equals("body"))return new Vec3f(base.getX()-.19f*recoil,base.getY(),base.getZ()+.05f*recoil);return base;}
-  double t=BattleDirector.age(partial),attack=com.gx.velveteclipse.core.battle.MeleeTimeline.slash(t),speed=t<12||t>30?.85:0;
-  if(type==TransformType.ROTATION)return WeaponPose.rotation(BattleDirector.weapon(),part,t*.7,speed,attack);
-  if(type==TransformType.BEND)return WeaponPose.bend(BattleDirector.weapon(),part,t*.7,speed,attack);
+  double t=BattleDirector.age(partial);float w=(float)CombatAttackPose.weight(t);
+  if(type==TransformType.ROTATION||type==TransformType.BEND){var pose=CombatAttackPose.sample(BattleDirector.weapon(),part,t,type==TransformType.BEND);return new Vec3f(base.getX()*(1-w)+pose.getX()*w,base.getY()*(1-w)+pose.getY()*w,base.getZ()*(1-w)+pose.getZ()*w);}
   return base;
  }
 }

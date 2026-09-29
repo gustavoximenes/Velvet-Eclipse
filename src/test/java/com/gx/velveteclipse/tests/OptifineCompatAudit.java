@@ -43,7 +43,7 @@ public final class OptifineCompatAudit {
 
         var config=JsonParser.parseString(Files.readString(Path.of("src/main/resources/velvet_eclipse.compat.mixins.json"))).getAsJsonObject();
         check(config.get("priority").getAsInt()>1000,"bridge runs before LDLib default priority");
-        check(config.getAsJsonArray("client").size()==1&&!config.has("mixins"),"client-only registration");
+        check(config.getAsJsonArray("client").size()==2&&!config.has("mixins"),"client-only registration");
         var ldlib=read(resource("/com/lowdragmc/lowdraglib/core/mixins/ModelBakeryMixin.class"));
         var redirect=ldlib.methods.stream().filter(m->m.name.equals("injectStateToModelLocation")).findFirst().orElseThrow();
         String annotation=code(redirect);

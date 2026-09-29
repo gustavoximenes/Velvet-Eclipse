@@ -1,0 +1,11 @@
+{
+  "vertex": "velvet_eclipse:dark_hour_sky",
+  "fragment": "velvet_eclipse:dark_hour_sky",
+  "attributes": ["Position", "UV0"],
+  "samplers": [{"name": "SkyDepth"}],
+  "uniforms": [
+    {"name": "InverseProjection", "type": "matrix4x4", "count": 16, "values": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name": "InverseView", "type": "matrix4x4", "count": 16, "values": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]},
+    {"name": "SkyTime", "type": "float", "count": 1, "values": [0]}
+  ]
+}

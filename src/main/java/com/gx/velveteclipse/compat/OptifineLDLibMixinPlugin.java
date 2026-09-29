@@ -14,7 +14,7 @@ public final class OptifineLDLibMixinPlugin implements IMixinConfigPlugin {
     public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {}
     public List<String> getMixins() { return null; }
     public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
-        if (ModelBakeryLogBridge.normalize(targetClass) > 0)
+        if (targetClassName.equals("net.minecraft.client.resources.model.ModelBakery") && ModelBakeryLogBridge.normalize(targetClass) > 0)
             System.getLogger("Velvet Eclipse compatibility").log(System.Logger.Level.INFO,
                     "Adapted OptiFine ModelBakery warning overload for LDLib; model loading and shaders unchanged.");
     }

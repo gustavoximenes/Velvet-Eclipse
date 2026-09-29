@@ -8,7 +8,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-   private static final String PROTOCOL = "20";
+   private static final String PROTOCOL = "21";
    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
       new ResourceLocation("velvet_eclipse", "main"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals
    );

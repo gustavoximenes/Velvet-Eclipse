@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.35 — Câmera de combate, ataques e Dark Hour
+
+Câmera próxima do ombro **somente durante o combate**, com recuo conforme o espaço necessário para enquadrar os inimigos. Ataques com preparação, golpe e recuperação; arco com mira e trajetória na exploração **H**. Shadows aguardam **1,5 segundo** no alerta antes de começar a virar. Céu verde e lua grande recebem uma composição específica para OptiFine com shaders. Cliente e servidor na versão 0.6.35, protocolo **21**. [Detalhes e limites da validação](docs/COMBAT-POLISH.md).
+
 # Velvet Eclipse 0.6.34 — Exploração e Shift
 
 Exploração **H** com corrida e câmera revisadas a partir do vídeo de referência. Inimigos procuram posições com chão, espaço livre e linha de visão; câmera inicial enquadra a formação. **Shift** apresenta o aliado que recebe o turno para toda a equipe, e **`\` / `|`** alterna o acompanhamento da câmera do combatente em ação. Invocação com chamas azuis nos pés e fragmentos ascendentes. Cliente e servidor na versão 0.6.34, protocolo **20**. [Controles, referências e validação offline](docs/EXPLORATION-SHIFT.md).

@@ -85,7 +85,7 @@ public final class ExplorationService {
             }
         }
     }
-    private static void shoot(State s){var p=s.player;var from=p.m_146892_().m_82520_(0,-.18,0);Entity target=findTarget(s);Vec3 to=target==null?from.m_82549_(p.m_20154_().m_82490_(10)):target.m_20182_().m_82520_(0,Math.min(1,target.m_20206_()*.6),0);var hit=s.level.m_45547_(new ClipContext(from,to,ClipContext.Block.COLLIDER,ClipContext.Fluid.NONE,p));if(hit.m_6662_()!=HitResult.Type.MISS){to=hit.m_82450_();target=null;}int duration=Math.max(4,Math.min(10,(int)Math.ceil(from.m_82554_(to))));ExplorationNetwork.shot(p,from,to,duration);if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){s.flyingTarget=target;s.impact=to;s.impactTick=s.tick+duration;}}
+    private static void shoot(State s){var p=s.player;var aim=BowAim.trace(p,e->ShadowWorldService.worldShadow(e)&&!reserved(e));var from=aim.start();var to=aim.end();var target=aim.target();int duration=Math.max(4,Math.min(10,(int)Math.ceil(from.m_82554_(to))));ExplorationNetwork.shot(p,from,to,duration);if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){s.flyingTarget=target;s.impact=to;s.impactTick=s.tick+duration;}}
     private static Entity findTarget(State s){
         ServerPlayer p=s.player;double yaw=Math.toRadians(s.yaw),fx=-Math.sin(yaw),fz=Math.cos(yaw);
         var family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();

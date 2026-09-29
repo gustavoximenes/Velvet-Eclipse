@@ -2,9 +2,15 @@ package com.gx.velveteclipse.shadow;
 /** Tick-based perception. Visibility must remain continuous for two full seconds. */
 public final class ShadowAwareness {
  public enum Phase { IDLE, SEARCH, NOTICE, CHASE, ATTACK }
- public Phase phase=Phase.IDLE;public int ticks,seen,lost,cooldown;
- public void reset(){phase=Phase.IDLE;ticks=seen=lost=0;cooldown=60;}
+ public static final int TURN_DELAY=30;
+ public Phase phase=Phase.IDLE;public int ticks,seen,lost,cooldown,alertTicks;
+ public boolean questioning(){return phase==Phase.SEARCH||phase==Phase.NOTICE;}
+ public boolean canTurn(){return !questioning()||alertTicks>=TURN_DELAY;}
+ public void reset(){phase=Phase.IDLE;ticks=seen=lost=alertTicks=0;cooldown=60;}
  public void update(boolean visible,boolean close,boolean validTarget){
+  boolean wasQuestion=questioning();perceive(visible,close,validTarget);alertTicks=questioning()?(wasQuestion?alertTicks+1:0):0;
+ }
+ private void perceive(boolean visible,boolean close,boolean validTarget){
   ticks++;if(cooldown>0)cooldown--;
   if(phase==Phase.ATTACK)return;
   if(phase==Phase.CHASE){if(validTarget){if(visible)lost=0;else lost++;if(lost<=60)return;}phase=Phase.SEARCH;ticks=seen=0;return;}

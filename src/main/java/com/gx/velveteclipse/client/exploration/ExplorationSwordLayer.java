@@ -71,8 +71,8 @@ public final class ExplorationSwordLayer extends RenderLayer<AbstractClientPlaye
         else if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()&&!EntryPlayerRenderer.drawing())gripBattle(pose,directed?com.gx.velveteclipse.client.presentation.BattleDirector.age(partial):-1);
         else grip(pose,ExplorationClient.swordAttackTime(partial));
         WeaponModels.draw(family,pose,buffers,light);
-        if(bow&&ExplorationClient.swordAttackTime(partial)>=0&&ExplorationClient.swordAttackTime(partial)<4)WeaponModels.arrow(pose,buffers,light);
-        double t=ExplorationClient.swordAttackTime(partial);
+        double t=directed?com.gx.velveteclipse.core.battle.MeleeTimeline.slash(com.gx.velveteclipse.client.presentation.BattleDirector.age(partial)):ExplorationClient.swordAttackTime(partial);
+        if(bow&&t>=0&&t<4)WeaponModels.arrow(pose,buffers,light);
         if(!bow&&family!=com.gx.velveteclipse.equipment.EquipmentCatalog.Family.GUN&&t>=3&&t<11){
             VertexConsumer glow=buffers.m_6299_(RenderType.m_110502_());
             double fade=Math.min(1,(t-3)/2)*Math.max(0,(11-t)/4);

@@ -1,3 +1,12 @@
+# 0.6.35-combat-polish
+
+- Câmera de comandos próxima do ombro do jogador ativo, com enquadramento dos limites dos inimigos e alternativas para obstáculos. Câmera de exploração H preservada.
+- Ataques de exploração e combate revisados: antecipação, corte, contrapeso do braço livre, apoio das pernas e recuperação. Aproximação e retorno físicos suavizados; arco com puxada, soltura e flecha sincronizadas ao impacto.
+- Arco em H exibe mira no mundo e trajetória pontilhada. Cliente e servidor usam a mesma direção e colisão, incluindo paredes e altura do alvo.
+- Shadows em alerta de interrogação aguardam 30 ticks antes de virar e passam a girar gradualmente.
+- Composição opcional após a etapa final do OptiFine desenha céu verde e lua grande na Dark Hour somente onde a textura de profundidade indica céu. Bibliotecas originais e correção de inicialização LDLib preservadas.
+- Protocolo 21. Verificações offline focadas, inspeção de poses e compilação/renderização do GLSL na GPU; sem inicializar Minecraft.
+
 # 0.6.34-exploration-shift
 
 - Exploração H com câmera centralizada, recuo suave na corrida, orientação visual pelo deslocamento, arma baixa e novos movimentos de tronco, braços e pernas.
