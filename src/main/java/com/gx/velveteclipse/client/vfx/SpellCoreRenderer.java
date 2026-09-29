@@ -21,7 +21,7 @@ public final class SpellCoreRenderer {
  @SubscribeEvent public static void render(RenderLevelStageEvent event){
   if(event.getStage()!=RenderLevelStageEvent.Stage.AFTER_PARTICLES)return;
   var mc=Minecraft.m_91087_();var world=mc.f_91073_;if(world==null){reset();return;}
-  double now=world.m_46467_()+event.getPartialTick();effects.removeIf(e->e.world!=world||now-e.began>=28);if(effects.isEmpty())return;
+  double now=world.m_46467_()+event.getPartialTick();effects.removeIf(e->e.world!=world||now-e.began>=(e.skill.equals("__summon")?SummonVisual.LIFE:28));if(effects.isEmpty())return;
   var camera=event.getCamera().m_90583_();var buffers=mc.m_91269_().m_110104_();var type=VelvetVfxRenderType.type();var out=buffers.m_6299_(type);var pose=event.getPoseStack();
   for(var e:effects){double age=now-e.began;var pos=e.anchor.position(event.getPartialTick());var eye=new Vector3f((float)(camera.f_82479_-pos.f_82479_),(float)(camera.f_82480_-pos.f_82480_),(float)(camera.f_82481_-pos.f_82481_));
    pose.m_85836_();pose.m_85837_(pos.f_82479_-camera.f_82479_,pos.f_82480_+.03-camera.f_82480_,pos.f_82481_-camera.f_82481_);var matrix=pose.m_85850_().m_252922_();
@@ -34,6 +34,7 @@ public final class SpellCoreRenderer {
   }buffers.m_109912_(type);
  }
  public static List<SpellImpact.Stroke> geometry(String skill,Element family,float scale,double age,long seed){
+  if(skill.equals("__summon"))return SummonVisual.geometry(age,seed);
   if(!skill.isEmpty()&&switch(family){case FIRE,DARK,WIND,ICE,LIGHT,NUCLEAR,PSY,ALMIGHTY->true;default->false;})return SpellImpact.geometry(skill,age,seed);
   var strokes=new ArrayList<SpellImpact.Stroke>();for(var b:PhotonEffectPlan.create(family,scale,seed).beams()){
    double t=age-b.delay();if(t<0||t>=b.life())continue;float fade=(float)Math.min(1,(b.life()-t)/6);

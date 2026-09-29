@@ -16,7 +16,7 @@ public final class ClientBattleUiState {
  private static java.util.List<String> options(BattleSnapshotS2C s){return page==Page.ITEMS?items():s.skills();}
  public static double age(){return (System.nanoTime()-opened)*1e-9;}
  public static boolean selector(){return page==Page.SKILLS||page==Page.PERSONAS||page==Page.ITEMS;}
- public static boolean actionLocked(){return BattleResultsClient.active()||AllOutPresentation.active()||BattleTacticsClient.awaitingAllOut()||actionLocked||switchPending||PersonaCinematics.skillSequenceActive()||PersonaCinematics.meleeActive();}
+ public static boolean actionLocked(){return com.gx.velveteclipse.client.presentation.BattleDirector.shifting()||BattleResultsClient.active()||AllOutPresentation.active()||BattleTacticsClient.awaitingAllOut()||actionLocked||switchPending||PersonaCinematics.skillSequenceActive()||PersonaCinematics.meleeActive();}
  public static void onSnapshot(BattleSnapshotS2C old,BattleSnapshotS2C next){
   if(next==null||!next.active()){page=Page.MAIN;actionLocked=switchPending=false;selected=0;pendingSkill="";return;}
   if(old==null||old.playerTurn()!=next.playerTurn()){page=Page.MAIN;pendingSkill="";}

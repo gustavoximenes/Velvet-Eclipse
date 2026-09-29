@@ -13,23 +13,29 @@ public final class ExplorationAnimation implements IAnimation {
     private static AbstractClientPlayer owner;
     private static ExplorationAnimation animation;
     private static ModifierLayer<IAnimation> layer;
-    private double phase,previousPhase,weight,previousWeight,speed,previousSpeed,x,z;
+    private double phase,previousPhase,weight,previousWeight,speed,previousSpeed,x,z,bank,previousBank;
+    private float facing,previousFacing;
     private int age;
-    private ExplorationAnimation(AbstractClientPlayer p){x=p.m_20185_();z=p.m_20189_();}
+    private ExplorationAnimation(AbstractClientPlayer p){x=p.m_20185_();z=p.m_20189_();facing=previousFacing=p.m_146908_();}
     public static void update(AbstractClientPlayer p){
         if(owner!=p){clear();owner=p;animation=new ExplorationAnimation(p);layer=new ModifierLayer<>();layer.setAnimation(animation);PlayerAnimationAccess.getPlayerAnimLayer(p).addAnimLayer(PRIORITY,layer);}
         animation.advance(p);
     }
     public static void clear(){if(layer!=null){layer.setAnimation(null);if(owner!=null)PlayerAnimationAccess.getPlayerAnimLayer(owner).removeLayer(layer);}owner=null;animation=null;layer=null;}
+    public static double speed(float partial){return animation==null?0:animation.previousSpeed+(animation.speed-animation.previousSpeed)*partial;}
     private void advance(AbstractClientPlayer p){
-        previousPhase=phase;previousWeight=weight;previousSpeed=speed;age++;
+        previousPhase=phase;previousWeight=weight;previousSpeed=speed;previousBank=bank;age++;
         double dx=p.m_20185_()-x,dz=p.m_20189_()-z;x=p.m_20185_();z=p.m_20189_();
         double distance=Math.min(.6,Math.sqrt(dx*dx+dz*dz));
+        previousFacing=facing;
+        double desired=ExplorationClient.attacking()||ExplorationClient.entry()?p.m_146908_():distance>.015?Math.toDegrees(Math.atan2(-dx,dz)):facing;
+        facing=ExplorationMotion.turn(facing,(float)desired,ExplorationClient.attacking()?45:27);
         double target=p.m_20096_()?Math.min(1,distance/.28):0;
         if(com.gx.velveteclipse.client.PersonaCinematics.meleeActive())target=Math.min(1,distance/.28);
         if(ExplorationClient.entry())target=1;
-        speed+=(target-speed)*.32;
-        phase+=ExplorationClient.entry()?.52:distance*2.05;
+        speed+=(target-speed)*(target>speed?.26:.42);
+        double angle=Math.toRadians(p.m_146908_());double side=dx*Math.cos(angle)+dz*Math.sin(angle);bank+=(Math.max(-1,Math.min(1,side/.2))-bank)*.25;
+        phase+=ExplorationClient.entry()?.7:distance*3.2;
         weight+=((ExplorationClient.swordVisible()?1:0)-weight)*.38;
         if(ExplorationClient.mode()==Mode.SKILL_CINEMATIC)weight=previousWeight=0;
     }
@@ -46,10 +52,19 @@ public final class ExplorationAnimation implements IAnimation {
         else if(type==TransformType.BEND)sample=WeaponPose.bend(com.gx.velveteclipse.client.equipment.EquipmentScreen.family(),part,p,v,attack);
         else if(type==TransformType.POSITION&&part.equals("body"))sample=new Vec3f(0,(float)ExplorationPose.bodyBob(p,v,age+partial),0);
         else return base;
+        if(type==TransformType.ROTATION&&attack<0){
+            double side=previousBank+(bank-previousBank)*partial;
+            if(part.equals("body"))sample=new Vec3f(sample.getX(),sample.getY(),sample.getZ()+(float)(side*.055));
+            if(part.equals("head"))sample=new Vec3f(base.getX()*.4f+sample.getX(),(float)(base.getY()*(1-v)*.45),sample.getZ());
+        }
         double px=sample.getX(),py=sample.getY(),pz=sample.getZ();
         if(type==TransformType.ROTATION||type==TransformType.BEND)
             return new Vec3f((float)(base.getX()+(px-base.getX())*w),(float)(base.getY()+(py-base.getY())*w),(float)(base.getZ()+(pz-base.getZ())*w));
         return new Vec3f((float)(base.getX()+px*w),(float)(base.getY()+py*w),(float)(base.getZ()+pz*w));
     }
     public static double slash(double tick){return smooth((tick-3)/4)*(1-smooth((tick-9)/9));}
+    public static void orient(AbstractClientPlayer p){
+        if(p!=owner||animation==null||com.gx.velveteclipse.client.ClientBattleState.snapshot().active()||!ExplorationClient.enabled())return;
+        p.f_20884_=animation.previousFacing;p.f_20883_=animation.facing;
+    }
 }

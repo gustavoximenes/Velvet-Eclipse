@@ -21,10 +21,10 @@ public final class ExplorationCamera {
         float partial=(float)e.getPartialTick();
         // m_20318_ is interpolated FEET. m_20299_ is interpolated eyes.
         Vec3 feet=p.m_20318_(partial);
-        var frame=CameraPath.exploration(feet,entry?ExplorationClient.yaw()-12:p.m_146908_(),p.m_146909_(),entry);
+        var frame=CameraPath.exploration(feet,entry?ExplorationClient.yaw()-12:p.m_146908_(),p.m_146909_(),entry,ExplorationAnimation.speed(partial));
         Vec3 target=frame.pivot(),desired=frame.desired();
         long now=System.nanoTime();double dt=lastFrame==0?1:Math.min(.1,(now-lastFrame)*1e-9);lastFrame=now;
-        Vec3 smooth=previous==null||previous.m_82554_(desired)>8?desired:previous.m_165921_(desired,1-Math.exp(-dt*16));
+        Vec3 smooth=previous==null||previous.m_82554_(desired)>8?desired:previous.m_165921_(desired,1-Math.exp(-dt*12));
         Vec3 position=collide(target,smooth);previous=position;
         Vec3 focus=frame.focus();
         place(e,position,focus,0);

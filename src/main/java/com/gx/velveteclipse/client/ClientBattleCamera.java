@@ -20,7 +20,7 @@ public final class ClientBattleCamera {
     private static float lockedYaw;
     @SubscribeEvent public static void onClientTick(TickEvent.ClientTickEvent e){
         PersonaCinematics.tick(e);if(e.phase!=TickEvent.Phase.END)return;
-        com.gx.velveteclipse.client.presentation.BattleDirector.tick();ExplorationClient.tick();var mc=Minecraft.m_91087_();
+        com.gx.velveteclipse.client.presentation.BattleFollowCamera.tick();com.gx.velveteclipse.client.presentation.BattleDirector.tick();ExplorationClient.tick();var mc=Minecraft.m_91087_();
         boolean valid=mc.f_91074_!=null&&mc.f_91073_!=null&&mc.f_91074_.m_6084_();
         if(!valid){BattleResultsClient.reset();AllOutPresentation.reset();}
         boolean active=valid&&ClientBattleState.snapshot().active();

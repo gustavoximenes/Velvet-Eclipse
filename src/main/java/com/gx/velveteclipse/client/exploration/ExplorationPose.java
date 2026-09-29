@@ -25,12 +25,12 @@ public final class ExplorationPose {
         double blend=attackBlend(attackTick);
         return switch(part){
             // Player Animator applies "body" before Minecraft's Y inversion.
-            case "body" -> vector(-.025-.13*v,-.025*stride+turn,-.012*stride);
-            case "head" -> vector(-.13*v,-turn*.32,0);
-            case "rightArm" -> vector(mix(.06+.20*v+.04*stride,curve(ARM_X,attackTick),blend),mix(-.16,curve(ARM_Y,attackTick),blend),mix(.10+.04*v,curve(ARM_Z,attackTick),blend));
-            case "leftArm" -> vector(-.06-.46*stride-.35*action,.08,-.08-.14*action);
-            case "rightLeg" -> vector(.60*stride-.14*action,0,.015);
-            case "leftLeg" -> vector(-.60*stride+.14*action,0,-.015);
+            case "body" -> vector(-.025-.19*v,-.045*stride+turn,-.025*stride);
+            case "head" -> vector(-.08*v,-turn*.32,0);
+            case "rightArm" -> vector(mix(.08+.24*v+.07*stride,curve(ARM_X,attackTick),blend),mix(-.16,curve(ARM_Y,attackTick),blend),mix(.10+.04*v,curve(ARM_Z,attackTick),blend));
+            case "leftArm" -> vector(-.12-.57*stride-.35*action,.08,-.09-.14*action);
+            case "rightLeg" -> vector(.73*stride-.14*action,0,.015);
+            case "leftLeg" -> vector(-.73*stride+.14*action,0,-.015);
             default -> Vec3f.ZERO;
         };
     }
@@ -51,6 +51,6 @@ public final class ExplorationPose {
     /** Relaxed wrist trails the lowered blade; attacking rotates it into the cut. */
     public static float wristPitch(double tick){return (float)mix(.34,.22,attackBlend(tick));}
     public static float wristRoll(double tick){return (float)mix(.64,0,attackBlend(tick));}
-    public static double bodyBob(double phase,double speed,double age){return Math.cos(phase*2)*speed*.012+Math.sin(age*.06)*.002;}
+    public static double bodyBob(double phase,double speed,double age){return Math.cos(phase*2)*speed*.045+Math.sin(age*.06)*.004;}
     private static double mix(double from,double to,double t){return from+(to-from)*t;}
 }

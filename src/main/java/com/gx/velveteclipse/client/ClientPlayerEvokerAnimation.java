@@ -9,6 +9,7 @@ public final class ClientPlayerEvokerAnimation {
  @SubscribeEvent public static void render(RenderPlayerEvent.Pre e){
   EvokerHandLayer.attach(e.getRenderer());var player=e.getEntity();
   if(player instanceof net.minecraft.client.player.AbstractClientPlayer p){
+   com.gx.velveteclipse.client.exploration.ExplorationAnimation.orient(p);
    CombatActorAnimation.attach(p);
    if(BattleDirector.summoning(p.m_20148_())&&BattleDirector.age(0)<=60)EvokerPlayerAnimation.play(p);else EvokerPlayerAnimation.stop(p);
   }

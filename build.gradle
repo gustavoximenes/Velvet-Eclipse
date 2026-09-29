@@ -1,4 +1,10 @@
 plugins { id 'java' }
+tasks.register('explorationStageTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.ExplorationStageAudit'
+    jvmArgs '-Djava.awt.headless=true'
+}
 tasks.register('battleChoreographyTest', JavaExec) {
     dependsOn testClasses
     classpath = sourceSets.test.runtimeClasspath
@@ -18,7 +24,7 @@ tasks.register('reloadPresentationPreview', JavaExec) {
     jvmArgs '-Djava.awt.headless=true'
 }
 group = 'com.gx.velveteclipse'
-version = '0.6.33-all-out-refinement'
+version = '0.6.34-exploration-shift'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')

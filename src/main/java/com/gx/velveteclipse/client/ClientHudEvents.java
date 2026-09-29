@@ -80,6 +80,7 @@ public final class ClientHudEvents {
             if(s.active())com.gx.velveteclipse.client.presentation.BattleHitNumbers.paint(canvas,w,h,partial);
             if(s.active())BattleTacticsClient.paint(canvas,w,h);
             if(s.active())com.gx.velveteclipse.client.equipment.ItemHelpHud.paint(g,w,h);
+            if(s.active())com.gx.velveteclipse.client.presentation.BattleFollowCamera.paint(canvas,w,h);
             if(AllOutPresentation.active()){g.m_280262_();AllOutPresentation.paint(g,canvas,w,h,partial);}
             else if(!s.active())BattleEncounterClient.paint(canvas,w,h);
             if(com.gx.velveteclipse.client.exploration.EntryTransition.visible()){

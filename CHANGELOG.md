@@ -1,3 +1,13 @@
+# 0.6.34-exploration-shift
+
+- Exploração H com câmera centralizada, recuo suave na corrida, orientação visual pelo deslocamento, arma baixa e novos movimentos de tronco, braços e pernas.
+- Formação dos inimigos verifica espaço do modelo, apoio, altura, perigo e linha de visão. Reorganiza posições quando possível e recusa/interrompe encontros sem área segura, preservando a Shadow.
+- Enquadramento de comandos inclui todos os combatentes vivos e procura alternativas com menos obstrução; mantém colisão da câmera.
+- Shift compartilhado com cortes entre origem e destinatário, gestos, faixa de identificação e clarões Photon. Bloqueio de ações até o término da apresentação e cancelamento se um participante sai.
+- Tecla remapeável de acompanhamento de câmera do turno (`\` / `|`); Shift isolado abre a passagem ao soltar, evitando conflito com o modificador de `|`.
+- Invocação com chamas azul/branco, núcleo emissivo, fragmentos ascendentes e materialização gradual da Persona na posição correta.
+- Protocolo 20. Testes offline focados e inspeção das geometrias; sem executar Minecraft. Bibliotecas e compatibilidade OptiFine preservadas.
+
 # 0.6.33-all-out-refinement
 
 - Substitui a animação de All-Out pela prévia aprovada, com close do iniciador, aliados em profundidades separadas, braço livre abaixado, corrida, fumaça texturizada, impactos e cinco encerramentos.

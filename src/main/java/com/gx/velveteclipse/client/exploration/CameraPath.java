@@ -5,15 +5,18 @@ import com.gx.velveteclipse.exploration.ExplorationRules;
 /** Pure camera geometry, tested with floors/walls/ceilings independently of Minecraft. */
 public final class CameraPath {
     public record Parameters(double distance,double height,double side,double pitch,double fov){}
-    public static final Parameters PARAMETERS=new Parameters(3.8,1.30,.68,11,62);
+    public static final Parameters PARAMETERS=new Parameters(4.65,1.35,.24,9,60);
     public record Frame(Vec3 pivot,Vec3 desired,Vec3 focus){}
     @FunctionalInterface public interface RayProbe {double hitDistance(Vec3 from,Vec3 to);}
     public static Frame exploration(Vec3 feet,double yawDegrees,double lookPitch,boolean entry){
+        return exploration(feet,yawDegrees,lookPitch,entry,0);
+    }
+    public static Frame exploration(Vec3 feet,double yawDegrees,double lookPitch,boolean entry,double speed){
         Vec3 pivot=feet.m_82520_(0,PARAMETERS.height(),0);
         double yaw=Math.toRadians(yawDegrees),pitch=Math.toRadians(entry?12:Math.max(5,Math.min(38,lookPitch*.55+PARAMETERS.pitch())));
-        double distance=entry?4.1:PARAMETERS.distance(),side=entry?1.05:PARAMETERS.side();
+        double distance=entry?4.1:PARAMETERS.distance()+Math.min(1,Math.max(0,speed))*.32,side=entry?1.05:PARAMETERS.side();
         Vec3 desired=pivot.m_82520_(Math.sin(yaw)*distance*Math.cos(pitch)+Math.cos(yaw)*side,Math.sin(pitch)*distance,-Math.cos(yaw)*distance*Math.cos(pitch)+Math.sin(yaw)*side);
-        Vec3 focus=pivot.m_82520_(-Math.sin(yaw)*.8,-.30,Math.cos(yaw)*.8);
+        double lead=.95+.20*Math.min(1,Math.max(0,speed));Vec3 focus=pivot.m_82520_(-Math.sin(yaw)*lead,-.22,Math.cos(yaw)*lead);
         return new Frame(pivot,desired,focus);
     }
     public static Vec3 clip(Vec3 pivot,Vec3 desired,RayProbe world){

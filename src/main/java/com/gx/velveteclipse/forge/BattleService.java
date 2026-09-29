@@ -26,7 +26,7 @@ public final class BattleService {
         final float yaw;
         final int enemyCount;
         int delay=28;final Map<UUID,Integer> escapeReady=new HashMap<>();
-        boolean wasBusy;
+        boolean wasBusy;int shiftUntil;UUID shiftFrom,shiftTo;
         boolean shuffleVictory,boss,raid,rare;int enemyPoseUntil;Entity animatingEnemy;int raidStage,dungeonFloor;
         final BattleResultsGate results=new BattleResultsGate();
         String ending="";
@@ -39,7 +39,7 @@ public final class BattleService {
     public static boolean encounterActive(UUID id){return BATTLES.containsKey(id);}
     public static boolean hasActiveBattle(Object p){var s=current(p);return s!=null&&s.state()==BattleState.ACTIVE;}
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
-    private static boolean busy(Encounter g){return g.pendingEnemy!=null||ticks<g.enemyPoseUntil||g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
+    private static boolean busy(Encounter g){return ticks<g.shiftUntil||g.pendingEnemy!=null||ticks<g.enemyPoseUntil||g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
     public static boolean actionBusy(Object p){var g=group(p);return g!=null&&(g.results.started()||g.session.state()!=BattleState.ACTIVE||g.session.prepared()!=null||busy(g));}
     private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);var combatant=new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp()).equipment(com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses());if(p instanceof ServerPlayer player)combatant.moonDay(player.m_9236_().m_46468_()/24000L);return combatant;}
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
@@ -61,8 +61,10 @@ public final class BattleService {
             int level=boss?Math.max(def.level(),com.gx.velveteclipse.darkhour.TartarusInteriorLayout.level(floor)+5):def.level();
             participants.add(BattleCombatant.enemy(UUID.randomUUID(),(boss?"Guardião do Tártaro • ":"")+def.displayName(),def,level,boss?hp*4:def.hp(),boss?80+floor:def.sp(),def.skills()));
         }
+        var layout=BattleTerrain.plan(p,boss?1:count,boss);if(layout==null){RuntimeBridge.sendMessage(p,"§eNão há chão firme e espaço livre para este combate. Procure uma área mais aberta.");return null;}
+        RuntimeBridge.setEntityRotation(p,(float)layout.yaw(),2);
         var s=new BattleSession(participants);var g=new Encounter(p,s,count);g.dungeonFloor=floor;g.boss=boss;BATTLES.put(s.id(),g);attach(g,p,g.origin);
-        VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"umbra_slime");
+        VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),layout);
         if(boss)for(var c:s.participants())if(c.side()==BattleSide.ENEMIES){var e=targetActor(p,c.id());if(e!=null)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(e);}
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;
     }
@@ -72,8 +74,10 @@ public final class BattleService {
         int floor=Math.max(0,com.gx.velveteclipse.darkhour.TartarusDungeonService.floor(p));var roster=com.gx.velveteclipse.shadow.ShadowEncounterRules.roll(field.encounterSeed(),floor,field.rare());
         var participants=new ArrayList<BattleCombatant>();participants.add(combatant(p));int index=0;
         for(var enemy:roster){var def=EnemyCatalog.get(enemy.persona());participants.add(BattleCombatant.enemy(UUID.randomUUID(),(field.rare()?"Red • ":"")+def.displayName()+" "+(++index),def,enemy.level(),enemy.hp(),enemy.sp(),enemy.skills()));}
+        var layout=BattleTerrain.plan(p,roster.size(),false);if(layout==null){RuntimeBridge.sendMessage(p,"§eAproxime a Shadow de uma área com espaço livre para o combate.");return null;}
+        RuntimeBridge.setEntityRotation(p,(float)layout.yaw(),2);
         var s=new BattleSession(participants,new Random(),opening);var g=new Encounter(p,s,roster.size());g.dungeonFloor=floor;g.rare=field.rare();BATTLES.put(s.id(),g);attach(g,p,g.origin);
-        VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),"");
+        VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),layout);
         String message=switch(opening){case ADVANTAGE->"VANTAGEM DA EQUIPE • Aliados começam!";case AMBUSH->"EMBOSCADA • Inimigos começam!";default->"ENCONTRO NEUTRO • Ordem inicial sorteada.";};
         if(g.rare)message+=" • SHADOW VERMELHA: inimigos poderosos, recompensas maiores.";
         syncAll(g,message);return s;
@@ -124,11 +128,13 @@ public final class BattleService {
         if(reserved!=null&&(reserved.actor().equals(id)||id.equals(reserved.action().targetId()))){
             Object acting=g.players.get(reserved.actor());if(acting!=null){MeleeBattleServer.clear(acting);PersonaCinematicServer.clear(acting);ModNetwork.sendPresentation(acting,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));}g.session.cancelPrepared();
         }
+        if(ticks<g.shiftUntil&&(id.equals(g.shiftFrom)||id.equals(g.shiftTo))){g.shiftUntil=0;for(Object member:g.players.values())ModNetwork.sendPresentation(member,new BattleDirectionS2C(g.shiftFrom,-1,-1,"cancel","","",0,0,0,0,0,0,0));}
         detach(g,p);g.session.leave(id);sync(p,"Você saiu da batalha.");
         if(g.players.isEmpty()){ShadowWorldService.release(g.session.id(),false);VisualBattleActors.clearEnemies(g.session.id());BATTLES.remove(g.session.id());}
         else if(g.session.state()!=BattleState.ACTIVE){if(!busy(g))finish(g,"Batalha encerrada.");}else syncAll(g,RuntimeBridge.playerName(p)+" saiu da batalha.");
     }
-    public static void abortEncounter(Object p){var g=group(p);if(g==null)return;ShadowWorldService.release(g.session.id(),false);BATTLES.remove(g.session.id());g.session.cancelPrepared();for(Object member:new ArrayList<>(g.players.values())){AllOutServer.cancel(member);PersonaCinematicServer.clear(member);ModNetwork.sendPresentation(member,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));persist(member,g.session);detach(g,member);sync(member,"A Dark Hour terminou.");}VisualBattleActors.clearEnemies(g.session.id());}
+    public static void abortEncounter(Object p){abortEncounter(p,"A Dark Hour terminou.");}
+    private static void abortEncounter(Object p,String reason){var g=group(p);if(g==null)return;ShadowWorldService.release(g.session.id(),false);BATTLES.remove(g.session.id());g.session.cancelPrepared();for(Object member:new ArrayList<>(g.players.values())){AllOutServer.cancel(member);PersonaCinematicServer.clear(member);ModNetwork.sendPresentation(member,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));persist(member,g.session);detach(g,member);sync(member,reason);}VisualBattleActors.clearEnemies(g.session.id());}
     private static void detach(Encounter g,Object p){UUID id=RuntimeBridge.playerUuid(p);MeleeBattleServer.clear(p);VisualBattleActors.clear(p);MEMBERS.remove(id);g.players.remove(id);g.anchors.remove(id);g.targets.remove(id);}
     public static Entity targetActor(Object p,UUID id){var g=group(p);if(g==null||id==null)return null;Object target=g.players.get(id);return target instanceof Entity e?e:VisualBattleActors.enemy(g.session.id(),id);}
     public static UUID targetId(Object p){var g=group(p);if(g==null)return null;UUID id=RuntimeBridge.playerUuid(p);var r=g.session.prepared();if(r!=null&&r.actor().equals(id))return r.action().targetId();if(g.targets.containsKey(id))return g.targets.get(id);return g.session.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null);}
@@ -181,7 +187,12 @@ public final class BattleService {
             case "attack"->{var s=current(p);if(s!=null){UUID enemy=target==null?s.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null):target;if(enemy!=null)MeleeBattleServer.start(p,BattleAction.attack(enemy));}}
             case "skill"->PersonaDelayedActions.queueSkill(p,value,target);
             case "persona"->switchPersona(p,value);
-            case "baton_pass"->{var g=group(p);if(g!=null&&g.session.batonPass(RuntimeBridge.playerUuid(p),target)){syncAll(g,"SHIFT! Turno passado com bônus de dano de 50%.");}else sync(p,"Baton Pass indisponível para este alvo.");}
+            case "baton_pass"->{var g=group(p);var recipient=targetActor(p,target);if(g!=null&&p instanceof Entity source&&recipient!=null&&g.session.batonPass(RuntimeBridge.playerUuid(p),target)){
+                g.shiftUntil=ticks+60;g.shiftFrom=RuntimeBridge.playerUuid(p);g.shiftTo=target;g.wasBusy=true;
+                var cue=new BattleDirectionS2C(g.shiftFrom,source.m_19879_(),recipient.m_19879_(),"shift","","SWORD",source.m_20185_(),source.m_20186_(),source.m_20189_(),recipient.m_20185_(),recipient.m_20186_(),recipient.m_20189_(),60);
+                for(Object member:g.players.values())ModNetwork.sendPresentation(member,cue);
+                syncAll(g,"SHIFT! "+RuntimeBridge.playerName(p)+" → "+RuntimeBridge.playerName(recipient)+" • Dano +50%.");
+            }else sync(p,"Baton Pass indisponível para este alvo.");}
             case "all_out"->{if(!AllOutServer.start(p))sync(p,"All-Out Attack indisponível.");}
             case "guard"->act(p,BattleAction.guard());case "item"->act(p,new BattleAction(BattleActionType.ITEM,value==null||value.isBlank()?"pulse_tonic":value,target));case "escape"->act(p,BattleAction.escape());
         }
@@ -201,7 +212,7 @@ public final class BattleService {
             boolean acting=busy(g);
             if(g.results.started())continue;
             if(!acting&&g.session.state()!=BattleState.ACTIVE){finish(g,g.ending);continue;}
-            if(!acting){VisualBattleActors.prune(g.session);if(g.wasBusy){g.wasBusy=false;syncAll(g,"Escolha uma ação.");}var actor=g.session.currentActor();if(actor!=null&&actor.side()==BattleSide.ENEMIES&&--g.delay<=0)enemyTurn(g);}
+            if(!acting){VisualBattleActors.prune(g.session);if(!g.raid&&ticks%20==0){Object viewer=g.players.values().stream().findFirst().orElse(null);if(!VisualBattleActors.repairFormation(viewer,g.boss)){abortEncounter(viewer,"Combate interrompido: o terreno deixou de ter espaço seguro.");continue;}}if(g.wasBusy){g.wasBusy=false;syncAll(g,"Escolha uma ação.");}var actor=g.session.currentActor();if(actor!=null&&actor.side()==BattleSide.ENEMIES&&--g.delay<=0)enemyTurn(g);}
         }
         if(++ticks%10==0)syncObservers();
     }

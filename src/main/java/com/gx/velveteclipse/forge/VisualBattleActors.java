@@ -11,16 +11,22 @@ public final class VisualBattleActors {
    private static final Map<UUID, Object> PERSONA = new HashMap<>();
    public static void bindEnemy(UUID battle,UUID id,net.minecraft.world.entity.Entity e){ENEMIES.computeIfAbsent(battle,k->new java.util.LinkedHashMap<>()).put(id,e);}
 
-   public static void spawnBattle(Object player,String persona,String ignored) {
+   public static void spawnBattle(Object player,String persona,com.gx.velveteclipse.core.battle.TerrainFormation.Layout layout) {
       var session=BattleService.current(player);if(session==null)return;
       clearEnemies(session.id());var actors=new java.util.LinkedHashMap<UUID,net.minecraft.world.entity.Entity>();ENEMIES.put(session.id(),actors);
       var enemies=session.participants().stream().filter(c->c.side()==com.gx.velveteclipse.core.battle.BattleSide.ENEMIES).toList();
       double[] origin=RuntimeBridge.playerPosition(player);float yaw=RuntimeBridge.playerYaw(player);
       for(int i=0;i<enemies.size();i++){
-         double[] at=RuntimeBridge.localOffset(origin,yaw,com.gx.velveteclipse.core.battle.BattleFormation.enemyX(i,enemies.size()),.05,5.25);
+         var point=layout.enemies().get(i);double[] at={point.x(),point.y(),point.z()};
          Object entity=spawnEnemy(player,at,yaw+180,enemies.get(i).persona().definitionId());if(entity instanceof net.minecraft.world.entity.Entity e)actors.put(enemies.get(i).id(),e);
       }
       replacePersona(player,persona);
+   }
+   public static boolean repairFormation(Object player,boolean boss){
+      var session=BattleService.current(player);if(session==null)return true;var actors=ENEMIES.get(session.id());if(actors==null||actors.isEmpty()||actors.values().stream().allMatch(BattleTerrain::valid))return true;
+      var layout=BattleTerrain.plan(player,actors.size(),boss);if(layout==null)return false;int i=0;
+      for(var actor:actors.values()){var p=layout.enemies().get(i++);RuntimeBridge.setEntityPosition(actor,p.x(),p.y(),p.z());RuntimeBridge.setEntityRotation(actor,(float)layout.yaw()+180,0);}
+      return true;
    }
    public static net.minecraft.world.entity.Entity enemy(UUID battle,UUID id){var actors=ENEMIES.get(battle);return actors==null?null:actors.get(id);}
    public static void clearEnemies(UUID battle){var actors=ENEMIES.remove(battle);if(actors!=null)actors.values().forEach(RuntimeBridge::discardObjectEntity);}

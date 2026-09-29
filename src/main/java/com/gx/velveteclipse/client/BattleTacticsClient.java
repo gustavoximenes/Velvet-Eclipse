@@ -13,10 +13,10 @@ public final class BattleTacticsClient {
  private static BattleTacticsS2C state=BattleTacticsS2C.empty();
  private static String queued="",toast="";
  private static int toastAge=-1,dismissed=-1;
- private static boolean awaitingAllOut;
+ private static boolean awaitingAllOut,shiftTap;
  public static boolean awaitingAllOut(){return awaitingAllOut;}
  public static boolean exclusiveHud(){return prompt()||awaitingAllOut||AllOutPresentation.active();}
- public static void reset(){state=BattleTacticsS2C.empty();queued=toast="";toastAge=dismissed=-1;awaitingAllOut=false;}
+ public static void reset(){state=BattleTacticsS2C.empty();queued=toast="";toastAge=dismissed=-1;awaitingAllOut=shiftTap=false;}
  public static void accept(BattleTacticsS2C packet){
   awaitingAllOut=false;
   if(packet.actor()==null&&packet.event()==0){reset();return;}
@@ -37,11 +37,15 @@ public final class BattleTacticsClient {
   if(toastAge>=0&&++toastAge>42)toastAge=-1;
  }
  public static boolean key(InputEvent.Key e){
-  if(Minecraft.m_91087_().f_91080_!=null)return false;
+  if(Minecraft.m_91087_().f_91080_!=null||!ClientBattleState.snapshot().active()){shiftTap=false;return false;}
+  boolean shift=e.getKey()==340||e.getKey()==344;
+  // Shift is also the modifier used to type '|'. Commit a solo tap only on release.
+  if(!shift&&e.getAction()==1)shiftTap=false;
+  if(shift&&e.getAction()==0){boolean tap=shiftTap;shiftTap=false;if(tap){ClientBattleUiState.baton();return true;}}
   if(AllOutPresentation.active()||awaitingAllOut)return true;
   if(prompt()){if(e.getAction()==1){if(e.getKey()==257||e.getKey()==335)allOut();else if(e.getKey()==78)dismiss();}return true;}
   if(e.getAction()!=1)return false;
-  if((e.getKey()==340||e.getKey()==344)&&ClientBattleState.snapshot().playerTurn()&&canPass()){ClientBattleUiState.baton();return true;}
+  if(shift&&ClientBattleState.snapshot().playerTurn()&&canPass()){shiftTap=true;return true;}
   return false;
  }
  public static boolean click(double x,double y,int w,int h){
@@ -49,7 +53,7 @@ public final class BattleTacticsClient {
   if(prompt()){if(BattleTacticalDesign.go(w,h).contains(x,y))allOut();else if(BattleTacticalDesign.cancel(w,h).contains(x,y))dismiss();return true;}
   if(oneMore()&&BattleTacticalDesign.pass(w,h).contains(x,y)){ClientBattleUiState.baton();return true;}return false;
  }
- public static void paint(HudDesign.Canvas c,int w,int h){if(AllOutPresentation.active())return;
+ public static void paint(HudDesign.Canvas c,int w,int h){if(AllOutPresentation.active()||com.gx.velveteclipse.client.presentation.BattleDirector.shifting())return;
   if(prompt()||awaitingAllOut){BattleTacticalDesign.paint(c,w,h,false,false,true,"",-1);return;}
   boolean ready=ClientBattleState.snapshot().playerTurn()&&!PersonaCinematics.skillSequenceActive()&&!PersonaCinematics.meleeActive();
   boolean prompt=prompt();BattleTacticalDesign.paint(c,w,h,!prompt&&state.oneMore()&&ready,canPass(),prompt,toast,prompt?-1:toastAge);

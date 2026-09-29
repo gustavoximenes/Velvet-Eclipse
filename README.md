@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.34 — Exploração e Shift
+
+Exploração **H** com corrida e câmera revisadas a partir do vídeo de referência. Inimigos procuram posições com chão, espaço livre e linha de visão; câmera inicial enquadra a formação. **Shift** apresenta o aliado que recebe o turno para toda a equipe, e **`\` / `|`** alterna o acompanhamento da câmera do combatente em ação. Invocação com chamas azuis nos pés e fragmentos ascendentes. Cliente e servidor na versão 0.6.34, protocolo **20**. [Controles, referências e validação offline](docs/EXPLORATION-SHIFT.md).
+
 # Velvet Eclipse 0.6.33 — All-Out Attack revisado
 
 Animação aprovada integrada: iniciador em close, aliados ao lado, braço corrigido, corrida e fumaça texturizada. A pose final só aparece após vitória confirmada pelo servidor. **TAB → System → Animação All-Out** agora usa um único seletor. Retirados os textos superiores do All-Out e do despertar. Cliente e servidor na versão 0.6.33, protocolo **19**. [Detalhes e validação offline](docs/ALL-OUT-REFINEMENT.md).

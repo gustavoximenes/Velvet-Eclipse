@@ -64,7 +64,7 @@ public final class BattleTargetHud {
         // the same frame, so observers never render a second selector HUD.
         if(targeting&&!snapshot.playerTurn())return;
         boolean acting=PersonaCinematics.meleeActive()||PersonaCinematics.skillSequenceActive();
-        if(AllOutPresentation.active()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()<68)return;
+        if(com.gx.velveteclipse.client.presentation.BattleDirector.shifting()||AllOutPresentation.active()||PersonaCinematics.skillSequenceActive()&&PersonaCinematics.skillTicks()<68)return;
         var element=ClientBattleUiState.selectedElement();double u=Math.max(.6,Math.min(w/640.,h/360.));
         if(targeting){
             var list=candidates();int index=0;for(int i=0;i<list.size();i++)if(list.get(i).id().equals(selected))index=i;

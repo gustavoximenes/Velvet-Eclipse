@@ -1505,5 +1505,6 @@
   "entity.velvet_eclipse.persona_zouchouten": "Zouchouten",
   "item.velvet_eclipse.zouchouten_model": "Model • Zouchouten",
   "item.velvet_eclipse.skill_card_raid_ice_storm": "Skill Card • Tempestade Glacial",
-  "advancement.velvet_eclipse.awakening.description": "Awaken your first Persona with the Evoker during the Dark Hour."
+  "advancement.velvet_eclipse.awakening.description": "Awaken your first Persona with the Evoker during the Dark Hour.",
+  "key.velvet_eclipse.follow_turn": "Follow active turn camera (| / backslash key)"
 }

@@ -5,6 +5,10 @@ public final class BattleShot {
  public record Frame(double side,double height,double depth,double focus,double focusHeight,float fov,float roll){}
  private static double ease(double t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);}
  public static Frame sample(String kind,double tick){
+  if(kind.equals("shift")){
+   if(tick<18)return new Frame(.95,1.72,2.9,0,1.24,56,-1);
+   double end=ease((tick-47)/13);return new Frame(1.05+end,1.72+end*.7,2.75+end*1.5,1,1.24,54+(float)end*8,0);
+  }
   if(kind.equals("skill")){
    // Front three-quarter waist-up shot; positive depth is in front of the caster.
    if(tick<45){double t=ease(tick/45);return new Frame(1.65-.15*t,1.85,3.05-.2*t,0,1.18,57,-1);}
@@ -16,6 +20,6 @@ public final class BattleShot {
   if(kind.equals("enemy_melee")){double t=ease(tick/44);return new Frame(-3.4,2.05,-1.8,.5+t*.20,1,64,0);}
   if(kind.equals("enemy")){double t=ease(tick/28);return new Frame(-3.2,2,-2.8,.55+t*.25,1,62,0);}
   if(kind.equals("attack")){double t=ease(tick/44);return new Frame(2.7-t*.7,1.4+t*.8,-2.8,.55,1,61,-2+(float)t*2);}
-  return new Frame(2.8,2.1,-3.2,.22,1,65,0);
+  return new Frame(2.05,2.55,-4.8,.38,1.15,62,0);
  }
 }

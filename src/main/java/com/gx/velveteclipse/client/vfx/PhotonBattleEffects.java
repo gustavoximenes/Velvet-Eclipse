@@ -55,9 +55,22 @@ public final class PhotonBattleEffects {
         if(family==Element.FIRE||family==Element.NUCLEAR||family==Element.ALMIGHTY)particles(new Vector3f(origin).add(0,.5f,0),plan.color(),10,.035f,.85f,18,"photon:textures/particle/smoke.png");
     }
     public static void summon(double x,double y,double z){
-        impact(Element.SUPPORT,.85f,x,y,z,41);if(level==null)return;
-        for(int i=0;i<6;i++){double a=i*Math.PI/3;var c=new BeamConfig();c.setLooping(false);c.setDuration(18);c.getEnd().set(0,3.6f,0);c.setWidth(new Fade(.14f,false));c.setColor(new Fade(0xFF59DCFF,true));material(c.material,"velvet_eclipse:textures/vfx/beam_glow.png");c.renderer.setBloomEffect(false);emit(new BeamEmitter(c),new Vector3f((float)(x+Math.cos(a)*.5),(float)y,(float)(z+Math.sin(a)*.5)),22);}
-        particles(new Vector3f((float)x,(float)y+.7f,(float)z),0xFFA6EEFF,28,.1f,.17f,28,"photon:textures/particle/laser.png");
+        var world=Minecraft.m_91087_().f_91073_;if(world==null)return;if(world!=level){reset();level=world;}
+        SpellCoreRenderer.add("__summon",Element.SUPPORT,1,new ImpactAnchor(new com.gx.velveteclipse.network.BattleLightningS2C.Strike(x,y,z,41)),41);
+        particles(new Vector3f((float)x,(float)y+.18f,(float)z),0xFF325CFF,22,.035f,.15f,25,"photon:textures/particle/laser.png");
+        particles(new Vector3f((float)x,(float)y+.8f,(float)z),0xFFDCFFFF,22,.085f,.065f,32,"photon:textures/particle/laser.png");
+    }
+    public static void shift(net.minecraft.world.phys.Vec3 from,net.minecraft.world.phys.Vec3 to){
+        var world=Minecraft.m_91087_().f_91073_;if(world==null)return;if(world!=level){reset();level=world;}
+        for(int i=0;i<12;i++){
+            double a=i/12.,b=(i+1)/12.;var start=from.m_165921_(to,a).m_82520_(0,1.2+Math.sin(a*Math.PI)*.55,0);var end=from.m_165921_(to,b).m_82520_(0,1.2+Math.sin(b*Math.PI)*.55,0);
+            var c=new BeamConfig();c.setLooping(false);c.setEmitRate(new Constant(1));c.setDuration(9);c.setStartDelay(i/2);c.getEnd().set((float)(end.f_82479_-start.f_82479_),(float)(end.f_82480_-start.f_82480_),(float)(end.f_82481_-start.f_82481_));c.setWidth(new Fade(.06f,false));c.setColor(new Fade(0xFF6BF1FF,true));material(c.material,"velvet_eclipse:textures/vfx/beam_glow.png");c.renderer.setBloomEffect(false);
+            emit(new BeamEmitter(c),new Vector3f((float)start.f_82479_,(float)start.f_82480_,(float)start.f_82481_),18);
+        }
+        trigger(to.f_82479_,to.f_82480_+1.1,to.f_82481_);
+        for(int i=0;i<7;i++){
+            double a=i*Math.PI*2/7;var c=new BeamConfig();c.setLooping(false);c.setEmitRate(new Constant(1));c.setDuration(18);c.setStartDelay(i%3);c.getEnd().set(.12f,2.8f,0);c.setWidth(new Fade(i%2==0?.035f:.018f,false));c.setColor(new Fade(0xFFB8F9FF,true));material(c.material,"velvet_eclipse:textures/vfx/beam_glow.png");c.renderer.setBloomEffect(false);emit(new BeamEmitter(c),new Vector3f((float)(to.f_82479_+Math.cos(a)*.65),(float)to.f_82480_,(float)(to.f_82481_+Math.sin(a)*.65)),24);
+        }
     }
     public static void trigger(double x,double y,double z){
         var world=Minecraft.m_91087_().f_91073_;if(world==null)return;if(world!=level){reset();level=world;}

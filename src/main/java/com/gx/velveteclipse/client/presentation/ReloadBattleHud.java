@@ -49,6 +49,7 @@ public final class ReloadBattleHud {
   root.drawInBackground(g,(int)RuntimeBridge.guiMouseX(),(int)RuntimeBridge.guiMouseY(),partial);root.drawInForeground(g,(int)RuntimeBridge.guiMouseX(),(int)RuntimeBridge.guiMouseY(),partial);
  }
  private static void content(GuiGraphics g,int mx,int my,float partial){
+  if(BattleDirector.shifting()){BattleDirector.shiftHud(canvas,width,height,partial);return;}
   if(BattleDirector.active()){
    String skill=BattleDirector.skill();ReloadBattleDesign.skillBanner(canvas,skill.isEmpty()?"ATTACK":ClientBattleUiState.displaySkill(skill),width,height,BattleDirector.age(partial));return;
   }
