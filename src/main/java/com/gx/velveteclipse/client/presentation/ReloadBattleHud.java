@@ -31,11 +31,11 @@ public final class ReloadBattleHud {
    };button.setClientSideWidget();commands.addWidget(button);
   }root.addWidget(commands);
   party=new WidgetGroup(0,0,w,h).setClientSideWidget();int count=ids.size();
-  for(int i=0;i<count;i++){UUID memberId=ids.get(i);var r=ReloadBattleDesign.party(w,h,count,i);double u=r.w()/114.;var initial=member(memberId);if(initial!=null)resources.putIfAbsent(memberId,new double[]{ratio(initial.hp(),initial.maxHp()),ratio(initial.sp(),initial.maxSp())});
+  for(int i=0;i<count;i++){UUID memberId=ids.get(i);var r=ReloadBattleDesign.party(w,h,count,i);double u=r.w()/78.;var initial=member(memberId);if(initial!=null)resources.putIfAbsent(memberId,new double[]{ratio(initial.hp(),initial.maxHp()),ratio(initial.sp(),initial.maxSp())});
    var card=new Widget(r.x(),r.y(),r.w(),r.h()){
-    @Override public void drawInBackground(GuiGraphics g,int mx,int my,float partial){var t=member(memberId);if(t==null)return;ReloadBattleDesign.partyCard(canvas,r,t.name(),t.hp(),t.sp(),t.turn(),t.hp()==0);var world=Minecraft.m_91087_().f_91073_;var e=world==null?null:world.m_6815_(t.entityId());if(e instanceof net.minecraft.client.player.AbstractClientPlayer p)PlayerFace.draw(g,p,r.x()+r.w()-(int)(39*u),r.y()-(int)(7*u),(int)(30*u));}
+    @Override public void drawInBackground(GuiGraphics g,int mx,int my,float partial){var t=member(memberId);if(t==null)return;ReloadBattleDesign.partyCard(canvas,r,t.name(),t.hp(),t.sp(),t.turn(),t.hp()==0);var world=Minecraft.m_91087_().f_91073_;var e=world==null?null:world.m_6815_(t.entityId());if(e instanceof net.minecraft.client.player.AbstractClientPlayer p)PlayerFace.draw(g,p,r.x()+(int)(7*u),r.y()-(int)(6*u),(int)(30*u));}
    };card.setClientSideWidget();party.addWidget(card);
-   for(int n=0;n<2;n++){final int resource=n;var progress=new ProgressWidget(()->resources.getOrDefault(memberId,new double[]{0,0})[resource],r.x()+(int)(14*u),r.y()+(int)((n==0?30:42)*u),(int)(91*u),Math.max(2,(int)(3*u))){
+   for(int n=0;n<2;n++){final int resource=n;var progress=new ProgressWidget(()->resources.getOrDefault(memberId,new double[]{0,0})[resource],r.x()+(int)(7*u),r.y()+(int)((n==0?37:46)*u),(int)(61*u),Math.max(2,(int)(3*u))){
      @Override public void drawInBackground(GuiGraphics g,int mx,int my,float partial){var p=g.m_280168_();p.m_85836_();p.m_252880_(getPosition().x,getPosition().y,0);p.m_252781_(new Quaternionf().rotationZ((float)Math.toRadians(-9)));p.m_252880_(-getPosition().x,-getPosition().y,0);super.drawInBackground(g,mx,my,partial);p.m_85849_();}
     };progress.setProgressTexture(new ColorRectTexture(0xFF10253F),new ColorRectTexture(n==0?0xFFB9FF65:0xFF4CE8FF));progress.setClientSideWidget();party.addWidget(progress);
    }

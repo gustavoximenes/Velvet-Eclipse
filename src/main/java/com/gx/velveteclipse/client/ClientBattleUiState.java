@@ -73,7 +73,7 @@ public final class ClientBattleUiState {
    if(PersonaBattleDesign.footer(w,h).contains(x,y)){back();return true;}return false;
   }
   var rects=BattleMenuLayout.main(w,h);for(int i=0;i<rects.length;i++)if(rects[i].contains(x,y)){
-   switch(i){case 0->attack();case 1,2->open(Page.SKILLS);case 3->open(Page.ITEMS);case 4->send("guard","");case 5->send("escape","");}return true;
+   switch(i){case 0->attack();case 1,2->open(Page.SKILLS);case 3->open(Page.ITEMS);case 4->send("guard","");case 5->send("escape","");case 6->baton();}return true;
   }return false;
  }
  public static String displaySkill(String id){return PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::displayName).orElse(id==null?"":id);}

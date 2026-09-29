@@ -17,6 +17,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import java.util.*;
 import static com.gx.velveteclipse.exploration.ExplorationRules.*;
+import com.gx.velveteclipse.core.battle.WeaponAttackTiming;
+import com.gx.velveteclipse.equipment.EquipmentCatalog.Family;
 
 /** Authoritative preparation. No BattleSession exists before ENTRY_READY. */
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE)
@@ -25,9 +27,10 @@ public final class ExplorationService {
     private static final EncounterReservation RESERVATIONS=new EncounterReservation();
     private static final class State {
         final ServerPlayer player; final Level level;
+        Family family=Family.SWORD;
         Mode mode=Mode.EXPLORATION; int tick,sequence; boolean commit;
         com.gx.velveteclipse.core.battle.EncounterOpening opening;
-        Entity flyingTarget;int impactTick;Vec3 impact;
+        Entity pendingTarget;Vec3 attackStart;Entity flyingTarget;int impactTick;Vec3 impact;
         Entity shadow; Vec3 start,end,shadowAnchor; boolean previousNoAi; float yaw;
         State(ServerPlayer p){player=p;level=p.m_9236_();}
     }
@@ -44,7 +47,7 @@ public final class ExplorationService {
             if(s==null){s=new State(p);PLAYERS.put(p.m_20148_(),s);send(s);}
             else if(canToggle(s.mode)){release(s);PLAYERS.remove(p.m_20148_());ExplorationNetwork.reply(p,Mode.NORMAL,0,s.sequence,-1,0);}
         }else if(action==ExplorationNetwork.ATTACK&&s!=null&&canAttack(s.mode)&&BattleService.current(p)==null){
-            s.mode=Mode.EXPLORATION_ATTACK;s.tick=0;s.sequence++;s.yaw=p.m_146908_();send(s);
+            s.pendingTarget=null;s.flyingTarget=null;s.impactTick=0;s.attackStart=p.m_20182_();s.family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();s.mode=Mode.EXPLORATION_ATTACK;s.tick=0;s.sequence++;s.yaw=p.m_146908_();send(s);ExplorationNetwork.swing(p,s.family.name(),s.yaw);
         }
     }
     public static void tickServer(){
@@ -58,15 +61,15 @@ public final class ExplorationService {
             }
             if(s.mode==Mode.BATTLE){s.mode=Mode.EXPLORATION;s.tick=0;send(s);continue;}
             if(s.mode==Mode.EXPLORATION_ATTACK){
-                ++s.tick;
-                boolean bow=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family()==com.gx.velveteclipse.equipment.EquipmentCatalog.Family.BOW;
-                if(bow&&s.tick==HIT_BEGIN){shoot(s);}
-                if(s.flyingTarget!=null&&s.tick>=s.impactTick){var target=s.flyingTarget;s.flyingTarget=null;if(target.m_6084_()&&target.m_9236_()==s.level&&target.m_20275_(s.impact.f_82479_,s.impact.f_82480_,s.impact.f_82481_)<9){prepare(s,target);continue;}RESERVATIONS.release(p.m_20148_());}
-                if(!bow&&hitWindow(s.tick)){
+                ++s.tick;AttackAdvance.move(p,s.attackStart,s.family,s.yaw,s.tick);
+                boolean bow=s.family==Family.BOW;
+                if(bow&&s.tick==(int)Math.round(WeaponAttackTiming.impactTick(s.family))){shoot(s);}
+                if(s.flyingTarget!=null&&s.tick>=s.impactTick){var target=s.flyingTarget;s.flyingTarget=null;if(target.m_6084_()&&target.m_9236_()==s.level&&target.m_20275_(s.impact.f_82479_,s.impact.f_82480_,s.impact.f_82481_)<9){s.pendingTarget=target;}else RESERVATIONS.release(p.m_20148_());}
+                if(!bow&&s.pendingTarget==null&&WeaponAttackTiming.hitWindow(s.family,s.tick)){
                     Entity target=findTarget(s);
-                    if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){prepare(s,target);continue;}
+                    if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){s.pendingTarget=target;}
                 }
-                if(s.tick>=ATTACK_END){s.mode=Mode.EXPLORATION;s.tick=0;send(s);}
+                if(s.tick>=Math.max(WeaponAttackTiming.end(s.family),s.flyingTarget==null?0:s.impactTick+1)){if(s.pendingTarget!=null&&s.pendingTarget.m_6084_()){var target=s.pendingTarget;s.pendingTarget=null;prepare(s,target);if(s.mode==Mode.BATTLE_ENTRY)continue;}RESERVATIONS.release(p.m_20148_());s.mode=Mode.EXPLORATION;s.tick=0;send(s);}
             }else if(s.mode==Mode.BATTLE_ENTRY){
                 if(s.shadow==null||!s.shadow.m_6084_()||s.shadow.m_9236_()!=s.level){cancel(s);continue;}
                 ++s.tick;freezeShadow(s);
@@ -88,7 +91,7 @@ public final class ExplorationService {
     private static void shoot(State s){var p=s.player;var aim=BowAim.trace(p,e->ShadowWorldService.worldShadow(e)&&!reserved(e));var from=aim.start();var to=aim.end();var target=aim.target();int duration=Math.max(4,Math.min(10,(int)Math.ceil(from.m_82554_(to))));ExplorationNetwork.shot(p,from,to,duration);if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){s.flyingTarget=target;s.impact=to;s.impactTick=s.tick+duration;}}
     private static Entity findTarget(State s){
         ServerPlayer p=s.player;double yaw=Math.toRadians(s.yaw),fx=-Math.sin(yaw),fz=Math.cos(yaw);
-        var family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();
+        var family=s.family;
         double reach=switch(family){case BOW,GUN->10;case SPEAR->4;case GREATSWORD,AXE->3.3;case FISTS,KNIFE->2.2;default->REACH;};
         Entity best=null;double distance=Double.MAX_VALUE;
         for(Entity e:s.level.m_6443_(Entity.class,p.m_20191_().m_82400_(reach),e->ShadowWorldService.worldShadow(e)&&e.m_6084_()&&!reserved(e))){
@@ -123,7 +126,7 @@ public final class ExplorationService {
     private static void release(State s){
         RESERVATIONS.release(s.player.m_20148_());
         if(s.shadow instanceof Mob mob&&!mob.m_213877_()&&!com.gx.velveteclipse.forge.ShadowWorldService.held(mob))mob.m_21557_(s.previousNoAi);
-        s.flyingTarget=null;s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);
+        s.flyingTarget=null;s.pendingTarget=null;s.attackStart=null;s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);
     }
     public static void expire(ServerPlayer p){State s=PLAYERS.get(p.m_20148_());if(s!=null)cancel(s);}
     private static void cancel(State s){release(s);s.mode=Mode.EXPLORATION;s.tick=0;send(s);}

@@ -21,7 +21,9 @@ public final class ExplorationClient {
     private static int tick,sequence=-1,requestTicks;
     private static float yaw;
     private static ClientLevel level;
-    private static Vec3 start,end;
+    private static Vec3 start,end,attackStart;
+    private static com.gx.velveteclipse.equipment.EquipmentCatalog.Family attackFamily=com.gx.velveteclipse.equipment.EquipmentCatalog.Family.SWORD;
+    public static com.gx.velveteclipse.equipment.EquipmentCatalog.Family attackFamily(){return attackFamily;}
     private static boolean requestPending;
     public static Mode mode(){return cameraMode(PersonaCinematics.skillSequenceActive(),mode==Mode.BATTLE_ENTRY,ClientBattleState.snapshot().active(),mode==Mode.EXPLORATION_ATTACK,mode!=Mode.NORMAL);}
     public static boolean enabled(){return mode!=Mode.NORMAL;}
@@ -57,7 +59,8 @@ public final class ExplorationClient {
         while(TOGGLE.m_90859_())if(mc.f_91080_==null&&canToggle(mode())&&!requestPending){requestPending=true;requestTicks=0;ExplorationNetwork.request(ExplorationNetwork.TOGGLE);}
         if(requestPending&&++requestTicks>60){requestPending=false;if(attacking()){mode=Mode.EXPLORATION;tick=0;}}
         if(attacking()||entry())tick++;
-        if(attacking()&&tick>=ATTACK_END&&!requestPending){mode=Mode.EXPLORATION;tick=0;}
+        if(attacking())AttackAdvance.move(mc.f_91074_,attackStart,attackFamily,yaw,tick);
+        if(attacking()&&tick>=com.gx.velveteclipse.core.battle.WeaponAttackTiming.end(attackFamily)&&!requestPending){mode=Mode.EXPLORATION;tick=0;}
         if(entry()&&start!=null&&end!=null){
             Vec3 desired=start.m_165921_(end,entryProgress(tick));
             mc.f_91074_.m_20256_(Vec3.f_82478_);
@@ -72,14 +75,14 @@ public final class ExplorationClient {
         if(entry()){e.setCanceled(true);return;}
         if(!ClientBattleState.snapshot().active()&&swordVisible()&&e.getButton()==0){
             e.setCanceled(true);
-            if(e.getAction()==1&&canAttack(mode())&&!requestPending){mode=Mode.EXPLORATION_ATTACK;tick=0;yaw=mc.f_91074_.m_146908_();requestPending=true;requestTicks=0;ExplorationNetwork.request(ExplorationNetwork.ATTACK);}
+            if(e.getAction()==1&&canAttack(mode())&&!requestPending){attackFamily=com.gx.velveteclipse.client.equipment.EquipmentScreen.family();attackStart=mc.f_91074_.m_20182_();mode=Mode.EXPLORATION_ATTACK;tick=0;yaw=mc.f_91074_.m_146908_();requestPending=true;requestTicks=0;ExplorationNetwork.request(ExplorationNetwork.ATTACK);}
         }
     }
     @SubscribeEvent public static void interaction(InputEvent.InteractionKeyMappingTriggered e){
         if(entry()||(swordVisible()&&e.isAttack())){e.setCanceled(true);e.setSwingHand(false);}
     }
     @SubscribeEvent public static void movement(MovementInputUpdateEvent e){
-        if(!entry()&&!ClientBattleState.snapshot().active())return;var in=e.getInput();in.f_108566_=0;in.f_108567_=0;
+        if(!entry()&&!attacking()&&!ClientBattleState.snapshot().active())return;var in=e.getInput();in.f_108566_=0;in.f_108567_=0;
         in.f_108568_=in.f_108569_=in.f_108570_=in.f_108571_=in.f_108572_=in.f_108573_=false;
     }
     @SubscribeEvent public static void open(ScreenEvent.Opening e){if(entry()&&Minecraft.m_91087_().f_91074_!=null&&Minecraft.m_91087_().f_91074_.m_6084_())e.setCanceled(true);}

@@ -21,6 +21,15 @@ public final class WeaponModels {
    return new ModelPart(cubes,Map.of());
   }catch(IOException e){throw new IllegalStateException(e);}
  });}
+ private static ModelPart bowNoString;
+ public static void bowWithoutString(PoseStack pose,MultiBufferSource buffers,int light){
+  if(bowNoString==null)try(var in=WeaponModels.class.getResourceAsStream("/assets/velvet_eclipse/weapons/bow.json")){
+   var data=new Gson().fromJson(new InputStreamReader(in,StandardCharsets.UTF_8),Model.class);var cubes=new ArrayList<ModelPart.Cube>();
+   for(var c:data.cubes())if(!arrowPart(c.name())&&!c.name().equals("taut_string"))cubes.add(new ModelPart.Cube(c.uv()[0],c.uv()[1],c.origin()[0],c.origin()[1],c.origin()[2],c.size()[0],c.size()[1],c.size()[2],0,0,0,false,128,128,EnumSet.allOf(Direction.class)));
+   bowNoString=new ModelPart(cubes,Map.of());
+  }catch(IOException ex){throw new IllegalStateException(ex);}
+  bowNoString.m_104301_(pose,buffers.m_6299_(RenderType.m_110452_(new ResourceLocation("velvet_eclipse","textures/entity/weapon_bow.png"))),light,655360);
+ }
  private static ModelPart arrow;
  private static boolean arrowPart(String name){return name!=null&&(name.startsWith("arrow_")||name.equals("fletching"));}
  public static void arrow(PoseStack p,MultiBufferSource out,int light){if(arrow==null)try(var in=WeaponModels.class.getResourceAsStream("/assets/velvet_eclipse/weapons/bow.json")){var data=new Gson().fromJson(new InputStreamReader(in,StandardCharsets.UTF_8),Model.class);var cubes=new ArrayList<ModelPart.Cube>();for(var c:data.cubes())if(arrowPart(c.name()))cubes.add(new ModelPart.Cube(c.uv()[0],c.uv()[1],c.origin()[0],c.origin()[1],c.origin()[2],c.size()[0],c.size()[1],c.size()[2],0,0,0,false,128,128,EnumSet.allOf(Direction.class)));arrow=new ModelPart(cubes,Map.of());}catch(IOException e){throw new IllegalStateException(e);}arrow.m_104301_(p,out.m_6299_(RenderType.m_110452_(new ResourceLocation("velvet_eclipse","textures/entity/weapon_bow.png"))),light,655360);}

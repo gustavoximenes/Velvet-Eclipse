@@ -274,7 +274,7 @@ public final class BattleService {
         var persona=actor==null?data.activeInstance():actor.persona();var targets=new ArrayList<BattleRosterS2C.Target>();
         if(g!=null)for(var c:g.session.participants()){var visual=targetActor(p,c.id());boolean ally=c.side()==BattleSide.PLAYERS;
             String affinities=ally?"":knowledge(g,p).forEnemy(knowledgeKey(g,c));
-            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name()+(c.ailment().isEmpty()?"":" ["+c.ailment()+"]"),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id()),c.sp(),c.maxSp()));}
+            targets.add(new BattleRosterS2C.Target(c.id(),visual==null?-1:visual.m_19879_(),c.name()+(c.ailment().isEmpty()?"":" ["+c.ailment()+"]"),ally,c.hp(),c.maxHp(),c.persona().definitionId(),affinities,g.session.currentActor()!=null&&g.session.currentActor().id().equals(c.id()),c.sp(),c.maxSp(),ally&&g.players.get(c.id())!=null?com.gx.velveteclipse.equipment.EquipmentData.load(g.players.get(c.id())).bonuses().family().name():"SWORD"));}
         ModNetwork.sendPresentation(p,new BattleRosterS2C(targets));
         if(g==null)ModNetwork.sendPresentation(p,BattleTacticsS2C.empty());
         else {

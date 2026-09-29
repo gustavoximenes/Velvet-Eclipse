@@ -25,9 +25,9 @@ public final class ReloadPresentationPreview {
   HudDesign.Canvas canvas=new Painter(g);
   var v=new HudDesign.View(true,true,false,"Orpheus",103,120,42,45,"Cowardly Maya",64,85,.85,.93,.75,.8,"","MAIN",List.of(),List.of("1","2","3","4","5","6"),"ESC",0,false,0,"");
   ReloadBattleDesign.commandsBackdrop(canvas,v,w,h);var rects=BattleMenuLayout.main(w,h);for(int i=0;i<rects.length;i++)ReloadBattleDesign.command(canvas,v,i,rects[i],i==2);
-  for(int i=0;i<5;i++){var r=ReloadBattleDesign.party(w,h,5,i);double u=r.w()/114.;ReloadBattleDesign.partyCard(canvas,r,new String[]{"Gustavo","Alice","Bruno","Carla","Diego"}[i],new int[]{231,182,317,95,210}[i],new int[]{42,71,28,60,91}[i],i==0,false);
-   int size=(int)(30*u),x=r.x()+r.w()-(int)(39*u),y=r.y()-(int)(7*u);canvas.fill(x,y,size,size,0xFF163775);canvas.styled("SKIN",x+3,y+size/2-4,(float)(.6*u),0xFF72E7FF);
-   for(int n=0;n<2;n++){var transform=g.getTransform();int bx=r.x()+(int)(14*u),by=r.y()+(int)((n==0?30:42)*u),bw=(int)(91*u);g.rotate(Math.toRadians(-9),bx,by);canvas.fill(bx,by,bw,Math.max(2,(int)(3*u)),0xFF10253F);canvas.fill(bx,by,(int)(bw*(n==0?.9-i*.1:.45+i*.08)),Math.max(2,(int)(3*u)),n==0?0xFFB9FF65:0xFF4CE8FF);g.setTransform(transform);}
+  for(int i=0;i<5;i++){var r=ReloadBattleDesign.party(w,h,5,i);double u=r.w()/78.;ReloadBattleDesign.partyCard(canvas,r,new String[]{"Gustavo","Alice","Bruno","Carla","Diego"}[i],new int[]{231,182,317,95,210}[i],new int[]{42,71,28,60,91}[i],i==0,false);
+   int size=(int)(30*u),x=r.x()+(int)(7*u),y=r.y()-(int)(7*u);canvas.fill(x,y,size,size,0xFF163775);canvas.styled("SKIN",x+3,y+size/2-4,(float)(.6*u),0xFF72E7FF);
+   for(int n=0;n<2;n++){var transform=g.getTransform();int bx=r.x()+(int)(7*u),by=r.y()+(int)((n==0?37:46)*u),bw=(int)(61*u);g.rotate(Math.toRadians(-9),bx,by);canvas.fill(bx,by,bw,Math.max(2,(int)(3*u)),0xFF10253F);canvas.fill(bx,by,(int)(bw*(n==0?.9-i*.1:.45+i*.08)),Math.max(2,(int)(3*u)),n==0?0xFFB9FF65:0xFF4CE8FF);g.setTransform(transform);}
   }
   canvas.styled("PRÉVIA OFFLINE • LAYOUT REAL • CENÁRIO E RETRATOS ILUSTRATIVOS",10,13,.75f,0xFF9FC1CC);
   g.dispose();ImageIO.write(image,"PNG",out.resolve("hud-"+width+"x"+height+".png").toFile());

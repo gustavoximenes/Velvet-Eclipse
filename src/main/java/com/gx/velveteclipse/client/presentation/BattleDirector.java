@@ -15,14 +15,14 @@ import java.util.UUID;
 /** One shared action clock, with collision-safe cameras for every participant. */
 public final class BattleDirector {
  private static BattleDirectionS2C cue;private static long started;private static Object level;
- private static int lastTick=-1;private static float fov=65;
+ private static int lastTick=-1;private static float fov=36;
  private static BattleFraming.View commandFrame;private static long frameTick;private static int frameKey;
  public static void accept(BattleDirectionS2C p){
   var world=Minecraft.m_91087_().f_91073_;if(world==null)return;
   if(p.kind().equals("cancel")){if(cue!=null&&cue.actor().equals(p.actor()))reset();return;}
   cue=p;level=world;started=world.m_46467_();lastTick=-1;
  }
- public static void reset(){cue=null;level=null;lastTick=-1;fov=65;commandFrame=null;}
+ public static void reset(){cue=null;level=null;lastTick=-1;fov=36;commandFrame=null;}
  public static boolean active(){return cue!=null&&age(0)<cue.duration();}
  public static double age(float partial){var w=Minecraft.m_91087_().f_91073_;return cue==null||w==null||w!=level?1000:w.m_46467_()-started+partial;}
  public static String skill(){return cue==null?"":cue.skill();}
@@ -48,7 +48,7 @@ public final class BattleDirector {
   if(cue.kind().equals("skill")&&lastTick<46&&t>=46){var a=actor();if(a!=null){double yaw=Math.toRadians(castingYaw(cue.actor(),a.m_146908_()));PhotonBattleEffects.summon(a.m_20185_()+Math.sin(yaw)*1.4,a.m_20186_(),a.m_20189_()-Math.cos(yaw)*1.4);}}
   if(shifting()&&lastTick<ShiftPresentation.TRANSFER&&t>=ShiftPresentation.TRANSFER){var a=actor();var b=targetPosition(1);if(a!=null)PhotonBattleEffects.shift(a.m_20182_(),b);}
   if(cue.kind().equals("attack")&&lastTick<19&&t>=19){var at=targetPosition(1);PhotonBattleEffects.impact(weapon()==Family.BOW||weapon()==Family.GUN||weapon()==Family.SPEAR?Element.PIERCE:weapon()==Family.FISTS?Element.PHYSICAL:Element.SLASH,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
-  if(cue.kind().equals("attack")&&weapon()==Family.BOW&&lastTick<16&&t>=16){var a=actor();var at=targetPosition(1);if(a!=null)com.gx.velveteclipse.client.exploration.ArrowFlight.accept(new com.gx.velveteclipse.exploration.ExplorationNetwork.Shot(a.m_20185_(),a.m_20186_()+1.3,a.m_20189_(),at.f_82479_,at.f_82480_+.8,at.f_82481_,3));}
+  if(cue.kind().equals("attack")&&weapon()==Family.BOW&&lastTick<16&&t>=16){var a=actor();var at=targetPosition(1);if(a instanceof net.minecraft.client.player.AbstractClientPlayer p){var from=ApprovedAttackRenderer.projectileOrigin(p,Family.BOW);com.gx.velveteclipse.client.exploration.ArrowFlight.accept(new com.gx.velveteclipse.exploration.ExplorationNetwork.Shot(from.f_82479_,from.f_82480_,from.f_82481_,at.f_82479_,at.f_82480_+.8,at.f_82481_,3));}}
   int enemyHit=cue.kind().equals("enemy_melee")?19:10;
   if(cue.kind().startsWith("enemy")&&cue.skill().isEmpty()&&lastTick<enemyHit&&t>=enemyHit){var at=targetPosition(1);PhotonBattleEffects.impact(Element.PHYSICAL,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
   lastTick=t;
@@ -81,7 +81,7 @@ public final class BattleDirector {
    int key=java.util.Objects.hash(BattleFollowCamera.enabled(),a,aspect,BattleTargetHud.roster().size());long tick=mc.f_91073_.m_46467_();
    if(commandFrame==null||tick-frameTick>=5||key!=frameKey){
     var points=new java.util.ArrayList<Vec3>();for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){var foot=entity.m_20318_(partial);double radius=member.ally()?.35:.85,height=entity.m_7755_().getString().startsWith("Guardião")?4:2.5;for(double x:new double[]{-radius,radius})for(double z:new double[]{-radius,radius})for(double y:new double[]{.05,height})points.add(foot.m_82520_(x,y,z));}}
-    commandFrame=BattleFraming.shoulder(a,points,shot.fov(),aspect,ExplorationCamera::collide);frameKey=key;frameTick=tick;
+    commandFrame=BattleFraming.command(a,points,shot.fov(),aspect,ExplorationCamera::collide);frameKey=key;frameTick=tick;
    }
    focus=commandFrame.focus();position=ExplorationCamera.collide(a.m_82520_(0,1.5,0),commandFrame.eye());
   }else position=BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);

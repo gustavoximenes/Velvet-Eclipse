@@ -103,7 +103,7 @@ public final class HudDesign {
             int ink=hover?INK:WHITE;
             icon(c,i,r.x()+10,r.y()+(r.h()-9)/2,ink);
             c.text(r.label(),r.x()+28,r.y()+(r.h()-8)/2,ink);
-            String key=fit(c,s.keys.get(i),23);
+            String key=fit(c,(i<s.keys.size()?s.keys.get(i):"SHIFT"),23);
             c.text(key,r.x()+r.w()-11-c.width(key),r.y()+(r.h()-8)/2,hover?INK:CYAN);
         }
     }

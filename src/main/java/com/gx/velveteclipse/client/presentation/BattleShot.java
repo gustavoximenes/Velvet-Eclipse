@@ -19,7 +19,7 @@ public final class BattleShot {
   }
   if(kind.equals("enemy_melee")){double t=ease(tick/44);return new Frame(-3.4,2.05,-1.8,.5+t*.20,1,64,0);}
   if(kind.equals("enemy")){double t=ease(tick/28);return new Frame(-3.2,2,-2.8,.55+t*.25,1,62,0);}
-  if(kind.equals("attack")){double t=ease(tick/44);return new Frame(2.7-t*.7,1.4+t*.8,-2.8,.55,1,61,-2+(float)t*2);}
-  return new Frame(2.05,2.55,-4.8,.38,1.15,62,0);
+  if(kind.equals("attack")){double t=ease(tick/44);return new Frame(-3.6+t*.3,2.15,-3.4,.20,1.1,43,0);}
+  return new Frame(-3.8,2.4,-4.8,.38,1.05,36,0);
  }
 }

@@ -1,3 +1,11 @@
+# 0.6.36-approved-combat
+
+- Integra menu/câmera e as nove animações de armas aprovadas.
+- Compartilha os tempos de impacto entre exploração e combate; mantém recuperação antes da entrada em batalha.
+- Usa skin real padrão/slim, empunhadura nativa, corda móvel e flecha saindo do arco.
+- Sincroniza armas dos aliados e ataques de exploração. Protocolos 22/3.
+- Preserva Dark Hour com shaders, All-Out e despertar. Validação offline; detalhes em docs/APPROVED-COMBAT.md.
+
 # 0.6.35-combat-polish
 
 - Câmera de comandos próxima do ombro do jogador ativo, com enquadramento dos limites dos inimigos e alternativas para obstáculos. Câmera de exploração H preservada.

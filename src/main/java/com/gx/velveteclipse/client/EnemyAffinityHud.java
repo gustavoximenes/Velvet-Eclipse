@@ -4,7 +4,7 @@ public final class EnemyAffinityHud {
  public static final Element[] ELEMENTS={Element.SLASH,Element.PHYSICAL,Element.PIERCE,Element.FIRE,Element.ICE,Element.ELECTRIC,Element.WIND,Element.PSY,Element.NUCLEAR,Element.LIGHT,Element.DARK,Element.ALMIGHTY};
  public static void paint(HudDesign.Canvas c,String known,int w,int h,double u,boolean targeting){
   var table=new EnumMap<Element,Affinity>(Element.class);for(String pair:known.split(",")){String[] a=pair.split(":");if(a.length==2)try{table.put(Element.valueOf(a[0]),Affinity.valueOf(a[1]));}catch(IllegalArgumentException ignored){}}
-  int step=(int)(25*u),width=step*ELEMENTS.length,x=(w-width)/2,y=targeting?h-(int)(110*u):(int)(36*u);
+  int step=(int)((targeting?25:17)*u),width=step*ELEMENTS.length,x=targeting?(w-width)/2:(int)(21*u),y=targeting?h-(int)(110*u):(int)(48*u);
   c.fill(x-7,y-5,width+14,(int)(34*u),0xEA06112C);
   for(int i=0;i<ELEMENTS.length;i++){int cx=x+i*step+step/2;BattleGraphics.icon(c,ELEMENTS[i],cx,y+7*u,6*u);var a=table.get(ELEMENTS[i]);int by=y+(int)(20*u);
    if(a==null)c.text("?",cx-2,by-3,0xFFFCFFFF);else if(a==Affinity.WEAK)c.text("!",cx-2,by-3,0xFFFFDA4F);else if(a!=Affinity.NORMAL){

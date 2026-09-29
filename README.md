@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.36 — Menu e animações aprovados
+
+Menu em leque e enquadramento com jogador à esquerda. Nove famílias de armas com as animações aprovadas na exploração H e no combate, skin real padrão/slim e sincronização de golpes. Cliente e servidor na mesma versão, protocolo **22** (exploração **3**). [Mudanças e validação offline](docs/APPROVED-COMBAT.md).
+
 # Velvet Eclipse 0.6.35 — Câmera de combate, ataques e Dark Hour
 
 Câmera próxima do ombro **somente durante o combate**, com recuo conforme o espaço necessário para enquadrar os inimigos. Ataques com preparação, golpe e recuperação; arco com mira e trajetória na exploração **H**. Shadows aguardam **1,5 segundo** no alerta antes de começar a virar. Céu verde e lua grande recebem uma composição específica para OptiFine com shaders. Cliente e servidor na versão 0.6.35, protocolo **21**. [Detalhes e limites da validação](docs/COMBAT-POLISH.md).

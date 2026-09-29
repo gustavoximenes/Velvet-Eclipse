@@ -6,6 +6,26 @@ import java.util.function.BiFunction;
 /** Fits feet and crowns, then scores unobstructed alternatives around the same subject. */
 public final class BattleFraming {
  public record View(Vec3 eye,Vec3 focus){}
+ /** Approved full-body composition: the command actor is left, enemies in the open center. */
+ public static View command(Vec3 player,List<Vec3> enemies,double fov,double aspect,BiFunction<Vec3,Vec3,Vec3> clip){
+  Vec3 center=Vec3.f_82478_;for(var p:enemies)center=center.m_82549_(p);center=enemies.isEmpty()?player.m_82520_(0,0,5):center.m_82490_(1./enemies.size());
+  var forward=new Vec3(center.f_82479_-player.f_82479_,0,center.f_82481_-player.f_82481_);forward=forward.m_82556_()<.001?new Vec3(0,0,1):forward.m_82541_();var side=new Vec3(forward.f_82481_,0,-forward.f_82479_);
+  var subjects=new ArrayList<Vec3>(enemies);for(double y:new double[]{0,1.95})for(double x:new double[]{-.4,.4})subjects.add(player.m_82549_(side.m_82490_(x)).m_82520_(0,y,0));
+  Vec3 preferred=null;
+  for(double scale:new double[]{1,1.12,1.28,1.48,1.75,2.1,2.6}){
+   var eye=player.m_82549_(side.m_82490_(-3.8*scale)).m_82549_(forward.m_82490_(-4.8*scale)).m_82520_(0,2.4*scale,0);
+   var focus=player.m_82549_(side.m_82490_(-1*scale)).m_82549_(forward.m_82490_(3.4*scale)).m_82520_(0,1.05*scale,0);if(preferred==null)preferred=eye;
+   if(clip.apply(player.m_82520_(0,1.1,0),eye).m_82554_(eye)>.15||!commandContains(subjects,eye,focus,fov,aspect))continue;
+   boolean clear=true;for(var point:subjects)if(clip.apply(point.m_82520_(0,.12,0),eye).m_82554_(eye)>.22){clear=false;break;}
+   if(clear)return new View(eye,focus);
+  }
+  // Include the player in fallback fitting too: an obstruction must never frame enemies alone.
+  return fit(subjects,preferred,fov,aspect,clip);
+ }
+ public static boolean commandContains(List<Vec3> points,Vec3 eye,Vec3 focus,double fov,double aspect){
+  var back=eye.m_82546_(focus).m_82541_();var right=new Vec3(back.f_82481_,0,-back.f_82479_).m_82541_();var up=back.m_82537_(right).m_82541_();double tan=Math.tan(Math.toRadians(fov/2));
+  for(var p:points){var d=p.m_82546_(eye);double z=-d.m_82526_(back);if(z<=.1)return false;double x=d.m_82526_(right)/(z*tan*aspect),y=d.m_82526_(up)/(z*tan);if(x<-.91||x>.71||y<-.88||y>.89)return false;}return true;
+ }
  /** Keep the camera at the active player's shoulder; retreat only to include enemy bounds. */
  public static View shoulder(Vec3 player,List<Vec3> enemies,double fov,double aspect,BiFunction<Vec3,Vec3,Vec3> clip){
   if(enemies.isEmpty())return new View(player.m_82520_(1.1,1.8,-2),player.m_82520_(0,1.3,4));

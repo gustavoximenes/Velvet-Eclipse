@@ -37,7 +37,7 @@ public final class BattleHudDesign {
             else if(!small)ribbon(c,r.x(),r.y(),r.w(),r.h(),0x60020823);
             float scale=(float)((i==0?2.0:small?.72:1.42)*u);
             c.styled(r.label(),r.x()+(int)(5*u),r.y()+(int)(3*u),scale,ink);
-            String key=fit(c,v.keys().get(i),(int)(15*u));
+            String key=fit(c,(i<v.keys().size()?v.keys().get(i):"SHIFT"),(int)(15*u));
             c.text(key,r.x()+r.w()-Math.max(10,c.width(key)+3),r.y()+Math.max(1,(r.h()-8)/2),chosen?CYAN:0xFFB5F8FF);
         }
         String turn=v.locked()?"ACTION":available?"COMMAND":"AGUARDE";

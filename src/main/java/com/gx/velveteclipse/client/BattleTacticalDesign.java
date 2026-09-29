@@ -3,15 +3,12 @@ import com.gx.velveteclipse.core.battle.AllOutTimeline;
 
 /** Shared by the live painter and offline layout/animation previews. */
 public final class BattleTacticalDesign {
- public static BattleMenuLayout.Rect pass(int w,int h){double u=Math.min(w/640.,h/360.);return new BattleMenuLayout.Rect((int)(14*u),h-(int)(207*u),(int)(103*u),(int)(62*u),"SHIFT",0);}
+ public static BattleMenuLayout.Rect pass(int w,int h){return BattleMenuLayout.main(w,h)[6];}
  public static BattleMenuLayout.Rect go(int w,int h){return new BattleMenuLayout.Rect(w/2,h-48,w/4,40,"GO",0);}
  public static BattleMenuLayout.Rect cancel(int w,int h){return new BattleMenuLayout.Rect(w*3/4,h-48,w/4-8,40,"CANCEL",0);}
  public static void paint(HudDesign.Canvas c,int w,int h,boolean more,boolean pass,boolean prompt,String kind,double age){
   double u=Math.max(.55,Math.min(w/640.,h/360.));
-  if(more){var r=pass(w,h);BattleGraphics.poly(c,new double[]{r.x(),r.y()+12,r.x()+r.w(),r.y(),r.x()+r.w()-9,r.y()+r.h()-8,r.x()+8,r.y()+r.h()},0xFF1729ED);
-   c.angled("SHIFT",r.x()+9,r.y()+13,(float)(1.65*u),pass?0xFFF5FFFF:0xFF6486C8,-10);c.text("[SHIFT] BATON PASS",r.x()+6,r.y()+r.h()-15,pass?0xFF65F6FF:0xFF687FAA);
-   c.text("PERSONA FIXA • 1 MORE",(int)(12*u),(int)(26*u),0xFF72F8FF);
-  }
+  if(more)c.text("1 MORE",(int)(12*u),(int)(48*u),0xFF72F8FF);
   if(age>=0&&age<42){
    double enter=AllOutTimeline.ease(age/7),leave=AllOutTimeline.ease((age-31)/11),slide=(1-enter+leave)*w*.65;
    double x=w*.46+slide,y=h*.43;
