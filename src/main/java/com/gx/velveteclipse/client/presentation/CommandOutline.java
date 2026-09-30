@@ -9,9 +9,12 @@ import java.util.*;
 
 /** Inverted mesh hull: depth-tested blue rim, including with shader postprocessing disabled. */
 public final class CommandOutline {
+ public static final float WIDTH=.009f;
  private static final ResourceLocation COLOR=new ResourceLocation("velvet_eclipse","textures/gui/command_outline.png");
  public static void draw(PoseStack pose,MultiBufferSource buffers,ApprovedWeaponPose.Frame frame,boolean slim,Set<PlayerModelPart> visible){
-  var hull=new Hull();ApprovedAttackRenderer.body(pose,hull,frame,slim,visible,15728880);
+  // Outer skin boxes contain transparent pixels; a solid hull around them
+  // produced floating boxes around the hat, sleeves and trouser cuffs.
+  var hull=new Hull();ApprovedAttackRenderer.body(pose,hull,frame,slim,Set.of(),15728880);
   hull.emit(buffers.m_6299_(RenderType.m_110452_(COLOR)));
  }
  public static final class Hull implements VertexConsumer {
@@ -27,7 +30,7 @@ public final class CommandOutline {
   public void emit(VertexConsumer out){
    for(int face=0;face<vertices.size();face+=4)for(int index=3;index>=0;index--){
     var v=vertices.get(face+index);var offset=new Vector3f(normals.get(v.position));
-    if(offset.lengthSquared()>.000001)offset.normalize(.025f);var p=new Vector3f(v.position).add(offset);
+    if(offset.lengthSquared()>.000001)offset.normalize(WIDTH);var p=new Vector3f(v.position).add(offset);
     out.m_5483_(p.x,p.y,p.z).m_6122_(255,255,255,255).m_7421_(.5f,.5f).m_7122_(0,10).m_7120_(240,240).m_5601_(-v.normal.x,-v.normal.y,-v.normal.z).m_5752_();
    }
   }

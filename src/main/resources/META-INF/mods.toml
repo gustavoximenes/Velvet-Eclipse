@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="velvet_eclipse"
-version="0.6.37-animation-fix"
+version="0.6.38-pose-camera-fix"
 displayName="Velvet Eclipse"
 authors="Gustavo Ximenes"
 description='''An original Minecraft RPG mod inspired by stylish monster-collecting and social JRPG combat systems.'''

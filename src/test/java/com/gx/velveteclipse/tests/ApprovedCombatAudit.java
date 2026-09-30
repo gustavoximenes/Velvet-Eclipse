@@ -70,7 +70,7 @@ public final class ApprovedCombatAudit {
   var roster=new BattleRosterS2C(Arrays.stream(Family.values()).map(f->new BattleRosterS2C.Target(UUID.randomUUID(),f.ordinal(),f.name(),true,100,100,"orpheus","",false,50,50,f.name())).toList());
   var buffer=new FriendlyByteBuf(Unpooled.buffer());try{BattleRosterS2C.encode(roster,buffer);check(roster.equals(BattleRosterS2C.decode(buffer))&&!buffer.isReadable(),"remote weapons roundtrip");}finally{buffer.release();}
   var points=new ArrayList<Vec3>();for(double x:new double[]{-1.3,0,1.3})for(double y:new double[]{.05,2.0})points.add(new Vec3(x,y,6));
-  for(double aspect:new double[]{4./3,16./9,21./9}){var cam=BattleFraming.command(Vec3.f_82478_,points,36,aspect,(a,b)->b);var subjects=new ArrayList<>(points);subjects.add(Vec3.f_82478_);subjects.add(new Vec3(0,1.95,0));check(BattleFraming.commandContains(subjects,cam.eye(),cam.focus(),36,aspect),"camera includes player/enemies "+aspect);}
+  for(double aspect:new double[]{4./3,16./9,21./9}){var cam=BattleFraming.command(Vec3.f_82478_,points,36,aspect,(a,b)->b);var subjects=new ArrayList<>(points);subjects.add(Vec3.f_82478_);subjects.add(new Vec3(0,1.95,0));check(BattleFraming.commandContains(subjects,cam.eye(),cam.focus(),cam.fov(),aspect),"camera includes player/enemies "+aspect);}
   System.out.println("PASS approved combat: "+checks+" checks. Native meshes, slim wrists, grounded feet, weapon anchors, clip timings, multiplayer roster and framing. Offline only.");
  }
 }

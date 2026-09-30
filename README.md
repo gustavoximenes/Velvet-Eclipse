@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.38 — Poses, caminhada e câmera
+
+Corrige orientação e transições dos braços nas outras armas, preserva o ataque da espada normal, restaura balanço e movimento da cabeça na exploração H, reduz o contorno azul e estabiliza a câmera de comandos. Cliente e servidor na mesma versão; protocolos **22** e exploração **4** mantidos. [Mudanças e validação offline](docs/POSE-CAMERA-FIX.md).
+
 # Velvet Eclipse 0.6.37 — Articulações, enquadramento e resposta ao acerto
 
 Corrige o alongamento dos membros e a diferença de escala do jogador nas animações, ancora a câmera de comandos ao menu e adiciona contorno azul ao jogador em destaque. A transição para batalha começa no impacto, com duração de 10 ticks (0,5 s). Cliente e servidor devem usar esta versão: protocolo principal **22**, exploração **4**. [Detalhes e validação offline](docs/ANIMATION-FIX.md).

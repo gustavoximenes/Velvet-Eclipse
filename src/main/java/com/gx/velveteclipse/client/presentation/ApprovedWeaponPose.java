@@ -41,7 +41,7 @@ public final class ApprovedWeaponPose {
   double r=Math.sqrt(1-vertical*vertical);return v(Math.sin(Math.toRadians(az))*r,vertical,-Math.cos(Math.toRadians(az))*r);
  }
  static Vector3f freeHand(Family f,double t){
-  if(f==Family.BOW)return track(t,new double[][]{{-.36,.69,0},{-.10,.19,-.25},{.10,.16,.07},{.10,.16,.10},{-.29,.10,.15},{-.32,.24,-.05},{-.35,.64,0},{-.36,.69,0}});
+  if(f==Family.BOW)return track(t,new double[][]{{-.36,.69,0},{-.28,.12,-.30},{-.28,.05,-.30},{-.28,.05,-.30},{-.36,.35,-.25},{-.36,.50,-.14},{-.35,.64,0},{-.36,.69,0}});
   if(f==Family.FISTS)return track(t,new double[][]{{.32,.24,-.23},{.34,.21,-.14},{.09,.19,-.55},{.28,.24,-.24},{.35,.23,-.14},{.29,.25,-.22},{.32,.24,-.23},{.32,.24,-.23}});
   if(f==Family.RAPIER)return track(t,new double[][]{{.37,.63,.02},{.39,.47,.12},{.43,.48,.18},{.47,.41,.23},{.43,.46,.24},{.40,.51,.11},{.37,.63,.02},{.37,.63,.02}});
   return track(t,new double[][]{{.37,.64,.01},{.42,.40,.13},{.40,.33,.02},{.45,.37,.11},{.41,.42,.15},{.40,.50,.05},{.37,.64,.01},{.37,.64,.01}});
@@ -62,34 +62,58 @@ public final class ApprovedWeaponPose {
  static double height(Family f,double t){return switch(f){case GREATSWORD->k(t,0,0,.16,.20,.03,0,0,0);case KNIFE->k(t,0,0,.22,.10,0,0,0,0);default->0;};}
  static double advance(Family f,double t){return switch(f){case BOW,GUN->0;case RAPIER,SPEAR->k(t,0,-.08,.17,.56,.57,.50,.46,.46);case FISTS->k(t,0,0,.20,.24,.41,.42,.40,.40);default->k(t,0,-.04,.19,.35,.46,.46,.46,.46);};}
  static Vector3f shoulder(boolean left,boolean slim){return v(left?.3125:-.3125,slim?.15625:.125,0);}
- static Vector3f limited(Vector3f target,Vector3f center,float radius){var d=new Vector3f(target).sub(center);if(d.length()>radius)d.normalize(radius);if(d.length()<.37f)d.normalize(.37f);return new Vector3f(center).add(d);}
+ static Vector3f maximum(Vector3f target,Vector3f center,float radius){var d=new Vector3f(target).sub(center);if(d.length()>radius)d.normalize(radius);return new Vector3f(center).add(d);}
+ static Vector3f limited(Vector3f target,Vector3f center,float radius){var d=new Vector3f(target).sub(center);d.z-=(float)(Math.max(0,d.z+.30)*(1-smooth(Math.abs(d.y)/.25)));if(d.length()>radius)d.normalize(radius);if(d.length()<.32f){if(d.lengthSquared()<.00001f)d.set(0,.32f,0);else d.normalize(.32f);}return new Vector3f(center).add(d);}
  public record Arm(Quaternionf rotation,float bend,Vector3f hand,Vector3f forward){}
  static Arm solve(Vector3f target,boolean left,boolean slim){
   var center=shoulder(left,slim);var diff=new Vector3f(target).sub(center);float lateral=(left?1:-1)*(slim?.03125f:.0625f);
-  float radius=diff.length();var radial=new Vector3f(diff).normalize();var hint=v(left?.55:-.55,1,.1);
-  var normal=hint.cross(radial).normalize().mul((float)Math.sqrt(1-lateral*lateral/(radius*radius))).add(new Vector3f(radial).mul(lateral/radius));
-  var planar=new Vector3f(diff).sub(new Vector3f(normal).mul(lateral));float distance=Math.max(.126f,Math.min(.624f,planar.length()));var dir=planar.normalize();var side=new Vector3f(dir).cross(normal).normalize();
+  float radius=diff.length();var radial=new Vector3f(diff).normalize();
+  // Match the sword's native -X elbow flexion. The old +X solve rolled the
+  // upper arm by half a turn to reach the same wrist, reversing its hinge and skin orientation.
+  var axis=new Vector3f(1,0,0).sub(new Vector3f(radial).mul(radial.x));
+  if(axis.lengthSquared()<.0001f)axis.set(0,0,1).sub(new Vector3f(radial).mul(radial.z));
+  axis.normalize();var tangent=new Vector3f(radial).cross(axis).normalize();
+  double bestAngle=0,bestCost=Double.POSITIVE_INFINITY,step=Math.PI/18;
+  for(int i=0;i<=9;i++){double a=(left?1:-1)*i*step;double cost=poleCost(a,axis,tangent,radial,diff,center,lateral,left);if(cost<bestCost){bestCost=cost;bestAngle=a;}}
+  double low=Math.max(left?0:-Math.PI/2,bestAngle-step),high=Math.min(left?Math.PI/2:0,bestAngle+step);
+  for(int i=0;i<12;i++){double a=low+(high-low)*.382,b=low+(high-low)*.618;if(poleCost(a,axis,tangent,radial,diff,center,lateral,left)<poleCost(b,axis,tangent,radial,diff,center,lateral,left))high=b;else low=a;}
+  var normal=pole((low+high)*.5,axis,tangent,radial,lateral/radius);
+  var planar=new Vector3f(diff).sub(new Vector3f(normal).mul(lateral));float distance=Math.max(.126f,Math.min(.624f,planar.length()));var dir=planar.normalize();var side=new Vector3f(normal).cross(dir).normalize();
   float x=(.25f*.25f+distance*distance-.375f*.375f)/(2*distance);float h=(float)Math.sqrt(Math.max(0,.25f*.25f-x*x));
   var elbow=new Vector3f(dir).mul(x).add(side.mul(h));var upper=new Vector3f(elbow).normalize();var fore=new Vector3f(dir).mul(distance).sub(elbow).normalize();
-  float angle=(float)Math.acos(Math.max(-1,Math.min(1,upper.dot(fore))));var z=new Vector3f(normal).cross(upper).normalize();
+  float angle=-(float)Math.acos(Math.max(-1,Math.min(1,upper.dot(fore))));var z=new Vector3f(normal).cross(upper).normalize();
   Quaternionf q=new Quaternionf().setFromNormalized(new Matrix3f().setColumn(0,normal).setColumn(1,upper).setColumn(2,z));
   var end=new Vector3f(center).add(q.transform(v(lateral,.25,0))).add(new Quaternionf(q).rotateX(angle).transform(v(0,.375,0)));
   return new Arm(q,angle,end,new Quaternionf(q).rotateX(angle).transform(v(0,1,0)));
+ }
+ private static Vector3f pole(double angle,Vector3f axis,Vector3f tangent,Vector3f radial,float along){return new Vector3f(axis).mul((float)Math.cos(angle)).add(new Vector3f(tangent).mul((float)Math.sin(angle))).mul((float)Math.sqrt(1-along*along)).add(new Vector3f(radial).mul(along));}
+ private static double poleCost(double angle,Vector3f axis,Vector3f tangent,Vector3f radial,Vector3f diff,Vector3f center,float lateral,boolean left){
+  var normal=pole(angle,axis,tangent,radial,lateral/diff.length());var planar=new Vector3f(diff).sub(new Vector3f(normal).mul(lateral));float distance=planar.length();var dir=planar.normalize();var side=new Vector3f(normal).cross(dir).normalize();float x=(.25f*.25f+distance*distance-.375f*.375f)/(2*distance),h=(float)Math.sqrt(Math.max(0,.25f*.25f-x*x));
+  var elbow=new Vector3f(center).add(new Vector3f(normal).mul(lateral)).add(new Vector3f(dir).mul(x)).add(side.mul(h));
+  double penetration=Math.min(.35-Math.abs(elbow.x),Math.min(.23-Math.abs(elbow.z),Math.min(elbow.y+.04,.78-elbow.y)));
+  return angle*angle*5+Math.max(0,penetration)*Math.max(0,penetration)*15000+Math.max(0,.15-normal.x)*Math.max(0,.15-normal.x)*15000+Math.max(0,.26-(left?1:-1)*elbow.x)*.3;
+ }
+ private static Vector3f clearTorso(Vector3f target,boolean left){
+  double sign=left?1:-1,side=sign*target.x;
+  double height=smooth((target.y+.14)/.16)*(1-smooth((target.y-.70)/.16));
+  double front=1-smooth((side+.10)/.50);
+  target.z-=(float)(Math.max(0,target.z+.36)*front*height);return target;
  }
 
  public record Frame(Matrix4f body,Quaternionf head,Arm right,Arm left,Vector3f rightLeg,Vector3f leftLeg,float rightKnee,float leftKnee,Vector3f grip,Quaternionf weapon,float scale,Vector3f tip,Vector3f stringTop,Vector3f stringBottom,Vector3f nock,double height,double feet){}
  public static Frame sample(Family family,double seconds,boolean slim){
   if(family==Family.NONE||family==Family.SWORD)return ApprovedSwordPose.sample(seconds,slim);
+  if(family==Family.KNIFE){double swordTime=seconds<0?-1:seconds<=.58?seconds*.46/.58:.46+(seconds-.58)*.70/.58;var base=ApprovedSwordPose.sample(swordTime,slim);var tip=new Matrix4f().translation(base.grip()).rotate(base.weapon()).scale(.78f).transformPosition(v(0,1,0));return new Frame(base.body(),base.head(),base.right(),base.left(),base.rightLeg(),base.leftLeg(),base.rightKnee(),base.leftKnee(),base.grip(),base.weapon(),.78f,tip,base.stringTop(),base.stringBottom(),base.nock(),base.height(),base.feet());}
   double t=Math.max(0,Math.min(1.16,seconds));var b=body(family,t);
   var bodyMatrix=new Matrix4f().translation(0,.75f,0).rotate(new Quaternionf().rotationZYX(rad(b.z),rad(b.y),rad(b.x))).translate(0,-.75f,0);var inverse=new Matrix4f(bodyMatrix).invert();
     Vector3f primary=grip(family,t),right,left;Quaternionf weaponRotation;Vector3f dir=direction(family,t);float size=family==Family.SPEAR?.79f:family==Family.GREATSWORD?.78f:.78f;
     if(family==Family.BOW){var draw=freeHand(family,t);var aim=new Vector3f(primary).sub(draw);aim.y=0;if(aim.length()<.15)aim.set(0,0,-1);aim.normalize();weaponRotation=new Quaternionf().rotationTo(v(-1,0,0),aim);right=draw;left=primary;dir=aim;}
-    else if(family==Family.GUN){weaponRotation=new Quaternionf().rotationX(rad(k(t,48,10,0,0,-12,4,45,48)));right=primary;left=new Vector3f(primary).add(.12f,.065f,.045f);}
+    else if(family==Family.GUN){weaponRotation=new Quaternionf().rotationX(rad(k(t,48,10,0,0,-12,4,45,48)));right=primary;left=new Vector3f(freeHand(family,t)).lerp(new Vector3f(primary).add(.12f,.065f,.045f),(float)(smooth(t/.18)*(1-smooth((t-.72)/.20))));}
     else {weaponRotation=new Quaternionf().rotationTo(v(0,1,0),dir);right=primary;left=family==Family.SPEAR?new Vector3f(primary).add(new Vector3f(dir).mul(.46f)):family==Family.GREATSWORD||family==Family.AXE?new Vector3f(primary).sub(new Vector3f(dir).mul(.23f)):freeHand(family,t);}
     boolean paired=family==Family.SPEAR||family==Family.GREATSWORD||family==Family.AXE||family==Family.GUN;
-    if(paired){var separation=new Vector3f(left).sub(right);var rs=bodyMatrix.transformPosition(shoulder(false,slim));var ls=bodyMatrix.transformPosition(shoulder(true,slim));for(int iteration=0;iteration<18;iteration++){right=limited(right,rs,.57f);left=limited(new Vector3f(right).add(separation),ls,.57f);right=new Vector3f(left).sub(separation);}primary=right;left=new Vector3f(right).add(separation);}
-    right=limited(right,bodyMatrix.transformPosition(shoulder(false,slim)),.58f);left=limited(left,bodyMatrix.transformPosition(shoulder(true,slim)),.58f);
-    var ra=solve(inverse.transformPosition(new Vector3f(right)),false,slim);var la=solve(inverse.transformPosition(new Vector3f(left)),true,slim);
+    if(paired){var separation=new Vector3f(left).sub(right);var rs=bodyMatrix.transformPosition(shoulder(false,slim));var ls=bodyMatrix.transformPosition(shoulder(true,slim));for(int iteration=0;iteration<18;iteration++){right=maximum(right,rs,.57f);left=maximum(new Vector3f(right).add(separation),ls,.57f);right=new Vector3f(left).sub(separation);}primary=right;left=new Vector3f(right).add(separation);}
+    right=maximum(right,bodyMatrix.transformPosition(shoulder(false,slim)),.58f);left=maximum(left,bodyMatrix.transformPosition(shoulder(true,slim)),.58f);
+    var ra=solve(limited(clearTorso(inverse.transformPosition(new Vector3f(right)),false),shoulder(false,slim),.58f),false,slim);var la=solve(limited(clearTorso(inverse.transformPosition(new Vector3f(left)),true),shoulder(true,slim),.58f),true,slim);
     var actualRight=bodyMatrix.transformPosition(new Vector3f(ra.hand));var actualLeft=bodyMatrix.transformPosition(new Vector3f(la.hand));
     primary=family==Family.BOW?actualLeft:actualRight;
 

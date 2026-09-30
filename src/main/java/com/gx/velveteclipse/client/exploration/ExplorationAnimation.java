@@ -30,7 +30,9 @@ public final class ExplorationAnimation implements IAnimation {
         double dx=p.m_20185_()-x,dz=p.m_20189_()-z;x=p.m_20185_();z=p.m_20189_();
         double distance=Math.min(.6,Math.sqrt(dx*dx+dz*dz));
         previousFacing=facing;
-        double desired=ExplorationClient.attacking()||ExplorationClient.entry()?p.m_146908_():distance>.015?Math.toDegrees(Math.atan2(-dx,dz)):facing;
+        float viewDelta=ExplorationMotion.turn(0,p.m_146908_()-facing,180);
+        double idleFacing=Math.abs(viewDelta)>55?p.m_146908_()-Math.copySign(55,viewDelta):facing;
+        double desired=ExplorationClient.attacking()||ExplorationClient.entry()?p.m_146908_():distance>.015?Math.toDegrees(Math.atan2(-dx,dz)):idleFacing;
         facing=ExplorationMotion.turn(facing,(float)desired,ExplorationClient.attacking()?45:27);
         double target=p.m_20096_()?Math.min(1,distance/.28):0;
         if(com.gx.velveteclipse.client.PersonaCinematics.meleeActive())target=Math.min(1,distance/.28);

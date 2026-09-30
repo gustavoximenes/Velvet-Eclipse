@@ -16,13 +16,13 @@ import java.util.UUID;
 public final class BattleDirector {
  private static BattleDirectionS2C cue;private static long started;private static Object level;
  private static int lastTick=-1;private static float fov=36;
- private static BattleFraming.View commandFrame;private static long frameTick;private static int frameKey;
+ private static final CommandCameraState commandCamera=new CommandCameraState();
  public static void accept(BattleDirectionS2C p){
   var world=Minecraft.m_91087_().f_91073_;if(world==null)return;
   if(p.kind().equals("cancel")){if(cue!=null&&cue.actor().equals(p.actor()))reset();return;}
   cue=p;level=world;started=world.m_46467_();lastTick=-1;
  }
- public static void reset(){cue=null;level=null;lastTick=-1;fov=36;commandFrame=null;}
+ public static void reset(){cue=null;level=null;lastTick=-1;fov=36;commandCamera.reset();}
  public static boolean active(){return cue!=null&&age(0)<cue.duration();}
  public static double age(float partial){var w=Minecraft.m_91087_().f_91073_;return cue==null||w==null||w!=level?1000:w.m_46467_()-started+partial;}
  public static String skill(){return cue==null?"":cue.skill();}
@@ -41,6 +41,7 @@ public final class BattleDirector {
   double t=age(partial),a=Math.max(0,Math.min(1,(t-46)/12)),b=Math.max(0,Math.min(1,(108-t)/7));return (float)(a*a*(3-2*a)*b*b*(3-2*b));
  }
  public static float fov(){return fov;}
+ public static float commandYaw(UUID id,Vec3 position,float fallback){var view=commandCamera.view();return view!=null&&commandSubject(id)?BattleFraming.commandYaw(position,view.eye()):fallback;}
  public static boolean commandSubject(UUID id){
   var mc=Minecraft.m_91087_();if(mc.f_91074_==null||!ClientBattleState.snapshot().active())return false;
   if(active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting()))return false;
@@ -81,16 +82,15 @@ public final class BattleDirector {
   var shot=BattleShot.sample(kind,time);Vec3 focus=a.m_165921_(b,shot.focus()).m_82520_(0,shot.focusHeight(),0);
   Vec3 desired=focus.m_82549_(side.m_82490_(shot.side())).m_82549_(forward.m_82490_(shot.depth())).m_82520_(0,shot.height()-shot.focusHeight(),0);
   double hit=hitAge(partial);if(directed&&!shifting()&&hit>=0&&hit<5)desired=desired.m_82520_(Math.sin(hit*5)*.035*(1-hit/5),Math.cos(hit*6)*.025*(1-hit/5),0);
-  Vec3 position;
+  Vec3 position;float lens=shot.fov();
   if(kind.equals("command")){
    double aspect=mc.m_91268_().m_85445_()/(double)Math.max(1,mc.m_91268_().m_85446_());
-   int key=java.util.Objects.hash(BattleFollowCamera.enabled(),a,aspect,BattleTargetHud.roster().size());long tick=mc.f_91073_.m_46467_();
-   if(commandFrame==null||tick-frameTick>=5||key!=frameKey){
+   var turn=BattleTargetHud.roster().stream().filter(t->t.ally()&&t.turn()).findFirst().orElse(null);
+   int key=java.util.Objects.hash(BattleFollowCamera.enabled(),BattleFollowCamera.enabled()&&turn!=null?turn.id():mc.f_91074_.m_20148_());long tick=mc.f_91073_.m_46467_();
     var points=new java.util.ArrayList<Vec3>();for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){var foot=entity.m_20318_(partial);double radius=member.ally()?.35:.85,height=entity.m_7755_().getString().startsWith("Guardião")?4:2.5;for(double x:new double[]{-radius,radius})for(double z:new double[]{-radius,radius})for(double y:new double[]{.05,height})points.add(foot.m_82520_(x,y,z));}}
-    commandFrame=BattleFraming.command(a,points,shot.fov(),aspect,ExplorationCamera::collide);frameKey=key;frameTick=tick;
-   }
-   focus=commandFrame.focus();position=commandFrame.eye();
+   var commandFrame=commandCamera.update(a,points,shot.fov(),aspect,key,tick,ExplorationCamera::collide);
+   focus=commandFrame.focus();position=commandFrame.eye();lens=(float)commandFrame.fov();
   }else position=BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);
-  ExplorationCamera.place(event,position,focus,shot.roll());fov=shot.fov();return true;
+  ExplorationCamera.place(event,position,focus,shot.roll());fov=lens;return true;
  }
 }

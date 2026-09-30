@@ -5,27 +5,40 @@ import java.util.function.BiFunction;
 
 /** Fits feet and crowns, then scores unobstructed alternatives around the same subject. */
 public final class BattleFraming {
- public record View(Vec3 eye,Vec3 focus){}
+ public record View(Vec3 eye,Vec3 focus,double fov){public View(Vec3 eye,Vec3 focus){this(eye,focus,36);}}
  /** Approved full-body composition: the command actor is left, enemies in the open center. */
  public static View command(Vec3 player,List<Vec3> enemies,double fov,double aspect,BiFunction<Vec3,Vec3,Vec3> clip){
   Vec3 center=Vec3.f_82478_;for(var p:enemies)center=center.m_82549_(p);center=enemies.isEmpty()?player.m_82520_(0,0,5):center.m_82490_(1./enemies.size());
   var forward=new Vec3(center.f_82479_-player.f_82479_,0,center.f_82481_-player.f_82481_);forward=forward.m_82556_()<.001?new Vec3(0,0,1):forward.m_82541_();var side=new Vec3(forward.f_82481_,0,-forward.f_82479_);
   var subjects=new ArrayList<Vec3>(enemies);for(double y:new double[]{0,1.95})for(double x:new double[]{-.4,.4})subjects.add(player.m_82549_(side.m_82490_(x)).m_82520_(0,y,0));
   View best=null;double bestScore=Double.NEGATIVE_INFINITY;
-  for(double scale:new double[]{1,1.12,1.28,1.48,1.75,2.1,2.6})for(double angle:new double[]{0,18,-18,36,-36,60,-60}){
+  // Terrain can change the viewing angle, but must not shrink the actor to a
+  // distant miniature inside a fixed-size command menu.
+  for(double scale:new double[]{1,.92,1.08,.84,1.16})for(double angle:new double[]{0,18,-18,36,-36,60,-60,85,-85,110,-110,145,-145,180}){
    double r=Math.toRadians(angle),sx=(-3.8*Math.cos(r)+4.8*Math.sin(r))*scale,sz=(-3.8*Math.sin(r)-4.8*Math.cos(r))*scale;
    var desired=player.m_82549_(side.m_82490_(sx)).m_82549_(forward.m_82490_(sz)).m_82520_(0,2.4*scale,0);
    var eye=clip.apply(player.m_82520_(0,1.1,0),desired);
    // A clipped camera needs a NEW orientation, otherwise the avatar slides across the HUD.
-   var focus=commandFocus(player,eye,fov,aspect);double score=0;
-   for(var point:subjects){if(commandContains(List.of(point),eye,focus,fov,aspect))score+=10;if(clip.apply(point.m_82520_(0,.25,0),eye).m_82554_(eye)<.22)score+=1;}
    double distance=eye.m_82554_(player.m_82520_(0,1.1,0));
-   score-=Math.abs(angle)*.025+(scale-1)*2+Math.max(0,4-distance)*30;
-   if(score>bestScore){bestScore=score;best=new View(eye,focus);}
-   if(angle==0&&scale==1&&commandContains(subjects,eye,focus,fov,aspect)&&eye.m_82554_(desired)<.15)return best;
+   // In a genuinely narrow room, compensate the lens instead of zooming
+   // into the avatar. Prefer clear positions at the reference distance.
+   double lens=Math.min(70,Math.max(fov,Math.toDegrees(2*Math.atan(6.1*Math.tan(Math.toRadians(fov/2))/Math.max(.5,distance)))));
+   for(double extra:new double[]{0,4,8,12}){
+   double candidateLens=Math.min(70,Math.max(lens,fov+extra));
+   var focus=commandFocus(player,eye,candidateLens,aspect);double score=0;
+   for(var point:subjects){if(commandContains(List.of(point),eye,focus,candidateLens,aspect))score+=10;if(clip.apply(point.m_82520_(0,.25,0),eye).m_82554_(eye)<.22)score+=1;}
+   // A clipped player is a hard composition failure, irrespective of enemy count.
+   var bounds=List.of(player,player.m_82520_(0,1.95,0));
+   if(!commandContains(bounds,eye,focus,candidateLens,aspect))score-=1000;
+   score-=Math.abs(angle)*.07+Math.abs(scale-1)*4+Math.max(0,5.2-distance)*18+(candidateLens-fov)*.12;
+   if(score>bestScore){bestScore=score;best=new View(eye,focus,candidateLens);}
+   if(angle==0&&scale==1&&commandContains(subjects,eye,focus,candidateLens,aspect)&&eye.m_82554_(desired)<.15&&extra==0)return best;
+   }
   }
   return best;
  }
+ /** Keep the command pose at the same three-quarter angle after choosing a wall-safe shot. */
+ public static float commandYaw(Vec3 player,Vec3 eye){return (float)Math.toDegrees(Math.atan2(player.f_82479_-eye.f_82479_,eye.f_82481_-player.f_82481_))-35;}
  /** Anchor the actor's waist to the same virtual 640x360 canvas as the command fan. */
  public static Vec3 commandFocus(Vec3 player,Vec3 eye,double fov,double aspect){
   double unit=Math.min(aspect/640,1./360),top=1-360*unit;

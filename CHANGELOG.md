@@ -1,3 +1,12 @@
+# 0.6.38-pose-camera-fix
+
+- Espada normal preservada; faca usa a mesma base de articulações.
+- Cotovelos das demais armas seguem a convenção nativa da espada, com proteção contra inversão e salto de posição das mãos.
+- Caminhada H com balanço de braços/pernas e cabeça seguindo a direção de visão.
+- Contorno azul mais fino, sem as caixas sólidas das camadas transparentes da skin.
+- Câmera de comandos com distância limitada, lente adaptativa e enquadramento persistente para evitar oscilações em locais fechados.
+- Verificação offline focada de poses, locomoção, HUD e câmeras. [Detalhes](docs/POSE-CAMERA-FIX.md).
+
 # 0.6.37-animation-fix
 
 - Substitui a deformação de cotovelos/joelhos por segmentos rígidos de comprimento constante, conservando as curvas aprovadas e skins padrão/slim.

@@ -58,7 +58,7 @@ public final class ApprovedAttackRenderer {
  private static void effects(PoseStack p,MultiBufferSource out,Family family,Frame current,double t,boolean slim){
   if(t<0||family==Family.BOW)return;
   if(family==Family.GUN){if(t>=.48&&t<.59){var at=current.tip();line(p,out,new Vector3f(at).add(-.11f,0,0),new Vector3f(at).add(.11f,0,0),.025f,255,218,91,245);line(p,out,new Vector3f(at).add(0,-.11f,0),new Vector3f(at).add(0,.11f,0),.02f,255,245,216,250);}return;}
-  boolean two=family==Family.FISTS||family==Family.KNIFE;double begin=two?(t<.45?.22:.49):family==Family.SWORD||family==Family.NONE?.27:.34,end=two?(t<.45?.38:.66):.68;
+  boolean two=family==Family.FISTS;double begin=two?(t<.45?.22:.49):family==Family.SWORD||family==Family.NONE?.27:.34,end=two?(t<.45?.38:.66):family==Family.KNIFE?.77:.68;
   if(t<=begin||t>end+.07)return;double fade=1-smooth((t-end)/.07);Vector3f previous=null,previousInner=null;
   for(int i=0;i<7;i++){double old=Math.max(begin,t-.10)+(Math.min(t,end)-Math.max(begin,t-.10))*i/6;var f=sample(family,old,slim);Vector3f tip=family==Family.FISTS?f.body().transformPosition(new Vector3f((old<.45?f.left():f.right()).hand())):new Vector3f(f.tip());tip.y+=current.feet()+current.height()-f.feet()-f.height();var inner=new Vector3f(tip).lerp(current.grip(),family==Family.SPEAR||family==Family.RAPIER?.08f:.20f);
    if(previous!=null){quad(p,out,previous,tip,inner,previousInner,62,189,255,(int)(150*fade*i/6));line(p,out,previous,tip,.009f,207,254,255,(int)(220*fade*i/6));}previous=tip;previousInner=inner;
@@ -78,8 +78,8 @@ public final class ApprovedAttackRenderer {
   float partial=e.getPartialTick();Family family=attack?BattleDirector.weapon():field?ExplorationClient.attackFamily():remote!=null?remote.family():player==mc.f_91074_?com.gx.velveteclipse.client.equipment.EquipmentScreen.family():BattleTargetHud.roster().stream().filter(a->a.id().equals(player.m_20148_())).map(a->RemoteWeaponSwing.family(a.weapon())).findFirst().orElse(Family.SWORD);
   double elapsed=attack?WeaponAttackTiming.battleElapsed(family,BattleDirector.age(partial)):field?ExplorationClient.ticks()+partial:remote!=null?remote.elapsed(partial):-1;
   double t=WeaponAttackTiming.authored(family,elapsed);boolean slim="slim".equals(player.m_108564_());Frame frame=sample(family,t,slim);
-  if(attack&&elapsed<0&&!WeaponAttackTiming.ranged(family))frame=locomotion(frame,BattleDirector.age(partial),CombatAttackPose.speed(family,BattleDirector.age(partial)));
-  if(exploration&&!field)frame=travel(frame,ExplorationAnimation.phase(partial),ExplorationAnimation.speed(partial));
+  if(attack&&elapsed<0&&!WeaponAttackTiming.ranged(family))frame=WeaponLocomotion.sample(family,slim,BattleDirector.age(partial)*.95,CombatAttackPose.speed(family,BattleDirector.age(partial)));
+  if(exploration&&!field){frame=WeaponLocomotion.sample(family,slim,ExplorationAnimation.phase(partial),ExplorationAnimation.speed(partial));frame=WeaponLocomotion.look(frame,player.m_146908_()-ExplorationAnimation.facing(partial),player.m_146909_());}
   float yaw=command?commandYaw(player):remote!=null?remote.yaw():field?ExplorationClient.yaw():exploration?ExplorationAnimation.facing(partial):player.m_146908_();
   var p=e.getPoseStack();p.m_85836_();try{
    p.m_252781_(new Quaternionf().rotationY(rad(-yaw)));p.m_85841_(PLAYER_SCALE,PLAYER_SCALE,PLAYER_SCALE);p.m_85837_(0,frame.feet()+frame.height(),0);p.m_85841_(1,-1,-1);
@@ -88,9 +88,7 @@ public final class ApprovedAttackRenderer {
    body(p,e.getMultiBufferSource().m_6299_(RenderType.m_110452_(player.m_108560_())),frame,slim,visible,e.getPackedLight());weapon(p,e.getMultiBufferSource(),e.getPackedLight(),family,frame,t);effects(p,e.getMultiBufferSource(),family,frame,t,slim);
   }finally{p.m_85849_();}e.setCanceled(true);return true;
  }
- private static float commandYaw(AbstractClientPlayer p){var world=Minecraft.m_91087_().f_91073_;Vec3 center=Vec3.f_82478_;int n=0;for(var t:BattleTargetHud.roster())if(!t.ally()&&t.hp()>0){var e=world.m_6815_(t.entityId());if(e!=null){center=center.m_82549_(e.m_20182_());n++;}}if(n==0)return p.m_146908_();center=center.m_82490_(1./n).m_82546_(p.m_20182_());return (float)Math.toDegrees(Math.atan2(-center.f_82479_,center.f_82481_))+80;}
- private static Frame locomotion(Frame f,double tick,double speed){return travel(f,(tick<30?tick:-(tick-30))*.95,speed);}
- public static Frame travelPose(Family family,boolean slim,double phase,double speed){return travel(sample(family,-1,slim),phase,speed);}
- private static Frame travel(Frame f,double phase,double speed){var r=v(Math.sin(phase)*36*speed,0,3);var l=v(-Math.sin(phase)*36*speed,0,-3);float rk=rad(Math.max(0,Math.sin(phase))*48*speed),lk=rad(Math.max(0,-Math.sin(phase))*48*speed);return new Frame(f.body(),f.head(),f.right(),f.left(),r,l,rk,lk,f.grip(),f.weapon(),f.scale(),f.tip(),f.stringTop(),f.stringBottom(),f.nock(),0,feet(f.body(),r,l,rk,lk));}
+ private static float commandYaw(AbstractClientPlayer p){var world=Minecraft.m_91087_().f_91073_;Vec3 center=Vec3.f_82478_;int n=0;for(var t:BattleTargetHud.roster())if(!t.ally()&&t.hp()>0){var e=world.m_6815_(t.entityId());if(e!=null){center=center.m_82549_(e.m_20182_());n++;}}if(n==0)return p.m_146908_();center=center.m_82490_(1./n).m_82546_(p.m_20182_());return BattleDirector.commandYaw(p.m_20148_(),p.m_20182_(),(float)Math.toDegrees(Math.atan2(-center.f_82479_,center.f_82481_))+80);}
+ public static Frame travelPose(Family family,boolean slim,double phase,double speed){return WeaponLocomotion.sample(family,slim,phase,speed);}
  private ApprovedAttackRenderer(){}
 }
