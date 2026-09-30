@@ -15,7 +15,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class ExplorationNetwork {
-    private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","exploration"),()->"3","3"::equals,"3"::equals);
+    private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","exploration"),()->"4","4"::equals,"4"::equals);
     public static final int TOGGLE=0, ATTACK=1;
     @SubscribeEvent public static void setup(FMLCommonSetupEvent e){
         CHANNEL.registerMessage(3,Swing.class,Swing::encode,Swing::decode,Swing::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));

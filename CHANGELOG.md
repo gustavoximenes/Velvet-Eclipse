@@ -1,3 +1,13 @@
+# 0.6.37-animation-fix
+
+- Substitui a deformação de cotovelos/joelhos por segmentos rígidos de comprimento constante, conservando as curvas aprovadas e skins padrão/slim.
+- Aplica a escala de 0,9375 do PlayerRenderer também ao rig customizado, armas e origem dos projéteis.
+- Usa o mesmo rig ao andar e atacar em H e na silhueta de entrada; evita reutilizar deformações do modelo compartilhado e repetir o golpe local após o pacote de sincronização.
+- Mantém o jogador ancorado ao menu ao desviar a câmera de obstáculos, sem recentralização nos inimigos nem uma segunda colisão após escolher o enquadramento.
+- Adiciona contorno azul tridimensional com teste de profundidade no jogador enquadrado pelos comandos.
+- Inicia a transição no contato da arma/flecha com a Shadow, sem esperar o fim da recuperação. Entrada reduzida de 32 para 10 ticks.
+- Protocolo de exploração 4; principal 22. Verificações offline, sem teste dentro do Minecraft.
+
 # 0.6.36-approved-combat
 
 - Integra menu/câmera e as nove animações de armas aprovadas.

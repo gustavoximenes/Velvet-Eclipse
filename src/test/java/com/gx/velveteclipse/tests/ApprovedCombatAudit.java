@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.PlayerModelPart;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.core.Direction;
 import com.mojang.blaze3d.vertex.*;
-import io.github.kosmx.bendylib.impl.BendableCuboid;
 import io.netty.buffer.Unpooled;
 import org.joml.Vector3f;
 import org.joml.Quaternionf;
@@ -41,7 +40,7 @@ public final class ApprovedCombatAudit {
   Path out=Path.of("build/reports/approved-combat/meshes");Files.createDirectories(out);
   var rigMethod=ApprovedAttackRenderer.class.getDeclaredMethod("rig",boolean.class);rigMethod.setAccessible(true);
   for(boolean slim:new boolean[]{false,true}){
-   var rig=rigMethod.invoke(null,slim);var method=rig.getClass().getDeclaredMethod("limbs");method.setAccessible(true);var limbs=(BendableCuboid[])method.invoke(rig);
+   var rig=rigMethod.invoke(null,slim);var method=rig.getClass().getDeclaredMethod("limbs");method.setAccessible(true);var limbs=(RigidSkinLimb[])method.invoke(rig);
    for(var family:Family.values()){
     var frames=new ArrayList<Object>();var prop=model(family==Family.NONE?Family.SWORD:family,false);var arrow=family==Family.BOW?model(family,true):null;
     for(int n=-1;n<=58;n++){
@@ -50,8 +49,8 @@ public final class ApprovedCombatAudit {
      double floor=mesh.quads.stream().flatMap(q->((List<double[]>)q.get("points")).stream()).mapToDouble(q->q[1]).max().orElseThrow();
      check(Math.abs(floor-f.feet())<.003,"feet grounded: "+family+" slim="+slim+" t="+t+" error="+(floor-f.feet()));
      for(int i=0;i<2;i++){
-      boolean left=i==1;var arm=left?f.left():f.right();var bm=limbs[i].applyBend(0,arm.bend());var hand=bm.transformPosition(v(left?1:-1,10,0));
-      if(slim)hand.x+=left?-.5:.5;hand.div(16);arm.rotation().transform(hand);hand.add(left?.3125f:-.3125f,slim?.15625f:.125f,0);
+      boolean left=i==1;var arm=left?f.left():f.right();var hand=new Quaternionf().rotationX(arm.bend()).transform(v((left?1:-1)*(slim?.03125:.0625),.375,0)).add(0,.25f,0);
+      arm.rotation().transform(hand);hand.add(left?.3125f:-.3125f,slim?.15625f:.125f,0);
       check(hand.distance(arm.hand())<.0001,"native wrist: "+family+" slim="+slim+" t="+t);
      }
      check(f.grip().isFinite()&&f.tip().isFinite()&&f.height()>=0&&f.height()<=.43,"finite clip/limited jump");

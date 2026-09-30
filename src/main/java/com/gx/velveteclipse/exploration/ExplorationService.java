@@ -69,7 +69,9 @@ public final class ExplorationService {
                     Entity target=findTarget(s);
                     if(target!=null&&RESERVATIONS.reserve(p.m_20148_(),target.m_20148_())){s.pendingTarget=target;}
                 }
-                if(s.tick>=Math.max(WeaponAttackTiming.end(s.family),s.flyingTarget==null?0:s.impactTick+1)){if(s.pendingTarget!=null&&s.pendingTarget.m_6084_()){var target=s.pendingTarget;s.pendingTarget=null;prepare(s,target);if(s.mode==Mode.BATTLE_ENTRY)continue;}RESERVATIONS.release(p.m_20148_());s.mode=Mode.EXPLORATION;s.tick=0;send(s);}
+                // Contact starts the entry NOW, never after the recovery of the attack clip.
+                if(s.pendingTarget!=null){var target=s.pendingTarget;s.pendingTarget=null;if(target.m_6084_())prepare(s,target);if(s.mode==Mode.BATTLE_ENTRY)continue;}
+                if(s.tick>=Math.max(WeaponAttackTiming.end(s.family),s.flyingTarget==null?0:s.impactTick+1)){RESERVATIONS.release(p.m_20148_());s.mode=Mode.EXPLORATION;s.tick=0;send(s);}
             }else if(s.mode==Mode.BATTLE_ENTRY){
                 if(s.shadow==null||!s.shadow.m_6084_()||s.shadow.m_9236_()!=s.level){cancel(s);continue;}
                 ++s.tick;freezeShadow(s);

@@ -4,7 +4,7 @@ package com.gx.velveteclipse.exploration;
 public final class ExplorationRules {
     private ExplorationRules() {}
     public static final int HIT_BEGIN=4, HIT_END=7, ATTACK_END=18;
-    public static final int ENTRY_RUN_BEGIN=3, ENTRY_RUN_END=23, ENTRY_READY=32;
+    public static final int ENTRY_RUN_BEGIN=0, ENTRY_RUN_END=6, ENTRY_READY=10;
     public static final double REACH=2.9, CONE_COS=Math.cos(Math.toRadians(62));
     public enum Mode { NORMAL, EXPLORATION, EXPLORATION_ATTACK, BATTLE_ENTRY, BATTLE, SKILL_CINEMATIC }
     public static boolean hitWindow(int tick){return tick>=HIT_BEGIN&&tick<=HIT_END;}

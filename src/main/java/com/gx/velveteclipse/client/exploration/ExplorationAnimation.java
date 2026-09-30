@@ -22,6 +22,8 @@ public final class ExplorationAnimation implements IAnimation {
         animation.advance(p);
     }
     public static void clear(){if(layer!=null){layer.setAnimation(null);if(owner!=null)PlayerAnimationAccess.getPlayerAnimLayer(owner).removeLayer(layer);}owner=null;animation=null;layer=null;}
+    public static double phase(float partial){return animation==null?0:animation.previousPhase+(animation.phase-animation.previousPhase)*partial;}
+    public static float facing(float partial){return animation==null?0:animation.previousFacing+(animation.facing-animation.previousFacing)*partial;}
     public static double speed(float partial){return animation==null?0:animation.previousSpeed+(animation.speed-animation.previousSpeed)*partial;}
     private void advance(AbstractClientPlayer p){
         previousPhase=phase;previousWeight=weight;previousSpeed=speed;previousBank=bank;age++;

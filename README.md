@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.37 — Articulações, enquadramento e resposta ao acerto
+
+Corrige o alongamento dos membros e a diferença de escala do jogador nas animações, ancora a câmera de comandos ao menu e adiciona contorno azul ao jogador em destaque. A transição para batalha começa no impacto, com duração de 10 ticks (0,5 s). Cliente e servidor devem usar esta versão: protocolo principal **22**, exploração **4**. [Detalhes e validação offline](docs/ANIMATION-FIX.md).
+
 # Velvet Eclipse 0.6.36 — Menu e animações aprovados
 
 Menu em leque e enquadramento com jogador à esquerda. Nove famílias de armas com as animações aprovadas na exploração H e no combate, skin real padrão/slim e sincronização de golpes. Cliente e servidor na mesma versão, protocolo **22** (exploração **3**). [Mudanças e validação offline](docs/APPROVED-COMBAT.md).

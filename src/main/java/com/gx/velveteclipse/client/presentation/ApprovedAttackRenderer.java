@@ -5,8 +5,6 @@ import com.gx.velveteclipse.client.exploration.*;
 import com.gx.velveteclipse.core.battle.WeaponAttackTiming;
 import com.gx.velveteclipse.equipment.EquipmentCatalog.Family;
 import com.mojang.blaze3d.vertex.*;
-import io.github.kosmx.bendylib.ICuboidBuilder;
-import io.github.kosmx.bendylib.impl.BendableCuboid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -24,11 +22,12 @@ import static com.gx.velveteclipse.client.presentation.ApprovedWeaponPose.*;
 
 /** Native standard/slim mesh with the actual participant's skin; shared by field and battle. */
 public final class ApprovedAttackRenderer {
- private record Rig(ModelPart root,BendableCuboid[] limbs,BendableCuboid[] clothing){}
+ private record Rig(ModelPart root,RigidSkinLimb[] limbs,RigidSkinLimb[] clothing){}
  private static final Map<Boolean,Rig> rigs=new HashMap<>();
- private static BendableCuboid arm(boolean slim,boolean left,boolean sleeve){return new BendableCuboid.Builder().setDirection(Direction.UP).build(new ICuboidBuilder.Data(left?(sleeve?48:32):40,left?48:sleeve?32:16,left?-1:slim?-2:-3,-2,-2,slim?3:4,12,4,sleeve?.25f:0,sleeve?.25f:0,sleeve?.25f:0,false,64,64));}
- private static BendableCuboid leg(boolean left,boolean pants){return new BendableCuboid.Builder().setDirection(Direction.UP).build(new ICuboidBuilder.Data(left?(pants?0:16):0,left?48:pants?32:16,-2,0,-2,4,12,4,pants?.25f:0,pants?.25f:0,pants?.25f:0,false,64,64));}
- private static Rig rig(boolean slim){return rigs.computeIfAbsent(slim,s->new Rig(LayerDefinition.m_171565_(PlayerModel.m_170825_(CubeDeformation.f_171458_,s),64,64).m_171564_(),new BendableCuboid[]{arm(s,false,false),arm(s,true,false),leg(false,false),leg(true,false)},new BendableCuboid[]{arm(s,false,true),arm(s,true,true),leg(false,true),leg(true,true)}));}
+ public static final float PLAYER_SCALE=.9375f;
+ private static RigidSkinLimb arm(boolean slim,boolean left,boolean sleeve){return new RigidSkinLimb(left?(sleeve?48:32):40,left?48:sleeve?32:16,left?-1:slim?-2:-3,-2,-2,slim?3:4,12,4,sleeve?.25f:0,4);}
+ private static RigidSkinLimb leg(boolean left,boolean pants){return new RigidSkinLimb(left?(pants?0:16):0,left?48:pants?32:16,-2,0,-2,4,12,4,pants?.25f:0,6);}
+ private static Rig rig(boolean slim){return rigs.computeIfAbsent(slim,s->new Rig(LayerDefinition.m_171565_(PlayerModel.m_170825_(CubeDeformation.f_171458_,s),64,64).m_171564_(),new RigidSkinLimb[]{arm(s,false,false),arm(s,true,false),leg(false,false),leg(true,false)},new RigidSkinLimb[]{arm(s,false,true),arm(s,true,true),leg(false,true),leg(true,true)}));}
  public static void body(PoseStack p,VertexConsumer out,Frame frame,boolean slim,Set<PlayerModelPart> visible,int light){
   var rig=rig(slim);p.m_85836_();p.m_252931_(frame.body());
   for(String name:List.of("body","head","jacket","hat")){
@@ -40,8 +39,8 @@ public final class ApprovedAttackRenderer {
    var part=rig.root.m_171324_(names[i]);part.m_233569_();p.m_85836_();part.m_104299_(p);float bend;
    if(i<2){var a=i==0?frame.right():frame.left();p.m_252781_(a.rotation());bend=a.bend();}
    else{var a=i==2?frame.rightLeg():frame.leftLeg();p.m_252781_(new Quaternionf().rotationZYX(rad(a.z),rad(a.y),rad(a.x)));bend=i==2?frame.rightKnee():frame.leftKnee();}
-   rig.limbs[i].applyBend(0,bend);rig.limbs[i].render(p.m_85850_(),out,1,1,1,1,light,655360);
-   if(visible.contains(layers[i])){rig.clothing[i].applyBend(0,bend);rig.clothing[i].render(p.m_85850_(),out,1,1,1,1,light,655360);}p.m_85849_();
+   rig.limbs[i].render(p,out,bend,light);
+   if(visible.contains(layers[i])){rig.clothing[i].render(p,out,bend,light);}p.m_85849_();
   }p.m_85849_();
  }
  public static void weapon(PoseStack p,MultiBufferSource out,int light,Family family,Frame f,double t){
@@ -66,27 +65,32 @@ public final class ApprovedAttackRenderer {
   }
  }
  public static Vec3 projectileOrigin(AbstractClientPlayer player,Family family){
-  boolean slim="slim".equals(player.m_108564_());var f=sample(family,family==Family.BOW?.50:.48,slim);var at=new Vector3f(family==Family.BOW?f.nock():f.tip());at.set(at.x,(float)(f.feet()+f.height()-at.y),-at.z);new Quaternionf().rotationY(rad(-player.m_146908_())).transform(at);return player.m_20182_().m_82520_(at.x,at.y,at.z);
+  boolean slim="slim".equals(player.m_108564_());var f=sample(family,family==Family.BOW?.50:.48,slim);var at=new Vector3f(family==Family.BOW?f.nock():f.tip());at.set(at.x,(float)(f.feet()+f.height()-at.y),-at.z).mul(PLAYER_SCALE);new Quaternionf().rotationY(rad(-player.m_146908_())).transform(at);return player.m_20182_().m_82520_(at.x,at.y,at.z);
  }
  public static boolean render(RenderPlayerEvent.Pre e){
   if(!(e.getEntity() instanceof AbstractClientPlayer player))return false;var mc=Minecraft.m_91087_();if(player.m_5833_()||AllOutPresentation.active()||EntryPlayerRenderer.drawing())return false;
   boolean battle=ClientBattleState.snapshot().active(),attack=BattleDirector.attacking(player.m_20148_());
   boolean field=player==mc.f_91074_&&ExplorationClient.attacking()&&!battle;
-  boolean command=battle&&!BattleDirector.active()&&BattleTargetHud.roster().stream().anyMatch(a->a.ally()&&a.hp()>0&&a.id().equals(player.m_20148_()));
-  var remote=RemoteWeaponSwing.get(player);if(!attack&&!field&&!command&&remote==null)return false;
+  boolean command=battle&&!attack&&BattleTargetHud.roster().stream().anyMatch(a->a.ally()&&a.hp()>0&&a.id().equals(player.m_20148_()));
+  boolean exploration=player==mc.f_91074_&&ExplorationClient.swordVisible()&&!battle&&!ExplorationClient.entry();
+  var remote=player==mc.f_91074_?null:RemoteWeaponSwing.get(player);if(!attack&&!field&&!command&&!exploration&&remote==null)return false;
   if(BattleDirector.summoning(player.m_20148_())||BattleDirector.shiftActor(player.m_20148_())||BattleDirector.hitPlayer(player.m_20148_()))return false;
   float partial=e.getPartialTick();Family family=attack?BattleDirector.weapon():field?ExplorationClient.attackFamily():remote!=null?remote.family():player==mc.f_91074_?com.gx.velveteclipse.client.equipment.EquipmentScreen.family():BattleTargetHud.roster().stream().filter(a->a.id().equals(player.m_20148_())).map(a->RemoteWeaponSwing.family(a.weapon())).findFirst().orElse(Family.SWORD);
   double elapsed=attack?WeaponAttackTiming.battleElapsed(family,BattleDirector.age(partial)):field?ExplorationClient.ticks()+partial:remote!=null?remote.elapsed(partial):-1;
   double t=WeaponAttackTiming.authored(family,elapsed);boolean slim="slim".equals(player.m_108564_());Frame frame=sample(family,t,slim);
   if(attack&&elapsed<0&&!WeaponAttackTiming.ranged(family))frame=locomotion(frame,BattleDirector.age(partial),CombatAttackPose.speed(family,BattleDirector.age(partial)));
-  float yaw=command?commandYaw(player):remote!=null?remote.yaw():field?ExplorationClient.yaw():player.m_146908_();
+  if(exploration&&!field)frame=travel(frame,ExplorationAnimation.phase(partial),ExplorationAnimation.speed(partial));
+  float yaw=command?commandYaw(player):remote!=null?remote.yaw():field?ExplorationClient.yaw():exploration?ExplorationAnimation.facing(partial):player.m_146908_();
   var p=e.getPoseStack();p.m_85836_();try{
-   p.m_252781_(new Quaternionf().rotationY(rad(-yaw)));p.m_85837_(0,frame.feet()+frame.height(),0);p.m_85841_(1,-1,-1);
+   p.m_252781_(new Quaternionf().rotationY(rad(-yaw)));p.m_85841_(PLAYER_SCALE,PLAYER_SCALE,PLAYER_SCALE);p.m_85837_(0,frame.feet()+frame.height(),0);p.m_85841_(1,-1,-1);
    Set<PlayerModelPart> visible=EnumSet.noneOf(PlayerModelPart.class);for(var layer:PlayerModelPart.values())if(player.m_36170_(layer))visible.add(layer);
+   if(command&&BattleDirector.commandSubject(player.m_20148_()))CommandOutline.draw(p,e.getMultiBufferSource(),frame,slim,visible);
    body(p,e.getMultiBufferSource().m_6299_(RenderType.m_110452_(player.m_108560_())),frame,slim,visible,e.getPackedLight());weapon(p,e.getMultiBufferSource(),e.getPackedLight(),family,frame,t);effects(p,e.getMultiBufferSource(),family,frame,t,slim);
   }finally{p.m_85849_();}e.setCanceled(true);return true;
  }
  private static float commandYaw(AbstractClientPlayer p){var world=Minecraft.m_91087_().f_91073_;Vec3 center=Vec3.f_82478_;int n=0;for(var t:BattleTargetHud.roster())if(!t.ally()&&t.hp()>0){var e=world.m_6815_(t.entityId());if(e!=null){center=center.m_82549_(e.m_20182_());n++;}}if(n==0)return p.m_146908_();center=center.m_82490_(1./n).m_82546_(p.m_20182_());return (float)Math.toDegrees(Math.atan2(-center.f_82479_,center.f_82481_))+80;}
- private static Frame locomotion(Frame f,double tick,double speed){double phase=(tick<30?tick:-(tick-30))*.95;var r=v(Math.sin(phase)*36*speed,0,3);var l=v(-Math.sin(phase)*36*speed,0,-3);float rk=rad(Math.max(0,Math.sin(phase))*48*speed),lk=rad(Math.max(0,-Math.sin(phase))*48*speed);return new Frame(f.body(),f.head(),f.right(),f.left(),r,l,rk,lk,f.grip(),f.weapon(),f.scale(),f.tip(),f.stringTop(),f.stringBottom(),f.nock(),0,feet(f.body(),r,l,rk,lk));}
+ private static Frame locomotion(Frame f,double tick,double speed){return travel(f,(tick<30?tick:-(tick-30))*.95,speed);}
+ public static Frame travelPose(Family family,boolean slim,double phase,double speed){return travel(sample(family,-1,slim),phase,speed);}
+ private static Frame travel(Frame f,double phase,double speed){var r=v(Math.sin(phase)*36*speed,0,3);var l=v(-Math.sin(phase)*36*speed,0,-3);float rk=rad(Math.max(0,Math.sin(phase))*48*speed),lk=rad(Math.max(0,-Math.sin(phase))*48*speed);return new Frame(f.body(),f.head(),f.right(),f.left(),r,l,rk,lk,f.grip(),f.weapon(),f.scale(),f.tip(),f.stringTop(),f.stringBottom(),f.nock(),0,feet(f.body(),r,l,rk,lk));}
  private ApprovedAttackRenderer(){}
 }

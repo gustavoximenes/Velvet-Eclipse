@@ -12,11 +12,11 @@ public final class EntryTransition {
     public static void reset(){fade=0;finishedTime=0;EntryPlayerRenderer.reset();}
     public static boolean visible(){return ExplorationClient.entry()||fade>0;}
     public static void paint(Canvas c,int w,int h,float partial){
-        double t=ExplorationClient.entry()?ExplorationClient.ticks()+partial:finishedTime+9-fade+partial;
-        double alpha=ExplorationClient.entry()?smooth((t-5)/8):Math.max(0,(fade-partial)/9.0);
+        double t=(ExplorationClient.entry()?ExplorationClient.ticks()+partial:finishedTime+9-fade+partial)*32/ENTRY_READY;
+        double alpha=ExplorationClient.entry()?smooth((t+2)/8):Math.max(0,(fade-partial)/9.0);
         if(alpha<=0)return;
         int black=((int)(alpha*255)<<24)|0x000416;
-        int sweep=(int)(w*smooth((t-3)/9));
+        int sweep=(int)(w*smooth((t+2)/9));
         c.fill(0,0,ExplorationClient.entry()?sweep:w,h,black);
         double unit=h/230.0;
         c.playerModel(w,h,t,(float)alpha);

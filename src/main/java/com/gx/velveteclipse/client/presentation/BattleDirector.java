@@ -41,6 +41,12 @@ public final class BattleDirector {
   double t=age(partial),a=Math.max(0,Math.min(1,(t-46)/12)),b=Math.max(0,Math.min(1,(108-t)/7));return (float)(a*a*(3-2*a)*b*b*(3-2*b));
  }
  public static float fov(){return fov;}
+ public static boolean commandSubject(UUID id){
+  var mc=Minecraft.m_91087_();if(mc.f_91074_==null||!ClientBattleState.snapshot().active())return false;
+  if(active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting()))return false;
+  var member=BattleTargetHud.roster().stream().filter(t->t.ally()&&t.turn()).findFirst().orElse(null);
+  return id.equals(BattleFollowCamera.enabled()&&member!=null?member.id():mc.f_91074_.m_20148_());
+ }
  public static void tick(){
   var mc=Minecraft.m_91087_();if(mc.f_91073_==null||level!=null&&mc.f_91073_!=level||!ClientBattleState.snapshot().active()){reset();return;}if(level==null)level=mc.f_91073_;if(!active())return;
   int t=(int)age(0);if(lastTick==t)return;
@@ -83,7 +89,7 @@ public final class BattleDirector {
     var points=new java.util.ArrayList<Vec3>();for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){var foot=entity.m_20318_(partial);double radius=member.ally()?.35:.85,height=entity.m_7755_().getString().startsWith("Guardião")?4:2.5;for(double x:new double[]{-radius,radius})for(double z:new double[]{-radius,radius})for(double y:new double[]{.05,height})points.add(foot.m_82520_(x,y,z));}}
     commandFrame=BattleFraming.command(a,points,shot.fov(),aspect,ExplorationCamera::collide);frameKey=key;frameTick=tick;
    }
-   focus=commandFrame.focus();position=ExplorationCamera.collide(a.m_82520_(0,1.5,0),commandFrame.eye());
+   focus=commandFrame.focus();position=commandFrame.eye();
   }else position=BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);
   ExplorationCamera.place(event,position,focus,shot.roll());fov=shot.fov();return true;
  }
