@@ -37,8 +37,6 @@ public final class BattleFraming {
   }
   return best;
  }
- /** Keep the command pose at the same three-quarter angle after choosing a wall-safe shot. */
- public static float commandYaw(Vec3 player,Vec3 eye){return (float)Math.toDegrees(Math.atan2(player.f_82479_-eye.f_82479_,eye.f_82481_-player.f_82481_))-35;}
  /** Anchor the actor's waist to the same virtual 640x360 canvas as the command fan. */
  public static Vec3 commandFocus(Vec3 player,Vec3 eye,double fov,double aspect){
   double unit=Math.min(aspect/640,1./360),top=1-360*unit;

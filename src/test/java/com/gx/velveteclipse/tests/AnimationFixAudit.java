@@ -30,16 +30,19 @@ public final class AnimationFixAudit {
   var views=new ArrayList<Object>();
   for(double aspect:new double[]{4./3,16./9,21./9})for(int wall=0;wall<terrain.size();wall++){
    var view=BattleFraming.command(Vec3.f_82478_,enemies,36,aspect,terrain.get(wall));var waist=screen(new Vec3(0,.95,0),view,aspect);
-   double yaw=Math.toRadians(BattleFraming.commandYaw(Vec3.f_82478_,view.eye()));var actorFront=new Vec3(-Math.sin(yaw),0,Math.cos(yaw));var towardsCamera=new Vec3(view.eye().f_82479_,0,view.eye().f_82481_).m_82541_();check(Math.abs(actorFront.m_82526_(towardsCamera)-Math.cos(Math.toRadians(35)))<.00001,"terrain preserves three-quarter command pose");double unit=Math.min(aspect/640,1./360);
+   check(Math.abs(BattleCommandPose.yaw(Vec3.f_82478_,new Vec3(0,0,6),0)-80)<.00001,"command stance follows formation, not terrain camera");double actorYaw=BattleCommandPose.yaw(Vec3.f_82478_,new Vec3(0,0,6),view.eye(),0);
+   double cameraYaw=Math.toDegrees(Math.atan2(-view.eye().f_82479_,view.eye().f_82481_)),angle=Math.abs(cameraYaw-actorYaw);
+   check(angle>48&&angle<80,"command remains side-on instead of facing viewer after camera clipping");
+   double unit=Math.min(aspect/640,1./360);
    check(Math.abs(waist[0]-125*unit/aspect)<.00001,"terrain preserves actor horizontal HUD anchor");
    check(Math.abs(waist[1]-(1-360*unit+230*unit))<.00001,"terrain preserves actor vertical HUD anchor");
    check(view.eye().m_82554_(new Vec3(0,1.1,0))>3,"no close-up camera inside actor");
    check(BattleFraming.commandContains(enemies,view.eye(),view.focus(),view.fov(),aspect),"enemies stay visible by side wall "+wall+" aspect "+aspect+" view="+view+" points="+enemies.stream().map(p->Arrays.toString(screen(p,view,aspect))).toList());
-   views.add(Map.of("aspect",aspect,"wall",wall,"eye",List.of(view.eye().f_82479_,view.eye().f_82480_,view.eye().f_82481_),"focus",List.of(view.focus().f_82479_,view.focus().f_82480_,view.focus().f_82481_),"waist",waist,"fov",view.fov()));
+   views.add(Map.of("aspect",aspect,"wall",wall,"eye",List.of(view.eye().f_82479_,view.eye().f_82480_,view.eye().f_82481_),"focus",List.of(view.focus().f_82479_,view.focus().f_82480_,view.focus().f_82481_),"waist",waist,"fov",view.fov(),"actorYaw",actorYaw));
   }
   check(ExplorationRules.ENTRY_READY<=10,"entry wipe ends within half a second of contact");
   Path output=Path.of("build/reports/animation-fix");Files.createDirectories(output);Files.writeString(output.resolve("camera.json"),new Gson().toJson(views));
-  var frame=ApprovedWeaponPose.sample(com.gx.velveteclipse.equipment.EquipmentCatalog.Family.SWORD,-1,false);
+  var frame=BattleCommandPose.sample(com.gx.velveteclipse.equipment.EquipmentCatalog.Family.SWORD,false);
   var pose=new PoseStack();pose.m_85841_(ApprovedAttackRenderer.PLAYER_SCALE,ApprovedAttackRenderer.PLAYER_SCALE,ApprovedAttackRenderer.PLAYER_SCALE);pose.m_85837_(0,frame.feet(),0);pose.m_85841_(1,-1,-1);
   var hull=new CommandOutline.Hull();var mesh=new ApprovedCombatAudit.Mesh();ApprovedAttackRenderer.body(pose,hull,frame,false,Set.of(),15728880);
   mesh.material="outline";hull.emit(mesh);int count=mesh.quads.size();mesh.material="skin";ApprovedAttackRenderer.body(pose,mesh,frame,false,Set.of(),15728880);

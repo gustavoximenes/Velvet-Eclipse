@@ -41,9 +41,9 @@ public final class VelvetRoomService {
   // Save the safe approach side, outside the doorway, to prevent a return loop.
   var direction=p.m_9236_().m_8055_(door).m_61143_(DoorBlock.f_52726_);var point=step(door,direction,2);
   back.m_128347_("x",point.m_123341_()+.5);back.m_128347_("y",Math.floor(p.m_20186_()));back.m_128347_("z",point.m_123343_()+.5);back.m_128350_("yaw",p.m_146908_());data.m_128365_(RETURN,back);data.m_128356_(COOLDOWN,now);
-  BlockPos seat=null;for(int[] xyz:VelvetRoomLayout.seats()){var at=new BlockPos(xyz[0],xyz[1],xyz[2]);if(room.m_45976_(VelvetSeatEntity.class,new AABB(at).m_82400_(.3)).isEmpty()){seat=at;break;}}
-  if(seat==null){p.m_8999_(room,.5,64,8.5,180,0);tell(p,"Bem-vindo à Velvet Room. As cadeiras estão ocupadas.");FusionRoomService.greetLater(p);return;}
-  p.m_8999_(room,seat.m_123341_()+.5,64,seat.m_123343_()+.5,180,0);sit(p,seat);FusionRoomService.greetLater(p);tell(p,"Velvet Room • SHIFT para levantar. A porta atrás de você retorna ao mundo.");
+  BlockPos seat=null;for(int[] xyz:VelvetRoomLayout.seats(com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_()))){var at=new BlockPos(xyz[0],xyz[1],xyz[2]);if(room.m_45976_(VelvetSeatEntity.class,new AABB(at).m_82400_(.3)).isEmpty()){seat=at;break;}}
+  if(seat==null){p.m_8999_(room,.5,64,VelvetRoomLayout.depth(com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_()))-2.5,180,0);FusionNetwork.enter(p,false);tell(p,"As cadeiras estão ocupadas. Clique com o botão direito em Igor para interagir.");return;}
+  p.m_8999_(room,seat.m_123341_()+.5,64,seat.m_123343_()+.5,180,0);boolean seated=sit(p,seat);FusionNetwork.enter(p,seated);tell(p,"Velvet Room • SHIFT para levantar. A porta atrás de você retorna ao mundo.");
  }
  public static boolean sit(ServerPlayer p,BlockPos pos){
   if(inside(p)&&pos.equals(new BlockPos(0,64,-5)))return false;
@@ -62,16 +62,31 @@ public final class VelvetRoomService {
  }
  private static Vec3 safeExit(ServerLevel level,ServerPlayer p,double x,double y,double z){for(int radius=0;radius<=3;radius++)for(int dx=-radius;dx<=radius;dx++)for(int dz=-radius;dz<=radius;dz++)for(int dy:new int[]{0,1,-1,2,-2}){var at=new Vec3(x+dx,y+dy,z+dz);var box=p.m_20191_().m_82386_(at.f_82479_-p.m_20185_(),at.f_82480_-p.m_20186_(),at.f_82481_-p.m_20189_());var feet=new BlockPos((int)Math.floor(at.f_82479_),(int)Math.floor(at.f_82480_),(int)Math.floor(at.f_82481_));if(level.m_6857_().m_61937_(feet)&&!level.m_8055_(feet).m_60713_(VelvetRoomRegistry.DOOR.get())&&level.m_8055_(feet).m_60819_().m_76178_()&&level.m_45756_(p,box)&&!level.m_45756_(p,box.m_82386_(0,-.8,0)))return at;}return null;}
  public static void build(ServerLevel level){
-  var saved=level.m_8895_().m_164861_(Built::load,Built::new,"velvet_eclipse_room");if(saved.done){ensureIgor(level,saved);return;}
+  var saved=level.m_8895_().m_164861_(Built::load,Built::new,"velvet_eclipse_room");int capacity=com.gx.velveteclipse.party.MaximumPlayers.get(level.m_7654_());
+  int extent=Math.max(capacity,saved.capacity);
+  var keep=new java.util.HashSet<BlockPos>();for(int[] xyz:VelvetRoomLayout.seats(capacity))keep.add(new BlockPos(xyz[0],xyz[1],xyz[2]));
+  // Retain occupied chairs when lowering the cap. Never eject their passengers.
+  for(int x=-6;x<=6;x++)for(int z=2;z<=VelvetRoomLayout.depth(extent);z++){
+   var at=new BlockPos(x,64,z);if(level.m_8055_(at).m_60713_(VelvetRoomRegistry.CHAIR.get())&&!keep.contains(at)&&level.m_45976_(VelvetSeatEntity.class,new AABB(at).m_82400_(.3)).isEmpty())level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);
+  }
+  if(saved.done&&saved.version==3&&saved.active==capacity){ensureIgor(level,saved);return;}
+  if(saved.done&&VelvetRoomLayout.depth(extent)>VelvetRoomLayout.depth(saved.capacity))for(int x=-7;x<=7;x++)for(int y=64;y<73;y++)level.m_7731_(new BlockPos(x,y,VelvetRoomLayout.depth(saved.capacity)),Blocks.f_50016_.m_49966_(),2);
   var palette=Map.of("floor",VelvetRoomRegistry.FLOOR.get(),"wall",VelvetRoomRegistry.WALL.get(),"trim",VelvetRoomRegistry.TRIM.get(),"grille",VelvetRoomRegistry.GATE.get());
-  for(var cell:VelvetRoomLayout.cells()){var state=palette.get(cell.material()).m_49966_();if(cell.material().equals("grille"))state=state.m_61124_(HorizontalDirectionalBlock.f_54117_,cell.x()==-7?Direction.EAST:cell.x()==7?Direction.WEST:Direction.SOUTH);level.m_7731_(new BlockPos(cell.x(),cell.y(),cell.z()),state,2);}
+  for(var cell:VelvetRoomLayout.cells(extent)){var state=palette.get(cell.material()).m_49966_();if(cell.material().equals("grille"))state=state.m_61124_(HorizontalDirectionalBlock.f_54117_,cell.x()==-7?Direction.EAST:cell.x()==7?Direction.WEST:Direction.SOUTH);level.m_7731_(new BlockPos(cell.x(),cell.y(),cell.z()),state,2);}
   level.m_7731_(new BlockPos(0,64,-2),VelvetRoomRegistry.TABLE.get().m_49966_(),2);
-  for(int[] xyz:VelvetRoomLayout.seats())level.m_7731_(new BlockPos(xyz[0],xyz[1],xyz[2]),VelvetRoomRegistry.CHAIR.get().m_49966_(),2);
+  for(int[] xyz:VelvetRoomLayout.seats(capacity))level.m_7731_(new BlockPos(xyz[0],xyz[1],xyz[2]),VelvetRoomRegistry.CHAIR.get().m_49966_(),2);
   level.m_7731_(new BlockPos(0,64,-5),VelvetRoomRegistry.CHAIR.get().m_49966_().m_61124_(HorizontalDirectionalBlock.f_54117_,Direction.SOUTH),2);
-  placeDoor(level,new BlockPos(0,64,10),Direction.NORTH);saved.done=true;saved.m_77762_();ensureIgor(level,saved);
+  int oldDoor=VelvetRoomLayout.depth(saved.capacity)-1,newDoor=VelvetRoomLayout.depth(extent)-1;
+  if(oldDoor!=newDoor)for(int y=64;y<=65;y++){var at=new BlockPos(0,y,oldDoor);if(level.m_8055_(at).m_60713_(VelvetRoomRegistry.DOOR.get()))level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);}
+  placeDoor(level,new BlockPos(0,64,newDoor),Direction.NORTH);saved.done=true;saved.version=3;saved.capacity=extent;saved.active=capacity;saved.m_77762_();ensureIgor(level,saved);
  }
  private static void ensureIgor(ServerLevel level,Built saved){
-  if(!saved.igor.isEmpty())return;
+  level.m_46745_(new BlockPos(3,64,-5));
+  if(level.m_45976_(com.gx.velveteclipse.equipment.ElizabethEntity.class,new AABB(1,63,-7,5,68,-2)).isEmpty()){
+   var attendant=com.gx.velveteclipse.equipment.EquipmentRegistry.ELIZABETH.get().m_20615_(level);
+   if(attendant!=null){attendant.m_6034_(2.95,64,-4.4);attendant.m_146922_(5);level.m_7967_(attendant);}
+  }
+  if(!saved.igor.isEmpty())try{if(level.m_8791_(UUID.fromString(saved.igor)) instanceof IgorEntity)return;}catch(IllegalArgumentException ignored){}
   level.m_46745_(new BlockPos(0,64,-5));
   var existing=level.m_45976_(IgorEntity.class,new AABB(-2,63,-7,3,68,-2));
   if(!existing.isEmpty()){saved.igor=existing.get(0).m_20148_().toString();saved.m_77762_();return;}
@@ -79,5 +94,5 @@ public final class VelvetRoomService {
   igor.m_6034_(.5,64.125,-4.5);igor.m_146922_(0);
   if(level.m_7967_(igor)){saved.igor=igor.m_20148_().toString();saved.m_77762_();}
  }
- private static final class Built extends SavedData {boolean done;String igor="";static Built load(CompoundTag tag){var b=new Built();b.done=tag.m_128471_("built");b.igor=tag.m_128461_("igor");return b;}@Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128379_("built",done);tag.m_128359_("igor",igor);return tag;}}
+ private static final class Built extends SavedData {boolean done;int version,capacity=4,active;String igor="";static Built load(CompoundTag tag){var b=new Built();b.done=tag.m_128471_("built");b.igor=tag.m_128461_("igor");b.version=tag.m_128451_("version");b.capacity=Math.max(4,tag.m_128451_("capacity"));b.active=tag.m_128451_("active");return b;}@Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("version",version);tag.m_128405_("capacity",capacity);tag.m_128405_("active",active);tag.m_128379_("built",done);tag.m_128359_("igor",igor);return tag;}}
 }

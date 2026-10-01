@@ -79,10 +79,16 @@ public final class PersonaModelPreview {
     }
     private void fail(String id,Throwable error){if(failed.add(id))VelvetEclipseMod.LOGGER.error("Persona menu preview failed for "+id,error);}
     public void drawCard(GuiGraphics g,String id,double x,double y,double w,double h){
+        drawCard(g,id,x,y,w,h,-1);
+    }
+    public void drawReveal(GuiGraphics g,String id,double x,double y,double w,double h,double seconds){
+        drawCard(g,id,x,y,w,h,seconds);
+    }
+    private void drawCard(GuiGraphics g,String id,double x,double y,double w,double h,double reveal){
         Actor a;try{a=actor(id);}catch(RuntimeException|LinkageError e){fail(id,e);return;}if(a==null)return;
         var mc=Minecraft.m_91087_();var pose=g.m_280168_();var dispatcher=mc.m_91290_();var camera=new Quaternionf(dispatcher.m_253208_());
-        var e=a.entity;e.animationTicks=time*20;e.f_19797_=(int)e.animationTicks;float yaw=180;
-        e.f_20883_=e.f_20884_=e.f_20885_=e.f_20886_=yaw;e.m_146922_(yaw);e.f_19859_=yaw;e.m_146926_(0);
+        var e=a.entity;e.animationTicks=(reveal<0?time:reveal<3.125?reveal*.8:2.5+reveal-3.125)*20;e.f_19797_=(int)e.animationTicks;float yaw=(float)(180+(reveal<0?rotation:-9+20*Math.sin(reveal*.6)));
+        e.f_20883_=e.f_20884_=e.f_20885_=e.f_20886_=yaw;e.m_146922_(yaw);e.f_19859_=yaw;e.m_146926_(reveal>=0&&reveal<3.125?-40:0);
         g.m_280262_();pose.m_85836_();
         try{float size=(float)(h/(id.equals("umbra_slime")?2.0:2.7));pose.m_85837_(x+w*.5,y+h-8,MenuDepth.MODEL);pose.m_252931_(new Matrix4f().scaling(size,size,-size));var tilt=new Quaternionf().rotationX(.06f);pose.m_252781_(new Quaternionf().rotationZ((float)Math.PI).mul(tilt));Lighting.m_166384_();dispatcher.m_252923_(new Quaternionf(tilt).conjugate());RenderSystem.runAsFancy(()->a.renderer.m_7392_(e,yaw,mc.m_91296_(),pose,g.m_280091_(),15728880));}
         catch(RuntimeException|LinkageError error){fail(id,error);}finally{try{g.m_280262_();}finally{dispatcher.m_252923_(camera);pose.m_85849_();Lighting.m_84931_();}}

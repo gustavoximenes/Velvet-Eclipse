@@ -36,8 +36,8 @@ public final class RaidService {
   if(!p.m_6084_()||BattleService.current(p)!=null||TartarusDungeonService.floor(p)!=25)return;
   var old=MEMBERS.get(p.m_20148_());if(old!=null){send(old,p);return;}
   var r=RUNS.stream().filter(a->a.mode.equals("lobby")).findFirst().orElse(null);
-  if(r==null){int slot=0;var used=RUNS.stream().map(a->a.slot).toList();while(used.contains(slot))slot++;r=new Run(slot,settings(p.m_20194_()).capacity);RUNS.add(r);}
-  if(r.names.size()>=r.capacity){say(p,"A raid está cheia ("+r.capacity+" jogadores).");return;}
+  if(r==null){int slot=0;var used=RUNS.stream().map(a->a.slot).toList();while(used.contains(slot))slot++;r=new Run(slot,Math.min(settings(p.m_20194_()).capacity,com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())));RUNS.add(r);}
+  if(r.names.size()>=Math.min(r.capacity,com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_()))){say(p,"A raid está cheia ("+r.capacity+" jogadores).");return;}
   r.names.put(p.m_20148_(),p.m_7755_().getString());MEMBERS.put(p.m_20148_(),r);broadcast(r);
  }
  private static boolean atDoor(ServerPlayer p){return TartarusDungeonService.floor(p)==25&&p.m_20275_(TartarusInteriorLayout.origin(25)+21.5,65,256.5)<=64&&BattleService.current(p)==null;}
@@ -46,6 +46,7 @@ public final class RaidService {
   if(q.action().equals("leave")){if(r.mode.equals("lobby")){r.names.remove(p.m_20148_());MEMBERS.remove(p.m_20148_());RaidNetwork.send(p,RaidNetwork.View.empty());if(r.names.isEmpty())RUNS.remove(r);else broadcast(r);}else fail(r,"A equipe abandonou a operação.");return;}
   if(q.action().equals("start")&&r.mode.equals("lobby")&&r.leader().equals(p.m_20148_())){
    if(players(r).size()!=r.names.size()||players(r).stream().anyMatch(a->!atDoor(a)||!a.m_6084_()||PlayerPersonaData.load(a).hp()<=0)){say(p,"Todos devem estar vivos e próximos da porta Monad.");return;}
+   if(r.names.size()>com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())){say(p,"Ajuste a equipe ao novo limite de jogadores antes de embarcar.");return;}
    if(world()==null){say(p,"Reabra o mundo para carregar o trem.");return;}
    r.mode="building";r.revision++;broadcast(r);return;
   }

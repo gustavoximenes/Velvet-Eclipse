@@ -15,10 +15,12 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class PartyNetwork {
  public static final Gson JSON=new Gson();
- private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","party"),()->"1","1"::equals,"1"::equals);
+ private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","party"),()->"2","2"::equals,"2"::equals);
  public record Person(String id,String name,boolean online){}
  public record Asset(String id,String name,int count){}
- public record View(boolean open,String self,String leader,List<Person> members,List<Person> online,List<Asset> items,long yen,String inviter,String message,String token){}
+ public record View(boolean open,String self,String leader,List<Person> members,List<Person> online,List<Asset> items,long yen,String inviter,String message,String token,int maximumPlayers){
+ public View(boolean open,String self,String leader,List<Person> members,List<Person> online,List<Asset> items,long yen,String inviter,String message,String token){this(open,self,leader,members,online,items,yen,inviter,message,token,4);}
+}
  public record Request(String action,String target,String item,long amount,String token){
   static void encode(Request p,FriendlyByteBuf b){b.m_130072_(p.action,16);b.m_130072_(p.target,40);b.m_130072_(p.item,120);b.writeLong(p.amount);b.m_130072_(p.token,40);}
   static Request decode(FriendlyByteBuf b){return new Request(b.m_130136_(16),b.m_130136_(40),b.m_130136_(120),b.readLong(),b.m_130136_(40));}

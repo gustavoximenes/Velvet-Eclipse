@@ -104,9 +104,9 @@ public final class PersonaCinematicServer {
                 if (sequence.tick < 46 && VisualBattleActors.personaActor(sequence.player) != null) {
                     RuntimeBridge.setEntityPosition(VisualBattleActors.personaActor(sequence.player), sequence.base[0], sequence.base[1] - 40.0, sequence.base[2]);
                 }
-                object = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, -1.4);
-                double[] dArray = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, -1.4);
-                double[] dArray2 = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 0.92, sequence.magic?-1.4:1.4);
+                object = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 1.10, -.64);
+                double[] dArray = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 1.10, -.64);
+                double[] dArray2 = RuntimeBridge.localOffset(sequence.base, sequence.yaw, 0.0, 1.10, -.64);
                 if (sequence.tick == 46) {
                     VisualBattleActors.replacePersona(sequence.player, sequence.personaId);
                     PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);
@@ -136,7 +136,7 @@ public final class PersonaCinematicServer {
                 if (SEQUENCES.get(uUID) != sequence) continue;
                 PersonaCinematicServer.finishSequence(uUID, sequence);
                 com.gx.velveteclipse.network.ModNetwork.sendPresentation(sequence.player,new com.gx.velveteclipse.network.BattleCueS2C("cancel","",false,0,0,0,0,0,0));
-                BattleService.sync(sequence.player,"Animação interrompida.");
+                BattleService.sync(sequence.player,"AnimaÃ§Ã£o interrompida.");
             }
         }
     }

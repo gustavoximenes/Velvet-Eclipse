@@ -18,7 +18,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
             if(com.gx.velveteclipse.client.BattleTacticsClient.downed(entity.m_19879_())){stack.m_85837_(0,.28,0);stack.m_252781_(new org.joml.Quaternionf().rotationZ(1.40f).rotateX(.12f));}
             if(entity.m_7755_().getString().startsWith("Guardião do Tártaro"))stack.m_85841_(2.2f,2.2f,2.2f);
             if(entity.m_7755_().getString().startsWith("Guardião do Trem"))stack.m_85841_(1.7f,1.7f,1.7f);
-            super.m_7392_(entity,yaw,partial,stack,buffers,light);
+            super.m_7392_(entity,yaw,partial,stack,buffers,com.gx.velveteclipse.room.VelvetRoomService.inside(entity)?15728880:light);
         }finally{stack.m_85849_();}
     }
     public VelvetGeoEntityRenderer(EntityRendererProvider.Context context,String asset) {
@@ -37,6 +37,7 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
     }
     @Override public net.minecraft.client.renderer.RenderType getRenderType(T entity,ResourceLocation texture,net.minecraft.client.renderer.MultiBufferSource buffers,float partial){
         if(entity instanceof com.gx.velveteclipse.entity.VelvetPersonaGeoEntity persona&&!persona.summoner().isEmpty())return net.minecraft.client.renderer.RenderType.m_110473_(texture);
+        if(com.gx.velveteclipse.room.VelvetRoomService.inside(entity))return net.minecraftforge.client.ForgeRenderTypes.getUnlitTranslucent(texture);
         return super.getRenderType(entity,texture,buffers,partial);
     }
     @Override public software.bernie.geckolib.core.object.Color getRenderColor(T entity,float partial,int light){

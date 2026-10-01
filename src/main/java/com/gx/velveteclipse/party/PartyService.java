@@ -21,7 +21,7 @@ public final class PartyService {
  private record Offer(String token,Map<String,ItemStack> stacks){}
  private static final Map<UUID,Offer> offers=new HashMap<>();
  private static final Map<UUID,Long> gate=new HashMap<>();
- private static State state(ServerPlayer p){return p.m_20194_().m_129783_().m_8895_().m_164861_(State::load,State::new,"velvet_party");}
+ private static State state(ServerPlayer p){var s=p.m_20194_().m_129783_().m_8895_().m_164861_(State::load,State::new,"velvet_party");s.roster.capacity(MaximumPlayers.get(p.m_20194_()));return s;}
  private static String id(ServerPlayer p){return p.m_20148_().toString();}
  private static ServerPlayer online(ServerPlayer p,String id){try{return p.m_20194_().m_6846_().m_11259_(UUID.fromString(id));}catch(IllegalArgumentException e){return null;}}
  public static List<ServerPlayer> members(ServerPlayer p){var g=state(p).roster.group(id(p));return g==null?List.of(p):g.members().stream().map(s->online(p,s)).filter(Objects::nonNull).toList();}
@@ -34,7 +34,7 @@ public final class PartyService {
   for(String key:bag.owned)if(!bag.equipped.containsValue(key)){var gear=EquipmentCatalog.get(key);if(gear!=null)items.add(new PartyNetwork.Asset("g:"+key,gear.name(),1));}
   for(int i=0;i<36;i++){var stack=p.m_150109_().m_8020_(i);if(!stack.m_41619_()){String key="i:"+i;stacks.put(key,stack.m_41777_());items.add(new PartyNetwork.Asset(key,stack.m_41786_().getString(),stack.m_41613_()));}}
   String token=UUID.randomUUID().toString();offers.put(p.m_20148_(),new Offer(token,stacks));var invite=s.roster.invitation(id(p),System.currentTimeMillis());
-  PartyNetwork.send(p,new PartyNetwork.View(open,id(p),group==null?"":group.members().get(0),group==null?List.of():group.members().stream().map(key->person(p,s,key)).toList(),p.m_20194_().m_6846_().m_11314_().stream().filter(other->other!=p&&s.roster.group(id(other))==null).limit(200).map(other->person(p,s,id(other))).toList(),items,PlayerPersonaData.load(p).yen(),invite==null?"":person(p,s,invite.from()).name(),message,token));
+  PartyNetwork.send(p,new PartyNetwork.View(open,id(p),group==null?"":group.members().get(0),group==null?List.of():group.members().stream().map(key->person(p,s,key)).toList(),p.m_20194_().m_6846_().m_11314_().stream().filter(other->other!=p&&s.roster.group(id(other))==null).limit(200).map(other->person(p,s,id(other))).toList(),items,PlayerPersonaData.load(p).yen(),invite==null?"":person(p,s,invite.from()).name(),message,token,s.roster.capacity()));
  }
  public static void handle(ServerPlayer p,PartyNetwork.Request r){
   if(!available(p))return;long now=System.currentTimeMillis();if(now-gate.getOrDefault(p.m_20148_(),0L)<150)return;gate.put(p.m_20148_(),now);

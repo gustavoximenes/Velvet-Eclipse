@@ -83,7 +83,7 @@ public final class BattleService {
         syncAll(g,message);return s;
     }
     public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
-        if(party.isEmpty()||enemy==null||party.stream().anyMatch(p->current(p)!=null||!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)))return null;
+        if(party.isEmpty()||(party.size()>com.gx.velveteclipse.party.MaximumPlayers.get(party.get(0).m_20194_())&&!party.stream().allMatch(com.gx.velveteclipse.raid.RaidService::member))||enemy==null||party.stream().anyMatch(p->current(p)!=null||!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)))return null;
         var participants=new ArrayList<BattleCombatant>();for(var p:party)participants.add(combatant(p));
         var def=EnemyCatalog.get(stage==0?"magic_hand":stage==1?"trance_twins":"grieving_tiara");
         int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):180+65*party.size();
@@ -105,7 +105,7 @@ public final class BattleService {
         var g=BATTLES.get(battleId);
         if(!(object instanceof ServerPlayer p)||g==null||current(p)!=null||!canJoin(p,g))return false;
         double[] anchor=null;
-        for(int i=1;i<14;i++){
+        for(int i=1;i<Math.max(14,com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())*2);i++){
             double[] candidate=RuntimeBridge.localOffset(g.origin,g.yaw,BattleFormation.allyX(i),0,0);
             if(g.anchors.values().stream().anyMatch(a->distance(a,candidate)<2.25))continue;
             for(double dy:new double[]{0,1,-1,2,-2}){
@@ -118,7 +118,7 @@ public final class BattleService {
         if(!g.session.join(combatant(p)))return false;
         attach(g,p,anchor);VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());syncAll(g,RuntimeBridge.playerName(p)+" entrou na batalha!");return true;
     }
-    private static boolean canJoin(ServerPlayer p,Encounter g){return com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)&&!g.raid&&g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
+    private static boolean canJoin(ServerPlayer p,Encounter g){return g.players.size()<com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())&&com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)&&!g.raid&&g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
 
     /** Leaving/disconnecting removes only that participant; an interrupted reservation costs nothing. */
     public static void stop(Object p){

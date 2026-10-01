@@ -77,7 +77,7 @@ public final class ApprovedAttackRenderer {
   if(BattleDirector.summoning(player.m_20148_())||BattleDirector.shiftActor(player.m_20148_())||BattleDirector.hitPlayer(player.m_20148_()))return false;
   float partial=e.getPartialTick();Family family=attack?BattleDirector.weapon():field?ExplorationClient.attackFamily():remote!=null?remote.family():player==mc.f_91074_?com.gx.velveteclipse.client.equipment.EquipmentScreen.family():BattleTargetHud.roster().stream().filter(a->a.id().equals(player.m_20148_())).map(a->RemoteWeaponSwing.family(a.weapon())).findFirst().orElse(Family.SWORD);
   double elapsed=attack?WeaponAttackTiming.battleElapsed(family,BattleDirector.age(partial)):field?ExplorationClient.ticks()+partial:remote!=null?remote.elapsed(partial):-1;
-  double t=WeaponAttackTiming.authored(family,elapsed);boolean slim="slim".equals(player.m_108564_());Frame frame=sample(family,t,slim);
+  double t=WeaponAttackTiming.authored(family,elapsed);boolean slim="slim".equals(player.m_108564_());Frame frame=command?BattleCommandPose.sample(family,slim):sample(family,t,slim);
   if(attack&&elapsed<0&&!WeaponAttackTiming.ranged(family))frame=WeaponLocomotion.sample(family,slim,BattleDirector.age(partial)*.95,CombatAttackPose.speed(family,BattleDirector.age(partial)));
   if(exploration&&!field){frame=WeaponLocomotion.sample(family,slim,ExplorationAnimation.phase(partial),ExplorationAnimation.speed(partial));frame=WeaponLocomotion.look(frame,player.m_146908_()-ExplorationAnimation.facing(partial),player.m_146909_());}
   float yaw=command?commandYaw(player):remote!=null?remote.yaw():field?ExplorationClient.yaw():exploration?ExplorationAnimation.facing(partial):player.m_146908_();
@@ -88,7 +88,8 @@ public final class ApprovedAttackRenderer {
    body(p,e.getMultiBufferSource().m_6299_(RenderType.m_110452_(player.m_108560_())),frame,slim,visible,e.getPackedLight());weapon(p,e.getMultiBufferSource(),e.getPackedLight(),family,frame,t);effects(p,e.getMultiBufferSource(),family,frame,t,slim);
   }finally{p.m_85849_();}e.setCanceled(true);return true;
  }
- private static float commandYaw(AbstractClientPlayer p){var world=Minecraft.m_91087_().f_91073_;Vec3 center=Vec3.f_82478_;int n=0;for(var t:BattleTargetHud.roster())if(!t.ally()&&t.hp()>0){var e=world.m_6815_(t.entityId());if(e!=null){center=center.m_82549_(e.m_20182_());n++;}}if(n==0)return p.m_146908_();center=center.m_82490_(1./n).m_82546_(p.m_20182_());return BattleDirector.commandYaw(p.m_20148_(),p.m_20182_(),(float)Math.toDegrees(Math.atan2(-center.f_82479_,center.f_82481_))+80);}
+ private static float commandYaw(AbstractClientPlayer p){var world=Minecraft.m_91087_().f_91073_;Vec3 center=Vec3.f_82478_;int n=0;for(var t:BattleTargetHud.roster())if(!t.ally()&&t.hp()>0){var e=world.m_6815_(t.entityId());if(e!=null){center=center.m_82549_(e.m_20182_());n++;}}return n==0?p.m_146908_():BattleCommandPose.yaw(p.m_20182_(),center.m_82490_(1./n),BattleDirector.commandEye(p.m_20148_()),p.m_146908_());}
+
  public static Frame travelPose(Family family,boolean slim,double phase,double speed){return WeaponLocomotion.sample(family,slim,phase,speed);}
  private ApprovedAttackRenderer(){}
 }

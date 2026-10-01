@@ -14,9 +14,9 @@ public final class VelvetRoomRegistry {
  public static final DeferredRegister<EntityType<?>> ENTITIES=DeferredRegister.create(ForgeRegistries.ENTITY_TYPES,"velvet_eclipse");
  public static final DeferredRegister<CreativeModeTab> TABS=DeferredRegister.create(Registries.f_279569_,"velvet_eclipse");
  private static BlockBehaviour.Properties solid(){return BlockBehaviour.Properties.m_284310_().m_60913_(3,12);}
- public static final RegistryObject<Block> FLOOR=BLOCKS.register("velvet_floor",()->new Block(solid()));
- public static final RegistryObject<Block> WALL=BLOCKS.register("velvet_wall",()->new Block(solid()));
- public static final RegistryObject<Block> TRIM=BLOCKS.register("velvet_trim",()->new Block(solid().m_60953_(s->8)));
+ public static final RegistryObject<Block> FLOOR=BLOCKS.register("velvet_floor",()->new Block(solid().m_60953_(s->15)));
+ public static final RegistryObject<Block> WALL=BLOCKS.register("velvet_wall",()->new Block(solid().m_60953_(s->15)));
+ public static final RegistryObject<Block> TRIM=BLOCKS.register("velvet_trim",()->new Block(solid().m_60953_(s->15)));
  public static final RegistryObject<Block> GATE=BLOCKS.register("velvet_grille",VelvetGrilleBlock::new);
  public static final RegistryObject<VelvetDoorBlock> DOOR=BLOCKS.register("velvet_door",VelvetDoorBlock::new);
  public static final RegistryObject<VelvetChairBlock> CHAIR=BLOCKS.register("velvet_chair",VelvetChairBlock::new);

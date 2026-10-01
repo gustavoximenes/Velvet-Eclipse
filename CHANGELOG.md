@@ -1,3 +1,13 @@
+# 0.6.39-velvet-room-rework
+
+- Integra as prévias aprovadas da Velvet Room: entrada com corredor/portas e Elizabeth, gradis, sofá, mesa, Igor e skin real do jogador nas cenas.
+- Menu em cartas, Compêndio com profundidade, busca por resultado com contribuições/níveis reais e inspect do TAB para herança e resultado.
+- Animação de fusão após confirmação do servidor: dança breve, voo horizontal rápido, recuo da cabeça e efeito azul na nuca; revelação da Persona resultante.
+- `/velvet maximum_player <1–64>` persistente, padrão 4 por grupo/combate. Cadeiras sequenciais, excesso em pé, interação com Igor, SHIFT para levantar e saída pela porta.
+- Persona próxima atrás do invocador e círculo único de chamas azuis; iluminação da Velvet Room reforçada, inclusive após a composição do shader OptiFine.
+- Poses de espera laterais com mãos baixas, base da espada normal e compensação de câmera limitada; preservadas as animações de ataque e exploração existentes.
+- Protocolos de fusão 3 e party 2. Auditorias offline e GLSL na GPU aprovadas; conferência visual com shaders e multiplayer dentro do Minecraft pendente.
+
 # 0.6.38-pose-camera-fix
 
 - Espada normal preservada; faca usa a mesma base de articulações.

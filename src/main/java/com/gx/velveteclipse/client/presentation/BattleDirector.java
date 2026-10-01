@@ -41,7 +41,7 @@ public final class BattleDirector {
   double t=age(partial),a=Math.max(0,Math.min(1,(t-46)/12)),b=Math.max(0,Math.min(1,(108-t)/7));return (float)(a*a*(3-2*a)*b*b*(3-2*b));
  }
  public static float fov(){return fov;}
- public static float commandYaw(UUID id,Vec3 position,float fallback){var view=commandCamera.view();return view!=null&&commandSubject(id)?BattleFraming.commandYaw(position,view.eye()):fallback;}
+ public static Vec3 commandEye(UUID id){var view=commandCamera.view();return view!=null&&commandSubject(id)?view.eye():null;}
  public static boolean commandSubject(UUID id){
   var mc=Minecraft.m_91087_();if(mc.f_91074_==null||!ClientBattleState.snapshot().active())return false;
   if(active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting()))return false;
@@ -52,7 +52,6 @@ public final class BattleDirector {
   var mc=Minecraft.m_91087_();if(mc.f_91073_==null||level!=null&&mc.f_91073_!=level||!ClientBattleState.snapshot().active()){reset();return;}if(level==null)level=mc.f_91073_;if(!active())return;
   int t=(int)age(0);if(lastTick==t)return;
   if(cue.kind().equals("skill")&&lastTick<38&&t>=38){var a=actor();if(a!=null)PhotonBattleEffects.trigger(a.m_20185_(),a.m_20186_()+1.55,a.m_20189_());}
-  if(cue.kind().equals("skill")&&lastTick<46&&t>=46){var a=actor();if(a!=null){double yaw=Math.toRadians(castingYaw(cue.actor(),a.m_146908_()));PhotonBattleEffects.summon(a.m_20185_()+Math.sin(yaw)*1.4,a.m_20186_(),a.m_20189_()-Math.cos(yaw)*1.4);}}
   if(shifting()&&lastTick<ShiftPresentation.TRANSFER&&t>=ShiftPresentation.TRANSFER){var a=actor();var b=targetPosition(1);if(a!=null)PhotonBattleEffects.shift(a.m_20182_(),b);}
   if(cue.kind().equals("attack")&&lastTick<19&&t>=19){var at=targetPosition(1);PhotonBattleEffects.impact(weapon()==Family.BOW||weapon()==Family.GUN||weapon()==Family.SPEAR?Element.PIERCE:weapon()==Family.FISTS?Element.PHYSICAL:Element.SLASH,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
   if(cue.kind().equals("attack")&&weapon()==Family.BOW&&lastTick<16&&t>=16){var a=actor();var at=targetPosition(1);if(a instanceof net.minecraft.client.player.AbstractClientPlayer p){var from=ApprovedAttackRenderer.projectileOrigin(p,Family.BOW);com.gx.velveteclipse.client.exploration.ArrowFlight.accept(new com.gx.velveteclipse.exploration.ExplorationNetwork.Shot(from.f_82479_,from.f_82480_,from.f_82481_,at.f_82479_,at.f_82480_+.8,at.f_82481_,3));}}
@@ -60,6 +59,7 @@ public final class BattleDirector {
   if(cue.kind().startsWith("enemy")&&cue.skill().isEmpty()&&lastTick<enemyHit&&t>=enemyHit){var at=targetPosition(1);PhotonBattleEffects.impact(Element.PHYSICAL,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
   lastTick=t;
  }
+ public static Entity summonActor(){var a=actor();return a!=null&&summoning(a.m_20148_())?a:null;}
  private static Entity actor(){var w=Minecraft.m_91087_().f_91073_;return cue==null||w==null?null:w.m_6815_(cue.actorEntity());}
  private static Vec3 targetPosition(float partial){var w=Minecraft.m_91087_().f_91073_;var e=w==null?null:w.m_6815_(cue.targetEntity());return e==null?new Vec3(cue.tx(),cue.ty(),cue.tz()):e.m_20318_(partial);}
  public static boolean camera(ViewportEvent.ComputeCameraAngles event){
@@ -87,7 +87,7 @@ public final class BattleDirector {
    double aspect=mc.m_91268_().m_85445_()/(double)Math.max(1,mc.m_91268_().m_85446_());
    var turn=BattleTargetHud.roster().stream().filter(t->t.ally()&&t.turn()).findFirst().orElse(null);
    int key=java.util.Objects.hash(BattleFollowCamera.enabled(),BattleFollowCamera.enabled()&&turn!=null?turn.id():mc.f_91074_.m_20148_());long tick=mc.f_91073_.m_46467_();
-    var points=new java.util.ArrayList<Vec3>();for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){var foot=entity.m_20318_(partial);double radius=member.ally()?.35:.85,height=entity.m_7755_().getString().startsWith("Guardião")?4:2.5;for(double x:new double[]{-radius,radius})for(double z:new double[]{-radius,radius})for(double y:new double[]{.05,height})points.add(foot.m_82520_(x,y,z));}}
+    var points=new java.util.ArrayList<Vec3>();for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){var foot=entity.m_20318_(partial);double radius=member.ally()?.35:.85,height=entity.m_7755_().getString().startsWith("GuardiÃ£o")?4:2.5;for(double x:new double[]{-radius,radius})for(double z:new double[]{-radius,radius})for(double y:new double[]{.05,height})points.add(foot.m_82520_(x,y,z));}}
    var commandFrame=commandCamera.update(a,points,shot.fov(),aspect,key,tick,ExplorationCamera::collide);
    focus=commandFrame.focus();position=commandFrame.eye();lens=(float)commandFrame.fov();
   }else position=BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);

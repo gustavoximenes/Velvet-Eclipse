@@ -22,7 +22,7 @@ public final class ElizabethEntity extends Entity implements GeoEntity {
  @Override protected void m_7380_(CompoundTag tag){}
  @Override public Packet<ClientGamePacketListener> m_5654_(){return NetworkHooks.getEntitySpawningPacket(this);}
  @Override public boolean m_6087_(){return true;}
- @Override public InteractionResult m_6096_(Player player,InteractionHand hand){if(hand==InteractionHand.MAIN_HAND&&player instanceof ServerPlayer server)EquipmentService.talk(server,this);return InteractionResult.SUCCESS;}
+ @Override public InteractionResult m_6096_(Player player,InteractionHand hand){if(hand==InteractionHand.MAIN_HAND&&player instanceof ServerPlayer server){if(com.gx.velveteclipse.room.VelvetRoomService.inside(server))com.gx.velveteclipse.room.FusionRoomService.open(server);else EquipmentService.talk(server,this);}return InteractionResult.SUCCESS;}
  @Override public AnimatableInstanceCache getAnimatableInstanceCache(){return cache;}
  @Override public void registerControllers(AnimatableManager.ControllerRegistrar c){c.add(new AnimationController<ElizabethEntity>(this,"idle",0,s->s.setAndContinue(RawAnimation.begin().thenLoop("misc.idle"))));}
 }

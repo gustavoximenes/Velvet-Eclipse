@@ -1,0 +1,32 @@
+[
+  {
+    "name": "fusion",
+    "meshes": 418,
+    "frames": 229,
+    "seconds": 7.6
+  },
+  {
+    "name": "menu",
+    "meshes": 95,
+    "frames": 1,
+    "seconds": 0
+  },
+  {
+    "name": "portrait",
+    "meshes": 33,
+    "frames": 1,
+    "seconds": 0
+  },
+  {
+    "name": "entrance",
+    "meshes": 29,
+    "frames": 154,
+    "seconds": 5.1
+  },
+  {
+    "name": "reveal",
+    "meshes": 1,
+    "frames": 154,
+    "seconds": 5.1
+  }
+]

@@ -18,15 +18,17 @@ import java.util.*;
 public final class VelvetArchive {
  public record Request(String action,String result,List<PartyFusion.Source> sources,List<String> skills,String token,String recipient){}
  public record Stock(String owner,String ownerName,String id,String name,int level,boolean offered){}
- public record Book(String id,String name,int level,long price,boolean owned){}
+ public record Book(String id,String name,int level,long price,boolean owned,MenuSnapshot.Persona persona){}
  public record Person(String id,String name){}
  public record Recipe(String id,String name,int level,List<String> ingredients){}
- public record View(boolean open,String self,int level,long yen,List<Stock> stock,List<Book> book,List<Person> party,List<Recipe> recipes,MenuSnapshot.Persona result,List<SkillDefinition> skills,List<PartyFusion.Source> sources,String special,String token,boolean allowed,String message){}
+ public record View(boolean open,String self,int level,long yen,List<Stock> stock,List<Book> book,List<Person> party,List<Recipe> recipes,MenuSnapshot.Persona result,List<SkillDefinition> skills,List<PartyFusion.Source> sources,String special,String token,boolean allowed,String message,int capacity,int ownedCount,List<FusionSearch.Option> results,int resultCount,int resultOffset,boolean fused,String sequence){}
  private record Offer(UUID owner,UUID recipient,String persona,String fingerprint,long expiry){}
  private record Ticket(String token,List<PartyFusion.Source> sources,String special,Map<UUID,String> fingerprints,long expiry){}
  private static final Map<String,Offer> OFFERS=new HashMap<>();
  private static final Map<UUID,Ticket> TICKETS=new HashMap<>();
  private static final Map<UUID,Long> GATE=new HashMap<>();
+ private record Search(List<FusionSearch.Option> options,int offset){}
+ private static final Map<UUID,Search> SEARCH=new HashMap<>();
  private static long now(){return System.currentTimeMillis();}
  private static boolean available(ServerPlayer p){return p!=null&&FusionRoomService.available(p);}
  private static String key(UUID owner,String persona){return owner+"/"+persona;}
@@ -40,7 +42,7 @@ public final class VelvetArchive {
  public static void open(ServerPlayer p){if(available(p)){TICKETS.remove(p.m_20148_());view(p,true,null,"Escolha uma fusão ou consulte seu Compendium.");}}
  public static void handle(ServerPlayer p,Request r){
   if(r==null||r.action()==null||r.action().length()>20)return;
-  if(r.action().equals("close")){TICKETS.remove(p.m_20148_());return;}
+  if(r.action().equals("close")||r.action().equals("stand")){TICKETS.remove(p.m_20148_());SEARCH.remove(p.m_20148_());if(r.action().equals("stand")&&VelvetRoomService.inside(p)&&p.m_20202_() instanceof VelvetSeatEntity)p.m_8127_();return;}
   if(!available(p))return;
   if(now()-GATE.getOrDefault(p.m_20148_(),0L)<100)return;GATE.put(p.m_20148_(),now());
   if(r.sources()==null||r.sources().size()>6||r.skills()==null||r.skills().size()>2||r.result()==null||r.token()==null||r.recipient()==null)return;
@@ -49,7 +51,13 @@ public final class VelvetArchive {
   OFFERS.values().removeIf(o->o.expiry()<now());String message="";PartyFusion.Preview preview=null;
   switch(r.action()){
    case "open"->{open(p);return;}
-   case "refresh","cancel"->TICKETS.remove(self);
+   case "refresh","cancel"->{TICKETS.remove(self);SEARCH.remove(self);}
+   case "search"->{
+    TICKETS.remove(self);int offset;try{offset=Math.max(0,Integer.parseInt(r.result()));}catch(NumberFormatException e){offset=0;}
+    var allowed=new ArrayList<PartyFusion.Source>();for(var entry:data.entrySet())for(String id:entry.getValue().rosterIds()){var source=new PartyFusion.Source(entry.getKey(),id);if(consent(p,source,players,data))allowed.add(source);}
+    var options=FusionSearch.available(data,self,allowed);SEARCH.put(self,new Search(options,Math.min(offset,Math.max(0,(((int)options.stream().map(FusionSearch.Option::id).distinct().count()-1)/16)*16))));
+    message="Receitas disponíveis para seu nível e suas contribuições autorizadas.";
+   }
    case "summon"->{TICKETS.remove(self);if(own.summon(r.result())){own.save(p);BattleService.sync(p,"Persona invocada do Compendium.");message="Invocação concluída.";}else message="Invocação recusada: confira seu saldo, espaço e se já possui esta Persona.";}
    case "offer"->{
     TICKETS.remove(self);UUID recipient;try{recipient=UUID.fromString(r.recipient());}catch(IllegalArgumentException e){return;}
@@ -67,27 +75,31 @@ public final class VelvetArchive {
    case "confirm"->{
     var t=TICKETS.remove(self);
     if(t==null||!t.token().equals(r.token())||t.expiry()<now()||!t.fingerprints().entrySet().stream().allMatch(e->data.containsKey(e.getKey())&&sourceFingerprint(data.get(e.getKey())).equals(e.getValue()))||!t.sources().stream().allMatch(s->consent(p,s,players,data))){message="A prévia expirou ou alguém alterou a contribuição. Faça uma nova prévia.";break;}
+    var committed=PartyFusion.preview(data,self,t.sources(),t.special(),r.skills());
     if(!PartyFusion.commit(data,self,t.sources(),t.special(),r.skills())){message="Fusão recusada. Confira nível, capacidade e até duas habilidades válidas.";break;}
     var affected=new LinkedHashSet<UUID>();affected.add(self);t.sources().forEach(s->{affected.add(s.owner());OFFERS.remove(key(s.owner(),s.persona()));});
     for(var id:affected){data.get(id).save(players.get(id));BattleService.sync(players.get(id),"Fusão concluída.");if(!id.equals(self))players.get(id).m_5661_(Component.m_237113_("Sua contribuição foi usada na fusão de "+p.m_7755_().getString()+". Ela continua registrada no Compendium."),false);}
     message="Fusão concluída. A nova Persona foi registrada no Compendium.";
+    SEARCH.remove(self);view(p,false,committed,message,true,t.sources(),t.token());return;
    }
    default->{return;}
   }
   view(p,false,preview,message);
  }
- private static void view(ServerPlayer p,boolean open,PartyFusion.Preview preview,String message){
+ private static void view(ServerPlayer p,boolean open,PartyFusion.Preview preview,String message){view(p,open,preview,message,false,List.of(),"");}
+ private static void view(ServerPlayer p,boolean open,PartyFusion.Preview preview,String message,boolean fused,List<PartyFusion.Source> consumed,String sequence){
   var players=nearby(p);var data=data(players);var self=p.m_20148_();var own=data.get(self);if(own==null)return;var stock=new ArrayList<Stock>();
   for(var e:data.entrySet())for(var persona:e.getValue().rosterInstances()){
    var source=new PartyFusion.Source(e.getKey(),persona.definitionId());boolean isSelf=e.getKey().equals(self);if(!isSelf&&!consent(p,source,players,data))continue;
    stock.add(new Stock(e.getKey().toString(),players.get(e.getKey()).m_7755_().getString(),persona.definitionId(),PersonaRegistry.persona(persona.definitionId()).orElseThrow().displayName(),persona.level(),OFFERS.containsKey(key(e.getKey(),persona.definitionId()))));
   }
-  var book=own.compendiumInstances().stream().sorted(Comparator.comparingInt(PersonaInstance::level).thenComparing(PersonaInstance::definitionId)).map(i->new Book(i.definitionId(),PersonaRegistry.persona(i.definitionId()).orElseThrow().displayName(),i.level(),PlayerPersonaData.summonPrice(i),own.rewardInstance(i.definitionId())!=null)).toList();
+  var book=own.compendiumInstances().stream().sorted(Comparator.comparingInt(PersonaInstance::level).thenComparing(PersonaInstance::definitionId)).map(i->new Book(i.definitionId(),PersonaRegistry.persona(i.definitionId()).orElseThrow().displayName(),i.level(),PlayerPersonaData.summonPrice(i),own.rewardInstance(i.definitionId())!=null,MenuService.describe(i))).toList();
   var recipes=ReloadCatalogue.special().entrySet().stream().map(e->{var d=PersonaRegistry.persona(e.getKey()).orElseThrow();return new Recipe(d.id(),d.displayName(),d.baseLevel(),e.getValue());}).sorted(Comparator.comparingInt(Recipe::level)).toList();
   var ticket=TICKETS.get(self);var skills=preview==null?List.<SkillDefinition>of():preview.inheritable().stream().map(id->PersonaRegistry.skill(id).orElseThrow()).toList();
-  var view=new View(open,self.toString(),own.playerLevel(),own.yen(),stock,book,players.values().stream().filter(x->x!=p).map(x->new Person(x.m_20148_().toString(),x.m_7755_().getString())).toList(),recipes,preview==null?null:MenuService.describe(preview.result()),skills,ticket==null?List.of():ticket.sources(),ticket==null?"":ticket.special(),ticket==null?"":ticket.token(),preview!=null&&preview.allowed(),message);
+  var search=SEARCH.get(self);var keys=search==null?List.<String>of():search.options().stream().map(FusionSearch.Option::id).distinct().toList();var visible=search==null?Set.<String>of():new HashSet<>(keys.subList(search.offset(),Math.min(keys.size(),search.offset()+16)));var results=search==null?List.<FusionSearch.Option>of():search.options().stream().filter(o->visible.contains(o.id())).toList();
+  var view=new View(open,self.toString(),own.playerLevel(),own.yen(),stock,book,players.values().stream().filter(x->x!=p).map(x->new Person(x.m_20148_().toString(),x.m_7755_().getString())).toList(),recipes,preview==null?null:MenuService.describe(preview.result()),skills,fused?consumed:ticket==null?List.of():ticket.sources(),ticket==null?"":ticket.special(),ticket==null?"":ticket.token(),preview!=null&&preview.allowed(),message,own.personaCapacity(),own.rosterIds().size(),results,keys.size(),search==null?0:search.offset(),fused,sequence);
   FusionNetwork.archiveReply(p,view);
  }
- @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){var id=e.getEntity().m_20148_();TICKETS.remove(id);GATE.remove(id);OFFERS.values().removeIf(o->o.owner().equals(id)||o.recipient().equals(id));}
- @SubscribeEvent public static void stop(ServerStoppedEvent e){OFFERS.clear();TICKETS.clear();GATE.clear();}
+ @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){var id=e.getEntity().m_20148_();TICKETS.remove(id);GATE.remove(id);SEARCH.remove(id);OFFERS.values().removeIf(o->o.owner().equals(id)||o.recipient().equals(id));}
+ @SubscribeEvent public static void stop(ServerStoppedEvent e){OFFERS.clear();TICKETS.clear();GATE.clear();SEARCH.clear();}
 }

@@ -22,7 +22,7 @@ public final class VelvetCommands {
    }
 
    public static void register(CommandDispatcher<CommandSourceStack> var0) {
-      ProgressionCommands.register(var0);YenCommands.register(var0);
+      com.gx.velveteclipse.party.MaximumPlayers.register(var0);ProgressionCommands.register(var0);YenCommands.register(var0);
       var0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal(
                                           "velvet"
