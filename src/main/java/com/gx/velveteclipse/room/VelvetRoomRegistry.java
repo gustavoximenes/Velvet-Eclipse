@@ -14,15 +14,13 @@ public final class VelvetRoomRegistry {
  public static final DeferredRegister<EntityType<?>> ENTITIES=DeferredRegister.create(ForgeRegistries.ENTITY_TYPES,"velvet_eclipse");
  public static final DeferredRegister<CreativeModeTab> TABS=DeferredRegister.create(Registries.f_279569_,"velvet_eclipse");
  private static BlockBehaviour.Properties solid(){return BlockBehaviour.Properties.m_284310_().m_60913_(3,12);}
- public static final RegistryObject<Block> FLOOR=BLOCKS.register("velvet_floor",()->new Block(solid().m_60953_(s->15)));
- public static final RegistryObject<Block> WALL=BLOCKS.register("velvet_wall",()->new Block(solid().m_60953_(s->15)));
- public static final RegistryObject<Block> TRIM=BLOCKS.register("velvet_trim",()->new Block(solid().m_60953_(s->15)));
+ public static final RegistryObject<Block> FLOOR=BLOCKS.register("velvet_floor",()->new VelvetScenicBlock(solid().m_60953_(s->15)));
+ public static final RegistryObject<Block> WALL=BLOCKS.register("velvet_wall",()->new VelvetScenicBlock(solid().m_60953_(s->15)));
+ public static final RegistryObject<Block> TRIM=BLOCKS.register("velvet_trim",()->new VelvetScenicBlock(solid().m_60953_(s->15)));
  public static final RegistryObject<Block> GATE=BLOCKS.register("velvet_grille",VelvetGrilleBlock::new);
  public static final RegistryObject<VelvetDoorBlock> DOOR=BLOCKS.register("velvet_door",VelvetDoorBlock::new);
  public static final RegistryObject<VelvetChairBlock> CHAIR=BLOCKS.register("velvet_chair",VelvetChairBlock::new);
- public static final RegistryObject<Block> TABLE=BLOCKS.register("velvet_table",()->new Block(solid().m_60955_()){
-  @Override public net.minecraft.world.phys.shapes.VoxelShape m_5940_(net.minecraft.world.level.block.state.BlockState s,net.minecraft.world.level.BlockGetter l,net.minecraft.core.BlockPos p,net.minecraft.world.phys.shapes.CollisionContext c){return Block.m_49796_(-8,0,-8,24,14,24);}
- });
+ public static final RegistryObject<Block> TABLE=BLOCKS.register("velvet_table",VelvetTableBlock::new);
  public static final RegistryObject<Item> KEY=ITEMS.register("velvet_key",VelvetKeyItem::new);
  public static final RegistryObject<Item> EVOKER=ITEMS.register("model_evoker",()->new com.gx.velveteclipse.item.EvokerItem(new Item.Properties().m_41487_(1)));
  static {for(var block:BLOCKS.getEntries())ITEMS.register(block.getId().m_135815_(),()->new BlockItem(block.get(),new Item.Properties()));}

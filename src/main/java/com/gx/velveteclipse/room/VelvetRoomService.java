@@ -69,30 +69,42 @@ public final class VelvetRoomService {
   for(int x=-6;x<=6;x++)for(int z=2;z<=VelvetRoomLayout.depth(extent);z++){
    var at=new BlockPos(x,64,z);if(level.m_8055_(at).m_60713_(VelvetRoomRegistry.CHAIR.get())&&!keep.contains(at)&&level.m_45976_(VelvetSeatEntity.class,new AABB(at).m_82400_(.3)).isEmpty())level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);
   }
-  if(saved.done&&saved.version==3&&saved.active==capacity){ensureIgor(level,saved);return;}
+  if(saved.done&&saved.version==4&&saved.active==capacity){ensureIgor(level,saved);return;}
+  // Migrate v1-v3 rooms as well as newly built rooms. Remove only our old decor.
+  var retired=Map.of("grille",VelvetRoomRegistry.GATE.get(),"trim",VelvetRoomRegistry.TRIM.get(),"table",VelvetRoomRegistry.TABLE.get(),"chair",VelvetRoomRegistry.CHAIR.get());
+  if(saved.version<4)for(var cell:VelvetRoomLayout.retiredDecoration()){
+   var at=new BlockPos(cell.x(),cell.y(),cell.z());
+   if(level.m_8055_(at).m_60713_(retired.get(cell.material()))&&level.m_45976_(VelvetSeatEntity.class,new AABB(at).m_82400_(.3)).isEmpty())level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);
+  }
   if(saved.done&&VelvetRoomLayout.depth(extent)>VelvetRoomLayout.depth(saved.capacity))for(int x=-7;x<=7;x++)for(int y=64;y<73;y++)level.m_7731_(new BlockPos(x,y,VelvetRoomLayout.depth(saved.capacity)),Blocks.f_50016_.m_49966_(),2);
   var palette=Map.of("floor",VelvetRoomRegistry.FLOOR.get(),"wall",VelvetRoomRegistry.WALL.get(),"trim",VelvetRoomRegistry.TRIM.get(),"grille",VelvetRoomRegistry.GATE.get());
-  for(var cell:VelvetRoomLayout.cells(extent)){var state=palette.get(cell.material()).m_49966_();if(cell.material().equals("grille"))state=state.m_61124_(HorizontalDirectionalBlock.f_54117_,cell.x()==-7?Direction.EAST:cell.x()==7?Direction.WEST:Direction.SOUTH);level.m_7731_(new BlockPos(cell.x(),cell.y(),cell.z()),state,2);}
-  level.m_7731_(new BlockPos(0,64,-2),VelvetRoomRegistry.TABLE.get().m_49966_(),2);
+  for(var cell:VelvetRoomLayout.cells(extent)){var state=palette.get(cell.material()).m_49966_().m_61124_(VelvetScenicBlock.SCENIC,true);level.m_7731_(new BlockPos(cell.x(),cell.y(),cell.z()),state,2);}
+  level.m_7731_(new BlockPos(0,64,-3),VelvetRoomRegistry.TABLE.get().m_49966_().m_61124_(VelvetScenicBlock.SCENIC,true),2);
   for(int[] xyz:VelvetRoomLayout.seats(capacity))level.m_7731_(new BlockPos(xyz[0],xyz[1],xyz[2]),VelvetRoomRegistry.CHAIR.get().m_49966_(),2);
-  level.m_7731_(new BlockPos(0,64,-5),VelvetRoomRegistry.CHAIR.get().m_49966_().m_61124_(HorizontalDirectionalBlock.f_54117_,Direction.SOUTH),2);
   int oldDoor=VelvetRoomLayout.depth(saved.capacity)-1,newDoor=VelvetRoomLayout.depth(extent)-1;
   if(oldDoor!=newDoor)for(int y=64;y<=65;y++){var at=new BlockPos(0,y,oldDoor);if(level.m_8055_(at).m_60713_(VelvetRoomRegistry.DOOR.get()))level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);}
-  placeDoor(level,new BlockPos(0,64,newDoor),Direction.NORTH);saved.done=true;saved.version=3;saved.capacity=extent;saved.active=capacity;saved.m_77762_();ensureIgor(level,saved);
+  placeDoor(level,new BlockPos(0,64,newDoor),Direction.NORTH);saved.done=true;saved.version=4;saved.capacity=extent;saved.active=capacity;saved.m_77762_();ensureIgor(level,saved);
  }
  private static void ensureIgor(ServerLevel level,Built saved){
-  level.m_46745_(new BlockPos(3,64,-5));
-  if(level.m_45976_(com.gx.velveteclipse.equipment.ElizabethEntity.class,new AABB(1,63,-7,5,68,-2)).isEmpty()){
-   var attendant=com.gx.velveteclipse.equipment.EquipmentRegistry.ELIZABETH.get().m_20615_(level);
-   if(attendant!=null){attendant.m_6034_(2.95,64,-4.4);attendant.m_146922_(5);level.m_7967_(attendant);}
-  }
-  if(!saved.igor.isEmpty())try{if(level.m_8791_(UUID.fromString(saved.igor)) instanceof IgorEntity)return;}catch(IllegalArgumentException ignored){}
-  level.m_46745_(new BlockPos(0,64,-5));
-  var existing=level.m_45976_(IgorEntity.class,new AABB(-2,63,-7,3,68,-2));
-  if(!existing.isEmpty()){saved.igor=existing.get(0).m_20148_().toString();saved.m_77762_();return;}
-  var igor=VelvetRoomRegistry.IGOR.get().m_20615_(level);if(igor==null)return;
-  igor.m_6034_(.5,64.125,-4.5);igor.m_146922_(0);
-  if(level.m_7967_(igor)){saved.igor=igor.m_20148_().toString();saved.m_77762_();}
+  var anchor=new BlockPos(3,64,-5);level.m_46745_(anchor);
+  // A loaded block chunk does not imply its saved entities are ready yet.
+  boolean loaded=level.m_143319_(new ChunkPos(anchor).m_45588_());
+  var attendants=level.m_45976_(com.gx.velveteclipse.equipment.ElizabethEntity.class,new AABB(1,63,-7,5,68,-2));
+  var attendant=VelvetRoomResidents.reconcile(loaded,attendants,saved.elizabeth,net.minecraft.world.entity.Entity::m_20148_,()->{
+   var npc=com.gx.velveteclipse.equipment.EquipmentRegistry.ELIZABETH.get().m_20615_(level);if(npc==null)return null;
+   npc.m_6034_(2.95,64,-4.4);npc.m_146922_(5);return level.m_7967_(npc)?npc:null;
+  },net.minecraft.world.entity.Entity::m_146870_);
+  if(attendant!=null){attendant.m_6034_(2.95,64,-4.4);attendant.m_146922_(5);String id=attendant.m_20148_().toString();if(!id.equals(saved.elizabeth)){saved.elizabeth=id;saved.m_77762_();}}
+  // All room Igor anchors and both Elizabeth positions from v1-v3 are covered.
+  var igors=level.m_45976_(IgorEntity.class,new AABB(-2,63,-7,3,68,-2));
+  // The Igor search overlaps the western chunk, which must also be entity-ready.
+  boolean westReady=level.m_143319_(new ChunkPos(new BlockPos(-1,64,-5)).m_45588_());
+  level.m_46745_(new BlockPos(-1,64,-5));
+  var igor=VelvetRoomResidents.reconcile(loaded&&westReady,igors,saved.igor,net.minecraft.world.entity.Entity::m_20148_,()->{
+   var npc=VelvetRoomRegistry.IGOR.get().m_20615_(level);if(npc==null)return null;
+   npc.m_6034_(.5,64.125,-4.5);npc.m_146922_(0);return level.m_7967_(npc)?npc:null;
+  },net.minecraft.world.entity.Entity::m_146870_);
+  if(igor!=null){String id=igor.m_20148_().toString();if(!id.equals(saved.igor)){saved.igor=id;saved.m_77762_();}}
  }
- private static final class Built extends SavedData {boolean done;int version,capacity=4,active;String igor="";static Built load(CompoundTag tag){var b=new Built();b.done=tag.m_128471_("built");b.igor=tag.m_128461_("igor");b.version=tag.m_128451_("version");b.capacity=Math.max(4,tag.m_128451_("capacity"));b.active=tag.m_128451_("active");return b;}@Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("version",version);tag.m_128405_("capacity",capacity);tag.m_128405_("active",active);tag.m_128379_("built",done);tag.m_128359_("igor",igor);return tag;}}
+ private static final class Built extends SavedData {boolean done;int version,capacity=4,active;String igor="",elizabeth="";static Built load(CompoundTag tag){var b=new Built();b.done=tag.m_128471_("built");b.igor=tag.m_128461_("igor");b.elizabeth=tag.m_128461_("elizabeth");b.version=tag.m_128451_("version");b.capacity=Math.max(4,tag.m_128451_("capacity"));b.active=tag.m_128451_("active");return b;}@Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("version",version);tag.m_128405_("capacity",capacity);tag.m_128405_("active",active);tag.m_128379_("built",done);tag.m_128359_("igor",igor);tag.m_128359_("elizabeth",elizabeth);return tag;}}
 }

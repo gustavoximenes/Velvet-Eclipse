@@ -123,8 +123,13 @@ def cards(t):
   h=width*1.5;p=np.array([[-width/2,-h/2,0],[-width/2,h/2,0],[width/2,h/2,0],[width/2,-h/2,0]])
   # Unit vertices; all size changes are uniform in the card plane.
   uv=np.array([[1,1],[1,0],[0,0],[0,1]]);mat=T(pos)@R(rotation)@S(width/.48)
-  if f'card/{i}' not in meshes:p*=.48/width
-  mesh('card/'+str(i),'velvet_fusion_card',np.concatenate([np.c_[p,uv],np.c_[p[::-1],uv[::-1]]]),mat,0,100+i)
+  p*=.48/width
+  # Separate surfaces, separated in depth. disableCull must not draw two coplanar
+  # copies of the back over the portrait. Each ingredient gets its own binding.
+  p[:,2]=-.003
+  mesh('card/front/'+str(i),'velvet_fusion_front',np.c_[p,uv],mat,0,100+i)
+  p[:,2]=.003
+  mesh('card/back/'+str(i),'velvet_fusion_card',np.c_[p[::-1],uv],mat,0,100+i)
 
 def effect_segment(key,a,z,width,color,cam,opacity=1):
  a=np.asarray(a);z=np.asarray(z);along=z-a;side=np.cross(along,cam.eye-a);norm=np.linalg.norm(side)

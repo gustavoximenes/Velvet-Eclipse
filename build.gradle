@@ -31,7 +31,7 @@ tasks.register('reloadPresentationPreview', JavaExec) {
     jvmArgs '-Djava.awt.headless=true'
 }
 group = 'com.gx.velveteclipse'
-version = '0.6.39-velvet-room-rework'
+version = '0.6.40-velvet-room-fixes'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -220,5 +220,12 @@ tasks.register('velvetReworkTest', JavaExec) {
     dependsOn testClasses
     classpath = sourceSets.test.runtimeClasspath
     mainClass = 'com.gx.velveteclipse.tests.VelvetReworkAudit'
+    jvmArgs '-Djava.awt.headless=true'
+}
+
+tasks.register('velvetRoomFixTest', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.gx.velveteclipse.tests.VelvetRoomFixAudit'
     jvmArgs '-Djava.awt.headless=true'
 }

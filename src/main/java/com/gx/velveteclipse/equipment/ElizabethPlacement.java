@@ -12,8 +12,8 @@ import net.minecraftforge.event.TickEvent;
 public final class ElizabethPlacement {
  @SubscribeEvent public static void tick(TickEvent.PlayerTickEvent e){
   if(e.phase!=TickEvent.Phase.END||!(e.player instanceof ServerPlayer p)||p.f_19797_%40!=0)return;
-  if(VelvetRoomService.inside(p))ensure(p,3.25,64,-4.5,0,false);
-  else if(TartarusDungeonService.inside(p)&&TartarusInteriorLayout.floorAt(p.m_20185_())==0&&TartarusDungeonService.ready(TartarusDungeonService.data(p.m_284548_()),0))ensure(p,-21,65,4.5,-60,true);
+  // VelvetRoomService alone owns the room residents, including legacy migration.
+  if(TartarusDungeonService.inside(p)&&TartarusInteriorLayout.floorAt(p.m_20185_())==0&&TartarusDungeonService.ready(TartarusDungeonService.data(p.m_284548_()),0))ensure(p,-21,65,4.5,-60,true);
  }
  private static void ensure(ServerPlayer p,double x,double y,double z,float yaw,boolean merchant){
   var level=p.m_284548_();var at=new BlockPos((int)Math.floor(x),(int)y,(int)Math.floor(z));

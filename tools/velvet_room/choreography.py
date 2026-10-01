@@ -232,7 +232,8 @@ def card_state(t,i):
 def camera(t):
     if t<2.1:return f.shot(t)
     u=f.ease(t,3.8,5.4)
-    eye=v.mix([5.5,3.05,-5.1],[3.4,2.25,-.5],u)
+    # Keep the shot inside the x=5.1 elevator grille; its bars must not cross Igor/cards.
+    eye=v.mix([4.65,3.05,-5.1],[3.4,2.25,-.5],u)
     target=v.mix([0,1.73,.35],[0,1.61,-1.95],u)
     return b.Camera(eye,target,53-10*u)
 

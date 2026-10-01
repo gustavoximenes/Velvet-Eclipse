@@ -1,5 +1,5 @@
-# Estado da leva aprovada
+# Estado da versão
 
-O usuário autorizou gerar o JAR e fazer commit em 01/10/2026. As alterações de poses, Velvet Room, fusões e invocação estão reunidas na versão 0.6.39.
+Correções de sobreposição, residentes duplicados, cartas e cor com shaders reunidas na versão 0.6.40. Consulte `VELVET-ROOM-FIXES.md`. A leva anterior foi publicada na 0.6.39.
 
-Consulte `VELVET-ROOM-REWORK.md` para mudanças, controles e validação. Continua pendente a conferência visual dentro do Minecraft com shader e multiplayer real; os testes realizados foram offline e em contexto GPU isolado.
+Permanece pendente a conferência visual dentro do Minecraft com o pacote de shaders do jogador; testes desta correção foram offline e em contexto GPU isolado, sem controle do computador.

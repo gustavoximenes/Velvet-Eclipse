@@ -17,11 +17,16 @@ import java.io.IOException;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
 public final class VelvetRoomShaderLighting {
  private static ShaderInstance shader;private static int texture,width,height;private static boolean failed;
+ private static java.lang.reflect.Field ready,shadow;
  @SubscribeEvent public static void shaders(RegisterShadersEvent e)throws IOException{
   e.registerShader(new ShaderInstance(e.getResourceProvider(),new ResourceLocation("velvet_eclipse","velvet_room_light"),DefaultVertexFormat.f_85817_),s->shader=s);
  }
  public static void render(){
   var mc=Minecraft.m_91087_();if(failed||shader==null||mc.f_91074_==null||!VelvetRoomService.inside(mc.f_91074_))return;
+  try{
+   if(ready==null){var type=Class.forName("net.optifine.shaders.Shaders",false,VelvetRoomShaderLighting.class.getClassLoader());ready=type.getDeclaredField("isShaderPackInitialized");shadow=type.getDeclaredField("isShadowPass");ready.setAccessible(true);shadow.setAccessible(true);}
+   if(!ready.getBoolean(null)||shadow.getBoolean(null))return;
+  }catch(ReflectiveOperationException e){failed=true;com.mojang.logging.LogUtils.getLogger().warn("Room pack color correction unavailable",e);return;}
   var previous=RenderSystem.getShader();int active=GL11.glGetInteger(GL13.GL_ACTIVE_TEXTURE),logicalTexture=RenderSystem.getShaderTexture(0);
   RenderSystem.activeTexture(GL13.GL_TEXTURE0);int binding=GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
   boolean depth=GL11.glIsEnabled(GL11.GL_DEPTH_TEST),blend=GL11.glIsEnabled(GL11.GL_BLEND),cull=GL11.glIsEnabled(GL11.GL_CULL_FACE),write=GL11.glGetBoolean(GL11.GL_DEPTH_WRITEMASK);

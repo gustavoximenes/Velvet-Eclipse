@@ -1,3 +1,11 @@
+# 0.6.40-velvet-room-fixes
+
+- Migra salas antigas: remove decoração duplicada e substitui paredes/piso de fundo por materiais lisos, com colisão alinhada à mesa redonda.
+- Centraliza a criação de Elizabeth, aguarda entidades carregarem e remove duplicatas na área de atendimento; proteção equivalente para Igor.
+- Cartas de fusão recebem retratos das Personas usadas, frente e verso separados e câmera dentro do gradil.
+- Corrige o desvio rosado apenas com shaders OptiFine ativos, preservando a paleta sem shaders.
+- Verificações focadas de migração, NPCs, cartas, sala e GLSL aprovadas; validação visual in-game pendente. [Detalhes](docs/VELVET-ROOM-FIXES.md).
+
 # 0.6.39-velvet-room-rework
 
 - Integra as prévias aprovadas da Velvet Room: entrada com corredor/portas e Elizabeth, gradis, sofá, mesa, Igor e skin real do jogador nas cenas.

@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.40 — correções da Velvet Room
+
+Corrige decoração antiga sobreposta à nova sala, Elizabeth duplicada, retratos ausentes nas cartas de fusão e tom rosado com shaders OptiFine. Migração automática das salas existentes; paleta sem shaders preservada. Use esta versão no cliente e servidor. [Mudanças e validação offline](docs/VELVET-ROOM-FIXES.md).
+
 # Velvet Eclipse 0.6.39 — Velvet Room, fusões e invocação
 
 Velvet Room com transição, arquitetura e menus reformulados; Compêndio, busca por resultado e herança no inspect do TAB. Fusão com Igor, cartas horizontais e efeito na nuca. Invocação com Persona próxima e círculo único de fogo azul; iluminação da sala reforçada com correção específica para OptiFine. Limite padrão de quatro jogadores por grupo/combate, configurável com `/velvet maximum_player`, e cadeiras conforme a capacidade. Inclui as poses de espera revisadas. **Clientes e servidor precisam desta versão**: protocolo de fusões **3**, party **2**, principal **22** e exploração **4**. [Uso e validação](docs/VELVET-ROOM-REWORK.md).

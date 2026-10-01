@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "scenic=false": {
       "model": "velvet_eclipse:block/velvet_wall"
+    },
+    "scenic=true": {
+      "model": "velvet_eclipse:block/velvet_wall_scenic"
     }
   }
 }

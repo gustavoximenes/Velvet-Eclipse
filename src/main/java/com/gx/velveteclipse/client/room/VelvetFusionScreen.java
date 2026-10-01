@@ -23,7 +23,7 @@ public final class VelvetFusionScreen extends Screen {
  @Override public boolean m_7933_(int key,int scan,int mods){if(key==256||key==257){finish();return true;}if(key==340||key==344){FusionNetwork.archiveRequest(new VelvetArchive.Request("stand","",List.of(),List.of(),"",""));ended=true;super.m_7379_();return true;}return true;}
  @Override public void m_88315_(GuiGraphics g,int mx,int my,float partial){
   double t=time();g.m_280509_(0,0,f_96543_,f_96544_,0xFF030421);
-  if(t<7.6&&scene!=null)scene.draw(g,f_96543_,f_96544_,t,"",result.sources().size());
+  if(t<7.6&&scene!=null)scene.draw(g,f_96543_,f_96544_,t,result.sources().stream().map(com.gx.velveteclipse.core.fusion.PartyFusion.Source::persona).toList());
   else if(room!=null)room.draw(g,f_96543_,f_96544_,t-7.6,"",0);
   double scale=Math.min(f_96543_/900.,f_96544_/500.);var pose=g.m_280168_();pose.m_85836_();pose.m_85837_((f_96543_-900*scale)/2,(f_96544_-500*scale)/2,0);pose.m_85841_((float)scale,(float)scale,1);var c=new MenuCanvas(g);
   try{

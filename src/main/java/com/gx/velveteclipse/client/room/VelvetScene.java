@@ -56,6 +56,12 @@ public final class VelvetScene {
     }
     public static VelvetScene load(String name){try{return new VelvetScene(name);}catch(IOException e){com.mojang.logging.LogUtils.getLogger().error("Cannot load Velvet Room scene {}",name,e);return null;}}
     public void draw(GuiGraphics g,int width,int height,double time,String persona,int cards){
+        draw(g,width,height,time,cards,List.of());
+    }
+    public void draw(GuiGraphics g,int width,int height,double time,List<String> sources){
+        draw(g,width,height,time,sources.size(),sources);
+    }
+    private void draw(GuiGraphics g,int width,int height,double time,int cards,List<String> sources){
         var mc=Minecraft.m_91087_();if(mc.f_91074_==null)return;
         float[] frame=sample(time);double visual=time;
         var eye=new Vector3f(frame[0],frame[1],frame[2]);var front=new Vector3f(frame[9],frame[10],frame[11]);var up=new Vector3f(frame[6],frame[7],frame[8]);
@@ -70,7 +76,11 @@ public final class VelvetScene {
 
             int variant="slim".equals(mc.f_91074_.m_108564_())?2:1;
             // Opaque bodies first, materialization last; textures are batched per actor.
-            var textures=new LinkedHashSet<String>();for(var m:meshes)textures.add(m.texture);
+            var bindings=new ArrayList<String>();var textures=new LinkedHashSet<String>();
+            for(var m:meshes){int index=m.skinSlot-100;String texture=m.texture;
+                if(texture.equals("velvet_fusion_front"))texture=index>=0&&index<sources.size()?FusionCardTextures.front(sources.get(index)):"velvet_fusion_card";
+                bindings.add(texture);textures.add(texture);
+            }
             for(String texture:textures){
                 if(texture.equals("velvet_room_glow"))RenderSystem.blendFunc(com.mojang.blaze3d.platform.GlStateManager.SourceFactor.SRC_ALPHA,com.mojang.blaze3d.platform.GlStateManager.DestFactor.ONE);else RenderSystem.defaultBlendFunc();
                 RenderSystem.setShader(GameRenderer::m_172820_);
@@ -79,9 +89,9 @@ public final class VelvetScene {
                 for(int j=0;j<meshes.size();j++){
                     var mesh=meshes.get(j);int offset=14+j*16;
                     if(mesh.skinSlot>=100&&mesh.skinSlot-100>=cards)continue;
-                    if(!texture.equals(mesh.texture)||mesh.variant!=0&&mesh.variant!=variant||frame[offset+15]<.5||!skinVisible(mesh.skinSlot))continue;
+                    if(!texture.equals(bindings.get(j))||mesh.variant!=0&&mesh.variant!=variant||frame[offset+15]<.5||!skinVisible(mesh.skinSlot))continue;
                     float opacity=frame[offset+15];
-                    vertices(buffer,mesh.vertices,frame,offset,opacity,visual,texture.equals("velvet_room_palette")||texture.equals("velvet_room_glow"));
+                    vertices(buffer,mesh.vertices,frame,offset,opacity,visual,mesh.skinSlot>=100||texture.equals("velvet_room_palette")||texture.equals("velvet_room_glow"));
                 }
                 BufferUploader.m_231202_(buffer.m_231175_());
             }

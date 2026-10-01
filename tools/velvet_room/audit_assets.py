@@ -19,7 +19,9 @@ for scene in json.loads((c.ASSET/'room/manifest.json').read_text()):
    vertices=np.frombuffer(f.read(n*20),dtype='>f4').reshape(n,5)
    assert np.isfinite(vertices).all()
    slot=integer();meshes.append((texture,variant,slot))
-   assert texture=='player' or (c.ASSET/'textures/entity'/f'{texture}.png').exists()
+   assert texture in ('player','velvet_fusion_front') or (c.ASSET/'textures/entity'/f'{texture}.png').exists()
+   if texture=='velvet_fusion_front':assert slot>=100 and (vertices[:,2]<0).all()
+   if texture=='velvet_fusion_card':assert slot>=100 and (vertices[:,2]>0).all()
   start,fps=struct.unpack('>ff',f.read(8));frames=integer()
   data=np.frombuffer(f.read(),dtype='>f4').reshape(frames,14+16*count)
   assert fps==30 and start==0 and frames==scene['frames'] and np.isfinite(data).all()
@@ -31,6 +33,9 @@ for scene in json.loads((c.ASSET/'room/manifest.json').read_text()):
   assert np.allclose(singular,singular[0],atol=1e-6),f'{name}: animated body scale'
   assert np.allclose(singular,singular[:,:1],atol=1e-6),f'{name}: stretched bone'
  if name=='fusion':
+  assert sum(t=='velvet_fusion_front' for t,_,_ in meshes)==6
+  assert sum(t=='velvet_fusion_card' for t,_,_ in meshes)==6
+  assert (data[:,0]<5.1).all(),'camera outside the grille'
   for i,(texture,variant,slot) in enumerate(meshes):
    if slot<100:continue
    visible=matrices[:,i,3,3]>.5
