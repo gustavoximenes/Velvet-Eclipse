@@ -1,0 +1,29 @@
+{
+  "format": 1,
+  "samples": 3,
+  "dimensions": [
+    440,
+    640
+  ],
+  "faces": {
+    "main_wide": 84,
+    "main_slim": 84,
+    "skill_wide": 210,
+    "skill_slim": 210,
+    "equip_wide": 84,
+    "equip_slim": 84,
+    "roster_wide": 84,
+    "roster_slim": 84,
+    "status_wide": 72,
+    "status_slim": 72,
+    "system_wide": 72,
+    "system_slim": 72,
+    "item_wide": 72,
+    "item_slim": 72
+  },
+  "textureBindings": [
+    "live_player_skin",
+    "evoker_fx"
+  ],
+  "main": "Approved reference reflected horizontally at identical scale"
+}

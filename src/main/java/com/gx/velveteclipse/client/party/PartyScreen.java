@@ -30,16 +30,21 @@ public final class PartyScreen extends Screen {
  @Override public boolean m_5534_(char ch,int mods){if(tab==2&&!confirm&&ch>='0'&&ch<='9'){if(!amountFocus){amount="";amountFocus=true;}if(amount.length()<10)amount=(amount.equals("0")?"":amount)+ch;return true;}return true;}
  @Override public boolean m_6050_(double x,double y,double d){if(!confirm){selected+=d<0?1:-1;bound();}return true;}
  private double scale(){return Math.min(f_96543_/900.,f_96544_/500.);}private double left(){return(f_96543_-900*scale())/2;}private double top(){return(f_96544_-500*scale())/2;}
- @Override public boolean m_6375_(double mx,double my,int button){if(button==1){m_7379_();return true;}if(button!=0)return true;double x=(mx-left())/scale(),y=(my-top())/scale();if(confirm){if(y>400)activate();return true;}if(x<220&&y>=136&&y<316){change((int)((y-136)/45));return true;}if(x>=245&&x<=615&&y>=135&&y<387){int n=offset+(int)((y-135)/36);if(n<rows().size())selected=n;}if(x>630&&y>230&&y<300)amountFocus=true;if(y>402&&x>620)activate();return true;}
- @Override public void m_88315_(GuiGraphics g,int mx,int my,float partial){var p=g.m_280168_();p.m_85836_();p.m_85837_(left(),top(),0);p.m_85841_((float)scale(),(float)scale(),1);var c=new EquipmentCanvas(g,f_96547_);try{g.m_286007_(()->{
-  c.fill(0,0,900,500,0xF004103A);c.poly(new double[]{0,28,900,0,875,100,0,124},0xFF1549E9);c.text("PARTY",31,43,48,MenuDesign.WHITE,-3);c.text("EXPLORAR JUNTOS",500,54,25,MenuDesign.CYAN,-3);
-  String[] tabs={"INTEGRANTES","CONVIDAR","COMPARTILHAR","CONVITES"};for(int i=0;i<4;i++){c.fill(18,136+i*45,203,37,i==tab?MenuDesign.CYAN:0xFF082259);c.text(tabs[i],28,146+i*45,18,i==tab?MenuDesign.INK:MenuDesign.WHITE,0);}
-  var rows=rows();for(int i=0;i<Math.min(7,rows.size()-offset);i++){var r=rows.get(i+offset);boolean focus=selected==i+offset;c.fill(245,135+i*36,367,34,focus?MenuDesign.WHITE:0xFF082559);c.text(MenuDesign.fit(c,r.label(),349,18),254,136+i*36,18,focus?MenuDesign.INK:MenuDesign.WHITE,0);c.text(MenuDesign.fit(c,r.detail(),349,11),254,157+i*36,11,focus?0xFF245E99:MenuDesign.CYAN,0);}
-  if(rows.isEmpty())c.wrap(tab==3?"Nenhum convite pendente.":"Nenhum jogador disponível nesta lista.",254,154,22,340,4);
-  String to=data.members().stream().filter(m->m.id().equals(recipient)).map(PartyNetwork.Person::name).findFirst().orElse("");c.wrap(tab==2&&!recipient.isEmpty()?"Enviar para "+to:"A party compartilha os setores e baús descobertos no mapa durante a Dark Hour.",635,147,19,235,6);
-  if(tab==2&&!recipient.isEmpty()){c.text("QUANTIDADE",639,263,13,MenuDesign.CYAN,0);c.fill(635,282,229,32,amountFocus?0xFF163F96:0xFF072457);c.text(amount.isEmpty()?"0":amount,647,288,23,MenuDesign.WHITE,0);c.wrap("Digite um valor ou use ← / →. Equipamentos precisam estar desequipados.",638,327,14,228,4);}
-  c.fill(632,406,236,35,MenuDesign.CYAN);c.text(waiting?"Aguarde…":confirm?"ENTER  Confirmar":"ENTER  Selecionar",645,416,19,MenuDesign.INK,0);
-  if(confirm){c.fill(245,135,367,251,0xFA082051);var r=rows.get(selected);c.wrap("Confirmar: "+r.label()+(tab==2?" • quantidade "+amount+" • para "+to:""),267,193,24,325,6);c.text("ESC  Cancelar",270,354,17,MenuDesign.CYAN,0);}
-  c.wrap(data.message(),246,449,14,626,1);c.text("Q / E  Aba   SETAS  Selecionar   ENTER  Ação   R  Atualizar   ESC  Voltar",25,478,13,MenuDesign.WHITE,0);
- });}finally{g.m_280262_();p.m_85849_();}}
+ @Override public boolean m_6375_(double mx,double my,int button){
+  if(button==1){m_7379_();return true;}if(button!=0)return true;double x=(mx-left())/scale(),y=(my-top())/scale();
+  if(ReloadPartyDesign.action().contains(x,y)){activate();return true;}if(confirm)return true;
+  for(int i=0;i<4;i++)if(ReloadPartyDesign.tab(i).contains(x,y)){change(i);return true;}
+  for(int i=0;i<7;i++)if(ReloadPartyDesign.row(i).contains(x,y)&&offset+i<rows().size()){boolean again=selected==offset+i;selected=offset+i;if(again)activate();return true;}
+  if(tab==2&&ReloadPartyDesign.amount().contains(x,y))amountFocus=true;return true;
+ }
+ @Override public void m_88315_(GuiGraphics g,int mx,int my,float partial){
+  var pose=g.m_280168_();pose.m_85836_();pose.m_85837_(left(),top(),0);pose.m_85841_((float)scale(),(float)scale(),1);
+  var canvas=new com.gx.velveteclipse.client.menu.MenuCanvas(g);double seconds=System.nanoTime()*1e-9;
+  try{g.m_286007_(() -> com.gx.velveteclipse.client.menu.ReloadMenuDesign.backdrop(canvas,seconds,true));
+   var displayed=rows().stream().map(r->new ReloadPartyDesign.Row(r.label(),r.detail())).toList();
+   String recipientName=data.members().stream().filter(m->m.id().equals(recipient)).map(PartyNetwork.Person::name).findFirst().orElse("");
+   pose.m_85837_(0,0,com.gx.velveteclipse.client.menu.MenuDepth.FOREGROUND);
+   g.m_286007_(() -> ReloadPartyDesign.paint(canvas,tab,displayed,selected,offset,data.members().size(),data.maximumPlayers(),recipientName,amount,amountFocus,waiting,confirm,data.message()));
+  }finally{g.m_280262_();pose.m_85849_();}
+ }
 }

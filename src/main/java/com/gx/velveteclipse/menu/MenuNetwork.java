@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class MenuNetwork {
     public static final Gson JSON=new Gson();
-    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","menu"),()->"5","5"::equals,"5"::equals);
+    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","menu"),()->"6","6"::equals,"6"::equals);
     @SubscribeEvent public static void setup(FMLCommonSetupEvent event){
         CHANNEL.registerMessage(0,Request.class,Request::encode,Request::decode,Request::handle,Optional.of(NetworkDirection.PLAY_TO_SERVER));
         CHANNEL.registerMessage(1,Response.class,Response::encode,Response::decode,Response::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));
@@ -24,8 +24,8 @@ public final class MenuNetwork {
     public static void request(String action,String argument){CHANNEL.sendToServer(new Request(action,argument));}
     public static void reply(ServerPlayer player,MenuSnapshot snapshot){CHANNEL.send(PacketDistributor.PLAYER.with(()->player),new Response(JSON.toJson(snapshot)));}
     public record Request(String action,String argument){
-        public static void encode(Request p,FriendlyByteBuf b){b.m_130072_(p.action,16);b.m_130072_(p.argument,64);}
-        public static Request decode(FriendlyByteBuf b){return new Request(b.m_130136_(16),b.m_130136_(64));}
+        public static void encode(Request p,FriendlyByteBuf b){b.m_130072_(p.action,16);b.m_130072_(p.argument,160);}
+        public static Request decode(FriendlyByteBuf b){return new Request(b.m_130136_(16),b.m_130136_(160));}
         public static void handle(Request p,Supplier<NetworkEvent.Context> supplier){
             var c=supplier.get();var player=c.getSender();
             if(player!=null)c.enqueueWork(()->MenuService.handle(player,p.action,p.argument));

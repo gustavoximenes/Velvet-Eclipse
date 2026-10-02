@@ -30,6 +30,7 @@ public final class EquipmentScreen extends Screen {
  private static double now(){return System.nanoTime()*1e-9;}
  public static void accept(String json){
   var d=EquipmentNetwork.JSON.fromJson(json,EquipmentNetwork.Snapshot.class);if(d==null||d.bag()==null)return;d.bag().sanitize();latest=d;var mc=Minecraft.m_91087_();
+  if(mc.f_91080_ instanceof PersonaMenuScreen&&!d.message().isBlank()&&(d.view().equals("sync")||d.view().equals("update")))PersonaMenuScreen.equipmentUpdated(d.message());
   if(d.view().equals("closed")){if(mc.f_91080_ instanceof EquipmentScreen)mc.m_91152_(null);return;}
   if(d.view().equals("dialogue")||d.view().equals("equip")||d.view().equals("items")){if(!com.gx.velveteclipse.client.ClientBattleState.snapshot().active())mc.m_91152_(new EquipmentScreen(d,mc.f_91080_));return;}
   if(mc.f_91080_ instanceof EquipmentScreen s){if(d.view().equals("sync"))s.data=new EquipmentNetwork.Snapshot(d.bag(),d.yen(),s.data.view(),s.data.message(),s.data.npc(),s.data.merchant(),s.data.token(),d.shopTier());else s.data=d;s.waiting=false;if(d.view().equals("shop")){s.dialogue=false;s.shop=true;s.selected=s.offset=0;}if(!s.dialogue)s.bound();}

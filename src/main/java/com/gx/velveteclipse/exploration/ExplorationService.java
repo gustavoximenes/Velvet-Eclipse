@@ -60,6 +60,7 @@ public final class ExplorationService {
                 if(s.mode!=Mode.BATTLE){release(s);s.mode=Mode.BATTLE;s.tick=0;send(s);}continue;
             }
             if(s.mode==Mode.BATTLE){s.mode=Mode.EXPLORATION;s.tick=0;send(s);continue;}
+            ExplorationSprint.update(p,ExplorationSprint.eligible(s.mode,p.m_20142_()));
             if(s.mode==Mode.EXPLORATION_ATTACK){
                 ++s.tick;AttackAdvance.move(p,s.attackStart,s.family,s.yaw,s.tick);
                 boolean bow=s.family==Family.BOW;
@@ -126,6 +127,7 @@ public final class ExplorationService {
     }
     private static void freezeShadow(State s){s.shadow.m_20256_(Vec3.f_82478_);s.shadow.m_6034_(s.shadowAnchor.f_82479_,s.shadowAnchor.f_82480_,s.shadowAnchor.f_82481_);}
     private static void release(State s){
+        ExplorationSprint.update(s.player,false);
         RESERVATIONS.release(s.player.m_20148_());
         if(s.shadow instanceof Mob mob&&!mob.m_213877_()&&!com.gx.velveteclipse.forge.ShadowWorldService.held(mob))mob.m_21557_(s.previousNoAi);
         s.flyingTarget=null;s.pendingTarget=null;s.attackStart=null;s.shadow=null;s.start=null;s.end=null;s.player.m_20256_(Vec3.f_82478_);

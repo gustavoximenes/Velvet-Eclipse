@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.41 — Menu TAB, contador e corrida
+
+Menu aprovado com pose espelhada, filtro azul e skin real; seleção de Personas antes da inspeção original, Bestiário e Party. Contador à direita em combate, pausa real respeitada e corrida na exploração H 20% mais rápida. Cliente e servidor na mesma versão, protocolo do menu **6**. [Controles, mudanças e limites da auditoria](docs/RELOAD-MENU.md).
+
 # Velvet Eclipse 0.6.40 — correções da Velvet Room
 
 Corrige decoração antiga sobreposta à nova sala, Elizabeth duplicada, retratos ausentes nas cartas de fusão e tom rosado com shaders OptiFine. Migração automática das salas existentes; paleta sem shaders preservada. Use esta versão no cliente e servidor. [Mudanças e validação offline](docs/VELVET-ROOM-FIXES.md).

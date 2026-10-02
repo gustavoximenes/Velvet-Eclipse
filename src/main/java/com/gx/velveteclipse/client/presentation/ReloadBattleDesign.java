@@ -6,7 +6,8 @@ import static com.gx.velveteclipse.client.HudDesign.*;
 public final class ReloadBattleDesign {
  public static final int WHITE=0xFFF5FFFF,CYAN=0xFF54ECFF,BLUE=0xFF153AFF,INK=0xDF030E2C;
  public static double unit(int w,int h){return Math.min(w/640.,h/360.);}
- public static BattleMenuLayout.Rect party(int w,int h,int count,int index){double u=unit(w,h),row=Math.min(59,(300.-85)/Math.max(1,count-1));double y=Math.min(h*.32,h-(count*row+12)*u);return new BattleMenuLayout.Rect(w-(int)(84*u),(int)(y+index*row*u),(int)(78*u),(int)(50*u),"",index);}
+ public static BattleMenuLayout.Rect party(int w,int h,int count,int index){return party(w,h,count,index,false);}
+ public static BattleMenuLayout.Rect party(int w,int h,int count,int index,boolean clock){double u=unit(w,h),row=Math.min(59,(300.-85)/Math.max(1,count-1));double y=Math.min(h*.32,h-(count*row+12)*u);if(clock){y=Math.max(52+13*u,y);row=Math.min(row,Math.max(1,(h-y-51*u-4)/(Math.max(1,count-1)*u)));}return new BattleMenuLayout.Rect(w-(int)(84*u),(int)(y+index*row*u),(int)(78*u),(int)(50*u),"",index);}
  private static void disc(Canvas c,double x,double y,double r,int color){for(int i=0;i<28;i++){double a=i*Math.PI*2/28,b=(i+1)*Math.PI*2/28;BattleGraphics.poly(c,new double[]{x,y,x+Math.cos(a)*r,y+Math.sin(a)*r,x+Math.cos(b)*r,y+Math.sin(b)*r},color);}}
  public static void command(Canvas c,View v,int index,BattleMenuLayout.Rect r,boolean hover){
   double u=r.h()/(double)(index==0?40:index==2?29:index==3?23:index==4?24:index==6?25:17);

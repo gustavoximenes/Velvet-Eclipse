@@ -10,6 +10,7 @@ public final class DarkHourDeadline {
   @Override public CompoundTag m_7176_(CompoundTag t){return timer.save();}
  }
  private static State state(ServerLevel l){return l.m_8895_().m_164861_(State::load,State::new,"velvet_dark_hour_clock");}
+ public static void suspend(ServerLevel l){if(l!=null)state(l).lastNanos=0;}
  public static boolean extend(ServerPlayer source,int millis){var l=source.m_20194_().m_129783_();var s=state(l);if(!DarkHourCycle.active(l.m_46468_())||!s.timer.extend(millis))return false;s.m_77762_();for(var p:source.m_20194_().m_6846_().m_11314_()){TartarusMapNetwork.send(p,new TartarusMapNetwork.Clock((int)s.timer.remaining));p.m_5661_(Component.m_237113_("DARK HOUR+ • "+source.m_7755_().getString()+" acrescentou 5 minutos!"),false);}return true;}
  public static int start(net.minecraft.commands.CommandSourceStack source){var l=source.m_81377_().m_129783_();var s=state(l);s.timer.running=false;s.lastNanos=0;s.m_77762_();return net.minecraft.server.commands.TimeCommand.m_139077_(source,DarkHourCycle.START);}
  public static void tick(ServerLevel l){

@@ -5,16 +5,17 @@ import net.minecraftforge.api.distmarker.Dist;import net.minecraftforge.fml.comm
 @Mod.EventBusSubscriber(modid="velvet_eclipse",value=Dist.CLIENT)
 public final class TartarusMapClient {
  public static final KeyMapping MAP=new KeyMapping("key.velvet_eclipse.tartarus_map",com.mojang.blaze3d.platform.InputConstants.Type.KEYSYM,77,ClientKeyMappings.CATEGORY);
- private static TartarusMapNetwork.View view=TartarusMapNetwork.View.empty();private static long clockReceived;private static int clockMs;
+ private static TartarusMapNetwork.View view=TartarusMapNetwork.View.empty();private static final PausableCountdown countdown=new PausableCountdown();
  public static void accept(TartarusMapNetwork.View v){view=v;}
- public static void clock(int milliseconds){clockMs=milliseconds;clockReceived=System.nanoTime();}
- private static int remaining(){return Math.max(0,clockMs-(int)Math.min(Integer.MAX_VALUE,(System.nanoTime()-clockReceived)/1_000_000));}
- public static double clockHeight(){return remaining()>0?47:0;}
+ public static void clock(int milliseconds){countdown.synchronize(milliseconds,System.nanoTime(),Minecraft.m_91087_().m_91104_());}
+ private static int remaining(){return countdown.remaining(System.nanoTime(),Minecraft.m_91087_().m_91104_());}
+ public static double clockHeight(){return remaining()>0&&!ClientBattleState.snapshot().active()?47:0;}
+ public static boolean deadlineVisible(){return remaining()>0;}
  private static boolean available(){var m=Minecraft.m_91087_();return m.f_91074_!=null&&TartarusDungeonService.inside(m.f_91074_)&&view.floor()==TartarusDungeonService.floor(m.f_91074_)&&!ClientBattleState.snapshot().active()&&!AllOutPresentation.active()&&!com.gx.velveteclipse.client.exploration.ExplorationClient.blocksMenu();}
- @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut e){view=TartarusMapNetwork.View.empty();clockMs=0;}
- @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){if(e.phase!=TickEvent.Phase.END)return;var m=Minecraft.m_91087_();while(MAP.m_90859_())if(m.f_91080_==null&&available())m.m_91152_(new Expanded());}
+ @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut e){view=TartarusMapNetwork.View.empty();clock(0);}
+ @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){if(e.phase!=TickEvent.Phase.END)return;remaining();var m=Minecraft.m_91087_();while(MAP.m_90859_())if(m.f_91080_==null&&available())m.m_91152_(new Expanded());}
  @SubscribeEvent public static void hud(RenderGuiEvent.Post e){var m=Minecraft.m_91087_();if(m.f_91074_==null)return;int w=m.m_91268_().m_85445_(),h=m.m_91268_().m_85446_();var g=e.getGuiGraphics();var c=new MenuCanvas(g);g.m_286007_(() -> {
-  int ms=remaining();if(ms>0){double x=16;int sec=(int)((ms+999L)/1000);c.poly(new double[]{x,5,x+132,5,x+126,46,x-8,46},0xEB04221C);c.fill(x,12,2,26,0xFF73FF57);c.text("DARK HOUR",x+8,10,11,0xFF98FF58,0);c.text(String.format("%02d:%02d",sec/60,sec%60),x+8,23,22,ms<60000?0xFFFF5673:0xFFF0FFD7,0);}
+  int ms=remaining();if(ms>0){double x=com.gx.velveteclipse.client.darkhour.DeadlineLayout.x(w,ClientBattleState.snapshot().active());int sec=(int)((ms+999L)/1000);c.poly(new double[]{x,5,x+132,5,x+126,46,x-8,46},0xEB04221C);c.fill(x,12,2,26,0xFF73FF57);c.text("DARK HOUR",x+8,10,11,0xFF98FF58,0);c.text(String.format("%02d:%02d",sec/60,sec%60),x+8,23,22,ms<60000?0xFFFF5673:0xFFF0FFD7,0);}
   if(available()&&m.f_91080_==null){double size=Math.min(100,h*.25),y=18,x=w-size-20;TartarusMapDesign.paint(c,view,x,y,size,m.f_91074_.m_20185_()-TartarusInteriorLayout.origin(view.floor()),m.f_91074_.m_20189_(),m.f_91074_.m_146908_(),false);c.text(ClientKeyMappings.label(MAP)+"  MAPA",x,y+size+36,9,0xFFCDEAFF,0);}
  });}
  public static final class Expanded extends Screen {

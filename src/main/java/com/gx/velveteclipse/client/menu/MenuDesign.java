@@ -10,7 +10,9 @@ public final class MenuDesign {
         void fill(double x,double y,double w,double h,int color);
         void poly(double[] xy,int color);
         void text(String text,double x,double y,double size,int color,double angle);
+        default void body(String text,double x,double y,double size,int color,double angle){text(text,x,y,size,color,angle);}
         double width(String text,double size);
+        default double bodyWidth(String text,double size){return width(text,size);}
         void item(int slot,double x,double y);
     }
     public record Rect(double x,double y,double w,double h){public boolean contains(double px,double py){return px>=x&&px<x+w&&py>=y&&py<y+h;}}

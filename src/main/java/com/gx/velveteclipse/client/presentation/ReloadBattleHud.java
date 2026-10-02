@@ -15,13 +15,13 @@ public final class ReloadBattleHud {
  private static WidgetGroup root,commands,party;
  private static HudDesign.Canvas canvas;private static HudDesign.View view;
  private static int width,height;private static List<UUID> ids=List.of();private static long lastTick=-1;
- private static boolean showCommands;
+ private static boolean showCommands,clockShown;
  private static final Map<UUID,double[]> resources=new HashMap<>();
  public static void reset(){root=null;commands=null;party=null;ids=List.of();resources.clear();lastTick=-1;}
  private static List<BattleRosterS2C.Target> allies(){return BattleTargetHud.roster().stream().filter(BattleRosterS2C.Target::ally).limit(5).toList();}
  private static BattleRosterS2C.Target member(UUID id){return BattleTargetHud.roster().stream().filter(t->t.id().equals(id)).findFirst().orElse(null);}
  private static void build(int w,int h){
-  width=w;height=h;ids=allies().stream().map(BattleRosterS2C.Target::id).toList();resources.keySet().retainAll(ids);
+  width=w;height=h;clockShown=com.gx.velveteclipse.client.tartarus.TartarusMapClient.deadlineVisible();ids=allies().stream().map(BattleRosterS2C.Target::id).toList();resources.keySet().retainAll(ids);
   root=new WidgetGroup(0,0,w,h).setClientSideWidget();
   var background=new Widget(0,0,w,h){@Override public void drawInBackground(GuiGraphics g,int mx,int my,float partial){content(g,mx,my,partial);}};background.setClientSideWidget();root.addWidget(background);
   commands=new WidgetGroup(0,0,w,h).setClientSideWidget();var rects=BattleMenuLayout.main(w,h);
@@ -31,7 +31,7 @@ public final class ReloadBattleHud {
    };button.setClientSideWidget();commands.addWidget(button);
   }root.addWidget(commands);
   party=new WidgetGroup(0,0,w,h).setClientSideWidget();int count=ids.size();
-  for(int i=0;i<count;i++){UUID memberId=ids.get(i);var r=ReloadBattleDesign.party(w,h,count,i);double u=r.w()/78.;var initial=member(memberId);if(initial!=null)resources.putIfAbsent(memberId,new double[]{ratio(initial.hp(),initial.maxHp()),ratio(initial.sp(),initial.maxSp())});
+  for(int i=0;i<count;i++){UUID memberId=ids.get(i);var r=ReloadBattleDesign.party(w,h,count,i,clockShown);double u=r.w()/78.;var initial=member(memberId);if(initial!=null)resources.putIfAbsent(memberId,new double[]{ratio(initial.hp(),initial.maxHp()),ratio(initial.sp(),initial.maxSp())});
    var card=new Widget(r.x(),r.y(),r.w(),r.h()){
     @Override public void drawInBackground(GuiGraphics g,int mx,int my,float partial){var t=member(memberId);if(t==null)return;ReloadBattleDesign.partyCard(canvas,r,t.name(),t.hp(),t.sp(),t.turn(),t.hp()==0);var world=Minecraft.m_91087_().f_91073_;var e=world==null?null:world.m_6815_(t.entityId());if(e instanceof net.minecraft.client.player.AbstractClientPlayer p)PlayerFace.draw(g,p,r.x()+(int)(7*u),r.y()-(int)(6*u),(int)(30*u));}
    };card.setClientSideWidget();party.addWidget(card);
@@ -42,7 +42,7 @@ public final class ReloadBattleHud {
   }root.addWidget(party);root.initWidget();
  }
  public static void render(GuiGraphics g,HudDesign.Canvas c,HudDesign.View v,int w,int h,float partial){
-  canvas=c;view=v;if(root==null||w!=width||h!=height||!ids.equals(allies().stream().map(BattleRosterS2C.Target::id).toList()))build(w,h);
+  canvas=c;view=v;if(root==null||w!=width||h!=height||clockShown!=com.gx.velveteclipse.client.tartarus.TartarusMapClient.deadlineVisible()||!ids.equals(allies().stream().map(BattleRosterS2C.Target::id).toList()))build(w,h);
   showCommands=!BattleDirector.active()&&!ClientBattleUiState.selector()&&v.page().equals("MAIN");commands.setVisible(showCommands);commands.setActive(showCommands&&v.playerTurn()&&!v.locked());
   var world=Minecraft.m_91087_().f_91073_;long tick=world==null?0:world.m_46467_();
   if(tick!=lastTick){lastTick=tick;for(var id:ids){var t=member(id);if(t==null)continue;var value=resources.get(id);value[0]+=(ratio(t.hp(),t.maxHp())-value[0])*.35;value[1]+=(ratio(t.sp(),t.maxSp())-value[1])*.35;}root.updateScreen();}

@@ -1,3 +1,11 @@
+# 0.6.41-reload-menu
+
+- Integra o menu TAB aprovado com skin real, filtro azul, poses, seleção de Personas antes do inspect antigo e menus Bestiário/Party.
+- Contador da Dark Hour à direita em combate, com espaço reservado acima dos retratos; prazo e apresentação congelam durante a pausa real no singleplayer.
+- Corrida na exploração H 20% mais rápida, sem empilhar bônus e com remoção ao sair do modo.
+- Navegação e ações usam Personas, equipamentos e integrantes reais; validações de recuperação no servidor.
+- Protocolo do menu 6. Auditoria offline e GPU; falha preexistente de Endure registrada em [notas](docs/RELOAD-MENU.md).
+
 # 0.6.40-velvet-room-fixes
 
 - Migra salas antigas: remove decoração duplicada e substitui paredes/piso de fundo por materiais lisos, com colisão alinhada à mesa redonda.
