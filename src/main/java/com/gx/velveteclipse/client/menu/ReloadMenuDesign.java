@@ -50,7 +50,7 @@ public final class ReloadMenuDesign {
     }
     public static void background(Canvas target,View v,boolean gear){
         backdrop(target,v.seconds(),v.motion());var c=scaled(target);
-        if(v.home()){c.poly(new double[]{0,0,496,0,258,720,0,720},WHITE);for(int i=0;i<8;i++)c.poly(new double[]{0,62+i*85,178-i*8,94+i*81,0,79+i*87},0xFF02030B);c.text("MAIN",1,527,171,0xFF02030B,-90);}
+        if(v.home()){var panel=ReloadMenuOpening.layer(c,-530*(1-ReloadMenuOpening.panel(v.entered(),v.motion())),0,1);panel.poly(new double[]{0,0,496,0,258,720,0,720},WHITE);for(int i=0;i<8;i++)panel.poly(new double[]{0,62+i*85,178-i*8,94+i*81,0,79+i*87},0xFF02030B);panel.text("MAIN",1,527,171,0xFF02030B,-90);}
         else switch(v.tab()){
             case 0->{c.poly(new double[]{0,0,126,0,84,462,805,720,0,720},WHITE);c.poly(new double[]{1000,720,1280,394,1280,720},WHITE);}
             case 1->{}
@@ -68,7 +68,8 @@ public final class ReloadMenuDesign {
         if(v.home()){
             c.fill(115,34,166,64,INK);c.fill(117,36,162,60,WHITE);c.body(String.format(Locale.ROOT,"¥ %,d",v.wallet()),123,37,31,0xFF050913,0);c.body("YEN / CARTEIRA",126,76,12,INK,0);
             for(int i=0;i<TABS.length;i++){double x=526+Math.sin(i*.55)*23,y=154+i*44,angle=-16+i*.8,w=TABS[i].length()*24+25;boolean active=i==v.tab();
-                if(active){rotated(c,new double[]{-22,13,w+19,-11,w-9,56,-41,70},x,y,angle,RED);rotated(c,new double[]{-13,5,w+7,-5,w-10,48,-21,55},x,y,angle,WHITE);}c.text(TABS[i],x,y+2,active?53:45,active?INK:CYAN,angle);
+                double progress=ReloadMenuOpening.option(v.entered(),i,v.motion());var entry=ReloadMenuOpening.layer(c,155*(1-progress),60*(1-progress),progress);
+                if(active){rotated(entry,new double[]{-22,13,w+19,-11,w-9,56,-41,70},x,y,angle,RED);rotated(entry,new double[]{-13,5,w+7,-5,w-10,48,-21,55},x,y,angle,WHITE);}entry.text(TABS[i],x,y+2,active?53:45,active?INK:CYAN,angle);
             }
             footer(c,HELP[v.tab()]);return;
         }

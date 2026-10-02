@@ -37,7 +37,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.41-reload-menu'
+version = '0.6.42-menu-transitions'
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
     compileOnly files('dependencies/minecraft-forge-api.jar')
@@ -235,3 +235,5 @@ tasks.register('velvetRoomFixTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.VelvetRoomFixAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
+
+tasks.register("menuFixTest", JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = "com.gx.velveteclipse.tests.MenuFixAudit"; jvmArgs "-Djava.awt.headless=true" }

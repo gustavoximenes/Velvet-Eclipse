@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.42 — Transição do TAB e seletor All-Out
+
+Prévia All-Out visível à esquerda do seletor e abertura do TAB com água, bolhas, giro do personagem e entrada das opções. Preserva a pose final aprovada, a skin real, o inspect de Personas e as correções de contador/corrida da 0.6.41. Protocolos mantidos. Tártaro permanece sem alterações, em auditoria visual externa. [Mudanças e verificação offline](docs/MENU-TRANSITIONS.md).
+
 # Velvet Eclipse 0.6.41 — Menu TAB, contador e corrida
 
 Menu aprovado com pose espelhada, filtro azul e skin real; seleção de Personas antes da inspeção original, Bestiário e Party. Contador à direita em combate, pausa real respeitada e corrida na exploração H 20% mais rápida. Cliente e servidor na mesma versão, protocolo do menu **6**. [Controles, mudanças e limites da auditoria](docs/RELOAD-MENU.md).

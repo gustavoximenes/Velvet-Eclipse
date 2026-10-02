@@ -1,3 +1,10 @@
+# 0.6.42-menu-transitions
+
+- Prévia de All-Out à esquerda e seletor à direita, com corpo inteiro visível nos cinco estilos e regiões de clique alinhadas.
+- Abertura do TAB em 0,72 s: água, bolhas, giro, painel diagonal e opções em sequência, preservando o enquadramento final aprovado.
+- Movimento reduzido pula a abertura; TAB/Esc podem fechá-la. Protocolos e inspect de Personas preservados.
+- Estudo do Tártaro permanece externo, sem mudanças no gerador ou nos recursos. [Validação offline](docs/MENU-TRANSITIONS.md).
+
 # 0.6.41-reload-menu
 
 - Integra o menu TAB aprovado com skin real, filtro azul, poses, seleção de Personas antes do inspect antigo e menus Bestiário/Party.

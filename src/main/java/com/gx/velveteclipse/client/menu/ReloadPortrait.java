@@ -43,7 +43,7 @@ public final class ReloadPortrait {
             }
         }catch(IOException e){CACHE.put(key,null);VelvetEclipseMod.LOGGER.error("Cannot render menu pose "+key,e);return null;}
     }
-    public static void draw(GuiGraphics g,int tab,boolean home,String playerId,double seconds,boolean motion){
+    public static void draw(GuiGraphics g,int tab,boolean home,String playerId,double seconds,boolean motion,double opened){
         var mc=Minecraft.m_91087_();var player=mc.f_91074_;if(player==null||shader==null)return;
         ResourceLocation skin=player.m_108560_();boolean slim=player.m_108564_().equals("slim");
         try{var info=mc.m_91403_()==null?null:mc.m_91403_().m_104949_(UUID.fromString(playerId));if(info!=null){skin=info.m_105337_();slim=info.m_105336_().equals("slim");}}catch(IllegalArgumentException ignored){}
@@ -54,7 +54,7 @@ public final class ReloadPortrait {
         try{
             stack.m_85841_(900f/1280,500f/720,1);stack.m_85837_(0,0,MenuDepth.MODEL);
             double angle,scale,centerX,centerY,opacity=1;
-            if(home){stack.m_85837_(480,0,0);stack.m_85841_(-1,1,1);angle=211;scale=740./440;centerX=305;centerY=252;}
+            if(home){stack.m_85837_(480,0,0);stack.m_85841_(-1,1,1);var entry=ReloadMenuOpening.portrait(opened,motion);angle=entry.angle();scale=740./440;centerX=entry.x();centerY=entry.y();}
             else{
                 double hx,hy,ax,ay;
                 if(tab==0){hx=701;hy=542;ax=223.49111015584333;ay=166.01672493254813;scale=1.42;angle=184;}

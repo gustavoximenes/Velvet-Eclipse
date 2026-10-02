@@ -65,12 +65,13 @@ public final class PersonaMenuScreen extends Screen {
         if(closing&&now()-closedAt>.23)f_96541_.m_91152_(null);
     }
     @Override public void m_7379_(){if(targetOpen){targetOpen=false;return;}if(gearOpen){gearOpen=false;selected=gearSlot;offset=0;return;}if(allOutSelectOpen){allOutSelectOpen=false;return;}if(sheet.open()){sheet.close();changed=now();}else if(!home){home=true;changed=now();}else closeMenu();}
+    private boolean opening(){return home&&ReloadMenuOpening.active(now()-started,motion);}
     private void closeMenu(){if(!motion){f_96541_.m_91152_(null);return;}if(!closing){closing=true;closedAt=now();}}
     private double scale(){return Math.min(f_96543_/900.0,f_96544_/500.0);}
     private double left(){return (f_96543_-900*scale())/2;}
     private double top(){return (f_96544_-500*scale())/2;}
     private void selectTab(int index,boolean enter){allOutSelectOpen=gearOpen=targetOpen=false;sheet.close();tab=Math.floorMod(index,MenuDesign.TABS.length);selected=offset=0;actor=0;if(enter){home=false;if(tab==10){home=true;com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");}}changed=now();}
-    private void openAllOutSelect(){allOutChoice=com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).ordinal();allOutSelectOpen=true;}
+    private void openAllOutSelect(){allOutChoice=com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).ordinal();allOutSelectOpen=true;changed=now();}
     private void chooseAllOut(){request("all_out_style",com.gx.velveteclipse.core.battle.AllOutStyle.values()[allOutChoice].id());allOutSelectOpen=false;changed=now();}
     private void stepAllOut(int delta){allOutChoice=Math.floorMod(allOutChoice+delta,com.gx.velveteclipse.core.battle.AllOutStyle.values().length);changed=now();}
     public static void equipmentUpdated(String message){var mc=Minecraft.m_91087_();if(mc.f_91080_ instanceof PersonaMenuScreen s){if(!message.isBlank()){s.message=message;s.messageAt=now();}s.request("refresh","");}}
@@ -84,6 +85,7 @@ public final class PersonaMenuScreen extends Screen {
         if(closing)return true;
         if(key==258||MenuInput.OPEN.m_90832_(key,scan)){closeMenu();return true;}
         if(key==256||key==259){m_7379_();return true;}
+        if(opening())return true;
         if(targetOpen){if(key==265||key==264)targetIndex=Math.floorMod(targetIndex+(key==264?1:-1),Math.max(1,data.members().size()));else if(key==257||key==335)confirmTarget();return true;}
         if(!home&&!sheet.open()&&(key==81||key==69)&&(tab==0||tab==1||tab==4)){cycleActor(key==69?1:-1);return true;}
         if(allOutSelectOpen){
@@ -112,10 +114,10 @@ public final class PersonaMenuScreen extends Screen {
     }
     private void moveRow(int delta){if(rows.isEmpty())return;selected=Math.floorMod(selected+delta,rows.size());adjustScroll();}
     private void adjustScroll(){selected=Math.max(0,Math.min(selected,rows.size()-1));int count=ReloadMenuDesign.visibleRows(tab,gearOpen);if(selected<offset)offset=selected;if(selected>=offset+count)offset=selected-count+1;}
-    @Override public boolean m_6050_(double mx,double my,double delta){if(targetOpen){targetIndex=Math.floorMod(targetIndex+(delta<0?1:-1),Math.max(1,data.members().size()));return true;}if(allOutSelectOpen){stepAllOut(delta<0?1:-1);return true;}if(sheet.open()){var p=sheet.persona(data.personas());if(p!=null)sheet.step(p,delta<0?1:-1);}else if(home)selectTab(tab+(delta<0?1:-1),false);else moveRow(delta<0?1:-1);return true;}
+    @Override public boolean m_6050_(double mx,double my,double delta){if(opening())return true;if(targetOpen){targetIndex=Math.floorMod(targetIndex+(delta<0?1:-1),Math.max(1,data.members().size()));return true;}if(allOutSelectOpen){stepAllOut(delta<0?1:-1);return true;}if(sheet.open()){var p=sheet.persona(data.personas());if(p!=null)sheet.step(p,delta<0?1:-1);}else if(home)selectTab(tab+(delta<0?1:-1),false);else moveRow(delta<0?1:-1);return true;}
     @Override public boolean m_6375_(double mx,double my,int button){
         if(closing)return true;
-        if(button==1){m_7379_();return true;}if(button!=0)return false;
+        if(button==1){m_7379_();return true;}if(button!=0)return false;if(opening())return true;
         double x=(mx-left())/scale(),y=(my-top())/scale();
         if(targetOpen){for(int i=0;i<4;i++)if(ReloadMenuDesign.rect(306,251+i*79,680,71).contains(x,y)&&targetIndex/4*4+i<data.members().size()){targetIndex=targetIndex/4*4+i;confirmTarget();return true;}return true;}
         if(allOutSelectOpen){int option=AllOutSelectDesign.pick(x,y);if(option>=0){allOutChoice=option;chooseAllOut();}else allOutSelectOpen=false;return true;}
@@ -250,7 +252,7 @@ public final class PersonaMenuScreen extends Screen {
             }
             sheet.close();
         }
-        if(home&&(Math.abs(mouseX-lastMouseX)+Math.abs(mouseY-lastMouseY)>1)){int pick=ReloadMenuDesign.pickHome(mx,my);if(pick>=0)tab=pick;}
+        if(home&&!opening()&&(Math.abs(mouseX-lastMouseX)+Math.abs(mouseY-lastMouseY)>1)){int pick=ReloadMenuDesign.pickHome(mx,my);if(pick>=0)tab=pick;}
         lastMouseX=mouseX;lastMouseY=mouseY;
         MenuDesign.View view=view(seconds);var pose=g.m_280168_();g.m_280509_(0,0,f_96543_,f_96544_,0xFF03143D);
         pose.m_85836_();pose.m_85837_(left(),top(),0);pose.m_85841_((float)scale(),(float)scale(),1);
@@ -260,7 +262,7 @@ public final class PersonaMenuScreen extends Screen {
             if(home||tab<=2||tab==4||tab==8){
                 String id=data.members().isEmpty()?f_96541_.f_91074_.m_20148_().toString():data.members().get(Math.min(actor,data.members().size()-1)).id();
                 g.m_280588_((int)left(),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+500*scale()));
-                try{ReloadPortrait.draw(g,tab,home,id,seconds,motion);}finally{g.m_280618_();}
+                try{ReloadPortrait.draw(g,tab,home,id,seconds,motion,seconds-started);}finally{g.m_280618_();}
             }
             if(!home&&tab==3&&!data.personas().isEmpty()){
                 var p=data.personas().get(Math.min(selected,data.personas().size()-1));
@@ -273,20 +275,22 @@ public final class PersonaMenuScreen extends Screen {
                 try{bestiaryPreview.draw(g,enemy,seconds,684,302,1.7);}finally{g.m_280618_();}
             }
             pose.m_85837_(0,0,MenuDepth.FOREGROUND);
+            if(home)g.m_286007_(() -> ReloadMenuOpening.paint(canvas,seconds-started,motion));
             g.m_286007_(() -> ReloadMenuDesign.foreground(canvas,view,data,actor,gearOpen,gearSlot));
             if(!home&&(tab<=2&&!gearOpen||tab==4))drawPartyFaces(g);
             if(!home&&tab==8&&allOutSelectOpen){
                 canvas.fill(0,0,900,500,0xEC03133C);
                 var style=allOutSelectOpen?com.gx.velveteclipse.core.battle.AllOutStyle.values()[allOutChoice]:com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle());double age=motion?90+((seconds-changed)*20)%86:145;
-                canvas.fill(553,240,298,158,style.color);canvas.poly(new double[]{553,280,851,250,851,284,553,314},0x46031340);
-                g.m_280588_((int)(left()+553*scale()),(int)(top()+240*scale()),(int)Math.ceil(left()+851*scale()),(int)Math.ceil(top()+398*scale()));
-                try{com.gx.velveteclipse.client.AllOutPlayerRenderer.draw(g,f_96541_.f_91074_,754,317,87,age,true,-.20f,false,style,com.gx.velveteclipse.client.equipment.EquipmentScreen.family());}finally{g.m_280618_();}
-                canvas.text("SUA SKIN / PRÉVIA",561,381,8,MenuDesign.WHITE,0);
+                var preview=AllOutSelectDesign.preview();
+                canvas.fill(preview.x(),preview.y(),preview.w(),preview.h(),style.color);
+                canvas.poly(new double[]{preview.x(),preview.y()+preview.h()*.3,preview.x()+preview.w(),preview.y()+preview.h()*.08,preview.x()+preview.w(),preview.y()+preview.h()*.3,preview.x(),preview.y()+preview.h()*.52},0x46031340);
+                g.m_280588_((int)(left()+preview.x()*scale()),(int)(top()+preview.y()*scale()),(int)Math.ceil(left()+(preview.x()+preview.w())*scale()),(int)Math.ceil(top()+(preview.y()+preview.h())*scale()));
+                try{com.gx.velveteclipse.client.AllOutPlayerRenderer.draw(g,f_96541_.f_91074_,AllOutSelectDesign.frame(),age,true,style,com.gx.velveteclipse.client.equipment.EquipmentScreen.family(),0);}finally{g.m_280618_();}
                 g.m_280262_();pose.m_85836_();pose.m_85837_(0,0,350);
                 try{g.m_286007_(() -> AllOutSelectDesign.paint(canvas,com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()),allOutSelectOpen,allOutChoice));}finally{g.m_280262_();pose.m_85849_();}
             }
             if(targetOpen){pose.m_85836_();pose.m_85837_(0,0,450);try{g.m_286007_(() -> ReloadMenuDesign.target(canvas,data.members(),targetIndex,recoveryTitle));}finally{g.m_280262_();pose.m_85849_();}}
-            if(motion&&seconds-changed<.28&&!home&&!targetOpen){double p=MenuMotion.wipe(seconds-changed);double x=210+p*720;
+            if(motion&&seconds-changed<.28&&!home&&!targetOpen&&!allOutSelectOpen){double p=MenuMotion.wipe(seconds-changed);double x=210+p*720;
                 canvas.poly(new double[]{x-175,40,x+100,40,x-45,445,x-210,445},MenuDesign.alpha(MenuDesign.CYAN,1-p));}
             if(closing){double p=MenuMotion.ease((seconds-closedAt)/.23);canvas.poly(new double[]{-300,0,1100*p,0,1100*p-180,500,-300,500},MenuDesign.INK);}
         }finally{g.m_280262_();pose.m_85849_();}

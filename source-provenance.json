@@ -77,5 +77,6 @@
   "com\\gx\\velveteclipse\\client\\menu\\MenuDepth.java": "work\\render-fix-0.5.30\\src\\com\\gx\\velveteclipse\\client\\menu\\MenuDepth.java",
   "com\\gx\\velveteclipse\\client\\menu\\MenuGeometry.java": "work\\render-fix-0.5.30\\src\\com\\gx\\velveteclipse\\client\\menu\\MenuGeometry.java",
   "dependencies/lwjgl-opengl-3.3.1.jar": "Copied from the installed Minecraft library org/lwjgl/lwjgl-opengl/3.3.1. Compile-only; Minecraft provides it at runtime. SHA256 E436D2144F3A36FFF772FD64233316809B795F390DEFD4D55660FC686E7C2834.",
-  "release_0.6.41": "Native implementation of the approved Reload Tab V6 composition and live-skin slim/wide rig samples; preserves Persona inspector. Adds pause-aware Dark Hour countdown/right battle layout and transient +20% H sprint. Offline logic, GPU and preexisting EquipmentAudit failure documented in docs/RELOAD-MENU.md."
+  "release_0.6.41": "Native implementation of the approved Reload Tab V6 composition and live-skin slim/wide rig samples; preserves Persona inspector. Adds pause-aware Dark Hour countdown/right battle layout and transient +20% H sprint. Offline logic, GPU and preexisting EquipmentAudit failure documented in docs/RELOAD-MENU.md.",
+  "com\\gx\\velveteclipse\\client\\menu\\ReloadMenuOpening.java": "Original implementation of the TAB opening timeline studied in the user-provided Pause Menu recording (2.30-3.02 s), preserving approved final pose. 0.6.42."
 }

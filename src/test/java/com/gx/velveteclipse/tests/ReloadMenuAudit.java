@@ -109,7 +109,7 @@ public final class ReloadMenuAudit {
             var fg=new Preview();if(tab==10)ReloadPartyDesign.paint(fg,0,List.of(new ReloadPartyDesign.Row("Jogador","Líder"),new ReloadPartyDesign.Row("Aliado","Online")),0,0,2,4,"","1",false,false,false,"");else ReloadMenuDesign.foreground(fg,v,data,0,false,0);fg.save(out.resolve(name+"-foreground.png"));
         }
     }
-    private static final class Preview implements MenuDesign.Canvas{
+    static final class Preview implements MenuDesign.Canvas{
         final BufferedImage im=new BufferedImage(1280,720,BufferedImage.TYPE_INT_ARGB);final Graphics2D g=im.createGraphics();final Font display,body;
         Preview()throws Exception{g.scale(1280./900,720./500);g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);Path fonts=Path.of("src/main/resources/assets/velvet_eclipse/font");display=Font.createFont(Font.TRUETYPE_FONT,fonts.resolve("display.ttf").toFile());body=Font.createFont(Font.TRUETYPE_FONT,fonts.resolve("body.ttf").toFile());}
         public void fill(double x,double y,double w,double h,int c){g.setColor(new Color(c,true));g.fill(new Rectangle2D.Double(x,y,w,h));}
