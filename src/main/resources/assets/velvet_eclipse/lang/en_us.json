@@ -1506,5 +1506,20 @@
   "item.velvet_eclipse.zouchouten_model": "Model • Zouchouten",
   "item.velvet_eclipse.skill_card_raid_ice_storm": "Skill Card • Tempestade Glacial",
   "advancement.velvet_eclipse.awakening.description": "Awaken your first Persona with the Evoker during the Dark Hour.",
-  "key.velvet_eclipse.follow_turn": "Follow active turn camera (| / backslash key)"
+  "key.velvet_eclipse.follow_turn": "Follow active turn camera (| / backslash key)",
+  "block.velvet_eclipse.tartarus_kit_column": "Blue fluted column",
+  "block.velvet_eclipse.tartarus_kit_ivory_column": "Ivory fluted column",
+  "block.velvet_eclipse.tartarus_kit_lantern": "Tartarus lantern",
+  "block.velvet_eclipse.tartarus_kit_rail": "Tartarus railing",
+  "block.velvet_eclipse.tartarus_kit_cornice": "Tartarus cornice",
+  "block.velvet_eclipse.tartarus_kit_seal": "Tartarus ornamental seal",
+  "block.velvet_eclipse.tartarus_kit_arch": "Tartarus pointed arch",
+  "block.velvet_eclipse.tartarus_kit_forward": "Green portal frame",
+  "block.velvet_eclipse.tartarus_kit_back": "Blue portal frame",
+  "block.velvet_eclipse.tartarus_kit_stair": "Tartarus staircase display",
+  "block.velvet_eclipse.tartarus_reworked_tile": "Tartarus dressed tile",
+  "block.velvet_eclipse.tartarus_reworked_wall": "Tartarus blue masonry",
+  "block.velvet_eclipse.tartarus_reworked_window": "Tartarus green window",
+  "block.velvet_eclipse.tartarus_reworked_light": "Tartarus architectural light",
+  "block.velvet_eclipse.tartarus_reworked_stairs": "Tartarus dressed stairs"
 }

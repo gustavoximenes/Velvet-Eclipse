@@ -9,8 +9,7 @@ public final class TartarusMapService {
  private static final Map<TartarusInteriorLayout.Plan,Outline> outlines=new IdentityHashMap<>();
  private static Outline outline(TartarusInteriorLayout.Plan plan){
   var old=outlines.get(plan);if(old!=null)return old;if(outlines.size()>12)outlines.clear();
-  var tiles=new HashSet<TartarusInteriorLayout.Point>();for(var c:plan.cells())if(c.y()==0)tiles.add(new TartarusInteriorLayout.Point(c.x(),c.z()));
-  for(var c:plan.cells())if(c.y()==1&&(c.material().equals("wall")||c.material().equals("column")||c.material().equals("gold")))tiles.remove(new TartarusInteriorLayout.Point(c.x(),c.z()));
+  var tiles=new HashSet<>(TartarusMapGeometry.tiles(plan));
   int x=tiles.stream().mapToInt(TartarusInteriorLayout.Point::x).min().orElse(0),z=tiles.stream().mapToInt(TartarusInteriorLayout.Point::z).min().orElse(0),w=tiles.stream().mapToInt(TartarusInteriorLayout.Point::x).max().orElse(0)-x+1,h=tiles.stream().mapToInt(TartarusInteriorLayout.Point::z).max().orElse(0)-z+1;
   var result=new Outline(x,z,w,h,Set.copyOf(tiles));outlines.put(plan,result);return result;
  }
@@ -26,7 +25,9 @@ public final class TartarusMapService {
     if(chart.known(f,prop.at().x(),prop.at().z())&&p.m_20275_(ox+prop.at().x()+.5,65,prop.at().z()+.5)<196){var saved=state.props.get(f+":treasure:"+prop.index());Entity chest=null;try{if(saved!=null)chest=l.m_8791_(UUID.fromString(saved.m_128461_("entity")));}catch(IllegalArgumentException ignored){}if(chest!=null&&p.m_142582_(chest))dirty|=chart.seeChest(f,prop.index());}
     if(chart.chest(f,prop.index()))markers.add(new TartarusMapNetwork.Marker(2,prop.at().x()+.5f,prop.at().z()+.5f));
    }
-   if(chart.known(f,plan.stairs().x(),plan.stairs().z()+4))markers.add(new TartarusMapNetwork.Marker(1,plan.stairs().x()+.5f,plan.stairs().z()+4.5f));
+   float stairZ=f==0?5.5f:plan.stairs().z()+4.5f;
+   if(chart.known(f,plan.stairs().x(),stairZ))markers.add(new TartarusMapNetwork.Marker(1,plan.stairs().x()+.5f,stairZ));
+   for(var marker:TartarusMapGeometry.accesses(plan,f,state.defeated.contains(f)))if(chart.known(f,marker.x(),marker.z()))markers.add(marker);
    for(var slot:state.slots.entrySet())if(slot.getKey().startsWith(f+":")&&!slot.getValue().m_128471_("defeated")&&slot.getValue().m_128461_("battle").isEmpty())try{var e=l.m_8791_(UUID.fromString(slot.getValue().m_128461_("entity")));if(e!=null&&e.m_6084_()&&chart.known(f,e.m_20185_()-ox,e.m_20189_()))markers.add(new TartarusMapNetwork.Marker(0,(float)(e.m_20185_()-ox),(float)e.m_20189_()));}catch(IllegalArgumentException ignored){}
    dirty|=com.gx.velveteclipse.party.PartyService.mergeMap(p,chart,state.progress.cycle);
    // Refresh online peers immediately; the party chart also persists for offline members.

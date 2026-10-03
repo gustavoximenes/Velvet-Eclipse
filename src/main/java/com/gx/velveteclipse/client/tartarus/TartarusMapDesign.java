@@ -16,7 +16,11 @@ public final class TartarusMapDesign {
    double a=left+(m.x()-data.minX())*scale,b=top+(m.z()-data.minZ())*scale;
    if(m.kind()==0){c.poly(new double[]{a,b-3*icon,a+3*icon,b,a,b+3*icon,a-3*icon,b},0xFFEF335C);}
    else if(m.kind()==1){c.fill(a-5*icon,b-5*icon,10*icon,10*icon,0xFF071A3C);for(int i=0;i<4;i++)c.fill(a+(-4+i*2)*icon,b+(3-i*2)*icon,(8-i*2)*icon,icon,0xFFEEFFFF);}
-   else{c.fill(a-4*icon,b-3*icon,8*icon,6*icon,0xFFFFE276);c.fill(a-4*icon,b-icon,8*icon,icon,0xFF725029);c.fill(a-icon,b-icon,2*icon,2*icon,0xFFFCFFFF);}
+   else if(m.kind()==2){c.fill(a-4*icon,b-3*icon,8*icon,6*icon,0xFFFFE276);c.fill(a-4*icon,b-icon,8*icon,icon,0xFF725029);c.fill(a-icon,b-icon,2*icon,2*icon,0xFFFCFFFF);}
+   else if(m.kind()==4){c.fill(a-4*icon,b-4*icon,8*icon,6*icon,0xFF61E7EB);c.fill(a-icon,b+2*icon,2*icon,3*icon,0xFFDAFFFF);}
+   else if(m.kind()==7){c.poly(new double[]{a,b-5*icon,a+5*icon,b,a,b+5*icon,a-5*icon,b},0xFF71F7B3);c.fill(a-icon,b-3*icon,2*icon,4*icon,0xFF09362B);}
+   else if(m.kind()==8){c.fill(a-4*icon,b-2*icon,8*icon,6*icon,0xFFFF9C68);c.fill(a-3*icon,b-5*icon,6*icon,3*icon,0xFFFFCC98);c.fill(a-icon,b-icon,2*icon,3*icon,0xFF201527);}
+   else{int color=m.kind()==5?0xFF849FFF:m.kind()==6?0xFFD6B878:0xFFC8F6E9;c.fill(a-4*icon,b-5*icon,8*icon,10*icon,color);c.fill(a-2*icon,b-3*icon,4*icon,8*icon,0xFF0B2044);if(m.kind()==3)c.poly(new double[]{a-3*icon,b,a+icon,b-3*icon,a+icon,b+3*icon},color);}
   }
   double a=left+(px-data.minX())*scale,b=top+(pz-data.minZ())*scale,angle=Math.toRadians(yaw),dx=-Math.sin(angle),dz=Math.cos(angle),r=expanded?7:4;
   c.poly(new double[]{a+dx*r,b+dz*r,a-dx*r*.7+dz*r*.7,b-dz*r*.7-dx*r*.7,a-dx*r*.3,b-dz*r*.3,a-dx*r*.7-dz*r*.7,b-dz*r*.7+dx*r*.7},0xFFFFE75A);

@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.43 — Tártaro e minimapa
+
+Hall e andares com a arquitetura das prévias aprovadas, portal do relógio, escadarias, novos modelos de acessos e kit criativo. Minimap integrado à planta transitável, com serviços e bloqueio do guardião. Migração da aparência preserva progresso e tesouros. Cliente e servidor devem usar esta versão; protocolo do minimapa **2**. [Mudanças, validação offline e limites com shaders](docs/TARTARUS-REWORK.md).
+
 # Velvet Eclipse 0.6.42 — Transição do TAB e seletor All-Out
 
 Prévia All-Out visível à esquerda do seletor e abertura do TAB com água, bolhas, giro do personagem e entrada das opções. Preserva a pose final aprovada, a skin real, o inspect de Personas e as correções de contador/corrida da 0.6.41. Protocolos mantidos. Tártaro permanece sem alterações, em auditoria visual externa. [Mudanças e verificação offline](docs/MENU-TRANSITIONS.md).

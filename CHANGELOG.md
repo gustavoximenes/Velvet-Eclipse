@@ -1,3 +1,12 @@
+# 0.6.43-tartarus-rework
+
+- Correções após o teste: fecha parede do hall e vãos dos portais, elimina a emenda na animação, mantém as salas de duas escadas inteiras e alinhadas a corredores opostos. Emissão verde com luz 15 e integração ao material emissivo do Complementary; revisão de aparência 2 atualiza mundos do JAR preliminar.
+- Integra arquitetura aprovada do hall, relógio com passagem, salas variadas, andares 10/20/25 e escadas. Mantém grafo e progressão originais.
+- Porta dupla da Velvet Room, portais animados, terminal, baú e Monad com novos modelos; 15 blocos e peças ornamentais no criativo.
+- Minimap com contorno novo, pilares e acessos, preservando fog e descoberta da party. Protocolo map_clock 2.
+- Migração visual versionada preserva população, tesouros e guardiões; inimigos são suspensos durante a obra.
+- Malhas em chunks, materiais e iluminação nativos, caches limitados. Verificação offline, sem teste direto no Minecraft. [Notas](docs/TARTARUS-REWORK.md).
+
 # 0.6.42-menu-transitions
 
 - Prévia de All-Out à esquerda e seletor à direita, com corpo inteiro visível nos cinco estilos e regiões de clique alinhadas.

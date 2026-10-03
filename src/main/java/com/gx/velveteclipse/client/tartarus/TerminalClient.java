@@ -12,7 +12,7 @@ public final class TerminalClient {
  public static void open(TartarusTerminalNetwork.Response r){if(available()&&!r.floors().isEmpty())Minecraft.m_91087_().m_91152_(new TerminalScreen(r));}
  @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
  public static class Registration {
-  @SubscribeEvent public static void renderers(EntityRenderersEvent.RegisterRenderers e){for(String name:new String[]{"terminal","treasure","monad"})e.registerEntityRenderer(TartarusPropRegistry.type(name),c->new com.gx.velveteclipse.client.render.VelvetGeoEntityRenderer<TartarusPropEntity>(c,"tartarus_"+name));}
+  @SubscribeEvent public static void renderers(EntityRenderersEvent.RegisterRenderers e){for(String name:new String[]{"terminal","treasure","monad"})e.registerEntityRenderer(TartarusPropRegistry.type(name),c->new TartarusPropRenderer(c,name));}
  }
  @Mod.EventBusSubscriber(modid="velvet_eclipse",value=Dist.CLIENT)
  public static class Events {

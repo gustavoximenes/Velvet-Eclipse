@@ -7,7 +7,9 @@ public final class TartarusInteriorLayout {
  public static final int LAST_FLOOR=250,SPACING=192,Y=64;
  public record Point(int x,int z){}
  public record Cell(int x,int y,int z,String material){}
- public record Plan(List<Cell> cells,Point entry,Point stairs,List<Point> spawns,Set<Point> walkable){}
+ public record Plan(List<Cell> cells,Point entry,Point stairs,List<Point> spawns,Set<Point> walkable,List<TartarusArchitecture.Piece> architecture){
+  public Plan(List<Cell> cells,Point entry,Point stairs,List<Point> spawns,Set<Point> walkable){this(cells,entry,stairs,spawns,walkable,List.of());}
+ }
  private final Map<String,Cell> blocks=new LinkedHashMap<>();
  private void put(int x,int y,int z,String m){blocks.put(x+","+y+","+z,new Cell(x,y,z,m));}
  private void box(int x0,int y0,int z0,int x1,int y1,int z1,String m){for(int x=x0;x<=x1;x++)for(int z=z0;z<=z1;z++)for(int y=y0;y<=y1;y++)put(x,y,z,m);}
@@ -63,6 +65,9 @@ public final class TartarusInteriorLayout {
   return new Plan(List.copyOf(b.blocks.values()),new Point(0,23),new Point(0,-17),List.of(),Set.of());
  }
  public static Plan floor(long seed,int floor){
+  return TartarusArchitecture.apply(seed,floor,legacyFloor(seed,floor));
+ }
+ public static Plan legacyFloor(long seed,int floor){
   origin(floor);if(floor==0)return hall();if(transitionFloor(floor))return transition(floor);if(bossFloor(floor))return interval(floor);
   var r=new Random(seed ^ (floor*0x9E3779B97F4A7C15L));var b=new TartarusInteriorLayout();
   int n=4;var centers=new ArrayList<Point>();for(int z=0;z<n;z++)for(int x=0;x<n;x++)centers.add(new Point(x*24-36,z*24-36));

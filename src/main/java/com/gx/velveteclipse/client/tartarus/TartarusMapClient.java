@@ -25,7 +25,7 @@ public final class TartarusMapClient {
   @Override public boolean m_7933_(int key,int scan,int mods){if(MAP.m_90832_(key,scan)){m_7379_();return true;}return super.m_7933_(key,scan,mods);}
   @Override public void m_88315_(GuiGraphics g,int mx,int my,float partial){var p=Minecraft.m_91087_().f_91074_;if(p==null||!available())return;g.m_280509_(0,0,f_96543_,f_96544_,0xEC030D24);double size=Math.min(f_96544_-110,f_96543_*.6),x=(f_96543_-size)/2,y=40;var c=new MenuCanvas(g);g.m_286007_(() -> {
    c.text("TARTARUS / MAP",18,12,22,0xFF78F5FF,-3);TartarusMapDesign.paint(c,view,x,y,size,p.m_20185_()-TartarusInteriorLayout.origin(view.floor()),p.m_20189_(),p.m_146908_(),true);
-   c.text("VERMELHO  Shadow     ESCADA  Próximo andar     DOURADO  Tesouro",18,f_96544_-27,9,0xFFCBE9FF,0);c.text(ClientKeyMappings.label(MAP)+" / ESC  Fechar • Explore para revelar os setores",18,f_96544_-14,9,0xFF78F5FF,0);
+   c.text("Shadow • Escada • Tesouro • Retorno • Terminal • Velvet • Monad • Portal • Bloqueio",18,f_96544_-27,8,0xFFCBE9FF,0);c.text(ClientKeyMappings.label(MAP)+" / ESC  Fechar • Explore para revelar os setores e acessos",18,f_96544_-14,9,0xFF78F5FF,0);
   });}
  }
  @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)

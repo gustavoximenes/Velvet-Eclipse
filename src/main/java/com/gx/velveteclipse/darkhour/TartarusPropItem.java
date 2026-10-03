@@ -17,7 +17,7 @@ public final class TartarusPropItem extends Item {
   if(c.m_43719_()!=Direction.UP)return InteractionResult.FAIL;
   var hit=c.m_43720_();double x=Math.floor(hit.f_82479_)+.5,y=Math.ceil(hit.f_82480_-1e-5),z=Math.floor(hit.f_82481_)+.5;
   float yaw=Math.round((p.m_146908_()+180)/90)*90;
-  double w=kind.equals("terminal")?3.3:kind.equals("monad")?3.4:1.5,h=kind.equals("terminal")?4:kind.equals("monad")?5.1:1.8,d=kind.equals("monad")?.8:w;
+  double w=kind.equals("terminal")?1.4:kind.equals("monad")?5.84:1.76,h=kind.equals("terminal")?2.4:kind.equals("monad")?6.75:1.34,d=kind.equals("monad")?.9:kind.equals("terminal")?1.1:1.16;
   if(Math.floorMod(Math.round(yaw/90),2)==1){double t=w;w=d;d=t;}
   var bounds=new AABB(x-w/2,y,z-d/2,x+w/2,y+h,z+d/2);
   if(!l.m_45756_(null,bounds)||!l.m_45976_(TartarusPropEntity.class,bounds).isEmpty())return InteractionResult.FAIL;

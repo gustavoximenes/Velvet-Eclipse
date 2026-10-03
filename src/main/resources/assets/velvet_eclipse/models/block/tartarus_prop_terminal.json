@@ -1,0 +1,37 @@
+{
+  "loader": "velvet_eclipse:tartarus_mesh",
+  "mesh": "terminal",
+  "textures": {
+    "m0": "velvet_eclipse:block/tartarus_native_0",
+    "m1": "velvet_eclipse:block/tartarus_native_1",
+    "m2": "velvet_eclipse:block/tartarus_native_2",
+    "m3": "velvet_eclipse:block/tartarus_native_3",
+    "m4": "velvet_eclipse:block/tartarus_native_4",
+    "m5": "velvet_eclipse:block/tartarus_native_5",
+    "m6": "velvet_eclipse:block/tartarus_native_6",
+    "m7": "velvet_eclipse:block/tartarus_native_7",
+    "m8": "velvet_eclipse:block/tartarus_native_8",
+    "m9": "velvet_eclipse:block/tartarus_native_9",
+    "particle": "velvet_eclipse:block/tartarus_native_2"
+  },
+  "ambientocclusion": false,
+  "display": {
+    "gui": {
+      "rotation": [
+        20,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        -11.333333200878572,
+        0
+      ],
+      "scale": [
+        0.41666665010982157,
+        0.41666665010982157,
+        0.41666665010982157
+      ]
+    }
+  }
+}

@@ -1506,5 +1506,20 @@
   "item.velvet_eclipse.zouchouten_model": "Modelo • Zouchouten",
   "item.velvet_eclipse.skill_card_raid_ice_storm": "Skill Card • Tempestade Glacial",
   "advancement.velvet_eclipse.awakening.description": "Desperte sua primeira Persona com a Evoker durante a Dark Hour.",
-  "key.velvet_eclipse.follow_turn": "Acompanhar câmera do turno (tecla | / barra invertida)"
+  "key.velvet_eclipse.follow_turn": "Acompanhar câmera do turno (tecla | / barra invertida)",
+  "block.velvet_eclipse.tartarus_kit_column": "Coluna canelada azul",
+  "block.velvet_eclipse.tartarus_kit_ivory_column": "Coluna canelada marfim",
+  "block.velvet_eclipse.tartarus_kit_lantern": "Lanterna do Tártaro",
+  "block.velvet_eclipse.tartarus_kit_rail": "Corrimão do Tártaro",
+  "block.velvet_eclipse.tartarus_kit_cornice": "Cornija do Tártaro",
+  "block.velvet_eclipse.tartarus_kit_seal": "Selo ornamental do Tártaro",
+  "block.velvet_eclipse.tartarus_kit_arch": "Arco ogival do Tártaro",
+  "block.velvet_eclipse.tartarus_kit_forward": "Moldura de portal verde",
+  "block.velvet_eclipse.tartarus_kit_back": "Moldura de portal azul",
+  "block.velvet_eclipse.tartarus_kit_stair": "Escadaria ornamental do Tártaro",
+  "block.velvet_eclipse.tartarus_reworked_tile": "Ladrilho lapidado do Tártaro",
+  "block.velvet_eclipse.tartarus_reworked_wall": "Alvenaria azul do Tártaro",
+  "block.velvet_eclipse.tartarus_reworked_window": "Vitral verde do Tártaro",
+  "block.velvet_eclipse.tartarus_reworked_light": "Luz arquitetônica do Tártaro",
+  "block.velvet_eclipse.tartarus_reworked_stairs": "Escadas lapidadas do Tártaro"
 }

@@ -5,7 +5,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;import net.min
 import net.minecraftforge.network.*;import net.minecraftforge.network.simple.SimpleChannel;import java.util.*;import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class TartarusMapNetwork {
- private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","map_clock"),()->"1","1"::equals,"1"::equals);
+ private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","map_clock"),()->"2","2"::equals,"2"::equals);
  @SubscribeEvent public static void setup(FMLCommonSetupEvent e){CHANNEL.registerMessage(0,View.class,View::encode,View::decode,View::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));CHANNEL.registerMessage(1,Clock.class,Clock::encode,Clock::decode,Clock::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));}
  public static void send(ServerPlayer p,Object v){CHANNEL.send(PacketDistributor.PLAYER.with(()->p),v);}
  public record Marker(int kind,float x,float z){}

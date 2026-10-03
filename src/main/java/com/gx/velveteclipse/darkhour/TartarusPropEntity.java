@@ -18,6 +18,7 @@ public final class TartarusPropEntity extends Entity implements GeoEntity {
  private final AnimatableInstanceCache cache=GeckoLibUtil.createInstanceCache(this);
  public TartarusPropEntity(EntityType<? extends TartarusPropEntity> type,Level level){super(type,level);m_20242_(true);m_20331_(true);}
  @Override protected void m_8097_(){}
+ @Override public void m_8119_(){super.m_8119_();if(m_6095_()==TartarusPropRegistry.MONAD.get()){boolean sideways=Math.floorMod(Math.round(m_146908_()/90),2)==1;double w=sideways?.9:5.84,d=sideways?5.84:.9;m_20011_(new net.minecraft.world.phys.AABB(m_20185_()-w/2,m_20186_(),m_20189_()-d/2,m_20185_()+w/2,m_20186_()+6.75,m_20189_()+d/2));}}
  @Override protected void m_7378_(CompoundTag tag){}
  @Override protected void m_7380_(CompoundTag tag){}
  @Override public Packet<ClientGamePacketListener> m_5654_(){return NetworkHooks.getEntitySpawningPacket(this);}

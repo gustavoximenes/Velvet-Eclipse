@@ -1,0 +1,75 @@
+{
+  "loader": "velvet_eclipse:tartarus_mesh",
+  "mesh": "kit_ivory_column",
+  "textures": {
+    "m0": "velvet_eclipse:block/tartarus_native_0",
+    "m1": "velvet_eclipse:block/tartarus_native_1",
+    "m2": "velvet_eclipse:block/tartarus_native_2",
+    "m3": "velvet_eclipse:block/tartarus_native_3",
+    "m4": "velvet_eclipse:block/tartarus_native_4",
+    "m5": "velvet_eclipse:block/tartarus_native_5",
+    "m6": "velvet_eclipse:block/tartarus_native_6",
+    "m7": "velvet_eclipse:block/tartarus_native_7",
+    "m8": "velvet_eclipse:block/tartarus_native_8",
+    "m9": "velvet_eclipse:block/tartarus_native_9",
+    "particle": "velvet_eclipse:block/tartarus_native_2"
+  },
+  "ambientocclusion": false,
+  "display": {
+    "gui": {
+      "rotation": [
+        25,
+        225,
+        0
+      ],
+      "translation": [
+        1.840424180965229e-07,
+        -5.7122805984323275,
+        0
+      ],
+      "scale": [
+        0.3859649251959592,
+        0.3859649251959592,
+        0.3859649251959592
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.2315789551175755,
+        0.2315789551175755,
+        0.2315789551175755
+      ]
+    },
+    "fixed": {
+      "scale": [
+        0.3859649251959592,
+        0.3859649251959592,
+        0.3859649251959592
+      ]
+    },
+    "firstperson_righthand": {
+      "scale": [
+        0.27017544763717144,
+        0.27017544763717144,
+        0.27017544763717144
+      ]
+    },
+    "thirdperson_righthand": {
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.1929824625979796,
+        0.1929824625979796,
+        0.1929824625979796
+      ]
+    }
+  }
+}
