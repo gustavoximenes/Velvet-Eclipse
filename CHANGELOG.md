@@ -1,3 +1,11 @@
+# 0.6.44-models-camera
+
+- Integra Pixie03 e Elizabeth05, animações aprovadas, cenas da Velvet Room e retrato da carta Pixie.
+- Câmera do Tártaro com recorte de geometria local por participante, restaurado após a batalha; mundo e colisões físicas preservados.
+- Trem usa enquadramento dentro do vagão com verificação de paredes, bancos e barras, incluindo os 12 lugares da equipe e a Sacerdotisa.
+- Reenquadramento com chegada tardia de entidades, proteção contra ocultação por observador e culling incorreto, recuperação dos atores sem resetar o combate.
+- Auditorias offline; sem teste no Minecraft ou controle do computador. [Notas](docs/MODELS-CAMERA.md).
+
 # 0.6.43-tartarus-rework
 
 - Correções após o teste: fecha parede do hall e vãos dos portais, elimina a emenda na animação, mantém as salas de duas escadas inteiras e alinhadas a corredores opostos. Emissão verde com luz 15 e integração ao material emissivo do Complementary; revisão de aparência 2 atualiza mundos do JAR preliminar.

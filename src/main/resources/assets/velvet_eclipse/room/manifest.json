@@ -1,13 +1,13 @@
 [
   {
     "name": "fusion",
-    "meshes": 424,
+    "meshes": 440,
     "frames": 229,
     "seconds": 7.6
   },
   {
     "name": "menu",
-    "meshes": 95,
+    "meshes": 111,
     "frames": 1,
     "seconds": 0
   },
@@ -19,7 +19,7 @@
   },
   {
     "name": "entrance",
-    "meshes": 29,
+    "meshes": 45,
     "frames": 154,
     "seconds": 5.1
   },

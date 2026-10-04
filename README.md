@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.44 — Modelos e câmera de combate
+
+Pixie03 e Elizabeth05 integradas. Recorte local do Tártaro somente para o participante em batalha; outros jogadores veem o cenário completo. Câmera interna específica para o trem e recuperação de inimigos visuais. [Mudanças e validação offline](docs/MODELS-CAMERA.md).
+
 # Velvet Eclipse 0.6.43 — Tártaro e minimapa
 
 Hall e andares com a arquitetura das prévias aprovadas, portal do relógio, escadarias, novos modelos de acessos e kit criativo. Minimap integrado à planta transitável, com serviços e bloqueio do guardião. Migração da aparência preserva progresso e tesouros. Cliente e servidor devem usar esta versão; protocolo do minimapa **2**. [Mudanças, validação offline e limites com shaders](docs/TARTARUS-REWORK.md).

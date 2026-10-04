@@ -268,6 +268,7 @@ public final class BattleService {
     public static void resetRaidKnowledge(UUID battle){var g=BATTLES.get(battle);if(g!=null)g.raidKnowledge.clear();}
     public static String knownRaidWeakness(Object p){var g=group(p);if(g==null||!g.raid||g.raidStage!=2)return "UNKNOWN";var k=knowledge(g,p);return Arrays.stream(Element.values()).filter(e->k.get("raid_2",e)==Affinity.WEAK).map(Enum::name).findFirst().orElse("UNKNOWN");}
     private static void syncAll(Encounter g,String message){for(Object p:g.players.values())sync(p,message);}
+    static void actorsRepaired(Object p){var g=group(p);if(g!=null)syncAll(g,"Escolha uma ação.");}
     public static void sync(Object p,String message){
         if(p instanceof net.minecraft.server.level.ServerPlayer sp)com.gx.velveteclipse.equipment.EquipmentService.sync(sp,"sync","");
         if(p==null)return;var data=PlayerPersonaData.load(p);var g=group(p);var actor=g==null?null:g.session.find(RuntimeBridge.playerUuid(p)).orElse(null);

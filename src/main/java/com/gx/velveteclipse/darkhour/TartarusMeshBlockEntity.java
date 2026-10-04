@@ -11,6 +11,7 @@ public final class TartarusMeshBlockEntity extends BlockEntity {
  public record Instance(String model,int x,int y,int z){}
  public record Spec(List<Instance> instances,int clipX,int clipY,int clipZ,boolean clipped){}
  public static final ModelProperty<Spec> MESH=new ModelProperty<>();
+ public static final ModelProperty<BlockPos> CUTAWAY_ORIGIN=new ModelProperty<>();
  private Spec spec=new Spec(List.of(),0,0,0,false);
  public TartarusMeshBlockEntity(BlockPos p,BlockState s){super(DarkHourRegistry.MESH_ENTITY.get(),p,s);}
  public void configure(Spec value){spec=value;m_6596_();requestModelDataUpdate();if(f_58857_!=null)f_58857_.m_7260_(f_58858_,m_58900_(),m_58900_(),3);}
@@ -18,5 +19,5 @@ public final class TartarusMeshBlockEntity extends BlockEntity {
  @Override public void m_142466_(CompoundTag tag){super.m_142466_(tag);var out=new ArrayList<Instance>();var list=tag.m_128437_("pieces",10);for(int i=0;i<Math.min(list.size(),2048);i++){var e=list.m_128728_(i);String model=e.m_128461_("model");if(model.matches("[a-z0-9_-]{1,80}"))out.add(new Instance(model,e.m_128451_("x"),e.m_128451_("y"),e.m_128451_("z")));}spec=new Spec(List.copyOf(out),tag.m_128451_("clipX"),tag.m_128451_("clipY"),tag.m_128451_("clipZ"),tag.m_128471_("clipped"));requestModelDataUpdate();if(f_58857_!=null&&f_58857_.f_46443_)f_58857_.m_7260_(f_58858_,m_58900_(),m_58900_(),3);}
  @Override public CompoundTag m_5995_(){var t=new CompoundTag();m_183515_(t);return t;}
  @Override public ClientboundBlockEntityDataPacket m_58483_(){return ClientboundBlockEntityDataPacket.m_195640_(this);}
- @Override public ModelData getModelData(){return ModelData.builder().with(MESH,spec).build();}
+ @Override public ModelData getModelData(){var data=ModelData.builder().with(MESH,spec);if(f_58857_!=null&&f_58857_.m_46472_().equals(TartarusDungeonService.DIMENSION))data.with(CUTAWAY_ORIGIN,f_58858_);return data.build();}
 }

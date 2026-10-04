@@ -23,11 +23,19 @@ public final class VisualBattleActors {
       replacePersona(player,persona);
    }
    public static boolean repairFormation(Object player,boolean boss){
-      var session=BattleService.current(player);if(session==null)return true;var actors=ENEMIES.get(session.id());if(actors==null||actors.isEmpty()||actors.values().stream().allMatch(BattleTerrain::valid))return true;
-      var layout=BattleTerrain.plan(player,actors.size(),boss);if(layout==null)return false;int i=0;
-      for(var actor:actors.values()){var p=layout.enemies().get(i++);RuntimeBridge.setEntityPosition(actor,p.x(),p.y(),p.z());RuntimeBridge.setEntityRotation(actor,(float)layout.yaw()+180,0);}
+      var session=BattleService.current(player);if(session==null)return true;
+      var alive=session.participants().stream().filter(c->c.side()==com.gx.velveteclipse.core.battle.BattleSide.ENEMIES&&c.alive()).toList();if(alive.isEmpty())return true;
+      var actors=ENEMIES.computeIfAbsent(session.id(),id->new java.util.LinkedHashMap<>());
+      if(alive.stream().allMatch(c->present(actors.get(c.id()))&&BattleTerrain.valid(actors.get(c.id()))))return true;
+      var layout=BattleTerrain.plan(player,alive.size(),boss);if(layout==null)return false;int i=0;
+      for(var combatant:alive){var point=layout.enemies().get(i++);var actor=actors.get(combatant.id());
+         if(!present(actor)){RuntimeBridge.discardObjectEntity(actor);var replacement=spawnEnemy(player,new double[]{point.x(),point.y(),point.z()},(float)layout.yaw()+180,combatant.persona().definitionId());if(!(replacement instanceof net.minecraft.world.entity.Entity e)||!present(e))return false;actor=e;if(boss)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(actor);actors.put(combatant.id(),actor);}
+         RuntimeBridge.setEntityPosition(actor,point.x(),point.y(),point.z());RuntimeBridge.setEntityRotation(actor,(float)layout.yaw()+180,0);
+      }
+      BattleService.actorsRepaired(player);
       return true;
    }
+   private static boolean present(net.minecraft.world.entity.Entity actor){return actor!=null&&!actor.m_213877_()&&actor.m_9236_().m_6815_(actor.m_19879_())==actor;}
    public static net.minecraft.world.entity.Entity enemy(UUID battle,UUID id){var actors=ENEMIES.get(battle);return actors==null?null:actors.get(id);}
    public static void clearEnemies(UUID battle){var actors=ENEMIES.remove(battle);if(actors!=null)actors.values().forEach(RuntimeBridge::discardObjectEntity);}
    public static void prune(com.gx.velveteclipse.core.battle.BattleSession session){
@@ -113,6 +121,7 @@ public final class VisualBattleActors {
 
          return var4;
       } catch (Throwable var5) {
+         System.getLogger("Velvet Eclipse").log(System.Logger.Level.WARNING,"Cannot create combat visual for "+persona,var5);
          return null;
       }
    }

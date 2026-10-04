@@ -1,0 +1,8539 @@
+[
+  {
+    "name": "waist",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        199.8,
+        -11.6
+      ],
+      "size": [
+        36,
+        34,
+        24
+      ],
+      "uv": [
+        492,
+        136
+      ]
+    }
+  },
+  {
+    "name": "ribcage",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -22.0,
+        231.8,
+        -13.6
+      ],
+      "size": [
+        44,
+        34,
+        28
+      ],
+      "uv": [
+        2,
+        136
+      ]
+    }
+  },
+  {
+    "name": "upper_chest",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -21.0,
+        259.6,
+        -12.6
+      ],
+      "size": [
+        42,
+        12,
+        26
+      ],
+      "uv": [
+        112,
+        255
+      ]
+    }
+  },
+  {
+    "name": "right_waist_facet",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -21.4,
+        209.6,
+        -11.6
+      ],
+      "size": [
+        6,
+        36,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        8
+      ],
+      "pivot": [
+        -18.4,
+        227.6,
+        0.4
+      ],
+      "uv": [
+        192,
+        136
+      ]
+    }
+  },
+  {
+    "name": "right_chest_facet",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -22.0,
+        234.8,
+        -14.0
+      ],
+      "size": [
+        16,
+        28,
+        8
+      ],
+      "rotation": [
+        0,
+        14,
+        4
+      ],
+      "pivot": [
+        -14.0,
+        248.8,
+        -10.0
+      ],
+      "uv": [
+        400,
+        255
+      ]
+    }
+  },
+  {
+    "name": "right_armhole_piping",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -20.62,
+        245.1,
+        -12.16
+      ],
+      "size": [
+        1,
+        27,
+        2
+      ],
+      "rotation": [
+        3.230530802811246,
+        0,
+        -5.625911290331742
+      ],
+      "pivot": [
+        -20.12,
+        258.6,
+        -11.16
+      ],
+      "uv": [
+        270,
+        297
+      ]
+    }
+  },
+  {
+    "name": "right_back_armhole",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -20.62,
+        244.6,
+        10.88
+      ],
+      "size": [
+        1,
+        28,
+        2
+      ],
+      "rotation": [
+        -4.247410987730984,
+        0,
+        -5.625911290331742
+      ],
+      "pivot": [
+        -20.12,
+        258.6,
+        11.88
+      ],
+      "uv": [
+        2,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_waist_facet",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        15.4,
+        209.6,
+        -11.6
+      ],
+      "size": [
+        6,
+        36,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        -8
+      ],
+      "pivot": [
+        18.4,
+        227.6,
+        0.4
+      ],
+      "uv": [
+        254,
+        136
+      ]
+    }
+  },
+  {
+    "name": "left_chest_facet",
+    "bone": "body",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        6.0,
+        234.8,
+        -14.0
+      ],
+      "size": [
+        16,
+        28,
+        8
+      ],
+      "rotation": [
+        0,
+        -14,
+        -4
+      ],
+      "pivot": [
+        14.0,
+        248.8,
+        -10.0
+      ],
+      "uv": [
+        450,
+        255
+      ]
+    }
+  },
+  {
+    "name": "left_armhole_piping",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        19.62,
+        245.1,
+        -12.16
+      ],
+      "size": [
+        1,
+        27,
+        2
+      ],
+      "rotation": [
+        3.230530802811246,
+        0,
+        5.625911290331742
+      ],
+      "pivot": [
+        20.12,
+        258.6,
+        -11.16
+      ],
+      "uv": [
+        278,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_back_armhole",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        19.62,
+        244.6,
+        10.88
+      ],
+      "size": [
+        1,
+        28,
+        2
+      ],
+      "rotation": [
+        -4.247410987730984,
+        0,
+        5.625911290331742
+      ],
+      "pivot": [
+        20.12,
+        258.6,
+        11.88
+      ],
+      "uv": [
+        10,
+        297
+      ]
+    }
+  },
+  {
+    "name": "front_tailored_panel",
+    "bone": "body",
+    "material": "panel",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -11.0,
+        206.2,
+        -16.04
+      ],
+      "size": [
+        22,
+        58,
+        2
+      ],
+      "uv": [
+        316,
+        136
+      ]
+    }
+  },
+  {
+    "name": "back_center_seam",
+    "bone": "body",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -0.5,
+        213.8,
+        14.06
+      ],
+      "size": [
+        1,
+        54,
+        1
+      ],
+      "uv": [
+        794,
+        136
+      ]
+    }
+  },
+  {
+    "name": "neck_anatomy",
+    "bone": "neck",
+    "material": "skin",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -6.0,
+        273.6,
+        -5.04
+      ],
+      "size": [
+        12,
+        24,
+        12
+      ],
+      "uv": [
+        500,
+        255
+      ]
+    }
+  },
+  {
+    "name": "collar_back",
+    "bone": "collar",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -9.0,
+        271.96,
+        6.9
+      ],
+      "size": [
+        18,
+        18,
+        3
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        280.96,
+        8.4
+      ],
+      "uv": [
+        578,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_collar_side",
+    "bone": "collar",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -9.9,
+        271.8,
+        -8.0
+      ],
+      "size": [
+        3,
+        18,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "pivot": [
+        -8.4,
+        280.8,
+        0.0
+      ],
+      "uv": [
+        686,
+        255
+      ]
+    }
+  },
+  {
+    "name": "right_collar_front",
+    "bone": "collar",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -8.32,
+        271.0,
+        -9.74
+      ],
+      "size": [
+        8,
+        18,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        9
+      ],
+      "pivot": [
+        -4.32,
+        280.0,
+        -8.24
+      ],
+      "uv": [
+        622,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_collar_rim",
+    "bone": "collar",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -5.94,
+        284.7,
+        -8.9
+      ],
+      "size": [
+        1,
+        9,
+        1
+      ],
+      "rotation": [
+        6.55199048028706,
+        0,
+        95.49232455712752
+      ],
+      "pivot": [
+        -5.44,
+        289.2,
+        -8.4
+      ],
+      "uv": [
+        414,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_collar_side",
+    "bone": "collar",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        6.9,
+        271.8,
+        -8.0
+      ],
+      "size": [
+        3,
+        18,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        -9
+      ],
+      "pivot": [
+        8.4,
+        280.8,
+        0.0
+      ],
+      "uv": [
+        726,
+        255
+      ]
+    }
+  },
+  {
+    "name": "left_collar_front",
+    "bone": "collar",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        0.32,
+        271.0,
+        -9.74
+      ],
+      "size": [
+        8,
+        18,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        -9
+      ],
+      "pivot": [
+        4.32,
+        280.0,
+        -8.24
+      ],
+      "uv": [
+        646,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_collar_rim",
+    "bone": "collar",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        4.94,
+        284.7,
+        -8.9
+      ],
+      "size": [
+        1,
+        9,
+        1
+      ],
+      "rotation": [
+        6.55199048028706,
+        0,
+        -95.49232455712752
+      ],
+      "pivot": [
+        5.44,
+        289.2,
+        -8.4
+      ],
+      "uv": [
+        420,
+        378
+      ]
+    }
+  },
+  {
+    "name": "skirt_core",
+    "bone": "skirt",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -18.0,
+        113.2,
+        -9.8
+      ],
+      "size": [
+        36,
+        100,
+        22
+      ],
+      "uv": [
+        130,
+        2
+      ]
+    }
+  },
+  {
+    "name": "front_center",
+    "bone": "skirt_front",
+    "material": "panel",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -15.0,
+        112.0,
+        -14.96
+      ],
+      "size": [
+        30,
+        104,
+        4
+      ],
+      "uv": [
+        248,
+        2
+      ]
+    }
+  },
+  {
+    "name": "back_center",
+    "bone": "skirt",
+    "material": "blue",
+    "pattern": "seam",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -15.0,
+        112.0,
+        10.48
+      ],
+      "size": [
+        30,
+        104,
+        4
+      ],
+      "uv": [
+        318,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_front_panel",
+    "bone": "skirt_right",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -21.84,
+        112.0,
+        -14.72
+      ],
+      "size": [
+        12,
+        104,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.6
+      ],
+      "pivot": [
+        -16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        388,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_back_panel",
+    "bone": "skirt_right",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -21.84,
+        112.0,
+        10.24
+      ],
+      "size": [
+        12,
+        104,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.6
+      ],
+      "pivot": [
+        -16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        422,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_side_panel",
+    "bone": "skirt_right",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -22.86,
+        112.0,
+        -14.16
+      ],
+      "size": [
+        3,
+        104,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.6
+      ],
+      "pivot": [
+        -16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_front_hem",
+    "bone": "skirt_right",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -21.84,
+        112.04,
+        -15.12
+      ],
+      "size": [
+        12,
+        2,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.6
+      ],
+      "pivot": [
+        -16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        672,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_back_hem",
+    "bone": "skirt_right",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -21.84,
+        112.04,
+        10.64
+      ],
+      "size": [
+        12,
+        2,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.6
+      ],
+      "pivot": [
+        -16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        706,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_side_hem",
+    "bone": "skirt_right",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -22.94,
+        112.04,
+        -14.16
+      ],
+      "size": [
+        3,
+        2,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        -4.6
+      ],
+      "pivot": [
+        -16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        18,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_front_panel",
+    "bone": "skirt_left",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        9.84,
+        112.0,
+        -14.72
+      ],
+      "size": [
+        12,
+        104,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        4.6
+      ],
+      "pivot": [
+        16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        456,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_back_panel",
+    "bone": "skirt_left",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        9.84,
+        112.0,
+        10.24
+      ],
+      "size": [
+        12,
+        104,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        4.6
+      ],
+      "pivot": [
+        16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        490,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_side_panel",
+    "bone": "skirt_left",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        19.86,
+        112.0,
+        -14.16
+      ],
+      "size": [
+        3,
+        104,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        4.6
+      ],
+      "pivot": [
+        16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        66,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_front_hem",
+    "bone": "skirt_left",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        9.84,
+        112.04,
+        -15.12
+      ],
+      "size": [
+        12,
+        2,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        4.6
+      ],
+      "pivot": [
+        16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        740,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_back_hem",
+    "bone": "skirt_left",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        9.84,
+        112.04,
+        10.64
+      ],
+      "size": [
+        12,
+        2,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        4.6
+      ],
+      "pivot": [
+        16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        774,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_side_hem",
+    "bone": "skirt_left",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        19.94,
+        112.04,
+        -14.16
+      ],
+      "size": [
+        3,
+        2,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        4.6
+      ],
+      "pivot": [
+        16.4,
+        216.0,
+        0.0
+      ],
+      "uv": [
+        82,
+        297
+      ]
+    }
+  },
+  {
+    "name": "front_hem_piping",
+    "bone": "skirt_front",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -15.0,
+        112.12,
+        -15.7
+      ],
+      "size": [
+        30,
+        2,
+        1
+      ],
+      "uv": [
+        236,
+        394
+      ]
+    }
+  },
+  {
+    "name": "back_hem_piping",
+    "bone": "skirt",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -15.0,
+        112.12,
+        14.14
+      ],
+      "size": [
+        30,
+        2,
+        1
+      ],
+      "uv": [
+        300,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_seat",
+    "bone": "body",
+    "material": "navy",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.5,
+        250.5,
+        -17.96
+      ],
+      "size": [
+        11,
+        11,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        256.0,
+        -16.96
+      ],
+      "uv": [
+        104,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_0",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        257.97979,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        5.98674,
+        258.47979,
+        -18.48
+      ],
+      "uv": [
+        364,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_1",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        261.48674,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        2.47979,
+        261.98674,
+        -18.48
+      ],
+      "uv": [
+        382,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_2",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        261.48674,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        -2.47979,
+        261.98674,
+        -18.48
+      ],
+      "uv": [
+        400,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_3",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        257.97979,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        -5.98674,
+        258.47979,
+        -18.48
+      ],
+      "uv": [
+        418,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_4",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        253.02021,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        -5.98674,
+        253.52021,
+        -18.48
+      ],
+      "uv": [
+        436,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_5",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        249.51326,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        -2.47979,
+        250.01326,
+        -18.48
+      ],
+      "uv": [
+        454,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_6",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        249.51326,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        2.47979,
+        250.01326,
+        -18.48
+      ],
+      "uv": [
+        472,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_facet_7",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        253.02021,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        5.98674,
+        253.52021,
+        -18.48
+      ],
+      "uv": [
+        490,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_0_pin",
+    "bone": "body",
+    "material": "gold",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -1.5,
+        254.5,
+        -21.08
+      ],
+      "size": [
+        3,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        256.0,
+        -20.08
+      ],
+      "uv": [
+        848,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_seat",
+    "bone": "body",
+    "material": "navy",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.5,
+        219.3,
+        -17.96
+      ],
+      "size": [
+        11,
+        11,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        224.8,
+        -16.96
+      ],
+      "uv": [
+        132,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_0",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        226.77979,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        5.98674,
+        227.27979,
+        -18.48
+      ],
+      "uv": [
+        508,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_1",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        230.28674,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        2.47979,
+        230.78674,
+        -18.48
+      ],
+      "uv": [
+        526,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_2",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        230.28674,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        -2.47979,
+        230.78674,
+        -18.48
+      ],
+      "uv": [
+        544,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_3",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        226.77979,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        -5.98674,
+        227.27979,
+        -18.48
+      ],
+      "uv": [
+        562,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_4",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        221.82021,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        -5.98674,
+        222.32021,
+        -18.48
+      ],
+      "uv": [
+        580,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_5",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        218.31326,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        -2.47979,
+        218.81326,
+        -18.48
+      ],
+      "uv": [
+        598,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_6",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        218.31326,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        2.47979,
+        218.81326,
+        -18.48
+      ],
+      "uv": [
+        616,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_facet_7",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        221.82021,
+        -19.48
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        5.98674,
+        222.32021,
+        -18.48
+      ],
+      "uv": [
+        634,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_1_pin",
+    "bone": "body",
+    "material": "gold",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -1.5,
+        223.3,
+        -21.08
+      ],
+      "size": [
+        3,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        224.8,
+        -20.08
+      ],
+      "uv": [
+        860,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_seat",
+    "bone": "skirt_front",
+    "material": "navy",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.5,
+        186.9,
+        -16.92
+      ],
+      "size": [
+        11,
+        11,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        192.4,
+        -15.92
+      ],
+      "uv": [
+        160,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_0",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        194.37979,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        5.98674,
+        194.87979,
+        -17.44
+      ],
+      "uv": [
+        652,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_1",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        197.88674,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        2.47979,
+        198.38674,
+        -17.44
+      ],
+      "uv": [
+        670,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_2",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        197.88674,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        -2.47979,
+        198.38674,
+        -17.44
+      ],
+      "uv": [
+        688,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_3",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        194.37979,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        -5.98674,
+        194.87979,
+        -17.44
+      ],
+      "uv": [
+        706,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_4",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        189.42021,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        -5.98674,
+        189.92021,
+        -17.44
+      ],
+      "uv": [
+        724,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_5",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        185.91326,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        -2.47979,
+        186.41326,
+        -17.44
+      ],
+      "uv": [
+        742,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_6",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        185.91326,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        2.47979,
+        186.41326,
+        -17.44
+      ],
+      "uv": [
+        760,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_facet_7",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        189.42021,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        5.98674,
+        189.92021,
+        -17.44
+      ],
+      "uv": [
+        778,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_2_pin",
+    "bone": "skirt_front",
+    "material": "gold",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -1.5,
+        190.9,
+        -20.04
+      ],
+      "size": [
+        3,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        192.4,
+        -19.04
+      ],
+      "uv": [
+        872,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_seat",
+    "bone": "skirt_front",
+    "material": "navy",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.5,
+        155.7,
+        -16.92
+      ],
+      "size": [
+        11,
+        11,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        161.2,
+        -15.92
+      ],
+      "uv": [
+        188,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_0",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        163.17979,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        5.98674,
+        163.67979,
+        -17.44
+      ],
+      "uv": [
+        796,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_1",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        166.68674,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        2.47979,
+        167.18674,
+        -17.44
+      ],
+      "uv": [
+        814,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_2",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        166.68674,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        -2.47979,
+        167.18674,
+        -17.44
+      ],
+      "uv": [
+        832,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_3",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        163.17979,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        -5.98674,
+        163.67979,
+        -17.44
+      ],
+      "uv": [
+        850,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_4",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        158.22021,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        -5.98674,
+        158.72021,
+        -17.44
+      ],
+      "uv": [
+        868,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_5",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        154.71326,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        -2.47979,
+        155.21326,
+        -17.44
+      ],
+      "uv": [
+        886,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_6",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        154.71326,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        2.47979,
+        155.21326,
+        -17.44
+      ],
+      "uv": [
+        904,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_facet_7",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        158.22021,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        5.98674,
+        158.72021,
+        -17.44
+      ],
+      "uv": [
+        922,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_3_pin",
+    "bone": "skirt_front",
+    "material": "gold",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -1.5,
+        159.7,
+        -20.04
+      ],
+      "size": [
+        3,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        161.2,
+        -19.04
+      ],
+      "uv": [
+        884,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_seat",
+    "bone": "skirt_front",
+    "material": "navy",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.5,
+        125.7,
+        -16.92
+      ],
+      "size": [
+        11,
+        11,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        131.2,
+        -15.92
+      ],
+      "uv": [
+        216,
+        378
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_0",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        133.17979,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        5.98674,
+        133.67979,
+        -17.44
+      ],
+      "uv": [
+        940,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_1",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        136.68674,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        2.47979,
+        137.18674,
+        -17.44
+      ],
+      "uv": [
+        958,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_2",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        136.68674,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        -2.47979,
+        137.18674,
+        -17.44
+      ],
+      "uv": [
+        976,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_3",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        133.17979,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        -5.98674,
+        133.67979,
+        -17.44
+      ],
+      "uv": [
+        994,
+        394
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_4",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -8.98674,
+        128.22021,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        -5.98674,
+        128.72021,
+        -17.44
+      ],
+      "uv": [
+        2,
+        401
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_5",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -5.47979,
+        124.71326,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        -2.47979,
+        125.21326,
+        -17.44
+      ],
+      "uv": [
+        20,
+        401
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_6",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -0.52021,
+        124.71326,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        2.47979,
+        125.21326,
+        -17.44
+      ],
+      "uv": [
+        38,
+        401
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_facet_7",
+    "bone": "skirt_front",
+    "material": "silver",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        2.98674,
+        128.22021,
+        -18.44
+      ],
+      "size": [
+        6,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        5.98674,
+        128.72021,
+        -17.44
+      ],
+      "uv": [
+        56,
+        401
+      ]
+    }
+  },
+  {
+    "name": "clasp_4_pin",
+    "bone": "skirt_front",
+    "material": "gold",
+    "pattern": "",
+    "feature": "clasp",
+    "cube": {
+      "origin": [
+        -1.5,
+        129.7,
+        -20.04
+      ],
+      "size": [
+        3,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        45
+      ],
+      "pivot": [
+        0.0,
+        131.2,
+        -19.04
+      ],
+      "uv": [
+        896,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_upper_stocking",
+    "bone": "right_thigh",
+    "material": "stocking",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -18.84,
+        98.8,
+        -6.7
+      ],
+      "size": [
+        14,
+        92,
+        15
+      ],
+      "uv": [
+        524,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_boot_calf",
+    "bone": "right_shin",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -19.34,
+        42.6,
+        -7.2
+      ],
+      "size": [
+        15,
+        54,
+        16
+      ],
+      "uv": [
+        716,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_boot_ankle",
+    "bone": "right_shin",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -17.84,
+        17.44,
+        -6.9
+      ],
+      "size": [
+        12,
+        28,
+        13
+      ],
+      "uv": [
+        852,
+        200
+      ]
+    }
+  },
+  {
+    "name": "right_boot_shin",
+    "bone": "right_shin",
+    "material": "panel",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -17.34,
+        21.8,
+        -8.14
+      ],
+      "size": [
+        11,
+        70,
+        3
+      ],
+      "rotation": [
+        -1.8,
+        0,
+        0
+      ],
+      "pivot": [
+        -11.84,
+        56.8,
+        -6.64
+      ],
+      "uv": [
+        656,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_boot_outer_facet",
+    "bone": "right_shin",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -19.98,
+        41.6,
+        -5.46
+      ],
+      "size": [
+        3,
+        52,
+        13
+      ],
+      "rotation": [
+        0,
+        0,
+        -2
+      ],
+      "pivot": [
+        -18.48,
+        67.6,
+        1.04
+      ],
+      "uv": [
+        844,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_boot_top_cuff",
+    "bone": "right_shin",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -19.84,
+        94.0,
+        -7.7
+      ],
+      "size": [
+        16,
+        4,
+        17
+      ],
+      "uv": [
+        670,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_boot_top_piping",
+    "bone": "right_shin",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -19.84,
+        97.74,
+        -8.02
+      ],
+      "size": [
+        16,
+        1,
+        1
+      ],
+      "uv": [
+        550,
+        401
+      ]
+    }
+  },
+  {
+    "name": "right_rear_seam",
+    "bone": "right_shin",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -12.34,
+        17.0,
+        8.54
+      ],
+      "size": [
+        1,
+        78,
+        1
+      ],
+      "uv": [
+        644,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_heel",
+    "bone": "right_foot",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -15.34,
+        0.0,
+        0.0
+      ],
+      "size": [
+        7,
+        12,
+        8
+      ],
+      "uv": [
+        98,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_shoe_quarter",
+    "bone": "right_foot",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -18.34,
+        8.38,
+        -11.38
+      ],
+      "size": [
+        13,
+        13,
+        17
+      ],
+      "uv": [
+        146,
+        297
+      ]
+    }
+  },
+  {
+    "name": "right_instep",
+    "bone": "right_foot",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -18.34,
+        7.04,
+        -20.24
+      ],
+      "size": [
+        13,
+        8,
+        16
+      ],
+      "rotation": [
+        -13,
+        0,
+        0
+      ],
+      "pivot": [
+        -11.84,
+        11.04,
+        -12.24
+      ],
+      "uv": [
+        888,
+        297
+      ]
+    }
+  },
+  {
+    "name": "right_pointed_toe",
+    "bone": "right_foot",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -16.84,
+        1.96,
+        -25.54
+      ],
+      "size": [
+        10,
+        6,
+        9
+      ],
+      "uv": [
+        668,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_front_sole",
+    "bone": "right_foot",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -18.34,
+        0.0,
+        -26.48
+      ],
+      "size": [
+        13,
+        2,
+        20
+      ],
+      "uv": [
+        250,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_upper_stocking",
+    "bone": "left_thigh",
+    "material": "stocking",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        4.84,
+        98.8,
+        -6.7
+      ],
+      "size": [
+        14,
+        92,
+        15
+      ],
+      "uv": [
+        584,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_boot_calf",
+    "bone": "left_shin",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        4.34,
+        42.6,
+        -7.2
+      ],
+      "size": [
+        15,
+        54,
+        16
+      ],
+      "uv": [
+        780,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_boot_ankle",
+    "bone": "left_shin",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        5.84,
+        17.44,
+        -6.9
+      ],
+      "size": [
+        12,
+        28,
+        13
+      ],
+      "uv": [
+        904,
+        200
+      ]
+    }
+  },
+  {
+    "name": "left_boot_shin",
+    "bone": "left_shin",
+    "material": "panel",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        6.34,
+        21.8,
+        -8.14
+      ],
+      "size": [
+        11,
+        70,
+        3
+      ],
+      "rotation": [
+        -1.8,
+        0,
+        0
+      ],
+      "pivot": [
+        11.84,
+        56.8,
+        -6.64
+      ],
+      "uv": [
+        686,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_boot_outer_facet",
+    "bone": "left_shin",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        16.98,
+        41.6,
+        -5.46
+      ],
+      "size": [
+        3,
+        52,
+        13
+      ],
+      "rotation": [
+        0,
+        0,
+        2
+      ],
+      "pivot": [
+        18.48,
+        67.6,
+        1.04
+      ],
+      "uv": [
+        878,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_boot_top_cuff",
+    "bone": "left_shin",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        3.84,
+        94.0,
+        -7.7
+      ],
+      "size": [
+        16,
+        4,
+        17
+      ],
+      "uv": [
+        738,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_boot_top_piping",
+    "bone": "left_shin",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        3.84,
+        97.74,
+        -8.02
+      ],
+      "size": [
+        16,
+        1,
+        1
+      ],
+      "uv": [
+        586,
+        401
+      ]
+    }
+  },
+  {
+    "name": "left_rear_seam",
+    "bone": "left_shin",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        11.34,
+        17.0,
+        8.54
+      ],
+      "size": [
+        1,
+        78,
+        1
+      ],
+      "uv": [
+        650,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_heel",
+    "bone": "left_foot",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        8.34,
+        0.0,
+        0.0
+      ],
+      "size": [
+        7,
+        12,
+        8
+      ],
+      "uv": [
+        130,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_shoe_quarter",
+    "bone": "left_foot",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        5.34,
+        8.38,
+        -11.38
+      ],
+      "size": [
+        13,
+        13,
+        17
+      ],
+      "uv": [
+        208,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_instep",
+    "bone": "left_foot",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        5.34,
+        7.04,
+        -20.24
+      ],
+      "size": [
+        13,
+        8,
+        16
+      ],
+      "rotation": [
+        -13,
+        0,
+        0
+      ],
+      "pivot": [
+        11.84,
+        11.04,
+        -12.24
+      ],
+      "uv": [
+        948,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_pointed_toe",
+    "bone": "left_foot",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        6.84,
+        1.96,
+        -25.54
+      ],
+      "size": [
+        10,
+        6,
+        9
+      ],
+      "uv": [
+        708,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_front_sole",
+    "bone": "left_foot",
+    "material": "navy",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        5.34,
+        0.0,
+        -26.48
+      ],
+      "size": [
+        13,
+        2,
+        20
+      ],
+      "uv": [
+        318,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_bare_upper_arm",
+    "bone": "right_upper_arm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -31.0,
+        228.0,
+        -7.5
+      ],
+      "size": [
+        12,
+        38,
+        13
+      ],
+      "rotation": [
+        -3.078699116294541,
+        0,
+        168.20657031508952
+      ],
+      "pivot": [
+        -25.0,
+        247.0,
+        -1.0
+      ],
+      "uv": [
+        234,
+        200
+      ]
+    }
+  },
+  {
+    "name": "right_deltoid",
+    "bone": "right_upper_arm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "shoulder",
+    "cube": {
+      "origin": [
+        -27.7,
+        259.2,
+        -7.0
+      ],
+      "size": [
+        13,
+        12,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        7
+      ],
+      "pivot": [
+        -21.2,
+        265.2,
+        0.0
+      ],
+      "uv": [
+        670,
+        297
+      ]
+    }
+  },
+  {
+    "name": "right_shoulder_bridge",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "shoulder",
+    "cube": {
+      "origin": [
+        -22.3,
+        263.9,
+        -7.0
+      ],
+      "size": [
+        11,
+        9,
+        14
+      ],
+      "uv": [
+        146,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_long_glove",
+    "bone": "right_forearm",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -13.8,
+        201.8,
+        -21.9
+      ],
+      "size": [
+        10,
+        50,
+        11
+      ],
+      "rotation": [
+        -35.61882554686214,
+        0,
+        -95.71059313749964
+      ],
+      "pivot": [
+        -8.8,
+        226.8,
+        -16.4
+      ],
+      "uv": [
+        148,
+        136
+      ]
+    }
+  },
+  {
+    "name": "right_glove_cuff",
+    "bone": "right_forearm",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -34.0058,
+        224.67058,
+        -9.93182
+      ],
+      "size": [
+        13,
+        8,
+        14
+      ],
+      "rotation": [
+        -35.618825546862126,
+        0,
+        -95.71059313749977
+      ],
+      "pivot": [
+        -27.5058,
+        228.67058,
+        -2.93182
+      ],
+      "uv": [
+        386,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_cuff_piping",
+    "bone": "right_forearm",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        -37.33686,
+        228.45369,
+        -8.39346
+      ],
+      "size": [
+        14,
+        1,
+        15
+      ],
+      "rotation": [
+        -35.618825546862176,
+        0,
+        -95.71059313749973
+      ],
+      "pivot": [
+        -30.33686,
+        228.95369,
+        -0.89346
+      ],
+      "uv": [
+        564,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_wrist_cuff",
+    "bone": "right_forearm",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        4.24402,
+        221.9456,
+        -35.7517
+      ],
+      "size": [
+        11,
+        6,
+        12
+      ],
+      "rotation": [
+        -35.61882554686215,
+        0,
+        -95.7105931374994
+      ],
+      "pivot": [
+        9.74402,
+        224.9456,
+        -29.7517
+      ],
+      "uv": [
+        376,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_bare_upper_arm",
+    "bone": "left_upper_arm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        18.8,
+        227.6,
+        -6.5
+      ],
+      "size": [
+        12,
+        38,
+        13
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -169.04593735660166
+      ],
+      "pivot": [
+        24.8,
+        246.6,
+        0.0
+      ],
+      "uv": [
+        286,
+        200
+      ]
+    }
+  },
+  {
+    "name": "left_deltoid",
+    "bone": "left_upper_arm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "shoulder",
+    "cube": {
+      "origin": [
+        14.7,
+        259.2,
+        -7.0
+      ],
+      "size": [
+        13,
+        12,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -7
+      ],
+      "pivot": [
+        21.2,
+        265.2,
+        0.0
+      ],
+      "uv": [
+        726,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_shoulder_bridge",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "shoulder",
+    "cube": {
+      "origin": [
+        11.3,
+        263.9,
+        -7.0
+      ],
+      "size": [
+        11,
+        9,
+        14
+      ],
+      "uv": [
+        198,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_long_glove",
+    "bone": "left_forearm",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "",
+    "cube": {
+      "origin": [
+        28.4,
+        219.7,
+        -19.1
+      ],
+      "size": [
+        10,
+        35,
+        11
+      ],
+      "rotation": [
+        -52.40660628371685,
+        0,
+        -28.523118606312025
+      ],
+      "pivot": [
+        33.4,
+        237.2,
+        -13.6
+      ],
+      "uv": [
+        580,
+        200
+      ]
+    }
+  },
+  {
+    "name": "left_glove_cuff",
+    "bone": "left_forearm",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        22.36609,
+        224.85761,
+        -8.26778
+      ],
+      "size": [
+        13,
+        8,
+        14
+      ],
+      "rotation": [
+        -52.40660628371685,
+        0,
+        -28.52311860631203
+      ],
+      "pivot": [
+        28.86609,
+        228.85761,
+        -1.26778
+      ],
+      "uv": [
+        442,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_cuff_piping",
+    "bone": "left_forearm",
+    "material": "silver",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        20.84651,
+        225.98158,
+        -5.99452
+      ],
+      "size": [
+        14,
+        2,
+        15
+      ],
+      "rotation": [
+        -52.40660628371627,
+        0,
+        -28.523118606311574
+      ],
+      "pivot": [
+        27.84651,
+        226.98158,
+        1.50548
+      ],
+      "uv": [
+        472,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_wrist_cuff",
+    "bone": "left_forearm",
+    "material": "panel",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        32.37564,
+        242.43519,
+        -31.77375
+      ],
+      "size": [
+        11,
+        6,
+        12
+      ],
+      "rotation": [
+        -52.40660628371681,
+        0,
+        -28.52311860631207
+      ],
+      "pivot": [
+        37.87564,
+        245.43519,
+        -25.77375
+      ],
+      "uv": [
+        424,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_palm",
+    "bone": "left_hand",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        32.92,
+        242.8,
+        -32.26
+      ],
+      "size": [
+        10,
+        12,
+        5
+      ],
+      "rotation": [
+        -10,
+        0,
+        -12
+      ],
+      "pivot": [
+        37.92,
+        248.8,
+        -29.76
+      ],
+      "uv": [
+        532,
+        355
+      ]
+    }
+  },
+  {
+    "name": "page_block",
+    "bone": "book",
+    "material": "paper",
+    "pattern": "pages",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        14.36,
+        236.7,
+        -30.8
+      ],
+      "size": [
+        30,
+        45,
+        8
+      ],
+      "uv": [
+        2,
+        200
+      ]
+    }
+  },
+  {
+    "name": "front_cover",
+    "bone": "book",
+    "material": "book",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        12.86,
+        235.2,
+        -32.92
+      ],
+      "size": [
+        33,
+        48,
+        2
+      ],
+      "uv": [
+        338,
+        200
+      ]
+    }
+  },
+  {
+    "name": "back_cover",
+    "bone": "book",
+    "material": "book",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        12.86,
+        235.2,
+        -22.6
+      ],
+      "size": [
+        33,
+        48,
+        2
+      ],
+      "uv": [
+        410,
+        200
+      ]
+    }
+  },
+  {
+    "name": "bound_spine",
+    "bone": "book",
+    "material": "book",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        11.78,
+        235.2,
+        -31.8
+      ],
+      "size": [
+        3,
+        48,
+        10
+      ],
+      "uv": [
+        614,
+        136
+      ]
+    }
+  },
+  {
+    "name": "spine_band_29_71",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        11.02,
+        237.18,
+        -32.8
+      ],
+      "size": [
+        1,
+        1,
+        12
+      ],
+      "uv": [
+        244,
+        378
+      ]
+    }
+  },
+  {
+    "name": "spine_band_30_06",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        11.02,
+        239.98,
+        -32.8
+      ],
+      "size": [
+        1,
+        1,
+        12
+      ],
+      "uv": [
+        272,
+        378
+      ]
+    }
+  },
+  {
+    "name": "spine_band_34_74",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        11.02,
+        277.42,
+        -32.8
+      ],
+      "size": [
+        1,
+        1,
+        12
+      ],
+      "uv": [
+        300,
+        378
+      ]
+    }
+  },
+  {
+    "name": "spine_band_35_09",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        11.02,
+        280.22,
+        -32.8
+      ],
+      "size": [
+        1,
+        1,
+        12
+      ],
+      "uv": [
+        328,
+        378
+      ]
+    }
+  },
+  {
+    "name": "front_border_vertical_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        15.1,
+        238.2,
+        -33.7
+      ],
+      "size": [
+        1,
+        42,
+        1
+      ],
+      "uv": [
+        732,
+        200
+      ]
+    }
+  },
+  {
+    "name": "front_border_horizontal_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        15.36,
+        238.3,
+        -33.7
+      ],
+      "size": [
+        28,
+        1,
+        1
+      ],
+      "uv": [
+        622,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_inner_vertical_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        17.82,
+        241.2,
+        -33.7
+      ],
+      "size": [
+        1,
+        36,
+        1
+      ],
+      "uv": [
+        376,
+        255
+      ]
+    }
+  },
+  {
+    "name": "front_inner_horizontal_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        18.36,
+        241.18,
+        -33.7
+      ],
+      "size": [
+        22,
+        1,
+        1
+      ],
+      "uv": [
+        682,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_border_vertical_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        42.62,
+        238.2,
+        -33.7
+      ],
+      "size": [
+        1,
+        42,
+        1
+      ],
+      "uv": [
+        738,
+        200
+      ]
+    }
+  },
+  {
+    "name": "front_border_horizontal_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        15.36,
+        279.1,
+        -33.7
+      ],
+      "size": [
+        28,
+        1,
+        1
+      ],
+      "uv": [
+        730,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_inner_vertical_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        39.9,
+        241.2,
+        -33.7
+      ],
+      "size": [
+        1,
+        36,
+        1
+      ],
+      "uv": [
+        382,
+        255
+      ]
+    }
+  },
+  {
+    "name": "front_inner_horizontal_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        18.36,
+        276.22,
+        -33.7
+      ],
+      "size": [
+        22,
+        1,
+        1
+      ],
+      "uv": [
+        790,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_0",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        32.58584,
+        261.48594,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        36.08584,
+        261.98594,
+        -33.28
+      ],
+      "uv": [
+        74,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        28.64594,
+        265.42584,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        32.14594,
+        265.92584,
+        -33.28
+      ],
+      "uv": [
+        94,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_2",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        23.07406,
+        265.42584,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        26.57406,
+        265.92584,
+        -33.28
+      ],
+      "uv": [
+        114,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_3",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        19.13416,
+        261.48594,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        22.63416,
+        261.98594,
+        -33.28
+      ],
+      "uv": [
+        134,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_4",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        19.13416,
+        255.91406,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        22.63416,
+        256.41406,
+        -33.28
+      ],
+      "uv": [
+        154,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_5",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        23.07406,
+        251.97416,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        26.57406,
+        252.47416,
+        -33.28
+      ],
+      "uv": [
+        174,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_6",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        28.64594,
+        251.97416,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        32.14594,
+        252.47416,
+        -33.28
+      ],
+      "uv": [
+        194,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_facet_7",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        32.58584,
+        255.91406,
+        -34.28
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        36.08584,
+        256.41406,
+        -33.28
+      ],
+      "uv": [
+        214,
+        401
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_vertical",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        28.86,
+        247.7,
+        -33.7
+      ],
+      "size": [
+        1,
+        23,
+        1
+      ],
+      "uv": [
+        1008,
+        297
+      ]
+    }
+  },
+  {
+    "name": "front_sigil_horizontal",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        19.86,
+        258.7,
+        -33.7
+      ],
+      "size": [
+        19,
+        1,
+        1
+      ],
+      "uv": [
+        838,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_border_vertical_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        15.1,
+        238.2,
+        -20.82
+      ],
+      "size": [
+        1,
+        42,
+        1
+      ],
+      "uv": [
+        744,
+        200
+      ]
+    }
+  },
+  {
+    "name": "back_border_horizontal_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        15.36,
+        238.3,
+        -20.82
+      ],
+      "size": [
+        28,
+        1,
+        1
+      ],
+      "uv": [
+        880,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_inner_vertical_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        17.82,
+        241.2,
+        -20.82
+      ],
+      "size": [
+        1,
+        36,
+        1
+      ],
+      "uv": [
+        388,
+        255
+      ]
+    }
+  },
+  {
+    "name": "back_inner_horizontal_-1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        18.36,
+        241.18,
+        -20.82
+      ],
+      "size": [
+        22,
+        1,
+        1
+      ],
+      "uv": [
+        940,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_border_vertical_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        42.62,
+        238.2,
+        -20.82
+      ],
+      "size": [
+        1,
+        42,
+        1
+      ],
+      "uv": [
+        750,
+        200
+      ]
+    }
+  },
+  {
+    "name": "back_border_horizontal_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        15.36,
+        279.1,
+        -20.82
+      ],
+      "size": [
+        28,
+        1,
+        1
+      ],
+      "uv": [
+        2,
+        406
+      ]
+    }
+  },
+  {
+    "name": "back_inner_vertical_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        39.9,
+        241.2,
+        -20.82
+      ],
+      "size": [
+        1,
+        36,
+        1
+      ],
+      "uv": [
+        394,
+        255
+      ]
+    }
+  },
+  {
+    "name": "back_inner_horizontal_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        18.36,
+        276.22,
+        -20.82
+      ],
+      "size": [
+        22,
+        1,
+        1
+      ],
+      "uv": [
+        62,
+        406
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_0",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        32.58584,
+        261.48594,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        112.5
+      ],
+      "pivot": [
+        36.08584,
+        261.98594,
+        -20.24
+      ],
+      "uv": [
+        234,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_1",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        28.64594,
+        265.42584,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        157.5
+      ],
+      "pivot": [
+        32.14594,
+        265.92584,
+        -20.24
+      ],
+      "uv": [
+        254,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_2",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        23.07406,
+        265.42584,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        202.5
+      ],
+      "pivot": [
+        26.57406,
+        265.92584,
+        -20.24
+      ],
+      "uv": [
+        274,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_3",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        19.13416,
+        261.48594,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        247.5
+      ],
+      "pivot": [
+        22.63416,
+        261.98594,
+        -20.24
+      ],
+      "uv": [
+        294,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_4",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        19.13416,
+        255.91406,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        292.5
+      ],
+      "pivot": [
+        22.63416,
+        256.41406,
+        -20.24
+      ],
+      "uv": [
+        314,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_5",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        23.07406,
+        251.97416,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        337.5
+      ],
+      "pivot": [
+        26.57406,
+        252.47416,
+        -20.24
+      ],
+      "uv": [
+        334,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_6",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        28.64594,
+        251.97416,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        382.5
+      ],
+      "pivot": [
+        32.14594,
+        252.47416,
+        -20.24
+      ],
+      "uv": [
+        354,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_facet_7",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        32.58584,
+        255.91406,
+        -21.24
+      ],
+      "size": [
+        7,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        427.5
+      ],
+      "pivot": [
+        36.08584,
+        256.41406,
+        -20.24
+      ],
+      "uv": [
+        374,
+        401
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_vertical",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        28.86,
+        247.7,
+        -20.82
+      ],
+      "size": [
+        1,
+        23,
+        1
+      ],
+      "uv": [
+        1014,
+        297
+      ]
+    }
+  },
+  {
+    "name": "back_sigil_horizontal",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        19.86,
+        258.7,
+        -20.82
+      ],
+      "size": [
+        19,
+        1,
+        1
+      ],
+      "uv": [
+        110,
+        406
+      ]
+    }
+  },
+  {
+    "name": "book_clasp",
+    "bone": "book",
+    "material": "gold",
+    "pattern": "",
+    "feature": "book",
+    "cube": {
+      "origin": [
+        44.0,
+        256.7,
+        -33.68
+      ],
+      "size": [
+        4,
+        5,
+        4
+      ],
+      "uv": [
+        426,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_finger_0_base",
+    "bone": "left_finger_0",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        42.48,
+        240.44,
+        -34.06
+      ],
+      "size": [
+        4,
+        2,
+        7
+      ],
+      "rotation": [
+        0,
+        -15,
+        0
+      ],
+      "pivot": [
+        44.48,
+        241.44,
+        -30.56
+      ],
+      "uv": [
+        444,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_finger_0_tip",
+    "bone": "left_finger_0",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        39.48,
+        240.44,
+        -35.24
+      ],
+      "size": [
+        6,
+        2,
+        2
+      ],
+      "uv": [
+        12,
+        394
+      ]
+    }
+  },
+  {
+    "name": "left_finger_1_base",
+    "bone": "left_finger_1",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        42.48,
+        243.24,
+        -34.06
+      ],
+      "size": [
+        4,
+        2,
+        7
+      ],
+      "rotation": [
+        0,
+        -15,
+        0
+      ],
+      "pivot": [
+        44.48,
+        244.24,
+        -30.56
+      ],
+      "uv": [
+        468,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_finger_1_tip",
+    "bone": "left_finger_1",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        39.48,
+        243.24,
+        -35.24
+      ],
+      "size": [
+        6,
+        2,
+        2
+      ],
+      "uv": [
+        30,
+        394
+      ]
+    }
+  },
+  {
+    "name": "left_finger_2_base",
+    "bone": "left_finger_2",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        42.48,
+        246.04,
+        -34.06
+      ],
+      "size": [
+        4,
+        2,
+        7
+      ],
+      "rotation": [
+        0,
+        -15,
+        0
+      ],
+      "pivot": [
+        44.48,
+        247.04,
+        -30.56
+      ],
+      "uv": [
+        492,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_finger_2_tip",
+    "bone": "left_finger_2",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        39.48,
+        246.04,
+        -35.24
+      ],
+      "size": [
+        6,
+        2,
+        2
+      ],
+      "uv": [
+        48,
+        394
+      ]
+    }
+  },
+  {
+    "name": "left_finger_3_base",
+    "bone": "left_finger_3",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        42.48,
+        248.84,
+        -34.06
+      ],
+      "size": [
+        4,
+        2,
+        7
+      ],
+      "rotation": [
+        0,
+        -15,
+        0
+      ],
+      "pivot": [
+        44.48,
+        249.84,
+        -30.56
+      ],
+      "uv": [
+        516,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_finger_3_tip",
+    "bone": "left_finger_3",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        39.48,
+        248.84,
+        -35.24
+      ],
+      "size": [
+        6,
+        2,
+        2
+      ],
+      "uv": [
+        66,
+        394
+      ]
+    }
+  },
+  {
+    "name": "left_thumb",
+    "bone": "book",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        34.42,
+        238.66,
+        -21.04
+      ],
+      "size": [
+        7,
+        3,
+        4
+      ],
+      "rotation": [
+        0,
+        0,
+        20
+      ],
+      "pivot": [
+        37.92,
+        240.16,
+        -19.04
+      ],
+      "uv": [
+        616,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_palm",
+    "bone": "right_hand",
+    "material": "blue",
+    "pattern": "",
+    "feature": "",
+    "cube": {
+      "origin": [
+        7.52,
+        223.64,
+        -35.6
+      ],
+      "size": [
+        12,
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        -8,
+        18
+      ],
+      "pivot": [
+        13.52,
+        226.64,
+        -31.6
+      ],
+      "uv": [
+        2,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_finger_0_proximal",
+    "bone": "right_finger_0",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        17.14,
+        226.04,
+        -35.32
+      ],
+      "size": [
+        7,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        -6,
+        15
+      ],
+      "pivot": [
+        20.64,
+        227.04,
+        -34.32
+      ],
+      "uv": [
+        84,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_0_tip",
+    "bone": "right_finger_0",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        22.5,
+        228.12,
+        -35.32
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        38
+      ],
+      "pivot": [
+        24.0,
+        229.12,
+        -34.32
+      ],
+      "uv": [
+        104,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_1_proximal",
+    "bone": "right_finger_1",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        17.14,
+        227.4,
+        -33.32
+      ],
+      "size": [
+        7,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        -6,
+        15
+      ],
+      "pivot": [
+        20.64,
+        228.4,
+        -32.32
+      ],
+      "uv": [
+        116,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_1_tip",
+    "bone": "right_finger_1",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        22.5,
+        229.48,
+        -33.32
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        38
+      ],
+      "pivot": [
+        24.0,
+        230.48,
+        -32.32
+      ],
+      "uv": [
+        136,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_2_proximal",
+    "bone": "right_finger_2",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        17.14,
+        228.76,
+        -31.32
+      ],
+      "size": [
+        7,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        -6,
+        15
+      ],
+      "pivot": [
+        20.64,
+        229.76,
+        -30.32
+      ],
+      "uv": [
+        148,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_2_tip",
+    "bone": "right_finger_2",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        22.5,
+        230.84,
+        -31.32
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        38
+      ],
+      "pivot": [
+        24.0,
+        231.84,
+        -30.32
+      ],
+      "uv": [
+        168,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_3_proximal",
+    "bone": "right_finger_3",
+    "material": "panel",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        17.14,
+        230.12,
+        -29.32
+      ],
+      "size": [
+        7,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        -6,
+        15
+      ],
+      "pivot": [
+        20.64,
+        231.12,
+        -28.32
+      ],
+      "uv": [
+        180,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_finger_3_tip",
+    "bone": "right_finger_3",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        22.5,
+        232.2,
+        -29.32
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        38
+      ],
+      "pivot": [
+        24.0,
+        233.2,
+        -28.32
+      ],
+      "uv": [
+        200,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_thumb",
+    "bone": "right_hand",
+    "material": "blue",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        11.48,
+        229.54,
+        -30.38
+      ],
+      "size": [
+        6,
+        3,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        35
+      ],
+      "pivot": [
+        14.48,
+        231.04,
+        -28.88
+      ],
+      "uv": [
+        808,
+        378
+      ]
+    }
+  },
+  {
+    "name": "neck_upper_joint",
+    "bone": "neck",
+    "material": "skin",
+    "pattern": "",
+    "feature": "neck",
+    "cube": {
+      "origin": [
+        -4.5,
+        294.7,
+        -7.8
+      ],
+      "size": [
+        9,
+        5,
+        10
+      ],
+      "uv": [
+        748,
+        355
+      ]
+    }
+  },
+  {
+    "name": "cranial_core",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "cranium",
+    "cube": {
+      "origin": [
+        -17.0,
+        309.0,
+        -13.6
+      ],
+      "size": [
+        34,
+        32,
+        28
+      ],
+      "uv": [
+        366,
+        136
+      ]
+    }
+  },
+  {
+    "name": "forehead_plane",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "forehead",
+    "cube": {
+      "origin": [
+        -15.5,
+        326.8,
+        -17.68
+      ],
+      "size": [
+        31,
+        14,
+        8
+      ],
+      "uv": [
+        498,
+        329
+      ]
+    }
+  },
+  {
+    "name": "midface",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "midface",
+    "cube": {
+      "origin": [
+        -14.0,
+        304.0,
+        -17.776
+      ],
+      "size": [
+        28,
+        26,
+        8
+      ],
+      "uv": [
+        766,
+        255
+      ]
+    }
+  },
+  {
+    "name": "lower_face",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "jaw",
+    "cube": {
+      "origin": [
+        -10.0,
+        299.74,
+        -17.768
+      ],
+      "size": [
+        20,
+        11,
+        14
+      ],
+      "uv": [
+        782,
+        297
+      ]
+    }
+  },
+  {
+    "name": "chin_plane",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "chin",
+    "cube": {
+      "origin": [
+        -3.0,
+        295.9,
+        -17.76
+      ],
+      "size": [
+        6,
+        10,
+        10
+      ],
+      "uv": [
+        162,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_cheekbone",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "cheek",
+    "cube": {
+      "origin": [
+        -17.33447,
+        311.63768,
+        -17.776
+      ],
+      "size": [
+        20,
+        11,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        3.082180824528147
+      ],
+      "pivot": [
+        -7.33447,
+        317.13768,
+        -9.776
+      ],
+      "uv": [
+        414,
+        297
+      ]
+    }
+  },
+  {
+    "name": "right_mandible",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "jaw",
+    "cube": {
+      "origin": [
+        -16.20978,
+        307.22357,
+        -17.744
+      ],
+      "size": [
+        20,
+        9,
+        15
+      ],
+      "rotation": [
+        0,
+        0,
+        24.35300917502973
+      ],
+      "pivot": [
+        -6.20978,
+        311.72357,
+        -10.244
+      ],
+      "uv": [
+        2,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_chin_facet",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "chin",
+    "cube": {
+      "origin": [
+        -13.26744,
+        302.90241,
+        -17.712
+      ],
+      "size": [
+        20,
+        9,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        43.17591016762381
+      ],
+      "pivot": [
+        -3.26744,
+        307.40241,
+        -11.712
+      ],
+      "uv": [
+        806,
+        329
+      ]
+    }
+  },
+  {
+    "name": "right_chin_bevel",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "chin",
+    "cube": {
+      "origin": [
+        -12.24193,
+        303.66477,
+        -17.68
+      ],
+      "size": [
+        20,
+        5,
+        10
+      ],
+      "rotation": [
+        0,
+        0,
+        73.03385189146384
+      ],
+      "pivot": [
+        -2.24193,
+        306.16477,
+        -12.68
+      ],
+      "uv": [
+        788,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_cheekbone",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "cheek",
+    "cube": {
+      "origin": [
+        -2.66553,
+        311.63768,
+        -17.776
+      ],
+      "size": [
+        20,
+        11,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.082180824528147
+      ],
+      "pivot": [
+        7.33447,
+        317.13768,
+        -9.776
+      ],
+      "uv": [
+        488,
+        297
+      ]
+    }
+  },
+  {
+    "name": "left_mandible",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "jaw",
+    "cube": {
+      "origin": [
+        -3.79022,
+        307.22357,
+        -17.744
+      ],
+      "size": [
+        20,
+        9,
+        15
+      ],
+      "rotation": [
+        0,
+        0,
+        -24.35300917502973
+      ],
+      "pivot": [
+        6.20978,
+        311.72357,
+        -10.244
+      ],
+      "uv": [
+        74,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_chin_facet",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "chin",
+    "cube": {
+      "origin": [
+        -6.73256,
+        302.90241,
+        -17.712
+      ],
+      "size": [
+        20,
+        9,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        -43.17591016762381
+      ],
+      "pivot": [
+        3.26744,
+        307.40241,
+        -11.712
+      ],
+      "uv": [
+        872,
+        329
+      ]
+    }
+  },
+  {
+    "name": "left_chin_bevel",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "chin",
+    "cube": {
+      "origin": [
+        -7.75807,
+        303.66477,
+        -17.68
+      ],
+      "size": [
+        20,
+        5,
+        10
+      ],
+      "rotation": [
+        0,
+        0,
+        -73.03385189146384
+      ],
+      "pivot": [
+        2.24193,
+        306.16477,
+        -12.68
+      ],
+      "uv": [
+        850,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_temple",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "temple",
+    "cube": {
+      "origin": [
+        -19.34,
+        311.2,
+        -7.6
+      ],
+      "size": [
+        7,
+        26,
+        16
+      ],
+      "rotation": [
+        0,
+        20,
+        0
+      ],
+      "pivot": [
+        -15.84,
+        324.2,
+        0.4
+      ],
+      "uv": [
+        756,
+        200
+      ]
+    }
+  },
+  {
+    "name": "right_ear_outer",
+    "bone": "ear_right",
+    "material": "skin",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        -22.96,
+        308.16,
+        -3.16
+      ],
+      "size": [
+        4,
+        10,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        8
+      ],
+      "pivot": [
+        -20.96,
+        313.16,
+        -0.16
+      ],
+      "uv": [
+        624,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_ear_inner",
+    "bone": "ear_right",
+    "material": "skin_soft",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        -23.62,
+        310.4,
+        -2.46
+      ],
+      "size": [
+        1,
+        6,
+        3
+      ],
+      "uv": [
+        540,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_ear_lobe",
+    "bone": "ear_right",
+    "material": "skin",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        -22.78,
+        307.58,
+        -2.72
+      ],
+      "size": [
+        3,
+        3,
+        4
+      ],
+      "uv": [
+        640,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_orbital_ridge",
+    "bone": "eye_right",
+    "material": "skin",
+    "pattern": "",
+    "feature": "orbit",
+    "cube": {
+      "origin": [
+        -16.1,
+        320.08,
+        -18.14
+      ],
+      "size": [
+        13,
+        2,
+        3
+      ],
+      "uv": [
+        908,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_eye_white",
+    "bone": "eye_right",
+    "material": "sclera",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -13.96,
+        314.98,
+        -18.78
+      ],
+      "size": [
+        10,
+        5,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        3
+      ],
+      "pivot": [
+        -8.96,
+        317.48,
+        -17.28
+      ],
+      "uv": [
+        560,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_outer_sclera",
+    "bone": "eye_right",
+    "material": "sclera",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -15.08,
+        316.62,
+        -18.44
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        10,
+        -22
+      ],
+      "pivot": [
+        -14.08,
+        318.12,
+        -17.44
+      ],
+      "uv": [
+        942,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_iris",
+    "bone": "eye_right",
+    "material": "iris",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -9.98,
+        314.9,
+        -18.98
+      ],
+      "size": [
+        3,
+        5,
+        1
+      ],
+      "uv": [
+        828,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_iris_edge_-1",
+    "bone": "eye_right",
+    "material": "iris",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -10.66,
+        315.9,
+        -18.82
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        212,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_iris_edge_1",
+    "bone": "eye_right",
+    "material": "iris",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -7.3,
+        315.9,
+        -18.82
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        218,
+        394
+      ]
+    }
+  },
+  {
+    "name": "right_pupil",
+    "bone": "eye_right",
+    "material": "pupil",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -8.98,
+        315.32,
+        -19.14
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        952,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_eye_glint",
+    "bone": "eye_right",
+    "material": "sclera",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        -9.98,
+        318.26,
+        -19.3
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ],
+      "uv": [
+        152,
+        406
+      ]
+    }
+  },
+  {
+    "name": "right_lower_eyelid",
+    "bone": "eye_right",
+    "material": "skin",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        -14.54,
+        314.18,
+        -18.92
+      ],
+      "size": [
+        11,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -2
+      ],
+      "pivot": [
+        -9.04,
+        314.68,
+        -17.92
+      ],
+      "uv": [
+        394,
+        401
+      ]
+    }
+  },
+  {
+    "name": "right_upper_eyelid",
+    "bone": "eye_right",
+    "material": "skin",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        -15.2,
+        320.18,
+        -18.84
+      ],
+      "size": [
+        12,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        3
+      ],
+      "pivot": [
+        -9.2,
+        320.68,
+        -17.84
+      ],
+      "uv": [
+        422,
+        401
+      ]
+    }
+  },
+  {
+    "name": "right_lash_line",
+    "bone": "eye_right",
+    "material": "lash",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        -15.2,
+        319.78,
+        -19.044
+      ],
+      "size": [
+        12,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        3
+      ],
+      "pivot": [
+        -9.2,
+        320.28,
+        -18.544
+      ],
+      "uv": [
+        158,
+        406
+      ]
+    }
+  },
+  {
+    "name": "right_outer_lash",
+    "bone": "eye_right",
+    "material": "lash",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        -16.46,
+        319.3,
+        -19.0
+      ],
+      "size": [
+        3,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        10,
+        -28
+      ],
+      "pivot": [
+        -14.96,
+        319.8,
+        -18.0
+      ],
+      "uv": [
+        452,
+        401
+      ]
+    }
+  },
+  {
+    "name": "right_inner_eye_corner",
+    "bone": "eye_right",
+    "material": "skin",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        -4.6,
+        315.92,
+        -18.34
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        -25
+      ],
+      "pivot": [
+        -3.6,
+        316.92,
+        -17.84
+      ],
+      "uv": [
+        464,
+        401
+      ]
+    }
+  },
+  {
+    "name": "right_eyebrow",
+    "bone": "brow_right",
+    "material": "hair_shadow",
+    "pattern": "",
+    "feature": "brow",
+    "cube": {
+      "origin": [
+        -14.94,
+        325.3,
+        -18.14
+      ],
+      "size": [
+        11,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        5
+      ],
+      "pivot": [
+        -9.44,
+        325.8,
+        -17.64
+      ],
+      "uv": [
+        186,
+        406
+      ]
+    }
+  },
+  {
+    "name": "right_brow_tip",
+    "bone": "brow_right",
+    "material": "hair_shadow",
+    "pattern": "",
+    "feature": "brow",
+    "cube": {
+      "origin": [
+        -16.46,
+        324.58,
+        -17.58
+      ],
+      "size": [
+        3,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        18,
+        14
+      ],
+      "pivot": [
+        -14.96,
+        325.08,
+        -17.08
+      ],
+      "uv": [
+        212,
+        406
+      ]
+    }
+  },
+  {
+    "name": "left_temple",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "temple",
+    "cube": {
+      "origin": [
+        12.34,
+        311.2,
+        -7.6
+      ],
+      "size": [
+        7,
+        26,
+        16
+      ],
+      "rotation": [
+        0,
+        -20,
+        0
+      ],
+      "pivot": [
+        15.84,
+        324.2,
+        0.4
+      ],
+      "uv": [
+        804,
+        200
+      ]
+    }
+  },
+  {
+    "name": "left_ear_outer",
+    "bone": "ear_left",
+    "material": "skin",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        18.96,
+        308.16,
+        -3.16
+      ],
+      "size": [
+        4,
+        10,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        -8
+      ],
+      "pivot": [
+        20.96,
+        313.16,
+        -0.16
+      ],
+      "uv": [
+        646,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_ear_inner",
+    "bone": "ear_left",
+    "material": "skin_soft",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        22.62,
+        310.4,
+        -2.46
+      ],
+      "size": [
+        1,
+        6,
+        3
+      ],
+      "uv": [
+        550,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_ear_lobe",
+    "bone": "ear_left",
+    "material": "skin",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        19.78,
+        307.58,
+        -2.72
+      ],
+      "size": [
+        3,
+        3,
+        4
+      ],
+      "uv": [
+        656,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_orbital_ridge",
+    "bone": "eye_left",
+    "material": "skin",
+    "pattern": "",
+    "feature": "orbit",
+    "cube": {
+      "origin": [
+        3.1,
+        320.08,
+        -18.14
+      ],
+      "size": [
+        13,
+        2,
+        3
+      ],
+      "uv": [
+        958,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_eye_white",
+    "bone": "eye_left",
+    "material": "sclera",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        3.96,
+        314.98,
+        -18.78
+      ],
+      "size": [
+        10,
+        5,
+        3
+      ],
+      "rotation": [
+        0,
+        0,
+        -3
+      ],
+      "pivot": [
+        8.96,
+        317.48,
+        -17.28
+      ],
+      "uv": [
+        588,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_outer_sclera",
+    "bone": "eye_left",
+    "material": "sclera",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        13.08,
+        316.62,
+        -18.44
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        0,
+        -10,
+        22
+      ],
+      "pivot": [
+        14.08,
+        318.12,
+        -17.44
+      ],
+      "uv": [
+        992,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_iris",
+    "bone": "eye_left",
+    "material": "iris",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        6.98,
+        314.9,
+        -18.98
+      ],
+      "size": [
+        3,
+        5,
+        1
+      ],
+      "uv": [
+        838,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_iris_edge_-1",
+    "bone": "eye_left",
+    "material": "iris",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        6.3,
+        315.9,
+        -18.82
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        224,
+        394
+      ]
+    }
+  },
+  {
+    "name": "left_iris_edge_1",
+    "bone": "eye_left",
+    "material": "iris",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        9.66,
+        315.9,
+        -18.82
+      ],
+      "size": [
+        1,
+        3,
+        1
+      ],
+      "uv": [
+        230,
+        394
+      ]
+    }
+  },
+  {
+    "name": "left_pupil",
+    "bone": "eye_left",
+    "material": "pupil",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        7.98,
+        315.32,
+        -19.14
+      ],
+      "size": [
+        1,
+        4,
+        1
+      ],
+      "uv": [
+        1002,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_eye_glint",
+    "bone": "eye_left",
+    "material": "sclera",
+    "pattern": "",
+    "feature": "eye",
+    "cube": {
+      "origin": [
+        6.98,
+        318.26,
+        -19.3
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ],
+      "uv": [
+        222,
+        406
+      ]
+    }
+  },
+  {
+    "name": "left_lower_eyelid",
+    "bone": "eye_left",
+    "material": "skin",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        3.54,
+        314.18,
+        -18.92
+      ],
+      "size": [
+        11,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        2
+      ],
+      "pivot": [
+        9.04,
+        314.68,
+        -17.92
+      ],
+      "uv": [
+        472,
+        401
+      ]
+    }
+  },
+  {
+    "name": "left_upper_eyelid",
+    "bone": "eye_left",
+    "material": "skin",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        3.2,
+        320.18,
+        -18.84
+      ],
+      "size": [
+        12,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -3
+      ],
+      "pivot": [
+        9.2,
+        320.68,
+        -17.84
+      ],
+      "uv": [
+        500,
+        401
+      ]
+    }
+  },
+  {
+    "name": "left_lash_line",
+    "bone": "eye_left",
+    "material": "lash",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        3.2,
+        319.78,
+        -19.044
+      ],
+      "size": [
+        12,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        -3
+      ],
+      "pivot": [
+        9.2,
+        320.28,
+        -18.544
+      ],
+      "uv": [
+        228,
+        406
+      ]
+    }
+  },
+  {
+    "name": "left_outer_lash",
+    "bone": "eye_left",
+    "material": "lash",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        13.46,
+        319.3,
+        -19.0
+      ],
+      "size": [
+        3,
+        1,
+        2
+      ],
+      "rotation": [
+        0,
+        -10,
+        28
+      ],
+      "pivot": [
+        14.96,
+        319.8,
+        -18.0
+      ],
+      "uv": [
+        530,
+        401
+      ]
+    }
+  },
+  {
+    "name": "left_inner_eye_corner",
+    "bone": "eye_left",
+    "material": "skin",
+    "pattern": "",
+    "feature": "eyelid",
+    "cube": {
+      "origin": [
+        2.6,
+        315.92,
+        -18.34
+      ],
+      "size": [
+        2,
+        2,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        25
+      ],
+      "pivot": [
+        3.6,
+        316.92,
+        -17.84
+      ],
+      "uv": [
+        542,
+        401
+      ]
+    }
+  },
+  {
+    "name": "left_eyebrow",
+    "bone": "brow_left",
+    "material": "hair_shadow",
+    "pattern": "",
+    "feature": "brow",
+    "cube": {
+      "origin": [
+        3.94,
+        325.3,
+        -18.14
+      ],
+      "size": [
+        11,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        -5
+      ],
+      "pivot": [
+        9.44,
+        325.8,
+        -17.64
+      ],
+      "uv": [
+        256,
+        406
+      ]
+    }
+  },
+  {
+    "name": "left_brow_tip",
+    "bone": "brow_left",
+    "material": "hair_shadow",
+    "pattern": "",
+    "feature": "brow",
+    "cube": {
+      "origin": [
+        13.46,
+        324.58,
+        -17.58
+      ],
+      "size": [
+        3,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        -18,
+        -14
+      ],
+      "pivot": [
+        14.96,
+        325.08,
+        -17.08
+      ],
+      "uv": [
+        282,
+        406
+      ]
+    }
+  },
+  {
+    "name": "nose_bridge",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "nose",
+    "cube": {
+      "origin": [
+        -1.0,
+        309.7,
+        -19.46
+      ],
+      "size": [
+        2,
+        9,
+        3
+      ],
+      "rotation": [
+        20,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        314.2,
+        -17.96
+      ],
+      "uv": [
+        396,
+        378
+      ]
+    }
+  },
+  {
+    "name": "nose_tip",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "nose",
+    "cube": {
+      "origin": [
+        -1.5,
+        309.2,
+        -20.62
+      ],
+      "size": [
+        3,
+        2,
+        3
+      ],
+      "rotation": [
+        20,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        310.2,
+        -19.12
+      ],
+      "uv": [
+        1008,
+        378
+      ]
+    }
+  },
+  {
+    "name": "mouth_recess",
+    "bone": "mouth",
+    "material": "mouth",
+    "pattern": "",
+    "feature": "mouth",
+    "cube": {
+      "origin": [
+        -3.5,
+        304.02,
+        -17.9
+      ],
+      "size": [
+        7,
+        1,
+        1
+      ],
+      "uv": [
+        292,
+        406
+      ]
+    }
+  },
+  {
+    "name": "lower_lip",
+    "bone": "mouth",
+    "material": "lip",
+    "pattern": "",
+    "feature": "mouth",
+    "cube": {
+      "origin": [
+        -2.5,
+        303.38,
+        -18.02
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        310,
+        406
+      ]
+    }
+  },
+  {
+    "name": "right_upper_lip",
+    "bone": "mouth",
+    "material": "lip",
+    "pattern": "",
+    "feature": "mouth",
+    "cube": {
+      "origin": [
+        -3.84,
+        304.644,
+        -18.02
+      ],
+      "size": [
+        4,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        -9
+      ],
+      "pivot": [
+        -1.84,
+        305.144,
+        -17.52
+      ],
+      "uv": [
+        324,
+        406
+      ]
+    }
+  },
+  {
+    "name": "left_upper_lip",
+    "bone": "mouth",
+    "material": "lip",
+    "pattern": "",
+    "feature": "mouth",
+    "cube": {
+      "origin": [
+        -0.16,
+        304.644,
+        -18.02
+      ],
+      "size": [
+        4,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "pivot": [
+        1.84,
+        305.144,
+        -17.52
+      ],
+      "uv": [
+        336,
+        406
+      ]
+    }
+  },
+  {
+    "name": "crown_volume",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -19.0,
+        329.9,
+        -17.72
+      ],
+      "size": [
+        38,
+        15,
+        38
+      ],
+      "uv": [
+        80,
+        200
+      ]
+    }
+  },
+  {
+    "name": "crown_top",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -17.5,
+        341.1,
+        -12.46
+      ],
+      "size": [
+        31,
+        7,
+        31
+      ],
+      "rotation": [
+        0,
+        0,
+        -4
+      ],
+      "pivot": [
+        -2.0,
+        344.6,
+        3.04
+      ],
+      "uv": [
+        250,
+        255
+      ]
+    }
+  },
+  {
+    "name": "bob_occipital",
+    "bone": "hair_back",
+    "material": "hair_shadow",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -19.0,
+        303.6,
+        12.52
+      ],
+      "size": [
+        38,
+        38,
+        10
+      ],
+      "rotation": [
+        -7,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        322.6,
+        17.52
+      ],
+      "uv": [
+        482,
+        200
+      ]
+    }
+  },
+  {
+    "name": "bob_nape",
+    "bone": "hair_back",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -14.5,
+        299.78,
+        10.6
+      ],
+      "size": [
+        29,
+        9,
+        10
+      ],
+      "rotation": [
+        13,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        304.28,
+        15.6
+      ],
+      "uv": [
+        296,
+        355
+      ]
+    }
+  },
+  {
+    "name": "right_crown_facet",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -24.9,
+        324.02,
+        -14.26
+      ],
+      "size": [
+        13,
+        21,
+        33
+      ],
+      "rotation": [
+        0,
+        0,
+        -22
+      ],
+      "pivot": [
+        -18.4,
+        334.52,
+        2.24
+      ],
+      "uv": [
+        800,
+        136
+      ]
+    }
+  },
+  {
+    "name": "right_side_bob",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -26.98,
+        306.84,
+        -10.96
+      ],
+      "size": [
+        9,
+        28,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        -3
+      ],
+      "pivot": [
+        -22.48,
+        320.84,
+        3.04
+      ],
+      "uv": [
+        642,
+        136
+      ]
+    }
+  },
+  {
+    "name": "right_bob_tip",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -25.78,
+        300.7,
+        -8.8
+      ],
+      "size": [
+        9,
+        11,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        21
+      ],
+      "pivot": [
+        -21.28,
+        306.2,
+        3.2
+      ],
+      "uv": [
+        550,
+        255
+      ]
+    }
+  },
+  {
+    "name": "right_face_lock",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -22.94,
+        303.48,
+        -17.26
+      ],
+      "size": [
+        7,
+        24,
+        7
+      ],
+      "rotation": [
+        0,
+        -15,
+        10
+      ],
+      "pivot": [
+        -19.44,
+        315.48,
+        -13.76
+      ],
+      "uv": [
+        840,
+        255
+      ]
+    }
+  },
+  {
+    "name": "right_face_tip",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -19.84,
+        300.42,
+        -16.18
+      ],
+      "size": [
+        4,
+        9,
+        5
+      ],
+      "rotation": [
+        0,
+        -8,
+        25
+      ],
+      "pivot": [
+        -17.84,
+        304.92,
+        -13.68
+      ],
+      "uv": [
+        44,
+        378
+      ]
+    }
+  },
+  {
+    "name": "right_rear_facet",
+    "bone": "hair_back",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -23.38,
+        304.2,
+        9.1
+      ],
+      "size": [
+        13,
+        32,
+        13
+      ],
+      "rotation": [
+        -5,
+        -30,
+        4
+      ],
+      "pivot": [
+        -16.88,
+        320.2,
+        15.6
+      ],
+      "uv": [
+        624,
+        200
+      ]
+    }
+  },
+  {
+    "name": "right_nape_lock",
+    "bone": "hair_back",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -13.1,
+        298.5,
+        14.84
+      ],
+      "size": [
+        7,
+        9,
+        6
+      ],
+      "rotation": [
+        10,
+        0,
+        9
+      ],
+      "pivot": [
+        -9.6,
+        303.0,
+        17.84
+      ],
+      "uv": [
+        912,
+        355
+      ]
+    }
+  },
+  {
+    "name": "left_crown_facet",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        11.9,
+        324.02,
+        -14.26
+      ],
+      "size": [
+        13,
+        21,
+        33
+      ],
+      "rotation": [
+        0,
+        0,
+        22
+      ],
+      "pivot": [
+        18.4,
+        334.52,
+        2.24
+      ],
+      "uv": [
+        894,
+        136
+      ]
+    }
+  },
+  {
+    "name": "left_side_bob",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        17.98,
+        306.84,
+        -10.96
+      ],
+      "size": [
+        9,
+        28,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        3
+      ],
+      "pivot": [
+        22.48,
+        320.84,
+        3.04
+      ],
+      "uv": [
+        718,
+        136
+      ]
+    }
+  },
+  {
+    "name": "left_bob_tip",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        16.78,
+        300.7,
+        -8.8
+      ],
+      "size": [
+        9,
+        11,
+        24
+      ],
+      "rotation": [
+        0,
+        0,
+        -21
+      ],
+      "pivot": [
+        21.28,
+        306.2,
+        3.2
+      ],
+      "uv": [
+        618,
+        255
+      ]
+    }
+  },
+  {
+    "name": "left_face_lock",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        15.94,
+        303.48,
+        -17.26
+      ],
+      "size": [
+        7,
+        24,
+        7
+      ],
+      "rotation": [
+        0,
+        15,
+        -10
+      ],
+      "pivot": [
+        19.44,
+        315.48,
+        -13.76
+      ],
+      "uv": [
+        870,
+        255
+      ]
+    }
+  },
+  {
+    "name": "left_face_tip",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        15.84,
+        300.42,
+        -16.18
+      ],
+      "size": [
+        4,
+        9,
+        5
+      ],
+      "rotation": [
+        0,
+        8,
+        -25
+      ],
+      "pivot": [
+        17.84,
+        304.92,
+        -13.68
+      ],
+      "uv": [
+        64,
+        378
+      ]
+    }
+  },
+  {
+    "name": "left_rear_facet",
+    "bone": "hair_back",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        10.38,
+        304.2,
+        9.1
+      ],
+      "size": [
+        13,
+        32,
+        13
+      ],
+      "rotation": [
+        -5,
+        30,
+        -4
+      ],
+      "pivot": [
+        16.88,
+        320.2,
+        15.6
+      ],
+      "uv": [
+        678,
+        200
+      ]
+    }
+  },
+  {
+    "name": "left_nape_lock",
+    "bone": "hair_back",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        6.1,
+        298.5,
+        14.84
+      ],
+      "size": [
+        7,
+        9,
+        6
+      ],
+      "rotation": [
+        10,
+        0,
+        -9
+      ],
+      "pivot": [
+        9.6,
+        303.0,
+        17.84
+      ],
+      "uv": [
+        940,
+        355
+      ]
+    }
+  },
+  {
+    "name": "swept_bang_outer",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -20.06,
+        318.94,
+        -21.08
+      ],
+      "size": [
+        11,
+        23,
+        6
+      ],
+      "rotation": [
+        0,
+        -11,
+        -26
+      ],
+      "pivot": [
+        -14.56,
+        330.44,
+        -18.08
+      ],
+      "uv": [
+        286,
+        297
+      ]
+    }
+  },
+  {
+    "name": "swept_bang_middle",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -12.54,
+        325.58,
+        -21.48
+      ],
+      "size": [
+        11,
+        19,
+        6
+      ],
+      "rotation": [
+        0,
+        -3,
+        -31
+      ],
+      "pivot": [
+        -7.04,
+        335.08,
+        -18.48
+      ],
+      "uv": [
+        852,
+        297
+      ]
+    }
+  },
+  {
+    "name": "parting_lock",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -3.6,
+        330.72,
+        -20.46
+      ],
+      "size": [
+        8,
+        14,
+        7
+      ],
+      "rotation": [
+        0,
+        0,
+        -35
+      ],
+      "pivot": [
+        0.4,
+        337.72,
+        -16.96
+      ],
+      "uv": [
+        938,
+        329
+      ]
+    }
+  },
+  {
+    "name": "short_fringe_0",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        3.84,
+        328.4,
+        -20.9
+      ],
+      "size": [
+        4,
+        10,
+        5
+      ],
+      "rotation": [
+        0,
+        0,
+        14
+      ],
+      "pivot": [
+        5.84,
+        333.4,
+        -18.4
+      ],
+      "uv": [
+        968,
+        355
+      ]
+    }
+  },
+  {
+    "name": "short_fringe_1",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        7.44,
+        328.34,
+        -20.1
+      ],
+      "size": [
+        4,
+        9,
+        5
+      ],
+      "rotation": [
+        0,
+        8,
+        12
+      ],
+      "pivot": [
+        9.44,
+        332.84,
+        -17.6
+      ],
+      "uv": [
+        84,
+        378
+      ]
+    }
+  },
+  {
+    "name": "short_fringe_2",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        10.96,
+        328.36,
+        -18.9
+      ],
+      "size": [
+        4,
+        8,
+        5
+      ],
+      "rotation": [
+        0,
+        16,
+        10
+      ],
+      "pivot": [
+        12.96,
+        332.36,
+        -16.4
+      ],
+      "uv": [
+        356,
+        378
+      ]
+    }
+  },
+  {
+    "name": "short_fringe_3",
+    "bone": "hair_fringe",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        14.32,
+        328.12,
+        -17.46
+      ],
+      "size": [
+        4,
+        8,
+        5
+      ],
+      "rotation": [
+        0,
+        22,
+        6
+      ],
+      "pivot": [
+        16.32,
+        332.12,
+        -14.96
+      ],
+      "uv": [
+        376,
+        378
+      ]
+    }
+  },
+  {
+    "name": "hat_core",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "cloth",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -10.64,
+        343.36,
+        -10.6
+      ],
+      "size": [
+        28,
+        14,
+        26
+      ],
+      "uv": [
+        2,
+        255
+      ]
+    }
+  },
+  {
+    "name": "hat_rim_core",
+    "bone": "hat",
+    "material": "navy",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -11.64,
+        342.22,
+        -11.6
+      ],
+      "size": [
+        30,
+        3,
+        28
+      ],
+      "uv": [
+        900,
+        255
+      ]
+    }
+  },
+  {
+    "name": "hat_crown_top",
+    "bone": "hat",
+    "material": "panel",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -10.64,
+        356.16,
+        -10.1
+      ],
+      "size": [
+        28,
+        2,
+        25
+      ],
+      "uv": [
+        562,
+        297
+      ]
+    }
+  },
+  {
+    "name": "hat_side_-1",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -14.04,
+        343.3,
+        -5.6
+      ],
+      "size": [
+        6,
+        13,
+        16
+      ],
+      "uv": [
+        322,
+        297
+      ]
+    }
+  },
+  {
+    "name": "hat_side_rim_-1",
+    "bone": "hat",
+    "material": "navy",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -14.7,
+        342.22,
+        -6.1
+      ],
+      "size": [
+        7,
+        3,
+        17
+      ],
+      "uv": [
+        196,
+        355
+      ]
+    }
+  },
+  {
+    "name": "hat_corner_-1_-1",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -13.1,
+        343.46,
+        -11.68
+      ],
+      "size": [
+        7,
+        13,
+        8
+      ],
+      "rotation": [
+        0,
+        38,
+        0
+      ],
+      "pivot": [
+        -9.6,
+        349.96,
+        -7.68
+      ],
+      "uv": [
+        970,
+        329
+      ]
+    }
+  },
+  {
+    "name": "hat_corner_-1_1",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        -13.1,
+        343.46,
+        8.48
+      ],
+      "size": [
+        7,
+        13,
+        8
+      ],
+      "rotation": [
+        0,
+        -38,
+        0
+      ],
+      "pivot": [
+        -9.6,
+        349.96,
+        12.48
+      ],
+      "uv": [
+        2,
+        355
+      ]
+    }
+  },
+  {
+    "name": "hat_side_1",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        14.76,
+        343.3,
+        -5.6
+      ],
+      "size": [
+        6,
+        13,
+        16
+      ],
+      "uv": [
+        368,
+        297
+      ]
+    }
+  },
+  {
+    "name": "hat_side_rim_1",
+    "bone": "hat",
+    "material": "navy",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        14.42,
+        342.22,
+        -6.1
+      ],
+      "size": [
+        7,
+        3,
+        17
+      ],
+      "uv": [
+        246,
+        355
+      ]
+    }
+  },
+  {
+    "name": "hat_corner_1_-1",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        12.82,
+        343.46,
+        -11.68
+      ],
+      "size": [
+        7,
+        13,
+        8
+      ],
+      "rotation": [
+        0,
+        -38,
+        0
+      ],
+      "pivot": [
+        16.32,
+        349.96,
+        -7.68
+      ],
+      "uv": [
+        34,
+        355
+      ]
+    }
+  },
+  {
+    "name": "hat_corner_1_1",
+    "bone": "hat",
+    "material": "blue",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        12.82,
+        343.46,
+        8.48
+      ],
+      "size": [
+        7,
+        13,
+        8
+      ],
+      "rotation": [
+        0,
+        38,
+        0
+      ],
+      "pivot": [
+        16.32,
+        349.96,
+        12.48
+      ],
+      "uv": [
+        66,
+        355
+      ]
+    }
+  },
+  {
+    "name": "cap_front_seam",
+    "bone": "hat",
+    "material": "panel",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        2.86,
+        344.78,
+        -11.62
+      ],
+      "size": [
+        1,
+        11,
+        1
+      ],
+      "uv": [
+        408,
+        378
+      ]
+    }
+  },
+  {
+    "name": "cap_tab",
+    "bone": "hat",
+    "material": "silver",
+    "pattern": "",
+    "feature": "hat",
+    "cube": {
+      "origin": [
+        1.86,
+        346.2,
+        -12.34
+      ],
+      "size": [
+        3,
+        4,
+        1
+      ],
+      "uv": [
+        2,
+        394
+      ]
+    }
+  }
+]

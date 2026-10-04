@@ -30,7 +30,11 @@ public final class TartarusMeshModel implements IDynamicBakedModel {
  @Override public List<BakedQuad> getQuads(BlockState state,Direction side,RandomSource random,ModelData data,RenderType type){
   if(side!=null)return List.of();var spec=data.get(TartarusMeshBlockEntity.MESH);
   if(spec==null||spec.instances().isEmpty()){if(mesh.equals("empty")||mesh.equals("emissive"))return List.of();spec=new TartarusMeshBlockEntity.Spec(List.of(new TartarusMeshBlockEntity.Instance(mesh,0,0,0)),0,0,0,false);}
-  synchronized(cache){var existing=cache.get(spec);if(existing!=null)return existing;var result=bake(spec);cache.put(spec,result);cachedQuads+=result.size();var it=cache.entrySet().iterator();while(cache.size()>1&&(cache.size()>192||cachedQuads>200000)){cachedQuads-=it.next().getValue().size();it.remove();}return result;}
+  List<BakedQuad> result;
+  synchronized(cache){result=cache.get(spec);if(result==null){result=bake(spec);cache.put(spec,result);cachedQuads+=result.size();var it=cache.entrySet().iterator();while(cache.size()>1&&(cache.size()>192||cachedQuads>200000)){cachedQuads-=it.next().getValue().size();it.remove();}}}
+  var origin=data.get(TartarusMeshBlockEntity.CUTAWAY_ORIGIN);var volumes=com.gx.velveteclipse.client.presentation.BattleScenery.snapshot();
+  if(origin!=null&&spec.clipped()&&!volumes.isEmpty()){double x=origin.m_123341_()+spec.clipX(),y=origin.m_123342_()+spec.clipY(),z=origin.m_123343_()+spec.clipZ();volumes=volumes.stream().filter(v->v.intersects(x,y,z,x+16,y+16,z+16)).toList();}
+  return CutawayQuads.filter(result,origin,volumes);
  }
  private List<BakedQuad> bake(TartarusMeshBlockEntity.Spec spec){
   var quads=new ArrayList<BakedQuad>();

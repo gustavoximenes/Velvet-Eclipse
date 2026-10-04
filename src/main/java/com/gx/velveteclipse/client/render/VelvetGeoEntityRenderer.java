@@ -11,6 +11,10 @@ import software.bernie.geckolib.cache.object.GeoBone;
 
 public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> extends GeoEntityRenderer<T> {
     private final boolean thanatos,izanagi;
+    @Override public boolean m_5523_(T entity,net.minecraft.client.renderer.culling.Frustum frustum,double x,double y,double z){
+        // Animated/downed meshes can extend far outside the entity's physical collision box.
+        return com.gx.velveteclipse.client.BattleEncounterClient.participant(entity.m_19879_())||super.m_5523_(entity,frustum,x,y,z);
+    }
     @Override public void m_7392_(T entity,float yaw,float partial,PoseStack stack,net.minecraft.client.renderer.MultiBufferSource buffers,int light){
         if(entity.m_20145_()||com.gx.velveteclipse.client.BattleEncounterClient.hidden(entity.m_19879_()))return;
         stack.m_85836_();
@@ -27,7 +31,9 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         });
         thanatos=asset.equals("thanatos");izanagi=asset.equals("izanagi");this.f_114477_=thanatos?.45f:.55f;
         // Preserve authoring dimensions/Box UV; scale the model uniformly in both world and menus.
-        if(izanagi||asset.equals("igor")||asset.equals("elizabeth"))withScale(.25f);
+        if(izanagi||asset.equals("igor"))withScale(.25f);
+        if(asset.equals("elizabeth"))withScale(.11f);
+        if(asset.equals("pixie"))withScale(.085f);
         if(asset.equals("arsene"))withScale(.125f);
         if(asset.equals("orpheus"))withScale(.16f);
         if(asset.equals("priestess"))withScale(.4f);

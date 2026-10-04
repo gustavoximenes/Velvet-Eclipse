@@ -1,0 +1,30 @@
+{
+  "pixie": {
+    "revision": "03",
+    "scale": 0.085,
+    "authoring_density": 8,
+    "clips": [
+      "misc.idle",
+      "action.magic",
+      "action.physical"
+    ],
+    "source_sha256": {
+      "pixie.animation.json": "5b824f1ca9bf11c341fe9d26c94328e0fe1bb6ebd64ef6feab861e4eafde5638",
+      "pixie.geo.json": "7c1a633486f55f352dc47954c0557b1ff7e3e2445af1f0358d108b1cb14ed415",
+      "pixie.png": "c7e82bff2d886a98714b0f0a4a7949ddcb4248fd463b830d662567c375e357e4"
+    }
+  },
+  "elizabeth": {
+    "revision": "05",
+    "scale": 0.11,
+    "authoring_density": 8,
+    "clips": [
+      "misc.idle"
+    ],
+    "source_sha256": {
+      "elizabeth.animation.json": "6ca2bf4afa7ad23021cb876f937c217f722a4e1077aacc864fe033eee3dc16b0",
+      "elizabeth.geo.json": "956f49ceec68408af80f3b5688beaabe75aad7c378458a76338d5bc18ae208d6",
+      "elizabeth.png": "5e3a1a26e3b88054a35c8edf08d22943b437043848eed398180339b31e4424c5"
+    }
+  }
+}

@@ -18,6 +18,7 @@ public final class TartarusPropRenderer extends EntityRenderer<TartarusPropEntit
   pose.m_85836_();pose.m_252781_(new Quaternionf().rotationY((float)Math.toRadians(-entity.m_146908_())));pose.m_85837_(0,-1,0);
   float[] data=TartarusMeshData.load(mesh);var matrix=pose.m_85850_();
   for(int i=0;i<data.length;i+=33){
+   if(occluded(data,i,entity))continue;
    int material=Math.max(0,Math.min(9,Math.round(data[i+9])));var buffer=buffers.m_6299_(RenderType.m_110458_(textures[material]));
    float[] a=java.util.Arrays.copyOfRange(data,i,i+11),b=java.util.Arrays.copyOfRange(data,i+11,i+22),c=java.util.Arrays.copyOfRange(data,i+22,i+33);
    if(TartarusMeshData.backwards(a,b,c)){var tmp=b;b=c;c=tmp;}
@@ -31,5 +32,11 @@ public final class TartarusPropRenderer extends EntityRenderer<TartarusPropEntit
    }
   }
   pose.m_85849_();super.m_7392_(entity,yaw,partial,pose,buffers,light);
+ }
+ private static boolean occluded(float[] data,int index,TartarusPropEntity e){
+  var volumes=com.gx.velveteclipse.client.presentation.BattleScenery.snapshot();if(volumes.isEmpty())return false;
+  double angle=Math.toRadians(-e.m_146908_()),cos=Math.cos(angle),sin=Math.sin(angle);double[] b={Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE,-Double.MAX_VALUE,-Double.MAX_VALUE,-Double.MAX_VALUE};
+  for(int v=0;v<3;v++){int i=index+v*11;double[] p={e.m_20185_()+cos*data[i]+sin*data[i+2],e.m_20186_()-1+data[i+1],e.m_20189_()-sin*data[i]+cos*data[i+2]};for(int a=0;a<3;a++){b[a]=Math.min(b[a],p[a]);b[a+3]=Math.max(b[a+3],p[a]);}}
+  for(var volume:volumes)if(volume.intersects(b[0],b[1],b[2],b[3],b[4],b[5]))return true;return false;
  }
 }

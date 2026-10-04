@@ -70,11 +70,12 @@ public final class RaidService {
   Entity e=r.stage==2?RaidRegistry.PRIESTESS.get().m_20615_(l):ShadowRegistry.shadowType().m_20615_(l);if(e==null){fail(r,"Não foi possível preparar o encontro.");return;}
   e.m_6034_(r.x()+.5,65.05,TrainLayout.encounterZ(r.stage)+.5);RuntimeBridge.setEntityRotation(e,180,0);e.m_20331_(true);e.m_20242_(true);
   if(e instanceof Mob m){m.m_21557_(true);m.m_21530_();}
-  e.m_6593_(Component.m_237113_(r.stage==2?"Sacerdotisa":r.stage==0?"Guardião do Trem • Sentinela":"Guardião do Trem • Condutor"));e.getPersistentData().m_128379_("raid_actor",true);l.m_7967_(e);r.actor=e;
+  e.m_6593_(Component.m_237113_(r.stage==2?"Sacerdotisa":r.stage==0?"Guardião do Trem • Sentinela":"Guardião do Trem • Condutor"));e.getPersistentData().m_128379_("raid_actor",true);if(!l.m_7967_(e)){fail(r,"Não foi possível criar o modelo do encontro.");return;}r.actor=e;
  }
  private static void startBattle(Run r){
   var party=players(r);if(party.isEmpty())return;
   for(int i=0;i<party.size();i++){var p=party.get(i);p.m_8999_(world(),r.x()+.5+(i%3-1)*2.1,65.05,TrainLayout.encounterZ(r.stage)-7-(i/3)*2.1,0,0);}
+  if(r.actor==null||r.actor.m_213877_())spawn(r);if(!RUNS.contains(r))return;
   var s=BattleService.startRaid(party,r.stage,r.actor);if(s==null){fail(r,"O encontro foi interrompido.");return;}
   r.battle=s.id();r.mode="battle";if(r.stage==2)r.rules=new PriestessRules(now());broadcast(r);
  }
@@ -103,6 +104,11 @@ public final class RaidService {
     if(r.built==PLAN.size())enter(r);continue;
    }
    if(r.mode.equals("failed")){fail(r,"A equipe foi derrotada. A próxima tentativa começa do início.",true);continue;}
+   if(ticks%20==0&&r.mode.equals("battle")&&(r.actor==null||r.actor.m_213877_())){
+    var party=players(r);var session=party.isEmpty()?null:BattleService.current(party.get(0));
+    var foe=session==null?null:session.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).findFirst().orElse(null);
+    if(foe!=null){spawn(r);if(!RUNS.contains(r))continue;VisualBattleActors.bindEnemy(session.id(),foe.id(),r.actor);for(var p:party)BattleService.sync(p,"Escolha uma ação.");}
+   }
    if(r.stage==2&&r.actor!=null&&now()>r.pulseUntil)r.actor.m_146926_(0);
    if(r.rules!=null&&r.mode.equals("battle")&&r.rules.remaining(now())==0){fail(r,"TEMPO ESGOTADO! O trem saiu de controle.",true);continue;}
    if(r.mode.equals("results")&&players(r).stream().allMatch(p->BattleService.current(p)==null)){

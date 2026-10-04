@@ -159,7 +159,7 @@ def entrance(t):
   emit_faces('corridor',f)
  else:
   cam=c.b.Camera((-.25,1.4,-5.3+.55*c.ease(t,3.65,5.1)),(0,1.15,0),46,-7)
-  native_actor('elizabeth',t,T((.75,0,0))@R((0,8,0))@S(.017))
+  native_actor('elizabeth',t,T((.75,0,0))@R((0,8,0))@S(.0073046875))
   emit_faces('door',c.b.box((-.85,1.60,.15),(1.45,3.2,.04),(229,235,255)))
  return cam
 
@@ -169,7 +169,7 @@ def scene(name,t):
   emit_faces('reveal',REVEAL)
   return c.b.Camera((.35-.12*c.ease(t,0,3),2.48,-2.3),(0,1.98,2.75),48)
  if name!='portrait':emit_faces('room',ROOM)
- if name!='portrait':native_actor('elizabeth',t,T((-2.45,0,3.03))@R((0,5,0))@S(.016))
+ if name!='portrait':native_actor('elizabeth',t,T((-2.45,0,3.03))@R((0,5,0))@S(.006875))
  if name=='fusion':
   native_actor('igor',t,np.eye(4),c.igor_pose(t+.4)[1]);player(t,c.PLAYER_MATRIX);emit_faces('chair',chair(c.PLAYER_MATRIX));cards(t);cam=c.camera(t);effects(t,cam);return cam
  if name!='portrait':native_actor('igor',0,T((0,.12,3.13))@S(.016))

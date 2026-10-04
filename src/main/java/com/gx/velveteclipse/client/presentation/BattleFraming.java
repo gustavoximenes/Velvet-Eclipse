@@ -26,21 +26,24 @@ public final class BattleFraming {
    for(double extra:new double[]{0,4,8,12}){
    double candidateLens=Math.min(70,Math.max(lens,fov+extra));
    var focus=commandFocus(player,eye,candidateLens,aspect);double score=0;
-   for(var point:subjects){if(commandContains(List.of(point),eye,focus,candidateLens,aspect))score+=10;if(clip.apply(point.m_82520_(0,.25,0),eye).m_82554_(eye)<.22)score+=1;}
+   boolean clear=true;for(var point:subjects){if(commandContains(List.of(point),eye,focus,candidateLens,aspect))score+=10;if(clip.apply(point.m_82520_(0,.25,0),eye).m_82554_(eye)<.22)score+=30;else clear=false;}
    // A clipped player is a hard composition failure, irrespective of enemy count.
    var bounds=List.of(player,player.m_82520_(0,1.95,0));
    if(!commandContains(bounds,eye,focus,candidateLens,aspect))score-=1000;
    score-=Math.abs(angle)*.07+Math.abs(scale-1)*4+Math.max(0,5.2-distance)*18+(candidateLens-fov)*.12;
    if(score>bestScore){bestScore=score;best=new View(eye,focus,candidateLens);}
-   if(angle==0&&scale==1&&commandContains(subjects,eye,focus,candidateLens,aspect)&&eye.m_82554_(desired)<.15&&extra==0)return best;
+   if(clear&&angle==0&&scale==1&&commandContains(subjects,eye,focus,candidateLens,aspect)&&eye.m_82554_(desired)<.15&&extra==0)return best;
    }
   }
   return best;
  }
  /** Anchor the actor's waist to the same virtual 640x360 canvas as the command fan. */
  public static Vec3 commandFocus(Vec3 player,Vec3 eye,double fov,double aspect){
+  return commandFocus(player,eye,fov,aspect,125);
+ }
+ public static Vec3 commandFocus(Vec3 player,Vec3 eye,double fov,double aspect,double anchorX){
   double unit=Math.min(aspect/640,1./360),top=1-360*unit;
-  double gx=(2*125*unit/aspect-1)*Math.tan(Math.toRadians(fov/2))*aspect;
+  double gx=(2*anchorX*unit/aspect-1)*Math.tan(Math.toRadians(fov/2))*aspect;
   double gy=(1-2*(top+230*unit))*Math.tan(Math.toRadians(fov/2));
   var delta=player.m_82520_(0,.95,0).m_82546_(eye);double yaw=Math.atan2(delta.f_82479_,delta.f_82481_),pitch=Math.atan2(delta.f_82480_,Math.hypot(delta.f_82479_,delta.f_82481_));
   for(int i=0;i<24;i++){

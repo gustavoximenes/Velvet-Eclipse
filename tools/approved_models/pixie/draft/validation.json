@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "checks": 7047,
+  "cuboids": 210,
+  "bones": 40,
+  "atlas": [
+    1024,
+    1024
+  ],
+  "uniform_density": 8,
+  "integer_dimensions": true,
+  "box_uv": true,
+  "wing_cutout_both_sides": true,
+  "animation_clips": {
+    "animation.pixie.air_idle": 4.0,
+    "animation.pixie.magic_attack": 2.8,
+    "animation.pixie.physical_attack": 1.8
+  },
+  "impact_times": {
+    "magic": 1.18,
+    "physical": 0.66
+  },
+  "sampled_poses": 243,
+  "minimum_joint_overlap": 2.1999999999999886,
+  "minimum_neck_overlap": 3.2151476169064956,
+  "maximum_sampled_rotation_degrees": 13.800663797481324,
+  "body_and_wing_cuboids_preserved": 58,
+  "original_three_clips_preserved": true,
+  "maximum_structural_head_protrusion": 7.105427357601002e-15,
+  "mod_files_unchanged": 4190,
+  "integrated": false,
+  "game_validation": false
+}

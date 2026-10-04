@@ -44,12 +44,13 @@ public final class BattleDirector {
  public static Vec3 commandEye(UUID id){var view=commandCamera.view();return view!=null&&commandSubject(id)?view.eye():null;}
  public static boolean commandSubject(UUID id){
   var mc=Minecraft.m_91087_();if(mc.f_91074_==null||!ClientBattleState.snapshot().active())return false;
-  if(active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting()))return false;
+  boolean train=mc.f_91073_!=null&&mc.f_91073_.m_46472_().m_135782_().toString().equals("velvet_eclipse:monorail");
+  if(!train&&active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting()))return false;
   var member=BattleTargetHud.roster().stream().filter(t->t.ally()&&t.turn()).findFirst().orElse(null);
   return id.equals(BattleFollowCamera.enabled()&&member!=null?member.id():mc.f_91074_.m_20148_());
  }
  public static void tick(){
-  var mc=Minecraft.m_91087_();if(mc.f_91073_==null||level!=null&&mc.f_91073_!=level||!ClientBattleState.snapshot().active()){reset();return;}if(level==null)level=mc.f_91073_;if(!active())return;
+  var mc=Minecraft.m_91087_();if(mc.f_91073_==null||level!=null&&mc.f_91073_!=level||!ClientBattleState.snapshot().active()){reset();BattleScenery.clear();return;}if(level==null)level=mc.f_91073_;if(!active())return;
   int t=(int)age(0);if(lastTick==t)return;
   if(cue.kind().equals("skill")&&lastTick<38&&t>=38){var a=actor();if(a!=null)PhotonBattleEffects.trigger(a.m_20185_(),a.m_20186_()+1.55,a.m_20189_());}
   if(shifting()&&lastTick<ShiftPresentation.TRANSFER&&t>=ShiftPresentation.TRANSFER){var a=actor();var b=targetPosition(1);if(a!=null)PhotonBattleEffects.shift(a.m_20182_(),b);}
@@ -65,7 +66,10 @@ public final class BattleDirector {
  public static boolean camera(ViewportEvent.ComputeCameraAngles event){
   var mc=Minecraft.m_91087_();if(!ClientBattleState.snapshot().active()||mc.f_91073_==null||mc.f_91074_==null)return false;
   float partial=(float)event.getPartialTick();Vec3 a,b;String kind="command";double time=0;
-  boolean directed=active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting());
+  boolean train=mc.f_91073_.m_46472_().m_135782_().toString().equals("velvet_eclipse:monorail");
+  boolean cutaway=BattleScenery.tartarus();
+  // Tight train cars keep a stable aisle shot through the action instead of orbiting outside the car.
+  boolean directed=!train&&active()&&BattleFollowCamera.direct(cue.actor().equals(mc.f_91074_.m_20148_()),shifting());
   if(directed){
    var entity=actor();a=entity==null?new Vec3(cue.x(),cue.y(),cue.z()):entity.m_20318_(partial);
    var target=mc.f_91073_.m_6815_(cue.targetEntity());b=target==null?new Vec3(cue.tx(),cue.ty(),cue.tz()):target.m_20318_(partial);kind=cue.kind();time=age(partial);
@@ -86,11 +90,19 @@ public final class BattleDirector {
   if(kind.equals("command")){
    double aspect=mc.m_91268_().m_85445_()/(double)Math.max(1,mc.m_91268_().m_85446_());
    var turn=BattleTargetHud.roster().stream().filter(t->t.ally()&&t.turn()).findFirst().orElse(null);
-   int key=java.util.Objects.hash(BattleFollowCamera.enabled(),BattleFollowCamera.enabled()&&turn!=null?turn.id():mc.f_91074_.m_20148_());long tick=mc.f_91073_.m_46467_();
-    var points=new java.util.ArrayList<Vec3>();for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){var foot=entity.m_20318_(partial);double radius=member.ally()?.35:.85,height=entity.m_7755_().getString().startsWith("GuardiÃ£o")?4:2.5;for(double x:new double[]{-radius,radius})for(double z:new double[]{-radius,radius})for(double y:new double[]{.05,height})points.add(foot.m_82520_(x,y,z));}}
-   var commandFrame=commandCamera.update(a,points,shot.fov(),aspect,key,tick,ExplorationCamera::collide);
+   int key=java.util.Objects.hash(train,BattleFollowCamera.enabled(),BattleFollowCamera.enabled()&&turn!=null?turn.id():mc.f_91074_.m_20148_(),BattleTargetHud.roster().stream().filter(t->!t.ally()&&t.hp()>0).map(t->t.entityId()).toList());long tick=mc.f_91073_.m_46467_();
+   var points=enemyBounds(partial);
+   var commandFrame=commandCamera.update(a,points,shot.fov(),aspect,key,tick,cutaway?(from,to)->to:ExplorationCamera::collide,train);
    focus=commandFrame.focus();position=commandFrame.eye();lens=(float)commandFrame.fov();
-  }else position=BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);
+  }else position=cutaway?desired:BattleCameraSafety.choose(focus,desired,ExplorationCamera::collide);
+  if(cutaway){var subjects=enemyBounds(partial);for(var member:BattleTargetHud.roster())if(member.ally()){var entity=mc.f_91073_.m_6815_(member.entityId());if(entity!=null){subjects.add(entity.m_20318_(partial).m_82520_(0,.35,0));subjects.add(entity.m_20318_(partial).m_82520_(0,1.8,0));}}subjects.add(a.m_82520_(0,1,0));BattleScenery.update(position,subjects,Math.min(a.f_82480_,b.f_82480_)+.12,mc.f_91073_.m_46467_());}else BattleScenery.clear();
   ExplorationCamera.place(event,position,focus,shot.roll());fov=lens;return true;
+ }
+ private static java.util.ArrayList<Vec3> enemyBounds(float partial){
+  var points=new java.util.ArrayList<Vec3>();var world=Minecraft.m_91087_().f_91073_;
+  for(var member:BattleTargetHud.roster())if(!member.ally()&&member.hp()>0){var e=world.m_6815_(member.entityId());if(e!=null){var foot=e.m_20318_(partial);String name=e.m_7755_().getString();boolean priestess=e instanceof com.gx.velveteclipse.raid.PriestessEntity;
+   double radius=priestess?3.4:Math.max(.85,e.m_20205_()*.6),depth=priestess?1.8:radius,height=priestess?5.6:name.startsWith("Guardião")?4:Math.max(2.5,e.m_20206_());
+   for(double x:new double[]{-radius,radius})for(double z:new double[]{-depth,depth})for(double y:new double[]{.1,height})points.add(foot.m_82520_(x,y,z));
+  }}return points;
  }
 }
