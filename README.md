@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.45 — Cidade, lojas e Personas
+
+Escolha única da cidade pelo criador do mundo, primeira chegada e renascimento no dormitório, mapa/viagem rápida com M e integração dos 16 cenários modelados. Lojas de Paulownia com HUDs próprios substituem o comércio da Elizabeth em mundos com cidade. Apsaras04, Jack Frost01, Forneus01 e Chimera01 integrados. [Controles, escopo e validação offline](docs/CITY-INTEGRATION.md).
+
 # Velvet Eclipse 0.6.44 — Modelos e câmera de combate
 
 Pixie03 e Elizabeth05 integradas. Recorte local do Tártaro somente para o participante em batalha; outros jogadores veem o cenário completo. Câmera interna específica para o trem e recuperação de inimigos visuais. [Mudanças e validação offline](docs/MODELS-CAMERA.md).

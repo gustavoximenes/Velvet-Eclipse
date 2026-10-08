@@ -1,3 +1,11 @@
+# Cidade e modelos da versão 0.6.45
+
+`import_city_release.py` exporta Apsaras04, Jack Frost01, Forneus01 e Chimera01. Os drafts locais são suficientes para reconstruir os recursos. O giro aprovado de Jack Frost/Forneus também preenche o canal físico.
+
+`build_city.py` usa os triângulos e texturas autorais preservados em `city/`, gera a planta de colisão/conectividade e as seções nativas. `audit_city.py` verifica os destinos e balcões. `city/export_shop_art.cjs` reconstrói a arte de cada loja a partir dos SVGs em `city/shop-art.json`.
+
+Após `gradlew cityIntegrationTest`, `preview_city_models.py` renderiza as amostras do GeckoLib e os retratos de fusão das quatro Personas. Requer NumPy/Pillow. O JAR normal usa recursos já exportados, sem exigir Python/Node.
+
 # Modelos aprovados integrados em 0.6.44
 
 Pixie revisão 03 e Elizabeth revisão 05 substituem os modelos anteriores. Os

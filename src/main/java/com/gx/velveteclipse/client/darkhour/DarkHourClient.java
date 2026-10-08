@@ -21,7 +21,7 @@ public final class DarkHourClient {
  private static DarkHourS2C tower;private static final List<BlockPos> patches=new ArrayList<>();private static int patchX=Integer.MIN_VALUE,patchZ;
  public static void accept(DarkHourS2C p){tower=p;}
  public static boolean active(){return DarkHourService.active(Minecraft.m_91087_().f_91073_);}
- public static boolean clock(){var l=Minecraft.m_91087_().f_91073_;return l!=null&&l.m_46472_().equals(net.minecraft.world.level.Level.f_46428_)&&(DarkHourCycle.warning(l.m_46468_())||greenTicks>0);}
+ public static boolean clock(){var l=Minecraft.m_91087_().f_91073_;return l!=null&&(l.m_46472_().equals(net.minecraft.world.level.Level.f_46428_)||l.m_46472_().equals(com.gx.velveteclipse.city.CityService.DIMENSION))&&(DarkHourCycle.warning(l.m_46468_())||greenTicks>0);}
  public static void paint(HudDesign.Canvas c,int w,int h){var l=Minecraft.m_91087_().f_91073_;if(l!=null)DarkHourClockDesign.paint(c,w,h,active()?1:DarkHourCycle.approach(l.m_46468_()),active(),greenTicks);}
  @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){
   if(e.phase!=TickEvent.Phase.END)return;var mc=Minecraft.m_91087_();var l=mc.f_91073_;

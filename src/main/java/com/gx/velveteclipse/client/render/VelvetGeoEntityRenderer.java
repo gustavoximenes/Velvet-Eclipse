@@ -34,6 +34,8 @@ public final class VelvetGeoEntityRenderer<T extends Entity & GeoAnimatable> ext
         if(izanagi||asset.equals("igor"))withScale(.25f);
         if(asset.equals("elizabeth"))withScale(.11f);
         if(asset.equals("pixie"))withScale(.085f);
+        if(asset.equals("apsaras"))withScale(.0625f);
+        if(java.util.Set.of("jack_frost","forneus","chimera").contains(asset))withScale(.125f);
         if(asset.equals("arsene"))withScale(.125f);
         if(asset.equals("orpheus"))withScale(.16f);
         if(asset.equals("priestess"))withScale(.4f);

@@ -32,6 +32,7 @@ public final class EquipmentService {
    case "equip" -> {if(bag.equip(r.id()))message="Equipamento alterado.";else message="Você não possui esse equipamento ou ele já está equipado.";}
    case "remove" -> {try{bag.remove(EquipmentCatalog.Slot.valueOf(r.id()));message="Equipamento removido.";}catch(IllegalArgumentException ignored){return;}}
    case "shop","buy" -> {
+    if(com.gx.velveteclipse.city.CityService.enabled(p)){sync(p,"closed","Na cidade, procure as lojas de Paulownia Mall.");return;}
     npc=merchant(p,r.token());if(npc==null){sync(p,"closed","Aproxime-se da Elizabeth para comprar.");return;}
     if(r.action().equals("shop")){view="shop";break;}
     if(!ShopStock.available(r.id(),ShopProgress.tier(p))){message="Este equipamento exige uma Permissão de Compra posterior ou não faz parte do estoque da loja.";break;}

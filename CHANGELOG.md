@@ -1,3 +1,12 @@
+# 0.6.45-city
+
+- Escolha persistente Com/Sem cidade exclusiva do criador; convidados não alteram a decisão. Construção incremental, quarto como primeira chegada e renascimento.
+- Cidade em dimensão própria com 16 cenários aprovados, caminhos conectados, entradas dos interiores, 25 destinos e minimapa/viagem rápida em M.
+- Nove estabelecimentos de Paulownia com arte própria, catálogo e transações no servidor; Elizabeth deixa de vender somente em mundos com cidade.
+- Nove materiais, nove balcões e acesso ao Tártaro na aba criativa. Porta funcional da Velvet Room junto à Mandragora e relógio da cidade sincronizado com o Overworld.
+- Apsaras04, Jack Frost01, Forneus01 e Chimera01 com atlas, rig, idle e ataques aprovados; retratos de fusão atualizados.
+- Auditorias offline de conectividade, recursos, economia, GeckoLib e renderização nativa. Sem execução do Minecraft. [Escopo e limitações](docs/CITY-INTEGRATION.md).
+
 # 0.6.44-models-camera
 
 - Integra Pixie03 e Elizabeth05, animações aprovadas, cenas da Velvet Room e retrato da carta Pixie.

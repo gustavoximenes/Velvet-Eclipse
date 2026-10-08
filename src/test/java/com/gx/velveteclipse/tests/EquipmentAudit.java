@@ -39,7 +39,7 @@ public final class EquipmentAudit {
   c=actor().equipment(bonus("+Null all ailments"));c.afflict("FEAR");check(c.ailment().isEmpty(),"all-ailment immunity");
   c=actor().equipment(bonus("+Enduring Soul"));c.damage(1000);check(c.hp()==200,"Enduring Soul restores once");c.damage(1000);check(!c.alive(),"Enduring Soul cannot create immortality");
   c=actor().equipment(bonus("+Endure Dark"));c.elementalDamage(1000,Element.FIRE);check(!c.alive(),"element-specific Endure cannot guard unrelated damage");
-  c=actor().equipment(bonus("+Endure Dark"));c.elementalDamage(1000,Element.DARK);check(c.hp()==1,"element-specific Endure protects correct element");
+  c=actor().equipment(bonus("+Endure Dark"));c.instantDamage(c.survivesInstant(Element.DARK,new java.util.Random(1)));check(c.hp()==1,"element-specific Endure protects instant death of the correct element");
   var json=new com.google.gson.Gson();var response=new EquipmentNetwork.Snapshot(bag,123,"shop","",12,true,UUID.randomUUID().toString());check(json.fromJson(json.toJson(response),EquipmentNetwork.Snapshot.class).bag().owned.equals(bag.owned),"network collection round-trip");
   var resources=Path.of("src/main/resources/assets/velvet_eclipse");for(var gear:EquipmentCatalog.all())check(Files.exists(resources.resolve("models/item/gear_"+gear.id()+".json")),"creative model "+gear.id());
   for(var f:EquipmentCatalog.Family.values())if(f!=EquipmentCatalog.Family.NONE)check(Files.exists(resources.resolve("weapons/"+f.name().toLowerCase(Locale.ROOT)+".json")),"native weapon asset "+f);

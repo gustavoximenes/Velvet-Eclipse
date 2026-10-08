@@ -1,0 +1,46 @@
+{
+  "apsaras": {
+    "revision": "04",
+    "rendererScale": 0.0625,
+    "physicalUsesMagic": false,
+    "sha256": {
+      "apsaras.animation.json": "84352f586f506fdb6805515c284b94616ec00a0dca7b052ca173e165344688a7",
+      "apsaras.bbmodel": "1ae7d2b3f6032eca0d02e391a236e5fa0be70e7e77a64f64c57a71617869e6e9",
+      "apsaras.geo.json": "d49e3fc1e418ff6637a2a4c722a0fd2e74efd353477f42b4c5c6d2383a9d800b",
+      "apsaras.png": "a6074d3cd673ba2d8b553231a50bb31a150b9fb18093b25b9e5d2ff700bdf0ff"
+    }
+  },
+  "jack_frost": {
+    "revision": "01",
+    "rendererScale": 0.125,
+    "physicalUsesMagic": true,
+    "sha256": {
+      "jack_frost.animation.json": "f1f7f63a7e917e38c824d870d80d11973c56ee445924b9e2d722c17f40493d52",
+      "jack_frost.bbmodel": "07af00da0647f9a68d49ba5324badcb61e3e767fcb4f8f0e5d127361cf3ad6ae",
+      "jack_frost.geo.json": "b110bc4d99ae5502276668443ac3591ee773d1900b9a4f81fd8c9a0776332f06",
+      "jack_frost.png": "2aef76f86450c25f3ca4f3c7ca7cc386a6d97b702d1261f7d8da81a5d3fa623b"
+    }
+  },
+  "forneus": {
+    "revision": "01",
+    "rendererScale": 0.125,
+    "physicalUsesMagic": true,
+    "sha256": {
+      "forneus.animation.json": "edef7018583f57d6e33a64cbab969a8f0c60ba7f77bc196b440ec3baaf18eebb",
+      "forneus.bbmodel": "3e6050c5dbf4f0ab6b6deea97de8560fc0e0b0e7babcd21ad0b983ec244554bd",
+      "forneus.geo.json": "cac3dcd0e4562224bde313b6ad43f5081c8316eb72bbfd27f4f13b14ed7f346f",
+      "forneus.png": "c476589a13f68d5071fd0e5c60a3567f5eba0125eda9192561aa5f8393ad5524"
+    }
+  },
+  "chimera": {
+    "revision": "01",
+    "rendererScale": 0.125,
+    "physicalUsesMagic": false,
+    "sha256": {
+      "chimera.animation.json": "cb1fc351c54a5ea1a1436e8ebef19947f32b8b296d43afbd165af0aa536b7f4d",
+      "chimera.bbmodel": "8be5d2ae120661afb0ac0512ee9dbcf12cc3d4a7799c88db4d3fd178b53c4681",
+      "chimera.geo.json": "46192efa9347b555a69896257381f8a84e162ee86c6786f99d4765f3611266e5",
+      "chimera.png": "d243064ffcd26dd1c3f5408bdb65fe7782e63254389296f05d950b774dc7f51a"
+    }
+  }
+}

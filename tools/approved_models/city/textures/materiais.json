@@ -1,0 +1,15 @@
+{
+  "note": "Texturas procedurais autorais, multiplicadas pela cor do material. Mapas auxiliares de roughness/emissão não são um pacote shader validado.",
+  "size": 128,
+  "materials": [
+    "pedra_calcada",
+    "tijolo_comercial",
+    "reboco_pedra",
+    "madeira",
+    "vidro",
+    "piso_escolar",
+    "folhagem",
+    "telha"
+  ],
+  "emission": "zero para superfícies comuns; lâmpadas usam geometria separada"
+}

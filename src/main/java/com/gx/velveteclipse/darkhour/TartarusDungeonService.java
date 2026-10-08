@@ -69,7 +69,7 @@ public final class TartarusDungeonService {
   if(!ready(s,target)){p.m_5661_(Component.m_237113_(target==0?"Tártaro • Abrindo o hall…":"Tártaro • Gerando andar "+target+"…"),true);}
  }
  public static void cancelTransfers(ServerLevel l){data(l).pending.clear();}
- public static void leave(ServerPlayer p){
+ public static void leave(ServerPlayer p){if(com.gx.velveteclipse.city.CityService.returnFromTartarus(p))return;
   var level=p.m_20194_().m_129783_();var back=p.getPersistentData().m_128469_(RETURN);var spawn=level.m_220360_();double x=back.m_128441_("x")?back.m_128459_("x"):spawn.m_123341_()+.5,z=back.m_128441_("z")?back.m_128459_("z"):spawn.m_123343_()+.5;
   var tower=TartarusService.data(level);if(tower.ready()&&!tower.removing){x=tower.x+.5;z=tower.z+32.5;}
   int y=level.m_6924_(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,(int)Math.floor(x),(int)Math.floor(z));

@@ -12,7 +12,15 @@
     "m7": "velvet_eclipse:block/tartarus_native_7",
     "m8": "velvet_eclipse:block/tartarus_native_8",
     "m9": "velvet_eclipse:block/tartarus_native_9",
-    "particle": "velvet_eclipse:block/tartarus_native_2"
+    "particle": "velvet_eclipse:block/tartarus_native_2",
+    "m10": "velvet_eclipse:block/city_native_0",
+    "m11": "velvet_eclipse:block/city_native_1",
+    "m12": "velvet_eclipse:block/city_native_2",
+    "m13": "velvet_eclipse:block/city_native_3",
+    "m14": "velvet_eclipse:block/city_native_4",
+    "m15": "velvet_eclipse:block/city_native_5",
+    "m16": "velvet_eclipse:block/city_native_6",
+    "m17": "velvet_eclipse:block/city_native_7"
   },
   "ambientocclusion": false,
   "display": {

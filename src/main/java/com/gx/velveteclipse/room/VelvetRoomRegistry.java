@@ -38,5 +38,5 @@ public final class VelvetRoomRegistry {
  }
  public static final RegistryObject<CreativeModeTab> TAB=tab(CreativeCategory.GENERAL);
  static {for(var category:CreativeCategory.values())if(category!=CreativeCategory.GENERAL)tab(category);}
- public static void register(IEventBus bus){com.gx.velveteclipse.forge.PersonaModelItems.init();com.gx.velveteclipse.progression.ProgressionItems.init();com.gx.velveteclipse.equipment.EquipmentRegistry.init();com.gx.velveteclipse.shadow.FieldShadowRegistry.init();com.gx.velveteclipse.shadow.EnemyRegistry.init();com.gx.velveteclipse.darkhour.TartarusPropRegistry.init();com.gx.velveteclipse.raid.RaidRegistry.init();BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);TABS.register(bus);}
+ public static void register(IEventBus bus){com.gx.velveteclipse.city.CityRegistry.init();com.gx.velveteclipse.forge.PersonaModelItems.init();com.gx.velveteclipse.progression.ProgressionItems.init();com.gx.velveteclipse.equipment.EquipmentRegistry.init();com.gx.velveteclipse.shadow.FieldShadowRegistry.init();com.gx.velveteclipse.shadow.EnemyRegistry.init();com.gx.velveteclipse.darkhour.TartarusPropRegistry.init();com.gx.velveteclipse.raid.RaidRegistry.init();BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);TABS.register(bus);}
 }
