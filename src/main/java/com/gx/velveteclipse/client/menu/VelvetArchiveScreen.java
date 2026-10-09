@@ -113,7 +113,7 @@ public final class VelvetArchiveScreen extends Screen {
   try{
    if(page==INSPECT&&inspected!=null){
     var p=sheetPersona();var view=new PersonaSheetDesign.View(p,false,0,1,skill,affinity,time-entered,time,true,readOnly?(finished?"FUSÃO CONCLUÍDA":"COMPÊNDIO"):"HERANÇA  "+inherited.size()+" / 2",model.error(p.id()));
-    g.m_286007_(() ->PersonaSheetDesign.background(c,view));g.m_280588_((int)(left()+485*scale()),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+474*scale()));try{model.draw(g,view);}finally{g.m_280618_();}
+    g.m_286007_(() ->PersonaSheetDesign.background(c,view));g.m_280588_((int)(left()+396*scale()),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+474*scale()));try{model.draw(g,view);}finally{g.m_280618_();}
     pose.m_85837_(0,0,MenuDepth.FOREGROUND);g.m_286007_(() ->{
      PersonaSheetDesign.foreground(c,view,false);
      if(!readOnly){for(int i=p.skills().size();i<inspected.skills().size()+2;i++){if(i/8!=skill/8)continue;var r=PersonaSheetDesign.skill(i%8);c.fill(r.x(),r.y(),r.w(),r.h(),i==skill?CYAN:0xFF153B62);c.text("+ Adicionar habilidade",r.x()+9,r.y()+5,12,i==skill?INK:CYAN,0);}}

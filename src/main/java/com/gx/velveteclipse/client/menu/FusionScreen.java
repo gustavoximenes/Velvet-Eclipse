@@ -84,7 +84,7 @@ public final class FusionScreen extends Screen {
   try{
    if(page==4){var p=sheet.persona(inspecting());if(p==null)return;
     var view=new PersonaSheetDesign.View(p,false,sheet.index(inspecting()),inspecting().size(),sheet.skill(),sheet.affinity(),time-changed,time,true,fusionPreview?data.message():"PERSONA POSSUÍDA",model.error(p.id()));
-    g.m_286007_(() -> PersonaSheetDesign.background(c,view));g.m_280588_((int)(left()+485*scale()),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+474*scale()));try{model.draw(g,view);}finally{g.m_280618_();}
+    g.m_286007_(() -> PersonaSheetDesign.background(c,view));g.m_280588_((int)(left()+396*scale()),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+474*scale()));try{model.draw(g,view);}finally{g.m_280618_();}
     pose.m_85837_(0,0,MenuDepth.FOREGROUND);g.m_286007_(() -> {PersonaSheetDesign.foreground(c,view,!fusionPreview);if(fusionPreview)FusionDesign.fusionFooter(c,data,waiting);else{c.fill(0,475,900,25,MenuDesign.INK);c.text("ESC  Voltar   Q / E  Persona   F  Afinidades   A / D  Girar modelo",22,483,11,MenuDesign.WHITE,0);}});
    }else{
     var view=new FusionDesign.View(data,page,selected,offset,first,waiting,time);

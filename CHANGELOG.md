@@ -1,3 +1,12 @@
+# 0.6.46-city
+
+- Reenquadramento das 181 Personas pelo volume amostrado das animações e pela rotação do menu. Corrige Forneus pequeno/deslocado e recortes pelo frame, com proporções individuais do Reload e o painel de atributos à frente da parte inferior do corpo; escalas de combate preservadas.
+- Substitui a arquitetura urbana em malhas sobrepostas por 265.067 blocos visíveis. Remove superfícies duplicadas responsáveis pelo cintilar, especialmente perceptível na Dark Hour, e usa a iluminação normal dos blocos.
+- Reconstrói os seis distritos. Dormitório passa a ser um prédio com quatro pavimentos, quartos, áreas comuns e terraço; escola com três pavimentos e cobertura, salas e escadas físicas. Não há interiores separados fora dos edifícios.
+- 27 destinos interligados por caminhada, nove balcões acessíveis e minimapa com planta por pavimento.
+- Atualização persistida da cidade anterior: pausa a obra durante batalha, retira temporariamente os visitantes, remove apenas células antigas reconhecidas e preserva blocos diferentes. Retoma após reinício e atualiza o ponto de renascimento. Protocolo city 2.
+- Auditorias focadas offline de integração, arquitetura, circulação e enquadramento aprovadas. Prévias usam geometria exportada; não houve validação visual no Minecraft ou com shader packs.
+
 # 0.6.45-city
 
 - Escolha persistente Com/Sem cidade exclusiva do criador; convidados não alteram a decisão. Construção incremental, quarto como primeira chegada e renascimento.

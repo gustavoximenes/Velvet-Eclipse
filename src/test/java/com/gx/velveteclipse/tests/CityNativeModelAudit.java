@@ -1,22 +1,48 @@
 package com.gx.velveteclipse.tests;
-import com.gx.velveteclipse.city.*;import com.gx.velveteclipse.darkhour.*;import com.gx.velveteclipse.client.tartarus.*;
-import com.mojang.blaze3d.platform.NativeImage;import com.mojang.math.Transformation;
-import net.minecraft.client.renderer.texture.*;import net.minecraft.client.renderer.block.model.*;import net.minecraft.client.resources.metadata.animation.*;import net.minecraft.resources.ResourceLocation;import net.minecraft.util.RandomSource;import net.minecraftforge.client.model.data.ModelData;
-import java.util.*;import java.nio.file.*;
-/** Calls the production Forge baker using memory-only sprites; never opens Minecraft. */
+
+import com.gx.velveteclipse.city.*;
+import com.gx.velveteclipse.client.city.CityMapLayout;
+import com.google.gson.*;
+import java.nio.file.*;
+import java.util.*;
+
+/** Architectural invariants: one visible native block per cell, rooms inside their building, resumable migration. */
 public final class CityNativeModelAudit {
- private static final class Sprite extends TextureAtlasSprite {Sprite(SpriteContents d,int i){super(new ResourceLocation("velvet_eclipse","city_audit"),d,288,16,i*16,0);}}
- public static void main(String[] args)throws Exception{
-  var textures=new TextureAtlasSprite[18];var images=new ArrayList<NativeImage>();for(int i=0;i<18;i++){var image=new NativeImage(16,16,true);images.add(image);textures[i]=new Sprite(new SpriteContents(new ResourceLocation("velvet_eclipse","city_material_"+i),new FrameSize(16,16),image,AnimationMetadataSection.f_119012_),i);}
-  var ctor=TartarusMeshModel.class.getDeclaredConstructor(String.class,TextureAtlasSprite[].class,ItemTransforms.class,Transformation.class);ctor.setAccessible(true);var model=ctor.newInstance("empty",textures,ItemTransforms.f_111786_,Transformation.m_121093_());var random=RandomSource.m_216327_();long quads=0;int sections=0;
-  var occupied=new HashSet<net.minecraft.core.BlockPos>();for(var c:CityPlan.get().cells())occupied.add(new net.minecraft.core.BlockPos(c[0],c[1],c[2]));
-  for(var m:CityPlan.get().meshes()){
-   int[] anchor=null;search:for(int y=15;y>=0;y--)for(int z=0;z<16;z++)for(int x=0;x<16;x++)if(!occupied.contains(new net.minecraft.core.BlockPos(m.x()+x,m.y()+y,m.z()+z))){anchor=new int[]{x,y,z};break search;}
-   if(anchor==null)throw new AssertionError("No empty anchor for "+m.name());
-   var spec=new TartarusMeshBlockEntity.Spec(List.of(new TartarusMeshBlockEntity.Instance(m.name(),-anchor[0],-anchor[1],-anchor[2])),-anchor[0],-anchor[1],-anchor[2],true);var q=model.getQuads(null,null,random,ModelData.builder().with(TartarusMeshBlockEntity.MESH,spec).build(),null);quads+=q.size();sections++;
-   for(var quad:q){int[] raw=quad.m_111303_();for(int i=0;i<4;i++){for(int a=0;a<3;a++){float f=Float.intBitsToFloat(raw[i*8+a])+anchor[a];if(!Float.isFinite(f)||f<-.001||f>16.001)throw new AssertionError("Escaped section: "+m.name());}float u=Float.intBitsToFloat(raw[i*8+4]),v=Float.intBitsToFloat(raw[i*8+5]);if(!Float.isFinite(u)||!Float.isFinite(v)||u<0||u>1||v<0||v>1)throw new AssertionError("Invalid city atlas UV");}}
-  }
-  images.forEach(NativeImage::close);if(quads<10000)throw new AssertionError("Missing city geometry");var out=Path.of("build/reports/city/native.json");Files.createDirectories(out.getParent());Files.writeString(out,new com.google.gson.Gson().toJson(Map.of("sections",sections,"quads",quads,"finiteCoordinates",true,"boundedUV",true)));
-  System.out.println("PASS native city geometry: "+sections+" sections / "+quads+" baked quads");
- }
+    private static int checks;
+    private static void check(boolean ok,String message){checks++;if(!ok)throw new AssertionError(message);}
+    public static void main(String[] args)throws Exception {
+        var plan=CityPlan.get();check(plan.revision()==2&&plan.meshes().isEmpty(),"No old mesh overlays in city revision 2");
+        var coordinates=new HashSet<String>();int lights=0,stairs=0,doors=0;
+        var root=Path.of("src/main/resources/assets/velvet_eclipse");
+        for(int[] c:plan.cells()) {
+            check(coordinates.add(c[0]+","+c[1]+","+c[2]),"One block per position");
+            check(c.length==5&&c[4]==0,"Visible native architecture, without hidden supports");
+            if(c[3]>=100) {
+                var entry=plan.palette().get(c[3]-100);check(entry.block().startsWith("minecraft:"),"Known native material namespace");
+                if(entry.block().endsWith("_stairs"))stairs++;
+                if(entry.block().endsWith("_door"))doors++;
+                if(entry.block().contains("froglight"))lights++;
+            } else check(c[3]<=8||c[3]>=20&&c[3]<=31,"Known city block");
+        }
+        check(stairs>100&&doors>100&&lights>80,"Physical stairs, doors and native light sources");
+        for(var building:plan.buildings()) {
+            var layer=CityMapLayout.at((building.minX()+building.maxX())/2.,building.floors()[1],(building.minZ()+building.maxZ())/2.);
+            check(layer.id().startsWith(building.id())&&layer.floor()==building.floors()[1],"Minimap follows occupied floor");
+            check(Files.exists(root.resolve("textures/gui/city/"+layer.id()+".png")),"Packaged interior minimap");
+        }
+        var dorm=plan.buildings().stream().filter(b->b.id().equals("dorm")).findFirst().orElseThrow();
+        for(String id:List.of("bedroom","lounge","kitchen","reading","bathroom","command","roof")){
+            var room=CityPlan.place(id);check(room.x()>dorm.minX()&&room.x()<dorm.maxX()&&room.z()>dorm.minZ()&&room.z()<dorm.maxZ(),"Room lies inside the dorm footprint: "+id);
+        }
+        check(plan.doors().stream().allMatch(d->d.target().equals("tartarus")),"No teleport links to detached interiors");
+        var old=CityPlan.legacy();check(old.cells().length==223805&&old.meshes().size()==354,"Exact old blueprint retained for scoped cleanup");
+        var fresh=new CityState();check(!CityBuilder.beginRevision(fresh),"Undecided worlds not rebuilt");fresh.choice=-1;check(!CityBuilder.beginRevision(fresh),"City-disabled world untouched");
+        var migrating=new CityState();migrating.choice=1;migrating.ready=true;migrating.cursor=old.cells().length+354;
+        check(CityBuilder.beginRevision(migrating)&&migrating.rebuilding&&!migrating.ready&&migrating.cursor==0,"Old layout starts native migration");
+        migrating.cleanupCursor=293;check(!CityBuilder.beginRevision(migrating)&&migrating.cleanupCursor==293,"Restart does not reset cleanup");
+        migrating.revision=2;migrating.rebuilding=false;migrating.ready=true;check(!CityBuilder.beginRevision(migrating),"Current city stays intact");
+        var report=Map.of("checks",checks,"nativeBlocks",plan.cells().length,"architectureMeshes",0,"stairs",stairs,"doorHalves",doors,"lights",lights,"physicalInteriors",true,"migration",true);
+        var out=Path.of("build/reports/city/native.json");Files.createDirectories(out.getParent());Files.writeString(out,new GsonBuilder().setPrettyPrinting().create().toJson(report));
+        System.out.println("PASS native city revision: "+report);
+    }
 }

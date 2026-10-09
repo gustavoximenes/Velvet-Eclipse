@@ -15,7 +15,7 @@ class Camera:
   return np.stack([W/2+c*x-s*y,H/2+s*x+c*y+getattr(self,"offset_y",0),z],axis=-1)
 
 def raster(bg,faces,cam,accent=(55,190,235),brightness=1):
- rgb=np.array(bg.convert('RGB'),dtype=np.float32);depth=np.full((H,W),np.inf,dtype=np.float32)
+ rgb=np.array(bg.convert('RGB'),dtype=np.float32);depth=np.full((H,W),np.inf,dtype=np.float64)
  light=np.array([-.35,.7,-.6]);light/=np.linalg.norm(light)
  for q,uv,tex,color in faces:
   normal=np.cross(q[1]-q[0],q[2]-q[0]);length=np.linalg.norm(normal)
@@ -38,12 +38,13 @@ def raster(bg,faces,cam,accent=(55,190,235),brightness=1):
    ys,xs=np.mgrid[y0:y1,x0:x1];xs=xs+.5;ys=ys+.5
    aa=((b[1]-c[1])*(xs-c[0])+(c[0]-b[0])*(ys-c[1]))/den
    bb=((c[1]-a[1])*(xs-c[0])+(a[0]-c[0])*(ys-c[1]))/den;cc=1-aa-bb
-   inv=aa/a[2]+bb/b[2]+cc/c[2];z=1/np.maximum(inv,1e-9)
+   orthographic=getattr(cam,'orthographic',False)
+   inv=aa/a[2]+bb/b[2]+cc/c[2];z=aa*a[2]+bb*b[2]+cc*c[2] if orthographic else 1/np.maximum(inv,1e-9)
    mask=(aa>=0)&(bb>=0)&(cc>=0)&(z<depth[y0:y1,x0:x1])
    if not mask.any():continue
    if tex is not None:
-    u=uv[ids];tx=(aa*u[0,0]/a[2]+bb*u[1,0]/b[2]+cc*u[2,0]/c[2])*z
-    ty=(aa*u[0,1]/a[2]+bb*u[1,1]/b[2]+cc*u[2,1]/c[2])*z
+    u=uv[ids];tx=aa*u[0,0]+bb*u[1,0]+cc*u[2,0] if orthographic else (aa*u[0,0]/a[2]+bb*u[1,0]/b[2]+cc*u[2,0]/c[2])*z
+    ty=aa*u[0,1]+bb*u[1,1]+cc*u[2,1] if orthographic else (aa*u[0,1]/a[2]+bb*u[1,1]/b[2]+cc*u[2,1]/c[2])*z
     col=tex[np.clip(ty.astype(int),0,tex.shape[0]-1),np.clip(tx.astype(int),0,tex.shape[1]-1)]
     mask&=col[:,:,3]>90
     rgb[y0:y1,x0:x1][mask]=(col[:,:,:3]*shade+tint)[mask]

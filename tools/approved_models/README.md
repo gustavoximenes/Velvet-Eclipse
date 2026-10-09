@@ -1,8 +1,16 @@
+# Cidade e enquadramento da versão 0.6.46
+
+`build_city.py` chama `build_city_blocks.py`: planta revision 2 com blocos visíveis, interiores no volume de seus edifícios, escadas físicas e minimapas por andar. `audit_city.py` chama `audit_city_blocks.py`, que verifica circulação física sem arestas de teleporte. `build_city_mesh_legacy.py` preserva a autoria antiga para consulta; não deve ser usado para exportar a cidade atual.
+
+`gradlew personaFramingExport` mede o ciclo completo das animações nos rigs GeckoLib; exporta envelopes 3D para cartas e envelopes de projeção a cada 5 graus para a ficha. `personaFramingTest` verifica frame e proporções de referência e exporta as camadas do menu. `preview_menu_framing.py` compõe a geometria nativa sobre essas camadas, após `cityIntegrationTest` exportar amostras. Apsaras/Quimera são altas, Jack Frost é menor e Forneus é largo; não se aplica uma altura única a todos.
+
+`preview_city_blocks.py` resolve os blockstates e modelos nativos, usando o JAR local do Minecraft para inspecionar os recursos. Sua exportação permanece em `build/reports/city/blocks`; `CityBlockPreview.java` faz o render em contexto OpenGL oculto. São prévias de geometria, sem simular fielmente um shader pack ou toda a iluminação de Minecraft. Não redistribuir as texturas do Minecraft extraídas em build.
+
 # Cidade e modelos da versão 0.6.45
 
 `import_city_release.py` exporta Apsaras04, Jack Frost01, Forneus01 e Chimera01. Os drafts locais são suficientes para reconstruir os recursos. O giro aprovado de Jack Frost/Forneus também preenche o canal físico.
 
-`build_city.py` usa os triângulos e texturas autorais preservados em `city/`, gera a planta de colisão/conectividade e as seções nativas. `audit_city.py` verifica os destinos e balcões. `city/export_shop_art.cjs` reconstrói a arte de cada loja a partir dos SVGs em `city/shop-art.json`.
+Na revisão histórica 0.6.45, `build_city_mesh_legacy.py` usa os triângulos e texturas autorais preservados em `city/`, gera a planta de colisão/conectividade e as seções nativas. `audit_city.py` verifica os destinos e balcões. `city/export_shop_art.cjs` reconstrói a arte de cada loja a partir dos SVGs em `city/shop-art.json`.
 
 Após `gradlew cityIntegrationTest`, `preview_city_models.py` renderiza as amostras do GeckoLib e os retratos de fusão das quatro Personas. Requer NumPy/Pillow. O JAR normal usa recursos já exportados, sem exigir Python/Node.
 

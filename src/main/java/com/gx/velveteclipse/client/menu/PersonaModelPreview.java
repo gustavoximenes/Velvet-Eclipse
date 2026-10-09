@@ -40,7 +40,7 @@ public final class PersonaModelPreview {
         if(motion)time+=dt;
         rotation=motion?MenuMotion.approach(rotation,targetRotation,dt):targetRotation;
     }
-    public String error(String id){return failed.contains(id)?"Modelo indisponível. Reabra o menu para tentar novamente.":"";}
+    public String error(String id){return failed.contains(id)?"Modelo indisponÃ­vel. Reabra o menu para tentar novamente.":"";}
     @SuppressWarnings("unchecked") private Actor actor(String id){
         if(failed.contains(id))return null;
         if(actors.containsKey(id))return actors.get(id);
@@ -60,16 +60,17 @@ public final class PersonaModelPreview {
         var mc=Minecraft.m_91087_();var pose=g.m_280168_();var dispatcher=mc.m_91290_();
         var camera=new Quaternionf(dispatcher.m_253208_());
         var entity=actor.entity;entity.animationTicks=time*20;entity.f_19797_=(int)entity.animationTicks;
-        float yaw=(float)(180+rotation+(v.motion()?Math.sin(time*.6)*4:0));
+        float yaw=(float)(180+ApprovedPersonaFraming.facing(id)+rotation+(v.motion()?Math.sin(time*.6)*4:0));
         entity.f_20883_=entity.f_20884_=entity.f_20885_=entity.f_20886_=yaw;
         entity.m_146922_(yaw);entity.f_19859_=yaw;entity.m_146926_(0);
         g.m_280262_();pose.m_85836_();
         try{
             // Identical coordinate convention to the vanilla inventory renderer, with an independent Gecko renderer.
-            final float size=ApprovedPersonaFraming.sheetScale(id,id.equals("cinder_wisp")?186:id.equals("umbra_slime")?219:id.equals("izanagi")?160:id.equals("arsene")||id.equals("orpheus")?170:185);
-            pose.m_85837_(PersonaSheetDesign.modelX(v),440+(v.motion()?Math.sin(time*1.25)*3:0),MenuDepth.MODEL);
+            var frame=ApprovedPersonaFraming.sheet(id,yaw,80*(1-PersonaSheetDesign.reveal(v)));
+            final float size=frame.scale();
+            pose.m_85837_(frame.x(),frame.y(),MenuDepth.MODEL);
             pose.m_252931_(new Matrix4f().scaling(size,size,-size));
-            var tilt=new Quaternionf().rotationX(.06f);
+            var tilt=new Quaternionf().rotationX(ApprovedPersonaFraming.tilt(id));
             pose.m_252781_(new Quaternionf().rotationZ((float)Math.PI).mul(tilt));
             Lighting.m_166384_();dispatcher.m_252923_(new Quaternionf(tilt).conjugate());
             float partial=mc.m_91296_();
@@ -87,10 +88,10 @@ public final class PersonaModelPreview {
     private void drawCard(GuiGraphics g,String id,double x,double y,double w,double h,double reveal){
         Actor a;try{a=actor(id);}catch(RuntimeException|LinkageError e){fail(id,e);return;}if(a==null)return;
         var mc=Minecraft.m_91087_();var pose=g.m_280168_();var dispatcher=mc.m_91290_();var camera=new Quaternionf(dispatcher.m_253208_());
-        var e=a.entity;e.animationTicks=(reveal<0?time:reveal<3.125?reveal*.8:2.5+reveal-3.125)*20;e.f_19797_=(int)e.animationTicks;float yaw=(float)(180+(reveal<0?rotation:-9+20*Math.sin(reveal*.6)));
+        var e=a.entity;e.animationTicks=(reveal<0?time:reveal<3.125?reveal*.8:2.5+reveal-3.125)*20;e.f_19797_=(int)e.animationTicks;float yaw=(float)(180+ApprovedPersonaFraming.facing(id)+(reveal<0?rotation:-9+20*Math.sin(reveal*.6)));
         e.f_20883_=e.f_20884_=e.f_20885_=e.f_20886_=yaw;e.m_146922_(yaw);e.f_19859_=yaw;e.m_146926_(reveal>=0&&reveal<3.125?-40:0);
         g.m_280262_();pose.m_85836_();
-        try{float size=ApprovedPersonaFraming.cardScale(id,w,h,(float)(h/(id.equals("umbra_slime")?2.0:2.7)));pose.m_85837_(x+w*.5,y+h-8+ApprovedPersonaFraming.baselineOffset(id,size),MenuDepth.MODEL);pose.m_252931_(new Matrix4f().scaling(size,size,-size));var tilt=new Quaternionf().rotationX(.06f);pose.m_252781_(new Quaternionf().rotationZ((float)Math.PI).mul(tilt));Lighting.m_166384_();dispatcher.m_252923_(new Quaternionf(tilt).conjugate());RenderSystem.runAsFancy(()->a.renderer.m_7392_(e,yaw,mc.m_91296_(),pose,g.m_280091_(),15728880));}
+        try{var frame=ApprovedPersonaFraming.fit(id,x,y,w,h,yaw,reveal>=0);float size=frame.scale();pose.m_85837_(frame.x(),frame.y(),MenuDepth.MODEL);pose.m_252931_(new Matrix4f().scaling(size,size,-size));var tilt=new Quaternionf().rotationX(ApprovedPersonaFraming.tilt(id));pose.m_252781_(new Quaternionf().rotationZ((float)Math.PI).mul(tilt));Lighting.m_166384_();dispatcher.m_252923_(new Quaternionf(tilt).conjugate());RenderSystem.runAsFancy(()->a.renderer.m_7392_(e,yaw,mc.m_91296_(),pose,g.m_280091_(),15728880));}
         catch(RuntimeException|LinkageError error){fail(id,error);}finally{try{g.m_280262_();}finally{dispatcher.m_252923_(camera);pose.m_85849_();Lighting.m_84931_();}}
     }
 }

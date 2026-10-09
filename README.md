@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.46 — Cidade em blocos e enquadramento das Personas
+
+Cidade reconstruída com blocos visíveis, interiores dentro dos edifícios e escadas transitáveis. Dormitório com quatro pavimentos e terraço; Gekkoukan com três pavimentos e cobertura, ligados fisicamente. O minimapa acompanha o pavimento. A planta anterior é atualizada por etapas, preservando blocos diferentes colocados pelo jogador. As Personas usam limites animados e proporções individuais baseadas nas referências do Reload, com o painel de atributos à frente da parte inferior do corpo. [Escopo, atualização dos mundos e validação offline](docs/CITY-INTEGRATION.md).
+
 # Velvet Eclipse 0.6.45 — Cidade, lojas e Personas
 
 Escolha única da cidade pelo criador do mundo, primeira chegada e renascimento no dormitório, mapa/viagem rápida com M e integração dos 16 cenários modelados. Lojas de Paulownia com HUDs próprios substituem o comércio da Elizabeth em mundos com cidade. Apsaras04, Jack Frost01, Forneus01 e Chimera01 integrados. [Controles, escopo e validação offline](docs/CITY-INTEGRATION.md).

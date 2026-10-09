@@ -14,7 +14,7 @@ import java.util.*;import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class CityNetwork {
  public static final Gson JSON=new Gson();
- private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","city"),()->"1","1"::equals,"1"::equals);
+ private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","city"),()->"2","2"::equals,"2"::equals);
  public record Row(String id,String name,String detail,int price){}
  public record View(String page,String title,String token,String message,long yen,List<Row> rows,boolean enabled,boolean ready){}
  @SubscribeEvent public static void setup(FMLCommonSetupEvent e){CHANNEL.registerMessage(0,Request.class,Request::encode,Request::decode,Request::handle,Optional.of(NetworkDirection.PLAY_TO_SERVER));CHANNEL.registerMessage(1,Response.class,Response::encode,Response::decode,Response::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));}

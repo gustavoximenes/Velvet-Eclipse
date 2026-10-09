@@ -41,7 +41,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.45-city'
+version = '0.6.46-city'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
@@ -246,3 +246,7 @@ tasks.register("menuFixTest", JavaExec) { dependsOn testClasses; classpath = sou
 tasks.register('cityIntegrationTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.CityIntegrationAudit'; jvmArgs '-Djava.awt.headless=true' }
 
 tasks.register('cityNativeModelTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath + files(fileTree('dependencies/test-native') { include '*.jar' }); mainClass = 'com.gx.velveteclipse.tests.CityNativeModelAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
+
+tasks.register('personaFramingExport', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.PersonaFramingExport'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
+
+tasks.register('personaFramingTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.PersonaFramingAudit'; jvmArgs '-Djava.awt.headless=true' }

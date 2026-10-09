@@ -304,7 +304,7 @@ public final class PersonaMenuScreen extends Screen {
         try{
             g.m_286007_(() -> PersonaSheetDesign.background(canvas,v));
             // GUI scissor uses window GUI coordinates, independently of the current pose transform.
-            g.m_280588_((int)(left()+485*scale()),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+474*scale()));
+            g.m_280588_((int)(left()+396*scale()),(int)top(),(int)Math.ceil(left()+900*scale()),(int)Math.ceil(top()+474*scale()));
             try{personaPreview.draw(g,v);}finally{g.m_280618_();}
             pose.m_85837_(0,0,MenuDepth.FOREGROUND);g.m_286007_(() -> PersonaSheetDesign.foreground(canvas,v));
             if(closing){double p=MenuMotion.ease((now()-closedAt)/.23);canvas.poly(new double[]{-300,0,1100*p,0,1100*p-180,500,-300,500},MenuDesign.INK);}

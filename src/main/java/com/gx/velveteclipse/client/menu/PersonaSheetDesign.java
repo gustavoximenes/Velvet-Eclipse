@@ -10,13 +10,13 @@ import static com.gx.velveteclipse.client.menu.MenuDesign.*;
 public final class PersonaSheetDesign {
     public record View(Persona persona,boolean equipped,int index,int count,int skill,int affinity,double age,double seconds,boolean motion,String message,String modelError){}
     public static Rect skill(int visibleIndex){return new Rect(25+(visibleIndex%2)*229,267+(visibleIndex/2)*27,222,25);}
-    public static Rect affinity(int index){return new Rect(36+index*38,174-index*6.4,35,62);}
+    public static Rect affinity(int index){return new Rect(28+index*34,174-index*6.4,33,62);}
     public static Rect back(){return new Rect(20,477,99,21);}
     public static Rect previous(){return new Rect(26,109,59,42);}
     public static Rect next(){return new Rect(494,18,58,42);}
     public static Rect equip(){return new Rect(694,477,190,21);}
     public static Rect details(){return new Rect(551,367,300,33);}
-    public static Rect model(){return new Rect(492,10,400,452);}
+    public static Rect model(){return new Rect(396,8,495,444);}
     public static int pickSkill(double x,double y){for(int i=0;i<8;i++)if(skill(i).contains(x,y))return i;return -1;}
     public static int pickAffinity(double x,double y){for(int i=0;i<PersonaDetails.ELEMENTS.length;i++)if(affinity(i).contains(x,y))return i;return -1;}
     public static double reveal(View v){return v.motion?MenuMotion.ease(v.age/.42):1;}
