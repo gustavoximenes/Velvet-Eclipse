@@ -34,6 +34,11 @@ public final class PersonaFramingAudit {
                 if(x<395.99||x>891.01||y<7.99||y>452.01)throw new AssertionError("Model crosses viewport: "+entry.getKey());
             }
         }
+        // A horizontal swimming rig must expose its crown and back, never its underside.
+        for(float yaw=0;yaw<360;yaw+=15){
+            var eye=ApprovedPersonaFraming.projection("forneus",yaw).invert().transformDirection(new org.joml.Vector3f(0,0,1));
+            if(eye.y<=0)throw new AssertionError("Forneus inspect camera is below the swimming plane at "+yaw);
+        }
         PersonaRegistry.bootstrap();var frames=new LinkedHashMap<String,Object>();
         for(String id:java.util.List.of("apsaras","jack_frost","forneus","chimera")){
             var d=PersonaRegistry.persona(id).orElseThrow();var b=d.baseStats();var skills=d.learnset().entrySet().stream().filter(e->e.getKey()<=d.baseLevel()).flatMap(e->e.getValue().stream()).distinct().map(s->PersonaRegistry.skill(s).orElseThrow()).toList();

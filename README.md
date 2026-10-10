@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.47 — Apresentação do Forneus
+
+Inclinação do Forneus no inspect corrigida para mostrar o dorso e a coroa. A auditoria visual do dormitório é uma proposta externa, ainda não aplicada ao mapa. [Correção e validação](docs/FORNEUS-INSPECT.md).
+
 # Velvet Eclipse 0.6.46 — Cidade em blocos e enquadramento das Personas
 
 Cidade reconstruída com blocos visíveis, interiores dentro dos edifícios e escadas transitáveis. Dormitório com quatro pavimentos e terraço; Gekkoukan com três pavimentos e cobertura, ligados fisicamente. O minimapa acompanha o pavimento. A planta anterior é atualizada por etapas, preservando blocos diferentes colocados pelo jogador. As Personas usam limites animados e proporções individuais baseadas nas referências do Reload, com o painel de atributos à frente da parte inferior do corpo. [Escopo, atualização dos mundos e validação offline](docs/CITY-INTEGRATION.md).

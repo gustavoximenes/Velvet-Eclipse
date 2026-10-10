@@ -22,7 +22,8 @@ public final class ApprovedPersonaFraming {
     public static float facing(String id) {
         return switch (id) { case "forneus" -> 35; case "chimera" -> 24; case "jack_frost" -> -14; default -> 0; };
     }
-    public static float tilt(String id) { return id.equals("forneus") ? .24f : .06f; }
+    // Inventory projection flips screen Y: negative pitch observes the swimming rig from above.
+    public static float tilt(String id) { return id.equals("forneus") ? -.20f : .06f; }
     public static Matrix4f projection(String id, float yaw) {
         return new Matrix4f().scaling(1, 1, -1).rotateZ((float)Math.PI)
             .rotateX(tilt(id)).rotateY((float)Math.toRadians(180-yaw));

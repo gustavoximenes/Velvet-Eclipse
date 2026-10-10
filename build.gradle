@@ -41,7 +41,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.46-city'
+version = '0.6.47-inspect'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {

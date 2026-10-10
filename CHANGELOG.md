@@ -1,3 +1,10 @@
+# 0.6.47-inspect
+
+- Corrige a inclinação da câmera do Forneus nos previews de menu: dorso e coroa vistos por cima, em vez da parte inferior do corpo.
+- Recalcula apenas os limites projetados do Forneus; tamanho de referência, geometria, animações e escalas de combate preservados.
+- Teste de direção da câmera em 24 rotações, 104.256 verificações de limites no inspect para 181 Personas e 2.453.610 verificações de integração aprovados offline.
+- Proposta estética do dormitório mantida fora do mod, aguardando avaliação; sem nova migração de cidade nesta versão.
+
 # 0.6.46-city
 
 - Reenquadramento das 181 Personas pelo volume amostrado das animações e pela rotação do menu. Corrige Forneus pequeno/deslocado e recortes pelo frame, com proporções individuais do Reload e o painel de atributos à frente da parte inferior do corpo; escalas de combate preservadas.
