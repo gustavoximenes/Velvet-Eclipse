@@ -19,8 +19,8 @@ public final class ProgressionRewards {
   @Override public CompoundTag m_7176_(CompoundTag t){t.m_128359_("ledger",JSON.toJson(ledger));return t;}
  }
  private static State state(ServerPlayer p){return p.m_20194_().m_129783_().m_8895_().m_164861_(State::load,State::new,"velvet_progression_rewards");}
- public static boolean boss(ServerPlayer p){var s=state(p);if(!s.ledger.boss(p.m_20148_().toString()))return false;s.m_77762_();p.m_5661_(Component.m_237113_("Primeira vitória! Permissão de Compra • 25F e Contrato de Igor recebidos. Use os itens fora da batalha."),false);return true;}
- public static boolean chest(ServerPlayer p,int floor){var s=state(p);if(!s.ledger.chest(p.m_20148_().toString(),floor))return false;s.m_77762_();deliver(p);p.m_5661_(Component.m_237113_("Permissão de Compra • "+floor+"F recebida. Se o inventário estiver cheio, a entrega fica guardada até liberar espaço."),false);return true;}
+ public static boolean boss(ServerPlayer p){var s=state(p);if(!s.ledger.boss(p.m_20148_().toString()))return false;s.m_77762_();p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Primeira vitória! Permissão de Compra • 25F e Contrato de Igor recebidos. Use os itens fora da batalha."),false);return true;}
+ public static boolean chest(ServerPlayer p,int floor){var s=state(p);if(!s.ledger.chest(p.m_20148_().toString(),floor))return false;s.m_77762_();deliver(p);p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Permissão de Compra • "+floor+"F recebida. Se o inventário estiver cheio, a entrega fica guardada até liberar espaço."),false);return true;}
  public static boolean claimed(ServerPlayer p,int floor){return state(p).ledger.claimed(p.m_20148_().toString(),floor);}
  private static void deliver(ServerPlayer p){
   if(!p.m_6084_()||BattleService.current(p)!=null)return;var s=state(p);String id=p.m_20148_().toString();

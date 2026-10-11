@@ -1,5 +1,7 @@
 plugins { id 'java' }
 
+tasks.register('localizationTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.LocalizationAudit'; jvmArgs '-Djava.awt.headless=true' }
+
 tasks.register('battleCameraVisibilityTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.BattleCameraVisibilityAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx1G' }
 tasks.register('approvedModelsTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.ApprovedModelsAudit'; jvmArgs '-Djava.awt.headless=true' }
 tasks.register('tartarusNativeModelTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath + files(fileTree('dependencies/test-native') { include '*.jar' }); mainClass = 'com.gx.velveteclipse.tests.TartarusNativeModelAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
@@ -41,7 +43,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.48-city-polish'
+version = '0.6.49-city-tower-language'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
@@ -252,3 +254,7 @@ tasks.register('personaFramingExport', JavaExec) { dependsOn testClasses; classp
 tasks.register('personaFramingTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.PersonaFramingAudit'; jvmArgs '-Djava.awt.headless=true' }
 
 tasks.register('cityPolishTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath + files(fileTree('dependencies/test-native') { include '*.jar' }); mainClass = 'com.gx.velveteclipse.tests.CityPolishAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
+
+tasks.register('cityFunctionTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath + files(fileTree('dependencies/test-native') { include '*.jar' }); mainClass = 'com.gx.velveteclipse.tests.CityFunctionAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
+
+tasks.register('tartarusExteriorTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusExteriorAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }

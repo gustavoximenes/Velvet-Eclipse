@@ -13,7 +13,7 @@ public final class ReloadMenuDesign {
         if(tab==2)return gear?rect(60,229+index*51,714,48):rect(653,117+index*76,480,68);
         if(tab==3)return rect(20,190+index*48,644,45);
         if(tab==9)return rect(33,174+index*64,556,60);
-        if(tab==8)return rect(724,155+index*70,520,62);
+        if(tab==8)return rect(724,155+index*78,520,70);
         return rect(38,151+index*50,713,46);
     }
     public static Rect member(int index){return rect(14,97+index*85,537,73);}
@@ -21,7 +21,7 @@ public final class ReloadMenuDesign {
     public static Rect action(){return rect(36,605,680,43);}
     public static Rect back(){return rect(16,679,160,34);}
     public static int pickRow(int tab,boolean gear,double x,double y){for(int i=0;i<visibleRows(tab,gear);i++)if(row(tab,i,gear).contains(x,y))return i;return -1;}
-    public static int pickHome(double x,double y){x/=SX;y/=SY;for(int i=0;i<TABS.length;i++){double px=526+Math.sin(i*.55)*23,py=154+i*44,a=Math.toRadians(-16+i*.8),dx=x-px,dy=y-py,lx=dx*Math.cos(a)+dy*Math.sin(a),ly=-dx*Math.sin(a)+dy*Math.cos(a);if(lx>=-28&&lx<=TABS[i].length()*24+40&&ly>=-8&&ly<=52)return i;}return -1;}
+    public static int pickHome(double x,double y){x/=SX;y/=SY;for(int i=0;i<TABS.length;i++){double px=526+Math.sin(i*.55)*23,py=154+i*44,a=Math.toRadians(-16+i*.8),dx=x-px,dy=y-py,lx=dx*Math.cos(a)+dy*Math.sin(a),ly=-dx*Math.sin(a)+dy*Math.cos(a);if(lx>=-28&&lx<=com.gx.velveteclipse.localization.DisplayText.text(TABS[i]).length()*24+40&&ly>=-8&&ly<=52)return i;}return -1;}
     public static Canvas scaled(Canvas target){return new Canvas(){
         public void fill(double x,double y,double w,double h,int color){target.fill(x*SX,y*SY,w*SX,h*SY,color);}
         public void poly(double[] p,int color){double[] q=p.clone();for(int i=0;i<q.length;i++)q[i]*=i%2==0?SX:SY;target.poly(q,color);}
@@ -50,6 +50,7 @@ public final class ReloadMenuDesign {
     }
     public static void background(Canvas target,View v,boolean gear){
         backdrop(target,v.seconds(),v.motion());var c=scaled(target);
+        if(!v.home()&&v.tab()==8)c.fill(708,141,554,405,0xE8061638);
         if(v.home()){var panel=ReloadMenuOpening.layer(c,-530*(1-ReloadMenuOpening.panel(v.entered(),v.motion())),0,1);panel.poly(new double[]{0,0,496,0,258,720,0,720},WHITE);for(int i=0;i<8;i++)panel.poly(new double[]{0,62+i*85,178-i*8,94+i*81,0,79+i*87},0xFF02030B);panel.text("MAIN",1,527,171,0xFF02030B,-90);}
         else switch(v.tab()){
             case 0->{c.poly(new double[]{0,0,126,0,84,462,805,720,0,720},WHITE);c.poly(new double[]{1000,720,1280,394,1280,720},WHITE);}
@@ -65,9 +66,10 @@ public final class ReloadMenuDesign {
     }
     public static void foreground(Canvas target,View v,MenuSnapshot data,int actor,boolean gear,int gearSlot){
         var c=scaled(target);
+        if(!v.home()&&v.tab()==8)c.fill(708,141,554,405,0xE8061638);
         if(v.home()){
             c.fill(115,34,166,64,INK);c.fill(117,36,162,60,WHITE);c.body(String.format(Locale.ROOT,"¥ %,d",v.wallet()),123,37,31,0xFF050913,0);c.body("YEN / CARTEIRA",126,76,12,INK,0);
-            for(int i=0;i<TABS.length;i++){double x=526+Math.sin(i*.55)*23,y=154+i*44,angle=-16+i*.8,w=TABS[i].length()*24+25;boolean active=i==v.tab();
+            for(int i=0;i<TABS.length;i++){double x=526+Math.sin(i*.55)*23,y=154+i*44,angle=-16+i*.8,w=c.width(TABS[i],53)+25;boolean active=i==v.tab();
                 double progress=ReloadMenuOpening.option(v.entered(),i,v.motion());var entry=ReloadMenuOpening.layer(c,155*(1-progress),60*(1-progress),progress);
                 if(active){rotated(entry,new double[]{-22,13,w+19,-11,w-9,56,-41,70},x,y,angle,RED);rotated(entry,new double[]{-13,5,w+7,-5,w-10,48,-21,55},x,y,angle,WHITE);}entry.text(TABS[i],x,y+2,active?53:45,active?INK:CYAN,angle);
             }
@@ -90,7 +92,7 @@ public final class ReloadMenuDesign {
                 double tx=x+20;if(row.slot()>=0){c.item(row.slot(),tx,y+7);tx+=32;}
                 if(v.tab()==0||v.tab()==1){String tag=row.tag().split("   ",2)[v.tab()==0&&row.tag().contains("   ")?1:0];if(v.tab()==1)tag=tag.split(" ",2)[0];c.body(fitBody(c,row.title(),w-160,29),tx+12,y+4,29,active?INK:CYAN,0);c.body(tag,x+w-35-c.bodyWidth(tag,23),y+7,23,active?INK:CYAN,0);}
                 else if(v.tab()==2&&!gear){if(active)selected(c,x+47,y+29,400,36);else c.poly(new double[]{x+47,y+25,x+469,y+24,x+457,y+67,x+37,y+69},0xDD06163C);c.fill(x+4,y,160,23,0xFF092572);c.body(row.title(),x+12,y+2,18,WHITE,0);c.body(fitBody(c,row.tag(),380,29),x+67,y+31,29,active?INK:CYAN,0);}
-                else{c.body(fitBody(c,row.title(),w-35, v.tab()==8?39:29),tx,y+4,v.tab()==8?39:29,active?INK:CYAN,0);if(!row.tag().isBlank())c.body(fitBody(c,row.tag(),w-45,17),tx,y+h-24,17,active?0xFF254967:WHITE,0);}
+                else{c.body(fitBody(c,row.title(),w-35, v.tab()==8?34:29),tx,y+4,v.tab()==8?34:29,active?INK:CYAN,0);if(!row.tag().isBlank())c.body(fitBody(c,row.tag(),w-45,17),tx,y+h-24,17,active?0xFF254967:WHITE,0);}
             }
             if(v.tab()==9&&!data.bestiary().isEmpty())bestiary(c,data.bestiary().get(Math.min(v.selected(),data.bestiary().size()-1)));
             else if(v.tab()!=8&&v.tab()>4||v.tab()==2&&gear){double y=v.tab()==2?557:563;for(String line:v.detail()){c.body(fitBody(c,line,700,22),47,y,22,CYAN,0);y+=28;if(y>625)break;}}
@@ -99,7 +101,7 @@ public final class ReloadMenuDesign {
         if(!v.action().isEmpty()&&v.tab()>4&&v.tab()!=7&&v.tab()!=8){selected(c,39,617,676,35);c.body(fitBody(c,v.action(),650,23),53,620,23,INK,0);}
         if(v.rows().isEmpty()&&v.tab()!=4&&v.tab()!=7)c.body("Nenhum registro disponível.",v.tab()<=2?640:45,178,25,CYAN,0);
         c.body("ESC  Voltar",18,682,20,WHITE,0);
-        String help=v.tab()==3?"Selecione uma Persona para inspecionar.":v.tab()==0?"Qual habilidade você quer usar?":v.tab()==1?"Qual item você quer usar?":v.tab()==2?"Qual equipamento você quer trocar?":HELP[v.tab()];footer(c,help);
+        String help=v.tab()==3?"Selecione uma Persona para inspecionar.":v.tab()==0?"Qual habilidade você quer usar?":v.tab()==1?"Qual item você quer usar?":v.tab()==2?"Qual equipamento você quer trocar?":HELP[v.tab()];footer(c,v.tab()==8&&v.selected()==3?"ENTER  Português / English":help);
         if(!v.message().isBlank()){c.fill(30,652,1175,26,0xEB00113D);c.body(fitBody(c,v.message(),1140,19),43,655,19,CYAN,0);}
     }
     public static void roster(Canvas c,MenuSnapshot data,int actor){
@@ -115,7 +117,7 @@ public final class ReloadMenuDesign {
     private static void bestiary(Canvas c,MenuSnapshot.Enemy enemy){c.poly(new double[]{632,65,1204,37,1227,111,647,139},INK);c.text(fit(c,enemy.name(),543,43),664,76,43,WHITE,-3);c.fill(658,441,555,165,0xF5071743);c.body("AFINIDADES DESCOBERTAS",676,452,19,CYAN,0);var known=BestiaryDesign.known(enemy.affinities());var elements=com.gx.velveteclipse.client.EnemyAffinityHud.ELEMENTS;for(int i=0;i<elements.length;i++){int x=679+i%7*76,y=480+i/7*52;var affinity=known.get(elements[i]);c.body(com.gx.velveteclipse.equipment.DamageItems.label(elements[i]),x,y,12,WHITE,0);c.body(affinity==null?"?":BestiaryDesign.label(affinity),x,y+19,affinity==null?23:12,CYAN,0);}c.body("Vistos: "+enemy.seen()+" · Derrotas: "+enemy.defeated(),51,575,26,CYAN,0);}
     public static void target(Canvas target,List<MenuSnapshot.Member> members,int selected,String title){var c=scaled(target);c.fill(0,0,1280,720,0xAC02081E);c.poly(new double[]{295,116,1050,75,1020,632,253,666},0xFF05143A);c.text("ESCOLHA O ALVO",324,124,46,CYAN,-3);c.body(fitBody(c,title,640,28),326,184,28,WHITE,0);int start=selected/4*4;for(int i=0;i<Math.min(4,members.size()-start);i++){var m=members.get(start+i);double y=251+i*79;if(start+i==selected)selected(c,319,y,646,67);c.body(m.name(),338,y+6,31,start+i==selected?INK:CYAN,0);c.body(m.hp()+" / "+m.maxHp()+" HP     "+m.sp()+" / "+m.maxSp()+" SP",343,y+42,19,start+i==selected?INK:WHITE,0);}c.body("ENTER Confirmar     ESC Cancelar",329,603,24,CYAN,0);}
     private static void footer(Canvas c,String text){c.poly(new double[]{858,628,1280,628,1280,715,825,715},0xE8061638);c.body(fitBody(c,text,401,23),869,637,23,WHITE,0);c.body("Setas Selecionar   Enter Confirmar   Esc Voltar",879,681,17,WHITE,0);}
-    public static String fitBody(Canvas c,String value,double width,double size){if(c.bodyWidth(value,size)<=width)return value;String cut=value;while(!cut.isEmpty()&&c.bodyWidth(cut+"…",size)>width)cut=cut.substring(0,cut.length()-1);return cut+"…";}
+    public static String fitBody(Canvas c,String value,double width,double size){value=com.gx.velveteclipse.localization.DisplayText.text(value);if(c.bodyWidth(value,size)<=width)return value;String cut=value;while(!cut.isEmpty()&&c.bodyWidth(cut+"…",size)>width)cut=cut.substring(0,cut.length()-1);return cut+"…";}
     private static void selected(Canvas c,double x,double y,double w,double h){c.poly(new double[]{x-12,y+3,x+w+10,y-4,x+w,y+h,x-19,y+h+3},RED);c.poly(new double[]{x-6,y+5,x+w+7,y+2,x+w-2,y+h-4,x-12,y+h-1},WHITE);}
     private static void rotated(Canvas c,double[] p,double x,double y,double angle,int color){double a=Math.toRadians(angle);for(int i=0;i<p.length;i+=2){double xx=p[i],yy=p[i+1];p[i]=x+xx*Math.cos(a)-yy*Math.sin(a);p[i+1]=y+xx*Math.sin(a)+yy*Math.cos(a);}c.poly(p,color);}
     private static void line(Canvas c,double x,double y,double u,double v,double w,int color){double d=Math.hypot(u-x,v-y);if(d==0)return;double nx=(v-y)/d*w/2,ny=(x-u)/d*w/2;c.poly(new double[]{x+nx,y+ny,u+nx,v+ny,u-nx,v-ny,x-nx,y-ny},color);}

@@ -22,10 +22,10 @@ public final class MaximumPlayers extends SavedData {
  public static void register(CommandDispatcher<CommandSourceStack> dispatcher){
   dispatcher.register(LiteralArgumentBuilder.<CommandSourceStack>literal("velvet").then(
    LiteralArgumentBuilder.<CommandSourceStack>literal("maximum_player").requires(s->s.m_6761_(2))
-    .executes(c->{int value=get(c.getSource().m_81377_());c.getSource().m_288197_(() -> Component.m_237113_("Limite por grupo e combate: "+value+" (padrão 4)."),false);return value;})
+    .executes(c->{int value=get(c.getSource().m_81377_());c.getSource().m_288197_(() -> com.gx.velveteclipse.localization.ModText.component("Limite por grupo e combate: "+value+" (padrão 4)."),false);return value;})
     .then(RequiredArgumentBuilder.<CommandSourceStack,Integer>argument("quantidade",IntegerArgumentType.integer(1,MAXIMUM)).executes(c->{
      int value=IntegerArgumentType.getInteger(c,"quantidade");set(c.getSource().m_81377_(),value);
-     c.getSource().m_288197_(() -> Component.m_237113_("Limite por grupo e combate: "+value+". Grupos e combates em andamento preservam seus integrantes."),true);return value;
+     c.getSource().m_288197_(() -> com.gx.velveteclipse.localization.ModText.component("Limite por grupo e combate: "+value+". Grupos e combates em andamento preservam seus integrantes."),true);return value;
     }))));
  }
 }

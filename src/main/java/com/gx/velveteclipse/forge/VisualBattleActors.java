@@ -113,7 +113,7 @@ public final class VisualBattleActors {
          Object var3 = com.gx.velveteclipse.shadow.EnemyRegistry.typeFor(persona);
          Object var4 = RuntimeBridge.createEntityFromType(var0, var3, var1[0], var1[1], var1[2]);
          if (var4 != null) {
-            if(var4 instanceof net.minecraft.world.entity.Entity e)e.m_6593_(net.minecraft.network.chat.Component.m_237113_(com.gx.velveteclipse.shadow.EnemyCatalog.get(persona).displayName()));
+            if(var4 instanceof net.minecraft.world.entity.Entity e)e.m_6593_(com.gx.velveteclipse.localization.ModText.component(com.gx.velveteclipse.shadow.EnemyCatalog.get(persona).displayName()));
             RuntimeBridge.configureBattleActor(var4, false);
             if(var4 instanceof net.minecraft.world.entity.Entity e)e.m_20242_(true);
             RuntimeBridge.setEntityRotation(var4, var2, 0.0F);

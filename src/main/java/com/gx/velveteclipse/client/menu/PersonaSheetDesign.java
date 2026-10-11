@@ -106,7 +106,7 @@ public final class PersonaSheetDesign {
             if(len>0)c.poly(new double[]{start,by,start+len,by-len*35/w,start+len,by-len*35/w+6,start,by+6},0xFF33E5FF);
         }
     }
-    static void wrapped(Canvas c,String text,double x,double y,int width,int size,int color){
+    static void wrapped(Canvas c,String text,double x,double y,int width,int size,int color){text=com.gx.velveteclipse.localization.DisplayText.text(text);
         for(String line:MenuDesign.wrap(c,text,width,size)){if(y>467)break;c.text(line,x,y,size,color,0);y+=13;}
     }
     public static void rosterHint(Canvas c){

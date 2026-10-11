@@ -19,7 +19,7 @@ public final class TartarusMapClient {
   if(available()&&m.f_91080_==null){double size=Math.min(100,h*.25),y=18,x=w-size-20;TartarusMapDesign.paint(c,view,x,y,size,m.f_91074_.m_20185_()-TartarusInteriorLayout.origin(view.floor()),m.f_91074_.m_20189_(),m.f_91074_.m_146908_(),false);c.text(ClientKeyMappings.label(MAP)+"  MAPA",x,y+size+36,9,0xFFCDEAFF,0);}
  });}
  public static final class Expanded extends Screen {
-  Expanded(){super(Component.m_237113_("Mapa do Tártaro"));}
+  Expanded(){super(com.gx.velveteclipse.localization.ModText.component("Mapa do Tártaro"));}
   @Override public boolean m_7043_(){return false;}
   @Override public void m_86600_(){if(!available())m_7379_();}
   @Override public boolean m_7933_(int key,int scan,int mods){if(MAP.m_90832_(key,scan)){m_7379_();return true;}return super.m_7933_(key,scan,mods);}

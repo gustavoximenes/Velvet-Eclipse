@@ -130,28 +130,8 @@ public final class RuntimeBridge {
       }
    }
 
-   private static Object literalComponent(Class<?> var0, String var1) {
-      for (String var5 : new String[]{"literal", "m_237113_"}) {
-         try {
-            Method var6 = var0.getMethod(var5, String.class);
-            return var6.invoke(null, var1);
-         } catch (Throwable var8) {
-         }
-      }
-
-      for (Method var12 : var0.getMethods()) {
-         if (Modifier.isStatic(var12.getModifiers())
-            && var12.getParameterCount() == 1
-            && var12.getParameterTypes()[0] == String.class
-            && var0.isAssignableFrom(var12.getReturnType())) {
-            try {
-               return var12.invoke(null, var1);
-            } catch (Throwable var7) {
-            }
-         }
-      }
-
-      return null;
+   private static Object literalComponent(Class<?> componentType, String text) {
+      return com.gx.velveteclipse.localization.ModText.component(text);
    }
 
    public static Object persistentData(Object var0) {
@@ -384,6 +364,7 @@ public final class RuntimeBridge {
    }
 
    public static void guiText(Object var0, String var1, int var2, int var3, int var4, boolean var5) {
+      var1=com.gx.velveteclipse.localization.DisplayText.text(var1);
       if (var0 != null) {
          Object var6 = minecraftFont();
          if (var6 != null) {

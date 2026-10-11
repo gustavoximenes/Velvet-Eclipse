@@ -21,14 +21,14 @@
   "key.velvet_eclipse.open_menu": "Menu Persona",
   "key.velvet_eclipse.exploration": "Modo exploracao",
   "itemGroup.velvet_eclipse": "Velvet Eclipse",
-  "item.velvet_eclipse.velvet_key": "Velvet Key",
+  "item.velvet_eclipse.velvet_key": "Chave da Velvet Room",
   "block.velvet_eclipse.velvet_door": "Porta da Velvet Room",
   "block.velvet_eclipse.velvet_chair": "Cadeira de veludo",
   "block.velvet_eclipse.velvet_table": "Mesa da Velvet Room",
-  "block.velvet_eclipse.velvet_floor": "Velvet Carpet",
-  "block.velvet_eclipse.velvet_wall": "Velvet Wall",
-  "block.velvet_eclipse.velvet_trim": "Velvet Cornice",
-  "block.velvet_eclipse.velvet_grille": "Velvet Grille",
+  "block.velvet_eclipse.velvet_floor": "Carpete da Velvet Room",
+  "block.velvet_eclipse.velvet_wall": "Parede da Velvet Room",
+  "block.velvet_eclipse.velvet_trim": "Cornija da Velvet Room",
+  "block.velvet_eclipse.velvet_grille": "Grade da Velvet Room",
   "entity.velvet_eclipse.igor": "Igor",
   "key.velvet_eclipse.shuffle": "Shuffle Time",
   "block.velvet_eclipse.tartarus_azure": "Tartarus • Vitral azul",
@@ -1557,5 +1557,6 @@
   "block.velvet_eclipse.city_mall_4": "Cobertura do Paulownia",
   "block.velvet_eclipse.city_mall_5": "Madeira do Paulownia",
   "block.velvet_eclipse.city_mall_6": "Pedra do Paulownia",
-  "block.velvet_eclipse.city_mall_7": "Azulejo do Paulownia"
+  "block.velvet_eclipse.city_mall_7": "Azulejo do Paulownia",
+  "block.velvet_eclipse.tartarus_exterior": "Alvenaria da Torre do Tártaro"
 }

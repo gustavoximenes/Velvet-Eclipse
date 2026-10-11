@@ -84,16 +84,21 @@ def bake_scene(name,offset):
         for y in [5,10,15]:
             lo=[-11.1,y-.25,-9];hi=[-10,y,2]
             raw=np.concatenate((raw,cuboid(lo,hi)));meta['solids'].append(lo+hi)
+    return bake_geometry(name,meta,raw,True)
+
+def bake_geometry(name,meta,raw,open_front=False,surface_only=False):
     verts=defaultdict(list);boxes=defaultdict(list);lights=defaultdict(int)
     def addbox(lo,hi):
         lo=np.array(lo);hi=np.array(hi)
         for x in indices(lo[0],hi[0]):
             for y in indices(lo[1],hi[1]):
                 for z in indices(lo[2],hi[2]):
-                    key=(x,y,z);a=np.maximum(lo,key)-key;b=np.minimum(hi,np.array(key)+1)-key
+                    key=(x,y,z)
+                    if surface_only and key not in verts:continue
+                    a=np.maximum(lo,key)-key;b=np.minimum(hi,np.array(key)+1)-key
                     if np.min(b-a)>1e-5:boxes[key].append(np.round(np.r_[a,b],5).tolist())
     for i,tri in enumerate(raw):
-        if name=='dorm' and front_leaf(tri[:,:3].min(0),tri[:,:3].max(0)):tri=open_leaf(tri)
+        if open_front and name=='dorm' and front_leaf(tri[:,:3].min(0),tri[:,:3].max(0)):tri=open_leaf(tri)
         normal=int(np.argmax(np.abs(tri[0,3:6])));u=2 if normal==0 else 0;v=2 if normal==1 else 1
         mat=round(tri[0,9]);span=1 if mat==11 else 4 if mat==14 else 2 if 10<=mat<=17 else 8
         transparent=mat==18 or (name=='dorm' and mat==0 and np.max(abs(tri[0,6:9]-[.24,.35,.36]))<.005)
@@ -126,7 +131,7 @@ def bake_scene(name,offset):
     for row in meta['solids']:
         lo=np.array(row[:3]);hi=np.array(row[3:6]);a=0 if len(row)==6 else row[6]
         origin=np.zeros(3) if len(row)==6 else np.array(row[7:10])
-        if name=='dorm' and front_leaf(lo,hi):
+        if open_front and name=='dorm' and front_leaf(lo,hi):
             corners=np.array([[x,y,z] for x in [lo[0],hi[0]] for y in [lo[1],hi[1]] for z in [lo[2],hi[2]]]);corners=open_leaf(corners);lo=corners.min(0);hi=corners.max(0)
         if abs(a)<1e-7:addbox(lo+origin,hi+origin);continue
         c,s=math.cos(a),math.sin(a)

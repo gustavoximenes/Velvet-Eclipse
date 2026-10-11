@@ -11,7 +11,7 @@ import java.util.*;
 public final class PartyScreen extends Screen {
  private PartyNetwork.View data;private final Screen parent;private int tab,selected,offset;private String recipient="",amount="1";private boolean amountFocus,waiting,confirm;private long requested;
  private record Row(String label,String detail,String action,String id){}
- private PartyScreen(PartyNetwork.View data,Screen parent){super(Component.m_237113_("Party"));this.data=data;this.parent=parent;}
+ private PartyScreen(PartyNetwork.View data,Screen parent){super(com.gx.velveteclipse.localization.ModText.component("Party"));this.data=data;this.parent=parent;}
  public static void accept(String json){var v=PartyNetwork.JSON.fromJson(json,PartyNetwork.View.class);if(v==null)return;var mc=Minecraft.m_91087_();if(mc.f_91080_ instanceof PartyScreen s){s.data=v;s.waiting=false;s.bound();}else if(v.open()&&!com.gx.velveteclipse.client.ClientBattleState.snapshot().active())mc.m_91152_(new PartyScreen(v,mc.f_91080_));}
  private List<Row> rows(){var rows=new ArrayList<Row>();switch(tab){
   case 0->{if(data.members().isEmpty())rows.add(new Row("Criar party","Até "+data.maximumPlayers()+" jogadores • mapa compartilhado","create",""));else{for(var p:data.members())rows.add(new Row(p.name()+(p.id().equals(data.leader())?" • LÍDER":""),p.online()?"Online":"Offline",data.self().equals(data.leader())&&!p.id().equals(data.self())?"kick":"",p.id()));rows.add(new Row("Sair da party","O grupo permanece com os outros integrantes","leave",""));}}

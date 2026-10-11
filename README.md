@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.49 — Idiomas, móveis e torre aprovada
+
+Inglês como idioma padrão, Português pelo SYSTEM do TAB, cadeiras e portas funcionais e retornos da Velvet Room/Tártaro corrigidos. A torre exterior aprovada substitui a antiga, com emissão verde, portal, minimapa e restauração da escola. [Controles, atualização e validação](docs/CITY-FUNCTIONS-LANGUAGE.md).
+
 # Velvet Eclipse 0.6.48 — Cidade aprovada e Tártaro na escola
 
 Dormitório e Paulownia integram as revisões aprovadas, com nove menus de loja, minimapa por piso e novos materiais criativos. Durante a Dark Hour, o Tártaro substitui a Gekkoukan e a escola é restaurada ao fim do período. A apresentação do Forneus da 0.6.47 foi preservada. [Escopo, controles, atualização e validação](docs/CITY-POLISH.md).

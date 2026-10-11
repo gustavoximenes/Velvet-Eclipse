@@ -19,8 +19,8 @@ public final class CityShopDesign {
     public static int pick(View v,double x,double y){var b=box(v);if(x<b.x()||x>=b.x()+b.width()||y<b.y()||y>=b.y()+b.step()*b.count())return -1;int row=v.offset()+(int)((y-b.y())/b.step());return row<v.rows().size()?row:-1;}
     private static String money(long n){return String.format(Locale.ROOT,"%,d",n).replace(',','.');}
     private static void text(Canvas c,String s,double x,double y,double size,int color){c.body(s,x,y,size,color,0);}
-    private static String fit(Canvas c,String s,double width,double size){while(s.length()>1&&c.bodyWidth(s,size)>width)s=s.substring(0,s.length()-2)+"…";return s;}
-    private static void wrap(Canvas c,String s,double x,double y,double width,int lines,int size,int color){String line="";int n=0;for(String word:s.split(" ")){if(c.bodyWidth(line+word,size)>width&&!line.isEmpty()){text(c,line,x,y+n++*(size+5),size,color);line="";if(n==lines)return;}line+=word+" ";}if(n<lines)text(c,fit(c,line,width,size),x,y+n*(size+5),size,color);}
+    private static String fit(Canvas c,String s,double width,double size){s=com.gx.velveteclipse.localization.DisplayText.text(s);while(s.length()>1&&c.bodyWidth(s,size)>width)s=s.substring(0,s.length()-2)+"…";return s;}
+    private static void wrap(Canvas c,String s,double x,double y,double width,int lines,int size,int color){s=com.gx.velveteclipse.localization.DisplayText.text(s);String line="";int n=0;for(String word:s.split(" ")){if(c.bodyWidth(line+word,size)>width&&!line.isEmpty()){text(c,line,x,y+n++*(size+5),size,color);line="";if(n==lines)return;}line+=word+" ";}if(n<lines)text(c,fit(c,line,width,size),x,y+n*(size+5),size,color);}
     public static void draw(Canvas c,View v){
         var b=box(v);boolean root=v.page().equals("root"),activity=!Set.of("aohige","police","mayoido","blue").contains(v.shop());var selected=v.rows().isEmpty()?null:v.rows().get(Math.min(v.selected(),v.rows().size()-1));
         // The world remains live under these UI panels.

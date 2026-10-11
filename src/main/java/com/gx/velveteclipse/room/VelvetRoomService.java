@@ -18,7 +18,7 @@ public final class VelvetRoomService {
  private static final String RETURN="velvet_eclipse:room_return",COOLDOWN="velvet_eclipse:room_cooldown";
  public static boolean inside(Object p){return p instanceof net.minecraft.world.entity.Entity e&&e.m_9236_().m_46472_().equals(DIMENSION);}
  private static boolean available(ServerPlayer p){return !com.gx.velveteclipse.awakening.AwakeningService.active(p)&&BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&!p.m_20159_();}
- private static void tell(ServerPlayer p,String message){p.m_5661_(Component.m_237113_(message),false);}
+ private static void tell(ServerPlayer p,String message){p.m_5661_(com.gx.velveteclipse.localization.ModText.component(message),false);}
  public static void summonDoor(ServerPlayer p){
   if(!available(p)){tell(p,"Finalize a ação atual e levante-se antes de usar a Velvet Key.");return;}
   if(inside(p)){tell(p,"A porta de saída está atrás das cadeiras.");return;}
@@ -56,7 +56,7 @@ public final class VelvetRoomService {
   try{target=p.m_20194_().m_129880_(ResourceKey.m_135785_(Registries.f_256858_,new ResourceLocation(back.m_128461_("dimension"))));}catch(RuntimeException ignored){}
   if(target==null||target.m_46472_().equals(DIMENSION))target=p.m_20194_().m_129783_();
   if(target.m_46472_().equals(com.gx.velveteclipse.darkhour.TartarusDungeonService.DIMENSION)){com.gx.velveteclipse.darkhour.TartarusDungeonService.teleportToFloor(p,com.gx.velveteclipse.darkhour.TartarusInteriorLayout.floorAt(back.m_128459_("x")));return;}
-  if(target.m_46472_().equals(com.gx.velveteclipse.city.CityService.DIMENSION)){if(!com.gx.velveteclipse.city.CityService.returnFromVelvet(p))tell(p,"A cidade está sendo atualizada. Aguarde a conclusão para sair.");return;}
+  if(target.m_46472_().equals(com.gx.velveteclipse.city.CityService.DIMENSION)){if(com.gx.velveteclipse.city.CityService.returnFromVelvet(p))tag.m_128356_(COOLDOWN,System.currentTimeMillis());else tell(p,"A chegada no Paulownia está bloqueada ou a cidade está sendo atualizada. Seu retorno foi preservado.");return;}
   double x=back.m_128459_("x"),y=back.m_128459_("y"),z=back.m_128459_("z");if(!back.m_128441_("dimension")){var spawn=target.m_220360_();x=spawn.m_123341_()+.5;y=spawn.m_123342_();z=spawn.m_123343_()+.5;}
   var safe=safeExit(target,p,x,y,z);if(safe==null){tell(p,"A saída está bloqueada. Libere o espaço no mundo de origem.");return;}
   tag.m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(target,safe.f_82479_,safe.f_82480_,safe.f_82481_,back.m_128457_("yaw"),0);

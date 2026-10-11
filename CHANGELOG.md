@@ -1,3 +1,11 @@
+# 0.6.49-city-tower-language
+
+- Idioma por cliente em TAB → SYSTEM, English padrão e Português; menus, HUD e mensagens do mod.
+- 51 assentos e 15 conjuntos de portas funcionais; computadores preservados.
+- Saídas para a cidade carregam e verificam o destino real, preservando a rota em caso de obstrução.
+- Integra a torre exterior aprovada em substituição à antiga, com portais, materiais emissivos, minimapa e migração dos mundos existentes.
+- Protocolo de cidade 4. Verificações focadas offline aprovadas; sem execução no Minecraft. [Detalhes](docs/CITY-FUNCTIONS-LANGUAGE.md).
+
 # 0.6.48-city-polish
 
 - Integra os acabamentos aprovados do dormitório e a arquitetura circular do Paulownia, com colisão local, acessos e minimapa por piso.

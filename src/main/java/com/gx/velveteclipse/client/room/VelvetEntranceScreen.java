@@ -14,7 +14,7 @@ import net.minecraftforge.event.TickEvent;
 public final class VelvetEntranceScreen extends Screen {
  private static Boolean pending;private static long pendingAt;
  private final boolean seated;private final long began=System.nanoTime();private final VelvetScene scene=VelvetScene.load("entrance"),room=VelvetScene.load("menu");
- private VelvetEntranceScreen(boolean seated){super(Component.m_237113_("Velvet Room"));this.seated=seated;}
+ private VelvetEntranceScreen(boolean seated){super(com.gx.velveteclipse.localization.ModText.component("Velvet Room"));this.seated=seated;}
  public static void enter(boolean seated){pending=seated;pendingAt=System.nanoTime();}
  @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){if(e.phase!=TickEvent.Phase.END||pending==null)return;var mc=Minecraft.m_91087_();if(mc.f_91074_!=null&&VelvetRoomService.inside(mc.f_91074_)){boolean seat=pending;pending=null;mc.m_91152_(new VelvetEntranceScreen(seat));}else if(System.nanoTime()-pendingAt>15_000_000_000L)pending=null;}
  private double time(){return(System.nanoTime()-began)/1e9;}

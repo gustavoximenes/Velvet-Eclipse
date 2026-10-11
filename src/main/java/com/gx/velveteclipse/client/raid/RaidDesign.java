@@ -15,7 +15,7 @@ public final class RaidDesign {
    c.poly(new double[]{15,312,242,303,208,500,0,500},0xEE143BB0);c.poly(new double[]{196,352,872,331,898,482,155,495},0xFF154FFC);c.poly(new double[]{218,366,854,348,880,468,177,480},0xF3041036);
    c.poly(new double[]{185,334,459,313,440,360,160,373},0xFF0071EE);
    String speaker=data.names().isEmpty()?"EQUIPE":data.names().get(Math.min(data.speaker(),data.names().size()-1));c.text(speaker,227,329,22,0xFF64FFF4,0);
-   StringBuilder line=new StringBuilder();int y=383;for(String word:data.line().split(" ")){if(c.width(line+word,19)>596){c.text(line.toString(),231,y,19,0xFFF4FFFF,0);line.setLength(0);y+=26;}line.append(word).append(' ');}c.text(line.toString(),231,y,19,0xFFF4FFFF,0);
+   StringBuilder line=new StringBuilder();int y=383;for(String word:com.gx.velveteclipse.localization.DisplayText.text(data.line()).split(" ")){if(c.width(line+word,19)>596){c.text(line.toString(),231,y,19,0xFFF4FFFF,0);line.setLength(0);y+=26;}line.append(word).append(' ');}c.text(line.toString(),231,y,19,0xFFF4FFFF,0);
    c.text(waiting?"AGUARDANDO A EQUIPE":"ENTER  Continuar",674,455,12,0xFF72F3F5,0);
   }
 }

@@ -30,7 +30,7 @@ public final class AwakeningScreen extends Screen {
     private static final String[] NAMES={"ORPHEUS","IZANAGI","ARSÈNE"};
     private static final String[] TAGS={"FOGO / CURA","ELETRICIDADE / CORTE","MALDIÇÃO / FÍSICO"};
     private static final String[] WORDS={"Dê voz à sua determinação.","Encare o que está diante de você.","Recuse o destino que impuseram a você."};
-    public AwakeningScreen(String token)throws java.io.IOException{super(Component.m_237113_("Despertar"));this.token=token;scene=new AwakeningScene("intro");}
+    public AwakeningScreen(String token)throws java.io.IOException{super(com.gx.velveteclipse.localization.ModText.component("Despertar"));this.token=token;scene=new AwakeningScene("intro");}
     static double now(){return System.nanoTime()*1e-9;}
     public static boolean active(){return Minecraft.m_91087_().f_91080_ instanceof AwakeningScreen;}
     public static void accept(AwakeningNetwork.State state){
@@ -49,7 +49,7 @@ public final class AwakeningScreen extends Screen {
         }catch(Exception|LinkageError e){
             VelvetEclipseMod.LOGGER.error("Awakening presentation failed",e);AwakeningNetwork.request(state.token(),"cancel","");
             if(mc.f_91080_ instanceof AwakeningScreen s){s.closed=true;mc.m_91152_(null);}
-            if(mc.f_91074_!=null)mc.f_91074_.m_5661_(Component.m_237113_("Não foi possível carregar o despertar. Seus dados foram preservados; tente novamente com a Evoker."),false);
+            if(mc.f_91074_!=null)mc.f_91074_.m_5661_(com.gx.velveteclipse.localization.ModText.component("Não foi possível carregar o despertar. Seus dados foram preservados; tente novamente com a Evoker."),false);
         }
     }
     private double time(){return menu?16:base+now()-epoch;}

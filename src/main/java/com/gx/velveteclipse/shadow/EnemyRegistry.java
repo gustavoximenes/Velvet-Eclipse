@@ -15,7 +15,7 @@ public final class EnemyRegistry {
   VelvetRoomRegistry.ITEMS.register(def.asset()+"_spawn",()->new Item(new Item.Properties()){
    @Override public net.minecraft.world.InteractionResult m_6225_(net.minecraft.world.item.context.UseOnContext c){
     if(c.m_43725_().f_46443_)return net.minecraft.world.InteractionResult.SUCCESS;
-    var e=type.get().m_20615_(c.m_43725_());if(e==null)return net.minecraft.world.InteractionResult.FAIL;var at=c.m_8083_().m_121945_(c.m_43719_());e.m_6034_(at.m_123341_()+.5,at.m_123342_(),at.m_123343_()+.5);e.m_6593_(net.minecraft.network.chat.Component.m_237113_(def.displayName()));float yaw=c.m_43723_()==null?0:c.m_43723_().m_146908_()+180;e.m_146922_(yaw);e.m_5616_(yaw);e.m_5618_(yaw);
+    var e=type.get().m_20615_(c.m_43725_());if(e==null)return net.minecraft.world.InteractionResult.FAIL;var at=c.m_8083_().m_121945_(c.m_43719_());e.m_6034_(at.m_123341_()+.5,at.m_123342_(),at.m_123343_()+.5);e.m_6593_(com.gx.velveteclipse.localization.ModText.component(def.displayName()));float yaw=c.m_43723_()==null?0:c.m_43723_().m_146908_()+180;e.m_146922_(yaw);e.m_5616_(yaw);e.m_5618_(yaw);
     if(!c.m_43725_().m_7967_(e))return net.minecraft.world.InteractionResult.FAIL;if(c.m_43723_()!=null&&!c.m_43723_().m_150110_().f_35937_)c.m_43722_().m_41774_(1);return net.minecraft.world.InteractionResult.SUCCESS;
    }
   });

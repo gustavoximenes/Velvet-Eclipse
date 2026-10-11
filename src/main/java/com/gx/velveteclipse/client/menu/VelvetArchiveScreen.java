@@ -25,7 +25,7 @@ public final class VelvetArchiveScreen extends Screen {
  private final com.gx.velveteclipse.client.room.VelvetScene background=com.gx.velveteclipse.client.room.VelvetScene.load("menu");
  private final com.gx.velveteclipse.client.room.VelvetScene portrait=com.gx.velveteclipse.client.room.VelvetScene.load("portrait");
  private static final int HOME=0,NORMAL=1,SPECIAL=2,BOOK=3,PARTY=4,INSPECT=5,BUY=6,OFFER=7,SEARCH=8;
- public VelvetArchiveScreen(VelvetArchive.View data){super(Component.m_237113_("Velvet Room"));this.data=data;}
+ public VelvetArchiveScreen(VelvetArchive.View data){super(com.gx.velveteclipse.localization.ModText.component("Velvet Room"));this.data=data;}
  public static void accept(String json){
   var d=MenuNetwork.JSON.fromJson(json,VelvetArchive.View.class);if(d==null)return;var mc=Minecraft.m_91087_();
   if(mc.f_91074_==null||!VelvetRoomService.inside(mc.f_91074_))return;

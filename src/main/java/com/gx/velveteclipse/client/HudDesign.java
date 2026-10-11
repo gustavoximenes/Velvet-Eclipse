@@ -172,7 +172,7 @@ public final class HudDesign {
             c.fill(x+16,y+20,(int)((width-32)*clamp((t-46)/48)),1,withAlpha(CYAN,enter*exit));
         }
     }
-    public static String fit(Canvas c,String text,int pixels) {
+    public static String fit(Canvas c,String text,int pixels) {text=com.gx.velveteclipse.localization.DisplayText.text(text);
         if(text==null||pixels<=0)return "";
         if(c.width(text)<=pixels)return text;
         String suffix="...";

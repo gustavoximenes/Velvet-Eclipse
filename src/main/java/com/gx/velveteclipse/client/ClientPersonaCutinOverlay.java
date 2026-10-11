@@ -24,7 +24,7 @@ public final class ClientPersonaCutinOverlay {
             RenderSystem.setShaderColor(1,1,1,1);
             WeaknessCutinDesign.paintSummon(new WeaknessCutinDesign.Canvas(){
                 public void fill(int x,int y,int width,int height,int color){if(width>0&&height>0)g.m_280509_(x,y,x+width,y+height,color);}
-                public void text(String s,int x,int y,int c){}public int width(String s){return mc.f_91062_.m_92895_(s);}
+                public void text(String s,int x,int y,int c){}public int width(String s){return mc.f_91062_.m_92895_(com.gx.velveteclipse.localization.DisplayText.text(s));}
                 public void eyes(int x,int y,int width,int height,float alpha){
                     int left=Math.max(0,x),right=Math.min(w,x+width),top=Math.max(0,y),bottom=Math.min(h,y+height);
                     if(right<=left||bottom<=top)return;

@@ -17,15 +17,15 @@ import net.minecraftforge.fml.common.Mod;
 /** Gekkoukan becomes Tartarus for the shared world night, with a persisted lossless rollback. */
 @Mod.EventBusSubscriber(modid="velvet_eclipse")
 public final class CityNightSchool {
-    public static final int MIN_X=-51,MAX_X=51,MIN_Z=-137,MAX_Z=-78,BASE=64,CENTER_Z=-108;
+    public static final int MIN_X=-51,MAX_X=51,MIN_Z=-137,MAX_Z=-65,BASE=64,CENTER_Z=-108;
     public static boolean contains(double x,double z){return x>=MIN_X&&x<=MAX_X+1&&z>=MIN_Z&&z<=MAX_Z+1;}
     public static final class State extends SavedData {
-        int phase,column,y=-1,index,height; // day, clearing, building, night, restoring
+        int phase,column,y=-1,index,height,exteriorRevision=TartarusExterior.REVISION; // day, clearing, building, night, restoring
         final LinkedHashMap<Long,CompoundTag> journal=new LinkedHashMap<>();
         List<TartarusLayout.Cell> tower;
-        List<TartarusLayout.Cell> tower(){if(tower==null)tower=TartarusLayout.create(height,1);return tower;}
-        static State load(CompoundTag tag){var s=new State();s.phase=tag.m_128451_("phase");s.column=tag.m_128451_("column");s.y=tag.m_128451_("y");s.index=tag.m_128451_("index");s.height=tag.m_128451_("height");var rows=tag.m_128437_("journal",10);for(int i=0;i<rows.size();i++){var e=rows.m_128728_(i);s.journal.put(e.m_128454_("pos"),e);}return s;}
-        @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("phase",phase);tag.m_128405_("column",column);tag.m_128405_("y",y);tag.m_128405_("index",index);tag.m_128405_("height",height);var rows=new ListTag();rows.addAll(journal.values());tag.m_128365_("journal",rows);return tag;}
+        List<TartarusLayout.Cell> tower(){if(tower==null)tower=TartarusExterior.cells();return tower;}
+        static State load(CompoundTag tag){var s=new State();s.phase=tag.m_128451_("phase");s.column=tag.m_128451_("column");s.y=tag.m_128451_("y");s.index=tag.m_128451_("index");s.height=tag.m_128451_("height");s.exteriorRevision=tag.m_128451_("exteriorRevision");var rows=tag.m_128437_("journal",10);for(int i=0;i<rows.size();i++){var e=rows.m_128728_(i);s.journal.put(e.m_128454_("pos"),e);}if(s.phase!=0&&s.exteriorRevision!=TartarusExterior.REVISION)s.phase=4;return s;}
+        @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("phase",phase);tag.m_128405_("column",column);tag.m_128405_("y",y);tag.m_128405_("index",index);tag.m_128405_("height",height);tag.m_128405_("exteriorRevision",exteriorRevision);var rows=new ListTag();rows.addAll(journal.values());tag.m_128365_("journal",rows);return tag;}
     }
     public static State state(ServerLevel level){return level.m_8895_().m_164861_(State::load,State::new,"velvet_city_school_night");}
     public static boolean open(ServerPlayer p){return CityService.inside(p)&&state(p.m_284548_()).phase==3&&DarkHourService.active(p.m_9236_());}
@@ -46,7 +46,8 @@ public final class CityNightSchool {
     public static boolean tick(ServerLevel level,boolean cityReady){
         var s=state(level);boolean night=cityReady&&DarkHourService.active(level);
         if(s.phase==0&&!night)return true;
-        if(s.phase==0){if(!evacuate(level))return false;s.phase=1;s.height=Math.min(240,level.m_151558_()-BASE);s.column=s.index=0;s.y=-1;s.tower=null;s.m_77762_();}
+        if(s.phase!=0&&s.exteriorRevision!=TartarusExterior.REVISION){if(!evacuate(level))return false;s.phase=4;}
+        if(s.phase==0){if(!evacuate(level))return false;s.phase=1;s.exteriorRevision=TartarusExterior.REVISION;s.height=TartarusExterior.HEIGHT;s.column=s.index=0;s.y=-1;s.tower=null;s.m_77762_();}
         if(!night&&s.phase!=4){if(!evacuate(level))return false;s.phase=4;s.m_77762_();}
         if(night&&s.phase==3)return false;
         if(s.phase!=3&&!evacuate(level))return false;
@@ -58,7 +59,7 @@ public final class CityNightSchool {
                 if(s.y<BASE){s.column++;s.y=-1;}
             }if(s.column>=total)s.phase=2;
         }
-        if(s.phase==2){var cells=s.tower();while(s.index<cells.size()&&budget-->0){var c=cells.get(s.index++);var pos=new BlockPos(c.x(),BASE+c.y(),CENTER_Z+c.z());var block=switch(c.material()){case 1->DarkHourRegistry.TRIM.get();case 2->DarkHourRegistry.LIGHT.get();case 3->DarkHourRegistry.STAIRS.get();case 4->DarkHourRegistry.PORTAL.get();default->DarkHourRegistry.STONE.get();};var value=block.m_49966_();if(c.material()==3)value=value.m_61124_(StairBlock.f_56841_,Direction.NORTH);edit(level,s,pos,value);}if(s.index>=cells.size())s.phase=3;}
+        if(s.phase==2){var cells=s.tower();while(s.index<cells.size()&&budget-->0){var c=cells.get(s.index++);var pos=new BlockPos(c.x(),BASE+c.y(),CENTER_Z+c.z());edit(level,s,pos,TartarusExterior.state(c));TartarusExterior.configure(level,pos,c);}if(s.index>=cells.size())s.phase=3;}
         if(s.phase==4){var it=s.journal.entrySet().iterator();while(it.hasNext()&&budget-->0){restore(level,it.next().getValue());it.remove();}if(s.journal.isEmpty()){s.phase=s.column=s.index=0;s.y=-1;s.tower=null;}}
         s.m_77762_();return s.phase==0;
     }

@@ -49,11 +49,11 @@ public final class ClientHudEvents {
         HudDesign.Canvas canvas=new HudDesign.Canvas(){
             public void poly(double[] points,int color){com.gx.velveteclipse.client.menu.MenuGeometry.draw(g.m_280091_().m_6299_(net.minecraft.client.renderer.RenderType.m_285907_()),g.m_280168_().m_85850_().m_252922_(),points,color);}
             public void fill(int x,int y,int width,int height,int color){if(width>0&&height>0&&(color>>>24)>0)g.m_280509_(x,y,x+width,y+height,color);}
-            public void text(String text,int x,int y,int color){if((color>>>24)>3)g.m_280056_(font,text,x,y,color,false);}
-            public int width(String text){return font.m_92895_(text);}
+            public void text(String text,int x,int y,int color){if((color>>>24)>3)g.m_280056_(font,com.gx.velveteclipse.localization.DisplayText.text(text),x,y,color,false);}
+            public int width(String text){return font.m_92895_(com.gx.velveteclipse.localization.DisplayText.text(text));}
             public void styled(String text,int x,int y,float scale,int color){
                 var pose=g.m_280168_();pose.m_85836_();pose.m_252880_(x,y,0);pose.m_85841_(scale,scale,1);
-                var component=net.minecraft.network.chat.Component.m_237113_(text).m_130938_(style->style.m_131150_(DISPLAY));
+                var component=com.gx.velveteclipse.localization.ModText.component(text).m_130938_(style->style.m_131150_(DISPLAY));
                 g.m_280614_(font,component,0,0,color,false);pose.m_85849_();
             }
             public void angled(String text,int x,int y,float scale,int color,float degrees){var pose=g.m_280168_();pose.m_85836_();pose.m_252880_(x,y,0);pose.m_252781_(new org.joml.Quaternionf().rotationZ((float)Math.toRadians(degrees)));styled(text,0,0,scale,color);pose.m_85849_();}

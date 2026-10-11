@@ -121,8 +121,8 @@ public final class MenuDesign {
         c.text(String.format(Locale.ROOT,"%02d:00  /  DIA %d",hour,v.day),559,369,11,WHITE,0);
         c.text("Traco ciano: lua cheia (ciclo de 8 dias)",559,390,8,MUTED,0);
     }
-    public static String fit(Canvas c,String s,double width,double size){if(c.width(s,size)<=width)return s;while(!s.isEmpty()&&c.width(s+"...",size)>width)s=s.substring(0,s.length()-1);return s+"...";}
-    static List<String> wrap(Canvas c,String s,int width,int size){List<String> result=new ArrayList<>();String line="";for(String word:s.split(" ")){if(!line.isEmpty()&&c.width(line+" "+word,size)>width){result.add(line);line="";}line+=(line.isEmpty()?"":" ")+word;}if(!line.isEmpty())result.add(fit(c,line,width,size));return result;}
+    public static String fit(Canvas c,String s,double width,double size){s=com.gx.velveteclipse.localization.DisplayText.text(s);if(c.width(s,size)<=width)return s;while(!s.isEmpty()&&c.width(s+"...",size)>width)s=s.substring(0,s.length()-1);return s+"...";}
+    static List<String> wrap(Canvas c,String s,int width,int size){s=com.gx.velveteclipse.localization.DisplayText.text(s);List<String> result=new ArrayList<>();String line="";for(String word:s.split(" ")){if(!line.isEmpty()&&c.width(line+" "+word,size)>width){result.add(line);line="";}line+=(line.isEmpty()?"":" ")+word;}if(!line.isEmpty())result.add(fit(c,line,width,size));return result;}
     static int blend(int a,int b,double t){int c=0xFF000000;for(int shift:new int[]{0,8,16})c|=(int)(((a>>shift)&255)*(1-t)+((b>>shift)&255)*t)<<shift;return c;}
     static int alpha(int color,double opacity){return (color&0xFFFFFF)|((int)((color>>>24)*MenuMotion.clamp(opacity))<<24);}
     private static void ribbon(Canvas c,double x,double y,double w,double angle,int color,double alpha,boolean red){

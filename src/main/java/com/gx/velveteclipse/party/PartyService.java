@@ -43,7 +43,7 @@ public final class PartyService {
   var s=state(p);String message;var target=online(p,r.target());
   switch(r.action()){
    case "create"->message=s.roster.create(id(p));
-   case "invite"->{message=target==null?"Jogador offline.":s.roster.invite(id(p),id(target),now);if(target!=null&&s.roster.invitation(id(target),now)!=null){target.m_5661_(Component.m_237113_(p.m_7755_().getString()+" convidou você para uma party. Tab > PARTY para aceitar."),false);view(target,false,"Novo convite para party.");}}
+   case "invite"->{message=target==null?"Jogador offline.":s.roster.invite(id(p),id(target),now);if(target!=null&&s.roster.invitation(id(target),now)!=null){target.m_5661_(com.gx.velveteclipse.localization.ModText.component(p.m_7755_().getString()+" convidou você para uma party. Tab > PARTY para aceitar."),false);view(target,false,"Novo convite para party.");}}
    case "accept"->message=s.roster.accept(id(p),now);
    case "decline"->{s.roster.decline(id(p));message="Convite recusado.";}
    case "leave"->message=s.roster.leave(id(p));
@@ -64,7 +64,7 @@ public final class PartyService {
      if(ok){EquipmentData.save(p,from);EquipmentData.save(target,to);}
     }
     message=ok?"Transferência concluída.":"Transferência recusada. Confira quantidade, saldo, item equipado e espaço livre do destinatário.";
-    if(ok){BattleService.sync(p,message);BattleService.sync(target,"Recebido de "+p.m_7755_().getString()+".");target.m_5661_(Component.m_237113_("PARTY • Você recebeu "+(r.action().equals("yen")?"¥ "+r.amount():r.amount()+" item(ns)")+" de "+p.m_7755_().getString()+"."),false);view(target,false,"Transferência recebida.");}
+    if(ok){BattleService.sync(p,message);BattleService.sync(target,"Recebido de "+p.m_7755_().getString()+".");target.m_5661_(com.gx.velveteclipse.localization.ModText.component("PARTY • Você recebeu "+(r.action().equals("yen")?"¥ "+r.amount():r.amount()+" item(ns)")+" de "+p.m_7755_().getString()+"."),false);view(target,false,"Transferência recebida.");}
    }
    default->{return;}
   }

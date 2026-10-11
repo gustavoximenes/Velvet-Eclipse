@@ -30,7 +30,7 @@ public final class RaidService {
  private static ServerPlayer player(UUID id){var s=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();return s==null?null:s.m_6846_().m_11259_(id);}
  private static List<ServerPlayer> players(Run r){return r.names.keySet().stream().map(RaidService::player).filter(Objects::nonNull).toList();}
  private static ServerLevel world(){var s=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();return s==null?null:s.m_129880_(DIMENSION);}
- private static void say(ServerPlayer p,String text){p.m_5661_(Component.m_237113_(text),false);}
+ private static void say(ServerPlayer p,String text){p.m_5661_(com.gx.velveteclipse.localization.ModText.component(text),false);}
  public static void open(ServerPlayer p){
   if(!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)){say(p,"Desperte sua Persona com a Evoker antes de entrar na raid.");return;}
   if(!p.m_6084_()||BattleService.current(p)!=null||TartarusDungeonService.floor(p)!=25)return;
@@ -70,7 +70,7 @@ public final class RaidService {
   Entity e=r.stage==2?RaidRegistry.PRIESTESS.get().m_20615_(l):ShadowRegistry.shadowType().m_20615_(l);if(e==null){fail(r,"Não foi possível preparar o encontro.");return;}
   e.m_6034_(r.x()+.5,65.05,TrainLayout.encounterZ(r.stage)+.5);RuntimeBridge.setEntityRotation(e,180,0);e.m_20331_(true);e.m_20242_(true);
   if(e instanceof Mob m){m.m_21557_(true);m.m_21530_();}
-  e.m_6593_(Component.m_237113_(r.stage==2?"Sacerdotisa":r.stage==0?"Guardião do Trem • Sentinela":"Guardião do Trem • Condutor"));e.getPersistentData().m_128379_("raid_actor",true);if(!l.m_7967_(e)){fail(r,"Não foi possível criar o modelo do encontro.");return;}r.actor=e;
+  e.m_6593_(com.gx.velveteclipse.localization.ModText.component(r.stage==2?"Sacerdotisa":r.stage==0?"Guardião do Trem • Sentinela":"Guardião do Trem • Condutor"));e.getPersistentData().m_128379_("raid_actor",true);if(!l.m_7967_(e)){fail(r,"Não foi possível criar o modelo do encontro.");return;}r.actor=e;
  }
  private static void startBattle(Run r){
   var party=players(r);if(party.isEmpty())return;
@@ -147,5 +147,5 @@ public final class RaidService {
  @SubscribeEvent public static void respawn(PlayerEvent.PlayerRespawnEvent e){if(e.getEntity() instanceof ServerPlayer p&&p.getPersistentData().m_128471_("velvet_raid_respawn")){p.getPersistentData().m_128473_("velvet_raid_respawn");BattleService.sync(p,"A próxima tentativa começa do início.");}}
  @SubscribeEvent public static void stopping(net.minecraftforge.event.server.ServerStoppingEvent e){for(var r:List.copyOf(RUNS))fail(r,"Servidor encerrado. A operação será reiniciada na próxima entrada.");}
  @SubscribeEvent public static void stopped(net.minecraftforge.event.server.ServerStoppedEvent e){MEMBERS.clear();RUNS.clear();ticks=0;}
- @SubscribeEvent public static void commands(net.minecraftforge.event.RegisterCommandsEvent e){e.getDispatcher().register(net.minecraft.commands.Commands.m_82127_("velvetraid").requires(s->s.m_6761_(2)).then(net.minecraft.commands.Commands.m_82127_("maxplayers").then(net.minecraft.commands.Commands.m_82129_("quantidade",com.mojang.brigadier.arguments.IntegerArgumentType.integer(1,PriestessRules.MAX_CAPACITY)).executes(c->{var s=settings(c.getSource().m_81377_());s.capacity=com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(c,"quantidade");s.m_77762_();c.getSource().m_288197_(() -> Component.m_237113_("Limite das próximas raids: "+s.capacity),true);return s.capacity;}))));}
+ @SubscribeEvent public static void commands(net.minecraftforge.event.RegisterCommandsEvent e){e.getDispatcher().register(net.minecraft.commands.Commands.m_82127_("velvetraid").requires(s->s.m_6761_(2)).then(net.minecraft.commands.Commands.m_82127_("maxplayers").then(net.minecraft.commands.Commands.m_82129_("quantidade",com.mojang.brigadier.arguments.IntegerArgumentType.integer(1,PriestessRules.MAX_CAPACITY)).executes(c->{var s=settings(c.getSource().m_81377_());s.capacity=com.mojang.brigadier.arguments.IntegerArgumentType.getInteger(c,"quantidade");s.m_77762_();c.getSource().m_288197_(() -> com.gx.velveteclipse.localization.ModText.component("Limite das próximas raids: "+s.capacity),true);return s.capacity;}))));}
 }

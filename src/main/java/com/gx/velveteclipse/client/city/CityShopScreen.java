@@ -12,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 /** Dedicated Paulownia screen; other menu layouts and their controllers stay unchanged. */
 public final class CityShopScreen extends Screen {
     private CityNetwork.View data;private String page="root",category="",member="",memberName="";private int selected,offset,quantity=1,ticks;private boolean confirm,waiting;private long entered=System.nanoTime();
-    public CityShopScreen(CityNetwork.View data){super(Component.m_237113_(data.title()));this.data=data;}
+    public CityShopScreen(CityNetwork.View data){super(com.gx.velveteclipse.localization.ModText.component(data.title()));this.data=data;}
     public String shop(){return data.page();}
     public void update(CityNetwork.View value){data=value;confirm=waiting=false;quantity=1;bound();}
     public void error(String value){data=new CityNetwork.View(data.page(),data.title(),data.token(),value,data.yen(),data.rows(),true,true);confirm=waiting=false;}

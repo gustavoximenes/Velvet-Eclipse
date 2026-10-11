@@ -37,7 +37,7 @@ public final class PersonaMenuScreen extends Screen {
     private String action="";
     private boolean allOutSelectOpen;
     private int allOutChoice;
-    public PersonaMenuScreen(){super(Component.m_237113_("Velvet Eclipse"));}
+    public PersonaMenuScreen(){super(com.gx.velveteclipse.localization.ModText.component("Velvet Eclipse"));}
     static double now(){return System.nanoTime()*1e-9;}
     @Override protected void m_7856_(){
 
@@ -206,12 +206,14 @@ public final class PersonaMenuScreen extends Screen {
                 if(list.isEmpty())detail.add("Encontre inimigos em batalha para registrá-los aqui. Teste os elementos para descobrir suas afinidades.");
             }
             case 8 -> {
-                list.add(new MenuDesign.Row("Opcoes do Minecraft","Video, audio, idioma e controles",-1));list.add(new MenuDesign.Row("Animacoes do menu",motion?"Ativadas":"Movimento reduzido",-1));
+                list.add(new MenuDesign.Row("Opcoes do Minecraft","Video, audio e controles",-1));list.add(new MenuDesign.Row("Animacoes do menu",motion?"Ativadas":"Movimento reduzido",-1));
                 list.add(new MenuDesign.Row("Animação All-Out",com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).label+" / ENTER para escolher",-1));
+                list.add(new MenuDesign.Row("Idioma / Language",com.gx.velveteclipse.client.localization.ClientLocalization.code().equals("en_us")?"English":"Português",-1));
                 list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
-                if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio, controles e idioma nas opcoes do Minecraft.");action="Abrir opcoes";}
+                if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio e controles nas opcoes do Minecraft.");action="Abrir opcoes";}
                 else if(selected==1){detail.add("Movimento do menu");detail.add("Alterna flutuacao do retrato, entrada das opcoes e transicoes.");detail.add("Preferencia valida nesta sessao.");action=motion?"Reduzir movimento":"Ativar animacoes";}
                 else if(selected==2){detail.add("ANIMAÇÃO ALL-OUT");detail.add("Pose final ao vencer o combate.");action="Escolher animação";}
+                else if(selected==3){detail.add("Idioma do Velvet Eclipse");detail.add("Altera os menus, descrições e mensagens do mod. Preferência salva neste cliente.");action="Português / English";}
                 else{detail.add("Retornar ao mundo.");action="Fechar menu";}
             }
         }
@@ -229,7 +231,7 @@ public final class PersonaMenuScreen extends Screen {
             case 10 -> com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");
             case 3 -> showPersona();
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
-            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else closeMenu();}
+            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else closeMenu();}
         }
     }
     @Override public void m_88315_(GuiGraphics g,int mouseX,int mouseY,float partial){
@@ -312,7 +314,7 @@ public final class PersonaMenuScreen extends Screen {
     }
     private final class GameCanvas implements MenuDesign.Canvas {
         private final GuiGraphics g;GameCanvas(GuiGraphics g){this.g=g;}
-        private Component styled(String text,double size){return Component.m_237113_(text).m_130938_(s->s.m_131150_(size>=20?DISPLAY:BODY));}
+        private Component styled(String text,double size){return com.gx.velveteclipse.localization.ModText.component(text).m_130938_(s->s.m_131150_(size>=20?DISPLAY:BODY));}
         public void fill(double x,double y,double w,double h,int color){if(w>0&&h>0&&(color>>>24)>0)g.m_280509_((int)x,(int)y,(int)Math.ceil(x+w),(int)Math.ceil(y+h),color);}
         public void poly(double[] points,int color){
             if((color>>>24)==0)return;
@@ -324,9 +326,9 @@ public final class PersonaMenuScreen extends Screen {
             if((color>>>24)<5)return;var p=g.m_280168_();p.m_85836_();p.m_85837_(x,y,0);p.m_252781_(new Quaternionf().rotationZ((float)Math.toRadians(angle)));p.m_85841_((float)(size/11),(float)(size/11),1);
             g.m_280614_(f_96547_,styled(text,size),0,0,color,false);p.m_85849_();
         }
-        public void body(String text,double x,double y,double size,int color,double angle){var p=g.m_280168_();p.m_85836_();p.m_85837_(x,y,0);p.m_252781_(new Quaternionf().rotationZ((float)Math.toRadians(angle)));p.m_85841_((float)(size/11),(float)(size/11),1);g.m_280614_(f_96547_,Component.m_237113_(text).m_130938_(style->style.m_131150_(BODY)),0,0,color,false);p.m_85849_();}
+        public void body(String text,double x,double y,double size,int color,double angle){var p=g.m_280168_();p.m_85836_();p.m_85837_(x,y,0);p.m_252781_(new Quaternionf().rotationZ((float)Math.toRadians(angle)));p.m_85841_((float)(size/11),(float)(size/11),1);g.m_280614_(f_96547_,com.gx.velveteclipse.localization.ModText.component(text).m_130938_(style->style.m_131150_(BODY)),0,0,color,false);p.m_85849_();}
         public double width(String text,double size){return f_96547_.m_92852_(styled(text,size))*size/11;}
-    public double bodyWidth(String text,double size){return Minecraft.m_91087_().f_91062_.m_92852_(Component.m_237113_(text).m_130938_(style->style.m_131150_(new ResourceLocation("velvet_eclipse","body"))))*size/11;}
+    public double bodyWidth(String text,double size){return Minecraft.m_91087_().f_91062_.m_92852_(com.gx.velveteclipse.localization.ModText.component(text).m_130938_(style->style.m_131150_(new ResourceLocation("velvet_eclipse","body"))))*size/11;}
     public void item(int slot,double x,double y){if(slot>=0&&slot<41)g.m_280480_(PersonaMenuScreen.this.item(slot),(int)x,(int)y);}
     }
 }

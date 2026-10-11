@@ -32,5 +32,5 @@ public final class DarkHourRegistry {
  });
  public static void register(IEventBus bus){BLOCKS.register(bus);ENTITIES.register(bus);}
  public static java.util.List<RegistryObject<Block>> creativeBlocks(){return BLOCKS.getEntries().stream().filter(b->!b.getId().m_135815_().startsWith("tartarus_architecture")).toList();}
- public static boolean temporary(Block b){return b==STONE.get()||b==TRIM.get()||b==LIGHT.get()||b==STAIRS.get()||b==PORTAL.get();}
+ public static boolean temporary(Block b){return b==com.gx.velveteclipse.city.CityRegistry.TOWER.get()||b==STONE.get()||b==TRIM.get()||b==LIGHT.get()||b==STAIRS.get()||b==PORTAL.get();}
 }

@@ -13,7 +13,7 @@ public final class TartarusPropItem extends Item {
  public TartarusPropItem(String kind){super(new Item.Properties().m_41487_(64));this.kind=kind;}
  @Override public InteractionResult m_6225_(UseOnContext c){
   var p=c.m_43723_();var l=c.m_43725_();if(p==null)return InteractionResult.FAIL;
-  if(TartarusDungeonService.inside(p)||com.gx.velveteclipse.forge.BattleService.current(p)!=null){if(!l.f_46443_)p.m_5661_(Component.m_237113_("Coloque estas peças fora do Tártaro e de batalhas."),true);return InteractionResult.FAIL;}
+  if(TartarusDungeonService.inside(p)||com.gx.velveteclipse.forge.BattleService.current(p)!=null){if(!l.f_46443_)p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Coloque estas peças fora do Tártaro e de batalhas."),true);return InteractionResult.FAIL;}
   if(c.m_43719_()!=Direction.UP)return InteractionResult.FAIL;
   var hit=c.m_43720_();double x=Math.floor(hit.f_82479_)+.5,y=Math.ceil(hit.f_82480_-1e-5),z=Math.floor(hit.f_82481_)+.5;
   float yaw=Math.round((p.m_146908_()+180)/90)*90;

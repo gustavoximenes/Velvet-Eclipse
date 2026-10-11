@@ -11,7 +11,7 @@ import net.minecraftforge.client.model.data.*;
 public final class CityArchitectureEntity extends BlockEntity {
     public static final ModelProperty<Integer> TILE=new ModelProperty<>();
     private int id=0;
-    public CityArchitectureEntity(BlockPos pos,BlockState state){super(CityRegistry.ARCHITECTURE_ENTITY.get(),pos,state);}
+    public CityArchitectureEntity(BlockPos pos,BlockState state){super(CityRegistry.ARCHITECTURE_ENTITY.get(),pos,state);if(state.m_60713_(CityRegistry.TOWER.get()))id=com.gx.velveteclipse.darkhour.TartarusExterior.plan().sample();}
     public int id(){return id;}
     public void configure(int value){id=CityArchitecture.tile(value)==null?-1:value;m_6596_();refresh();}
     private void refresh(){requestModelDataUpdate();if(f_58857_!=null)f_58857_.m_7260_(f_58858_,m_58900_(),m_58900_(),3);}

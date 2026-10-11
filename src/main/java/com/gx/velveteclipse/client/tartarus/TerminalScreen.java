@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 public final class TerminalScreen extends Screen {
  private final TartarusTerminalNetwork.Response data;private int selected,offset;private final long opened=System.nanoTime();
- public TerminalScreen(TartarusTerminalNetwork.Response data){super(Component.m_237113_("Selecionar terminal"));this.data=data;selected=Math.max(0,data.floors().indexOf(data.current()));offset=Math.max(0,selected-7);}
+ public TerminalScreen(TartarusTerminalNetwork.Response data){super(com.gx.velveteclipse.localization.ModText.component("Selecionar terminal"));this.data=data;selected=Math.max(0,data.floors().indexOf(data.current()));offset=Math.max(0,selected-7);}
  @Override public boolean m_7043_(){return false;}
  @Override public void m_86600_(){if(com.gx.velveteclipse.client.ClientBattleState.snapshot().active()||!com.gx.velveteclipse.darkhour.TartarusDungeonService.inside(net.minecraft.client.Minecraft.m_91087_().f_91074_))m_7379_();}
  private void move(int n){selected=Math.floorMod(selected+n,data.floors().size());offset=Math.min(offset,selected);if(selected>=offset+8)offset=selected-7;}

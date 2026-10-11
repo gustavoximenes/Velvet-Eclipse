@@ -72,7 +72,7 @@ public final class PersonaBattleDesign {
   c.fill(0,338,530,22,0xF303092A);
   c.text(v.pending?"Trocando Persona...":"Q / E Persona   SETAS Habilidade   ENTER Selecionar   ESC Voltar",7,345,WHITE);
  }
- private static void wrap(HudDesign.Canvas c,String text,int x,int y,int width,int color,int lines){
+ private static void wrap(HudDesign.Canvas c,String text,int x,int y,int width,int color,int lines){text=com.gx.velveteclipse.localization.DisplayText.text(text);
   String line="";int row=0;for(String word:text.split(" ")){String next=line.isEmpty()?word:line+" "+word;
    if(c.width(next)>width&&!line.isEmpty()){c.text(line,x,y+row++*10,color);line=word;if(row>=lines)return;}else line=next;
   }if(!line.isEmpty()&&row<lines)c.text(line,x,y+row*10,color);

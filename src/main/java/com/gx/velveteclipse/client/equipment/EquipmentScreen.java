@@ -26,7 +26,7 @@ public final class EquipmentScreen extends Screen {
   "Os guardiões bloqueiam a subida a cada dez andares. As salas de transição surgem a cada vinte e cinco. Use os terminais já descobertos para preparar sua próxima expedição.",
   "As Shadows deixam yen. Aqui no pavilhão, posso trocar esse dinheiro por equipamentos e suprimentos. Os itens de recuperação podem ser usados em você ou em um aliado durante seu turno."
  };
- public EquipmentScreen(EquipmentNetwork.Snapshot d,Screen parent){super(Component.m_237113_("Elizabeth • Equipamentos"));data=d;this.parent=parent;dialogue=d.view().equals("dialogue");shop=d.view().equals("shop");if(d.view().equals("items"))slot=4;}
+ public EquipmentScreen(EquipmentNetwork.Snapshot d,Screen parent){super(com.gx.velveteclipse.localization.ModText.component("Elizabeth • Equipamentos"));data=d;this.parent=parent;dialogue=d.view().equals("dialogue");shop=d.view().equals("shop");if(d.view().equals("items"))slot=4;}
  private static double now(){return System.nanoTime()*1e-9;}
  public static void accept(String json){
   var d=EquipmentNetwork.JSON.fromJson(json,EquipmentNetwork.Snapshot.class);if(d==null||d.bag()==null)return;d.bag().sanitize();latest=d;var mc=Minecraft.m_91087_();

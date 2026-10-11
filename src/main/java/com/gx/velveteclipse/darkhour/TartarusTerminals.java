@@ -11,7 +11,7 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid="velvet_eclipse")
 public final class TartarusTerminals {
  private static final String DISCOVERED="velvet_eclipse:terminals",PROP="tartarus_prop";
- public static void discover(ServerPlayer p,int f){if(!TartarusInteriorLayout.fixedFloor(f))return;var floors=TartarusProgress.discovered(p.getPersistentData().m_128465_(DISCOVERED));if(floors.add(f)){p.getPersistentData().m_128385_(DISCOVERED,floors.stream().mapToInt(Integer::intValue).toArray());p.m_5661_(Component.m_237113_(f==0?"Terminal do hall descoberto":"Terminal do andar "+f+" descoberto"),true);}}
+ public static void discover(ServerPlayer p,int f){if(!TartarusInteriorLayout.fixedFloor(f))return;var floors=TartarusProgress.discovered(p.getPersistentData().m_128465_(DISCOVERED));if(floors.add(f)){p.getPersistentData().m_128385_(DISCOVERED,floors.stream().mapToInt(Integer::intValue).toArray());p.m_5661_(com.gx.velveteclipse.localization.ModText.component(f==0?"Terminal do hall descoberto":"Terminal do andar "+f+" descoberto"),true);}}
  public static void discoverFloor(ServerLevel l,int f){for(var p:l.m_6907_())if(TartarusDungeonService.floor(p)==f)discover(p,f);}
  public static void ensureProps(ServerLevel l,TartarusDungeonService.State s,int f){
   for(var spec:TartarusInteriorLayout.props(s.progress.seed(l.m_7328_(),f),f,s.plan(l,f))){
@@ -31,8 +31,8 @@ public final class TartarusTerminals {
   if(e.m_6095_()!=TartarusPropRegistry.TREASURE.get())return;String key=f+":"+id.substring(id.lastIndexOf(':')+1);
   boolean permitChest=com.gx.velveteclipse.progression.RewardLedger.permitChest(f,Integer.parseInt(id.substring(id.lastIndexOf(':')+1)));
   boolean reward=permitChest&&com.gx.velveteclipse.progression.ProgressionRewards.chest(p,f);
-  if(!s.progress.treasures.add(key)){if(permitChest&&!reward)p.m_5661_(Component.m_237113_("Você já recolheu a permissão deste andar."),true);return;}
-  var data=PlayerPersonaData.load(p);long yen=250L+f*45L;data.addYen(yen);data.addPulseTonics(1);data.save(p);if(!permitChest){s.props.remove(id);e.m_146870_();}s.m_77762_();BattleService.sync(p,"Tesouro • ¥ "+yen+" e 1 Pulse Tonic");com.gx.velveteclipse.shuffle.ShuffleService.status(p,"");p.m_5661_(Component.m_237113_("Tesouro recolhido: ¥ "+yen+" e 1 Pulse Tonic"),false);
+  if(!s.progress.treasures.add(key)){if(permitChest&&!reward)p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Você já recolheu a permissão deste andar."),true);return;}
+  var data=PlayerPersonaData.load(p);long yen=250L+f*45L;data.addYen(yen);data.addPulseTonics(1);data.save(p);if(!permitChest){s.props.remove(id);e.m_146870_();}s.m_77762_();BattleService.sync(p,"Tesouro • ¥ "+yen+" e 1 Pulse Tonic");com.gx.velveteclipse.shuffle.ShuffleService.status(p,"");p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Tesouro recolhido: ¥ "+yen+" e 1 Pulse Tonic"),false);
  }
  public static void request(ServerPlayer p,TartarusTerminalNetwork.Request r){
   if(!available(p))return;

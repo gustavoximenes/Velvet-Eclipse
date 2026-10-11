@@ -10,7 +10,7 @@ public final class FusionScreen extends Screen {
  private FusionSnapshot data;private int page,selected,offset,previous=1;private String first="";
  private boolean waiting,confirming,fusionPreview,help;private double sent,changed=now();
  private final PersonaSheetState sheet=new PersonaSheetState();private final PersonaModelPreview model=new PersonaModelPreview();private final IgorPreview igor=new IgorPreview();
- public FusionScreen(FusionSnapshot d){super(Component.m_237113_("Velvet Room • Igor"));data=d;}
+ public FusionScreen(FusionSnapshot d){super(com.gx.velveteclipse.localization.ModText.component("Velvet Room • Igor"));data=d;}
  private static double now(){return System.nanoTime()/1e9;}
  public static void accept(String json){
   var d=MenuNetwork.JSON.fromJson(json,FusionSnapshot.class);if(d==null)return;var mc=Minecraft.m_91087_();

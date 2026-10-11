@@ -28,7 +28,7 @@ public final class RaidClient {
  private static String element(String s){return switch(s){case "UNKNOWN"->"?";case "FIRE"->"FOGO";case "ICE"->"GELO";case "WIND"->"VENTO";case "ELECTRIC"->"ELÉTRICO";case "LIGHT"->"LUZ";case "DARK"->"TREVAS";case "PSY"->"PSÍQUICO";default->s;};}
  private static void next(){if(sent==data.revision()||System.nanoTime()-changed<400_000_000L)return;sent=data.revision();RaidNetwork.request("next",sent);}
  public static final class RaidScreen extends Screen{
-  RaidScreen(){super(Component.m_237113_("Operação Monorail"));}
+  RaidScreen(){super(com.gx.velveteclipse.localization.ModText.component("Operação Monorail"));}
   @Override public boolean m_7043_(){return false;}
   @Override public boolean m_6913_(){return data.mode().equals("lobby");}
   @Override public void m_7379_(){if(data.mode().equals("lobby")){RaidNetwork.request("leave",data.revision());super.m_7379_();}}

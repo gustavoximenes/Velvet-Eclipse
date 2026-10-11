@@ -13,7 +13,7 @@ public final class VelvetFusionScreen extends Screen {
  private final VelvetScene scene=VelvetScene.load("fusion"),room=VelvetScene.load("reveal");
  private final PersonaModelPreview persona=new PersonaModelPreview();
  private final long began=System.nanoTime();private boolean ended;
- public VelvetFusionScreen(VelvetArchive.View result,Runnable done){super(Component.m_237113_("Fusão"));this.result=result;this.done=done;}
+ public VelvetFusionScreen(VelvetArchive.View result,Runnable done){super(com.gx.velveteclipse.localization.ModText.component("Fusão"));this.result=result;this.done=done;}
  private static int alpha(int color,double value){return ((int)(255*Math.max(0,Math.min(1,value)))<<24)|(color&0xFFFFFF);}
  private double time(){return(System.nanoTime()-began)/1e9;}
  private void finish(){if(!ended){ended=true;done.run();}}

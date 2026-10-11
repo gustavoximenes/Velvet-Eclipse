@@ -14,7 +14,7 @@ public final class ShopProgress {
  public static String use(ServerPlayer p,int floor){
   int before=tier(p);if(!redeem(p,floor))return "Esta permissão já foi registrada. O item foi preservado.";
   int now=tier(p);String message=now>before?"Novos equipamentos disponíveis! Elizabeth liberou o estoque de "+ShopStock.period(now)+".":now==ShopStock.LAST_TIER?"Permissão registrada. Você já tem acesso ao estoque final de Reload.":"Permissão registrada. Falta a permissão do andar "+ShopStock.nextFloor(permits(p))+" para avançar o estoque.";
-  if(now>before)p.m_5661_(Component.m_237113_("NOVOS EQUIPAMENTOS DISPONÍVEIS • Visite Elizabeth"),true);
+  if(now>before)p.m_5661_(com.gx.velveteclipse.localization.ModText.component("NOVOS EQUIPAMENTOS DISPONÍVEIS • Visite Elizabeth"),true);
   EquipmentService.sync(p,"sync",message);return message;
  }
  @SubscribeEvent public static void clone(PlayerEvent.Clone e){RuntimeBridge.tagPutString(RuntimeBridge.persistentData(e.getEntity()),KEY,Integer.toString(permits(e.getOriginal())));}

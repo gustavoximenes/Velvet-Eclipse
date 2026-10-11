@@ -63,7 +63,7 @@ public final class VelvetArchive {
     TICKETS.remove(self);UUID recipient;try{recipient=UUID.fromString(r.recipient());}catch(IllegalArgumentException e){return;}
     if(recipient.equals(self)||!players.containsKey(recipient)||own.instance(r.result())==null||own.rosterIds().size()<2){message="Escolha um integrante na Velvet Room. Você deve manter pelo menos uma Persona.";break;}
     OFFERS.put(key(self,r.result()),new Offer(self,recipient,r.result(),sourceFingerprint(own),now()+180000));message="Contribuição autorizada por 3 minutos. A Persona só será consumida se a fusão for confirmada.";
-    players.get(recipient).m_5661_(Component.m_237113_(p.m_7755_().getString()+" ofereceu "+r.result()+" para sua fusão. Atualize a lista com R."),false);
+    players.get(recipient).m_5661_(com.gx.velveteclipse.localization.ModText.component(p.m_7755_().getString()+" ofereceu "+r.result()+" para sua fusão. Atualize a lista com R."),false);
    }
    case "withdraw"->{OFFERS.remove(key(self,r.result()));message="Contribuição retirada.";}
    case "preview"->{
@@ -78,7 +78,7 @@ public final class VelvetArchive {
     var committed=PartyFusion.preview(data,self,t.sources(),t.special(),r.skills());
     if(!PartyFusion.commit(data,self,t.sources(),t.special(),r.skills())){message="Fusão recusada. Confira nível, capacidade e até duas habilidades válidas.";break;}
     var affected=new LinkedHashSet<UUID>();affected.add(self);t.sources().forEach(s->{affected.add(s.owner());OFFERS.remove(key(s.owner(),s.persona()));});
-    for(var id:affected){data.get(id).save(players.get(id));BattleService.sync(players.get(id),"Fusão concluída.");if(!id.equals(self))players.get(id).m_5661_(Component.m_237113_("Sua contribuição foi usada na fusão de "+p.m_7755_().getString()+". Ela continua registrada no Compendium."),false);}
+    for(var id:affected){data.get(id).save(players.get(id));BattleService.sync(players.get(id),"Fusão concluída.");if(!id.equals(self))players.get(id).m_5661_(com.gx.velveteclipse.localization.ModText.component("Sua contribuição foi usada na fusão de "+p.m_7755_().getString()+". Ela continua registrada no Compendium."),false);}
     message="Fusão concluída. A nova Persona foi registrada no Compendium.";
     SEARCH.remove(self);view(p,false,committed,message,true,t.sources(),t.token());return;
    }

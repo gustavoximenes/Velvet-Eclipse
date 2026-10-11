@@ -9,7 +9,7 @@ import net.minecraft.network.chat.Component;
 public final class ShuffleScreen extends Screen {
  private ShuffleSnapshot data;private int selected,offset;private boolean waiting,done;private String message="";private final double opened=now();private double sent;
  private final PersonaModelPreview model=new PersonaModelPreview();
- public ShuffleScreen(ShuffleSnapshot d){super(Component.m_237113_(d.screen().equals("skill")?"Skill Card":"Shuffle Time"));data=d;}
+ public ShuffleScreen(ShuffleSnapshot d){super(com.gx.velveteclipse.localization.ModText.component(d.screen().equals("skill")?"Skill Card":"Shuffle Time"));data=d;}
  private static double now(){return System.nanoTime()/1e9;}
  private boolean teaching(){return data.screen().equals("skill")||data.screen().equals("learned");}
  public void receive(ShuffleSnapshot d){waiting=false;message=d.message();if(d.screen().equals("claimed")||d.screen().equals("learned")){data=d;done=true;selected=offset=0;}}

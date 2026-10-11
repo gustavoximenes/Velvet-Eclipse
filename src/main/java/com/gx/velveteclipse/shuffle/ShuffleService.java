@@ -34,7 +34,7 @@ public final class ShuffleService {
  }
  private static void open(ServerPlayer p){var d=ShuffleData.load(p);var round=d.first();if(round==null){status(p,"Nenhum Shuffle Time disponível.");return;}var player=PlayerPersonaData.load(p);ShuffleNetwork.reply(p,new ShuffleSnapshot("shuffle",d.rounds().size(),player.yen(),round.token(),round.floor(),round.cards().stream().map(c->describe(c,player)).toList(),List.of(),"","Escolha uma carta. As outras serão descartadas."));}
  public static void openSkill(ServerPlayer p,InteractionHand hand,String skill){
-  if(!available(p)){p.m_5661_(Component.m_237113_("Use Skill Cards fora de batalhas."),true);return;}
+  if(!available(p)){p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Use Skill Cards fora de batalhas."),true);return;}
   var t=new Teaching(UUID.randomUUID().toString(),skill,hand,p.m_9236_().m_46467_()+1200);teaching.put(p.m_20148_(),t);var d=PlayerPersonaData.load(p);
   ShuffleNetwork.reply(p,new ShuffleSnapshot("skill",ShuffleData.load(p).rounds().size(),d.yen(),t.token(),0,List.of(),d.rosterInstances().stream().map(MenuService::describe).toList(),skill,"Selecione a Persona que aprenderá a habilidade."));
  }

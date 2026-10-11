@@ -56,20 +56,24 @@ public final class TartarusDungeonService {
   int here=floor(p),target;
   if(route.equals("entrance")){
    if(inside(p)||!DarkHourService.active(p.m_9236_()))return;var tower=TartarusService.data(p.m_284548_());if(!tower.ready()||tower.removing)return;
-   var back=new CompoundTag();back.m_128347_("x",tower.x+.5);back.m_128347_("z",tower.z+31.5);p.getPersistentData().m_128365_(RETURN,back);target=0;
+   p.getPersistentData().m_128473_("city_tartarus_return");var back=new CompoundTag();back.m_128347_("x",tower.x+.5);back.m_128347_("z",tower.z+31.5);p.getPersistentData().m_128365_(RETURN,back);target=0;
   }else{
    if(!inside(p))return;
    if(route.equals("exit")){leave(p);return;}
-   if((route.equals("forward")||route.equals("summit"))&&TartarusInteriorLayout.bossFloor(here)&&!data(p.m_284548_()).defeated.contains(here)){p.m_5661_(Component.m_237113_("Derrote o Guardião para liberar a passagem."),true);return;}
+   if((route.equals("forward")||route.equals("summit"))&&TartarusInteriorLayout.bossFloor(here)&&!data(p.m_284548_()).defeated.contains(here)){p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Derrote o Guardião para liberar a passagem."),true);return;}
    target=route.equals("summit")?0:route.equals("back")?Math.max(0,here-1):Math.min(250,here+1);
   }
-  var l=p.m_20194_().m_129880_(DIMENSION);if(l==null){p.m_5661_(Component.m_237113_("Reinicie o mundo para carregar a dimensão do Tártaro."),false);return;}
+  var l=p.m_20194_().m_129880_(DIMENSION);if(l==null){p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Reinicie o mundo para carregar a dimensão do Tártaro."),false);return;}
   var s=data(l);prepareFloor(l,s,target);if(s.pending.containsKey(p.m_20148_()))return;
   s.pending.put(p.m_20148_(),new Pending(target,target<here,p.m_9236_().m_46472_(),p.m_20185_(),p.m_20186_(),p.m_20189_()));
-  if(!ready(s,target)){p.m_5661_(Component.m_237113_(target==0?"Tártaro • Abrindo o hall…":"Tártaro • Gerando andar "+target+"…"),true);}
+  if(!ready(s,target)){p.m_5661_(com.gx.velveteclipse.localization.ModText.component(target==0?"Tártaro • Abrindo o hall…":"Tártaro • Gerando andar "+target+"…"),true);}
  }
  public static void cancelTransfers(ServerLevel l){data(l).pending.clear();}
- public static void leave(ServerPlayer p){if(com.gx.velveteclipse.city.CityService.returnFromTartarus(p))return;
+ public static void leave(ServerPlayer p){
+  if(com.gx.velveteclipse.city.CityService.hasTartarusReturn(p)){
+   if(!com.gx.velveteclipse.city.CityService.returnFromTartarus(p))p.m_5661_(com.gx.velveteclipse.localization.ModText.component("A chegada na cidade está bloqueada ou em atualização. Seu retorno à cidade foi preservado; tente novamente."),true);
+   return;
+  }
   var level=p.m_20194_().m_129783_();var back=p.getPersistentData().m_128469_(RETURN);var spawn=level.m_220360_();double x=back.m_128441_("x")?back.m_128459_("x"):spawn.m_123341_()+.5,z=back.m_128441_("z")?back.m_128459_("z"):spawn.m_123343_()+.5;
   var tower=TartarusService.data(level);if(tower.ready()&&!tower.removing){x=tower.x+.5;z=tower.z+32.5;}
   int y=level.m_6924_(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,(int)Math.floor(x),(int)Math.floor(z));
@@ -84,7 +88,7 @@ public final class TartarusDungeonService {
  @SubscribeEvent public static void tick(TickEvent.LevelTickEvent event){
   if(event.phase!=TickEvent.Phase.END||!(event.level instanceof ServerLevel l)||!l.m_46472_().equals(DIMENSION))return;
   var s=data(l);
-  for(var p:List.copyOf(l.m_6907_()))if(p.getPersistentData().m_128471_("velvet_eclipse:tartarus_dawn")&&BattleService.current(p)==null){p.getPersistentData().m_128473_("velvet_eclipse:tartarus_dawn");leave(p);}
+  for(var p:List.copyOf(l.m_6907_()))if(p.getPersistentData().m_128471_("velvet_eclipse:tartarus_dawn")&&BattleService.current(p)==null&&p.f_19797_%20==0){leave(p);}
   // Regeneration is deferred while an encounter owns a floor. Move observers out first.
   for(int f:l.m_6907_().stream().map(TartarusDungeonService::floor).distinct().toList())if(!ready(s,f)&&!s.jobs.containsKey(f))prepareFloor(l,s,f);
   for(int f:s.pending.values().stream().map(Pending::floor).distinct().toList())prepareFloor(l,s,f);
@@ -111,7 +115,9 @@ public final class TartarusDungeonService {
    repair(l,s,request.floor);if(s.defeated.contains(request.floor))openGate(l,request.floor);
    var plan=s.plan(l,request.floor);var at=request.descending&&request.floor>0?new TartarusInteriorLayout.Point(plan.stairs().x(),plan.stairs().z()+7):plan.entry();
    p.getPersistentData().m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(l,TartarusInteriorLayout.origin(request.floor)+at.x()+.5,65.05,at.z()+.5,180,0);p.f_19789_=0;p.getPersistentData().m_128356_("velvet_eclipse:tartarus_entered_cycle",s.progress.cycle);TartarusTerminals.discover(p,request.floor);TartarusTerminals.ensureProps(l,s,request.floor);if(request.floor>0)spawn(l,s,request.floor);
-   p.m_5661_(Component.m_237113_(request.floor==0?"Tártaro • Hall de entrada":request.floor==250?"Tártaro • Andar 250 — Último andar":"Tártaro • Andar "+request.floor+" / 250"),false);pending.remove();
+   if(request.from.equals(com.gx.velveteclipse.city.CityService.DIMENSION))p.getPersistentData().m_128379_("city_tartarus_return",true);
+   else if(!request.from.equals(DIMENSION)&&!request.from.equals(VelvetRoomService.DIMENSION))p.getPersistentData().m_128473_("city_tartarus_return");
+   p.m_5661_(com.gx.velveteclipse.localization.ModText.component(request.floor==0?"Tártaro • Hall de entrada":request.floor==250?"Tártaro • Andar 250 — Último andar":"Tártaro • Andar "+request.floor+" / 250"),false);pending.remove();
   }
   if(l.m_46467_()%100==0){var occupied=new HashSet<Integer>();for(var p:l.m_6907_())if(p.m_6084_())occupied.add(floor(p));for(int f:occupied)if(ready(s,f)){TartarusTerminals.discoverFloor(l,f);TartarusTerminals.ensureProps(l,s,f);if(f>0)spawn(l,s,f);}}
  }
@@ -168,7 +174,7 @@ public final class TartarusDungeonService {
   var s=data(p.m_284548_());var slot=s.slots.get(e.getPersistentData().m_128461_(SLOT));var battle=BattleService.current(p);if(slot!=null&&battle!=null){TartarusEncounterSlot.begin(slot,battle.id());s.m_77762_();}
  }
  public static boolean guardian(Object e){return e instanceof Entity entity&&entity.getPersistentData().m_128471_("velvet_guardian");}
- public static void markGuardian(Entity e){e.getPersistentData().m_128379_("velvet_guardian",true);e.m_6593_(Component.m_237113_("Guardião do Tártaro"));e.m_20331_(true);}
+ public static void markGuardian(Entity e){e.getPersistentData().m_128379_("velvet_guardian",true);e.m_6593_(com.gx.velveteclipse.localization.ModText.component("Guardião do Tártaro"));e.m_20331_(true);}
  @SubscribeEvent public static void holdGuardian(net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent event){
   var e=event.getEntity();if(e.m_9236_().f_46443_||!guardian(e)||!dungeonShadow(e))return;
   int f=floor(e);e.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);e.m_6034_(TartarusInteriorLayout.origin(f)+.5,65.05,TartarusInteriorLayout.BOSS_Z+.5);e.m_146922_(0);e.m_5616_(0);e.m_5618_(0);
@@ -224,9 +230,9 @@ public final class TartarusDungeonService {
    if(e instanceof TartarusPropEntity){var prop=s.props.get(e.getPersistentData().m_128461_("tartarus_prop"));if(prop==null||!prop.m_128461_("entity").equals(e.m_20148_().toString()))event.setCanceled(true);}}
  }
  public static int teleportToFloor(ServerPlayer p,int target){
-  if(target<0||target>250||BattleService.current(p)!=null||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||p.m_20159_()){p.m_5661_(Component.m_237113_("Finalize a batalha/animação e levante-se antes de teleportar."),false);return 0;}
-  var l=p.m_20194_().m_129880_(DIMENSION);if(l==null){p.m_5661_(Component.m_237113_("Reinicie o mundo para carregar o Tártaro."),false);return 0;}
-  var s=data(l);prepareFloor(l,s,target);s.pending.put(p.m_20148_(),new Pending(target,false,p.m_9236_().m_46472_(),p.m_20185_(),p.m_20186_(),p.m_20189_()));p.m_5661_(Component.m_237113_("Preparando Tártaro • andar "+target+". Aguarde no local."),true);return 1;
+  if(target<0||target>250||BattleService.current(p)!=null||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||p.m_20159_()){p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Finalize a batalha/animação e levante-se antes de teleportar."),false);return 0;}
+  var l=p.m_20194_().m_129880_(DIMENSION);if(l==null){p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Reinicie o mundo para carregar o Tártaro."),false);return 0;}
+  var s=data(l);prepareFloor(l,s,target);s.pending.put(p.m_20148_(),new Pending(target,false,p.m_9236_().m_46472_(),p.m_20185_(),p.m_20186_(),p.m_20189_()));p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Preparando Tártaro • andar "+target+". Aguarde no local."),true);return 1;
  }
  @SubscribeEvent public static void removed(EntityLeaveLevelEvent event){
   var e=event.getEntity();if(!(event.getLevel() instanceof ServerLevel l)||!inside(e)||!(dungeonShadow(e)||e instanceof TartarusPropEntity))return;

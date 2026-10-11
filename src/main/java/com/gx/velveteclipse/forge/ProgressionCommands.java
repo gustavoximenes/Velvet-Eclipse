@@ -33,17 +33,17 @@ public final class ProgressionCommands {
  private static int set(CommandContext<CommandSourceStack> c,boolean persona,ServerPlayer target)throws CommandSyntaxException{
   var source=c.getSource();
   if(BattleService.current(target)!=null||com.gx.velveteclipse.raid.RaidService.member(target)){
-   source.m_81352_(Component.m_237113_("Defina os níveis fora de batalhas e antes de entrar na raid."));return 0;
+   source.m_81352_(com.gx.velveteclipse.localization.ModText.component("Defina os níveis fora de batalhas e antes de entrar na raid."));return 0;
   }
   int level=IntegerArgumentType.getInteger(c,"nivel");var data=PlayerPersonaData.load(target);String subject="Jogador";
   if(persona){String id=StringArgumentType.getString(c,"id");if(id.equals("active"))id=data.activePersona();
-   if(!data.setPersonaLevel(id,level)){source.m_81352_(Component.m_237113_("O jogador não possui a Persona: "+id));return 0;}
+   if(!data.setPersonaLevel(id,level)){source.m_81352_(com.gx.velveteclipse.localization.ModText.component("O jogador não possui a Persona: "+id));return 0;}
    subject=PersonaRegistry.persona(id).orElseThrow().displayName();
   }else data.setPlayerLevel(level);
   data.save(target);String message=target.m_7755_().getString()+" • "+subject+" definido para Lv "+level+" • EXP 0";
   BattleService.sync(target,message);com.gx.velveteclipse.menu.MenuService.refresh(target,message);com.gx.velveteclipse.room.FusionRoomService.refresh(target,message);
-  source.m_288197_(() -> Component.m_237113_(message),true);
-  if(source.m_81373_()!=target)target.m_5661_(Component.m_237113_(message),false);
+  source.m_288197_(() -> com.gx.velveteclipse.localization.ModText.component(message),true);
+  if(source.m_81373_()!=target)target.m_5661_(com.gx.velveteclipse.localization.ModText.component(message),false);
   return level;
  }
 }

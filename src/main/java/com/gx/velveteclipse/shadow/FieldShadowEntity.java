@@ -44,9 +44,9 @@ public final class FieldShadowEntity extends PathfinderMob implements GeoEntity 
    if(m_20280_(p)<=3.6&&m_142582_(p)){brain.attack();m_21573_().m_26573_();}
   }else if(brain.phase==ShadowAwareness.Phase.ATTACK){m_21573_().m_26573_();if(!valid){brain.reset();}else if(brain.ticks>=12){if(m_20280_(p)<=6.25&&m_142582_(p))ShadowWorldService.ambush(p,this);brain.reset();}}
   if(TartarusDungeonService.inside(this)&&(room(m_20185_())!=room(homeX)||room(m_20189_())!=room(homeZ))){m_6034_(homeX,m_20186_(),homeZ);m_21573_().m_26573_();brain.reset();}
-  int mood=brain.phase.ordinal();if(mood!=mood()){boolean question=brain.phase==ShadowAwareness.Phase.NOTICE||brain.phase==ShadowAwareness.Phase.SEARCH;boolean danger=brain.phase==ShadowAwareness.Phase.CHASE||brain.phase==ShadowAwareness.Phase.ATTACK;m_6593_(net.minecraft.network.chat.Component.m_237113_(question?"§e§l?":danger?"§c§l!":"Shadow"));m_20340_(question||danger);}f_19804_.m_135381_(MOOD,mood);
+  int mood=brain.phase.ordinal();if(mood!=mood()){boolean question=brain.phase==ShadowAwareness.Phase.NOTICE||brain.phase==ShadowAwareness.Phase.SEARCH;boolean danger=brain.phase==ShadowAwareness.Phase.CHASE||brain.phase==ShadowAwareness.Phase.ATTACK;m_6593_(com.gx.velveteclipse.localization.ModText.component(question?"§e§l?":danger?"§c§l!":"Shadow"));m_20340_(question||danger);}f_19804_.m_135381_(MOOD,mood);
  }
- public void resumeExploration(){target=null;brain.reset();wanderDelay=20;f_19804_.m_135381_(MOOD,0);m_20340_(false);m_6593_(net.minecraft.network.chat.Component.m_237113_("Shadow"));}
+ public void resumeExploration(){target=null;brain.reset();wanderDelay=20;f_19804_.m_135381_(MOOD,0);m_20340_(false);m_6593_(com.gx.velveteclipse.localization.ModText.component("Shadow"));}
  private void turn(float yaw){float delta=(yaw-m_146908_())%360;if(delta>180)delta-=360;if(delta< -180)delta+=360;face(m_146908_()+Math.max(-6,Math.min(6,delta)));}
  private void facePlayer(ServerPlayer p){turn((float)Math.toDegrees(Math.atan2(m_20185_()-p.m_20185_(),p.m_20189_()-m_20189_())));}
  private void wander(){
