@@ -1,0 +1,127 @@
+@font-face{font-family:body;src:url(assets/body.ttf);font-display:swap}
+@font-face{font-family:display;src:url(assets/display.ttf);font-display:swap}
+:root{color-scheme:dark;--ink:#020831;--ice:#edffff;--cyan:#46ffee;--red:#ff0646}
+*{box-sizing:border-box}body{margin:0;background:#060c1b;color:var(--ice);font-family:body,Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffe548;outline-offset:3px}
+.preview-tools{display:flex;align-items:center;gap:14px;min-height:52px;padding:7px 20px;background:#111929;font:16px body;flex-wrap:wrap}
+.preview-tools>b,.preview-tools b{color:#74ddd9}.preview-tools select,.preview-tools button{background:#233345;color:#fff;border:1px solid #52627a;padding:5px 10px;border-radius:3px}
+.preview-tools span{margin-left:auto;color:#9cb3c4;font-size:14px}.empty-control{display:flex;align-items:center;gap:4px;font-size:14px}
+#viewport{position:relative;overflow:hidden}#stage{position:relative;width:1280px;height:720px;transform-origin:top left;overflow:hidden;background:#111b32;isolation:isolate}
+.preview-caption{padding:12px 20px;font-size:14px;color:#8ea6bf}
+#stage .backdrop{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-3}
+#stage .wash{position:absolute;inset:0;background:linear-gradient(100deg,#01032644,#06173524);z-index:-2}
+#stage .ui-layer{position:absolute;inset:0;animation:open .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes open{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+#stage h1,#stage h2,#stage h3,#stage p{margin:0}#stage small{font-size:17px}#stage .display{font-family:display}
+#stage .wallet{position:absolute;right:40px;top:28px;width:244px;background:#000;border:2px solid #f5ffff;padding:6px 12px;z-index:8;box-shadow:7px 6px 0 #070937;font-size:37px}
+#stage .wallet>div{display:flex;justify-content:space-between;align-items:center;line-height:1.1}#stage .wallet .pay{font-size:15px;color:var(--cyan);border-top:1px solid currentColor;margin-top:4px;padding-top:5px}#stage .wallet .pay b{font-size:24px;font-weight:400}
+#stage .footer{position:absolute;bottom:20px;left:24px;z-index:10;display:flex;gap:20px;align-items:center;font-size:19px;text-shadow:1px 2px 2px #000}
+#stage .footer button{background:#070b28dd;color:white;padding:5px 10px;font-size:18px}#stage kbd{font:15px body;background:#eafaff;color:#07102c;padding:1px 6px;border-radius:2px;margin-right:4px;text-shadow:none}
+#stage .row{position:relative;display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;min-height:42px;font-size:27px;padding:5px 20px;background:#eafbffd9;color:#000829;border-bottom:2px solid #080632;gap:16px}
+#stage .row>span{pointer-events:none}#stage .row .row-main{flex:1;white-space:nowrap}#stage .row .row-end{font-size:25px;white-space:nowrap}
+#stage .row.selected{background:#03043b;color:var(--cyan)}#stage .row.selected:before{content:'▸';position:absolute;left:4px;font-size:22px}
+#stage .row .item-icon{background:#0826c9;display:inline-flex;justify-content:center;align-items:center;color:#adfffa;width:55px;height:27px;transform:skew(-17deg);font:17px display;margin-left:6px}
+#stage .list-title{font-size:23px;padding:16px 22px;color:var(--cyan)}
+#stage .status{position:absolute;left:280px;bottom:22px;max-width:890px;z-index:15;color:#fff2a3;background:#070b28ed;padding:8px 16px;font-size:20px;border-left:4px solid #ffdf5a}
+#stage .status:empty{display:none}
+/* Aohige: lower inventory, folded paper and suspended medicine. */
+#stage.pharmacy .wash{background:#99cd8730}#stage .pharmacy-list{position:absolute;left:270px;top:361px;width:646px;background:#040035;border:9px solid #040035;border-top:0}
+#stage .pharmacy-list .list-title{padding:16px 18px;font-size:24px;white-space:nowrap}#stage .pharmacy-list .row{height:43px;min-height:43px;font-size:26px;padding-right:48px}
+#stage .pharmacy-list .row.selected:after{content:'';position:absolute;right:0;top:0;height:100%;width:32px;background:var(--cyan);clip-path:polygon(45% 0,100% 0,100% 100%,0 100%)}
+#stage .folded-ad{position:absolute;left:898px;top:137px;width:320px;height:374px;transform:rotate(25deg);filter:drop-shadow(12px 10px 5px #0006);background:linear-gradient(90deg,#fff 0,#fcffff 46%,#a5a7c8 49.5%,#05005e 50%,#001399 100%);border-bottom:14px solid #050039;z-index:1;color:#040066;padding:20px 26px}
+#stage .folded-ad .ad-brand{font:63px/1 display;letter-spacing:1px;transform:rotate(-2deg);text-shadow:1px 1px #b8bac6}
+#stage .folded-ad .ad-brand span{color:white}#stage .folded-ad .ad-small{font-size:28px;letter-spacing:3px;margin-top:14px}#stage .folded-ad .sale{font:99px/1 display;color:#fff63b;margin:24px 0 0 98px;transform:rotate(-10deg)}
+#stage .pharmacy-detail{position:absolute;right:0;bottom:0;width:360px;height:178px;background:#020033;color:#48ffe7;padding:19px 25px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+#stage .pharmacy-detail p{font-size:25px;line-height:1.16;min-height:84px}#stage .pharmacy-detail .owned{display:flex;justify-content:flex-end;align-items:center;gap:14px;color:#ecffff;font-size:19px}#stage .pharmacy-detail .owned strong{font-size:42px;font-weight:400;color:#778ef2}
+#stage .pill-layer{position:absolute;inset:0;pointer-events:none;z-index:2}#stage .capsule{position:absolute;width:58px;height:150px;border-radius:40px;background:linear-gradient(90deg,#0001,transparent 35%,#fff2 50%,#0003),linear-gradient(#e8ecff 0 50%,var(--pill) 50%);box-shadow:8px 8px 6px #001b2926,inset -4px 1px 10px #0003;transform:rotate(var(--rot));animation:float 4s ease-in-out infinite alternate}
+#stage .tablet{position:absolute;border-radius:50%;width:70px;height:26px;background:linear-gradient(150deg,#f0efff,#abb8d9);box-shadow:0 5px #818eb9;transform:rotate(-25deg)}#stage .tablet:after{content:'';height:100%;width:3px;background:#7b89ac;position:absolute;left:50%}
+@keyframes float{to{translate:0 -8px}}
+/* Tatsumi East: red directory, monochrome blocks and hazard bands. */
+#stage.police .wash{background:#2118584a}#stage.police .wallet{box-shadow:8px 8px 0 #f5ee46,-8px -8px 0 #f5ee46}#stage.police .wallet .pay{color:#f5ee46}
+#stage .police-sign{position:absolute;left:85px;top:12px;height:94px;display:flex;z-index:4;gap:4px}
+#stage .police-sign b{display:flex;align-items:center;background:#050505;color:white;font:60px display;padding:0 13px}#stage .police-sign b:nth-child(2){color:#000;background:#f40018}
+#stage .police-vertical{position:absolute;top:100px;left:5px;height:277px;width:117px;background:#c6c4daea;border-right:8px solid #030303;writing-mode:vertical-rl;transform:rotate(180deg);font:97px/.91 display;color:#000;padding-top:2px}
+#stage .police-vertical small{font:15px body;letter-spacing:.3px;position:absolute;left:4px;top:0;white-space:nowrap}
+#stage .directory{position:absolute;left:245px;top:106px;width:319px;background:#000;padding:0 8px 16px;z-index:4}#stage .directory h2{font:48px display;color:#686873;text-align:right;line-height:1.05;margin:8px 0 0}
+#stage .directory small{display:block;font-size:13px;text-align:right;color:#8e8e99}
+#stage.police .row{background:#e6e5ed;color:#050505;border-bottom:2px solid #040404;font-size:28px;line-height:1.1;height:43px;font-weight:bold;padding-left:24px}
+#stage.police .row.selected{background:linear-gradient(112deg,#f30027 0 10%,#000 10% 90%,#f30027 90%);color:white}
+#stage.police .row.selected:before{color:#ff1238;left:15px}#stage .police-speech{position:absolute;left:18px;top:382px;background:#d4d3e4df;border:8px solid #000;padding:32px 18px;font:bold 34px/1.12 body;color:#000;width:223px;text-align:center}
+#stage .weapon-stamp{position:absolute;left:130px;top:250px;width:111px;height:111px;border-radius:100%;background:#ff0924;border:9px solid black;display:grid;place-content:center;color:#000;font-size:70px;transform:rotate(-34deg)}
+#stage .tapes{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}#stage .tape{position:absolute;left:-100px;width:1500px;height:27px;font:bold 22px/27px body;color:#aaa8b2;background:#000;word-spacing:40px;white-space:nowrap;transform-origin:center}
+#stage .tape.one{top:400px;transform:rotate(-28deg)}#stage .tape.two{top:514px;transform:rotate(-12deg)}#stage .tape.three{left:-330px;top:647px;transform:rotate(17deg)}
+#stage .equipment-list{position:absolute;left:70px;top:181px;width:620px;background:#000;padding:12px;z-index:4}#stage .equipment-list .list-title{color:#fff;font:28px display;padding:3px 5px 12px}
+#stage .equipment-detail{position:absolute;top:195px;right:68px;width:370px;background:#0b0c0fef;border-left:12px solid #fa0430;padding:25px 25px 25px 28px;z-index:5}
+#stage .equipment-detail h3{font:34px display;border-bottom:2px solid #777;padding-bottom:13px;margin-bottom:20px}#stage .stat-line{display:flex;justify-content:space-between;font-size:27px;margin:12px 0}#stage .stat-line b{color:#ffff72}#stage .equipment-detail p{color:#ccc;font-size:23px;margin:20px 0}
+/* Mayoido: ink scroll, mint rows, red cursor, real material requirements. */
+#stage.mayoido .wash{background:linear-gradient(100deg,#63031e80,#b0420e6e)}#stage .antique-scroll{position:absolute;inset:0;color:#27000b;pointer-events:none}
+#stage .antique-brand{position:absolute;right:26px;top:0;width:218px;height:468px;background:#2b000e;color:#48fca2;text-align:center;padding:38px 10px;z-index:4;font-family:Georgia,serif;overflow:hidden}
+#stage .antique-brand .seal{font-size:28px;letter-spacing:6px;border-bottom:1px solid #77d58a;margin:0 14px 24px;padding-bottom:18px}#stage .antique-brand strong{font-size:35px;line-height:.95;display:block}#stage .antique-brand small{display:block;font-size:16px;letter-spacing:5px;margin:14px 0}
+#stage .antique-brand svg{position:absolute;bottom:-34px;left:9px;width:234px;height:250px}
+#stage .antique-root{position:absolute;left:551px;top:205px;width:486px;border:10px solid #27000b;border-top:0;padding-bottom:46px;background:#49061926;z-index:3}
+#stage .antique-root h2{background:#27000b;color:#e0cd72;font:29px Georgia,serif;padding:17px 17px;white-space:nowrap;margin:-1px -10px 42px}
+#stage.mayoido .row{font-family:Georgia,serif;background:linear-gradient(105deg,#32f4b2d9,#daffd7e8);color:#041913;border-bottom:2px solid #33000c;min-height:45px;padding-left:38px;font-size:28px;text-align:center}
+#stage.mayoido .row.selected{background:linear-gradient(120deg,#ff003b 0 11%,#090002 11% 79%,#ff003b 79%);color:#ff1258}#stage.mayoido .row.selected:before{color:#ff1445;left:25px}
+#stage .antique-trade{position:absolute;left:58px;top:150px;width:706px;background:#310010e8;border:8px solid #33000b;z-index:5}
+#stage .antique-trade h2{font:34px Georgia;color:#ead48e;padding:16px 20px}#stage .antique-trade .row{text-align:left;font-size:25px;height:47px}
+#stage .materials{position:absolute;left:787px;top:478px;width:458px;background:#350313f0;padding:19px 24px;z-index:6;color:#e7ffdd;font:21px Georgia,serif;border-top:5px solid #40ffb0}
+#stage .materials h3{font:25px Georgia;margin-bottom:14px}#stage .materials dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:7px 20px}#stage .materials dd{margin:0;color:#48ffc1}#stage .materials dd.missing{color:#ff808a}
+#stage .trade-detail{position:absolute;left:58px;top:513px;width:689px;background:#8b0630;padding:17px 25px;color:white;font-size:25px;z-index:4;border-left:8px solid #ff1447}
+/* Be Blue V is scoped here; the Persona and party menus are not modified. */
+#stage.blue .wash{background:linear-gradient(125deg,#006bc684,#00266c35)}#stage .select-title{position:absolute;left:64px;top:10px;font:155px/1 display;letter-spacing:-2px;color:#0043fa;text-shadow:-9px -4px #042245}
+#stage .select-title:after{content:'SELECT';position:absolute;left:19px;top:38px;color:transparent;-webkit-text-stroke:1px #bcfcff}
+#stage .party-list{position:absolute;left:115px;top:209px;width:663px;background:#001e50c9;padding:10px 16px 20px;border-top:4px solid #48efff}
+#stage .party-heading{font-size:27px;padding:12px 16px 19px;display:flex;justify-content:space-between;gap:10px}#stage .party-heading span{font-size:22px;color:#c5eeff}
+#stage.blue .row{background:transparent;color:white;border:0;font-size:30px;padding:8px 25px;min-height:52px}#stage.blue .row.selected{background:#f3ffff;color:#072340;box-shadow:0 -3px #48f4ff}
+#stage .member-card{position:absolute;right:-33px;bottom:0;width:448px;height:384px;background:linear-gradient(153deg,#0686fa 45%,#0249ca 45%);clip-path:polygon(16% 0,100% 12%,100% 100%,0 100%);padding:64px 55px;color:#071b57}
+#stage .member-card .monogram{font:176px/1 display;color:#c6efff33;letter-spacing:-12px;position:absolute;right:28px;top:31px;transform:rotate(-13deg)}
+#stage .member-card .member-name{position:relative;display:block;font:66px/.95 display;margin-top:90px;color:white;transform:rotate(-9deg)}#stage .member-card .persona-name{display:block;font-size:27px;color:#a3fbff;margin:28px 0 0 30px}
+#stage .blue-detail{position:absolute;left:137px;top:479px;font-size:26px;color:#e1fbff;max-width:550px;text-shadow:1px 2px #063066}
+#stage .empty-party{color:#d3f2ff;font-size:27px;padding:25px 25px 40px;line-height:1.5}
+#stage.blue-skills .backdrop{filter:blur(6px);opacity:.25}#stage.blue-skills .wash{background:repeating-linear-gradient(160deg,#072fdce8 0 120px,#006ef6ee 120px 220px,#0020bfed 220px 260px)}
+#stage .skill-banner{position:absolute;left:-35px;top:45px;width:751px;background:#f3ffff;color:#011340;padding:27px 70px;transform:rotate(-8deg);border-top:5px solid #ff0245}
+#stage .skill-banner h2{font:49px display}#stage .skill-banner span{font-size:24px;margin-right:25px}#stage .skill-banner small{color:#587685}
+#stage .learned-skills{position:absolute;left:39px;top:302px;width:518px;background:#010c51c9;padding:15px;font-size:24px}#stage .learned-skills h3{color:#77faff;font:31px display;margin-bottom:10px}
+#stage .learned-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}.learned-grid span{background:#d4d9ff33;padding:10px 14px}
+#stage .recall-list{position:absolute;left:653px;top:246px;width:572px;background:#010738cc;padding:12px}#stage .recall-list h3{font:62px/.9 display;margin-top:-71px;transform:rotate(-6deg);height:70px;padding-left:19px}
+#stage.blue-skills .recall-list .row{height:50px;border-bottom:2px solid #061647;font-size:28px}#stage.blue-skills .recall-list .row.selected{box-shadow:0 -4px #ff124d}
+#stage .skill-note{position:absolute;bottom:96px;left:675px;width:509px;color:white;font-size:25px;border-top:3px solid #4ceff6;padding:20px 0}
+/* Activities retain the original dialogue/choice grammar instead of a fake shop inventory. */
+#stage.activity .wash{background:linear-gradient(180deg,#010a2030,#000b1524 40%,#06072a70)}#stage.activity.escapade .wash{background:linear-gradient(120deg,#09021b99,#31073850,#05304655)}
+#stage .location{position:absolute;left:28px;top:31px;background:#060d24ed;color:#e7ffff;padding:7px 22px;font-size:24px;border-left:5px solid #5aeeed;transform:skew(-8deg)}
+#stage .location span{display:block;transform:skew(8deg)}#stage .location small{font-size:14px;letter-spacing:3px;color:#93d9e0;margin-right:14px}
+#stage .choices{position:absolute;left:640px;bottom:259px;width:522px;background:#071331e8;padding:13px 17px 20px;border-top:3px solid #7afaff;box-shadow:12px 12px #10177066;z-index:5;transform:rotate(-2deg)}
+#stage.activity .row{background:transparent;color:#f1fbff;border-bottom:1px solid #3b589566;min-height:47px;font-size:27px;padding:7px 24px}
+#stage.activity .row.selected{background:#f0ffff;color:#03193b;box-shadow:0 -3px #30e4fb}#stage.activity .row.selected:before{color:#047cc5}#stage.activity .row .row-end{font-size:23px}
+#stage .dialogue{position:absolute;left:49px;right:55px;bottom:76px;height:154px;background:#1136a2ed;color:white;clip-path:polygon(3% 0,90% 0,100% 32%,95% 100%,0 100%);z-index:7;padding:55px 80px 15px 65px;font-size:28px}
+#stage .dialogue:before{content:'';position:absolute;left:0;top:0;height:19px;width:100%;background:#3483de;clip-path:polygon(0 0,100% 0,100% 50%,0 100%)}
+#stage .speaker{position:absolute;left:102px;bottom:194px;z-index:8;background:#05152c;color:#adfcff;padding:7px 40px 7px 22px;font:30px display;transform:rotate(-2deg);clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
+#stage .dialogue p{font-size:27px;line-height:1.24;max-width:935px}#stage .dialogue .cursor{position:absolute;right:84px;bottom:20px;color:#94fbff;animation:blink 1s steps(2) infinite}@keyframes blink{to{opacity:.4}}
+#stage .activity-meta{position:absolute;right:78px;bottom:241px;background:#032653;color:#85f8ff;padding:5px 13px;font-size:18px;z-index:6}
+#stage .result-word{position:absolute;left:74px;top:160px;font:93px/.95 display;transform:rotate(-8deg);color:white;text-shadow:6px 6px #061568}
+/* Focused confirmation: always above ornaments, with cancel as initial selection. */
+#stage .modal-shade{position:absolute;inset:0;background:#00091ba8;z-index:30;display:grid;place-items:center}
+#stage .confirm-dialog{width:574px;background:#061b43;border-top:5px solid #77fbff;padding:25px 34px 27px;box-shadow:13px 13px #012072;border-bottom:2px solid #158fc6;animation:open .17s ease-out}
+#stage .confirm-dialog h2{font:39px display;color:#a9ffff;margin-bottom:12px}#stage .confirm-dialog p{font-size:25px;line-height:1.3;margin-bottom:20px}
+#stage .quantity-line{display:flex;align-items:center;gap:14px;font-size:25px;margin-bottom:17px}#stage .quantity-line input{width:78px;font-size:28px;padding:5px;text-align:center;background:#efffff;color:#051330;border:0}
+#stage .modal-total{font-size:28px;display:flex;justify-content:space-between;border-top:1px solid #387daf;padding-top:14px;margin-bottom:19px;color:#9ffeff}
+#stage .modal-actions{display:flex;gap:12px;justify-content:flex-end}#stage .modal-actions button{padding:8px 26px;background:#efffff;color:#051631;font-size:24px}#stage .modal-actions button.primary{background:#04dbdc}
+#stage .modal-error{color:#ffe45e;font-size:22px;min-height:26px;margin-bottom:12px}
+#stage.police .confirm-dialog{background:#050505;border-color:#ff1538;box-shadow:12px 12px #b20d25}#stage.police .confirm-dialog h2{color:#fff}#stage.police .modal-actions button.primary{background:#ed153b;color:#fff}
+#stage.mayoido .confirm-dialog{background:#2d0310;border-color:#43f3b2;box-shadow:13px 13px #6d0721}#stage.mayoido .modal-actions button.primary{background:#48f0ab}
+#stage .no-motion,#stage .no-motion *{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){#stage *,#stage *:before,#stage *:after{animation:none!important;transition:none!important}}
+@media(max-width:740px){.preview-tools{gap:8px;padding:8px 10px}.preview-tools span{width:100%;margin:0;font-size:12px}.preview-tools select{max-width:180px}.preview-caption{font-size:12px}}
+#stage .directory h1{font:48px/1.05 display;color:#686873;text-align:right;margin:8px 0 0}
+#stage .antique-root h1{background:#27000b;color:#e0cd72;font:29px Georgia,serif;padding:17px;white-space:nowrap;margin:-1px -10px 42px}
+#stage .antique-trade h1{font:34px Georgia,serif;color:#ead48e;padding:16px 20px}
+#stage .recall-list h1{font:62px/.9 display;margin-top:-71px;transform:rotate(-6deg);height:70px;padding-left:19px}
+#stage .footer{gap:8px}#stage .footer button{font-size:16px;padding:5px 8px}
+#stage .pharmacy-list{z-index:3}#stage .pharmacy-detail{z-index:3}
+#stage .skill-banner h1{font:49px display}
+#stage .status{left:25px;top:138px;bottom:auto;max-width:850px;pointer-events:none}
+#stage.pharmacy .status{top:135px;max-width:570px}
+#stage.police .status{left:621px;top:134px;max-width:625px;font-size:19px}
+#stage.mayoido .status{left:25px;top:31px;max-width:810px}
+#stage.blue .status{left:115px;top:166px;max-width:663px}
+#stage.blue-skills .status{left:40px;top:250px;max-width:545px;font-size:19px}

@@ -39,7 +39,7 @@ public final class VelvetRoomService {
   if(inside(p)){leave(p);return;}var room=p.m_20194_().m_129880_(DIMENSION);if(room==null){tell(p,"A dimensão não foi carregada. Reinicie o mundo com o mod instalado.");return;}
   build(room);var back=new CompoundTag();back.m_128359_("dimension",p.m_9236_().m_46472_().m_135782_().toString());
   // Save the safe approach side, outside the doorway, to prevent a return loop.
-  var direction=p.m_9236_().m_8055_(door).m_61143_(DoorBlock.f_52726_);var point=step(door,direction,2);
+  var doorState=p.m_9236_().m_8055_(door);var direction=doorState.m_61138_(DoorBlock.f_52726_)?doorState.m_61143_(DoorBlock.f_52726_):Direction.SOUTH;var point=step(door,direction,2);
   back.m_128347_("x",point.m_123341_()+.5);back.m_128347_("y",Math.floor(p.m_20186_()));back.m_128347_("z",point.m_123343_()+.5);back.m_128350_("yaw",p.m_146908_());data.m_128365_(RETURN,back);data.m_128356_(COOLDOWN,now);
   BlockPos seat=null;for(int[] xyz:VelvetRoomLayout.seats(com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_()))){var at=new BlockPos(xyz[0],xyz[1],xyz[2]);if(room.m_45976_(VelvetSeatEntity.class,new AABB(at).m_82400_(.3)).isEmpty()){seat=at;break;}}
   if(seat==null){p.m_8999_(room,.5,64,VelvetRoomLayout.depth(com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_()))-2.5,180,0);FusionNetwork.enter(p,false);tell(p,"As cadeiras estão ocupadas. Clique com o botão direito em Igor para interagir.");return;}

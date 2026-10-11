@@ -1540,5 +1540,22 @@
   "block.velvet_eclipse.city_shop_arcade": "Counter • Game Parade",
   "block.velvet_eclipse.city_shop_escapade": "Counter • Club Escapade",
   "block.velvet_eclipse.city_shop_kenneth": "Counter • Kenneth Arnold",
-  "block.velvet_eclipse.city_tartarus_access": "Tartarus entrance"
+  "block.velvet_eclipse.city_tartarus_access": "Tartarus entrance",
+  "block.velvet_eclipse.city_architecture": "Detailed city architecture",
+  "block.velvet_eclipse.city_dorm_0": "Dorm material 1",
+  "block.velvet_eclipse.city_dorm_1": "Dorm material 2",
+  "block.velvet_eclipse.city_dorm_2": "Dorm material 3",
+  "block.velvet_eclipse.city_dorm_3": "Dorm material 4",
+  "block.velvet_eclipse.city_dorm_4": "Dorm material 5",
+  "block.velvet_eclipse.city_dorm_5": "Dorm material 6",
+  "block.velvet_eclipse.city_dorm_6": "Dorm material 7",
+  "block.velvet_eclipse.city_dorm_7": "Dorm material 8",
+  "block.velvet_eclipse.city_mall_0": "Mall material 1",
+  "block.velvet_eclipse.city_mall_1": "Mall material 2",
+  "block.velvet_eclipse.city_mall_2": "Mall material 3",
+  "block.velvet_eclipse.city_mall_3": "Mall material 4",
+  "block.velvet_eclipse.city_mall_4": "Mall material 5",
+  "block.velvet_eclipse.city_mall_5": "Mall material 6",
+  "block.velvet_eclipse.city_mall_6": "Mall material 7",
+  "block.velvet_eclipse.city_mall_7": "Mall material 8"
 }

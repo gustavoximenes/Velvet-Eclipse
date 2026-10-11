@@ -1,3 +1,11 @@
+# 0.6.48-city-polish
+
+- Integra os acabamentos aprovados do dormitório e a arquitetura circular do Paulownia, com colisão local, acessos e minimapa por piso.
+- Novos menus e atendimento real das nove lojas; materiais criativos e atualização persistente da cidade.
+- Gekkoukan é substituída pelo Tártaro durante a Dark Hour, com restauração dos blocos e inventários ao amanhecer.
+- Preserva a correção do Forneus e os demais menus. Protocolo de cidade 3.
+- Verificações focadas offline aprovadas; sem execução no Minecraft ou em shader packs. [Detalhes](docs/CITY-POLISH.md).
+
 # 0.6.47-inspect
 
 - Corrige a inclinação da câmera do Forneus nos previews de menu: dorso e coroa vistos por cima, em vez da parte inferior do corpo.

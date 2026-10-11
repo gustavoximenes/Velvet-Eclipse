@@ -1,0 +1,181 @@
+{
+  "routes": {
+    "mall_loja_escapade": {
+      "samples": 772,
+      "endY": 64.0
+    },
+    "mall_loja_chagall": {
+      "samples": 836,
+      "endY": 64.0
+    },
+    "mall_loja_blue": {
+      "samples": 964,
+      "endY": 64.0
+    },
+    "mall_loja_police": {
+      "samples": 1026,
+      "endY": 64.0
+    },
+    "mall_loja_mayoido": {
+      "samples": 1028,
+      "endY": 64.0
+    },
+    "mall_loja_aohige": {
+      "samples": 964,
+      "endY": 64.0
+    },
+    "mall_loja_kenneth": {
+      "samples": 836,
+      "endY": 64.0
+    },
+    "mall_loja_arcade": {
+      "samples": 772,
+      "endY": 64.0
+    },
+    "mall_mandragora": {
+      "samples": 1274,
+      "endY": 68.0
+    },
+    "mall_velvet_room": {
+      "samples": 1318,
+      "endY": 64.0
+    },
+    "mall_saida_6": {
+      "samples": 654,
+      "endY": 64.0
+    },
+    "mall_saida_8": {
+      "samples": 524,
+      "endY": 64.0
+    },
+    "mall_saida_10": {
+      "samples": 654,
+      "endY": 64.0
+    },
+    "dorm_entry": {
+      "samples": 244,
+      "endY": 65.07
+    },
+    "computers": {
+      "samples": 246,
+      "endY": 80.05
+    },
+    "roof": {
+      "samples": 259,
+      "endY": 85.023
+    },
+    "stairs_0": {
+      "samples": 334,
+      "endY": 70.0
+    },
+    "stairs_1": {
+      "samples": 334,
+      "endY": 75.0
+    },
+    "stairs_2": {
+      "samples": 334,
+      "endY": 80.0
+    },
+    "stairs_3": {
+      "samples": 272,
+      "endY": 85.023
+    }
+  },
+  "destinations": {
+    "dorm": [
+      -99.5,
+      64.627,
+      82.5
+    ],
+    "lounge": [
+      -104.5,
+      65.127,
+      72.5
+    ],
+    "kitchen": [
+      -90.5,
+      65.002,
+      58.5
+    ],
+    "reading": [
+      -91.5,
+      65.252,
+      69.5
+    ],
+    "bedroom": [
+      -103.5,
+      70.127,
+      71.5
+    ],
+    "bathroom": [
+      -90.5,
+      70.002,
+      62.5
+    ],
+    "command": [
+      -105.5,
+      80.127,
+      62.5
+    ],
+    "roof": [
+      -107.5,
+      85.127,
+      70.5
+    ],
+    "shop_police": [
+      84.5,
+      64.002,
+      44.5
+    ],
+    "shop_aohige": [
+      108.5,
+      64.002,
+      49.5
+    ],
+    "shop_mayoido": [
+      101.5,
+      64.002,
+      44.5
+    ],
+    "shop_blue": [
+      77.5,
+      64.002,
+      49.5
+    ],
+    "shop_kenneth": [
+      113.5,
+      64.002,
+      56.5
+    ],
+    "shop_arcade": [
+      115.5,
+      64.002,
+      65.5
+    ],
+    "shop_chagall": [
+      72.5,
+      64.002,
+      56.5
+    ],
+    "shop_escapade": [
+      70.5,
+      64.002,
+      65.5
+    ],
+    "shop_mandragora": [
+      95.5,
+      68.002,
+      35.5
+    ],
+    "paulownia": [
+      93.5,
+      64.002,
+      80.5
+    ],
+    "velvet_exit": [
+      94.5,
+      64.002,
+      36.5
+    ]
+  }
+}

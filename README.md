@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.48 — Cidade aprovada e Tártaro na escola
+
+Dormitório e Paulownia integram as revisões aprovadas, com nove menus de loja, minimapa por piso e novos materiais criativos. Durante a Dark Hour, o Tártaro substitui a Gekkoukan e a escola é restaurada ao fim do período. A apresentação do Forneus da 0.6.47 foi preservada. [Escopo, controles, atualização e validação](docs/CITY-POLISH.md).
+
 # Velvet Eclipse 0.6.47 — Apresentação do Forneus
 
 Inclinação do Forneus no inspect corrigida para mostrar o dorso e a coroa. A auditoria visual do dormitório é uma proposta externa, ainda não aplicada ao mapa. [Correção e validação](docs/FORNEUS-INSPECT.md).

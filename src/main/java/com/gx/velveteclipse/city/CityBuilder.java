@@ -11,30 +11,34 @@ import com.gx.velveteclipse.room.*;
 public final class CityBuilder {
     private static CityPlan.Plan legacy;
     private static List<BlockPos> legacyChunks;
-    private static CityPlan.Plan legacy(){if(legacy==null)legacy=CityPlan.legacy();return legacy;}
-    private static List<BlockPos> legacyChunks(){
-        if(legacyChunks==null){var chunks=new LinkedHashSet<BlockPos>();for(var m:legacy().meshes())chunks.add(new BlockPos(m.x()>>4,0,m.z()>>4));legacyChunks=List.copyOf(chunks);}
+    private static CityPlan.Plan legacy(int revision){if(legacy==null||legacy.revision()!=Math.max(1,revision)){
+        legacy=CityPlan.legacy(revision);
+        if(revision<2){var second=CityPlan.legacy(2);var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));cells.addAll(Arrays.asList(second.cells()));legacy=new CityPlan.Plan(1,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),second.palette(),legacy.buildings(),legacy.routes());}
+        legacyChunks=null;
+    }return legacy;}
+    private static List<BlockPos> legacyChunks(int revision){
+        if(legacyChunks==null){var chunks=new LinkedHashSet<BlockPos>();for(var m:legacy(revision).meshes())chunks.add(new BlockPos(m.x()>>4,0,m.z()>>4));legacyChunks=List.copyOf(chunks);}
         return legacyChunks;
     }
     public static boolean beginRevision(CityState state){
-        if(state.choice!=1||state.revision>=CityPlan.get().revision()||state.rebuilding)return false;
-        state.rebuilding=true;state.ready=false;state.cursor=state.cleanupCursor=state.conflicts=0;state.m_77762_();return true;
+        if(state.choice!=1||state.revision>=CityPlan.get().revision()||state.rebuilding&&state.targetRevision==CityPlan.get().revision())return false;
+        state.targetRevision=CityPlan.get().revision();state.rebuilding=true;state.ready=false;state.cursor=state.cleanupCursor=state.conflicts=0;state.m_77762_();return true;
     }
     public static int progress(CityState state){
         if(state.choice!=1)return 0;if(state.ready)return 100;
-        int old=state.rebuilding?legacy().cells().length+legacyChunks().size():0;
+        int old=state.rebuilding?legacy(state.revision).cells().length+legacyChunks(state.revision).size():0;
         return Math.min(99,(int)(100L*(state.cursor+state.cleanupCursor)/(CityPlan.get().cells().length+old)));
     }
     private static boolean clearLegacy(ServerLevel level,CityState state){
-        int[][] cells=legacy().cells();int limit=Math.min(cells.length,state.cleanupCursor+1400);
+        int[][] cells=legacy(state.revision).cells();int limit=Math.min(cells.length,state.cleanupCursor+1400);
         while(state.cleanupCursor<limit){
             int[] c=cells[state.cleanupCursor++];var at=new BlockPos(c[0],c[1],c[2]);var old=level.m_8055_(at);
-            boolean owned=c[3]==30||c[3]==31?old.m_60713_(VelvetRoomRegistry.DOOR.get()):old.equals(CityBlocks.state(c));
+            boolean owned=c[3]==30||c[3]==31?old.m_60713_(VelvetRoomRegistry.DOOR.get()):old.equals(CityBlocks.legacyState(c,legacy(state.revision)));
             if(owned)level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);
         }
         int remaining=2;
-        while(state.cleanupCursor>=cells.length&&state.cleanupCursor<cells.length+legacyChunks().size()&&remaining-->0){
-            var chunk=legacyChunks().get(state.cleanupCursor-cells.length);
+        while(state.cleanupCursor>=cells.length&&state.cleanupCursor<cells.length+legacyChunks(state.revision).size()&&remaining-->0){
+            var chunk=legacyChunks(state.revision).get(state.cleanupCursor-cells.length);
             for(var be:new ArrayList<>(level.m_6325_(chunk.m_123341_(),chunk.m_123343_()).m_62954_().values())){
                 if(!(be instanceof TartarusMeshBlockEntity mesh))continue;
                 var spec=mesh.getModelData().get(TartarusMeshBlockEntity.MESH);
@@ -43,7 +47,7 @@ public final class CityBuilder {
             }
             state.cleanupCursor++;
         }
-        state.m_77762_();return state.cleanupCursor>=cells.length+legacyChunks().size();
+        state.m_77762_();return state.cleanupCursor>=cells.length+legacyChunks(state.revision).size();
     }
     public static boolean step(ServerLevel level,CityState state){
         if(state.rebuilding&&!clearLegacy(level,state))return false;
@@ -60,6 +64,7 @@ public final class CityBuilder {
             var desired=CityBlocks.state(c);
             if(!old.m_60795_()&&!old.equals(desired)){state.conflicts++;continue;}
             level.m_7731_(at,desired,2);
+            if(c[3]==40&&level.m_7702_(at) instanceof CityArchitectureEntity tile)tile.configure(c[4]);
         }
         boolean done=state.cursor>=cells.length;
         if(done){state.revision=CityPlan.get().revision();state.rebuilding=false;}

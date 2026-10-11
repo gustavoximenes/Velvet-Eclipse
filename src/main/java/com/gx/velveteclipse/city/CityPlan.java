@@ -12,5 +12,6 @@ public final class CityPlan {
  private static Plan plan;
  public static synchronized Plan get(){if(plan==null)try(var in=new GZIPInputStream(Objects.requireNonNull(CityPlan.class.getResourceAsStream("/data/velvet_eclipse/city/plan.json.gz")))){plan=new Gson().fromJson(new InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),Plan.class);}catch(IOException e){throw new IllegalStateException(e);}return plan;}
  public static Place place(String id){return get().places().stream().filter(p->p.id().equals(id)).findFirst().orElse(null);}
- public static Plan legacy(){try(var in=new GZIPInputStream(Objects.requireNonNull(CityPlan.class.getResourceAsStream("/data/velvet_eclipse/city/legacy-plan-v1.json.gz")))){return new Gson().fromJson(new InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),Plan.class);}catch(IOException e){throw new IllegalStateException(e);}}
+ public static Plan legacy(){return legacy(1);}
+ public static Plan legacy(int revision){try(var in=new GZIPInputStream(Objects.requireNonNull(CityPlan.class.getResourceAsStream("/data/velvet_eclipse/city/legacy-plan-v"+Math.max(1,Math.min(2,revision))+".json.gz")))){return new Gson().fromJson(new InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),Plan.class);}catch(IOException e){throw new IllegalStateException(e);}}
 }

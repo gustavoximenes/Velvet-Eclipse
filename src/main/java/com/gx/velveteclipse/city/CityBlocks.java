@@ -12,6 +12,7 @@ public final class CityBlocks {
     public static final List<String> MATERIALS=List.of("paving","brick","plaster","wood","glass","school_floor","leaves","roof","light");
     private static List<BlockState> palette;
     public static BlockState state(int[] c) {
+        if(c[3]==40)return CityRegistry.ARCHITECTURE.get().m_49966_().m_61124_(CityArchitectureBlock.LIGHT,Objects.requireNonNull(CityArchitecture.tile(c[4])).light());
         if(c[3]>=100) {
             if(palette==null)palette=CityPlan.get().palette().stream().map(CityBlocks::resolve).toList();
             return palette.get(c[3]-100);
@@ -22,6 +23,7 @@ public final class CityBlocks {
         if(c.length>5&&block instanceof CitySurfaceBlock)state=state.m_61124_(CitySurfaceBlock.HEIGHT,c[5]);
         return state;
     }
+    public static BlockState legacyState(int[] c,CityPlan.Plan plan){return c[3]>=100?resolve(plan.palette().get(c[3]-100)):state(c);}
     public static BlockState resolve(CityPlan.Palette entry) {
         var key=new ResourceLocation(entry.block());
         if(!ForgeRegistries.BLOCKS.containsKey(key))throw new IllegalArgumentException("Unknown city block: "+key);

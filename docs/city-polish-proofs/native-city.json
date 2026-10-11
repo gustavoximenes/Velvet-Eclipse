@@ -1,0 +1,10 @@
+{
+  "architectureMeshes": 0,
+  "nativeBlocks": 253112,
+  "physicalInteriors": true,
+  "checks": 759358,
+  "stairs": 425,
+  "migration": true,
+  "lights": 82,
+  "doorHalves": 100
+}

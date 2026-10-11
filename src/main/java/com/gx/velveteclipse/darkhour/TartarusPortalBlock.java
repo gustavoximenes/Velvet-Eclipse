@@ -10,5 +10,5 @@ import net.minecraft.world.level.block.state.*;
 public final class TartarusPortalBlock extends TartarusScenicBlock {
  private final String route;
  public TartarusPortalBlock(String route){super(BlockBehaviour.Properties.m_284310_().m_60913_(-1,3600000).m_60910_().m_60955_());this.route=route;}
- @Override public void m_7892_(BlockState state,Level level,BlockPos pos,Entity entity){if(entity instanceof ServerPlayer p)TartarusDungeonService.cross(p,route);}
+ @Override public void m_7892_(BlockState state,Level level,BlockPos pos,Entity entity){if(entity instanceof ServerPlayer p){if(route.equals("entrance")&&com.gx.velveteclipse.city.CityService.inside(p))com.gx.velveteclipse.city.CityService.enterTartarus(p);else TartarusDungeonService.cross(p,route);}}
 }

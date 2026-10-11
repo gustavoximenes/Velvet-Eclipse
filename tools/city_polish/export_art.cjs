@@ -1,0 +1,8 @@
+const fs=require('fs'),path=require('path');
+const {chromium}=require(process.env.VELVET_PLAYWRIGHT || 'playwright');
+(async()=>{const root=path.resolve(__dirname,'../..'),source=path.join(__dirname,'shop_art'),out=path.join(root,'src/main/resources/assets/velvet_eclipse/textures/gui/city/shops');fs.mkdirSync(out,{recursive:true});const browser=await chromium.launch({headless:true,channel:'msedge'});const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});await page.goto('file:///'+path.join(source,'index.html').replace(/\\/g,'/'));await page.evaluate(()=>document.fonts.ready);
+for(const [id,index,keep] of [['aohige',0,'.folded-ad,.pill-layer'],['police',1,'.tapes,.police-sign'],['mayoido',2,'.antique-scroll,.antique-brand']]){
+ await page.evaluate(({index})=>{state.shop=index;state.view='root';render();},{index});
+ const css=await page.addStyleTag({content:`html,body,#viewport,#stage{background:transparent!important}#stage{transform:none!important;position:absolute;left:0;top:0} .preview-tools,.preview-caption,.backdrop,.wash,.footer,.status{display:none!important}#stage .ui-layer>*{visibility:hidden}#stage .ui-layer>${keep.split(',').join(',#stage .ui-layer>')}{visibility:visible}*,*::before,*::after{animation:none!important} #viewport{position:absolute;inset:0;overflow:visible!important}`});
+ await page.locator('#stage').screenshot({path:path.join(out,id+'.png'),omitBackground:true});await css.evaluate(el=>el.remove());
+}await browser.close();console.log('Exported approved shop decoration layers');})().catch(e=>{console.error(e);process.exit(1)});

@@ -1540,5 +1540,22 @@
   "block.velvet_eclipse.city_shop_arcade": "Balcão • Game Parade",
   "block.velvet_eclipse.city_shop_escapade": "Balcão • Club Escapade",
   "block.velvet_eclipse.city_shop_kenneth": "Balcão • Kenneth Arnold",
-  "block.velvet_eclipse.city_tartarus_access": "Acesso ao Tártaro"
+  "block.velvet_eclipse.city_tartarus_access": "Acesso ao Tártaro",
+  "block.velvet_eclipse.city_architecture": "Arquitetura detalhada da cidade",
+  "block.velvet_eclipse.city_dorm_0": "Tijolo do dormitório",
+  "block.velvet_eclipse.city_dorm_1": "Madeira do dormitório",
+  "block.velvet_eclipse.city_dorm_2": "Carpete do dormitório",
+  "block.velvet_eclipse.city_dorm_3": "Papel de parede do dormitório",
+  "block.velvet_eclipse.city_dorm_4": "Telhado do dormitório",
+  "block.velvet_eclipse.city_dorm_5": "Azulejo do dormitório",
+  "block.velvet_eclipse.city_dorm_6": "Cantaria do dormitório",
+  "block.velvet_eclipse.city_dorm_7": "Estofado do dormitório",
+  "block.velvet_eclipse.city_mall_0": "Tijolo do Paulownia",
+  "block.velvet_eclipse.city_mall_1": "Persiana do Paulownia",
+  "block.velvet_eclipse.city_mall_2": "Pavimento do Paulownia",
+  "block.velvet_eclipse.city_mall_3": "Revestimento do Paulownia",
+  "block.velvet_eclipse.city_mall_4": "Cobertura do Paulownia",
+  "block.velvet_eclipse.city_mall_5": "Madeira do Paulownia",
+  "block.velvet_eclipse.city_mall_6": "Pedra do Paulownia",
+  "block.velvet_eclipse.city_mall_7": "Azulejo do Paulownia"
 }
