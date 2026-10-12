@@ -75,7 +75,7 @@ public final class ClientHudEvents {
                 return;
             }
             if(s.active())com.gx.velveteclipse.client.presentation.ReloadBattleHud.render(g,canvas,view,w,h,partial);
-            else if(!com.gx.velveteclipse.client.exploration.ExplorationClient.entry())HudDesign.paint(canvas,view,w,h,RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY());
+            else if(ExplorationHud.visible())ExplorationHud.draw(g,(c,l)->ExplorationHudDesign.vitals(c,l,view,canvas.playerName()));
             if(s.active())BattleTargetHud.paint(canvas,w,h,enemy,trail);
             if(s.active())com.gx.velveteclipse.client.presentation.BattleHitNumbers.paint(canvas,w,h,partial);
             if(s.active())BattleTacticsClient.paint(canvas,w,h);
@@ -88,8 +88,6 @@ public final class ClientHudEvents {
                 try{com.gx.velveteclipse.client.exploration.EntryTransition.paint(canvas,w,h,partial);}
                 finally{g.m_280262_();pose.m_85849_();}
             }
-            else if(!s.active()&&com.gx.velveteclipse.client.exploration.ExplorationClient.swordVisible())
-                HudDesign.explorationHints(canvas,w,h,ClientKeyMappings.label(com.gx.velveteclipse.client.exploration.ExplorationClient.TOGGLE));
         });
     }
     private static double ratio(int v,int max){return max<=0?0:Math.max(0,Math.min(1,v/(double)max));}

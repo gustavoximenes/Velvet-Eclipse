@@ -15,7 +15,7 @@ import java.util.*;import java.util.function.Supplier;
 public final class CityNetwork {
  public static final Gson JSON=new Gson();
  public static final int MAX_VIEW_CHARS=262144;
- private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","city"),()->"4","4"::equals,"4"::equals);
+ private static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","city"),()->"5","5"::equals,"5"::equals);
  public record Row(String id,String name,String detail,int price,String group,int owned,String metric,int from,int to){
   public Row(String id,String name,String detail,int price){this(id,name,detail,price,"",0,"",0,0);}
  }

@@ -1,3 +1,11 @@
+# 0.6.50-gekkoukan-hud
+
+- Implementa o campus e os interiores aprovados da Gekkoukan, conectados por corredores, escadas e galeria até o ginásio.
+- Árvores nativas, cinco materiais no criativo, 173 assentos e 34 conjuntos de portas na cidade.
+- Corrige o vão da porta da cobertura, armários grandes, superfícies repetidas e colisões/seleções invisíveis.
+- HUD de exploração compacta, minimapa local com direção e andar, títulos completos nos dois idiomas.
+- Migração da planta 3 para 4 e recorte noturno da escola que preserva a estação. Canal da cidade 5. [Detalhes](docs/GEKKOUKAN-HUD.md).
+
 # 0.6.49-city-tower-language
 
 - Idioma por cliente em TAB → SYSTEM, English padrão e Português; menus, HUD e mensagens do mod.

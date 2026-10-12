@@ -17,15 +17,16 @@ import net.minecraftforge.fml.common.Mod;
 /** Gekkoukan becomes Tartarus for the shared world night, with a persisted lossless rollback. */
 @Mod.EventBusSubscriber(modid="velvet_eclipse")
 public final class CityNightSchool {
-    public static final int MIN_X=-51,MAX_X=51,MIN_Z=-137,MAX_Z=-65,BASE=64,CENTER_Z=-108;
-    public static boolean contains(double x,double z){return x>=MIN_X&&x<=MAX_X+1&&z>=MIN_Z&&z<=MAX_Z+1;}
+    public static final int MIN_X=-51,MAX_X=90,MIN_Z=-190,MAX_Z=-54,BASE=64,CENTER_Z=-108;
+    public static boolean contains(double x,double z){return x>=MIN_X&&x<=MAX_X+1&&z>=MIN_Z&&z<=MAX_Z+1&&(x<=52||z<=-140||x<=57&&z<=-105);}
     public static final class State extends SavedData {
+        int schoolRevision=4;
         int phase,column,y=-1,index,height,exteriorRevision=TartarusExterior.REVISION; // day, clearing, building, night, restoring
         final LinkedHashMap<Long,CompoundTag> journal=new LinkedHashMap<>();
         List<TartarusLayout.Cell> tower;
         List<TartarusLayout.Cell> tower(){if(tower==null)tower=TartarusExterior.cells();return tower;}
-        static State load(CompoundTag tag){var s=new State();s.phase=tag.m_128451_("phase");s.column=tag.m_128451_("column");s.y=tag.m_128451_("y");s.index=tag.m_128451_("index");s.height=tag.m_128451_("height");s.exteriorRevision=tag.m_128451_("exteriorRevision");var rows=tag.m_128437_("journal",10);for(int i=0;i<rows.size();i++){var e=rows.m_128728_(i);s.journal.put(e.m_128454_("pos"),e);}if(s.phase!=0&&s.exteriorRevision!=TartarusExterior.REVISION)s.phase=4;return s;}
-        @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("phase",phase);tag.m_128405_("column",column);tag.m_128405_("y",y);tag.m_128405_("index",index);tag.m_128405_("height",height);tag.m_128405_("exteriorRevision",exteriorRevision);var rows=new ListTag();rows.addAll(journal.values());tag.m_128365_("journal",rows);return tag;}
+        static State load(CompoundTag tag){var s=new State();s.schoolRevision=tag.m_128451_("schoolRevision");s.phase=tag.m_128451_("phase");s.column=tag.m_128451_("column");s.y=tag.m_128451_("y");s.index=tag.m_128451_("index");s.height=tag.m_128451_("height");s.exteriorRevision=tag.m_128451_("exteriorRevision");var rows=tag.m_128437_("journal",10);for(int i=0;i<rows.size();i++){var e=rows.m_128728_(i);s.journal.put(e.m_128454_("pos"),e);}if(s.phase!=0&&(s.exteriorRevision!=TartarusExterior.REVISION||s.schoolRevision!=4))s.phase=4;return s;}
+        @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("schoolRevision",schoolRevision);tag.m_128405_("phase",phase);tag.m_128405_("column",column);tag.m_128405_("y",y);tag.m_128405_("index",index);tag.m_128405_("height",height);tag.m_128405_("exteriorRevision",exteriorRevision);var rows=new ListTag();rows.addAll(journal.values());tag.m_128365_("journal",rows);return tag;}
     }
     public static State state(ServerLevel level){return level.m_8895_().m_164861_(State::load,State::new,"velvet_city_school_night");}
     public static boolean open(ServerPlayer p){return CityService.inside(p)&&state(p.m_284548_()).phase==3&&DarkHourService.active(p.m_9236_());}
@@ -46,15 +47,15 @@ public final class CityNightSchool {
     public static boolean tick(ServerLevel level,boolean cityReady){
         var s=state(level);boolean night=cityReady&&DarkHourService.active(level);
         if(s.phase==0&&!night)return true;
-        if(s.phase!=0&&s.exteriorRevision!=TartarusExterior.REVISION){if(!evacuate(level))return false;s.phase=4;}
-        if(s.phase==0){if(!evacuate(level))return false;s.phase=1;s.exteriorRevision=TartarusExterior.REVISION;s.height=TartarusExterior.HEIGHT;s.column=s.index=0;s.y=-1;s.tower=null;s.m_77762_();}
+        if(s.phase!=0&&(s.exteriorRevision!=TartarusExterior.REVISION||s.schoolRevision!=4)){if(!evacuate(level))return false;s.phase=4;}
+        if(s.phase==0){if(!evacuate(level))return false;s.phase=1;s.exteriorRevision=TartarusExterior.REVISION;s.schoolRevision=4;s.height=TartarusExterior.HEIGHT;s.column=s.index=0;s.y=-1;s.tower=null;s.m_77762_();}
         if(!night&&s.phase!=4){if(!evacuate(level))return false;s.phase=4;s.m_77762_();}
         if(night&&s.phase==3)return false;
         if(s.phase!=3&&!evacuate(level))return false;
         int budget=1600;
         if(s.phase==1){
             int width=MAX_X-MIN_X+1,total=width*(MAX_Z-MIN_Z+1);
-            while(s.column<total&&budget>0){int x=MIN_X+s.column%width,z=MIN_Z+s.column/width;if(s.y<0)s.y=Math.max(BASE,level.m_6924_(Heightmap.Types.WORLD_SURFACE,x,z)-1);
+            while(s.column<total&&budget>0){int x=MIN_X+s.column%width,z=MIN_Z+s.column/width;if(!contains(x,z)){s.column++;s.y=-1;continue;}if(s.y<0)s.y=Math.max(BASE,level.m_6924_(Heightmap.Types.WORLD_SURFACE,x,z)-1);
                 while(s.y>=BASE&&budget-->0){var pos=new BlockPos(x,s.y--,z);if(!level.m_8055_(pos).m_60795_())edit(level,s,pos,Blocks.f_50016_.m_49966_());}
                 if(s.y<BASE){s.column++;s.y=-1;}
             }if(s.column>=total)s.phase=2;

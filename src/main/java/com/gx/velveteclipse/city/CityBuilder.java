@@ -14,11 +14,26 @@ public final class CityBuilder {
     private static CityPlan.Plan legacy(int revision){if(legacy==null||legacy.revision()!=Math.max(1,revision)){
         legacy=CityPlan.legacy(revision);
         if(revision<2){var second=CityPlan.legacy(2);var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));cells.addAll(Arrays.asList(second.cells()));legacy=new CityPlan.Plan(1,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),second.palette(),legacy.buildings(),legacy.routes());}
+        if(revision==3){
+            legacyDoorTile(3,new int[]{Integer.MIN_VALUE,0,0},-9);
+            var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));var seen=new HashSet<String>();
+            for(var c:cells)seen.add(c[0]+","+c[1]+","+c[2]);
+            for(var d:oldFurniture.doors())for(var c:d.cells())if(seen.add(c[0]+","+c[1]+","+c[2]))cells.add(new int[]{c[0],c[1],c[2],40,c[4]});
+            legacy=new CityPlan.Plan(3,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),legacy.palette(),legacy.buildings(),legacy.routes());
+        }
         legacyChunks=null;
     }return legacy;}
     private static List<BlockPos> legacyChunks(int revision){
         if(legacyChunks==null){var chunks=new LinkedHashSet<BlockPos>();for(var m:legacy(revision).meshes())chunks.add(new BlockPos(m.x()>>4,0,m.z()>>4));legacyChunks=List.copyOf(chunks);}
         return legacyChunks;
+    }
+    private static CityFurniture.Catalogue oldFurniture;
+    private static boolean legacyDoorTile(int revision,int[] cell,int id){
+        if(revision!=3)return false;
+        if(oldFurniture==null)try(var in=new java.util.zip.GZIPInputStream(java.util.Objects.requireNonNull(CityBuilder.class.getResourceAsStream("/data/velvet_eclipse/city/legacy-furniture-v3.json.gz")))){
+            oldFurniture=new com.google.gson.Gson().fromJson(new java.io.InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),CityFurniture.Catalogue.class);
+        }catch(java.io.IOException e){throw new IllegalStateException(e);}
+        return oldFurniture.doors().stream().flatMap(d->Arrays.stream(d.cells())).anyMatch(c->c[0]==cell[0]&&c[1]==cell[1]&&c[2]==cell[2]&&(c[4]==id||c[5]==id));
     }
     public static boolean beginRevision(CityState state){
         if(state.choice!=1||state.revision>=CityPlan.get().revision()||state.rebuilding&&state.targetRevision==CityPlan.get().revision())return false;
@@ -34,6 +49,7 @@ public final class CityBuilder {
         while(state.cleanupCursor<limit){
             int[] c=cells[state.cleanupCursor++];var at=new BlockPos(c[0],c[1],c[2]);var old=level.m_8055_(at);
             boolean owned=c[3]==30||c[3]==31?old.m_60713_(VelvetRoomRegistry.DOOR.get()):old.equals(CityBlocks.legacyState(c,legacy(state.revision)));
+            if(c[3]==40)owned=level.m_7702_(at) instanceof CityArchitectureEntity tile&&(tile.id()==c[4]||legacyDoorTile(state.revision,c,tile.id()));
             if(owned)level.m_7731_(at,Blocks.f_50016_.m_49966_(),2);
         }
         int remaining=2;
@@ -63,6 +79,7 @@ public final class CityBuilder {
             }
             var desired=CityBlocks.state(c);
             if(!old.m_60795_()&&!old.equals(desired)){state.conflicts++;continue;}
+            if(c[3]==40&&level.m_7702_(at) instanceof CityArchitectureEntity existing&&existing.id()!=c[4]){state.conflicts++;continue;}
             level.m_7731_(at,desired,2);
             if(c[3]==40&&level.m_7702_(at) instanceof CityArchitectureEntity tile)tile.configure(c[4]);
         }

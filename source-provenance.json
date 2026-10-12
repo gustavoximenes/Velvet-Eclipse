@@ -87,5 +87,6 @@
   "city_polish_0.6.48": "Approved dormitory audit 02, Paulownia audit 01 and shop HUD audit 02 converted to local block tiles and native UI. New city school night rollback; Forneus 0.6.47 framing preserved.",
   "release_0_6_49": "Original source changes: client-selectable en_us/pt_br localization, native furniture interactions, loaded/safe city arrivals, and approved tower audit 01 integration. No binary patches. See docs/CITY-FUNCTIONS-LANGUAGE.md.",
   "tools/tower_audit": "Original authored geometric study based on user-approved reference research; exported native local geometry with unchanged shape. Preview and Minecraft have independent lighting.",
-  "localization": "Original bilingual presentation catalogs and mod-only translatable fallback components, preserving gameplay identifiers."
+  "localization": "Original bilingual presentation catalogs and mod-only translatable fallback components, preserving gameplay identifiers.",
+  "release_0_6_50": "Approved Gekkoukan interior studies assembled into one native-block campus; vanilla trees, functional seats/doors, room and stair collision audits; compact exploration HUD and revision-3-to-4 migration with stable saved tile IDs. Offline rendering only. See docs/GEKKOUKAN-HUD.md."
 }

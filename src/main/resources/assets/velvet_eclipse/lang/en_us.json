@@ -1558,5 +1558,10 @@
   "block.velvet_eclipse.city_mall_5": "Mall material 6",
   "block.velvet_eclipse.city_mall_6": "Mall material 7",
   "block.velvet_eclipse.city_mall_7": "Mall material 8",
-  "block.velvet_eclipse.tartarus_exterior": "Tartarus Tower Masonry"
+  "block.velvet_eclipse.tartarus_exterior": "Tartarus Tower Masonry",
+  "block.velvet_eclipse.city_school_stone": "Gekkoukan Stone",
+  "block.velvet_eclipse.city_school_plaster": "Gekkoukan Plaster",
+  "block.velvet_eclipse.city_school_tiles": "Gekkoukan Floor Tiles",
+  "block.velvet_eclipse.city_school_metal": "Gekkoukan Metal",
+  "block.velvet_eclipse.city_school_wood": "Gekkoukan Wood"
 }

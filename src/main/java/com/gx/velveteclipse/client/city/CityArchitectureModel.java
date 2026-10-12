@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 public final class CityArchitectureModel implements IDynamicBakedModel {
     @SubscribeEvent public static void loaders(net.minecraftforge.client.event.ModelEvent.RegisterGeometryLoaders e){e.register("city_architecture",(IGeometryLoader<Geometry>)(json,context)->new Geometry());}
     public record Geometry() implements IUnbakedGeometry<Geometry>{
-        @Override public BakedModel bake(IGeometryBakingContext c,ModelBaker baker,java.util.function.Function<Material,TextureAtlasSprite> sprites,ModelState state,ItemOverrides overrides,ResourceLocation location){var atlas=new TextureAtlasSprite[31];for(int i=0;i<atlas.length;i++)atlas[i]=sprites.apply(c.getMaterial("m"+i));return new CityArchitectureModel(atlas,c.getTransforms());}
+        @Override public BakedModel bake(IGeometryBakingContext c,ModelBaker baker,java.util.function.Function<Material,TextureAtlasSprite> sprites,ModelState state,ItemOverrides overrides,ResourceLocation location){var atlas=new TextureAtlasSprite[36];for(int i=0;i<atlas.length;i++)atlas[i]=sprites.apply(c.getMaterial("m"+i));return new CityArchitectureModel(atlas,c.getTransforms());}
     }
     private static volatile float[] vertices;
     private final TextureAtlasSprite[] textures;private final ItemTransforms transforms;

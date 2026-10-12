@@ -100,7 +100,7 @@ def bake_geometry(name,meta,raw,open_front=False,surface_only=False):
     for i,tri in enumerate(raw):
         if open_front and name=='dorm' and front_leaf(tri[:,:3].min(0),tri[:,:3].max(0)):tri=open_leaf(tri)
         normal=int(np.argmax(np.abs(tri[0,3:6])));u=2 if normal==0 else 0;v=2 if normal==1 else 1
-        mat=round(tri[0,9]);span=1 if mat==11 else 4 if mat==14 else 2 if 10<=mat<=17 else 8
+        mat=round(tri[0,9]);span=1 if mat==11 or mat>=31 else 4 if mat==14 else 2 if 10<=mat<=17 else 8
         transparent=mat==18 or (name=='dorm' and mat==0 and np.max(abs(tri[0,6:9]-[.24,.35,.36]))<.005)
         if transparent:tri[:,9]=18
         elif name=='dorm' and 10<=mat<=17:tri[:,9]=mat+10

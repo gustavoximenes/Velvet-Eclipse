@@ -97,7 +97,7 @@ for b in fb:
     ps=np.array([[x,y,z] for x in [b[0],b[3]] for y in [b[1],b[4]] for z in [b[2],b[5]]]);ps=e.open_leaf(ps);ob.append(np.r_[ps.min(0),ps.max(0)].tolist())
 door('dorm_entrance',(front,fb),(op,ob),(op,ob),(-100,65,66))
 # Existing roof metal leaf and handle, excluding its masonry jamb.
-vols=[[-10.28,20.05,1.05,-10.18,22.42,2.70],[-10.35,21.17,1.20,-10.27,21.42,1.32]]
+vols=[[-10.28,20.01,.75,-10.18,22.49,2.70],[-10.35,21.17,1.20,-10.27,21.42,1.32]]
 mask=np.zeros(len(raw),bool)
 for b in vols:mask|=np.all((raw[:,:,:3]>=np.array(b[:3])-1e-5)&(raw[:,:,:3]<=np.array(b[3:])+1e-5),axis=(1,2))
 roof=(raw[mask],vols);closed=transform(*roof,[-10.23,20,2.70],-90)

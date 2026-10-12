@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.50 — Gekkoukan e HUD compacta
+
+Escola conectada com 22 ambientes e módulos, árvores nativas do Minecraft, móveis funcionais, correções de colisão/portas e nova HUD de exploração. Atualiza cidades existentes; protocolo de cidade 5. [Escopo, atualização e validação](docs/GEKKOUKAN-HUD.md).
+
 # Velvet Eclipse 0.6.49 — Idiomas, móveis e torre aprovada
 
 Inglês como idioma padrão, Português pelo SYSTEM do TAB, cadeiras e portas funcionais e retornos da Velvet Room/Tártaro corrigidos. A torre exterior aprovada substitui a antiga, com emissão verde, portal, minimapa e restauração da escola. [Controles, atualização e validação](docs/CITY-FUNCTIONS-LANGUAGE.md).

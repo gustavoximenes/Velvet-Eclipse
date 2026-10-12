@@ -1558,5 +1558,10 @@
   "block.velvet_eclipse.city_mall_5": "Madeira do Paulownia",
   "block.velvet_eclipse.city_mall_6": "Pedra do Paulownia",
   "block.velvet_eclipse.city_mall_7": "Azulejo do Paulownia",
-  "block.velvet_eclipse.tartarus_exterior": "Alvenaria da Torre do Tártaro"
+  "block.velvet_eclipse.tartarus_exterior": "Alvenaria da Torre do Tártaro",
+  "block.velvet_eclipse.city_school_stone": "Pedra da Gekkoukan",
+  "block.velvet_eclipse.city_school_plaster": "Reboco da Gekkoukan",
+  "block.velvet_eclipse.city_school_tiles": "Piso da Gekkoukan",
+  "block.velvet_eclipse.city_school_metal": "Metal da Gekkoukan",
+  "block.velvet_eclipse.city_school_wood": "Madeira da Gekkoukan"
 }

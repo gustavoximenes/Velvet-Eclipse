@@ -33,10 +33,15 @@ public final class CityFurniture {
         int found=-1;
         for(var c:d.cells()){
             var at=pos(c);int id=level.m_7702_(at) instanceof CityArchitectureEntity tile?tile.id():level.m_8055_(at).m_60795_()?-1:-2;
-            if(id==c[3])continue;
-            int mode=id==c[4]?0:id==c[5]?1:-2;if(mode<0||found>=0&&found!=mode)return -2;found=mode;
+            if(matches(id,c[3]))continue;
+            int mode=matches(id,c[4])?0:matches(id,c[5])?1:-2;if(mode<0||found>=0&&found!=mode)return -2;found=mode;
         }
         return found;
+    }
+    private static boolean matches(int actual,int expected){
+        if(actual==expected)return true;
+        var tile=CityArchitecture.tile(expected);
+        return actual==-1&&tile!=null&&tile.length()==0&&tile.boxes().length==0;
     }
     private static boolean change(ServerLevel level,Door d,boolean open){
         if(state(level,d)==-2)return false;
@@ -46,7 +51,9 @@ public final class CityFurniture {
                 if(entity.m_6084_())for(var box:shape.m_83299_())if(box.m_82386_(c[0],c[1],c[2]).m_82381_(entity.m_20191_()))return false;
         }
         for(var c:d.cells()){
-            var at=pos(c);if(!(level.m_7702_(at) instanceof CityArchitectureEntity))level.m_7731_(at,CityRegistry.ARCHITECTURE.get().m_49966_(),3);
+            var at=pos(c);var target=CityArchitecture.tile(c[open?4:5]);
+            if(target.length()==0&&target.boxes().length==0){level.m_7731_(at,net.minecraft.world.level.block.Blocks.f_50016_.m_49966_(),3);continue;}
+            if(!(level.m_7702_(at) instanceof CityArchitectureEntity))level.m_7731_(at,CityRegistry.ARCHITECTURE.get().m_49966_(),3);
             if(level.m_7702_(at) instanceof CityArchitectureEntity tile)tile.configure(c[open?4:5]);
         }
         return true;

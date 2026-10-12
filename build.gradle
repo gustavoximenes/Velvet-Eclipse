@@ -43,7 +43,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.49-city-tower-language'
+version = '0.6.50-gekkoukan-hud'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
@@ -258,3 +258,5 @@ tasks.register('cityPolishTest', JavaExec) { dependsOn testClasses; classpath = 
 tasks.register('cityFunctionTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath + files(fileTree('dependencies/test-native') { include '*.jar' }); mainClass = 'com.gx.velveteclipse.tests.CityFunctionAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 
 tasks.register('tartarusExteriorTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusExteriorAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
+
+tasks.register('gekkoukanHudTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.GekkoukanHudAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }

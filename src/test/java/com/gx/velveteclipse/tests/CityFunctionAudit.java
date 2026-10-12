@@ -21,7 +21,7 @@ public final class CityFunctionAudit {
   check(CityArrival.find(0,0,0,3,b->true)==null,"Never teleport into an unloaded/empty void");
   check(CityArrival.find(0,0,0,3,b->false)==null,"No destination if completely obstructed");
   var obstacles=List.of(new AABB(-8,-1,-8,8,0,8),new AABB(0,0,0,1,3,1));found=CityArrival.find(.5,0,.5,3,b->obstacles.stream().noneMatch(b::m_82381_));check(found!=null&&(found.f_82479_!=.5||found.f_82481_!=.5),"Find nearby free space instead of rejecting the entire city");
-  var f=CityFurniture.catalogue();check(f.seats().size()==51&&f.doors().size()==15,"All authored seat and door anchors");var ids=new HashSet<String>();
+  var f=CityFurniture.catalogue();check(f.seats().size()==173&&f.doors().size()==34,"All authored seat and door anchors, including school");var ids=new HashSet<String>();
   for(var s:f.seats()){check(ids.add(s.id()),"Unique seat");var a=s.anchor();check(cells.get(a[0]+","+a[1]+","+a[2])[4]==s.tile(),"Seat anchored to its real tile");check(s.y()<s.bounds()[4]&&s.y()>=s.bounds()[1],"Seat within furniture");}
   var touched=new HashSet<String>();
   for(var d:f.doors()){
@@ -41,6 +41,6 @@ public final class CityFunctionAudit {
    for(var b:CityArchitecture.tile(c[5]).boxes())closedBlocked|=box(b,c[0],c[1],c[2]).m_82381_(passage);
   }
   check(!openBlocked&&closedBlocked,"Entrance opens the passage and closing restores the actual leaf collision");
-  System.out.println("PASS city functions: "+checks+" checks; 51 seats, 15 doors, actual city return floors and blocked-arrival cases");
+  System.out.println("PASS city functions: "+checks+" checks; "+f.seats().size()+" seats, "+f.doors().size()+" doors, actual city return floors and blocked-arrival cases");
  }
 }

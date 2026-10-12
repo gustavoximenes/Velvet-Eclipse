@@ -17,5 +17,5 @@ public final class CityArchitectureBlock extends BaseEntityBlock {
     @Override public BlockEntity m_142194_(BlockPos p,BlockState s){return new CityArchitectureEntity(p,s);}
     @Override public RenderShape m_7514_(BlockState s){return RenderShape.MODEL;}
     @Override public VoxelShape m_5939_(BlockState s,BlockGetter level,BlockPos pos,CollisionContext c){return level.m_7702_(pos) instanceof CityArchitectureEntity tile?CityArchitecture.shape(tile.id()):Shapes.m_83040_();}
-    @Override public VoxelShape m_5940_(BlockState s,BlockGetter level,BlockPos pos,CollisionContext c){var shape=m_5939_(s,level,pos,c);return shape.m_83281_()?Shapes.m_83144_():shape;}
+    @Override public VoxelShape m_5940_(BlockState s,BlockGetter level,BlockPos pos,CollisionContext c){return m_5939_(s,level,pos,c);}
 }
