@@ -30,7 +30,7 @@ boxes=np.asarray(boxes);XS=np.arange(-49.75,89.76,.5);ZS=np.arange(-189.75,-34.7
 def ranges(lo,hi,arr):return max(0,math.ceil((lo-arr[0])/.5)),min(len(arr),math.ceil((hi-arr[0])/.5))
 reports=[];fail=[]
 for floor in [64,70,76,82]:
- fy=floor+(.28 if floor==82 else .035);blocked=np.zeros((len(XS),len(ZS)),bool);support=blocked.copy()
+ fy=floor+(.28 if floor==82 else .08 if floor==64 else .035);blocked=np.zeros((len(XS),len(ZS)),bool);support=blocked.copy()
  for b in boxes[(boxes[:,4]>fy+.001)&(boxes[:,1]<fy+1.8)]:
   x0,x1=ranges(b[0]-.3,b[3]+.3,XS);z0,z1=ranges(b[2]-.3,b[5]+.3,ZS);blocked[x0:x1,z0:z1]=True
  for b in boxes[(boxes[:,4]<=fy+.001)&(boxes[:,4]>=fy-.36)]:

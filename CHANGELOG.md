@@ -1,3 +1,18 @@
+# 0.6.52-nekomata-city
+
+- Substitui a Nekomata pela revisão 02 aprovada: 266 cuboides, 47 ossos, rosto e olhos modelados, idle e dois ataques.
+- Converte eixos uma vez, aplica escala 0,125, sincroniza os impactos em 1,4 s e recalcula o enquadramento; nova carta de fusão.
+- Entrega as correções da cidade preparadas na 0.6.51 retida: Gekkoukan, batentes/ornamentos do dormitório, quads e migração da planta.
+- IDs, progresso, catálogo e demais Personas preservados; protocolo da cidade 6. Verificações offline aprovadas. [Detalhes](docs/NEKOMATA-CITY.md).
+
+# 0.6.51-city-geometry
+
+- Completa fachadas, galerias e cobertura da Gekkoukan, mantendo o pátio aberto e a circulação entre os 22 ambientes.
+- Remove superfícies sobrepostas dos batentes do dormitório e corrige as portas dos quartos, cobertura e entrada dupla, incluindo os ornamentos que ficavam suspensos.
+- Corrige a conversão de triângulos para BakedQuad, preservando a área sem uma segunda metade degenerada.
+- Migra a planta 4 para 5, preservando IDs antigos e estados de portas; protocolo da cidade 6.
+- Auditoria externa da Nekomata com direção de forma, idle, ataque físico e mágico; sem substituir a Persona nesta versão. [Detalhes](docs/CITY-GEOMETRY.md).
+
 # 0.6.50-gekkoukan-hud
 
 - Implementa o campus e os interiores aprovados da Gekkoukan, conectados por corredores, escadas e galeria até o ginásio.

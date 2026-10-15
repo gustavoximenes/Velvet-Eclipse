@@ -19,6 +19,21 @@ def build():
  s=Scene('school');rooms=[];seats=[];doors=[];b=s.box
  def box(x,y,z,w,h,d,col=STONE,mat=31,emit=0):b(x,y,z,w,h,d,col,mat,emit)
  def pane(x,y,z,w,h,d):box(x,y,z,w,h,d,(.52,.73,.75),18)
+ def window_wall(start,end,y,fixed,axis,opening=None):
+  # A continuous envelope: pier, sill, glass and lintel fill every wall bay.
+  # Door bays omit only the lower 3.5 m, never the whole wall above a doorway.
+  cuts=sorted(set([start,end,*np.arange(start,end,4).tolist(),*(opening or [])]))
+  cuts=[v for v in cuts if start<=v<=end]
+  def part(a,b,yy,h,glass=False):
+   if b<=a:return
+   if axis=='x':args=(a,yy,fixed,b-a,h,.24)
+   else:args=(fixed,yy,a,.24,h,b-a)
+   (pane if glass else box)(*args)
+  for a,c in zip(cuts,cuts[1:]):
+   if opening and a>=opening[0] and c<=opening[1]:part(a,c,y+3.5,2.25);continue
+   pier=min(.25,(c-a)*.25);part(a,a+pier,y,5.75)
+   part(a+pier,c,y,1);part(a+pier,c,y+4.8,.95)
+   part(a+pier,c,y+1,3.8,True)
  def rail(x,y,z,w,d):
   box(x,y,z,w,.12,d,METAL,34)
   along=w>d
@@ -91,16 +106,19 @@ def build():
   for x in [-43,21]:
    box(x,y-.25,-73,22,.25,51,FLOOR,33)
    box(x-.15,y+5.75,-73.15,22.3,.23,51.3,TRIM)
-   outer=x if x<0 else x+21.76
-   for zz in range(-72,-24,4):
-    box(outer,y,zz,.24,1,4);box(outer,y+4.8,zz,.24,.95,4)
-    pane(outer+.07,y+1,zz,.08,3.8,4);box(outer,y+1,zz,.24,3.8,.10,METAL,34)
-   if level:rail(-21.15 if x<0 else 21.06,y+1.15,-72,.09,47)
+   window_wall(-76,-.25,y,-43.24 if x<0 else 43,'z',(-6,-1) if x>0 and not level else None)
+   window_wall(-73,-25,y,-21.24 if x<0 else 21,'z',(-44,-40) if not level else None)
   box(-43,y-.25,-76,86,.25,3,FLOOR,33)
-  if level:rail(-21,y+1.15,-73,42,.09)
+  window_wall(-43.24,43.24,y,-76.24,'x')
+  window_wall(-21,21,y,-73.24,'x',(-2.5,2.5) if not level else None)
+  window_wall(-21,21,y,-25,'x',(-2.5,2.5) if not level else None)
+  for x in [-43,11]:window_wall(x,x+32,y,-22.24,'x')
+ # Continuous roof over the links; the courtyard alone remains open to the sky.
+ box(-43.24,17.75,-76.24,86.48,.25,3.24,TRIM)
+ box(-21.24,17.75,-25,42.48,.25,3,TRIM)
  # Tall glazed entrance and open rear portal. Front glass stops above the entry.
  box(-11,0,-22,.4,22,16);box(10.6,0,-22,.4,22,16)
- box(-8.8,0,-22,6.3,22,.3);box(2.5,0,-22,8.5,22,.3);box(-2.5,3.5,-22,5,18.5,.3)
+ box(-11,0,-22,8.5,22,.3);box(2.5,0,-22,8.5,22,.3);box(-2.5,3.5,-22,5,18.5,.3)
  for x in [-10,-5,0,5,10]:box(x-.36,4,-.6,.72,17.6,1.2,TRIM)
  pane(-10,4,-.28,20,17.5,.10)
  for x in [-10,4]:pane(x,.05,-.3,6,3.85,.1)
@@ -141,7 +159,7 @@ def build():
     room(name,x,lev*6,-6-meta['roomSize'][2]/2)
  rear=[('sanitarios',-35,-33,-90),('deposito',-35,-50,-90),('vestiarios',-35,-66,-90),('orientacao',35,-33,90),('impressao',35,-50,90),('transmissao',35,-66,90)]
  for name,x,z,a in rear:room(name,x,0,z,a)
- # Upper rear galleries become study terraces; seats look into the courtyard.
+ # Enclosed upper study galleries look into the courtyard through window bays.
  for lev in [1,2]:
   for x in [-38,30]:
    for z in [-32,-47,-63]:
@@ -158,6 +176,9 @@ def build():
  room('ginasio',73,0,-54)
  box(43,-.1,-6,12,.1,6,FLOOR,33);box(52,-.1,-35,4,.1,35,FLOOR,33);box(52,-.1,-38,35,.1,4,FLOOR,33)
  box(52,4.3,-38,35,.2,4,TRIM)
+ box(43,4.3,-6,9,.2,6,TRIM);box(52,4.3,-34,4,.2,34,TRIM)
+ for z in [-30,-20,-10,-1]:
+  for x in [52,55.8]:box(x,0,z,.2,4.3,.2)
  for x in range(53,88,5):box(x,0,-37.9,.2,4.3,.2);box(x,0,-34.3,.2,4.3,.2)
  # Courtyard paths connect each gallery without invisible cutout walls.
  box(-21,0,-72,42,.03,47,(.30,.46,.32),32)

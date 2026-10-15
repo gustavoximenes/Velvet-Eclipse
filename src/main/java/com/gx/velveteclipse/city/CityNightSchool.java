@@ -20,12 +20,12 @@ public final class CityNightSchool {
     public static final int MIN_X=-51,MAX_X=90,MIN_Z=-190,MAX_Z=-54,BASE=64,CENTER_Z=-108;
     public static boolean contains(double x,double z){return x>=MIN_X&&x<=MAX_X+1&&z>=MIN_Z&&z<=MAX_Z+1&&(x<=52||z<=-140||x<=57&&z<=-105);}
     public static final class State extends SavedData {
-        int schoolRevision=4;
+        int schoolRevision=5;
         int phase,column,y=-1,index,height,exteriorRevision=TartarusExterior.REVISION; // day, clearing, building, night, restoring
         final LinkedHashMap<Long,CompoundTag> journal=new LinkedHashMap<>();
         List<TartarusLayout.Cell> tower;
         List<TartarusLayout.Cell> tower(){if(tower==null)tower=TartarusExterior.cells();return tower;}
-        static State load(CompoundTag tag){var s=new State();s.schoolRevision=tag.m_128451_("schoolRevision");s.phase=tag.m_128451_("phase");s.column=tag.m_128451_("column");s.y=tag.m_128451_("y");s.index=tag.m_128451_("index");s.height=tag.m_128451_("height");s.exteriorRevision=tag.m_128451_("exteriorRevision");var rows=tag.m_128437_("journal",10);for(int i=0;i<rows.size();i++){var e=rows.m_128728_(i);s.journal.put(e.m_128454_("pos"),e);}if(s.phase!=0&&(s.exteriorRevision!=TartarusExterior.REVISION||s.schoolRevision!=4))s.phase=4;return s;}
+        static State load(CompoundTag tag){var s=new State();s.schoolRevision=tag.m_128451_("schoolRevision");s.phase=tag.m_128451_("phase");s.column=tag.m_128451_("column");s.y=tag.m_128451_("y");s.index=tag.m_128451_("index");s.height=tag.m_128451_("height");s.exteriorRevision=tag.m_128451_("exteriorRevision");var rows=tag.m_128437_("journal",10);for(int i=0;i<rows.size();i++){var e=rows.m_128728_(i);s.journal.put(e.m_128454_("pos"),e);}if(s.phase!=0&&(s.exteriorRevision!=TartarusExterior.REVISION||s.schoolRevision!=5))s.phase=4;return s;}
         @Override public CompoundTag m_7176_(CompoundTag tag){tag.m_128405_("schoolRevision",schoolRevision);tag.m_128405_("phase",phase);tag.m_128405_("column",column);tag.m_128405_("y",y);tag.m_128405_("index",index);tag.m_128405_("height",height);tag.m_128405_("exteriorRevision",exteriorRevision);var rows=new ListTag();rows.addAll(journal.values());tag.m_128365_("journal",rows);return tag;}
     }
     public static State state(ServerLevel level){return level.m_8895_().m_164861_(State::load,State::new,"velvet_city_school_night");}
@@ -47,8 +47,8 @@ public final class CityNightSchool {
     public static boolean tick(ServerLevel level,boolean cityReady){
         var s=state(level);boolean night=cityReady&&DarkHourService.active(level);
         if(s.phase==0&&!night)return true;
-        if(s.phase!=0&&(s.exteriorRevision!=TartarusExterior.REVISION||s.schoolRevision!=4)){if(!evacuate(level))return false;s.phase=4;}
-        if(s.phase==0){if(!evacuate(level))return false;s.phase=1;s.exteriorRevision=TartarusExterior.REVISION;s.schoolRevision=4;s.height=TartarusExterior.HEIGHT;s.column=s.index=0;s.y=-1;s.tower=null;s.m_77762_();}
+        if(s.phase!=0&&(s.exteriorRevision!=TartarusExterior.REVISION||s.schoolRevision!=5)){if(!evacuate(level))return false;s.phase=4;}
+        if(s.phase==0){if(!evacuate(level))return false;s.phase=1;s.exteriorRevision=TartarusExterior.REVISION;s.schoolRevision=5;s.height=TartarusExterior.HEIGHT;s.column=s.index=0;s.y=-1;s.tower=null;s.m_77762_();}
         if(!night&&s.phase!=4){if(!evacuate(level))return false;s.phase=4;s.m_77762_();}
         if(night&&s.phase==3)return false;
         if(s.phase!=3&&!evacuate(level))return false;

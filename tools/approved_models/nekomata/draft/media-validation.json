@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "offline": true,
+  "media": {
+    "nekomata-animations-02.gif": {
+      "size": [
+        1200,
+        650
+      ],
+      "frames": 64,
+      "duration_ms": 3200,
+      "sha256": "7929768f04a95f6628d527893de0d60b9a0855ab45c671cb24c94a23460de672"
+    },
+    "nekomata-face-02.png": {
+      "size": [
+        1600,
+        630
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "c8f1545b5e2571c65bd725adc1c1c70938d8a9c4765dc6f05a032b2907d3f98c"
+    },
+    "nekomata-face-comparison-02.png": {
+      "size": [
+        1600,
+        600
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "ba1dbda96390462d5db86ab8489ab943f5ae1874e26937f0aac2c52a48ad18e1"
+    },
+    "nekomata-idle-02.gif": {
+      "size": [
+        600,
+        810
+      ],
+      "frames": 64,
+      "duration_ms": 3200,
+      "sha256": "c9f16006ab646461a661ffe15c9cc19ad0765e67bf8f7f40a00042ed80005472"
+    },
+    "nekomata-magic-02.gif": {
+      "size": [
+        600,
+        810
+      ],
+      "frames": 56,
+      "duration_ms": 2800,
+      "sha256": "44982ff04fe82bb495d99ea3a5e42d4d9e5f43584176fd2935b5419bbbe7c631"
+    },
+    "nekomata-magic-poses-02.png": {
+      "size": [
+        1500,
+        1270
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "257a8a570fe862b250b31bae83a4ab00dcdd27b8b14404562c63ad90bcf3b123"
+    },
+    "nekomata-physical-02.gif": {
+      "size": [
+        600,
+        810
+      ],
+      "frames": 50,
+      "duration_ms": 2500,
+      "sha256": "f8423b509b7e28d58edea8deae04e9a9f81faa551bebe88eecaf589a5f7f43a5"
+    },
+    "nekomata-physical-poses-02.png": {
+      "size": [
+        1500,
+        1270
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "995086aea0759c93abf3036f28ebbeae726a8269b58a42fb92bd861e806d82a4"
+    },
+    "nekomata-preview-02.png": {
+      "size": [
+        1500,
+        1040
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "ec9a83975a318756212484a6bbde06d1f190d7df46c6366e8d15a4847cb69e9c"
+    },
+    "nekomata-reference-02.png": {
+      "size": [
+        1440,
+        850
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "4567237b966b6254caa6938f69d8830fdddbae647e7c288a3415f59b7501f41d"
+    },
+    "nekomata-turntable-02.gif": {
+      "size": [
+        600,
+        810
+      ],
+      "frames": 36,
+      "duration_ms": 3600,
+      "sha256": "94ca5bd1cbacd2d8ea59b96df7f50e065ab68cfa393dace946b20efe2c06980d"
+    },
+    "nekomata-views-02.png": {
+      "size": [
+        1600,
+        1000
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "3cfbe810b4bb31b39ecff4533f980e6df776ab3f0a0505d6fe6c5dedf2cfbfe2"
+    },
+    "nekomata.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "frames": 1,
+      "duration_ms": 0,
+      "sha256": "311e0ca877eef189ce721bf883936374cdb078aa4e3abbbaf412b92fa6dd86d2"
+    }
+  },
+  "mod_files_preserved": 4501,
+  "new_jar_generated": false
+}

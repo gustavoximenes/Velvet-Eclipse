@@ -1,3 +1,11 @@
+# Velvet Eclipse 0.6.52 — Nekomata e correções da cidade
+
+Nekomata revisão 02 integrada com rosto, idle e ataques físico/mágico aprovados; escala, enquadramento e carta de fusão atualizados. Inclui os fechamentos da Gekkoukan, portas do dormitório e correções de renderização preparados na revisão anterior. [Escopo e validação](docs/NEKOMATA-CITY.md).
+
+# Velvet Eclipse 0.6.51 — Geometria da cidade
+
+Fechamentos da Gekkoukan, batentes e portas do dormitório corrigidos, incluindo os ornamentos suspensos da entrada. Migração para a planta 5; protocolo da cidade 6. Auditoria da Nekomata com idle e dois ataques disponível para revisão. [Escopo e validação offline](docs/CITY-GEOMETRY.md).
+
 # Velvet Eclipse 0.6.50 — Gekkoukan e HUD compacta
 
 Escola conectada com 22 ambientes e módulos, árvores nativas do Minecraft, móveis funcionais, correções de colisão/portas e nova HUD de exploração. Atualiza cidades existentes; protocolo de cidade 5. [Escopo, atualização e validação](docs/GEKKOUKAN-HUD.md).

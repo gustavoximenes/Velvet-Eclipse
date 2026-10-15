@@ -1,4 +1,4 @@
-"""Revision 4 export. Append IDs so night journals and old worlds remain readable."""
+"""Revision 5 export. Append IDs so night journals and old worlds remain readable."""
 from pathlib import Path
 import sys,gzip,json,hashlib,math,pickle,importlib.util
 import numpy as np
@@ -23,6 +23,30 @@ def fix_authored_dorm():
   inds=np.flatnonzero(candidates);assert len(inds)==12,(row,len(inds))
   mat=raw[inds[0],0,9];color=raw[inds[0],0,6:9];raw=np.concatenate([raw[~candidates],e.cuboid(lo,hi,mat,color)])
   meta['solids'].remove(row);meta['solids'].append(lo+hi)
+ # The old surrounds occupied the same exposed planes as the plaster behind
+ # them (inner jamb and lintel underside). Recess the wall, rather than hiding
+ # the resulting z-fighting with a shader offset.
+ for level,z,doorx in [(lev,z,x) for lev in [1,2,3] for z in [2,-2.25] for x in [-6.75,6.4]]+[(0,-3,1.2)]:
+  y=level*5
+  for row in list(meta['solids']):
+   if len(row)!=6:continue
+   lo=np.array(row[:3]);hi=np.array(row[3:]);a=lo.copy();b=hi.copy()
+   if abs(lo[1]-y)<1e-5 and (abs(lo[2]-z)<1e-5 or abs(lo[2]-z-.14)<1e-5):
+    if abs(hi[0]-doorx)<1e-5 and hi[0]-lo[0]>.2:b[0]-=.09
+    elif abs(lo[0]-doorx-1.8)<1e-5 and hi[0]-lo[0]>.2:a[0]+=.09
+   elif abs(lo[0]-doorx)<1e-5 and abs(lo[1]-y-2.8)<1e-5 and abs(lo[2]-z)<1e-5:
+    a[0]-=.09;b[0]+=.09;a[1]+=.10
+   if np.any(a!=lo) or np.any(b!=hi):replace(row,a.tolist(),b.tolist())
+ roof_frame=[
+  ([-15.3,20,2.75],[-15.3,20,2.75],[-12.26,23.05,3]),
+  ([-10.25,20,2.75],[-10.20,20,2.75],[-9.7,23.05,3]),
+  ([-12.2,22.5,2.75],[-12.26,22.58,2.75],[-10.20,23.05,3]),
+  ([-12.26,20,2.69],[-12.26,20,2.69],[-12.19,22.58,3.05]),
+  ([-10.27,20,2.69],[-10.27,20,2.69],[-10.20,22.58,3.05]),
+  ([-12.2,22.5,2.68],[-12.19,22.5,2.68],[-10.27,22.58,3.05])]
+ for old,lo,hi in roof_frame:
+  row=next(r for r in meta['solids'] if len(r)==6 and np.max(abs(np.array(r[:3])-old))<1e-5)
+  replace(row,lo,hi)
  for row in list(meta['solids']):
   if len(row)!=6:continue
   lo=np.array(row[:3]);hi=np.array(row[3:]);size=hi-lo
@@ -30,7 +54,11 @@ def fix_authored_dorm():
    # Compact wardrobe kept against the room wall, away from its entry.
    replace(row,(lo+[.15,0,.12]).tolist(),(lo+[1.65,2.5,.77]).tolist())
   elif np.max(abs(lo-[-10.28,20.05,1.05]))<1e-5:
-   replace(row,[-10.28,20.01,.75],[-10.18,22.49,2.70])
+   replace(row,[-10.40,20.01,.85],[-10.30,22.49,2.65])
+ # Roof handle follows the leaf inward, clear of the masonry jamb.
+ for row in list(meta['solids']):
+  if len(row)==6 and np.max(abs(np.array(row[:3])-[-10.35,21.17,1.20]))<1e-5:
+   replace(row,[-10.47,21.17,1.20],[-10.39,21.42,1.32])
  # Handles follow the smaller wardrobe, rather than floating in front of it.
  for row in list(meta['solids']):
   if len(row)!=6:continue
@@ -107,12 +135,12 @@ def main():
  for r in rooms:
   p=r['entry'];places.append(dict(id='school_'+aliases.get(r['id'],r['id']),name='Gekkoukan · '+r['id'].replace('_',' '),x=math.floor(p[0]),y=round(p[1]),z=math.floor(p[2])))
  places.append(dict(id='school_hallway',name='Gekkoukan · Hall',x=0,y=64,z=-119))
- plan.update(revision=4,cells=sorted(cells.values(),key=lambda c:(c[1],c[0],c[2])),places=places,palette=palette)
+ plan.update(revision=5,cells=sorted(cells.values(),key=lambda c:(c[1],c[0],c[2])),places=places,palette=palette)
  plan['buildings']=[b for b in plan['buildings'] if b['id']!='school']+[dict(id='school',minX=-44,maxX=44,minZ=-187,maxZ=-110,floors=[64,70,76,82]),dict(id='school_gym',minX=59,maxX=87,minZ=-181,maxZ=-145,floors=[64])]
  plan['routes']=[r for r in plan.get('routes',[]) if 'school' not in r['name'].lower() and 'gekkoukan' not in r['name'].lower()]
  dump(DATA/'plan.json.gz',plan);dump(DATA/'architecture.json.gz',defs)
  (AS/'city/architecture.bin.gz').write_bytes(gzip.compress(np.concatenate(chunks).astype('>f4').tobytes(),mtime=0))
  dump(HERE/'assembly.json',dict(rooms=rooms,seats=seats,doors=doors,removedInvisibleCells=removed,trees=len(tree_data)))
- print('revision 4:',len(cells),'cells;',len(defs),'tiles;',len(rooms),'connected rooms; removed',len(removed),'invisible cells',flush=True)
+ print('revision 5:',len(cells),'cells;',len(defs),'tiles;',len(rooms),'connected rooms; removed',len(removed),'invisible cells',flush=True)
 
 if __name__=='__main__':main()

@@ -1,0 +1,27 @@
+{
+  "stage": "audit_only",
+  "style": "bedrock_cuboids_box_uv",
+  "reference": "Persona 3 Reload compendium",
+  "clips": {
+    "misc.idle": {
+      "seconds": 3,
+      "loop": true,
+      "motion": "feline crouched hover, soft breath and tail follow-through"
+    },
+    "action.physical": {
+      "seconds": 2.5,
+      "loop": false,
+      "motion": "single diagonal claw swipe",
+      "contact": 0.9
+    },
+    "action.magic": {
+      "seconds": 2.5,
+      "loop": false,
+      "motion": "gather hands, extend open palm, recover",
+      "release": 1.05
+    }
+  },
+  "animationEvidence": "Proposed choreography; exact Reload attack footage not verified",
+  "requiresFaceReview": true,
+  "integrated": false
+}

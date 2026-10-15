@@ -36,16 +36,32 @@ def indices(lo,hi):
     return range(a,max(a+1,b))
 
 def front_leaf(lo,hi):
-    return lo[0]>=-1.36 and hi[0]<=1.36 and lo[1]>=-.001 and hi[1]<=3.81 and lo[2]>=11.63 and hi[2]<=12.10
+    # Whole authored components, including the brass arches projecting beyond
+    # the wooden leaf. This predicate must never be applied to individual faces.
+    return lo[0]>=-1.51 and hi[0]<=1.51 and lo[1]>=-.001 and hi[1]<=3.81 and lo[2]>=11.63 and hi[2]<=12.25
+
+def front_leaf_owners(raw,solids):
+    owners=np.full(len(raw),-1,dtype=np.int8)
+    points=raw[:,:,:3]
+    for row in solids:
+        if len(row)!=6 or not front_leaf(row[:3],row[3:]):continue
+        lo=np.array(row[:3]);hi=np.array(row[3:])
+        mask=np.all((abs(points-lo)<2e-5)|(abs(points-hi)<2e-5),axis=(1,2))
+        assert mask.sum()==12,('incomplete entrance component',row,int(mask.sum()))
+        assert np.all(owners[mask]==-1),('ambiguous entrance ownership',row)
+        owners[mask]=0 if (lo[0]+hi[0])*.5 < -1e-6 else 1
+    return owners
 
 def cuboid(lo,hi,mat=11,color=(.24,.15,.115)):
     corners=np.array([[x,y,z] for x in [lo[0],hi[0]] for y in [lo[1],hi[1]] for z in [lo[2],hi[2]]])
     faces=[([0,1,3,2],[-1,0,0]),([4,6,7,5],[1,0,0]),([0,4,5,1],[0,-1,0]),([2,3,7,6],[0,1,0]),([0,2,6,4],[0,0,-1]),([1,5,7,3],[0,0,1])]
     return np.array([[np.r_[corners[face[k]],normal,color,mat,0] for k in tri] for face,normal in faces for tri in [(0,1,2),(0,2,3)]])
 
-def open_leaf(points):
+def open_leaf(points,left=None):
     """Keep the authored double entrance doors open, with their real thickness."""
-    q=points.copy();left=q[:,0].mean()<0;hinge=-1.35 if left else 1.35
+    q=points.copy()
+    if left is None:left=q[:,0].mean() < -1e-6
+    hinge=-1.35 if left else 1.35
     a=math.pi/2 if left else -math.pi/2
     x=q[:,0]-hinge;z=q[:,2]-11.64
     q[:,0]=hinge+math.cos(a)*x-math.sin(a)*z
@@ -88,6 +104,7 @@ def bake_scene(name,offset):
 
 def bake_geometry(name,meta,raw,open_front=False,surface_only=False):
     verts=defaultdict(list);boxes=defaultdict(list);lights=defaultdict(int)
+    owners=front_leaf_owners(raw,meta['solids']) if open_front and name=='dorm' else None
     def addbox(lo,hi):
         lo=np.array(lo);hi=np.array(hi)
         for x in indices(lo[0],hi[0]):
@@ -98,7 +115,7 @@ def bake_geometry(name,meta,raw,open_front=False,surface_only=False):
                     a=np.maximum(lo,key)-key;b=np.minimum(hi,np.array(key)+1)-key
                     if np.min(b-a)>1e-5:boxes[key].append(np.round(np.r_[a,b],5).tolist())
     for i,tri in enumerate(raw):
-        if open_front and name=='dorm' and front_leaf(tri[:,:3].min(0),tri[:,:3].max(0)):tri=open_leaf(tri)
+        if owners is not None and owners[i]>=0:tri=open_leaf(tri,left=owners[i]==0)
         normal=int(np.argmax(np.abs(tri[0,3:6])));u=2 if normal==0 else 0;v=2 if normal==1 else 1
         mat=round(tri[0,9]);span=1 if mat==11 or mat>=31 else 4 if mat==14 else 2 if 10<=mat<=17 else 8
         transparent=mat==18 or (name=='dorm' and mat==0 and np.max(abs(tri[0,6:9]-[.24,.35,.36]))<.005)

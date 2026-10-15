@@ -26,11 +26,26 @@ for c in plan['cells']:
 images.extend(im.resize((128,128),Image.Resampling.NEAREST) for im in m.IMAGES)
 for i,im in enumerate(images):im.save(OUT/f'material-{i}.png')
 v=np.concatenate(chunks);v.astype('<f4').tofile(OUT/'school-render.bin')
-views=[dict(id='gekkoukan-fachada',eye=[34,77,-28],target=[0,76,-115],fov=62),dict(id='gekkoukan-campus',eye=[119,161,-8],target=[12,72,-132],fov=66),dict(id='gekkoukan-hall',eye=[0,66.4,-111.5],target=[0,70,-128],fov=82),dict(id='gekkoukan-biblioteca',eye=[40.6,66.7,-117.1],target=[34.2,65.8,-126.5],fov=84),dict(id='gekkoukan-2f',eye=[-29.5,72.3,-117.3],target=[-36,71.8,-128],fov=82),dict(id='gekkoukan-patio',eye=[-16,66.5,-139],target=[14,70,-167],fov=80)]
+views=[dict(id='gekkoukan-fachada',eye=[34,77,-28],target=[0,76,-115],fov=62),dict(id='gekkoukan-campus',eye=[119,161,-8],target=[12,72,-132],fov=66),dict(id='gekkoukan-hall',eye=[0,66.4,-111.5],target=[0,70,-128],fov=82),dict(id='gekkoukan-biblioteca',eye=[40.6,66.7,-117.1],target=[34.2,65.8,-126.5],fov=84),dict(id='gekkoukan-2f',eye=[-29.5,72.3,-117.3],target=[-36,71.8,-128],fov=82),dict(id='gekkoukan-patio',eye=[-16,66.5,-139],target=[14,70,-167],fov=80),dict(id='gekkoukan-escada',eye=[2,66.2,-114],target=[-7.6,70,-129],fov=83),dict(id='gekkoukan-cobertura-patio',eye=[2,104,-138],target=[0,71,-169],fov=86)]
 (OUT/'school.json').write_text(json.dumps(dict(vertexCount=len(v),key=[-80,180,-10],center=[0,72,-132],lights=[],views=views,shots=[])))
-code=(HERE.parent/'tartarus_rework/RenderNative.java').read_text(encoding='utf8').replace('RenderNative','RenderGekkoukan').replace('List.of("floor-0","floor-7","floor-8","floor-10","floor-20","floor-25")','List.of("school")').replace('128,128,10,','128,128,'+str(len(images))+',').replace('i<10','i<'+str(len(images))).replace('Path.of(args[1],"textures/block/tartarus_native_"+i+".png")','base.resolve("material-"+i+".png")').replace('.put((byte)255);','.put((byte)(argb>>24));').replace('GL_LINEAR','GL_NEAREST').replace('.12f,150)', '.12f,600)').replace('glClearColor(.022f,.033f,.056f,1)','glClearColor(.57f,.68f,.74f,1)').replace('ortho(-45,45,-45,45,.2f,120)','ortho(-160,160,-160,160,.2f,600)')
+code=(HERE.parent/'tartarus_rework/RenderNative.java').read_text(encoding='utf8').replace('RenderNative','RenderGekkoukan').replace('List.of("floor-0","floor-7","floor-8","floor-10","floor-20","floor-25")','List.of("school","dorm_open","dorm_closed")').replace('128,128,10,','128,128,'+str(len(images))+',').replace('i<10','i<'+str(len(images))).replace('Path.of(args[1],"textures/block/tartarus_native_"+i+".png")','base.resolve("material-"+i+".png")').replace('.put((byte)255);','.put((byte)(argb>>24));').replace('GL_LINEAR','GL_NEAREST').replace('.12f,150)', '.12f,600)').replace('glClearColor(.022f,.033f,.056f,1)','glClearColor(.57f,.68f,.74f,1)').replace('ortho(-45,45,-45,45,.2f,120)','ortho(-160,160,-160,160,.2f,600)')
 code=code.replace('if(mat>=7){emission=.6;}','').replace('if(mat==6){emission=1.5;}','')
 code=code.replace('glTexParameteri(GL_TEXTURE_2D_ARRAY,GL_TEXTURE_MIN_FILTER,GL_NEAREST);','glGenerateMipmap(GL_TEXTURE_2D_ARRAY);glTexParameteri(GL_TEXTURE_2D_ARRAY,GL_TEXTURE_MIN_FILTER,GL_NEAREST_MIPMAP_LINEAR);')
 code=code.replace('void main(){\n  vec3 normal=', 'void main(){\n  if(texture(Materials,vec3(uv,surface.x)).a<.5)discard;\n  vec3 normal=')
 (OUT/'RenderGekkoukan.java').write_text(code,encoding='utf8')
+
+# Render both functional variants in the same camera, including the roof exit.
+for mode,slot in [('open',4),('closed',5)]:
+ tiles={tuple(c[:3]):c[4] for c in plan['cells'] if c[3]==40 and -130<=c[0]<=-70 and 44<=c[2]<=94}
+ for door in read(DATA/'furniture.json.gz')['doors']:
+  if door['id'].startswith('school_'):continue
+  for c in door['cells']:tiles[tuple(c[:3])]=c[slot]
+ chunks=[]
+ for point,i in tiles.items():
+  if not(-130<=point[0]<=-70):continue
+  d=defs[i];q=raw[d['offset']//13:(d['offset']+d['length'])//13].copy();q[:,:3]+=point;chunks.append(q)
+ v=np.concatenate(chunks);v.astype('<f4').tofile(OUT/f'dorm_{mode}-render.bin')
+ views=[dict(id=f'dorm-quarto-{mode}',eye=[-102,82,66],target=[-105.9,81.5,68.4],fov=76),dict(id=f'dorm-telhado-{mode}',eye=[-112.2,86.7,66.5],target=[-111.2,86.4,69.3],fov=73),dict(id=f'dorm-entrada-{mode}',eye=[-100,66.8,80.5],target=[-100,66.8,77],fov=74)]
+ (OUT/f'dorm_{mode}.json').write_text(json.dumps(dict(vertexCount=len(v),key=[-80,180,120],center=[-100,76,66],lights=[],views=views,shots=[])))
+
 print('Native preview:',len(v)//3,'triangles;',len(images),'materials;',OUT)

@@ -14,12 +14,12 @@ public final class CityBuilder {
     private static CityPlan.Plan legacy(int revision){if(legacy==null||legacy.revision()!=Math.max(1,revision)){
         legacy=CityPlan.legacy(revision);
         if(revision<2){var second=CityPlan.legacy(2);var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));cells.addAll(Arrays.asList(second.cells()));legacy=new CityPlan.Plan(1,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),second.palette(),legacy.buildings(),legacy.routes());}
-        if(revision==3){
-            legacyDoorTile(3,new int[]{Integer.MIN_VALUE,0,0},-9);
+        if(revision==3||revision==4){
+            legacyDoorTile(revision,new int[]{Integer.MIN_VALUE,0,0},-9);
             var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));var seen=new HashSet<String>();
             for(var c:cells)seen.add(c[0]+","+c[1]+","+c[2]);
             for(var d:oldFurniture.doors())for(var c:d.cells())if(seen.add(c[0]+","+c[1]+","+c[2]))cells.add(new int[]{c[0],c[1],c[2],40,c[4]});
-            legacy=new CityPlan.Plan(3,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),legacy.palette(),legacy.buildings(),legacy.routes());
+            legacy=new CityPlan.Plan(revision,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),legacy.palette(),legacy.buildings(),legacy.routes());
         }
         legacyChunks=null;
     }return legacy;}
@@ -28,10 +28,11 @@ public final class CityBuilder {
         return legacyChunks;
     }
     private static CityFurniture.Catalogue oldFurniture;
+    private static int oldFurnitureRevision;
     private static boolean legacyDoorTile(int revision,int[] cell,int id){
-        if(revision!=3)return false;
-        if(oldFurniture==null)try(var in=new java.util.zip.GZIPInputStream(java.util.Objects.requireNonNull(CityBuilder.class.getResourceAsStream("/data/velvet_eclipse/city/legacy-furniture-v3.json.gz")))){
-            oldFurniture=new com.google.gson.Gson().fromJson(new java.io.InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),CityFurniture.Catalogue.class);
+        if(revision!=3&&revision!=4)return false;
+        if(oldFurniture==null||oldFurnitureRevision!=revision)try(var in=new java.util.zip.GZIPInputStream(java.util.Objects.requireNonNull(CityBuilder.class.getResourceAsStream("/data/velvet_eclipse/city/legacy-furniture-v"+revision+".json.gz")))){
+            oldFurniture=new com.google.gson.Gson().fromJson(new java.io.InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),CityFurniture.Catalogue.class);oldFurnitureRevision=revision;
         }catch(java.io.IOException e){throw new IllegalStateException(e);}
         return oldFurniture.doors().stream().flatMap(d->Arrays.stream(d.cells())).anyMatch(c->c[0]==cell[0]&&c[1]==cell[1]&&c[2]==cell[2]&&(c[4]==id||c[5]==id));
     }

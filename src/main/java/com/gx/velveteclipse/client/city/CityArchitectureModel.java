@@ -37,8 +37,11 @@ public final class CityArchitectureModel implements IDynamicBakedModel {
         if(type==RenderType.m_110466_())return q.glass();if(type!=null)return q.opaque();var both=new ArrayList<>(q.opaque());both.addAll(q.glass());return both;
     }
     private Quads bake(int id){var tile=CityArchitecture.tile(id);var raw=vertices();var opaque=new ArrayList<BakedQuad>();var glass=new ArrayList<BakedQuad>();
-        for(int at=tile.offset();at<tile.offset()+tile.length();at+=39){int mat=Math.max(0,Math.min(textures.length-1,Math.round(raw[at+9])));boolean transparent=mat==18;var texture=textures[mat];int[] data=new int[32];
-            for(int i=0;i<4;i++){int s=at+Math.min(i,2)*13,d=i*8;for(int j=0;j<3;j++)data[d+j]=Float.floatToRawIntBits(raw[s+j]);int r=Math.round(raw[s+6]*255),g=Math.round(raw[s+7]*255),b=Math.round(raw[s+8]*255);data[d+3]=(transparent?0x72:0xff)<<24|b<<16|g<<8|r;data[d+4]=Float.floatToRawIntBits(texture.m_118367_(Math.max(.001,Math.min(15.999,raw[s+11]*16))));data[d+5]=Float.floatToRawIntBits(texture.m_118393_(Math.max(.001,Math.min(15.999,raw[s+12]*16))));int light=raw[s+10]>=.2?Math.min(15,Math.round(9+raw[s+10]*5)):0;data[d+6]=light<<4;data[d+7]=(Math.round(raw[s+3]*127)&255)|((Math.round(raw[s+4]*127)&255)<<8)|((Math.round(raw[s+5]*127)&255)<<16);}
+        for(int at=tile.offset();at<tile.offset()+tile.length();at+=39){int mat=Math.max(0,Math.min(textures.length-1,Math.round(raw[at+9])));boolean transparent=mat==18;var texture=textures[mat];int[] data=new int[32];float[] v=new float[13];
+            for(int i=0;i<4;i++){int d=i*8;for(int j=0;j<13;j++)v[j]=CityQuadVertices.component(raw,at,i,j);
+                for(int j=0;j<3;j++)data[d+j]=Float.floatToRawIntBits(v[j]);int r=Math.round(v[6]*255),g=Math.round(v[7]*255),b=Math.round(v[8]*255);
+                data[d+3]=(transparent?0x72:0xff)<<24|b<<16|g<<8|r;data[d+4]=Float.floatToRawIntBits(texture.m_118367_(Math.max(.001,Math.min(15.999,v[11]*16))));data[d+5]=Float.floatToRawIntBits(texture.m_118393_(Math.max(.001,Math.min(15.999,v[12]*16))));
+                int light=v[10]>=.2?Math.min(15,Math.round(9+v[10]*5)):0;data[d+6]=light<<4;data[d+7]=(Math.round(v[3]*127)&255)|((Math.round(v[4]*127)&255)<<8)|((Math.round(v[5]*127)&255)<<16);}
             float x=raw[at+3],y=raw[at+4],z=raw[at+5];Direction face=Math.abs(y)>=Math.max(Math.abs(x),Math.abs(z))?(y>=0?Direction.UP:Direction.DOWN):Math.abs(x)>=Math.abs(z)?(x>=0?Direction.EAST:Direction.WEST):(z>=0?Direction.SOUTH:Direction.NORTH);
             (transparent?glass:opaque).add(new BakedQuad(data,-1,face,texture,raw[at+10]<.2,false));
         }return new Quads(List.copyOf(opaque),List.copyOf(glass));

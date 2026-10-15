@@ -1,0 +1,22 @@
+{
+  "revision": "02",
+  "scale": 0.125,
+  "authoring_density": 8,
+  "clips": [
+    "misc.idle",
+    "action.physical",
+    "action.magic"
+  ],
+  "source_sha256": {
+    "nekomata.animation.json": "04784b57e732dab6792c063f8463c78079d19f6cc0f438b75c56543fc5032fbf",
+    "nekomata.geo.json": "e3ee0029db96aea61f234691af26b42ea9786f76e84d58504b0dfb0517d6a0c6",
+    "nekomata.png": "311e0ca877eef189ce721bf883936374cdb078aa4e3abbbaf412b92fa6dd86d2"
+  },
+  "impact_seconds": {
+    "physical": 0.91,
+    "magic": 1.1
+  },
+  "runtime_impact_seconds": 1.4,
+  "runtime_duration": 2.5,
+  "axis_conversion_count": 1
+}

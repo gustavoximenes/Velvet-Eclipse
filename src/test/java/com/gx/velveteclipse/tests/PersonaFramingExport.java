@@ -12,11 +12,16 @@ import software.bernie.geckolib.util.*;
 /** Authoring tool: measure native geometry through the whole animation, without an OpenGL window. */
 public final class PersonaFramingExport {
     static final Path ROOT=Path.of("src/main/resources/assets/velvet_eclipse");
-    static final Map<String,Double> SCALES=Map.of("apsaras",.0625,"jack_frost",.125,"forneus",.125,"chimera",.125,"pixie",.085,"izanagi",.25,"arsene",.125,"orpheus",.16);
+    static final Map<String,Double> SCALES=Map.of("apsaras",.0625,"jack_frost",.125,"forneus",.125,"chimera",.125,"pixie",.085,"izanagi",.25,"arsene",.125,"orpheus",.16,"nekomata",.125);
     public static void main(String[] args)throws Exception {
         var profiles=new LinkedHashMap<String,Object>();
+        if(args.length>0){
+            var existing=JsonParser.parseString(Files.readString(ROOT.resolve("persona-preview-bounds.json"))).getAsJsonObject();
+            existing.entrySet().forEach(e->profiles.put(e.getKey(),e.getValue()));
+        }
         com.gx.velveteclipse.core.persona.PersonaRegistry.bootstrap();
         for(String id:com.gx.velveteclipse.core.persona.PersonaRegistry.personas().keySet()) {
+            if(args.length>0&&!Arrays.asList(args).contains(id))continue;
             String asset=com.gx.velveteclipse.client.menu.PersonaDetails.asset(id);
             Path file=ROOT.resolve("geo/entity/"+asset+".geo.json");if(!Files.exists(file))continue;
             Model model=JsonUtil.GEO_GSON.fromJson(Files.readString(file),Model.class);

@@ -9,7 +9,7 @@ import java.awt.*;import java.awt.geom.*;import java.awt.image.BufferedImage;imp
 public final class GekkoukanHudAudit {
  static int checks;static void check(boolean yes,String why){checks++;if(!yes)throw new AssertionError(why);}
  public static void main(String[] args)throws Exception{
-  check(CityPlan.get().revision()==4,"New city revision");check(CityPlan.legacy(3).revision()==3,"Exact last installed plan retained for migration");
+  check(CityPlan.get().revision()==5,"New city revision");check(CityPlan.legacy(4).revision()==4,"Exact last installed plan retained for migration");
   for(int[] size:new int[][]{{1920,1080},{1366,768},{1280,720},{2560,1440}})for(int gui:new int[]{1,2,3,4}){
    var l=ExplorationHudLayout.of(size[0]/gui,size[1]/gui);
    check(l.vitalsY()>51&&l.mapX()>188,"Cards do not collide");
@@ -21,8 +21,8 @@ public final class GekkoukanHudAudit {
    var t=new TextCatalog(TextCatalog.read("/assets/velvet_eclipse/localization/"+lang+".json"));
    check(t.translate("DARK HOUR").equals("DARK HOUR"),"Complete Dark Hour title");check(t.translate("[P]  SHUFFLE TIME  × 2").equals("[P]  SHUFFLE TIME  × 2"),"Complete Shuffle Time title");
   }
-  var state=new CityState();state.choice=1;state.revision=3;state.ready=true;
-  check(CityBuilder.beginRevision(state)&&state.rebuilding&&!state.ready&&state.targetRevision==4,"Installed revision 3 schedules migration");
+  var state=new CityState();state.choice=1;state.revision=4;state.ready=true;
+  check(CityBuilder.beginRevision(state)&&state.rebuilding&&!state.ready&&state.targetRevision==5,"Installed revision 4 schedules migration");
   check(!CityBuilder.beginRevision(state),"Repeated ticks do not reset the migration cursor");
   var night=new CityNightSchool.State();var tag=night.m_7176_(new net.minecraft.nbt.CompoundTag());tag.m_128405_("phase",3);tag.m_128405_("schoolRevision",0);
   var load=CityNightSchool.State.class.getDeclaredMethod("load",net.minecraft.nbt.CompoundTag.class);load.setAccessible(true);var restored=(CityNightSchool.State)load.invoke(null,tag);

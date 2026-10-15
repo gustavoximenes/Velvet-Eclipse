@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "camera_yaw": 25,
+  "camera_pitch": 2,
+  "sampled_poses_per_clip": 81,
+  "includes_back_faces": true,
+  "fixed_animation_bounds": [
+    [
+      -105.5529048065781,
+      -4.142703614627339,
+      -105.78682390320759
+    ],
+    [
+      106.27157800438663,
+      263.2069503661223,
+      109.10658330321881
+    ]
+  ],
+  "source_hashes": {
+    "nekomata.geo.json": "e3ee0029db96aea61f234691af26b42ea9786f76e84d58504b0dfb0517d6a0c6",
+    "nekomata.animation.json": "04784b57e732dab6792c063f8463c78079d19f6cc0f438b75c56543fc5032fbf",
+    "nekomata.png": "311e0ca877eef189ce721bf883936374cdb078aa4e3abbbaf412b92fa6dd86d2"
+  },
+  "offline": true
+}

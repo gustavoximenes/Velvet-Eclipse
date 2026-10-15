@@ -88,19 +88,19 @@ def door(id,closed,opened,old=None,offset=(0,0,0)):
 
 raw=np.frombuffer(gzip.decompress((e.HERE/'approved/dorm.bin.gz').read_bytes()),dtype='<f4').reshape(-1,3,11).astype(float)
 meta=read(e.HERE/'approved/dorm.json.gz')
-# Existing authored entrance: rotate exactly the same leaf fragments as revision 3.
-mask=np.array([e.front_leaf(t[:,:3].min(0),t[:,:3].max(0)) for t in raw]);front=raw[mask];fb=[b for b in meta['solids'] if len(b)==6 and e.front_leaf(b[:3],b[3:])]
+# Rotate complete authored components, including every face of the brass arches.
+owners=e.front_leaf_owners(raw,meta['solids']);mask=owners>=0;front=raw[mask];fb=[b for b in meta['solids'] if len(b)==6 and e.front_leaf(b[:3],b[3:])]
 op=front.copy()
-for i,t in enumerate(op):op[i]=e.open_leaf(t)
+for i,t in enumerate(op):op[i]=e.open_leaf(t,left=owners[mask][i]==0)
 ob=[]
 for b in fb:
     ps=np.array([[x,y,z] for x in [b[0],b[3]] for y in [b[1],b[4]] for z in [b[2],b[5]]]);ps=e.open_leaf(ps);ob.append(np.r_[ps.min(0),ps.max(0)].tolist())
 door('dorm_entrance',(front,fb),(op,ob),(op,ob),(-100,65,66))
 # Existing roof metal leaf and handle, excluding its masonry jamb.
-vols=[[-10.28,20.01,.75,-10.18,22.49,2.70],[-10.35,21.17,1.20,-10.27,21.42,1.32]]
+vols=[[-10.40,20.01,.85,-10.30,22.49,2.65],[-10.47,21.17,1.20,-10.39,21.42,1.32]]
 mask=np.zeros(len(raw),bool)
 for b in vols:mask|=np.all((raw[:,:,:3]>=np.array(b[:3])-1e-5)&(raw[:,:,:3]<=np.array(b[3:])+1e-5),axis=(1,2))
-roof=(raw[mask],vols);closed=transform(*roof,[-10.23,20,2.70],-90)
+roof=(raw[mask],vols);closed=transform(*roof,[-10.35,20,2.65],-90)
 door('roof_door',closed,roof,roof,(-100,65,66))
 def leaf(x,y,z,width,height,metal=False):
     boxes=[[x,y+.03,z,x+width,y+height,z+.10],[x+width-.18,y+1.2,z+.10,x+width-.10,y+1.46,z+.16]]
@@ -109,9 +109,9 @@ def leaf(x,y,z,width,height,metal=False):
 for lev in [1,2,3]:
     for x in [-6.75,6.4]:
         for z in [2,-2.25]:
-            cl=leaf(x+.06,lev*5,z+.08,1.68,2.77);op=transform(*cl,[x+.06,lev*5,z+.08],90 if z>0 else -90)
+            cl=leaf(x+.12,lev*5,z+.08,1.62,2.77);op=transform(*cl,[x+.12,lev*5,z+.08],90 if z>0 else -90)
             door(f'room_{lev}_{x}_{z}',cl,op,offset=(-100,65,66))
-cl=leaf(1.26,0,-2.92,1.68,2.77);door('kitchen_door',cl,transform(*cl,[1.26,0,-2.92],-90),offset=(-100,65,66))
+cl=leaf(1.32,0,-2.92,1.62,2.77);door('kitchen_door',cl,transform(*cl,[1.32,0,-2.92],-90),offset=(-100,65,66))
 e.dump(DATA/'architecture.json.gz',defs)
 (AS/'city/architecture.bin.gz').write_bytes(gzip.compress(np.concatenate(chunks).astype('>f4').tobytes(),mtime=0))
 e.dump(DATA/'furniture.json.gz',dict(seats=seats,doors=doors))
