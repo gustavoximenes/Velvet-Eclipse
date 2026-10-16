@@ -43,7 +43,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.52-nekomata-city'
+version = '0.6.53-city-repair'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
@@ -262,3 +262,4 @@ tasks.register('tartarusExteriorTest', JavaExec) { dependsOn testClasses; classp
 tasks.register('gekkoukanHudTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.GekkoukanHudAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 
 tasks.register('cityGeometryTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.CityGeometryAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
+tasks.register('sceneryProtectionTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.SceneryProtectionAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }

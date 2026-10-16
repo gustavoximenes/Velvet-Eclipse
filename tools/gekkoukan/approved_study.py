@@ -1,6 +1,6 @@
 """Separate, offline interior studies. No Minecraft assets or worlds are written."""
 from pathlib import Path
-import sys,json,math,shutil
+import sys,json,math,shutil,gzip
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 HERE=Path(__file__).parent;ROOT=HERE.parents[1];PREV=HERE
@@ -35,7 +35,7 @@ def room(id,w=12,d=12,h=4.5,floor='tile',windows=True):
     else:b(-w/2,0,-d/2,.24,h,d,WALL)
     # A real 2-block aperture remains in the front wall. Door leaf is omitted for this study.
     doorX=w/2-3.5;front=d/2-.24
-    b(-w/2,0,front,doorX+w/2,h,.24,WALL);b(doorX+2,0,front,w/2-doorX-2,h,.24,WALL);b(doorX,2.8,front,2,h-2.8,.24,WALL)
+    b(-w/2,0,front,doorX+w/2-.08,h,.24,WALL);b(doorX+2.08,0,front,w/2-doorX-2.08,h,.24,WALL);b(doorX-.08,2.88,front,2.16,h-2.88,.24,WALL)
     for x in [doorX-.08,doorX+2]:b(x,0,front-.08,.08,2.88,.4,METAL)
     b(doorX-.08,2.8,front-.08,2.16,.08,.4,METAL)
     s.door=[doorX,0,front,doorX+2,2.8,d/2]
@@ -44,7 +44,7 @@ def room(id,w=12,d=12,h=4.5,floor='tile',windows=True):
     b(-w/2,h,-d/2,w,.18,d,CREAM)
     b(-w/2+.25,0,-d/2+.25,w-.5,1.0,.10,(.66,.72,.63));b(-w/2+.25,1.,-d/2+.25,w-.5,.08,.14,PALE)
     for z in [-d*.25,d*.2]:
-        for x in [-w*.22,w*.22]:b(x-1.2,h-.12,z,2.4,.08,.3,WHITE,0,.2)
+        for x in [-w*.22,w*.22]:b(x-1.2,h-.08,z,2.4,.08,.3,WHITE,0,.2)
     s.lights=[[0,h-.25,0,.98,.97,.84,6],[-w/2+1,3,0,.80,.94,1,5]]
     return s
 
@@ -58,6 +58,7 @@ def chair(s,x,z,back=1,col=GREEN):
     b=s.box;b(x-.31,.53,z-.30,.62,.10,.60,col);b(x-.31,.65,z+back*.29-.04,.62,.6,.08,col)
     for xx in [-.26,.20]:
         for zz in [-.25,.19]:b(x+xx,0,z+zz,.06,.54,.06,METAL)
+    for dx in [-.26,.20]:b(x+dx,.53,z+back*.29-.04,.06,.23,.08,METAL)
     prop(s,'assento',x-.32,z-.34,.64,.68,1.25)
 def stool(s,x,z):
     s.box(x-.25,.65,z-.25,.5,.08,.5,WOOD,2)
@@ -65,6 +66,7 @@ def stool(s,x,z):
         for dz in [-.20,.16]:s.box(x+dx,0,z+dz,.04,.65,.04,METAL)
     prop(s,'banco',x-.25,z-.25,.5,.5,.73)
 def cabinet(s,x,z,w=2,h=2.7,col=PALE,books=False):
+    if 0<=z-(-s.d/2+.24)<.65:z=-s.d/2+.25
     b=s.box;d=.60;b(x,0,z,w,h,d,col,2 if books else 0)
     for yy in np.arange(.15,h-.3,.55):
         if books:
@@ -80,8 +82,9 @@ def papers(s,x,y,z):
     s.box(x,y,z,.55,.045,.4,WHITE)
     for dz in [.08,.15,.22,.29]:s.box(x+.07,y+.048,z+dz,.34,.005,.008,(.45,.48,.43))
 def board(s,x,z,w=4,y=1.5,h=1.5,col=GREEN,label=''):
-    s.box(x-.08,y-.08,z-.04,w+.16,h+.16,.12,WOOD);s.box(x,y,z+.09,w,h,.02,col)
-    if label:text(s,label,x+w/2,y+h-.42,z+.115,w*.70,CREAM if col==GREEN else INK)
+    z=-s.d/2+.28
+    s.box(x-.08,y-.08,z-.04,w+.16,h+.16,.12,WOOD);s.box(x,y,z+.079,w,h,.02,col)
+    if label:text(s,label,x+w/2,y+h-.42,z+.101,w*.70,CREAM if col==GREEN else INK)
 def monitor(s,x,y,z):
     b=s.box;b(x-.38,y+.16,z,.76,.52,.08,INK);b(x-.34,y+.2,z+.081,.68,.44,.008,(.21,.39,.42));b(x-.04,y,z,.08,.18,.08,INK);b(x-.22,y,z-.12,.44,.04,.36,INK)
 def tap(s,x,y,z):
@@ -93,9 +96,9 @@ def bottle(s,x,y,z,color=BLUE):
     s.box(x-.10,y,z-.10,.20,.30,.20,color);s.box(x-.05,y+.30,z-.05,.10,.12,.10,color);s.box(x-.06,y+.42,z-.06,.12,.04,.12,WHITE)
 def finish(s,eye=None,target=None,fov=84):
     defaultEye=[s.w/2-.9,2.65,s.d/2-.85];defaultTarget=[-s.w*.10,1.9,-s.d*.20]
-    np.array(s.verts,dtype='<f4').tofile(HERE/(s.name+'.bin'))
+    (OUT/(s.name+'.bin.gz')).write_bytes(gzip.compress(np.array(s.verts,dtype='<f4').tobytes(),mtime=0))
     meta={'vertexCount':len(s.verts),'key':[-30,35,22],'center':[0,s.h/2,0],'lights':s.lights,'views':[{'id':s.name,'eye':eye or defaultEye,'target':target or defaultTarget,'fov':fov}],'shots':[],'roomSize':[s.w,s.h,s.d],'door':s.door,'entryReserve':s.entry,'props':s.props,'solids':[{'lo':v['lo'],'hi':v['hi']} for v in s.solids],'status':'offline visual study, layout proposed'}
-    (HERE/(s.name+'.json')).write_text(json.dumps(meta,ensure_ascii=False,indent=2,default=float),encoding='utf8');SCENES.append(s.name)
+    (OUT/(s.name+'.json.gz')).write_bytes(gzip.compress(json.dumps(meta,ensure_ascii=False,separators=(',',':'),default=float).encode(),mtime=0));SCENES.append(s.name)
     print(s.name,len(s.verts)//3,'triangles')
 
 def library():
@@ -124,8 +127,11 @@ def nurse():
         s.box(x,.48,-4.8,2,.32,3.4,WHITE);s.box(x+.08,.80,-4.7,1.84,.12,3.2,(.76,.87,.84));s.box(x+.27,.94,-4.5,1.45,.16,.65,WHITE)
         for dx in [.1,1.8]:
             for dz in [-4.7,-1.6]:s.box(x+dx,0,dz,.1,.5,.1,METAL)
-        s.box(x,1.05,-4.92,2,.65,.07,PALE);prop(s,'maca',x,-4.92,2,3.6,1.7)
+        s.box(x,1.05,-4.92,2,.65,.07,PALE)
+        for dx in [.1,1.8]:s.box(x+dx,.48,-4.92,.1,.62,.19,METAL)
+        prop(s,'maca',x,-4.92,2,3.6,1.7)
     s.box(-2.55,3.5,-5.2,.055,.06,4.5,PALE)
+    for z in [-5.15,-.8]:s.box(-2.55,3.55,z,.055,.95,.055,PALE)
     for i in range(9):s.box(-2.56+(i%2)*.09,.3,-5.15+i*.11,.05,3.17,.13,(.67,.82,.80))
     cabinet(s,3.65,-5.6,1.9,2.85);board(s,-1.8,-5.62,2.65,col=WHITE,label='SCHEDULE')
     table(s,-4.6,1.2,3.3,1.25);chair(s,-3,3);papers(s,-4.2,1.11,1.5)
@@ -333,3 +339,6 @@ def roof():
         for zz in np.arange(-8.8,-7,.15):b(x+.1,1.82,zz,2,.04,.05,METAL)
     text(s,'ROOF ACCESS',-5,3.15,-4.73,3)
     finish(s,eye=[9,4,10],target=[-2,1.5,-2],fov=85)
+
+if __name__=='__main__':
+    for fn in [library,faculty,nurse,council,art,homeec,music,lab,lambda:lab(True),broadcast,printing,administration,counselling,washroom,shop,storage,changing,gym,corridor,roof]:fn()

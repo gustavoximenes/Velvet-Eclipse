@@ -43,8 +43,10 @@ def build():
   raw=np.frombuffer(gzip.decompress((HERE/'approved'/f'{name}.bin.gz').read_bytes()),'<f4').reshape(-1,11).copy()
   raw[:36,1]+=.018
   meta['solids'][0]['lo'][1]+=.018;meta['solids'][0]['hi'][1]+=.018
+  glass=(raw[:,9]==0)&(np.max(abs(raw[:,6:9]-[.49,.68,.70]),axis=1)<.005)
   # Wood in the study used material 18; production reserves 18 for actual glass.
   for old,new in [(18,35),(4,33),(2,35),(0,32)]:raw[raw[:,9]==old,9]=new
+  raw[glass,9]=18
   raw[:,:3]=transform(raw[:,:3],angle,[x,y,z]);raw[:,3:6]=transform(raw[:,3:6],angle,[0,0,0]);s.verts.extend(raw.tolist())
   for item in meta['solids']:
    lo,hi=item['lo'],item['hi'];points=transform([[xx,yy,zz] for xx in [lo[0],hi[0]] for yy in [lo[1],hi[1]] for zz in [lo[2],hi[2]]],angle,[x,y,z])
@@ -75,8 +77,9 @@ def build():
     box(cx-.31,y+.53,cz-.3,.62,.1,.6,WOOD,35);box(cx-.31,y+.65,cz+.24,.62,.62,.08,WOOD,35)
     for dx in [-.26,.20]:
      for dz in [-.25,.19]:box(cx+dx,y,cz+dz,.06,.53,.06,METAL,34)
+    for dx in [-.26,.20]:box(cx+dx,y+.53,cz+.24,.06,.23,.08,METAL,34)
     seats.append(dict(id=f'school_{id}_{xx}_{zz}',point=[cx,y+.04,cz],yaw=180,bounds=[cx-.32,y,cz-.34,cx+.32,y+1.3,cz+.34]))
-  for zz in [-4,1,5]:box(x-4,y+4.37,z+zz,8,.08,.22,(.97,.97,.87),32,.4)
+  for zz in [-4,1,5]:box(x-4,y+4.42,z+zz,8,.08,.22,(.97,.97,.87),32,.4)
   doors.append(dict(id='school_'+id,lo=[3.5,0,7.3],hi=[5.5,2.8,7.5],angle=0,offset=[x,y,z]))
   rooms.append(dict(id=id,origin=[x,y,z],angle=0,entry=[x+4.5,y,z+6.5],size=[14,4.5,15]))
 
@@ -102,6 +105,9 @@ def build():
   if level:
    rail(-9,y+1.15,-22,.09,16);rail(-4.05,y+1.15,-6,15.05,.09)
    rail(-27,y+1.15,-25,54,.09)
+  for xx in [-35,-19,19,35]:box(xx-1.3,y+5.64,-3,2.6,.11,.35,(.97,.97,.87),32,.65)
+  for xx in [-24,24]:
+   for zz in [-33,-49,-65]:box(xx-.2,y+5.64,zz-1.2,.4,.11,2.4,(.97,.97,.87),32,.65)
   # Rear wings contain rooms on the outer side, connected galleries on the court side.
   for x in [-43,21]:
    box(x,y-.25,-73,22,.25,51,FLOOR,33)
@@ -134,10 +140,25 @@ def build():
   # Two twelve-step flights. Slender undersides leave safe headroom between levels.
   for i in range(12):
    top=y+(i+1)*.25;box(-8.8,top-.25,-6-(i+1)*.4,2.1,.25,.4,TRIM)
+   for xx in [-8.75,-6.98]:box(xx,max(y,top-.65),-6-(i+1)*.4,.23,top-.15-max(y,top-.65),.4,STONE)
    top=y+3+(i+1)*.25;box(-6.4,top-.25,-10.8+i*.4,2.1,.25,.4,TRIM)
+   for xx in [-6.35,-4.58]:box(xx,top-.65,-10.8+i*.4,.23,.5,.4,STONE)
   box(-8.8,y+2.75,-12.2,4.5,.25,1.4,TRIM)
-  # Structural supports deliberately stay below the flight, not through it.
+  box(-8.8,y+2.45,-12.2,4.5,.3,.4,STONE)
+  for xx in [-8.88,-4.30]:
+   reverse=xx>-5
+   for i in range(12):
+    z=-10.6+i*.4 if reverse else -6.2-i*.4
+    top=y+(3 if reverse else 0)+(i+1)*.25
+    box(xx,top,z,.07,1.05,.07,METAL,34)
+   s.beam((xx+.035,y+(4.30 if reverse else 1.30),-10.6 if reverse else -6.2),(xx+.035,y+(7.05 if reverse else 4.05),-6.2 if reverse else -10.6),.045,METAL,34,4)
+  # Posts and stringers remain below or beside each flight, outside the walking strip.
   rail(-8.92,y+4.1,-12.2,.08,1.4)
+ for xx in [-8.75,-4.68]:box(xx,0,-12.15,.33,14.75,.33,STONE)
+ # High hall lights and their brackets connect to the real side walls.
+ for yy in [4.5,10.5,16.5]:
+  for xx in [-10.6,10.35]:
+   for zz in [-8,-18]:box(xx,yy,zz,.25,.8,.28,(.97,.95,.79),32,.8)
  # Roof access exits above the same stairs; fenced roof has a real opening.
  box(-11,17.75,-6,22,.25,6,FLOOR,33);box(-11,17.75,-22,2,.25,16,FLOOR,33)
  for x in [-43,11]:
@@ -187,7 +208,8 @@ def build():
  box(-1.5,.03,-45,3,.035,23,FLOOR,33)
  for x,z in [(5,-41),(-8,-31)]:
   box(x,.6,z,3,.16,.72,WOOD,35);box(x,.95,z-.1,3,.7,.12,WOOD,35)
-  for dx in [.25,2.65]:box(x+dx,0,z,.1,.6,.66,METAL,34)
+  for dx in [.25,2.65]:
+   box(x+dx,.03,z,.1,.57,.66,METAL,34);box(x+dx,.6,z-.1,.1,.6,.12,METAL,34)
   for dx in [.5,1.5,2.5]:seats.append(dict(id=f'school_court_bench_{x}_{dx}',point=[x+dx,.21,z+.36],yaw=0,bounds=[x,0,z-.1,x+3,1.65,z+.72]))
  for x in [-10,9]:box(x,0,56,1,4.6,1)
  for x in [-10.5,10.5]:

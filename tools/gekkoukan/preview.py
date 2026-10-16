@@ -11,7 +11,11 @@ model=json.loads((AS/'models/block/city_architecture.json').read_text());images=
 for i in range(36):
  tex=model['textures'][f'm{i}'].split(':')[1];images.append(Image.open(AS/(tex.replace('block/','textures/block/')+'.png')).convert('RGBA').resize((128,128),Image.Resampling.NEAREST))
 chunks=[]
-for c in plan['cells']:
+school_cells={tuple(c[:3]):c for c in plan['cells']}
+for door in read(DATA/'furniture.json.gz')['doors']:
+ if door['id'].startswith('school_'):
+  for c in door['cells']:school_cells[tuple(c[:3])]=[*c[:3],40,c[4]]
+for c in school_cells.values():
  x,y,z,mat=c[:4]
  if not(-51<=x<=90 and -190<=z<=-35 and y>=63):continue
  if mat==40:
@@ -45,7 +49,21 @@ for mode,slot in [('open',4),('closed',5)]:
   if not(-130<=point[0]<=-70):continue
   d=defs[i];q=raw[d['offset']//13:(d['offset']+d['length'])//13].copy();q[:,:3]+=point;chunks.append(q)
  v=np.concatenate(chunks);v.astype('<f4').tofile(OUT/f'dorm_{mode}-render.bin')
- views=[dict(id=f'dorm-quarto-{mode}',eye=[-102,82,66],target=[-105.9,81.5,68.4],fov=76),dict(id=f'dorm-telhado-{mode}',eye=[-112.2,86.7,66.5],target=[-111.2,86.4,69.3],fov=73),dict(id=f'dorm-entrada-{mode}',eye=[-100,66.8,80.5],target=[-100,66.8,77],fov=74)]
+ views=[dict(id=f'dorm-quarto-{mode}',eye=[-102,82,66],target=[-105.9,81.5,68.4],fov=76),dict(id=f'dorm-interior-{mode}',eye=[-97.7,72.0,72.4],target=[-105.5,71.6,73.2],fov=78),dict(id=f'dorm-parede-{mode}',eye=[-106.3,71.8,74.8],target=[-102.5,71.9,68.5],fov=77),dict(id=f'dorm-estudo-{mode}',eye=[-103.2,71.8,70.7],target=[-100,71.7,76.6],fov=77),dict(id=f'dorm-telhado-{mode}',eye=[-112.2,86.7,66.5],target=[-111.2,86.4,69.3],fov=73),dict(id=f'dorm-entrada-{mode}',eye=[-100,66.8,80.5],target=[-100,66.8,77],fov=74)]
  (OUT/f'dorm_{mode}.json').write_text(json.dumps(dict(vertexCount=len(v),key=[-80,180,120],center=[-100,76,66],lights=[],views=views,shots=[])))
 
 print('Native preview:',len(v)//3,'triangles;',len(images),'materials;',OUT)
+
+# A close view of an actual school leaf, not an empty doorway in the base plan.
+for mode,slot in [('open',4),('closed',5)]:
+ tiles={tuple(c[:3]):c[4] for c in plan['cells'] if c[3]==40 and -51<=c[0]<=90 and -190<=c[2]<=-35 and c[1]>=63}
+ for door in read(DATA/'furniture.json.gz')['doors']:
+  if door['id']=='school_enfermaria':
+   for c in door['cells']:tiles[tuple(c[:3])]=c[slot]
+ chunks=[]
+ for pos,i in tiles.items():
+  if i<0:continue
+  d=defs[i];q=raw[d['offset']//13:(d['offset']+d['length'])//13].copy();q[:,:3]+=pos;chunks.append(q)
+ v=np.concatenate(chunks);v.astype('<f4').tofile(OUT/f'school_door_{mode}-render.bin')
+ (OUT/f'school_door_{mode}.json').write_text(json.dumps(dict(vertexCount=len(v),key=[-80,180,-10],center=[19,66,-120],lights=[],views=[dict(id=f'gekkoukan-porta-{mode}',eye=[19.8,65.8,-113.5],target=[22.5,65.7,-116.1],fov=66)],shots=[])))
+p=OUT/'RenderGekkoukan.java';p.write_text(p.read_text(encoding='utf8').replace('List.of("school","dorm_open","dorm_closed")','List.of("school","dorm_open","dorm_closed","school_door_open","school_door_closed")'),encoding='utf8')

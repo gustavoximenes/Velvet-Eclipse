@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.53 — Escola, dormitório e proteção dos cenários
+
+Escadas da Gekkoukan com pilares e vigas, encaixes de móveis e luminárias corrigidos, portas com textura estável e proteção da cidade/Velvet Room contra alterações pelos jogadores. Migração da planta 5 para 6. [Escopo e validação](docs/CITY-REPAIR.md).
+
 # Velvet Eclipse 0.6.52 — Nekomata e correções da cidade
 
 Nekomata revisão 02 integrada com rosto, idle e ataques físico/mágico aprovados; escala, enquadramento e carta de fusão atualizados. Inclui os fechamentos da Gekkoukan, portas do dormitório e correções de renderização preparados na revisão anterior. [Escopo e validação](docs/NEKOMATA-CITY.md).

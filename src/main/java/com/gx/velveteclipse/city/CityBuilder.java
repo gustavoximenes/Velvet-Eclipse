@@ -14,7 +14,7 @@ public final class CityBuilder {
     private static CityPlan.Plan legacy(int revision){if(legacy==null||legacy.revision()!=Math.max(1,revision)){
         legacy=CityPlan.legacy(revision);
         if(revision<2){var second=CityPlan.legacy(2);var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));cells.addAll(Arrays.asList(second.cells()));legacy=new CityPlan.Plan(1,cells.toArray(int[][]::new),legacy.meshes(),legacy.places(),legacy.doors(),second.palette(),legacy.buildings(),legacy.routes());}
-        if(revision==3||revision==4){
+        if(revision>=3&&revision<=5){
             legacyDoorTile(revision,new int[]{Integer.MIN_VALUE,0,0},-9);
             var cells=new ArrayList<int[]>(Arrays.asList(legacy.cells()));var seen=new HashSet<String>();
             for(var c:cells)seen.add(c[0]+","+c[1]+","+c[2]);
@@ -30,7 +30,7 @@ public final class CityBuilder {
     private static CityFurniture.Catalogue oldFurniture;
     private static int oldFurnitureRevision;
     private static boolean legacyDoorTile(int revision,int[] cell,int id){
-        if(revision!=3&&revision!=4)return false;
+        if(revision<3||revision>5)return false;
         if(oldFurniture==null||oldFurnitureRevision!=revision)try(var in=new java.util.zip.GZIPInputStream(java.util.Objects.requireNonNull(CityBuilder.class.getResourceAsStream("/data/velvet_eclipse/city/legacy-furniture-v"+revision+".json.gz")))){
             oldFurniture=new com.google.gson.Gson().fromJson(new java.io.InputStreamReader(in,java.nio.charset.StandardCharsets.UTF_8),CityFurniture.Catalogue.class);oldFurnitureRevision=revision;
         }catch(java.io.IOException e){throw new IllegalStateException(e);}

@@ -102,6 +102,27 @@ def bake_scene(name,offset):
             raw=np.concatenate((raw,cuboid(lo,hi)));meta['solids'].append(lo+hi)
     return bake_geometry(name,meta,raw,True)
 
+def lock_uv(raw):
+    """Retain the leaf's authored UV axes when geometry and normals rotate."""
+    if raw.shape[-1]==13:return raw.copy()
+    out=np.zeros((*raw.shape[:-1],13),dtype=float);out[:,:,:11]=raw
+    for i,t in enumerate(raw):
+        axis=int(np.argmax(abs(t[0,3:6])));u=2 if axis==0 else 0;v=2 if axis==1 else 1
+        mat=round(t[0,9]);span=1 if mat==11 or mat>=31 else 4 if mat==14 else 2 if 10<=mat<=17 else 8
+        out[i,:,11]=t[:,u]/span;out[i,:,12]=t[:,v]/span
+    return out
+
+def uv_patches(poly):
+    """Split rotated faces at UV repeat boundaries before mapping to the block atlas."""
+    points=np.array(poly);out=[]
+    for u in indices(points[:,11].min(),points[:,11].max()):
+        p=clip(clip(poly,11,u,True),11,u+1,False)
+        if len(p)<3:continue
+        for v in indices(points[:,12].min(),points[:,12].max()):
+            q=clip(clip(p,12,v,True),12,v+1,False)
+            if len(q)>=3:out.append((q,np.array([u,v])))
+    return out
+
 def bake_geometry(name,meta,raw,open_front=False,surface_only=False):
     verts=defaultdict(list);boxes=defaultdict(list);lights=defaultdict(int)
     owners=front_leaf_owners(raw,meta['solids']) if open_front and name=='dorm' else None
@@ -137,13 +158,14 @@ def bake_geometry(name,meta,raw,open_front=False,surface_only=False):
                     poly=clip(clip(py,2,z,True),2,z+1,False)
                     if len(poly)<3:continue
                     key=(x,y,z);start=np.array(key)
-                    for k in range(1,len(poly)-1):
-                        tr=np.array([poly[0],poly[k],poly[k+1]])
-                        if np.linalg.norm(np.cross(tr[1,:3]-tr[0,:3],tr[2,:3]-tr[0,:3]))<1e-9:continue
-                        uv=np.column_stack((tr[:,u]/span-math.floor((start[u]+.001)/span),tr[:,v]/span-math.floor((start[v]+.001)/span)))
-                        tr[:,:3]=np.clip(tr[:,:3]-start,0,1)
-                        verts[key].extend(np.column_stack((tr,uv)).astype('<f4').flatten().tolist())
-                        if tr[0,10]>=.2:lights[key]=max(lights[key],min(15,round(9+tr[0,10]*5)))
+                    for patch,uv_origin in uv_patches(poly) if raw.shape[-1]==13 else [(poly,None)]:
+                        for k in range(1,len(patch)-1):
+                            tr=np.array([patch[0],patch[k],patch[k+1]])
+                            if np.linalg.norm(np.cross(tr[1,:3]-tr[0,:3],tr[2,:3]-tr[0,:3]))<1e-9:continue
+                            uv=tr[:,11:13]-uv_origin if uv_origin is not None else np.column_stack((tr[:,u]/span-math.floor((start[u]+.001)/span),tr[:,v]/span-math.floor((start[v]+.001)/span)))
+                            tr[:,:3]=np.clip(tr[:,:3]-start,0,1)
+                            verts[key].extend(np.column_stack((tr[:,:11],uv)).astype('<f4').flatten().tolist())
+                            if tr[0,10]>=.2:lights[key]=max(lights[key],min(15,round(9+tr[0,10]*5)))
         if i%25000==0:print(name,'triangles',i,'/',len(raw),flush=True)
     for row in meta['solids']:
         lo=np.array(row[:3]);hi=np.array(row[3:6]);a=0 if len(row)==6 else row[6]

@@ -32,6 +32,17 @@ for lev,z,x in [(lev,z,x) for lev in [1,2,3] for z in [2,-2.25] for x in [-6.75,
   for zz in np.arange(z-.051,z+.319,.041):points.append((1,[xx-100,lev*5+67.8,zz+66]))
 for xx in np.arange(-12.16,-10.29,.13):
  for zz in np.arange(2.701,3.04,.033):points.append((1,[xx-100,87.5,zz+66]))
+if not jar:
+ # School jambs used the same coplanar wall/frame construction as the old dorm.
+ assembly=json.loads((R/'tools/gekkoukan/assembly.json').read_text())
+ for door in assembly['doors']:
+  lo,hi=np.array(door['lo']),np.array(door['hi']);a=np.radians(door['angle']);c,s=np.cos(a),np.sin(a)
+  rotation=np.array([[c,0,-s],[0,1,0],[s,0,c]])
+  origin=np.array(door['offset'])+[0,64,-110]
+  for side in [lo[0],hi[0]]:
+   for y in np.arange(.173,2.75,.31):
+    for z in np.arange(lo[2]+.031,hi[2]-.02,.041):
+     points.append((2 if abs(s)>.5 else 0,(rotation@np.array([side,y,z])+origin).tolist()))
 for axis,p in points:
  count+=1;n=overlap(p,axis)
  if n!=1:fail.append(dict(axis=axis,point=p,surfaces=n))

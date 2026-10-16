@@ -24,7 +24,7 @@ def seat(id,x,y,z,yaw,bounds):
 def dorm_seat(id,x,y,z,yaw=180,w=1,d=1,top=.97):
     seat(id,x-100+w/2,y+65+top-.55,z+66+d/2,yaw,[x-100,y+65,z+66,x-100+w,y+67.15,z+66+d])
 for lev in [1,2,3]:
-    for i,x in enumerate([-8.7,4] if lev<3 else [-8,4]):dorm_seat(f'bedroom_{lev}_{i}',x+6,lev*5,7.9)
+    for i,x in enumerate([-8.7,4] if lev<3 else [-8,4]):dorm_seat(f'bedroom_{lev}_{i}',-.5 if x<0 else 11.5,lev*5,8.78)
     if lev<3:
         for x in [-7,6]:dorm_seat(f'reading_{lev}_{x}',x,lev*5,-5.5)
 for x in [9,11]:dorm_seat(f'dining_{x}',x,0,-.3)
@@ -50,7 +50,7 @@ for x in [-2.3,2.3]:mall_seat(f'blue_{x}',-45,19.5,x,.70,-1.8,.9,1.2,0)
 
 def transform(raw,boxes,hinge,angle,offset=(0,0,0)):
     a=math.radians(angle);c,s=math.cos(a),math.sin(a);m=np.array([[c,0,-s],[0,1,0],[s,0,c]])
-    out=raw.copy();out[:,:,:3]=(out[:,:,:3]-hinge)@m.T+hinge+offset;out[:,:,3:6]=out[:,:,3:6]@m.T
+    out=e.lock_uv(raw);out[:,:,:3]=(out[:,:,:3]-hinge)@m.T+hinge+offset;out[:,:,3:6]=out[:,:,3:6]@m.T
     bs=[]
     for b in boxes:
         pts=np.array([[x,y,z] for x in [b[0],b[3]] for y in [b[1],b[4]] for z in [b[2],b[5]]]);pts=(pts-hinge)@m.T+hinge+offset
@@ -61,7 +61,7 @@ def keytri(a):return np.round(a,5).astype('<f4').tobytes()
 def keybox(b):return tuple(np.round(b,5))
 def addtile(g,b):
     global cursor
-    g=np.array(g,dtype='<f4').flatten();idx=len(defs);defs.append(dict(offset=cursor,length=len(g),boxes=b,light=0));chunks.append(g);cursor+=len(g);return idx
+    g=np.array(g,dtype='<f4').flatten();idx=len(defs);defs.append(dict(offset=cursor,length=len(g),boxes=b,light=max([0]+[min(15,round(9+v*5)) for v in g[10::13] if v>=.2])));chunks.append(g);cursor+=len(g);return idx
 def door(id,closed,opened,old=None,offset=(0,0,0)):
     cv,cb=bake(*closed);ov,ob=bake(*opened);rv,rb=({}, {}) if old is None else bake(*old)
     positions=set(cv)|set(cb)|set(ov)|set(ob)|set(rv)|set(rb);rows=[]
@@ -90,12 +90,14 @@ raw=np.frombuffer(gzip.decompress((e.HERE/'approved/dorm.bin.gz').read_bytes()),
 meta=read(e.HERE/'approved/dorm.json.gz')
 # Rotate complete authored components, including every face of the brass arches.
 owners=e.front_leaf_owners(raw,meta['solids']);mask=owners>=0;front=raw[mask];fb=[b for b in meta['solids'] if len(b)==6 and e.front_leaf(b[:3],b[3:])]
-op=front.copy()
-for i,t in enumerate(op):op[i]=e.open_leaf(t,left=owners[mask][i]==0)
+oldop=front.copy();op=e.lock_uv(front)
+for i,t in enumerate(op):
+    op[i]=e.open_leaf(t,left=owners[mask][i]==0)
+    oldop[i]=e.open_leaf(oldop[i],left=owners[mask][i]==0)
 ob=[]
 for b in fb:
     ps=np.array([[x,y,z] for x in [b[0],b[3]] for y in [b[1],b[4]] for z in [b[2],b[5]]]);ps=e.open_leaf(ps);ob.append(np.r_[ps.min(0),ps.max(0)].tolist())
-door('dorm_entrance',(front,fb),(op,ob),(op,ob),(-100,65,66))
+door('dorm_entrance',(front,fb),(op,ob),(oldop,ob),(-100,65,66))
 # Existing roof metal leaf and handle, excluding its masonry jamb.
 vols=[[-10.40,20.01,.85,-10.30,22.49,2.65],[-10.47,21.17,1.20,-10.39,21.42,1.32]]
 mask=np.zeros(len(raw),bool)

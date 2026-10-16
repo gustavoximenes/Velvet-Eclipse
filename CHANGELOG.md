@@ -1,3 +1,11 @@
+# 0.6.53-city-repair
+
+- Sustenta os seis lances da escola com longarinas, vigas nos patamares e dois pilares contínuos; adiciona corrimãos e iluminação nos corredores/hall.
+- Reposiciona os conjuntos de móveis dos seis quartos, aproxima acessórios das paredes e alinha escrivaninhas/cortinas às janelas.
+- Corrige materiais de vidro, batentes, suportes de móveis e luminárias; mantém os UVs nas portas e a emissão luminosa nas variantes.
+- Usa formas dinâmicas por bloco de arquitetura e preserva os dados da revisão 5 para atualizar os mundos à revisão 6; protocolo 7.
+- Protege a cidade e a Velvet Room contra quebra/colocação e alterações indiretas pelos jogadores, mantendo interações funcionais. [Detalhes](docs/CITY-REPAIR.md).
+
 # 0.6.52-nekomata-city
 
 - Substitui a Nekomata pela revisão 02 aprovada: 266 cuboides, 47 ossos, rosto e olhos modelados, idle e dois ataques.
