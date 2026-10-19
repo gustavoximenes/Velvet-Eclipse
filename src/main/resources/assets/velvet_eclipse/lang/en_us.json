@@ -1563,5 +1563,17 @@
   "block.velvet_eclipse.city_school_plaster": "Gekkoukan Plaster",
   "block.velvet_eclipse.city_school_tiles": "Gekkoukan Floor Tiles",
   "block.velvet_eclipse.city_school_metal": "Gekkoukan Metal",
-  "block.velvet_eclipse.city_school_wood": "Gekkoukan Wood"
+  "block.velvet_eclipse.city_school_wood": "Gekkoukan Wood",
+  "item.velvet_eclipse.city_police_model": "Kurosawa — display model",
+  "item.velvet_eclipse.city_aohige_model": "Aohige owner — display model",
+  "item.velvet_eclipse.city_mayoido_model": "Mayoido owner — display model",
+  "entity.velvet_eclipse.city_shop_escapade_actor": "ESCAPADE",
+  "entity.velvet_eclipse.city_shop_chagall_actor": "CHAGALL CAFE",
+  "entity.velvet_eclipse.city_shop_blue_actor": "Be blue V",
+  "entity.velvet_eclipse.city_shop_police_actor": "TATSUMI EAST",
+  "entity.velvet_eclipse.city_shop_mayoido_actor": "MAYOIDO",
+  "entity.velvet_eclipse.city_shop_aohige_actor": "AOHIGE",
+  "entity.velvet_eclipse.city_shop_kenneth_actor": "KENNETH ARNOLD",
+  "entity.velvet_eclipse.city_shop_arcade_actor": "GAME PARADE",
+  "entity.velvet_eclipse.city_shop_mandragora_actor": "Mandragora"
 }

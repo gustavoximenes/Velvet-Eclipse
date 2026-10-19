@@ -1,0 +1,35 @@
+{
+  "police": {
+    "asset": "city_kurosawa",
+    "study": "01-kurosawa-study-03",
+    "scale": 0.09,
+    "sourceSha256": {
+      "kurosawa.animation.json": "df3ed02b72b869874279373c0bb5fb4bb539ee4a27ad14867f2dbc326e82ffcc",
+      "kurosawa.bbmodel": "6e34b753fa478719561a9fd6f7302c5b96396c232a3ea92d4126251b49c793cc",
+      "kurosawa.geo.json": "24163ae43dc6b8d0bcdaf6f6f0e4e6ee5cc1d9e9a8c0583331b5c8eb90433f97",
+      "kurosawa.png": "bdfa5e1f4463dc871d13beadcac466333417f2706d42794a14414a80b3639b33"
+    }
+  },
+  "aohige": {
+    "asset": "city_aohige",
+    "study": "02-aohige-study-02",
+    "scale": 0.09,
+    "sourceSha256": {
+      "aohige.animation.json": "90cb2fd8a8871cedc38a46f54ee626a54a1ea5d997ea791f9c995d44f969e97e",
+      "aohige.bbmodel": "58cf5549ac883482b6766823695195238de09e14ef34c245d79ee8f3f3d4f429",
+      "aohige.geo.json": "a08ad2cb7b65eea1100c9524e35c305a1c25113c189667aa69a72064bc48a3eb",
+      "aohige.png": "633d940934e28ec51ee058175bc41e9b50686ef4f406d0f90bd2d4efc67ce4bb"
+    }
+  },
+  "mayoido": {
+    "asset": "city_mayoido",
+    "study": "03-mayoido-study-02",
+    "scale": 0.09,
+    "sourceSha256": {
+      "mayoido.animation.json": "d2fee950892b881e38f97db9a1357a11f87e1adf4382cf2919b8f29f76eb99be",
+      "mayoido.bbmodel": "7bba4eedf4f02ead744a6d8df0a5cb4b5beea8b9ab7c790fc6fcf57b7a8995f2",
+      "mayoido.geo.json": "9930db2a40bda15d8fd5ea77518caecbefddc80c26500d8d372d108d75d3d5a0",
+      "mayoido.png": "f49627bd33d9ed6c2525a6184d487a3c69bf9448aba946e3f1021f38cefc9c2d"
+    }
+  }
+}

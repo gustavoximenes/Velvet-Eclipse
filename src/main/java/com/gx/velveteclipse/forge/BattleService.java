@@ -63,7 +63,7 @@ public final class BattleService {
         }
         var layout=BattleTerrain.plan(p,boss?1:count,boss);if(layout==null){RuntimeBridge.sendMessage(p,"§eNão há chão firme e espaço livre para este combate. Procure uma área mais aberta.");return null;}
         RuntimeBridge.setEntityRotation(p,(float)layout.yaw(),2);
-        var s=new BattleSession(participants);var g=new Encounter(p,s,count);g.dungeonFloor=floor;g.boss=boss;BATTLES.put(s.id(),g);attach(g,p,g.origin);
+        var s=new BattleSession(participants,new Random(),EncounterOpening.STANDARD,DifficultyPreferences.effective(p));var g=new Encounter(p,s,count);g.dungeonFloor=floor;g.boss=boss;BATTLES.put(s.id(),g);attach(g,p,g.origin);
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),layout);
         if(boss)for(var c:s.participants())if(c.side()==BattleSide.ENEMIES){var e=targetActor(p,c.id());if(e!=null)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(e);}
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;
@@ -76,20 +76,21 @@ public final class BattleService {
         for(var enemy:roster){var def=EnemyCatalog.get(enemy.persona());participants.add(BattleCombatant.enemy(UUID.randomUUID(),(field.rare()?"Red • ":"")+def.displayName()+" "+(++index),def,enemy.level(),enemy.hp(),enemy.sp(),enemy.skills()));}
         var layout=BattleTerrain.plan(p,roster.size(),false);if(layout==null){RuntimeBridge.sendMessage(p,"§eAproxime a Shadow de uma área com espaço livre para o combate.");return null;}
         RuntimeBridge.setEntityRotation(p,(float)layout.yaw(),2);
-        var s=new BattleSession(participants,new Random(),opening);var g=new Encounter(p,s,roster.size());g.dungeonFloor=floor;g.rare=field.rare();BATTLES.put(s.id(),g);attach(g,p,g.origin);
+        var s=new BattleSession(participants,new Random(),opening,DifficultyPreferences.effective(p));var g=new Encounter(p,s,roster.size());g.dungeonFloor=floor;g.rare=field.rare();BATTLES.put(s.id(),g);attach(g,p,g.origin);
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),layout);
         String message=switch(opening){case ADVANTAGE->"VANTAGEM DA EQUIPE • Aliados começam!";case AMBUSH->"EMBOSCADA • Inimigos começam!";default->"ENCONTRO NEUTRO • Ordem inicial sorteada.";};
         if(g.rare)message+=" • SHADOW VERMELHA: inimigos poderosos, recompensas maiores.";
         syncAll(g,message);return s;
     }
-    public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){
+    public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){return startRaid(party,stage,enemy,party.isEmpty()?BattleDifficulty.NORMAL:DifficultyPreferences.effective(party.get(0)));}
+    public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy,BattleDifficulty difficulty){
         if(party.isEmpty()||(party.size()>com.gx.velveteclipse.party.MaximumPlayers.get(party.get(0).m_20194_())&&!party.stream().allMatch(com.gx.velveteclipse.raid.RaidService::member))||enemy==null||party.stream().anyMatch(p->current(p)!=null||!com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)))return null;
         var participants=new ArrayList<BattleCombatant>();for(var p:party)participants.add(combatant(p));
         var def=EnemyCatalog.get(stage==0?"magic_hand":stage==1?"trance_twins":"grieving_tiara");
-        int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(party.size()):180+65*party.size();
+        int hp=stage==2?com.gx.velveteclipse.raid.PriestessRules.bossHp(4):180+65*4;
         var foe=BattleCombatant.enemy(UUID.randomUUID(),stage==2?"Sacerdotisa":stage==0?"Sentinela do Trem":"Condutor Sombrio",def,stage==2?30:25,hp,9999,Set.of("raid_ice_storm","shade_bite"));
         if(stage==2)foe.setRaidBoss(Element.FIRE);participants.add(foe);
-        var s=new BattleSession(participants);var g=new Encounter(party.get(0),s,1);g.raid=true;g.raidStage=stage;g.boss=true;g.dungeonFloor=25;
+        var s=new BattleSession(participants,new Random(),EncounterOpening.STANDARD,difficulty);var g=new Encounter(party.get(0),s,1);g.raid=true;g.raidStage=stage;g.boss=true;g.dungeonFloor=25;
         BATTLES.put(s.id(),g);for(var p:party){attach(g,p,RuntimeBridge.playerPosition(p));VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());}
         VisualBattleActors.bindEnemy(s.id(),foe.id(),enemy);syncAll(g,"O caminho está bloqueado. Preparem-se!");return s;
     }
@@ -118,7 +119,7 @@ public final class BattleService {
         if(!g.session.join(combatant(p)))return false;
         attach(g,p,anchor);VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());syncAll(g,RuntimeBridge.playerName(p)+" entrou na batalha!");return true;
     }
-    private static boolean canJoin(ServerPlayer p,Encounter g){return g.players.size()<com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())&&com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)&&!g.raid&&g.session.state()==BattleState.ACTIVE&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
+    private static boolean canJoin(ServerPlayer p,Encounter g){return g.players.size()<com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())&&com.gx.velveteclipse.awakening.AwakeningService.canBattle(p)&&!g.raid&&g.session.state()==BattleState.ACTIVE&&!busy(g)&&g.session.prepared()==null&&g.players.values().stream().noneMatch(AllOutServer::active)&&p.m_6084_()&&p.m_9236_()==g.level&&distance(RuntimeBridge.playerPosition(p),g.center)<=81&&!com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)&&PlayerPersonaData.load(p).hp()>0;}
 
     /** Leaving/disconnecting removes only that participant; an interrupted reservation costs nothing. */
     public static void stop(Object p){

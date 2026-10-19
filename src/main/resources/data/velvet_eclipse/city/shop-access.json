@@ -1,0 +1,155 @@
+[
+  {
+    "shop": "escapade",
+    "asset": "city_shop_marker",
+    "npc": false,
+    "x": 71.0,
+    "y": 64.7,
+    "z": 65.0,
+    "yaw": -90,
+    "scale": 1.0,
+    "width": 0.8,
+    "height": 1.0,
+    "anchor": [
+      69,
+      64,
+      65
+    ]
+  },
+  {
+    "shop": "chagall",
+    "asset": "city_shop_marker",
+    "npc": false,
+    "x": 72.67465,
+    "y": 64.7,
+    "z": 56.58096,
+    "yaw": -67.5,
+    "scale": 1.0,
+    "width": 0.8,
+    "height": 1.0,
+    "anchor": [
+      71,
+      64,
+      55
+    ]
+  },
+  {
+    "shop": "blue",
+    "asset": "city_shop_marker",
+    "npc": false,
+    "x": 77.44365,
+    "y": 64.7,
+    "z": 49.44365,
+    "yaw": -45,
+    "scale": 1.0,
+    "width": 0.8,
+    "height": 1.0,
+    "anchor": [
+      76,
+      64,
+      48
+    ]
+  },
+  {
+    "shop": "police",
+    "asset": "city_kurosawa",
+    "npc": true,
+    "x": 85.56553,
+    "y": 64.002,
+    "z": 44.69979,
+    "yaw": -22.5,
+    "scale": 0.09,
+    "width": 0.8,
+    "height": 2.1,
+    "anchor": [
+      83,
+      64,
+      43
+    ]
+  },
+  {
+    "shop": "mayoido",
+    "asset": "city_mayoido",
+    "npc": true,
+    "x": 102.09745,
+    "y": 64.002,
+    "z": 45.38862,
+    "yaw": 22.5,
+    "scale": 0.09,
+    "width": 1.3,
+    "height": 1.5,
+    "anchor": [
+      102,
+      64,
+      43
+    ]
+  },
+  {
+    "shop": "aohige",
+    "asset": "city_aohige",
+    "npc": true,
+    "x": 108.9099,
+    "y": 64.002,
+    "z": 50.36289,
+    "yaw": 45,
+    "scale": 0.09,
+    "width": 0.8,
+    "height": 2.1,
+    "anchor": [
+      109,
+      64,
+      48
+    ]
+  },
+  {
+    "shop": "kenneth",
+    "asset": "city_shop_marker",
+    "npc": false,
+    "x": 113.32535,
+    "y": 64.7,
+    "z": 56.58096,
+    "yaw": 67.5,
+    "scale": 1.0,
+    "width": 0.8,
+    "height": 1.0,
+    "anchor": [
+      114,
+      64,
+      55
+    ]
+  },
+  {
+    "shop": "arcade",
+    "asset": "city_shop_marker",
+    "npc": false,
+    "x": 115.0,
+    "y": 64.7,
+    "z": 65.0,
+    "yaw": 90,
+    "scale": 1.0,
+    "width": 0.8,
+    "height": 1.0,
+    "anchor": [
+      116,
+      64,
+      65
+    ]
+  },
+  {
+    "shop": "mandragora",
+    "asset": "city_shop_marker",
+    "npc": false,
+    "x": 95.4,
+    "y": 68.7,
+    "z": 35.6,
+    "yaw": 0,
+    "scale": 1.0,
+    "width": 0.8,
+    "height": 1.0,
+    "anchor": [
+      95,
+      68,
+      34
+    ]
+  }
+]

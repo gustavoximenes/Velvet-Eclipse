@@ -157,6 +157,16 @@ public final class BattleCombatant {
       }
    }
 
+   private double encounterDamage=1;
+   private boolean gentleInstant;
+   public double encounterDamage(){return encounterDamage;}
+   public boolean gentleInstant(){return gentleInstant;}
+   void encounterDamage(double amount,boolean gentle){encounterDamage=amount;gentleInstant=gentle;}
+   void resizeEnemyHealth(int maximum,int remaining){
+      if(side!=BattleSide.ENEMIES)throw new IllegalStateException("Only enemies are resized");
+      maxHp=Math.max(1,maximum);hp=clamp(remaining,0,maxHp);
+   }
+
    public int maxHp() {
       return this.maxHp;
    }

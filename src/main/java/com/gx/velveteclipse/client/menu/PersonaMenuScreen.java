@@ -73,6 +73,7 @@ public final class PersonaMenuScreen extends Screen {
     private void selectTab(int index,boolean enter){allOutSelectOpen=gearOpen=targetOpen=false;sheet.close();tab=Math.floorMod(index,MenuDesign.TABS.length);selected=offset=0;actor=0;if(enter){home=false;if(tab==10){home=true;com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");}}changed=now();}
     private void openAllOutSelect(){allOutChoice=com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).ordinal();allOutSelectOpen=true;changed=now();}
     private void chooseAllOut(){request("all_out_style",com.gx.velveteclipse.core.battle.AllOutStyle.values()[allOutChoice].id());allOutSelectOpen=false;changed=now();}
+    private void chooseDifficulty(int delta){if(data.difficulty().editable())request("difficulty",com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).step(delta).id());else{message=data.difficulty().note();messageAt=now();}}
     private void stepAllOut(int delta){allOutChoice=Math.floorMod(allOutChoice+delta,com.gx.velveteclipse.core.battle.AllOutStyle.values().length);changed=now();}
     public static void equipmentUpdated(String message){var mc=Minecraft.m_91087_();if(mc.f_91080_ instanceof PersonaMenuScreen s){if(!message.isBlank()){s.message=message;s.messageAt=now();}s.request("refresh","");}}
     private void recover(String action,String id,String title){if(data.members().isEmpty())return;recoveryAction=action;recoveryId=id;recoveryTitle=title;targetIndex=actor;targetOpen=true;}
@@ -107,7 +108,7 @@ public final class PersonaMenuScreen extends Screen {
         }
         if(key==88&&!home&&tab==3){showPersona();return true;}
         if(key==257||key==335||key==32){if(home){selectTab(tab,true);}else activate();return true;}
-        if(key==263||key==262){if(home)selectTab(tab+(key==262?1:-1),false);else if(tab==0||tab==1||tab==4)cycleActor(key==262?1:-1);return true;}
+        if(key==263||key==262){if(home)selectTab(tab+(key==262?1:-1),false);else if(tab==8&&selected==4)chooseDifficulty(key==262?1:-1);else if(tab==0||tab==1||tab==4)cycleActor(key==262?1:-1);return true;}
         if(key==265||key==264){if(home)selectTab(tab+(key==264?1:-1),false);else moveRow(key==264?1:-1);return true;}
         if(key==266||key==267){moveRow(key==267?8:-8);return true;}
         return super.m_7933_(key,scan,modifiers);
@@ -209,11 +210,13 @@ public final class PersonaMenuScreen extends Screen {
                 list.add(new MenuDesign.Row("Opcoes do Minecraft","Video, audio e controles",-1));list.add(new MenuDesign.Row("Animacoes do menu",motion?"Ativadas":"Movimento reduzido",-1));
                 list.add(new MenuDesign.Row("Animação All-Out",com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).label+" / ENTER para escolher",-1));
                 list.add(new MenuDesign.Row("Idioma / Language",com.gx.velveteclipse.client.localization.ClientLocalization.code().equals("en_us")?"English":"Português",-1));
+                list.add(new MenuDesign.Row("Dificuldade",com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).label+" / "+data.difficulty().note(),-1));
                 list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
                 if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio e controles nas opcoes do Minecraft.");action="Abrir opcoes";}
                 else if(selected==1){detail.add("Movimento do menu");detail.add("Alterna flutuacao do retrato, entrada das opcoes e transicoes.");detail.add("Preferencia valida nesta sessao.");action=motion?"Reduzir movimento":"Ativar animacoes";}
                 else if(selected==2){detail.add("ANIMAÇÃO ALL-OUT");detail.add("Pose final ao vencer o combate.");action="Escolher animação";}
                 else if(selected==3){detail.add("Idioma do Velvet Eclipse");detail.add("Altera os menus, descrições e mensagens do mod. Preferência salva neste cliente.");action="Português / English";}
+                else if(selected==4){detail.add(com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).description);detail.add("Ajuste automático por participantes do combate.");detail.add(data.difficulty().note());action="Escolher dificuldade";}
                 else{detail.add("Retornar ao mundo.");action="Fechar menu";}
             }
         }
@@ -231,7 +234,7 @@ public final class PersonaMenuScreen extends Screen {
             case 10 -> com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");
             case 3 -> showPersona();
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
-            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else closeMenu();}
+            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else if(selected==4)chooseDifficulty(1);else closeMenu();}
         }
     }
     @Override public void m_88315_(GuiGraphics g,int mouseX,int mouseY,float partial){

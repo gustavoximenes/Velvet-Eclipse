@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.MOD)
 public final class MenuNetwork {
     public static final Gson JSON=new Gson();
-    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","menu"),()->"6","6"::equals,"6"::equals);
+    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation("velvet_eclipse","menu"),()->"7","7"::equals,"7"::equals);
     @SubscribeEvent public static void setup(FMLCommonSetupEvent event){
         CHANNEL.registerMessage(0,Request.class,Request::encode,Request::decode,Request::handle,Optional.of(NetworkDirection.PLAY_TO_SERVER));
         CHANNEL.registerMessage(1,Response.class,Response::encode,Response::decode,Response::handle,Optional.of(NetworkDirection.PLAY_TO_CLIENT));

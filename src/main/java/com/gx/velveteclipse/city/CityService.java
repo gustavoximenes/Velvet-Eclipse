@@ -6,7 +6,7 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid="velvet_eclipse")
 public final class CityService {
  public static final ResourceKey<Level> DIMENSION=ResourceKey.m_135785_(Registries.f_256858_,new ResourceLocation("velvet_eclipse","city"));
- private record Visit(String shop,BlockPos pos,String token,long expires){}
+ private record Visit(String shop,BlockPos pos,UUID actor,String token,long expires){}
  private static final Map<UUID,Visit> VISITS=new HashMap<>();private static final Map<UUID,Long> GATES=new HashMap<>();private static final Map<UUID,Integer> PROMPTS=new HashMap<>();
  public static boolean enabled(ServerPlayer p){return CityState.get(p.m_20194_()).choice==1;}
  public static boolean inside(net.minecraft.world.entity.Entity p){return p.m_9236_().m_46472_().equals(DIMENSION);}
@@ -46,23 +46,46 @@ public final class CityService {
   if(!s.ready||s.choice!=1||!available(p)){reject(p,"Finalize a ação atual antes de continuar.");return;}
   if(r.action().equals("map")){if(inside(p))map(p);return;}
   if(r.action().equals("travel")){if(!inside(p))return;if(travel(p,CityPlan.place(r.id())))map(p);else reject(p,"Destino bloqueado. Libere a chegada antes de viajar.");return;}
-  var visit=VISITS.get(p.m_20148_());if(visit==null||!visit.token.equals(r.token())||visit.expires<now||!inside(p)||p.m_20275_(visit.pos.m_123341_()+.5,visit.pos.m_123342_()+.5,visit.pos.m_123343_()+.5)>36||!validCounter(p,visit.shop,visit.pos)){reject(p,"Atendimento encerrado. Interaja novamente com o balcão.");return;}
-  String custom=CityShopOffers.transact(p,visit.shop,r);if(custom!=null){shop(p,visit.shop,visit.pos,custom);return;}
+  var visit=VISITS.get(p.m_20148_());if(visit==null||!visit.token.equals(r.token())||visit.expires<now||!validVisit(p,visit)){reject(p,"Atendimento encerrado. Interaja novamente com o vendedor ou indicador.");return;}
+  String custom=CityShopOffers.transact(p,visit.shop,r);if(custom!=null){shop(p,visit.shop,visit.pos,custom,visit.actor);return;}
   if(!r.action().equals("buy"))return;
-  if(visit.shop.equals("blue")){String message=recall(p,r.id());shop(p,visit.shop,visit.pos,message);return;}
+  if(visit.shop.equals("blue")){String message=recall(p,r.id());shop(p,visit.shop,visit.pos,message,visit.actor);return;}
   var rows=CityCatalog.rows(visit.shop,ShopProgress.tier(p));var row=rows.stream().filter(v->v.id().equals(r.id())).findFirst().orElse(null);if(row==null)return;if(!CityCatalog.owner(r.id()).isEmpty()&&!CityRules.canPurchase(visit.shop,r.id(),ShopProgress.tier(p)))return;
   var wallet=PlayerPersonaData.load(p);var bag=EquipmentData.load(p);String message;
   if(!CityCatalog.owner(r.id()).isEmpty()){var result=EquipmentTransactions.buy(bag,wallet,r.id());message=switch(result){case BOUGHT->"Compra concluída.";case NO_YEN->"Yen insuficiente.";case OWNED->"Equipamento já adquirido.";case FULL->"Inventário cheio.";default->"Item indisponível.";};EquipmentData.save(p,bag);}
   else if(r.id().equals("party")){message="Use o menu de Personas para consultar suas habilidades.";}
   else {long day=p.m_20194_().m_129783_().m_46468_()/24000;String key="city_service_"+r.id();var tag=p.getPersistentData();if(tag.m_128441_(key)&&tag.m_128454_(key)==day)message="Atividade já realizada hoje.";else if(!wallet.spendYen(row.price()))message="Yen insuficiente.";else {switch(r.id()){case "coffee"->wallet.setResources(wallet.hp(),wallet.sp()+20);case "fortune"->wallet.restore();case "train"->wallet.addPlayerExperience(40);case "sing"->tag.m_128405_("city_courage",tag.m_128451_("city_courage")+1);default->{}}tag.m_128356_(key,day);message=r.id().equals("sing")?"Coragem: "+tag.m_128451_("city_courage")+" • treino concluído.":"Atividade concluída.";}}
-  wallet.save(p);BattleService.sync(p,message);EquipmentService.sync(p,"sync","");shop(p,visit.shop,visit.pos,message);
+  wallet.save(p);BattleService.sync(p,message);EquipmentService.sync(p,"sync","");shop(p,visit.shop,visit.pos,message,visit.actor);
  }
  private static void map(ServerPlayer p){var rows=CityPlan.get().places().stream().filter(v->!v.id().startsWith("school_")||!CityNightSchool.unavailable(p)).map(v->new CityNetwork.Row(v.id(),v.name(),v.x()+", "+v.z(),0)).toList();CityNetwork.send(p,new CityNetwork.View("map","PORT ISLAND","","Selecione um destino",0,rows,true,true));}
  private static boolean validCounter(ServerPlayer p,String id,BlockPos pos){return p.m_9236_().m_8055_(pos).m_60713_(CityRegistry.BLOCKS.get("shop_"+id).get())||p.m_9236_().m_7702_(pos) instanceof CityArchitectureEntity&&CityPlan.get().doors().stream().anyMatch(d->d.x()==pos.m_123341_()&&d.y()==pos.m_123342_()&&d.z()==pos.m_123343_()&&d.target().equals("shop:"+id));}
- public static void shop(ServerPlayer p,String id,BlockPos pos){shop(p,id,pos,"");}
- private static void shop(ServerPlayer p,String id,BlockPos pos,String message){if(!enabled(p)||!inside(p)||!available(p)||!CityCatalog.SHOPS.contains(id)||p.m_20275_(pos.m_123341_()+.5,pos.m_123342_()+.5,pos.m_123343_()+.5)>36)return;var token=UUID.randomUUID().toString();VISITS.put(p.m_20148_(),new Visit(id,pos,token,System.currentTimeMillis()+600000));var rows=CityShopOffers.rows(p,id);CityNetwork.send(p,new CityNetwork.View(id,CityCatalog.NAMES.get(CityCatalog.SHOPS.indexOf(id)),token,message,PlayerPersonaData.load(p).yen(),rows,true,true));}
+ private static boolean validActor(ServerPlayer p,CityShopActor actor,String shop){
+  var point=CityShopAccess.get(shop);var state=CityState.get(p.m_20194_());
+  if(point==null||actor==null)return false;
+  boolean matching=actor.shop().equals(shop)&&actor.m_20148_().equals(point.uuid())&&point.distanceSquared(actor.m_20185_(),actor.m_20186_(),actor.m_20189_())<.01;
+  var anchor=new BlockPos(point.anchor()[0],point.anchor()[1],point.anchor()[2]);
+  return CityShopAccess.permits(state.choice==1&&state.ready,available(p),inside(p)&&actor.m_9236_()==p.m_9236_(),actor.managed(),!actor.m_213877_(),matching,p.m_20280_(actor))&&validCounter(p,shop,anchor)&&p.m_142582_(actor);
+ }
+ private static boolean validVisit(ServerPlayer p,Visit visit){
+  if(visit.actor!=null){var actor=p.m_284548_().m_8791_(visit.actor);return actor instanceof CityShopActor clerk&&validActor(p,clerk,visit.shop);}
+  return !CityShopAccess.hasNpc(visit.shop)&&inside(p)&&p.m_20275_(visit.pos.m_123341_()+.5,visit.pos.m_123342_()+.5,visit.pos.m_123343_()+.5)<=36&&validCounter(p,visit.shop,visit.pos);
+ }
+ public static void shop(ServerPlayer p,CityShopActor actor){
+  if(!validActor(p,actor,actor.shop()))return;
+  var point=CityShopAccess.get(actor.shop());shop(p,actor.shop(),new BlockPos(point.anchor()[0],point.anchor()[1],point.anchor()[2]),"",actor.m_20148_());
+ }
+ public static void shop(ServerPlayer p,String id,BlockPos pos){
+  if(CityShopAccess.hasNpc(id)){p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Clique com o botão direito no vendedor para acessar esta loja."),true);return;}
+  shop(p,id,pos,"",null);
+ }
+ private static void shop(ServerPlayer p,String id,BlockPos pos,String message,UUID actor){
+  if(!enabled(p)||!inside(p)||!available(p)||!CityCatalog.SHOPS.contains(id))return;
+  var token=UUID.randomUUID().toString();var visit=new Visit(id,pos,actor,token,System.currentTimeMillis()+600000);
+  if(!validVisit(p,visit))return;
+  VISITS.put(p.m_20148_(),visit);var rows=CityShopOffers.rows(p,id);CityNetwork.send(p,new CityNetwork.View(id,CityShopAccess.name(id),token,message,PlayerPersonaData.load(p).yen(),rows,true,true));
+ }
  private static String recall(ServerPlayer p,String member){var target=com.gx.velveteclipse.party.PartyService.members(p).stream().filter(m->m.m_20148_().toString().equals(member)).findFirst().orElse(null);if(target==null)return "Integrante indisponível.";if(target!=p)return "Cada jogador confirma seu próprio atendimento neste balcão.";var wallet=PlayerPersonaData.load(p);var recovered=new ArrayList<com.gx.velveteclipse.core.persona.PersonaInstance>();for(var original:wallet.rosterInstances()){var held=new com.gx.velveteclipse.core.persona.PersonaInstance(original.definitionId(),original.level(),original.experience(),original.learnedSkills());var def=com.gx.velveteclipse.core.persona.PersonaRegistry.persona(held.definitionId()).orElse(null);if(def==null)continue;boolean change=false;for(var e:def.learnset().entrySet())if(e.getKey()<=held.level())for(String skill:e.getValue())if(!held.learnedSkills().contains(skill)){held.inheritSkill(skill);change=true;}if(change)recovered.add(held);}if(recovered.isEmpty())return "Suas Personas já lembram todas as habilidades naturais disponíveis.";if(!wallet.spendYen(3000))return "Yen insuficiente.";recovered.forEach(wallet::updatePersona);wallet.save(p);BattleService.sync(p,"");return "Habilidades relembradas.";}
- @SubscribeEvent public static void interact(PlayerInteractEvent.RightClickBlock e){if(!(e.getEntity() instanceof ServerPlayer p)||!inside(p)||!available(p))return;for(var d:CityPlan.get().doors())if(e.getPos().m_123341_()==d.x()&&e.getPos().m_123343_()==d.z()&&Math.abs(e.getPos().m_123342_()-d.y())<3){if(p.m_20275_(d.x()+.5,d.y()+.5,d.z()+.5)<36){if(d.target().startsWith("shop:")){shop(p,d.target().substring(5),new BlockPos(d.x(),d.y(),d.z()));}else if(d.target().equals("velvet")){com.gx.velveteclipse.room.VelvetRoomService.cross(p,new BlockPos(d.x(),d.y(),d.z()));}else if(d.target().equals("tartarus")){if(CityNightSchool.open(p)){if(com.gx.velveteclipse.darkhour.TartarusDungeonService.teleportToFloor(p,0)>0)p.getPersistentData().m_128379_("city_tartarus_return",true);}else p.m_5661_(com.gx.velveteclipse.localization.ModText.component("O Tártaro abre quando a transformação da Gekkoukan termina durante a Dark Hour."),false);}else travel(p,CityPlan.place(d.target()));e.setCanceled(true);}return;}}
+ @SubscribeEvent public static void interact(PlayerInteractEvent.RightClickBlock e){if(e.getHand()!=net.minecraft.world.InteractionHand.MAIN_HAND||!(e.getEntity() instanceof ServerPlayer p)||!inside(p)||!available(p))return;for(var d:CityPlan.get().doors())if(e.getPos().m_123341_()==d.x()&&e.getPos().m_123343_()==d.z()&&Math.abs(e.getPos().m_123342_()-d.y())<3){if(p.m_20275_(d.x()+.5,d.y()+.5,d.z()+.5)<36){if(d.target().startsWith("shop:")){shop(p,d.target().substring(5),new BlockPos(d.x(),d.y(),d.z()));}else if(d.target().equals("velvet")){com.gx.velveteclipse.room.VelvetRoomService.cross(p,new BlockPos(d.x(),d.y(),d.z()));}else if(d.target().equals("tartarus")){if(CityNightSchool.open(p)){if(com.gx.velveteclipse.darkhour.TartarusDungeonService.teleportToFloor(p,0)>0)p.getPersistentData().m_128379_("city_tartarus_return",true);}else p.m_5661_(com.gx.velveteclipse.localization.ModText.component("O Tártaro abre quando a transformação da Gekkoukan termina durante a Dark Hour."),false);}else travel(p,CityPlan.place(d.target()));e.setCanceled(true);}return;}}
  @SubscribeEvent public static void tick(TickEvent.ServerTickEvent e){if(e.phase!=TickEvent.Phase.END)return;var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();if(server==null)return;var s=CityState.get(server);
   var city=server.m_129880_(DIMENSION);if(s.choice==1&&city!=null){city.m_8615_(server.m_129783_().m_46468_());if(!CityNightSchool.tick(city,s.ready)&&!s.ready)return;}
   if(s.choice==1&&server.m_129783_().m_46467_()%20==0)for(var p:server.m_6846_().m_11314_()){if(s.ready)firstSpawn(p);else sync(p);}

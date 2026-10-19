@@ -27,6 +27,7 @@ public final class DamageCalculator {
          var6=(int)Math.round(var6*var0.skillDamage(var2)*SkillEffects.conditional(var2,var0,var1));
          var6 = Math.max(1,(int)Math.round(var6 * var0.equipment().damage(var2.element(),var2.usesMagicStat()) * var0.charge(var2.usesMagicStat()) * var1.equipment().reduction(var2.element()) * (var1.downed()&&var0.equipment().has("dmg on downed enemy")?1.3:1) * (var2.id().equals("__all_out")&&var0.equipment().has("all-out attack dmg up")?1.3:1) * var0.attackMultiplier() * var0.batonMultiplier() / var1.defenseMultiplier()));
          if(var2.id().equals("armageddon"))var6=9999;
+         var6=Math.max(1,(int)Math.round(var6*var0.encounterDamage()));
          Affinity var7 = var2.element() == Element.ALMIGHTY || var2.element() == Element.NONE ? Affinity.NORMAL : var1.affinity(var2.element());
          if(info!=null&&info.effect().contains("ignores resistances"))var7=Affinity.NORMAL;
          if(var1.reflects(var2.element()))var7=Affinity.REPEL;
@@ -95,7 +96,11 @@ public final class DamageCalculator {
       if(i.effect().equals("FMTPersonaLifeDrainN"))damage=Math.min((int)(i.value()*(a.equipment().has("drain ability")?2:1)),s.id().equals("spirit_drain")?t.sp():t.hp());
       else if(!immune){
          if(i.effect().equals("FMTFracDamage"))damage=Math.max(1,t.hp()*(int)i.value()/100);
-         else{double chance=i.value()*(affinity==Affinity.WEAK?1.5:affinity==Affinity.RESIST?.5:1)*(a.equipment().has(s.element()==Element.LIGHT?"hama boost":"mudo boost")?1.5:1);if(i.effect().equals("FMTInstakillWhen")&&!t.hasAilment("FEAR"))chance=0;miss=r.nextDouble()*100>=chance;if(!miss)damage=t.hp()*3;}
+         else{double chance=i.value()*(affinity==Affinity.WEAK?1.5:affinity==Affinity.RESIST?.5:1)*(a.equipment().has(s.element()==Element.LIGHT?"hama boost":"mudo boost")?1.5:1);chance*=Math.min(1,a.encounterDamage());if(i.effect().equals("FMTInstakillWhen")&&!t.hasAilment("FEAR"))chance=0;miss=r.nextDouble()*100>=chance;if(!miss)damage=t.hp()*3;}
+      }
+      if(!effect.equals("instant")&&damage>0)damage=Math.max(1,(int)Math.round(damage*a.encounterDamage()));
+      if(effect.equals("instant")&&damage>0&&a.gentleInstant()&&t.side()==BattleSide.PLAYERS&&affinity!=Affinity.REPEL&&affinity!=Affinity.DRAIN){
+         effect="";damage=Math.max(0,t.hp()-1);
       }
       if(immune||affinity==Affinity.NULL)damage=0;
       if(effect.equals("instant")&&!miss&&damage>0&&(affinity==Affinity.REPEL?a:t).survivesInstant(s.element(),r))effect="instant_guard";

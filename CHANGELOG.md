@@ -1,3 +1,12 @@
+# 0.6.54-paulownia-shops
+
+- Adiciona o seletor Tranquilo/Fácil/Normal/Difícil em TAB → System, com escolha salva pelo jogador solo ou pelo líder da party.
+- Ajusta vida e dano dos inimigos por participantes reais, preserva progresso de vida em entradas/saídas e aplica o balanceamento e tempo correspondente na raid. [Regras](docs/DIFFICULTY.md). Protocolo do menu 7.
+- Adiciona Kurosawa 03, Aohige 02 e Mayoido 02 como vendedores com idle e acesso à loja por clique direito.
+- Adiciona indicadores clicáveis às outras seis lojas do Paulownia Mall, com instrução em português e inglês.
+- Vincula o atendimento à entidade oficial e à sessão de cada jogador; inclui três modelos decorativos na aba criativa de NPCs. [Detalhes e validação offline](docs/paulownia-shop-access.md).
+- Mantém as correções anteriores de Gekkoukan, dormitório, portas, iluminação, HUD, proteção da cidade/Velvet Room e as Personas aprovadas. Protocolo da cidade 8; cliente e servidor precisam desta versão.
+
 # 0.6.53-city-repair
 
 - Sustenta os seis lances da escola com longarinas, vigas nos patamares e dois pilares contínuos; adiciona corrimãos e iluminação nos corredores/hall.

@@ -17,7 +17,7 @@ public final class ReloadMenuDesign {
         return rect(38,151+index*50,713,46);
     }
     public static Rect member(int index){return rect(14,97+index*85,537,73);}
-    public static int visibleRows(int tab,boolean gear){return tab==9||tab==2&&gear?6:8;}
+    public static int visibleRows(int tab,boolean gear){return tab==8||tab==9||tab==2&&gear?6:8;}
     public static Rect action(){return rect(36,605,680,43);}
     public static Rect back(){return rect(16,679,160,34);}
     public static int pickRow(int tab,boolean gear,double x,double y){for(int i=0;i<visibleRows(tab,gear);i++)if(row(tab,i,gear).contains(x,y))return i;return -1;}
@@ -50,7 +50,7 @@ public final class ReloadMenuDesign {
     }
     public static void background(Canvas target,View v,boolean gear){
         backdrop(target,v.seconds(),v.motion());var c=scaled(target);
-        if(!v.home()&&v.tab()==8)c.fill(708,141,554,405,0xE8061638);
+        if(!v.home()&&v.tab()==8)c.fill(708,141,554,484,0xE8061638);
         if(v.home()){var panel=ReloadMenuOpening.layer(c,-530*(1-ReloadMenuOpening.panel(v.entered(),v.motion())),0,1);panel.poly(new double[]{0,0,496,0,258,720,0,720},WHITE);for(int i=0;i<8;i++)panel.poly(new double[]{0,62+i*85,178-i*8,94+i*81,0,79+i*87},0xFF02030B);panel.text("MAIN",1,527,171,0xFF02030B,-90);}
         else switch(v.tab()){
             case 0->{c.poly(new double[]{0,0,126,0,84,462,805,720,0,720},WHITE);c.poly(new double[]{1000,720,1280,394,1280,720},WHITE);}
@@ -66,7 +66,7 @@ public final class ReloadMenuDesign {
     }
     public static void foreground(Canvas target,View v,MenuSnapshot data,int actor,boolean gear,int gearSlot){
         var c=scaled(target);
-        if(!v.home()&&v.tab()==8)c.fill(708,141,554,405,0xE8061638);
+        if(!v.home()&&v.tab()==8)c.fill(708,141,554,484,0xE8061638);
         if(v.home()){
             c.fill(115,34,166,64,INK);c.fill(117,36,162,60,WHITE);c.body(String.format(Locale.ROOT,"¥ %,d",v.wallet()),123,37,31,0xFF050913,0);c.body("YEN / CARTEIRA",126,76,12,INK,0);
             for(int i=0;i<TABS.length;i++){double x=526+Math.sin(i*.55)*23,y=154+i*44,angle=-16+i*.8,w=c.width(TABS[i],53)+25;boolean active=i==v.tab();
@@ -100,8 +100,9 @@ public final class ReloadMenuDesign {
         }
         if(!v.action().isEmpty()&&v.tab()>4&&v.tab()!=7&&v.tab()!=8){selected(c,39,617,676,35);c.body(fitBody(c,v.action(),650,23),53,620,23,INK,0);}
         if(v.rows().isEmpty()&&v.tab()!=4&&v.tab()!=7)c.body("Nenhum registro disponível.",v.tab()<=2?640:45,178,25,CYAN,0);
+        if(v.tab()==8&&v.selected()==4){c.fill(26,530,662,112,0xED06163C);double y=542;for(String line:v.detail()){c.body(fitBody(c,line,632,20),41,y,20,CYAN,0);y+=29;if(y>620)break;}}
         c.body("ESC  Voltar",18,682,20,WHITE,0);
-        String help=v.tab()==3?"Selecione uma Persona para inspecionar.":v.tab()==0?"Qual habilidade você quer usar?":v.tab()==1?"Qual item você quer usar?":v.tab()==2?"Qual equipamento você quer trocar?":HELP[v.tab()];footer(c,v.tab()==8&&v.selected()==3?"ENTER  Português / English":help);
+        String help=v.tab()==3?"Selecione uma Persona para inspecionar.":v.tab()==0?"Qual habilidade você quer usar?":v.tab()==1?"Qual item você quer usar?":v.tab()==2?"Qual equipamento você quer trocar?":HELP[v.tab()];footer(c,v.tab()==8&&v.selected()==4?"ESQ / DIR  Dificuldade":v.tab()==8&&v.selected()==3?"ENTER  Português / English":help);
         if(!v.message().isBlank()){c.fill(30,652,1175,26,0xEB00113D);c.body(fitBody(c,v.message(),1140,19),43,655,19,CYAN,0);}
     }
     public static void roster(Canvas c,MenuSnapshot data,int actor){

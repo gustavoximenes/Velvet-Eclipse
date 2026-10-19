@@ -18,12 +18,14 @@ public final class RaidService {
  private static Settings settings(net.minecraft.server.MinecraftServer server){return server.m_129783_().m_8895_().m_164861_(Settings::load,Settings::new,"velvet_raid_settings");}
  private static final class Run{
   final LinkedHashMap<UUID,String> names=new LinkedHashMap<>();final int slot,capacity;final Set<UUID> acknowledged=new HashSet<>();
+  BattleDifficulty difficulty=BattleDifficulty.NORMAL;
   int built,stage,dialogue,revision=1;String mode="lobby",message="";long pulseUntil;UUID battle;Entity actor;PriestessRules rules;
   Run(int slot,int capacity){this.slot=slot;this.capacity=capacity;}
   int x(){return slot*256;}UUID leader(){return names.keySet().iterator().next();}
  }
  public static boolean inside(Object p){return p instanceof Entity e&&e.m_9236_().m_46472_().equals(DIMENSION);}
  public static boolean member(Object p){return p instanceof Entity e&&MEMBERS.containsKey(e.m_20148_());}
+ public static BattleDifficulty selectedDifficulty(ServerPlayer p){var r=MEMBERS.get(p.m_20148_());if(r==null)return null;var leader=player(r.leader());return r.mode.equals("lobby")&&leader!=null?com.gx.velveteclipse.party.PartyService.difficulty(leader):r.difficulty;}
  public static boolean battle(UUID id){return RUNS.stream().anyMatch(r->id.equals(r.battle));}
  public static boolean animating(UUID id){return RUNS.stream().anyMatch(r->id.equals(r.battle)&&r.pulseUntil>now());}
  private static long now(){return System.nanoTime()/1_000_000;}
@@ -48,7 +50,7 @@ public final class RaidService {
    if(players(r).size()!=r.names.size()||players(r).stream().anyMatch(a->!atDoor(a)||!a.m_6084_()||PlayerPersonaData.load(a).hp()<=0)){say(p,"Todos devem estar vivos e próximos da porta Monad.");return;}
    if(r.names.size()>com.gx.velveteclipse.party.MaximumPlayers.get(p.m_20194_())){say(p,"Ajuste a equipe ao novo limite de jogadores antes de embarcar.");return;}
    if(world()==null){say(p,"Reabra o mundo para carregar o trem.");return;}
-   r.mode="building";r.revision++;broadcast(r);return;
+   r.difficulty=com.gx.velveteclipse.party.PartyService.difficulty(p);r.mode="building";r.revision++;broadcast(r);return;
   }
   if(q.action().equals("next")&&r.mode.equals("dialogue")&&q.revision()==r.revision&&inside(p)){
    r.acknowledged.add(p.m_20148_());if(r.acknowledged.containsAll(r.names.keySet())){r.acknowledged.clear();r.dialogue++;r.revision++;if(r.dialogue>=r.names.size()+2){r.mode="walking";spawn(r);}broadcast(r);}
@@ -57,7 +59,7 @@ public final class RaidService {
  private static String line(Run r){
   int n=r.names.size();if(r.dialogue==0)return "Fiquem juntos. Vamos atravessar o trem e descobrir o que está controlando tudo isso.";
   if(r.dialogue<n)return switch(r.dialogue%4){case 1->"Os vagões estão vazios... mas alguma coisa se moveu à frente.";case 2->"As portas se fecharam. Se isto é uma armadilha, vamos abrir caminho.";case 3->"Há duas presenças no corredor. Primeiro cuidamos delas, depois seguimos.";default->"Estou pronto. Vou proteger a retaguarda enquanto avançamos.";};
-  return r.dialogue==n?"O trem está acelerando. A presença mais forte está no último vagão.":"Ao enfrentá-la teremos cinco minutos. Observem a fraqueza: ela pode mudar durante a luta.";
+  return r.dialogue==n?"O trem está acelerando. A presença mais forte está no último vagão.":"O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta.";
  }
  private static void send(Run r,ServerPlayer p){String text=r.mode.equals("dialogue")?line(r):r.message;RaidNetwork.send(p,new RaidNetwork.View(r.mode,List.copyOf(r.names.values()),r.capacity,r.leader().equals(p.m_20148_()),r.revision,r.dialogue%r.names.size(),text,r.rules==null?0:(int)r.rules.remaining(now()),r.rules==null?"":BattleService.knownRaidWeakness(p),r.stage));}
  private static void broadcast(Run r){for(var p:players(r))send(r,p);}
@@ -76,8 +78,8 @@ public final class RaidService {
   var party=players(r);if(party.isEmpty())return;
   for(int i=0;i<party.size();i++){var p=party.get(i);p.m_8999_(world(),r.x()+.5+(i%3-1)*2.1,65.05,TrainLayout.encounterZ(r.stage)-7-(i/3)*2.1,0,0);}
   if(r.actor==null||r.actor.m_213877_())spawn(r);if(!RUNS.contains(r))return;
-  var s=BattleService.startRaid(party,r.stage,r.actor);if(s==null){fail(r,"O encontro foi interrompido.");return;}
-  r.battle=s.id();r.mode="battle";if(r.stage==2)r.rules=new PriestessRules(now());broadcast(r);
+  var s=BattleService.startRaid(party,r.stage,r.actor,r.difficulty);if(s==null){fail(r,"O encontro foi interrompido.");return;}
+  r.battle=s.id();r.mode="battle";if(r.stage==2)r.rules=new PriestessRules(now(),r.difficulty,party.size());broadcast(r);
  }
  /** Called at resolved damage, before rewards: victory wins a tie with a phase penalty. */
  public static boolean allowAction(UUID id){for(var r:List.copyOf(RUNS))if(id.equals(r.battle)&&r.rules!=null&&r.mode.equals("battle")&&r.rules.remaining(now())==0){fail(r,"TEMPO ESGOTADO! O trem saiu de controle.",true);return false;}return true;}

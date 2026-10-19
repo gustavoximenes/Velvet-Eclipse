@@ -13,10 +13,11 @@ import java.util.*;
 @Mod.EventBusSubscriber(modid="velvet_eclipse")
 public final class PartyService {
  public static final class State extends SavedData {
+  private static final com.google.gson.Gson JSON=new com.google.gson.Gson();
   Map<String,com.gx.velveteclipse.darkhour.TartarusMapData> maps=new HashMap<>();
-  PartyRoster roster=new PartyRoster();Map<String,String> names=new HashMap<>();
-  @Override public CompoundTag m_7176_(CompoundTag t){t.m_128359_("roster",PartyNetwork.JSON.toJson(roster));var n=new CompoundTag();names.forEach(n::m_128359_);t.m_128365_("names",n);var m=new CompoundTag();maps.forEach((id,chart)->m.m_128365_(id,chart.save()));t.m_128365_("maps",m);return t;}
-  static State load(CompoundTag t){var s=new State();try{var r=PartyNetwork.JSON.fromJson(t.m_128461_("roster"),PartyRoster.class);if(r!=null){r.sanitize();s.roster=r;}}catch(RuntimeException ignored){}var n=t.m_128469_("names");for(String id:n.m_128431_())s.names.put(id,n.m_128461_(id));var m=t.m_128469_("maps");for(String id:m.m_128431_())s.maps.put(id,com.gx.velveteclipse.darkhour.TartarusMapData.load(m.m_128469_(id)));return s;}
+  PartyRoster roster=new PartyRoster();Map<String,String> names=new HashMap<>();Map<String,String> difficulties=new HashMap<>();
+  @Override public CompoundTag m_7176_(CompoundTag t){t.m_128359_("roster",JSON.toJson(roster));var n=new CompoundTag();names.forEach(n::m_128359_);t.m_128365_("names",n);var m=new CompoundTag();maps.forEach((id,chart)->m.m_128365_(id,chart.save()));t.m_128365_("maps",m);var d=new CompoundTag();difficulties.forEach(d::m_128359_);t.m_128365_("difficulty",d);return t;}
+  static State load(CompoundTag t){var s=new State();try{var r=JSON.fromJson(t.m_128461_("roster"),PartyRoster.class);if(r!=null){r.sanitize();s.roster=r;}}catch(RuntimeException ignored){}var n=t.m_128469_("names");for(String id:n.m_128431_())s.names.put(id,n.m_128461_(id));var m=t.m_128469_("maps");for(String id:m.m_128431_())s.maps.put(id,com.gx.velveteclipse.darkhour.TartarusMapData.load(m.m_128469_(id)));var d=t.m_128469_("difficulty");for(String id:d.m_128431_())s.difficulties.put(id,com.gx.velveteclipse.core.battle.BattleDifficulty.parse(d.m_128461_(id)).id());return s;}
  }
  private record Offer(String token,Map<String,ItemStack> stacks){}
  private static final Map<UUID,Offer> offers=new HashMap<>();
@@ -25,6 +26,15 @@ public final class PartyService {
  private static String id(ServerPlayer p){return p.m_20148_().toString();}
  private static ServerPlayer online(ServerPlayer p,String id){try{return p.m_20194_().m_6846_().m_11259_(UUID.fromString(id));}catch(IllegalArgumentException e){return null;}}
  public static List<ServerPlayer> members(ServerPlayer p){var g=state(p).roster.group(id(p));return g==null?List.of(p):g.members().stream().map(s->online(p,s)).filter(Objects::nonNull).toList();}
+ public static boolean difficultyLeader(ServerPlayer p){var g=state(p).roster.group(id(p));return g==null||g.members().get(0).equals(id(p));}
+ public static com.gx.velveteclipse.core.battle.BattleDifficulty difficulty(ServerPlayer p){
+  var s=state(p);var g=s.roster.group(id(p));if(g==null)return DifficultyPreferences.personal(p);
+  if(!s.difficulties.containsKey(g.id())){var leader=online(p,g.members().get(0));s.difficulties.put(g.id(),DifficultyPreferences.personal(leader).id());s.m_77762_();}
+  return com.gx.velveteclipse.core.battle.BattleDifficulty.parse(s.difficulties.get(g.id()));
+ }
+ public static void difficulty(ServerPlayer p,com.gx.velveteclipse.core.battle.BattleDifficulty value){
+  var s=state(p);var g=s.roster.group(id(p));if(g!=null&&g.members().get(0).equals(id(p))){s.difficulties.put(g.id(),value.id());s.m_77762_();}
+ }
  public static boolean mergeMap(ServerPlayer p,com.gx.velveteclipse.darkhour.TartarusMapData chart,long cycle){var s=state(p);var g=s.roster.group(id(p));if(g==null)return false;var common=s.maps.computeIfAbsent(g.id(),key->new com.gx.velveteclipse.darkhour.TartarusMapData());boolean dirty=common.reset(cycle);dirty|=common.merge(chart);boolean changed=chart.merge(common);if(dirty)s.m_77762_();return changed;}
  private static boolean available(ServerPlayer p){return p!=null&&!com.gx.velveteclipse.awakening.AwakeningService.active(p)&&p.m_6084_()&&BattleService.current(p)==null&&!com.gx.velveteclipse.exploration.ExplorationService.preparing(p);}
  private static PartyNetwork.Person person(ServerPlayer p,State s,String id){var other=online(p,id);return new PartyNetwork.Person(id,other==null?s.names.getOrDefault(id,"Jogador offline"):other.m_7755_().getString(),other!=null);}
@@ -68,7 +78,7 @@ public final class PartyService {
    }
    default->{return;}
   }
-  s.m_77762_();view(p,false,message);for(var member:p.m_20194_().m_6846_().m_11314_())if(member!=p&&s.roster.same(id(p),id(member)))view(member,false,"");
+  s.difficulties.keySet().retainAll(s.roster.groups.keySet());if(s.roster.group(id(p))!=null)difficulty(p);s.m_77762_();view(p,false,message);for(var member:p.m_20194_().m_6846_().m_11314_())if(member!=p&&s.roster.same(id(p),id(member)))view(member,false,"");
  }
  @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){offers.remove(e.getEntity().m_20148_());gate.remove(e.getEntity().m_20148_());}
  @SubscribeEvent public static void stop(net.minecraftforge.event.server.ServerStoppedEvent e){offers.clear();gate.clear();}

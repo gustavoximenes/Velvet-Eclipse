@@ -1,3 +1,9 @@
+# Velvet Eclipse 0.6.54 — Paulownia Mall e dificuldade
+
+Kurosawa, Aohige e Mayoido com os modelos e idles aprovados e acesso às lojas por clique direito. As outras seis lojas recebem indicadores clicáveis, incluindo Be Blue V. Atendimento por jogador, textos em português/inglês e modelos decorativos na aba criativa de NPCs. Inclui as correções e Personas das versões anteriores. Cliente e servidor devem usar a 0.6.54; protocolo da cidade **8**. [Funcionamento e validação offline](docs/paulownia-shop-access.md).
+
+**TAB → System → Dificuldade:** Tranquilo, Fácil, Normal e Difícil, com ajuste pelo número real de participantes. Solo salva sua preferência; o líder escolhe para a party. Vida dos inimigos acompanha entradas/saídas sem restaurar progresso, e a raid recebe o mesmo ajuste. Protocolo do menu **7**. [Regras e multiplicadores](docs/DIFFICULTY.md).
+
 # Velvet Eclipse 0.6.53 — Escola, dormitório e proteção dos cenários
 
 Escadas da Gekkoukan com pilares e vigas, encaixes de móveis e luminárias corrigidos, portas com textura estável e proteção da cidade/Velvet Room contra alterações pelos jogadores. Migração da planta 5 para 6. [Escopo e validação](docs/CITY-REPAIR.md).

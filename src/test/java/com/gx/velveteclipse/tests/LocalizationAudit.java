@@ -71,7 +71,8 @@ public final class LocalizationAudit {
         check(node.methods.stream().filter(m->m.name.equals("m_118919_")&&m.desc.equals("(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;")).count()==1,"I18n mixin resolves its exact target");
         System.out.println("PASS localization: "+checks+" checks; System previews EN/PT and "+descriptions.size()+" skill descriptions exported.");
     }
-    static void render(Path file,String loc)throws Exception{
+    static void render(Path file,String loc)throws Exception{render(file,loc,3);}
+    static void render(Path file,String loc,int selected)throws Exception{
         var image=new BufferedImage(1280,720,BufferedImage.TYPE_INT_RGB);var g=image.createGraphics();
         g.scale(1280./900,720./500);g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         var display=Font.createFont(Font.TRUETYPE_FONT,Path.of("src/main/resources/assets/velvet_eclipse/font/display.ttf").toFile());
@@ -86,8 +87,8 @@ public final class LocalizationAudit {
             public double bodyWidth(String t,double s){return g.getFontMetrics(body.deriveFont((float)s)).stringWidth(DisplayText.text(t));}
             public void item(int i,double x,double y){}
         };
-        var rows=List.of(new MenuDesign.Row("Opcoes do Minecraft","Video, audio e controles",-1),new MenuDesign.Row("Animacoes do menu","Ativadas",-1),new MenuDesign.Row("Animação All-Out","Makoto / ENTER para escolher",-1),new MenuDesign.Row("Idioma / Language",loc.equals("pt_br")?"Português":"English",-1),new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
-        var v=new MenuDesign.View(false,8,3,0,rows,"Opcoes do jogo",List.of(),null,"Português / English","Idioma salvo.","XmenBrasil",47407,1,0,1,false,8,1,1);
+        var rows=List.of(new MenuDesign.Row("Opcoes do Minecraft","Video, audio e controles",-1),new MenuDesign.Row("Animacoes do menu","Ativadas",-1),new MenuDesign.Row("Animação All-Out","Makoto / ENTER para escolher",-1),new MenuDesign.Row("Idioma / Language",loc.equals("pt_br")?"Português":"English",-1),new MenuDesign.Row("Dificuldade","Normal / Vale para o grupo; solo usa sua preferência.",-1),new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
+        var v=new MenuDesign.View(false,8,selected,0,rows,"Opcoes do jogo",selected==4?List.of(com.gx.velveteclipse.core.battle.BattleDifficulty.NORMAL.description,"Ajuste automático por participantes do combate.","Vale para o grupo; solo usa sua preferência."):List.of(),null,"Português / English",selected==4?"":"Idioma salvo.","XmenBrasil",47407,1,0,1,false,8,1,1);
         ReloadMenuDesign.background(c,v,false);ReloadMenuDesign.foreground(c,v,MenuSnapshot.empty(),0,false,0);
         var box=ReloadMenuDesign.row(8,3,false);check(ReloadMenuDesign.pickRow(8,false,box.x()+1,box.y()+1)==3,"Language row click matches visible layout");
         g.dispose();ImageIO.write(image,"png",file.toFile());

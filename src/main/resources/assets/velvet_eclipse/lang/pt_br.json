@@ -1563,5 +1563,17 @@
   "block.velvet_eclipse.city_school_plaster": "Reboco da Gekkoukan",
   "block.velvet_eclipse.city_school_tiles": "Piso da Gekkoukan",
   "block.velvet_eclipse.city_school_metal": "Metal da Gekkoukan",
-  "block.velvet_eclipse.city_school_wood": "Madeira da Gekkoukan"
+  "block.velvet_eclipse.city_school_wood": "Madeira da Gekkoukan",
+  "item.velvet_eclipse.city_police_model": "Kurosawa — modelo decorativo",
+  "item.velvet_eclipse.city_aohige_model": "Dono da Aohige — modelo decorativo",
+  "item.velvet_eclipse.city_mayoido_model": "Dona da Mayoido — modelo decorativo",
+  "entity.velvet_eclipse.city_shop_escapade_actor": "ESCAPADE",
+  "entity.velvet_eclipse.city_shop_chagall_actor": "CHAGALL CAFE",
+  "entity.velvet_eclipse.city_shop_blue_actor": "Be blue V",
+  "entity.velvet_eclipse.city_shop_police_actor": "TATSUMI EAST",
+  "entity.velvet_eclipse.city_shop_mayoido_actor": "MAYOIDO",
+  "entity.velvet_eclipse.city_shop_aohige_actor": "AOHIGE",
+  "entity.velvet_eclipse.city_shop_kenneth_actor": "KENNETH ARNOLD",
+  "entity.velvet_eclipse.city_shop_arcade_actor": "GAME PARADE",
+  "entity.velvet_eclipse.city_shop_mandragora_actor": "Mandragora"
 }

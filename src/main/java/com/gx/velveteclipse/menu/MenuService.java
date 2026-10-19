@@ -20,6 +20,7 @@ public final class MenuService {
         long now=player.m_9236_().m_46467_();UUID id=player.m_20148_();
         if(!REQUESTS.allow(id,action,now))return;
         if(Set.of("heal_target","tonic_target","supply_target").contains(action)){recover(player,action,argument);return;}
+        if(action.equals("difficulty")){String message=DifficultyPreferences.set(player,argument);refresh(player,message);for(var member:com.gx.velveteclipse.party.PartyService.members(player))if(member!=player)refresh(member,"");return;}
         if(action.equals("all_out_style")){boolean ok=AllOutPreferences.set(player,argument);refresh(player,ok?"Animação de All-Out Attack salva.":"Estilo indisponível.");return;}
         PlayerPersonaData data=PlayerPersonaData.load(player);
         var result=MenuActions.apply(data,action,argument,BattleService.hasActiveBattle(player));
@@ -43,7 +44,7 @@ public final class MenuService {
         long time=player.m_9236_().m_46468_();
         var members=new ArrayList<MenuSnapshot.Member>();var party=new ArrayList<>(com.gx.velveteclipse.party.PartyService.members(player));party.remove(player);party.add(0,player);
         for(var member:party){var state=member==player?data:PlayerPersonaData.load(member);members.add(new MenuSnapshot.Member(member.m_20148_().toString(),member.m_7755_().getString(),state.playerLevel(),state.hp(),state.maxHp(),state.sp(),state.maxSp(),state.hasPersona()?describe(state.activeInstance()):null));}
-        return new MenuSnapshot(data.hp(),data.maxHp(),data.sp(),data.maxSp(),data.pulseTonics(),data.activePersona(),personas,quests,links(player),Math.floorDiv(time,24000)+1,time,message,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),data.yen(),com.gx.velveteclipse.forge.BestiaryService.entries(player),data.personaCapacity(),data.reserveIds(),AllOutPreferences.get(player).id(),members);
+        return new MenuSnapshot(data.hp(),data.maxHp(),data.sp(),data.maxSp(),data.pulseTonics(),data.activePersona(),personas,quests,links(player),Math.floorDiv(time,24000)+1,time,message,data.playerLevel(),data.playerExperience(),data.playerNextExperience(),data.yen(),com.gx.velveteclipse.forge.BestiaryService.entries(player),data.personaCapacity(),data.reserveIds(),AllOutPreferences.get(player).id(),members,DifficultyPreferences.view(player));
     }
     private static void recover(ServerPlayer source,String action,String argument){
         String[] args=argument.split("\\|",-1);if(args.length!=2){refresh(source,"Selecione o destinatário novamente.");return;}
@@ -80,6 +81,7 @@ public final class MenuService {
     }
     @SubscribeEvent public static void clonePlayer(PlayerEvent.Clone event){
         AllOutPreferences.copy(event.getOriginal(),event.getEntity());
+        DifficultyPreferences.copy(event.getOriginal(),event.getEntity());
         String json=RuntimeBridge.tagGetString(RuntimeBridge.persistentData(event.getOriginal()),LINKS);
         if(json!=null&&!json.isBlank())RuntimeBridge.tagPutString(RuntimeBridge.persistentData(event.getEntity()),LINKS,json);
     }

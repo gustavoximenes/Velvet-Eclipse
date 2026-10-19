@@ -1,5 +1,9 @@
 plugins { id 'java' }
 
+tasks.register('difficultyTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.DifficultyAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx1G' }
+
+tasks.register('cityShopAccessTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.CityShopAccessAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx1G' }
+
 tasks.register('localizationTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.LocalizationAudit'; jvmArgs '-Djava.awt.headless=true' }
 
 tasks.register('battleCameraVisibilityTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.BattleCameraVisibilityAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx1G' }
@@ -43,7 +47,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.53-city-repair'
+version = '0.6.54-paulownia-shops'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {

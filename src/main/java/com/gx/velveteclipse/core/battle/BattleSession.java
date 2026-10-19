@@ -16,6 +16,12 @@ public final class BattleSession {
    private final List<BattleCombatant> turnOrder;
    private final Random random;
    private int turnIndex;
+   private BattleBalance balance;
+   public BattleDifficulty difficulty(){return balance==null?BattleDifficulty.NORMAL:balance.difficulty;}
+   public BattleSession(List<BattleCombatant> roster,Random random,EncounterOpening opening,BattleDifficulty difficulty){
+      this(roster,random,opening);balance=new BattleBalance(difficulty,turnOrder);
+   }
+   private void resizeEncounter(){if(balance!=null)balance.update(turnOrder);}
    private EncounterOpening opening=EncounterOpening.STANDARD;
    private boolean openingRound;
    private void agilityOrder(){turnOrder.sort(Comparator.<BattleCombatant>comparingInt(c->c.stats().agility()).reversed().thenComparing(c->c.id().toString()));}
@@ -307,7 +313,7 @@ public final class BattleSession {
       if(state!=BattleState.ACTIVE||ally==null||!ally.alive()||ally.side()!=BattleSide.PLAYERS||find(ally.id()).isPresent())return false;
       ally.ambushed(opening==EncounterOpening.AMBUSH);
       // Allies joining while the opening player phase is running share its advantage.
-      if(openingRound&&opening==EncounterOpening.ADVANTAGE&&turnOrder.get(turnIndex).side()==BattleSide.PLAYERS){int at=turnIndex+1;while(at<turnOrder.size()&&turnOrder.get(at).side()==BattleSide.PLAYERS)at++;turnOrder.add(at,ally);}else turnOrder.add(ally);return true;
+      if(openingRound&&opening==EncounterOpening.ADVANTAGE&&turnOrder.get(turnIndex).side()==BattleSide.PLAYERS){int at=turnIndex+1;while(at<turnOrder.size()&&turnOrder.get(at).side()==BattleSide.PLAYERS)at++;turnOrder.add(at,ally);}else turnOrder.add(ally);resizeEncounter();return true;
    }
 
    public boolean leave(UUID id) {
@@ -319,7 +325,7 @@ public final class BattleSession {
       turnOrder.remove(index);if(index<turnIndex)turnIndex--;
       if(active&&bonusActor!=null&&!bonusLeaving)turnIndex=Math.floorMod(turnIndex-1,Math.max(1,turnOrder.size()));
       if(bonusLeaving){bonusActor=null;batonChain.clear();}
-      updateState();
+      resizeEncounter();updateState();
       if(state==BattleState.ACTIVE&&bonusLeaving&&!active)advanceTurn();
       else if(state==BattleState.ACTIVE&&active&&bonusActor==null){turnIndex=firstLivingIndex(turnIndex);if(!beginCurrentTurn())advanceTurn();}
       return true;

@@ -5,11 +5,14 @@ import java.util.*;
 public final class PriestessRules {
  public static final int DEFAULT_CAPACITY=5,MAX_CAPACITY=12;
  private static final Element[] TYPES={Element.FIRE,Element.ICE,Element.ELECTRIC,Element.WIND,Element.LIGHT,Element.DARK,Element.PSY};
+ private final long duration;
  private final long start;private long penalty;private Long stopped;private int phase,turn;private Element weakness=Element.FIRE;
- public PriestessRules(long now){start=now;}
+ public PriestessRules(long now){this(now,com.gx.velveteclipse.core.battle.BattleDifficulty.NORMAL);}
+ public PriestessRules(long now,com.gx.velveteclipse.core.battle.BattleDifficulty difficulty){this(now,difficulty,4);}
+ public PriestessRules(long now,com.gx.velveteclipse.core.battle.BattleDifficulty difficulty,int players){start=now;duration=difficulty.raidDuration(players);}
  public Element weakness(){return weakness;}public int phase(){return phase;}
  public boolean iceTurn(){return ++turn%2==0;}
- public long remaining(long now){return Math.max(0,300_000-Math.max(0,(stopped==null?now:stopped)-start)-penalty);}
+ public long remaining(long now){return Math.max(0,duration-Math.max(0,(stopped==null?now:stopped)-start)-penalty);}
  public void stop(long now){if(stopped==null)stopped=now;}
  public int update(int hp,int maxHp,Random random){
   if(hp<=0)return 0;int lost=0;
