@@ -40,6 +40,9 @@ public final class MeleeBattleServer {
    RuntimeBridge.freezePlayer(s.p,new double[]{desired.f_82479_,desired.f_82480_,desired.f_82481_});
   else s.p.m_20256_(Vec3.f_82478_);
   RuntimeBridge.setEntityRotation(s.p,s.attackYaw,0);
+  if(s.tick==3)FeedbackServer.weaponPhase(s.p,true);
+  if(s.tick==MeleeTimeline.END-3)FeedbackServer.weaponPhase(s.p,false);
+  if(s.tick==MeleeTimeline.IMPACT-4)FeedbackServer.swing(s.p);
   if(s.tick==MeleeTimeline.IMPACT){CinematicEffects.melee(s.p);BattleService.act(s.p,s.action);}
   if(s.tick>=MeleeTimeline.END)clear(s.p);
  }}

@@ -96,7 +96,7 @@ public final class BattleService {
     }
     private static void attach(Encounter g,Object p,double[] anchor){
         if(p instanceof ServerPlayer sp)sp.m_6915_();
-        UUID id=RuntimeBridge.playerUuid(p);g.players.put(id,p);g.anchors.put(id,anchor);MEMBERS.put(id,g);
+        UUID id=RuntimeBridge.playerUuid(p);g.players.put(id,p);g.anchors.put(id,anchor);MEMBERS.put(id,g);FeedbackServer.membership(p,g.session.id(),true);
         for(var enemy:g.session.participants())if(enemy.side()==BattleSide.ENEMIES&&enemy.alive())BestiaryService.seen(p,knowledgeKey(g,enemy),enemy.persona().level());
         RuntimeBridge.setEntityRotation(p,g.yaw,2);
         if(p instanceof ServerPlayer sp)sp.f_8906_.m_9774_(anchor[0],anchor[1],anchor[2],g.yaw,2);else RuntimeBridge.freezePlayer(p,anchor);
@@ -136,7 +136,7 @@ public final class BattleService {
     }
     public static void abortEncounter(Object p){abortEncounter(p,"A Dark Hour terminou.");}
     private static void abortEncounter(Object p,String reason){var g=group(p);if(g==null)return;ShadowWorldService.release(g.session.id(),false);BATTLES.remove(g.session.id());g.session.cancelPrepared();for(Object member:new ArrayList<>(g.players.values())){AllOutServer.cancel(member);PersonaCinematicServer.clear(member);ModNetwork.sendPresentation(member,new BattleCueS2C("cancel","",false,0,0,0,0,0,0));persist(member,g.session);detach(g,member);sync(member,reason);}VisualBattleActors.clearEnemies(g.session.id());}
-    private static void detach(Encounter g,Object p){UUID id=RuntimeBridge.playerUuid(p);MeleeBattleServer.clear(p);VisualBattleActors.clear(p);MEMBERS.remove(id);g.players.remove(id);g.anchors.remove(id);g.targets.remove(id);}
+    private static void detach(Encounter g,Object p){FeedbackServer.membership(p,g.session.id(),false);UUID id=RuntimeBridge.playerUuid(p);MeleeBattleServer.clear(p);VisualBattleActors.clear(p);MEMBERS.remove(id);g.players.remove(id);g.anchors.remove(id);g.targets.remove(id);}
     public static Entity targetActor(Object p,UUID id){var g=group(p);if(g==null||id==null)return null;Object target=g.players.get(id);return target instanceof Entity e?e:VisualBattleActors.enemy(g.session.id(),id);}
     public static UUID targetId(Object p){var g=group(p);if(g==null)return null;UUID id=RuntimeBridge.playerUuid(p);var r=g.session.prepared();if(r!=null&&r.actor().equals(id))return r.action().targetId();if(g.targets.containsKey(id))return g.targets.get(id);return g.session.participants().stream().filter(c->c.side()==BattleSide.ENEMIES&&c.alive()).map(BattleCombatant::id).findFirst().orElse(null);}
     public static void beginAction(Object p,BattleAction action){var g=group(p);if(g!=null){g.targets.put(RuntimeBridge.playerUuid(p),action.targetId());g.wasBusy=true;syncAll(g,RuntimeBridge.playerName(p)+" está agindo.");}}
@@ -156,7 +156,10 @@ public final class BattleService {
             if(action.skillId().equals("pulse_tonic")){if(action.targetId()!=null&&s.find(action.targetId()).filter(c->c.side()==BattleSide.PLAYERS&&c.alive()).isEmpty())return false;var data=PlayerPersonaData.load(p);if(!data.consumePulseTonic()){sync(p,"Sem Pulse Tonic.");return false;}data.save(p);}
             else {var supply=com.gx.velveteclipse.equipment.Supplies.get(action.skillId());var target=action.targetId()==null?s.currentActor():s.find(action.targetId()).orElse(null);if(target==null||(com.gx.velveteclipse.equipment.DamageItems.get(action.skillId())!=null?target.side()!=BattleSide.ENEMIES||!target.alive():target.side()!=BattleSide.PLAYERS||!com.gx.velveteclipse.equipment.Supplies.useful(supply,target))){sync(p,"Este item não tem efeito sobre o aliado selecionado.");return false;}var bag=com.gx.velveteclipse.equipment.EquipmentData.load(p);if(!bag.consume(action.skillId())){sync(p,"Você não possui este item.");return false;}com.gx.velveteclipse.equipment.EquipmentData.save(p,bag);}
         }
+        var feedbackTargets=FeedbackServer.targets(s,id,action,t->targetActor(p,t));
+        var actingPersona=s.find(id).orElseThrow().persona().definitionId();
         var reserved=s.prepared();if(reserved==null)reserved=s.prepare(id,action);var result=s.perform(id,action);
+        FeedbackServer.result(s,List.copyOf(g.players.values()),id,actingPersona,com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family().name(),action,result,feedbackTargets);
         if(reserved!=null&&s.prepared()==null)for(var entry:reserved.hits().entrySet()){
             var target=s.find(entry.getKey()).orElse(null);var hit=entry.getValue();if(target==null||target.side()!=BattleSide.ENEMIES||hit.missed()||hit.element()==Element.NONE)continue;
             String key=knowledgeKey(g,target);var known=knowledge(g,p);boolean discovered=known.get(key,hit.element())==null;
@@ -209,6 +212,7 @@ public final class BattleService {
             for(var entry:g.players.entrySet())if(!MeleeBattleServer.active(entry.getValue()))RuntimeBridge.freezePlayer(entry.getValue(),g.anchors.get(entry.getKey()));
             if(g.enemyMotion!=null){g.enemyMotion.tick(ticks);if(ticks>=g.enemyPoseUntil){g.enemyMotion.restore();g.enemyMotion=null;}}
             if(g.animatingEnemy!=null&&ticks>=g.enemyPoseUntil){g.animatingEnemy.m_146926_(0);g.animatingEnemy=null;}
+            if(g.pendingEnemy!=null&&g.pendingEnemy.action().type()==BattleActionType.ATTACK&&ticks==g.enemyImpactAt-4){Object listener=g.players.values().stream().findFirst().orElse(null);if(listener!=null)FeedbackServer.cue(listener,"swing_strike");}
             if(g.pendingEnemy!=null&&ticks>=g.enemyImpactAt)resolveEnemy(g);
             boolean acting=busy(g);
             if(g.results.started())continue;
@@ -248,12 +252,9 @@ public final class BattleService {
         var actor=s.find(pending.actor()).orElse(null);var target=s.find(pending.action().targetId()).orElse(null);
         if(actor==null||target==null||s.state()!=BattleState.ACTIVE){s.cancelPrepared();return;}
         var skill=PersonaRegistry.skill(pending.skill()).orElse(null);Object viewer=g.players.values().stream().findFirst().orElse(null);
-        if(skill!=null&&com.gx.velveteclipse.core.persona.SpellVisuals.supported(skill.id())){
-            var hits=skill.target()==SkillTarget.SELF?List.of(actor):skill.target()==SkillTarget.ALL_ENEMIES?s.enemiesOf(actor):skill.target()==SkillTarget.ALL_ALLIES?s.alliesOf(actor):List.of(target);
-            var points=hits.stream().map(c->targetActor(viewer,c.id())).filter(Objects::nonNull).limit(5).map(BattleLightningS2C.Strike::at).toList();
-            for(Object member:g.players.values())ModNetwork.sendPresentation(member,new BattleSpellS2C(skill.id(),points));
-        }
+        var feedbackTargets=FeedbackServer.targets(s,pending.actor(),pending.action(),id->targetActor(viewer,id));
         var result=s.perform(pending.actor(),pending.action());g.delay=10;
+        FeedbackServer.result(s,List.copyOf(g.players.values()),pending.actor(),actor.persona().definitionId(),"FISTS",pending.action(),result,feedbackTargets);
         recordDefeats(g);
         if(g.raid)com.gx.velveteclipse.raid.RaidService.afterAction(s);
         if(g.raid&&g.raidStage==2){g.delay=60;g.wasBusy=true;}

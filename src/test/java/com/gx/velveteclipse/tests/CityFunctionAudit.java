@@ -41,6 +41,11 @@ public final class CityFunctionAudit {
    for(var b:CityArchitecture.tile(c[5]).boxes())closedBlocked|=box(b,c[0],c[1],c[2]).m_82381_(passage);
   }
   check(!openBlocked&&closedBlocked,"Entrance opens the passage and closing restores the actual leaf collision");
+  var nurse=f.doors().stream().filter(d->d.id().equals("school_enfermaria")).findFirst().orElseThrow();
+  check(CityFurniture.doorLeafHit(nurse,false,new net.minecraft.core.BlockPos(22,65,-117),new Vec3(22.5,65.4,-116.10)),"Closed school leaf can be clicked");
+  check(CityFurniture.doorLeafHit(nurse,true,new net.minecraft.core.BlockPos(21,65,-116),new Vec3(21.565,65.4,-115.2)),"Opened school leaf can be clicked at rotated position");
+  check(!CityFurniture.doorLeafHit(nurse,false,new net.minecraft.core.BlockPos(21,65,-117),new Vec3(21.2,65.4,-116.1)),"Wall beside closed leaf is not a door handle despite sharing its block");
+  check(!CityFurniture.doorLeafHit(nurse,true,new net.minecraft.core.BlockPos(22,65,-117),new Vec3(22.5,65.4,-116.10)),"Empty old leaf position does not toggle an open door");
   System.out.println("PASS city functions: "+checks+" checks; "+f.seats().size()+" seats, "+f.doors().size()+" doors, actual city return floors and blocked-arrival cases");
  }
 }

@@ -53,7 +53,7 @@ public final class MenuService {
         var from=PlayerPersonaData.load(source);var to=source==target?from:PlayerPersonaData.load(target);
         var bag=com.gx.velveteclipse.equipment.EquipmentData.load(source);
         var result=MenuRecovery.apply(from,to,bag,action,args[0]);
-        if(result.changed()){from.save(source);if(source!=target)to.save(target);com.gx.velveteclipse.equipment.EquipmentData.save(source,bag);BattleService.sync(source,result.message());if(source!=target)BattleService.sync(target,result.message());com.gx.velveteclipse.equipment.EquipmentService.sync(source,"sync","");}
+        if(result.changed()){com.gx.velveteclipse.forge.FeedbackServer.worldRoute(target,action.equals("heal_target")?"skill_"+args[0]:"item_"+(action.equals("tonic_target")?"pulse_tonic":args[0]));from.save(source);if(source!=target)to.save(target);com.gx.velveteclipse.equipment.EquipmentData.save(source,bag);BattleService.sync(source,result.message());if(source!=target)BattleService.sync(target,result.message());com.gx.velveteclipse.equipment.EquipmentService.sync(source,"sync","");}
         refresh(source,result.message());
     }
     public static MenuSnapshot.Persona describe(PersonaInstance instance){

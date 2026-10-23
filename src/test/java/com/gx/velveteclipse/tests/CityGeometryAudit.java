@@ -10,10 +10,10 @@ public final class CityGeometryAudit {
  static double[] cross(float[] a,float[] b,float[] c){double x=b[0]-a[0],y=b[1]-a[1],z=b[2]-a[2],u=c[0]-a[0],v=c[1]-a[1],w=c[2]-a[2];return new double[]{y*w-z*v,z*u-x*w,x*v-y*u};}
  static double length(double[] v){return Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]);}
  public static void main(String[] args)throws Exception{
-  check(CityPlan.get().revision()==6,"Geometry correction schedules revision 6");
-  for(int revision:new int[]{3,4,5}){
+  check(CityPlan.get().revision()==7,"Geometry correction schedules revision 7");
+  for(int revision:new int[]{3,4,5,6}){
    var s=new CityState();s.choice=1;s.revision=revision;s.ready=true;
-   check(CityBuilder.beginRevision(s)&&s.targetRevision==6,"Existing city upgrades");
+   check(CityBuilder.beginRevision(s)&&s.targetRevision==7,"Existing city upgrades");
    s.cursor=71;check(!CityBuilder.beginRevision(s)&&s.cursor==71,"Upgrade resumes without resetting progress");
    var method=CityBuilder.class.getDeclaredMethod("legacyDoorTile",int.class,int[].class,int.class);method.setAccessible(true);
    CityFurniture.Catalogue old;
@@ -43,7 +43,7 @@ public final class CityGeometryAudit {
    faces++;
   }}
   var out=Path.of("build/reports/gekkoukan/geometry-validation.json");Files.createDirectories(out.getParent());
-  Files.writeString(out,"{\"checks\":"+checks+",\"faces\":"+faces+",\"maxAreaError\":"+maxError+",\"cityRevision\":6,\"inGame\":false}");
-  System.out.println("PASS city geometry: "+checks+" checks; "+faces+" nondegenerate native faces; revisions 3/4/5 migration");
+  Files.writeString(out,"{\"checks\":"+checks+",\"faces\":"+faces+",\"maxAreaError\":"+maxError+",\"cityRevision\":7,\"inGame\":false}");
+  System.out.println("PASS city geometry: "+checks+" checks; "+faces+" nondegenerate native faces; revisions 3/4/5/6 migration");
  }
 }

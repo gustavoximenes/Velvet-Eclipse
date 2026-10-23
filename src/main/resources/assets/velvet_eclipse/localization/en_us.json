@@ -6147,5 +6147,9 @@
   "Ajuste automático por participantes do combate.": "Automatically scales to battle participants.",
   "Escolher dificuldade": "Choose difficulty",
   "ESQ / DIR  Dificuldade": "LEFT / RIGHT  Difficulty",
-  "O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta.": "The battle time limit follows the selected difficulty. Watch its weakness: it may change during the fight."
+  "O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta.": "The battle time limit follows the selected difficulty. Watch its weakness: it may change during the fight.",
+  "Áudio do mod": "Mod audio",
+  "Vozes, efeitos e interface": "Voices, effects and interface",
+  "Volumes independentes por tipo de som. Preferência salva neste cliente.": "Independent volumes for each sound type. Saved on this client.",
+  "Ajustar áudio": "Adjust audio"
 }

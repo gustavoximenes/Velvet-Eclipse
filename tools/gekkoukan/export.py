@@ -1,4 +1,4 @@
-"""Revision 6 export. Append IDs so night journals and old worlds remain readable."""
+"""Revision 7 export. Append IDs so night journals and old worlds remain readable."""
 from pathlib import Path
 import sys,gzip,json,hashlib,math,pickle,importlib.util
 import numpy as np
@@ -138,12 +138,12 @@ def main():
  for r in rooms:
   p=r['entry'];places.append(dict(id='school_'+aliases.get(r['id'],r['id']),name='Gekkoukan · '+r['id'].replace('_',' '),x=math.floor(p[0]),y=round(p[1]),z=math.floor(p[2])))
  places.append(dict(id='school_hallway',name='Gekkoukan · Hall',x=0,y=64,z=-119))
- plan.update(revision=6,cells=sorted(cells.values(),key=lambda c:(c[1],c[0],c[2])),places=places,palette=palette)
+ plan.update(revision=7,cells=sorted(cells.values(),key=lambda c:(c[1],c[0],c[2])),places=places,palette=palette)
  plan['buildings']=[b for b in plan['buildings'] if b['id']!='school']+[dict(id='school',minX=-44,maxX=44,minZ=-187,maxZ=-110,floors=[64,70,76,82]),dict(id='school_gym',minX=59,maxX=87,minZ=-181,maxZ=-145,floors=[64])]
  plan['routes']=[r for r in plan.get('routes',[]) if 'school' not in r['name'].lower() and 'gekkoukan' not in r['name'].lower()]
  dump(DATA/'plan.json.gz',plan);dump(DATA/'architecture.json.gz',defs)
  (AS/'city/architecture.bin.gz').write_bytes(gzip.compress(np.concatenate(chunks).astype('>f4').tobytes(),mtime=0))
  dump(HERE/'assembly.json',dict(rooms=rooms,seats=seats,doors=doors,removedInvisibleCells=removed,trees=len(tree_data)))
- print('revision 6:',len(cells),'cells;',len(defs),'tiles;',len(rooms),'connected rooms; removed',len(removed),'invisible cells',flush=True)
+ print('revision 7:',len(cells),'cells;',len(defs),'tiles;',len(rooms),'connected rooms; removed',len(removed),'invisible cells',flush=True)
 
 if __name__=='__main__':main()

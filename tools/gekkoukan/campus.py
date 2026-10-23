@@ -29,6 +29,13 @@ def build():
    if axis=='x':args=(a,yy,fixed,b-a,h,.24)
    else:args=(fixed,yy,a,.24,h,b-a)
    (pane if glass else box)(*args)
+   if glass:
+    if axis=='x':
+     box(a,yy,fixed-.025,b-a,.055,.29,METAL,34);box(a,yy+h-.055,fixed-.025,b-a,.055,.29,METAL,34)
+     box(b-.055,yy,fixed-.025,.055,h,.29,METAL,34)
+    else:
+     box(fixed-.025,yy,a,.29,.055,b-a,METAL,34);box(fixed-.025,yy+h-.055,a,.29,.055,b-a,METAL,34)
+     box(fixed-.025,yy,b-.055,.29,h,.055,METAL,34)
   for a,c in zip(cuts,cuts[1:]):
    if opening and a>=opening[0] and c<=opening[1]:part(a,c,y+3.5,2.25);continue
    pier=min(.25,(c-a)*.25);part(a,a+pier,y,5.75)
@@ -56,9 +63,9 @@ def build():
   doors.append(dict(id='school_'+name,lo=d[:3],hi=d[3:],angle=angle,offset=[x,y,z]))
   for i,p in enumerate(meta['props']):
    if p['kind'] not in ('assento','banco'):continue
-   q=p['bounds'];center=transform([(q[0]+q[3])/2,.04 if p['kind']=='assento' else .18,(q[2]+q[5])/2],angle,[x,y,z])
+   q=p['bounds'];center=transform([(q[0]+q[3])/2,p['seatTop']-.40,(q[2]+q[5])/2],angle,[x,y,z])
    points=transform([[xx,yy,zz] for xx in [q[0],q[3]] for yy in [0,q[4]] for zz in [q[2],q[5]]],angle,[x,y,z])
-   seats.append(dict(id=f'school_{name}_{i}',point=center.tolist(),yaw=180-angle,bounds=[*points.min(0),*points.max(0)]))
+   seats.append(dict(id=f'school_{name}_{i}',point=center.tolist(),yaw=p['seatYaw']+angle,bounds=[*points.min(0),*points.max(0)]))
   return meta
  def classroom(id,x,y,z):
   # Same school furniture language, real doorway and four clear aisles.
@@ -78,7 +85,7 @@ def build():
     for dx in [-.26,.20]:
      for dz in [-.25,.19]:box(cx+dx,y,cz+dz,.06,.53,.06,METAL,34)
     for dx in [-.26,.20]:box(cx+dx,y+.53,cz+.24,.06,.23,.08,METAL,34)
-    seats.append(dict(id=f'school_{id}_{xx}_{zz}',point=[cx,y+.04,cz],yaw=180,bounds=[cx-.32,y,cz-.34,cx+.32,y+1.3,cz+.34]))
+    seats.append(dict(id=f'school_{id}_{xx}_{zz}',point=[cx,y+.23,cz],yaw=180,bounds=[cx-.32,y,cz-.34,cx+.32,y+1.3,cz+.34]))
   for zz in [-4,1,5]:box(x-4,y+4.42,z+zz,8,.08,.22,(.97,.97,.87),32,.4)
   doors.append(dict(id='school_'+id,lo=[3.5,0,7.3],hi=[5.5,2.8,7.5],angle=0,offset=[x,y,z]))
   rooms.append(dict(id=id,origin=[x,y,z],angle=0,entry=[x+4.5,y,z+6.5],size=[14,4.5,15]))
@@ -125,9 +132,19 @@ def build():
  # Tall glazed entrance and open rear portal. Front glass stops above the entry.
  box(-11,0,-22,.4,22,16);box(10.6,0,-22,.4,22,16)
  box(-11,0,-22,8.5,22,.3);box(2.5,0,-22,8.5,22,.3);box(-2.5,3.5,-22,5,18.5,.3)
- for x in [-10,-5,0,5,10]:box(x-.36,4,-.6,.72,17.6,1.2,TRIM)
- pane(-10,4,-.28,20,17.5,.10)
- for x in [-10,4]:pane(x,.05,-.3,6,3.85,.1)
+ for x in [-10.64,-5,5,10.64]:box(x-.36,0,-.6,.72,21.6,1.2,TRIM)
+ box(-5,3.5,-.6,10,.5,1.2,TRIM)
+ box(-.16,4,-.38,.32,17.6,.4,METAL,34)
+ for a,c in [(-10.28,-5.36),(-4.64,-.16),(.16,4.64),(5.36,10.28)]:
+  for low,high in [(4,5.75),(6,11.75),(12,17.75),(18,21.6)]:
+   pane(a,low,-.28,c-a,high-low,.10)
+ for a,c in [(-10.28,-5.36),(5.36,10.28)]:
+  box(a,0,-.3,c-a,1,.3);pane(a,1,-.28,c-a,2.5,.10)
+ # Outer edges overlap the wing walls, while each floor retains its full walkway.
+ for x in [-11,10.6]:
+  for y in [0,6,12]:box(x,y+3.5,-6,.4,2.5,6)
+  box(x,18,-6,.4,3.6,6)
+ for y in [5.75,11.75,17.75]:box(-10.28,y,-.38,20.56,.25,.4,METAL,34)
  box(-11.5,21.6,-22.5,23,1,23,TRIM);box(-10.5,22.6,-21,21,.5,21)
  for i in range(7):box(-1+i*.1,23.1+i*.4,-3,2-i*.2,.45,.6,TRIM)
  s.ring((0,24.25,-2.38),.49,.08,(.48,.57,.49),mat=34)
@@ -168,7 +185,7 @@ def build():
  for x in [-37,-18,15,31]:
   box(x,18.75,-10,3,.16,.7,WOOD,35)
   for dx in [.2,2.7]:box(x+dx,18.25,-10,.1,.5,.7,METAL,34)
-  for dx in [.5,1.5,2.5]:seats.append(dict(id=f'school_roof_bench_{x}_{dx}',point=[x+dx,18.36,-9.65],yaw=0,bounds=[x,18.25,-10,x+3,19.25,-9.3]))
+  for dx in [.5,1.5,2.5]:seats.append(dict(id=f'school_roof_bench_{x}_{dx}',point=[x+dx,18.51,-9.65],yaw=0,bounds=[x,18.25,-10,x+3,19.25,-9.3]))
  for x in [-39,34]:box(x,18.25,-18,2.3,1.7,2.3,(.53,.62,.61),34)
  # Approved room interiors. All entrances face a circulation gallery.
  main=[['secretaria','professores','enfermaria','biblioteca'],['classroom_2f','conselho','laboratorio','ciencias'],['musica','artes','costura','classroom_3a']]
@@ -210,7 +227,7 @@ def build():
   box(x,.6,z,3,.16,.72,WOOD,35);box(x,.95,z-.1,3,.7,.12,WOOD,35)
   for dx in [.25,2.65]:
    box(x+dx,.03,z,.1,.57,.66,METAL,34);box(x+dx,.6,z-.1,.1,.6,.12,METAL,34)
-  for dx in [.5,1.5,2.5]:seats.append(dict(id=f'school_court_bench_{x}_{dx}',point=[x+dx,.21,z+.36],yaw=0,bounds=[x,0,z-.1,x+3,1.65,z+.72]))
+  for dx in [.5,1.5,2.5]:seats.append(dict(id=f'school_court_bench_{x}_{dx}',point=[x+dx,.36,z+.36],yaw=0,bounds=[x,0,z-.1,x+3,1.65,z+.72]))
  for x in [-10,9]:box(x,0,56,1,4.6,1)
  for x in [-10.5,10.5]:
   for z in [6,22,39,54]:

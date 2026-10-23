@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.55 — Photon e áudio original
+
+Novos efeitos de ataque e 331 trechos originais, mantendo o fogo da evocação. Inclui correções da Gekkoukan e interações dos móveis. **TAB → System → Áudio do mod** oferece volumes separados para voz, combate, interações, interface e despertar, além da música do Minecraft. [Detalhes, limites e validação offline](docs/reload-feedback.md). Cliente e servidor: 0.6.55; protocolos principal 23, cidade 9, menu 7.
+
 # Velvet Eclipse 0.6.54 — Paulownia Mall e dificuldade
 
 Kurosawa, Aohige e Mayoido com os modelos e idles aprovados e acesso às lojas por clique direito. As outras seis lojas recebem indicadores clicáveis, incluindo Be Blue V. Atendimento por jogador, textos em português/inglês e modelos decorativos na aba criativa de NPCs. Inclui as correções e Personas das versões anteriores. Cliente e servidor devem usar a 0.6.54; protocolo da cidade **8**. [Funcionamento e validação offline](docs/paulownia-shop-access.md).

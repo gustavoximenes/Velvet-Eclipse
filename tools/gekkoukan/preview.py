@@ -67,3 +67,10 @@ for mode,slot in [('open',4),('closed',5)]:
  v=np.concatenate(chunks);v.astype('<f4').tofile(OUT/f'school_door_{mode}-render.bin')
  (OUT/f'school_door_{mode}.json').write_text(json.dumps(dict(vertexCount=len(v),key=[-80,180,-10],center=[19,66,-120],lights=[],views=[dict(id=f'gekkoukan-porta-{mode}',eye=[19.8,65.8,-113.5],target=[22.5,65.7,-116.1],fov=66)],shots=[])))
 p=OUT/'RenderGekkoukan.java';p.write_text(p.read_text(encoding='utf8').replace('List.of("school","dorm_open","dorm_closed")','List.of("school","dorm_open","dorm_closed","school_door_open","school_door_closed")'),encoding='utf8')
+
+# Review the actual alpha pass instead of representing glass as solid blue panels.
+from preview_glass import apply
+p.write_text(apply(p.read_text(encoding='utf8')),encoding='utf8')
+meta=json.loads((OUT/'school.json').read_text())
+meta['views'] += [dict(id='gekkoukan-janela-corredor',eye=[-39,66,-114.5],target=[-24,66.7,-110.1],fov=76),dict(id='gekkoukan-juncao-hall',eye=[-19,77,-92],target=[-8,75,-113],fov=66),dict(id='gekkoukan-pilares-entrada',eye=[-3,66,-102],target=[-7,68,-110],fov=76)]
+(OUT/'school.json').write_text(json.dumps(meta))

@@ -3,6 +3,7 @@ import com.gx.velveteclipse.core.persona.*;
 import com.gx.velveteclipse.network.*;
 import java.util.List;
 public final class ClientBattleUiState {
+ private static void sound(String route){com.gx.velveteclipse.client.vfx.ReloadAudio.ui(route);}
  private static Page page=Page.MAIN;
  private static boolean actionLocked,switchPending;
  private static int selected;
@@ -27,8 +28,8 @@ public final class ClientBattleUiState {
   if(next.playerTurn()){actionLocked=false;switchPending=false;}
   selected=Math.min(selected,Math.max(0,options(next).size()-1));
  }
- public static void open(Page next){if(!actionLocked()){page=next==Page.PERSONAS?Page.SKILLS:next==null?Page.MAIN:next;opened=System.nanoTime();pendingSkill="";selected=0;lastMouseX=lastMouseY=-1;}}
- public static void back(){if(com.gx.velveteclipse.client.equipment.ItemHelpHud.active()){com.gx.velveteclipse.client.equipment.ItemHelpHud.close();return;}if(page==Page.TARGET&&!pendingSkill.isBlank()&&!pendingSkill.equals("__baton_pass")){page=pendingSkill.startsWith("__item:")?Page.ITEMS:Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
+ public static void open(Page next){if(!actionLocked()){sound("ui_battle_target");page=next==Page.PERSONAS?Page.SKILLS:next==null?Page.MAIN:next;opened=System.nanoTime();pendingSkill="";selected=0;lastMouseX=lastMouseY=-1;}}
+ public static void back(){sound("ui_cancel");if(com.gx.velveteclipse.client.equipment.ItemHelpHud.active()){com.gx.velveteclipse.client.equipment.ItemHelpHud.close();return;}if(page==Page.TARGET&&!pendingSkill.isBlank()&&!pendingSkill.equals("__baton_pass")){page=pendingSkill.startsWith("__item:")?Page.ITEMS:Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
  private static boolean canAct(BattleSnapshotS2C s){return s!=null&&s.active()&&s.playerTurn()&&!actionLocked()&&!BattleTacticsClient.prompt();}
  public static com.gx.velveteclipse.equipment.EquipmentBonuses bonuses(BattleSnapshotS2C s){return com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().withSkills(s.passives());}
  public static boolean affordable(SkillDefinition skill,BattleSnapshotS2C s){return skill!=null&&!skill.isPassive()&&(skill.spCost()>0&&bonuses(s).has("spell master")?Math.max(1,skill.spCost()/2):skill.spCost())<=s.sp()&&(skill.hpPercentCost()==0||s.hp()>Math.max(1,s.maxHp()*(bonuses(s).has("arms master")?Math.max(1,skill.hpPercentCost()/2):skill.hpPercentCost())/100));}
@@ -36,17 +37,17 @@ public final class ClientBattleUiState {
   if(!canAct(s)||com.gx.velveteclipse.client.equipment.ItemHelpHud.active())return false;
   if(page==Page.TARGET)return confirm(s);
   if(!selector()||index<0||index>=options(s).size())return false;
-  if(page==Page.ITEMS){pendingSkill="__item:"+items().get(index);page=Page.TARGET;BattleTargetHud.chooseDefault();return true;}
+  if(page==Page.ITEMS){pendingSkill="__item:"+items().get(index);page=Page.TARGET;sound("ui_battle_target");BattleTargetHud.chooseDefault();return true;}
   selected=index;String id=s.skills().get(index);
-  if(!affordable(PersonaRegistry.skill(id).orElse(null),s))return false;
+  if(!affordable(PersonaRegistry.skill(id).orElse(null),s)){sound("ui_error");return false;}
   var skill=PersonaRegistry.skill(id).orElseThrow();
-  pendingSkill=id;page=Page.TARGET;BattleTargetHud.chooseDefault();return true;
+  pendingSkill=id;page=Page.TARGET;sound("ui_battle_target");BattleTargetHud.chooseDefault();return true;
  }
  public static boolean selectVisible(int row,BattleSnapshotS2C s){return selectIndex(selected/7*7+row,s);}
- public static void attack(){var s=ClientBattleState.snapshot();if(canAct(s)){pendingSkill="";page=Page.TARGET;BattleTargetHud.chooseDefault();}}
- public static void baton(){var s=ClientBattleState.snapshot();if(canAct(s)&&BattleTacticsClient.canPass()){pendingSkill="__baton_pass";page=Page.TARGET;BattleTargetHud.chooseDefault();}}
+ public static void attack(){var s=ClientBattleState.snapshot();if(canAct(s)){pendingSkill="";page=Page.TARGET;sound("ui_battle_target");BattleTargetHud.chooseDefault();}}
+ public static void baton(){var s=ClientBattleState.snapshot();if(canAct(s)&&BattleTacticsClient.canPass()){pendingSkill="__baton_pass";page=Page.TARGET;sound("ui_battle_target");BattleTargetHud.chooseDefault();}}
  public static boolean confirm(BattleSnapshotS2C s){if(!canAct(s))return false;if(selector())return selectIndex(selected,s);if(page!=Page.TARGET||BattleTargetHud.selectedId()==null)return false;send(pendingSkill.startsWith("__item:")?"item":pendingSkill.equals("__baton_pass")?"baton_pass":pendingSkill.isEmpty()?"attack":"skill",pendingSkill.startsWith("__item:")?pendingSkill.substring(7):pendingSkill);return true;}
- public static void move(int delta){if(page==Page.TARGET&&!actionLocked()){BattleTargetHud.move(delta);return;}var s=ClientBattleState.snapshot();if(selector()&&canAct(s)&&!options(s).isEmpty())selected=Math.floorMod(selected+delta,options(s).size());}
+ public static void move(int delta){if(page==Page.TARGET&&!actionLocked()){var before=BattleTargetHud.selectedId();BattleTargetHud.move(delta);if(!java.util.Objects.equals(before,BattleTargetHud.selectedId()))sound("ui_cursor");return;}var s=ClientBattleState.snapshot();if(selector()&&canAct(s)&&!options(s).isEmpty()){int before=selected;selected=Math.floorMod(selected+delta,options(s).size());if(before!=selected)sound("ui_cursor");}}
  public static void cycle(int direction){if(page==Page.ITEMS){move(direction);return;}if(page==Page.TARGET){move(direction);return;}var s=ClientBattleState.snapshot();if(!selector()||!canAct(s)||BattleTacticsClient.oneMore()||s.roster().size()<2)return;
   int i=s.roster().indexOf(s.personaId());String id=s.roster().get(Math.floorMod(i+direction,s.roster().size()));switchPending=true;selected=0;ModNetwork.sendAction("persona",id);
  }
@@ -55,7 +56,7 @@ public final class ClientBattleUiState {
   if(!selector()||actionLocked())return;
   if(Math.abs(x-lastMouseX)+Math.abs(y-lastMouseY)<.2)return;lastMouseX=x;lastMouseY=y;
   var s=ClientBattleState.snapshot();int first=selected/7*7;
-  for(int row=0;row<Math.min(7,options(s).size()-first);row++)if(PersonaBattleDesign.row(w,h,row,age()).contains(x,y)){selected=first+row;break;}
+  for(int row=0;row<Math.min(7,options(s).size()-first);row++)if(PersonaBattleDesign.row(w,h,row,age()).contains(x,y)){if(selected!=first+row)sound("ui_cursor");selected=first+row;break;}
  }
  public static String pendingSkill(){return pendingSkill;}
  public static Element selectedElement(){
@@ -79,5 +80,5 @@ public final class ClientBattleUiState {
  public static String displaySkill(String id){return PersonaRegistry.skill(id==null?"":id).map(SkillDefinition::displayName).orElse(id==null?"":id);}
  public static String displayPersona(String id){return PersonaRegistry.persona(id).map(PersonaDefinition::displayName).orElse(id==null?"":id);}
  public static void escape(){if(canAct(ClientBattleState.snapshot()))send("escape","");}
- private static void send(String type,String id){var target=page==Page.TARGET?BattleTargetHud.selectedId():null;actionLocked=true;page=Page.MAIN;ModNetwork.sendAction(type,id,target);}
+ private static void send(String type,String id){sound("ui_battle_confirm");var target=page==Page.TARGET?BattleTargetHud.selectedId():null;actionLocked=true;page=Page.MAIN;ModNetwork.sendAction(type,id,target);}
 }

@@ -43,10 +43,13 @@ public final class CityFurniture {
         var tile=CityArchitecture.tile(expected);
         return actual==-1&&tile!=null&&tile.length()==0&&tile.boxes().length==0;
     }
+    private static net.minecraft.world.phys.shapes.VoxelShape movingPart(int[] c,boolean open){
+        return net.minecraft.world.phys.shapes.Shapes.m_83113_(CityArchitecture.shape(c[open?4:5]),CityArchitecture.shape(c[open?5:4]),(a,b)->a&&!b);
+    }
     private static boolean change(ServerLevel level,Door d,boolean open){
         if(state(level,d)==-2)return false;
         for(var c:d.cells()){
-            var shape=CityArchitecture.shape(c[open?4:5]);
+            var shape=movingPart(c,open);
             for(var entity:level.m_45976_(LivingEntity.class,new AABB(pos(c)).m_82400_(.01)))
                 if(entity.m_6084_())for(var box:shape.m_83299_())if(box.m_82386_(c[0],c[1],c[2]).m_82381_(entity.m_20191_()))return false;
         }
@@ -57,6 +60,14 @@ public final class CityFurniture {
             if(level.m_7702_(at) instanceof CityArchitectureEntity tile)tile.configure(c[open?4:5]);
         }
         return true;
+    }
+    /** Shared static walls/floors in a merged tile must never act as a door handle. */
+    public static boolean doorLeafHit(Door d,boolean open,BlockPos at,net.minecraft.world.phys.Vec3 hit){
+        for(var c:d.cells())if(pos(c).equals(at)){
+            for(var box:movingPart(c,open).m_83299_())
+                if(box.m_82386_(c[0],c[1],c[2]).m_82400_(.025).m_82390_(hit))return true;
+        }
+        return false;
     }
     @SubscribeEvent public static void tick(TickEvent.ServerTickEvent e){
         if(e.phase!=TickEvent.Phase.END)return;var server=net.minecraftforge.server.ServerLifecycleHooks.getCurrentServer();
@@ -72,16 +83,18 @@ public final class CityFurniture {
         var hit=e.getHitVec().m_82450_();var level=p.m_284548_();
         if(p.m_20275_(hit.f_82479_,hit.f_82480_,hit.f_82481_)>25)return;
         for(var d:CATALOGUE.doors())if(Arrays.stream(d.cells()).anyMatch(c->pos(c).equals(e.getPos()))){
-            // Only click the leaf's actual cell, not a distant GUI or arbitrary packet coordinate.
-            int current=state(level,d);if(current==-2)continue;e.setCanceled(true);
+            int current=state(level,d);if(current<0||!doorLeafHit(d,current==0,e.getPos(),hit))continue;e.setCanceled(true);
             long now=System.currentTimeMillis();var tag=p.getPersistentData();if(now-tag.m_128454_("city_furniture_click")<300)return;tag.m_128356_("city_furniture_click",now);
-            if(!change(level,d,current==1))p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Afaste-se da porta para abri-la ou fechá-la."),true);return;
+            if(!change(level,d,current==1))p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Afaste-se da porta para abri-la ou fechá-la."),true);
+            else com.gx.velveteclipse.forge.FeedbackServer.furniture(p,"door_"+d.id(),current==1?0:1,hit.f_82479_,hit.f_82480_,hit.f_82481_);return;
         }
-        for(var s:CATALOGUE.seats())if(bounds(s.bounds()).m_82400_(.08).m_82390_(hit)){
+        var candidates=CATALOGUE.seats().stream().filter(s->bounds(s.bounds()).m_82400_(.08).m_82390_(hit))
+            .sorted(Comparator.comparingDouble(s->(s.x()-hit.f_82479_)*(s.x()-hit.f_82479_)+(s.z()-hit.f_82481_)*(s.z()-hit.f_82481_))).toList();
+        for(var s:candidates){
             if(!(level.m_7702_(pos(s.anchor())) instanceof CityArchitectureEntity tile)||tile.id()!=s.tile())continue;e.setCanceled(true);
-            if(!level.m_45976_(VelvetSeatEntity.class,new AABB(s.x()-.25,s.y()-.25,s.z()-.25,s.x()+.25,s.y()+.25,s.z()+.25)).isEmpty())return;
+            if(!level.m_45976_(VelvetSeatEntity.class,new AABB(s.x()-.25,s.y()-.25,s.z()-.25,s.x()+.25,s.y()+.25,s.z()+.25)).isEmpty())continue;
             var seat=VelvetRoomRegistry.SEAT.get().m_20615_(level);if(seat==null)return;seat.cityFurniture(s.id(),p.m_20182_());seat.m_6034_(s.x(),s.y(),s.z());seat.m_146922_(s.yaw());
-            if(!level.m_7967_(seat))return;p.m_146922_(s.yaw());p.m_5616_(s.yaw());p.m_5618_(s.yaw());if(!p.m_7998_(seat,true))seat.m_146870_();else p.m_5661_(com.gx.velveteclipse.localization.ModText.component("SHIFT para levantar."),true);return;
+            if(!level.m_7967_(seat))return;p.m_146922_(s.yaw());p.m_5616_(s.yaw());p.m_5618_(s.yaw());if(!p.m_7998_(seat,true))seat.m_146870_();else {p.m_5661_(com.gx.velveteclipse.localization.ModText.component("SHIFT para levantar."),true);com.gx.velveteclipse.forge.FeedbackServer.furniture(p,"seat_sit",0,s.x(),s.y(),s.z());}return;
         }
     }
     private CityFurniture(){}

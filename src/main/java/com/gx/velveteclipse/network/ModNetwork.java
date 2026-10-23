@@ -8,7 +8,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-   private static final String PROTOCOL = "22";
+   private static final String PROTOCOL = "23";
    public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
       new ResourceLocation("velvet_eclipse", "main"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals
    );
@@ -36,8 +36,9 @@ public final class ModNetwork {
          CHANNEL.registerMessage(var0++,BattleResultsS2C.class,BattleResultsS2C::encode,BattleResultsS2C::decode,BattleResultsS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleSpellS2C.class,BattleSpellS2C::encode,BattleSpellS2C::decode,BattleSpellS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          CHANNEL.registerMessage(var0++,BattleDirectionS2C.class,BattleDirectionS2C::encode,BattleDirectionS2C::decode,BattleDirectionS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
+         CHANNEL.registerMessage(var0++,BattleFeedbackS2C.class,BattleFeedbackS2C::encode,BattleFeedbackS2C::decode,BattleFeedbackS2C::handle,java.util.Optional.of(net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT));
          registered = true;
-         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 20, 15 packets).");
+         VelvetEclipseMod.LOGGER.info("Velvet Eclipse network channel registered (protocol 23, 16 packets).");
       }
    }
 
@@ -47,6 +48,7 @@ public final class ModNetwork {
    public static void sendPresentation(Object player,Object packet){if(player instanceof ServerPlayer p){
       CHANNEL.send(PacketDistributor.PLAYER.with(()->p),packet);
       if(packet instanceof BattleCueS2C cue){
+        if(cue.type().equals("cancel"))com.gx.velveteclipse.forge.FeedbackServer.cancel(p);
         var target=com.gx.velveteclipse.forge.BattleService.targetActor(p,cue.target());
         var gear=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses();
         var direction=new BattleDirectionS2C(p.m_20148_(),p.m_19879_(),target==null?-1:target.m_19879_(),cue.type(),cue.skill(),gear.family().name(),cue.x(),cue.y(),cue.z(),target==null?cue.tx():target.m_20185_(),target==null?cue.ty():target.m_20186_(),target==null?cue.tz():target.m_20189_(),cue.type().equals("skill")?108:cue.type().equals("attack")?44:0);

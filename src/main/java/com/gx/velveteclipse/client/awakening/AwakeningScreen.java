@@ -81,7 +81,7 @@ public final class AwakeningScreen extends Screen {
         stopAudio();var manager=Minecraft.m_91087_().m_91106_();
         // One mastered stream: original score + isolated voices. No added gun/impact sounds.
         manager.m_120386_(null,SoundSource.MUSIC);
-        sound=new SimpleSoundInstance(new ResourceLocation("velvet_eclipse","awakening."+name),SoundSource.MUSIC,1,1,RandomSource.m_216327_(),loop,0,SoundInstance.Attenuation.NONE,0,0,0,true);
+        sound=new com.gx.velveteclipse.client.vfx.MixedSound(new ResourceLocation("velvet_eclipse","awakening."+name),com.gx.velveteclipse.presentation.AudioPreferences.Bus.CINEMATIC,1,loop,true,0,0,0);
         manager.m_120367_(sound);
     }
     private void stopAudio(){if(sound!=null){Minecraft.m_91087_().m_91106_().m_120399_(sound);sound=null;}}

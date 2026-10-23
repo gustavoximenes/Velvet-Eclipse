@@ -52,6 +52,7 @@ public final class BattleSession {
       public boolean cutin(){return action.type()==BattleActionType.SKILL&&hits.values().stream().anyMatch(BattleSession::isWeaknessHit);}
    }
    private Prepared prepared;
+   private final java.util.Map<UUID,DamageOutcome> appliedHits=new java.util.LinkedHashMap<>();
    public Prepared prepared(){return prepared;}
    public void cancelPrepared(){prepared=null;}
    public static SkillDefinition sword(){return new SkillDefinition("__basic_attack","Attack",Element.SLASH,35,96,0,0,true,SkillTarget.ONE_ENEMY);}
@@ -76,8 +77,8 @@ public final class BattleSession {
       prepared=new Prepared(actorId,action,hits.get(target.id()),java.util.Map.copyOf(hits));return prepared;
    }
    private DamageOutcome damage(BattleCombatant actor,BattleCombatant target,SkillDefinition skill){
-      if(prepared==null)return DamageCalculator.resolve(actor,target,skill,random);
-      var hit=prepared.hits().get(target.id());return DamageCalculator.apply(actor,target,hit);
+      var hit=prepared==null?DamageCalculator.resolve(actor,target,skill,random):DamageCalculator.apply(actor,target,prepared.hits().get(target.id()));
+      appliedHits.put(target.id(),hit);return hit;
    }
    private BattleState state = BattleState.ACTIVE;
 
@@ -134,6 +135,7 @@ public final class BattleSession {
       currentActor().setGuarding(false);boolean success=random.nextDouble()<escapeChance();if(!success)advanceTurn();return success;
    }
    public BattleResolution perform(UUID var1, BattleAction var2) {
+      appliedHits.clear();
       // Roll area hits before applying status effects in both immediate and animated actions.
       // Otherwise Shock/Freeze RNG between victims changes later damage when a turn is reserved.
       if(prepared==null&&(var2.type()==BattleActionType.ATTACK||var2.type()==BattleActionType.SKILL))prepare(var1,var2);
@@ -164,7 +166,7 @@ public final class BattleSession {
                   break;
                case ITEM:
                   var attackItem=com.gx.velveteclipse.equipment.DamageItems.get(var2.skillId());
-                  if(attackItem!=null){var first=validEnemyTarget(var4,var2.targetId());if(first==null)return new BattleResolution(state,false,List.of("Escolha um inimigo vivo."));for(var victim:attackItem.all()?enemiesOf(var4):List.of(first)){var roll=prepared==null?com.gx.velveteclipse.equipment.DamageItems.roll(attackItem,victim):prepared.hits().get(victim.id());var hit=DamageCalculator.apply(var4,victim,roll);weaknessHit|=isWeaknessHit(hit);var5|=appendOutcome(var3,var4,victim,attackItem.skill(),hit);if(victim.alive()&&hit.damage()>0&&!hit.drained()&&!hit.reflected()&&random.nextInt(100)<10){if(attackItem.element()==Element.ICE)victim.afflict("FREEZE");else if(attackItem.element()==Element.ELECTRIC)victim.afflict("SHOCK");}}break;}
+                  if(attackItem!=null){var first=validEnemyTarget(var4,var2.targetId());if(first==null)return new BattleResolution(state,false,List.of("Escolha um inimigo vivo."));for(var victim:attackItem.all()?enemiesOf(var4):List.of(first)){var roll=prepared==null?com.gx.velveteclipse.equipment.DamageItems.roll(attackItem,victim):prepared.hits().get(victim.id());var hit=DamageCalculator.apply(var4,victim,roll);appliedHits.put(victim.id(),hit);weaknessHit|=isWeaknessHit(hit);var5|=appendOutcome(var3,var4,victim,attackItem.skill(),hit);if(victim.alive()&&hit.damage()>0&&!hit.drained()&&!hit.reflected()&&random.nextInt(100)<10){if(attackItem.element()==Element.ICE)victim.afflict("FREEZE");else if(attackItem.element()==Element.ELECTRIC)victim.afflict("SHOCK");}}break;}
                   if (!"pulse_tonic".equals(var2.skillId())) {
                      var supply=com.gx.velveteclipse.equipment.Supplies.get(var2.skillId());
                      var recipient=var2.targetId()==null?var4:find(var2.targetId()).filter(c->c.side()==var4.side()).orElse(null);
@@ -252,7 +254,7 @@ public final class BattleSession {
             }
 
             this.updateState();
-            return new BattleResolution(this.state, this.state==BattleState.ACTIVE&&var5, List.copyOf(var3), weaknessHit);
+            return new BattleResolution(this.state, this.state==BattleState.ACTIVE&&var5, List.copyOf(var3), weaknessHit,appliedHits,true);
          }
       }
    }

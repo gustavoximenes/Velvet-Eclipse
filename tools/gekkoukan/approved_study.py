@@ -60,11 +60,13 @@ def chair(s,x,z,back=1,col=GREEN):
         for zz in [-.25,.19]:b(x+xx,0,z+zz,.06,.54,.06,METAL)
     for dx in [-.26,.20]:b(x+dx,.53,z+back*.29-.04,.06,.23,.08,METAL)
     prop(s,'assento',x-.32,z-.34,.64,.68,1.25)
+    s.props[-1].update(seatTop=.63,seatYaw=180 if back>0 else 0)
 def stool(s,x,z):
     s.box(x-.25,.65,z-.25,.5,.08,.5,WOOD,2)
     for dx in [-.20,.16]:
         for dz in [-.20,.16]:s.box(x+dx,0,z+dz,.04,.65,.04,METAL)
     prop(s,'banco',x-.25,z-.25,.5,.5,.73)
+    s.props[-1].update(seatTop=.73,seatYaw=180)
 def cabinet(s,x,z,w=2,h=2.7,col=PALE,books=False):
     if 0<=z-(-s.d/2+.24)<.65:z=-s.d/2+.25
     b=s.box;d=.60;b(x,0,z,w,h,d,col,2 if books else 0)

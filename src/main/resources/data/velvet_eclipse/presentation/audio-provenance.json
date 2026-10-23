@@ -1,0 +1,3563 @@
+{
+  "source": "Approved original recording audit 05",
+  "conversion": "Audition gain retained; mono Vorbis quality 5; no timing/pitch changes; original masters retained in audit output",
+  "clips": [
+    {
+      "id": "absorb",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "5577537c28196397d80bf87a0bd77a0427782e8ec265bdf58d6fa7f5e7b0711e",
+      "oggSha256": "fb44fd9558eb60b4f8bb304d51f7695c67ecd1b7688f539fbbdd317b26febdb7",
+      "bytes": 14083
+    },
+    {
+      "id": "battle_confirm",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "fa551790d4aff38dfec37a187cb7c57a83bbd22835556d5ec539587a44fa1550",
+      "oggSha256": "8c91abe3862e6a874e0f670196bc8a9d82027e94339f5700c0e7226eac37b27c",
+      "bytes": 6671
+    },
+    {
+      "id": "battle_target",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "96b6c8898773a6af96c4d820b6f07a20b8fb81a99de74c0f0a8c848a11ae54e5",
+      "oggSha256": "2bcfd63fbe817621806b82872186e44ad6a094826ac879f3b8fa4793cca68b74",
+      "bytes": 5983
+    },
+    {
+      "id": "bow_draw",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "08c6dbfb51437ce44343aedfe9b51d33c98b7b7e9d51922abf31051cad191fee",
+      "oggSha256": "6ce269b2aefffb1ef7deb79b61610b19223b12387f3d9c392800106338fbefbc",
+      "bytes": 10146
+    },
+    {
+      "id": "bow_release",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "533296874c871d5dfbe25971d89d64fbe47fb29613aab009778c9a1a9f3fb814",
+      "oggSha256": "7e5b8eab34b0bc63e306a2016cc7b3aaa7dd48faeacdab5b6b5f360336f4481b",
+      "bytes": 9352
+    },
+    {
+      "id": "cancel",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "1ab6515b54afa665bd3e13ca9bf74fbd1c21e3d08341e5eaacea90956c78fe6a",
+      "oggSha256": "acf6727e3941cf4595e30008b7dd46cac20f2b0c0e73f59a234766768f417d6f",
+      "bytes": 6700
+    },
+    {
+      "id": "cloth_soft",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "360178e4734c949ac36f952eafef1efefe508df08e4be87af9ac0c9ebc1c98f8",
+      "oggSha256": "2c8a6aa2eb314565193f3b2fa4f5592febdb5406a69a3d9a2e8e080258304564",
+      "bytes": 7819
+    },
+    {
+      "id": "critical",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "b9ed25fae67249216adb0bb709f826411af25e7d6a5e372ce03dfb2831ffb37e",
+      "oggSha256": "c7ddf068e7b55c5df7acaf8b67bcd81bd0b521adbc371f1ca7a39d7e2678cd3a",
+      "bytes": 18217
+    },
+    {
+      "id": "cursor",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "f82e28b4dc0dd4906a8c0e0e3d38e39349b709ab0bd3bff833a86fdfada87d1a",
+      "oggSha256": "58c64c9af0334f438955772734ab19c4ca3de92ff740f0a8ff32c0734a1c30f1",
+      "bytes": 5988
+    },
+    {
+      "id": "down",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "3a00df6f804af31d0944429f4726663163337409018090dba8411a51f4cd2164",
+      "oggSha256": "0c00b55cc401ae19a7b8306e1f66a01741d7433639a5ede42a3e43fc16234792",
+      "bytes": 12491
+    },
+    {
+      "id": "error",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "c64cbfe1266504bf2d2dfd6f0c8dcf0af0f102c83c0822c521856e42f11daa89",
+      "oggSha256": "f3aa6be9068b292284b1bd1c75c0cb5dfc6983582d607422b0097f8e53f9b6fb",
+      "bytes": 5179
+    },
+    {
+      "id": "evoker",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "874efa1e1823f9543d87675c144d1d9110ea147242313967aa39c395728adfab",
+      "oggSha256": "a2aea29b758c4db411dd11dbaa4d12b70b7927e91dfb70011abc76e253e96038",
+      "bytes": 24787
+    },
+    {
+      "id": "gun_handling",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "42fe30d848f0e789e1728a6b84a279c2e46057c2cbb02c33866f3a162538f723",
+      "oggSha256": "4783e677f1404345736c6135f7a408d84a4eede1bb2e1d5df03122c54c2f5523",
+      "bytes": 10183
+    },
+    {
+      "id": "gun_shot",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "86c3e480f0965bdbde3409bfa9687f3e058dd11cfb0f6edd93aeba256c7f8ef1",
+      "oggSha256": "0ee25e21c65db537a52ee2ec37286fd9f5926b1e822d4d89fd0dd3c525f536d0",
+      "bytes": 12837
+    },
+    {
+      "id": "hit_enemy_slash",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "af87c3611218bdd3a2dd8e018f531bbe80f4f3d8ff1b9a9dbfb175bff85b4830",
+      "oggSha256": "d65dc449cfc22d7dcdfb303ffb5369e18e460521c2f796d9a4ff8b08da67acd0",
+      "bytes": 11069
+    },
+    {
+      "id": "hit_enemy_stab",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "81e32a00f73089db6dee68295a03816c614d9222fa219a6fc0aee38b00cd1d95",
+      "oggSha256": "4d01834159525ed24b2c23a559642457acd6e9d578e3e5b0756282678b2f89b3",
+      "bytes": 11077
+    },
+    {
+      "id": "hit_enemy_strike",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "fef0964dba555888c45f546a331a50c8c74b1dde0914ec295d2f9e2118e4aecd",
+      "oggSha256": "d153d0cc3eacef50af2f69251f0ac0f07f00ac3b899adcc7302312e9b27feb7b",
+      "bytes": 11255
+    },
+    {
+      "id": "item_use",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "1b5f56cd40a846a66a3b076a6ff9c99b9e66c94da25589bcae3249c31121ce6d",
+      "oggSha256": "e21cfb59a577d1349748e868909044eb5bbb9e1f249340934538a251600c67ed",
+      "bytes": 18142
+    },
+    {
+      "id": "one_more",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "ddff8d1d7d52e54e24dce98f908ccbf54a195a4b627f682f92184bdd79ed4715",
+      "oggSha256": "b4d2a46c3c13f31c37aa7ccc24a366e18a6128f57b089c297bbd8aa0e4a81697",
+      "bytes": 15152
+    },
+    {
+      "id": "one_more_enemy",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "42326128ec581ea68b40e31de1a2bfe88e3c18ab90964cb549d350be8d24f10d",
+      "oggSha256": "291afac8e8c533b1f6a3dd0e2c3b840f2403e7963f96989534e4be132b5cbfba",
+      "bytes": 14645
+    },
+    {
+      "id": "persona_aura",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "cdf619f19bbce1d975b322214665591bc38498e25f56a47b624674ab7d085b92",
+      "oggSha256": "b2b1e2aecc248cf7c1ceeb9be67e8f1669588de7f41b0070ebc09b93911d0261",
+      "bytes": 17754
+    },
+    {
+      "id": "persona_cutin",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "7d4989ad9eab0c68922c8216df1186773170696dade0fe1b1f3bfc65e845d823",
+      "oggSha256": "5ecaaba3eb4f821dfa1da4e97c27a9e2b2c8e9379265e4b4abcb52c1a4662be0",
+      "bytes": 14408
+    },
+    {
+      "id": "pierce_light",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "2ec63c0f618e722d2f0b02e8414793529e9ebcecc52a8629f1fc2d3c7bd103d4",
+      "oggSha256": "b05e461f05b33a648111049312eab9c2d3a8fa828bfd9a06828ded8e78374c50",
+      "bytes": 10119
+    },
+    {
+      "id": "reflect",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "b0cee3dac41d1ce059b8b7fcdc49d0c13696071eb7879b368b0a81638b5dd334",
+      "oggSha256": "10bd7681877471917bebb28194b182fec6c69d57f0b4cda72ce3dd968db37bf9",
+      "bytes": 24489
+    },
+    {
+      "id": "room_close",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Field/Daily_SE/daily_se.uexp",
+        "offset": 122047,
+        "bytes": 16669792,
+        "embeddedAwb": true,
+        "bank": "daily_se.acb",
+        "sourceAssetSha256": "1e4440009838ba3484637f580f7e5e6c40cde0b0b69a9d48f123b11a3868506f",
+        "bankSha256": "f72089903f3c5a56537628e409021e7122a8905f0218d86ca3625c592fbd75bb"
+      },
+      "sourcePreviewSha256": "e4434dcd73b8dbbb58ca9b974f176e18e34ec903490f7254508c356c25ba5859",
+      "oggSha256": "b9e2cdf3bcce9359e535c9a5bdb898bf8cef310e8f821ccf23f3bf7768f108bc",
+      "bytes": 17857
+    },
+    {
+      "id": "room_open",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Field/Daily_SE/daily_se.uexp",
+        "offset": 122047,
+        "bytes": 16669792,
+        "embeddedAwb": true,
+        "bank": "daily_se.acb",
+        "sourceAssetSha256": "1e4440009838ba3484637f580f7e5e6c40cde0b0b69a9d48f123b11a3868506f",
+        "bankSha256": "f72089903f3c5a56537628e409021e7122a8905f0218d86ca3625c592fbd75bb"
+      },
+      "sourcePreviewSha256": "03f18be00038aaac44d8b8e3a5ef994500813e25536e3239e5c25bd6abb36400",
+      "oggSha256": "4b69afee56e5fcb0783684fc2aa53f7c570415c5a545be6564c781d78e251b20",
+      "bytes": 14452
+    },
+    {
+      "id": "skill_0010_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0010.uexp",
+        "offset": 643,
+        "bytes": 80576,
+        "embeddedAwb": true,
+        "bank": "skill_0010.acb",
+        "sourceAssetSha256": "338150547a36f5767208f63a1ae8d6f928b019c22ae1232f8aa57ec382a313fb",
+        "bankSha256": "d7e416559557a7bff2b7596c6ba66e9382a16f2c976f043b55b7235147727284"
+      },
+      "sourcePreviewSha256": "66bcc74924d13e4d5208444b7cdae718248a47cd7c1af2acc3c6826a41062ce2",
+      "oggSha256": "63c8d77d46139cec6c80cd854156b6078668b4d04679e730198c31b5dbc513fb",
+      "bytes": 13720
+    },
+    {
+      "id": "skill_0011_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0011.uexp",
+        "offset": 643,
+        "bytes": 78016,
+        "embeddedAwb": true,
+        "bank": "skill_0011.acb",
+        "sourceAssetSha256": "b0836948d92e4cce2710b59c634b9210f3fe3164d8c9092ffbc7b85ae27fa56c",
+        "bankSha256": "e0bf24ad2e747df7fcf35a955f644faf9eb8a16f5769479864e5985322e4df8c"
+      },
+      "sourcePreviewSha256": "b5250e30404b0471afaee3d5765b07847ef3e51f60f33deab7686de0b5ed88fd",
+      "oggSha256": "fb64abc08bb66d9c8987446195c7a5361c89f9eece0bec6e5438d379162255da",
+      "bytes": 18857
+    },
+    {
+      "id": "skill_0012_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0012.uexp",
+        "offset": 643,
+        "bytes": 53280,
+        "embeddedAwb": true,
+        "bank": "skill_0012.acb",
+        "sourceAssetSha256": "9bbe5d2d96a38cff3fd5969fe2e2208afa21c451e9638fdae52138c42ca13e94",
+        "bankSha256": "18512e6dd8a60b89dd431ff80eb064416e000bc7251f8355aff404e21b7a1852"
+      },
+      "sourcePreviewSha256": "db32e313907e689fef965242fdba96a57a21db86e30589fb0fc018b989afb10c",
+      "oggSha256": "9ff17d691bbaa16f718c77c533a0ad156b21188661e2ef069bc23a976ef1929b",
+      "bytes": 35504
+    },
+    {
+      "id": "skill_0016_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0016_0.uexp",
+        "offset": 660,
+        "bytes": 73728,
+        "embeddedAwb": true,
+        "bank": "skill_0016_0.acb",
+        "sourceAssetSha256": "2e199c3c06104f60e0c8d383267ea50149555d9c18a5bed68790f52d00582fa9",
+        "bankSha256": "68e283b034cda677b01422c4ddc517ca4992eb90a7550a831c44eac9fd3a3241"
+      },
+      "sourcePreviewSha256": "711d2436cd3a91b09d560ad1209b96d42b1738da3774fa6cf264726f76962e57",
+      "oggSha256": "c395be12b2afea876d411723f611d5b27dce2eb7120f706e4385aeed0d53aa08",
+      "bytes": 25594
+    },
+    {
+      "id": "skill_0018_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0018.uexp",
+        "offset": 656,
+        "bytes": 133088,
+        "embeddedAwb": true,
+        "bank": "skill_0018.acb",
+        "sourceAssetSha256": "22415a4a3a903e0498333d144730e3442fac26ce3e76ea797e4ced471d482e19",
+        "bankSha256": "24da5182755ff511475c19e0f9b435043e61008cec8724e66b93c3cf597a6001"
+      },
+      "sourcePreviewSha256": "4e0b4a4601ecf0b3002be431d213c9870563fae8bc3e8063957a5e244e4b52c1",
+      "oggSha256": "bc8d974c2397058543d04143b2f81605c30e0a56f12146f55c722d8570dacfdf",
+      "bytes": 41149
+    },
+    {
+      "id": "skill_0020_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0020.uexp",
+        "offset": 643,
+        "bytes": 136480,
+        "embeddedAwb": true,
+        "bank": "skill_0020.acb",
+        "sourceAssetSha256": "6f67c5bedd2c7fa6fbf8de258786133fdcee0c43a5b019bdeb168b804ccab76d",
+        "bankSha256": "4639af6f61c06d35122d4a92031bdc06d5ad67c19e98b45a0842ddafe7dc7761"
+      },
+      "sourcePreviewSha256": "c55615cae52e3e5ce2bc90f7e747b5d563f128db3ba19d8a03f7fd0eae1cbf4f",
+      "oggSha256": "18d802e7610415aa57f6b130ff50188834348bff20ae3be862620824dc5ef0b1",
+      "bytes": 23419
+    },
+    {
+      "id": "skill_0021_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0021.uexp",
+        "offset": 643,
+        "bytes": 144672,
+        "embeddedAwb": true,
+        "bank": "skill_0021.acb",
+        "sourceAssetSha256": "e47ca559140fd6e4384d088076eb0fc6a076ed9e791eb0e50f2fc9ae04d6e602",
+        "bankSha256": "6eb91033a1c2f92d25e09d4dbfc99627cef07d41bffdafada8edf43c1bb69da2"
+      },
+      "sourcePreviewSha256": "be2393589c23b50971d4d2219ccc07df80b3358593743ab5cb67e997bbc0ab96",
+      "oggSha256": "34b35e4ba97e7d250ae145c78dd1f933e4d0fd6190545993c9f632647c3a3e24",
+      "bytes": 26097
+    },
+    {
+      "id": "skill_0022_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0022.uexp",
+        "offset": 643,
+        "bytes": 197888,
+        "embeddedAwb": true,
+        "bank": "skill_0022.acb",
+        "sourceAssetSha256": "3e775d720396022671c7c211e62b0d5daa2081d5fb6da2025dee40856e9c7b8c",
+        "bankSha256": "bd9b5b7e537dd01c5bfe30b3080458c66689b2a0916155779a4126839b15de03"
+      },
+      "sourcePreviewSha256": "1fe900d37673e0f10795209725ce6347bef7e2da6f21c257d7e72f8d1bae361c",
+      "oggSha256": "836f08a50d63df03ecabb4a432f0ac07b0906f0a379908e4ca8a485702b44d25",
+      "bytes": 34668
+    },
+    {
+      "id": "skill_0026_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0026.uexp",
+        "offset": 656,
+        "bytes": 165152,
+        "embeddedAwb": true,
+        "bank": "skill_0026.acb",
+        "sourceAssetSha256": "6603e9ef58240701deb9d7bb7a45d604c98e610f2f86c5c8f600f442393546d8",
+        "bankSha256": "c3dfce338179133abb4004388336f7e418f2e5a9e61f3ce1a0837037e93bdccd"
+      },
+      "sourcePreviewSha256": "841bc7cef8cee55f09ca85c25c94914f0a62d6ff9b4a8f2b45d25f684bc8ccfa",
+      "oggSha256": "8c32b3ed1b4ee65f9485d0fae0bb8556b13cddf81e1379b56f34908c0052c597",
+      "bytes": 61248
+    },
+    {
+      "id": "skill_0030_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0030.uexp",
+        "offset": 643,
+        "bytes": 37216,
+        "embeddedAwb": true,
+        "bank": "skill_0030.acb",
+        "sourceAssetSha256": "0527c92255b4f36a391a30eb3a88537d7f884a0a4f0111ee141f601e648c0b2d",
+        "bankSha256": "0813a9a2e9eadb004f909ac7cb7fc49b0dae96e3025cf28fc8c19a72fa0494c9"
+      },
+      "sourcePreviewSha256": "57680b689449dd0986f46d279934c18f8d0ca6f126400a2c904317f3a41bca6a",
+      "oggSha256": "42fbfcf152108ba2f7e7f03b558d738e1561b1b44c8cd149886102f8ec676749",
+      "bytes": 22327
+    },
+    {
+      "id": "skill_0031_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0031.uexp",
+        "offset": 643,
+        "bytes": 37216,
+        "embeddedAwb": true,
+        "bank": "skill_0031.acb",
+        "sourceAssetSha256": "352c05aa7df3633bac83494c9d75341c86632f1fec1ad2cb227af9f742cf346e",
+        "bankSha256": "7262853197c5853e97d29c5f1f045ddadca7031eff894a0400bd60c88d2f8c2a"
+      },
+      "sourcePreviewSha256": "5f2d8ce38c9f0d4c4edb8e4a8cc40aa9c12bdfc55452feb56b0223e21aa4d74e",
+      "oggSha256": "d800aa83912acf4ae7aba0f105e63981602b24f2942f84851c6f3c5027914b63",
+      "bytes": 21922
+    },
+    {
+      "id": "skill_0032_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0032.uexp",
+        "offset": 643,
+        "bytes": 29408,
+        "embeddedAwb": true,
+        "bank": "skill_0032.acb",
+        "sourceAssetSha256": "e7516b9422f06801bad4dc33404e040ba20b8fed85954477c60faf7a58065299",
+        "bankSha256": "0bd90ef4d5c8eef7c079608841987db4bf8ec3d50a5df7215909e08e16cdae74"
+      },
+      "sourcePreviewSha256": "a210202bf4b8660abf72c554cb108121835f89eb385c7570885dcebfa99e7841",
+      "oggSha256": "596043cfb6c92e51ea46433b74f4cf82f11a608809f8d83f664713d53235a54c",
+      "bytes": 18192
+    },
+    {
+      "id": "skill_0036_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0036.uexp",
+        "offset": 656,
+        "bytes": 121504,
+        "embeddedAwb": true,
+        "bank": "skill_0036.acb",
+        "sourceAssetSha256": "6bcf54f37771cb6b3e853bd9e1fd015af9c00bd0482be382398ed3a106b44f7f",
+        "bankSha256": "e1c1eeecabe629cb65f02d2836d83794e43bf4cf03e734a73625d2059a88037c"
+      },
+      "sourcePreviewSha256": "fc31b5c3d28712d6f42916fe0c7f16cb3d8e55b4fa122a9efbed108c740a06da",
+      "oggSha256": "e6d40b6327ecc4b2d419f9209f59698e7378e0c33ee5ef371d859a1e35101bc9",
+      "bytes": 39388
+    },
+    {
+      "id": "skill_0040_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0040.uexp",
+        "offset": 643,
+        "bytes": 28704,
+        "embeddedAwb": true,
+        "bank": "skill_0040.acb",
+        "sourceAssetSha256": "3e0b867f503b12014f07320edf4013ecf21950bf12dfbcd5e53765fd9485f6e0",
+        "bankSha256": "ba157deee164363be83120e3bb9f429f770afa69471ead4b0d76b722069d9f64"
+      },
+      "sourcePreviewSha256": "c35937b30fa6c771ffe5abf5bac3cd0d4b8060bee2a867dcabcb76fd87470b74",
+      "oggSha256": "24fc6d266e9ae1074a85ccdf64959327e90e925b603cb36e2d04c43193d0b88b",
+      "bytes": 19375
+    },
+    {
+      "id": "skill_0041_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0041.uexp",
+        "offset": 643,
+        "bytes": 29344,
+        "embeddedAwb": true,
+        "bank": "skill_0041.acb",
+        "sourceAssetSha256": "66d82929a38931b026f9204ffe279010e787074dabbc2c0cc553ec3536ac8f95",
+        "bankSha256": "d8aa3c93bf266321ebc928c85e0b9b4645705d65e92a2d4dd5e35affba132593"
+      },
+      "sourcePreviewSha256": "8e2ecdef45c78b988d2a2ffd9eeefb4efc951f7d259322b91abac21870baf94f",
+      "oggSha256": "892427c3a56a491d1e811e72c9572bafa54d24d474dd2ad69b8188ab8481563c",
+      "bytes": 19583
+    },
+    {
+      "id": "skill_0042_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0042.uexp",
+        "offset": 643,
+        "bytes": 44672,
+        "embeddedAwb": true,
+        "bank": "skill_0042.acb",
+        "sourceAssetSha256": "8da5f2b04ad3a3f80e2c2866e6b34bc910972336f9fa7c86647f677bd2196f34",
+        "bankSha256": "3be4560d68c3d3f18e6eacb35865da86916b1045656cff05392bb76a6c3a2503"
+      },
+      "sourcePreviewSha256": "16374538dae42f65d7508873c6e21f4baa78efa88074b6ebe1ca7ced81691548",
+      "oggSha256": "9258471dad2aa3e4e4f191b1e975c308027ef700ff2a1ea2c7932eb5f54a6116",
+      "bytes": 28691
+    },
+    {
+      "id": "skill_0046_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0046.uexp",
+        "offset": 656,
+        "bytes": 155616,
+        "embeddedAwb": true,
+        "bank": "skill_0046.acb",
+        "sourceAssetSha256": "c3d13aa38a56614a005cfb1512a5f58a923da1b33fb2d42fef47207d5d6f65fe",
+        "bankSha256": "19eb8dc1db5a67752de658c755fe5ceeb44c0fca6f0c63f68713fda42241cc89"
+      },
+      "sourcePreviewSha256": "61a852efd27a3812850f88324c648963d0cc7b0a73ba385fca3e70a57fdaceb3",
+      "oggSha256": "585be99623a081e9d253a0ae146246fd445acb563e78e5ec10f6a583b93da5b3",
+      "bytes": 50429
+    },
+    {
+      "id": "skill_0050_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0050.uexp",
+        "offset": 643,
+        "bytes": 52896,
+        "embeddedAwb": true,
+        "bank": "skill_0050.acb",
+        "sourceAssetSha256": "e9cd25817e893b4af7c6698c57efa3b022fd0dbb35540110f29ef8e47786af45",
+        "bankSha256": "900e4f3da44f2a83aba38338f6a68c6e7f1fd02bf94dc6468f90da761d20e744"
+      },
+      "sourcePreviewSha256": "619e5a603d7d83a07ba4ac3c0e6d00bea2049a8cd62071e983cc2bb9344e9900",
+      "oggSha256": "7b26e56fb04df7d50010325a526420c4a785b9b3293d8ad25d9b5e8fc7bb17de",
+      "bytes": 34158
+    },
+    {
+      "id": "skill_0051_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0051.uexp",
+        "offset": 643,
+        "bytes": 69280,
+        "embeddedAwb": true,
+        "bank": "skill_0051.acb",
+        "sourceAssetSha256": "12d78ede0fadc574f35e7bbe46140f7651579015368b8c4b24bea5e957b7476d",
+        "bankSha256": "4a79155c7c231fe65f1f37b28add8f15771adbeaa399ef5fedb7fbb4b48dd1f5"
+      },
+      "sourcePreviewSha256": "c660f4fc21c1ae863ee58884140ee9156ebf298f69683f18dc005481692d51bd",
+      "oggSha256": "bd902debe5135ddbd7919b8fd7c62c9f4ccf59716d43e7b935379b6df59bc57f",
+      "bytes": 45476
+    },
+    {
+      "id": "skill_0054_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0054.uexp",
+        "offset": 656,
+        "bytes": 165152,
+        "embeddedAwb": true,
+        "bank": "skill_0054.acb",
+        "sourceAssetSha256": "e6254429e469ce1440c2cd09b59d20797c5243ab020fabab65166838783837d3",
+        "bankSha256": "64625a7423d5a6b2e95d43d8e5e16ffc81a0eef424ecbca7876dc6d09f58a4ae"
+      },
+      "sourcePreviewSha256": "3eb493d1206973e199202a8fb1831ef80ca986f52ea738c189c740a7f621e23d",
+      "oggSha256": "4211f77d84465b3f774bb2c5ce3438bdafb906e420a8b0c8ac76d43b4feda3e1",
+      "bytes": 57761
+    },
+    {
+      "id": "skill_0056_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0056.uexp",
+        "offset": 643,
+        "bytes": 53280,
+        "embeddedAwb": true,
+        "bank": "skill_0056.acb",
+        "sourceAssetSha256": "485f2dc6572272ec921210c36f0ea6bb4e20f2d180477faf441df94dac835858",
+        "bankSha256": "3d4e1ddd7e9201ee6e8d977a077a2fd7b8a65842df8cb623ec69948687322248"
+      },
+      "sourcePreviewSha256": "82dbb4518d990dbb4fd7cb1a0833271e91ccebe98a87dc05bfe907409a5aa58b",
+      "oggSha256": "ee11ae66cada6123599e159c644b5d9ea135234b5928df956afb271db0c4df95",
+      "bytes": 34654
+    },
+    {
+      "id": "skill_0057_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0057.uexp",
+        "offset": 643,
+        "bytes": 53248,
+        "embeddedAwb": true,
+        "bank": "skill_0057.acb",
+        "sourceAssetSha256": "4000c46e8de4c6d31142c803b8421e3ebfe7956d95433818b8eeeaff5132b112",
+        "bankSha256": "9158810d5e84e83839eada759bf983a9f404f61c5d216a0230a014db59657a9e"
+      },
+      "sourcePreviewSha256": "d570b5b6d31dda583e6e7ce4388e912f790c53b104bc8a16c1c868e8b007eec7",
+      "oggSha256": "912a7c4f6b2ce0f68d057c8dbae7a1c03310ecfb55dee440fa7ba27c5333f1ff",
+      "bytes": 34311
+    },
+    {
+      "id": "skill_0058_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0058.uexp",
+        "offset": 643,
+        "bytes": 61472,
+        "embeddedAwb": true,
+        "bank": "skill_0058.acb",
+        "sourceAssetSha256": "85e83b4f9ef9e4d00a169015e567ef4a853dd5e6d760fb64905b017c0ef267bc",
+        "bankSha256": "176b4a5a74a7aa7cff981df64793260bb271159a0c460c032b259061f1a66e23"
+      },
+      "sourcePreviewSha256": "de3f3b5dccb5b715279265c9261318d338925b5af56d868ed3a6cece1bbe06e4",
+      "oggSha256": "dc8f2fbad03594eb8d1d27060a5ef762ef3f525c4f12b97a60eaea36aa6cec1b",
+      "bytes": 39645
+    },
+    {
+      "id": "skill_0062_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0062.uexp",
+        "offset": 656,
+        "bytes": 165120,
+        "embeddedAwb": true,
+        "bank": "skill_0062.acb",
+        "sourceAssetSha256": "5777a7eaaa36214735e5e05fac636625586d5950742446313a659bcb6f39d625",
+        "bankSha256": "6896f8cbdf67028ab1c78cf0f318c0707aef1b66ec9f395592f83623e110ca31"
+      },
+      "sourcePreviewSha256": "3f98c58c7bebcc7448ac04e9c4aeddf4f51c92694913a3d790b0f0a42bc7a770",
+      "oggSha256": "73c2f0818c3d6d9faa9588a01f996ae2788987f71e6bf22e44014f035a810152",
+      "bytes": 62370
+    },
+    {
+      "id": "skill_0064_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0064.uexp",
+        "offset": 643,
+        "bytes": 51872,
+        "embeddedAwb": true,
+        "bank": "skill_0064.acb",
+        "sourceAssetSha256": "5e44dec8a0de84e5d128cd34b4f2a29a3fb030af20ad618f1ab861fb5ec3e01a",
+        "bankSha256": "626c85521e7c817bbe3b659e0784b424828538f7101af63f1d7a52072a7d1606"
+      },
+      "sourcePreviewSha256": "f703c7108de87784b9b53edd5aea047e15b5b81472d87a613036bd2b4a726838",
+      "oggSha256": "fc970da73c2ff822d48bc152cb46ea0a04d70be2ced1368b9e50f03424d5ca48",
+      "bytes": 32895
+    },
+    {
+      "id": "skill_0065_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0065.uexp",
+        "offset": 643,
+        "bytes": 185536,
+        "embeddedAwb": true,
+        "bank": "skill_0065.acb",
+        "sourceAssetSha256": "a5ed064b15f62408e3595020f7f8394cc4c4bdd23610f1194ec106d51d198bed",
+        "bankSha256": "6404acc6f880749c3a4912f11dafc2f85a4b8eed9d3cca6656ef815884f03ae5"
+      },
+      "sourcePreviewSha256": "a4c0cad84f0b3cca71d13a8d6e61f332c13a8a52c1c4998b82f112bfd180b49a",
+      "oggSha256": "8e14739f2843def6bd5ba578c31e1581a0615f2e16b55eafda1d098484b10e4c",
+      "bytes": 44122
+    },
+    {
+      "id": "skill_0068_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0068.uexp",
+        "offset": 656,
+        "bytes": 117408,
+        "embeddedAwb": true,
+        "bank": "skill_0068.acb",
+        "sourceAssetSha256": "42091eade13044f5743f9840677f8b85a907d9674bf9b1573afa68baf5f6aa64",
+        "bankSha256": "eb76800d27b95cde40c8e30dcb2550ef78c8b83117e3f6d8f851d64d0621bc99"
+      },
+      "sourcePreviewSha256": "ab3c973306c94a3d5a031b79756908cc6369967cd366c2675b6ec4aafc74d1f9",
+      "oggSha256": "7f6ef8d1d1cb053e0bb2cb7caf7c1e21c3ed14ebb5c9771003f9e04d2b80c769",
+      "bytes": 44334
+    },
+    {
+      "id": "skill_0070_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0070.uexp",
+        "offset": 643,
+        "bytes": 51232,
+        "embeddedAwb": true,
+        "bank": "skill_0070.acb",
+        "sourceAssetSha256": "7a092ea150b6d37eeff982647925a576a575c6587707f2978934b8e74125a9d0",
+        "bankSha256": "088bf9e66825634239ef512b78f0414d0c77b2134888d3bd88f7824b46d5fa07"
+      },
+      "sourcePreviewSha256": "03245dd20459911a8ae4ad2324304c92be803f2064723862ca2e869f9fde0d2a",
+      "oggSha256": "1f5ea219cdc7a131c8648b1286a4dc7fe463fced87979eefdb99fa678afb575a",
+      "bytes": 28825
+    },
+    {
+      "id": "skill_0071_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0071.uexp",
+        "offset": 643,
+        "bytes": 45440,
+        "embeddedAwb": true,
+        "bank": "skill_0071.acb",
+        "sourceAssetSha256": "19f29409340abd7da81246dc898b8508cd2bc02f4db3ac294614e63a8687ac70",
+        "bankSha256": "6c3976d80eceb5c7ff42c5afa7ec9b93cdfa71395f87b45bd00a98792e3d9883"
+      },
+      "sourcePreviewSha256": "3c08e6b09dbd34698ceb4e4d47de9eb53b9aba6f5b097b2b783f36cb07d20942",
+      "oggSha256": "f933c7cd4da0f485ec3a1f9604b93cfc0e9f0ad37d48fa112913a275e4fbe98e",
+      "bytes": 27426
+    },
+    {
+      "id": "skill_0072_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0072.uexp",
+        "offset": 643,
+        "bytes": 61440,
+        "embeddedAwb": true,
+        "bank": "skill_0072.acb",
+        "sourceAssetSha256": "8c13ea4f897533d668147801d1701c98b3f3db43bb9467c0a537bc699ee4c7c3",
+        "bankSha256": "f768c6dc2f8c2b2cdd380bc83b9f839480fd1a56d6bd68956dce959e934830b1"
+      },
+      "sourcePreviewSha256": "ad9e130ed48031dfbfdc9a1c00386096b321b61bd380e63eb053d417df593010",
+      "oggSha256": "380c5d7b71d30e34fe4ea363463de26cc84c59ce3e1eb22070d5bc6a99d44099",
+      "bytes": 36601
+    },
+    {
+      "id": "skill_0076_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0076.uexp",
+        "offset": 656,
+        "bytes": 165120,
+        "embeddedAwb": true,
+        "bank": "skill_0076.acb",
+        "sourceAssetSha256": "742408409d0ddf051fda12522ec1c2b2326510e48b4578bcfa100585d05badcf",
+        "bankSha256": "2bb1b8b4a19833e278efca6d83de1314468067042cbcaa392c40e2d5e662ebc3"
+      },
+      "sourcePreviewSha256": "9a999e769d2ba439e844f26de5da011ab3464298ec257bd1f1affeb5c8bef9a3",
+      "oggSha256": "90ae287957edcf344d43fdf087d8c77efd96b4cf3998522b2855a576b36737b9",
+      "bytes": 59255
+    },
+    {
+      "id": "skill_0078_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0078.uexp",
+        "offset": 643,
+        "bytes": 61472,
+        "embeddedAwb": true,
+        "bank": "skill_0078.acb",
+        "sourceAssetSha256": "d61e0eb670bc97e2ae7ec369e8122c19d4816a5fe67d06689065fd6a7213b640",
+        "bankSha256": "24ddcfa6faae4c449e9e290d75a1deb6b0424c6b991518be3f06b0a9d4d7491a"
+      },
+      "sourcePreviewSha256": "b5cd12dfa3829cf401bb680836ee6dd83e82778c0730eca57cce8760219a12c9",
+      "oggSha256": "19d99473e83da3c2cc1dfcdbfc80c298b66bb755b03c1cc5727f29608e71602d",
+      "bytes": 35244
+    },
+    {
+      "id": "skill_0079_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0079.uexp",
+        "offset": 643,
+        "bytes": 53280,
+        "embeddedAwb": true,
+        "bank": "skill_0079.acb",
+        "sourceAssetSha256": "89e3bb1a8272965e54964cf2fe1eaa2ee5d37cf07d1464601b529a4b24c134ec",
+        "bankSha256": "26f4b81a43101383a73883111ce0424dc1839311f2b93b82ab4d687eb4fbaa79"
+      },
+      "sourcePreviewSha256": "bbfee858886c1939d85eed417487e8dabc0ba5215a93caf2227d06af6d6bcb58",
+      "oggSha256": "2c2114077ae4b0ee961b90bff2bace54722fda5e87eea31eaec47b4f4e8301bd",
+      "bytes": 33648
+    },
+    {
+      "id": "skill_0080_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0080.uexp",
+        "offset": 656,
+        "bytes": 133088,
+        "embeddedAwb": true,
+        "bank": "skill_0080.acb",
+        "sourceAssetSha256": "b3ba35949b4f3aae505495d9cfe9b142b9ae8cd94bfc8b46965e3bc6f219dbc8",
+        "bankSha256": "ad37392b1a016bde692886d02324fc70179a31f088d4a8ebf7109cd4f12e887e"
+      },
+      "sourcePreviewSha256": "4b83154d9cef2377aaf025ed01301e2f33f9ad27fa87b356b0a3f514bd38722f",
+      "oggSha256": "48ae3921924c3f36525470e92aff787a0b4229e26224447b694f72f1da06445f",
+      "bytes": 42839
+    },
+    {
+      "id": "skill_0081_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0081.uexp",
+        "offset": 656,
+        "bytes": 179936,
+        "embeddedAwb": true,
+        "bank": "skill_0081.acb",
+        "sourceAssetSha256": "fe8172ab4ccde2916c587b5c26d5ed3b0cb91ab052017a8db68b2989ae21ed02",
+        "bankSha256": "d395ef7d50b92831a3fe88b397cb6ed4a72a708a9807b6ec55ae700cc94f0d83"
+      },
+      "sourcePreviewSha256": "db3c607494502a7fa4d686600e62a989a0241f091938791ec69fbafa06eeef3b",
+      "oggSha256": "87b075c4a3dcd1ea133387caf3a95d950eac03f7369641eec880e946f744a2fc",
+      "bytes": 49250
+    },
+    {
+      "id": "skill_0082_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0082_0.uexp",
+        "offset": 660,
+        "bytes": 68320,
+        "embeddedAwb": true,
+        "bank": "skill_0082_0.acb",
+        "sourceAssetSha256": "ac72422eebcc2c9d0eb897647c64def9aecb16ddc845016dca79acbdb0add83e",
+        "bankSha256": "58920ef92029f914789b43b907d76bcb6d9f01d20c6f3155368224dccdef8cd3"
+      },
+      "sourcePreviewSha256": "866a2b3920d5cb1e6489cab56c90e91a538b039c2e1850d13e2ae8b1bb838ef1",
+      "oggSha256": "9c742b8f770869730290ace58bc1677f5e61b068c71fc67cdb49b325cbe6effd",
+      "bytes": 18219
+    },
+    {
+      "id": "skill_0085_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0085.uexp",
+        "offset": 643,
+        "bytes": 69280,
+        "embeddedAwb": true,
+        "bank": "skill_0085.acb",
+        "sourceAssetSha256": "2bd04902c5ba38dced0fc0a876acf7eb34bed9c9d1d1bb6f5fe6c59634a81e32",
+        "bankSha256": "edf4b13976607e2aa3e2f4025744200829fb119fab945addea25291957405032"
+      },
+      "sourcePreviewSha256": "dbba01a4ae0f751714e55aa562d8dd48576b418f37e974a18ed0090b44dd952e",
+      "oggSha256": "b959e3be78b0f9a67404d1513386edd6e11ca9070673cfce8734ad755c30077e",
+      "bytes": 33624
+    },
+    {
+      "id": "skill_0087_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0087.uexp",
+        "offset": 643,
+        "bytes": 45440,
+        "embeddedAwb": true,
+        "bank": "skill_0087.acb",
+        "sourceAssetSha256": "677eb709a5a7bbb4b482f5a63e504930646b52735b7e84e624d0256daf30c86e",
+        "bankSha256": "022bc211e24e5ea2e22e67054514c2a18e34f92d984275c8eddf7c76b46f0b24"
+      },
+      "sourcePreviewSha256": "d280fd1bef3a504ffe8f445613bfcb0225f8692b9560fc7beff688bb0f513f9a",
+      "oggSha256": "90d2d010eaafb2a8c926d5f3ad2125bb607edc6e484357560414a9eac4ddc351",
+      "bytes": 25552
+    },
+    {
+      "id": "skill_0089_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0089.uexp",
+        "offset": 643,
+        "bytes": 45440,
+        "embeddedAwb": true,
+        "bank": "skill_0089.acb",
+        "sourceAssetSha256": "99b62455cadfd4a6a2a62596f610b86b6f47accf63c835626b1ce49b58cda3af",
+        "bankSha256": "f2e2bbc8f9b77d978036f0e8a0a028c5d9fde0d1d7b0f0e498842e16a50f9673"
+      },
+      "sourcePreviewSha256": "033ab83c06826998bccf00476041273e71d1ac0232c55d7bf73664c83f453bb7",
+      "oggSha256": "e5bfc5097fee979629c9274a7dd42e783e3ec1f4645373b09ed2b38e6f4be386",
+      "bytes": 29592
+    },
+    {
+      "id": "skill_0091_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0091.uexp",
+        "offset": 643,
+        "bytes": 59776,
+        "embeddedAwb": true,
+        "bank": "skill_0091.acb",
+        "sourceAssetSha256": "574dcdaa8b2e80ac7b03e083e70f2f91c1e92abfc26b460f21cd4e481cf55e67",
+        "bankSha256": "c4f652921267415fb002aaadbcab883db7d604c90d1343a2bea34c71496a84bc"
+      },
+      "sourcePreviewSha256": "2e2ab7cbc8250252df38bf4f338333817e7187405a3baa02b8bb49b0b199fd29",
+      "oggSha256": "3888062461dfd87cf52f617fecfc54dcd7afd28b62273dcaf2d5ed520ef9ac88",
+      "bytes": 35784
+    },
+    {
+      "id": "skill_0093_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0093.uexp",
+        "offset": 643,
+        "bytes": 53248,
+        "embeddedAwb": true,
+        "bank": "skill_0093.acb",
+        "sourceAssetSha256": "3fffedbe6354f21c2702d0a331f115fa435a55d8442663509cf1dec8a678ee69",
+        "bankSha256": "54c2c0b73448d5cc81ef24410dead7abcc994d7b7798e5a948a383918b0467da"
+      },
+      "sourcePreviewSha256": "5bcc22b6a9f06cf217624069dc69492e9ed8cc3f76e1d777e29380b774381a73",
+      "oggSha256": "77eb3d34e87a59c061550db2bbd431290bdf38582192742a481753964217fe56",
+      "bytes": 32078
+    },
+    {
+      "id": "skill_0095_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0095.uexp",
+        "offset": 643,
+        "bytes": 37952,
+        "embeddedAwb": true,
+        "bank": "skill_0095.acb",
+        "sourceAssetSha256": "d87992cb14338f5fe2ffa8efd6f3a2ee9a9b42918ced8ea4d24587a7443ae051",
+        "bankSha256": "666ee560668ecd9745d54a2384cb8f4b3804aac945d95e4f7c81ebeba5639075"
+      },
+      "sourcePreviewSha256": "f78b17b082ed27e37126bb68bce9beaedb2fea0c1615997cbde9e3605e5818af",
+      "oggSha256": "c5aea4e96a895e971e1fd5035156509b71595ef5ad90e18f60100d3ba6831691",
+      "bytes": 26838
+    },
+    {
+      "id": "skill_0096_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0096.uexp",
+        "offset": 656,
+        "bytes": 100352,
+        "embeddedAwb": true,
+        "bank": "skill_0096.acb",
+        "sourceAssetSha256": "45fda98f4a94a7aa8a714ad9083267f0d5dadaaf1075338e9066b347b9268428",
+        "bankSha256": "3785509b2679bfcb2444740b1563ac7266eb607e4675e8bc43153c8b4cacc4e1"
+      },
+      "sourcePreviewSha256": "cd5e3f5d07a70b5c8077f1b3c8c30bf9ccbd0aab5e11cd232a655e06408e1264",
+      "oggSha256": "974d5b90df7a27f9ae611b728160f6c3f0c85ff88bdab88be3d9284c623cfb44",
+      "bytes": 34597
+    },
+    {
+      "id": "skill_0100_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0100.uexp",
+        "offset": 656,
+        "bytes": 117376,
+        "embeddedAwb": true,
+        "bank": "skill_0100.acb",
+        "sourceAssetSha256": "c8921ec122df820190a3b55ec93f2b5771f4fa74189edb952add38d4ecd5e9df",
+        "bankSha256": "44f4d3a147a3e90ca03af04acfbd27341b6622a51d56f2dcdfe7ff5723e9f19d"
+      },
+      "sourcePreviewSha256": "83344675c6c67fcfca0aec1207cede25b0ed207f92f6d958ea2066324a505af1",
+      "oggSha256": "204839fbb6d08bbdc23bd5f1dd40bbee222a72d466ba48af025b23876b9138de",
+      "bytes": 38931
+    },
+    {
+      "id": "skill_0101_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0101.uexp",
+        "offset": 643,
+        "bytes": 54528,
+        "embeddedAwb": true,
+        "bank": "skill_0101.acb",
+        "sourceAssetSha256": "ffed05c78675d5ac9fcf2b9fa893beb5ca3d1a5b9ea8f10afc3aeef71bc5c078",
+        "bankSha256": "a4e3504e5c5ba717323dde1513a3c52d9a442883dd38189bbade770b591ebd30"
+      },
+      "sourcePreviewSha256": "53d50ace4410ed82839a7b9fe340a4d486128f1b10d3ba38c8130ffcb052b275",
+      "oggSha256": "40a43ff675e27f167707b402243abc5d0dbcf6eb753542c4622047f812688d14",
+      "bytes": 34376
+    },
+    {
+      "id": "skill_0103_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0103_0.uexp",
+        "offset": 647,
+        "bytes": 36800,
+        "embeddedAwb": true,
+        "bank": "skill_0103_0.acb",
+        "sourceAssetSha256": "aad39833bc8448f2bd012f20b480d28eb8c761c4e849915f6b68c34b872739b3",
+        "bankSha256": "7d7c0fed4cc31e1b635261460d5ec91ca2b5b3f656a9f8bc8cd627442f0a6664"
+      },
+      "sourcePreviewSha256": "d9a51b1f56d4eacc315f696d1d427cbfab80f9fac99d64a81abfbebd44305edb",
+      "oggSha256": "39b513ac9087730951b4840c3623b6fc8d4b2b8b49dce24febaf642cb3a3cb02",
+      "bytes": 20497
+    },
+    {
+      "id": "skill_0104_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0104_0.uexp",
+        "offset": 647,
+        "bytes": 36800,
+        "embeddedAwb": true,
+        "bank": "skill_0104_0.acb",
+        "sourceAssetSha256": "8063c0bb2460031829954bbf1ae622d337d2140d1e02c6864e637ccaecb30235",
+        "bankSha256": "984041f7a4f627ab5a659c72bdf7d6763d5594449531c7a081c1d3265133bae1"
+      },
+      "sourcePreviewSha256": "9102d7d2545cb47a8ef9badba893dd67497b96b6231732790fc8bce90b24b176",
+      "oggSha256": "b7c9c339a53df9765862dc279352ce572756d811eff20c1eb4b1e72866639a67",
+      "bytes": 21981
+    },
+    {
+      "id": "skill_0105_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0105.uexp",
+        "offset": 656,
+        "bytes": 85344,
+        "embeddedAwb": true,
+        "bank": "skill_0105.acb",
+        "sourceAssetSha256": "1c688a854c1780fee4d62fefe5e1bd7ac5d3af0b1e8ae65da4c2a6dfe7dd7e53",
+        "bankSha256": "0c39fffb520a943197897253a16398fd2535dab8a3fa7c6287a82ddcd73a0081"
+      },
+      "sourcePreviewSha256": "39eff5e1a7f20d2ffd883a9cddc2aef834ad15470a84b9807a192306fadde9ac",
+      "oggSha256": "c64bdc3213a592a5ffd96a8c44511ac277bab5db2086addcc892665a2e655650",
+      "bytes": 28685
+    },
+    {
+      "id": "skill_0110_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0110.uexp",
+        "offset": 643,
+        "bytes": 19744,
+        "embeddedAwb": true,
+        "bank": "skill_0110.acb",
+        "sourceAssetSha256": "7e2d064158657bce543c2e21404ac285017d674f3d4794b9615c638691e597b0",
+        "bankSha256": "e71be1e29a0ea498113aa9c19f99f71d7ec1edad637bcbadc813dfdcc041e640"
+      },
+      "sourcePreviewSha256": "99acdcd8697335fdfa214e4809d44899ce2eb52647a9edd96f7ed092119f9e97",
+      "oggSha256": "720e76ec9f01b7f4fa426dabbf5f8672e15b2d671ebef0d625783088190f067e",
+      "bytes": 12504
+    },
+    {
+      "id": "skill_0111_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0111.uexp",
+        "offset": 643,
+        "bytes": 37824,
+        "embeddedAwb": true,
+        "bank": "skill_0111.acb",
+        "sourceAssetSha256": "66e78d9c9f39cf8eac80625f1e49d8dde67899c80b205a13b78b965f99e3f48e",
+        "bankSha256": "7ad647a10941a1f136003d89e207b3833a1d67d543fe0f950536d95bd3d68ef6"
+      },
+      "sourcePreviewSha256": "b3189bb5905906be2a9f121fd4266cc79d22a10efa7eae897e4af5d882fae9c0",
+      "oggSha256": "3818f6d4e5ac255154b3857f0c96709bb7c739548434b790eda03608bab27224",
+      "bytes": 21694
+    },
+    {
+      "id": "skill_0112_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0112.uexp",
+        "offset": 656,
+        "bytes": 121504,
+        "embeddedAwb": true,
+        "bank": "skill_0112.acb",
+        "sourceAssetSha256": "1697f7f3fd6c913d2d3c18c0437d743820deecbcf98f14198c219ad0381d0df3",
+        "bankSha256": "24c9b5088d54e0ee50c7366d58d6775839a995ab4c0d5b2e4cf4983f0f5649c2"
+      },
+      "sourcePreviewSha256": "c499f21608b2f53d02bac3836f50fe3bc762a330d8ec3c9b759c52191d2eb918",
+      "oggSha256": "dea9ca54383741e7fb72338fcf65ec501e4ee478c5649c75dff53e214dc01ab2",
+      "bytes": 42671
+    },
+    {
+      "id": "skill_0113_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0113.uexp",
+        "offset": 656,
+        "bytes": 45760,
+        "embeddedAwb": true,
+        "bank": "skill_0113.acb",
+        "sourceAssetSha256": "14f578274db7b6d21817c6c92dce0223bfc5956a45e6099b56767a0a7600bc09",
+        "bankSha256": "c53b731fc15d478df03f6e6612360c95f67fa14c8c6c39784676e4de550d44b3"
+      },
+      "sourcePreviewSha256": "960f04bc1435503c8b7bd18d4841edfb6db40df9111e104eee3665727bb307fa",
+      "oggSha256": "dba614ee9d24520a18da9ce2abccf7de9db62ecbd686950329be0f3208f4dacb",
+      "bytes": 16305
+    },
+    {
+      "id": "skill_0114_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0114.uexp",
+        "offset": 656,
+        "bytes": 133056,
+        "embeddedAwb": true,
+        "bank": "skill_0114.acb",
+        "sourceAssetSha256": "3144108feb5972389b72d7c24644cc126cd24b4e030dfe0ea64cca6fcd0943bb",
+        "bankSha256": "a07cb61fae0cd893660cdd7795a041c3376686b5c074fb05700ec3edb620ff46"
+      },
+      "sourcePreviewSha256": "5b265542b3129b1b6a62357b8d44217268bb2575f9d14e1370496207cf77632e",
+      "oggSha256": "0bfe5505c12d8f46f892061c48da0533c500d01cc96ef7542fa814e857153ae3",
+      "bytes": 38620
+    },
+    {
+      "id": "skill_0115_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0115.uexp",
+        "offset": 656,
+        "bytes": 72384,
+        "embeddedAwb": true,
+        "bank": "skill_0115.acb",
+        "sourceAssetSha256": "03a303a4ce903ff22062e99c839e1630afceb8491e179b40802c6409ea83e3c1",
+        "bankSha256": "c3eedfeff4e685662a9abc58d44df645afa867fecc91f06d3f7ef6c759519e57"
+      },
+      "sourcePreviewSha256": "e473f3fe1d846d24c006f6a2158f0071c74525598b1567fcaa20b7a80609790c",
+      "oggSha256": "c9530d55014f8a049bd875178679a543b8e1ab6b08e87a53c7ddea11d4a2819d",
+      "bytes": 26057
+    },
+    {
+      "id": "skill_0116_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0116.uexp",
+        "offset": 656,
+        "bytes": 85344,
+        "embeddedAwb": true,
+        "bank": "skill_0116.acb",
+        "sourceAssetSha256": "68490e0255701b9e64c07648a70404ea7f080e52b482bbd69ba882b8a2e86fce",
+        "bankSha256": "d6fb144544b69c059e830eff09419117f89bf315a1d6f94697c3b1991c316155"
+      },
+      "sourcePreviewSha256": "4be5fc59e90d3af6eace2e7dc5f49c675933e6d4592cbb6ce03c893549168e5c",
+      "oggSha256": "1f44f867dcd6bbbae48a7c55446a54db10b9f15873824a8ead2e4b7b9a655623",
+      "bytes": 27043
+    },
+    {
+      "id": "skill_0117_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0117.uexp",
+        "offset": 656,
+        "bytes": 68992,
+        "embeddedAwb": true,
+        "bank": "skill_0117.acb",
+        "sourceAssetSha256": "44af587efdd42d4b6eb4047f07a26edfef35889da117e055ad62f306b631b5b9",
+        "bankSha256": "d7c489113b021059c3c93e802ffbd3aa6a2e19dfd71de8ed92f4e94fd83d7b07"
+      },
+      "sourcePreviewSha256": "205321f5c73f89fd395936b37c75638ea670ef1a6625d09b8b9981582e74b2b8",
+      "oggSha256": "494db1c8fc7fd10ee38a8c23b1db959517236f3a5bb8da52b03ced7961ab5d4d",
+      "bytes": 25524
+    },
+    {
+      "id": "skill_0118_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0118.uexp",
+        "offset": 656,
+        "bytes": 101056,
+        "embeddedAwb": true,
+        "bank": "skill_0118.acb",
+        "sourceAssetSha256": "c1c7fa34b9dddf0a64aa29945fbe5c8f838fc4bd4a44304144525906ee11eb8a",
+        "bankSha256": "42e5910892c456ebf311058e708c7687953120130c537c2280f3f4d571331904"
+      },
+      "sourcePreviewSha256": "852ca186cf19fdf356087dc7b2e1ed75aa534ad81a1efdd8e157c38a4ef9f840",
+      "oggSha256": "cb433fcf3264ff531cb9f6c4c88e9f475645758e4316abe03dced9495f761c33",
+      "bytes": 34538
+    },
+    {
+      "id": "skill_0119_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0119_0.uexp",
+        "offset": 660,
+        "bytes": 128992,
+        "embeddedAwb": true,
+        "bank": "skill_0119_0.acb",
+        "sourceAssetSha256": "3d22b61c1dad42fe2d7c0a5f06fa9966dbe6fd86da6143daebaa9ae9c04c46e7",
+        "bankSha256": "f5eecf3a883d0d7f33092cf645f77aab05ea2918c42f917b9c4be737a52d8488"
+      },
+      "sourcePreviewSha256": "413cadc6655ca8f21590de455217eafed81be6c2f3cccc7b8c39d214e9a1762f",
+      "oggSha256": "f7c548bc9902ba2aff1285d3868a7235b9116fb5a8c7383822d369a520da26dd",
+      "bytes": 42813
+    },
+    {
+      "id": "skill_0120_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0120.uexp",
+        "offset": 643,
+        "bytes": 57280,
+        "embeddedAwb": true,
+        "bank": "skill_0120.acb",
+        "sourceAssetSha256": "e7cf233363d0668aa3062f6b5ba415cdf625110c96b6bf4e3e1e0eae5efe1c9d",
+        "bankSha256": "c02c6c0ae2d8cf38ef2a5b3ca4cba8de6d5d2236d4ca271d890bc5ecb1fc1a80"
+      },
+      "sourcePreviewSha256": "df13aebed8e78b76696e9af130cc6de1b68622873f8b99d3d095b32263df9b0b",
+      "oggSha256": "74b17f0965d48812c32891213bb6cadc4eb0200d19c2fe5fff4bfeae706ed3c4",
+      "bytes": 19652
+    },
+    {
+      "id": "skill_0121_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0121.uexp",
+        "offset": 656,
+        "bytes": 155584,
+        "embeddedAwb": true,
+        "bank": "skill_0121.acb",
+        "sourceAssetSha256": "86384271b5596bc10753bfe426a900854da9c2c115fb09cd8a05a943f09ac229",
+        "bankSha256": "b976c3d6f5df7c0e8d8fd0b1539edf1646b7ebe8fdc74755f56a6574277fd006"
+      },
+      "sourcePreviewSha256": "325670fadd226b5d178c776a2c7683ffda669099ed5f7c735b95cb1b2152b467",
+      "oggSha256": "c9ebc0db668168701b8229270eb72f622323c91d58820efe07e40c7069a01113",
+      "bytes": 53946
+    },
+    {
+      "id": "skill_0125_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0125.uexp",
+        "offset": 643,
+        "bytes": 24192,
+        "embeddedAwb": true,
+        "bank": "skill_0125.acb",
+        "sourceAssetSha256": "2fde3014fc40f715e88c1d20ab476ae869332f82777093addd2fb7fb48a3b27b",
+        "bankSha256": "81b307f0a88e91aaa55408bde66f6f2836e47731b30c8f1f352258536c6bf3d9"
+      },
+      "sourcePreviewSha256": "0f0a41049e37ef893789bb6b7b464004173300f0a9f43b18a4a3608fae1141ae",
+      "oggSha256": "352996b6e3e1bbb11fa3d5ad7641e42f72a467c7bd10d29a9aa9fe8554a23066",
+      "bytes": 14949
+    },
+    {
+      "id": "skill_0126_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0126.uexp",
+        "offset": 643,
+        "bytes": 32032,
+        "embeddedAwb": true,
+        "bank": "skill_0126.acb",
+        "sourceAssetSha256": "7f15bf8521d82000c9ba861c6292929dd6834d54d09f01d5964ff11daa55ccaa",
+        "bankSha256": "f7e3fe9c76aa1318aa819b9b606b31940dc68bff06fead5fd76bb85065195767"
+      },
+      "sourcePreviewSha256": "9ba37339a0accdfa8e9a6410a0a223c42a4bd629381db3b022aac9ef3d5848dd",
+      "oggSha256": "221cb22c1944d6dfe5ec3a2cedbb9c581bfe3fa80f91e8342b5253a5b8bffc79",
+      "bytes": 18542
+    },
+    {
+      "id": "skill_0127_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0127.uexp",
+        "offset": 643,
+        "bytes": 36800,
+        "embeddedAwb": true,
+        "bank": "skill_0127.acb",
+        "sourceAssetSha256": "d32fa84298e8314dc61608eeadf161c631311fc0f468ba88b93fc44e8c4662e7",
+        "bankSha256": "398fec3f7ee891abfa0373a44350e97690dc1c66123b13d4e0eb9f1737037bab"
+      },
+      "sourcePreviewSha256": "cd13f3984474f4561e995f0b8040dafaa2dc8a1672c05a405c12af5fc62769c7",
+      "oggSha256": "bf79c72b6cce0b3f1a302962c4a21596e20953326dd6e34f8b076b8116bbbab0",
+      "bytes": 17661
+    },
+    {
+      "id": "skill_0128_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0128.uexp",
+        "offset": 656,
+        "bytes": 78528,
+        "embeddedAwb": true,
+        "bank": "skill_0128.acb",
+        "sourceAssetSha256": "88f1d37c2262d63943f9201513d587d77e64cc13a3c5ed5442b7d11dde4f3532",
+        "bankSha256": "eddd6f793ab4f99f2138900ca46a38fbf5c5e59aa786c275b19274f966fa1dca"
+      },
+      "sourcePreviewSha256": "3008af223826f00eb0322fb4a4da65ddcbdf2a9dce1bcec22031461ceb2a7a60",
+      "oggSha256": "ce8aec68feffdc02ad68660b0159de11f3433a2ff1fbf02adfbc030b41699f1d",
+      "bytes": 27249
+    },
+    {
+      "id": "skill_0129_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0129.uexp",
+        "offset": 656,
+        "bytes": 73760,
+        "embeddedAwb": true,
+        "bank": "skill_0129.acb",
+        "sourceAssetSha256": "4f27ed085278d9441b7dcd26ad05279f4dba782050fedce4c4ca3b4688c1ce7e",
+        "bankSha256": "46b3f36a54a1d908d8bd550140a66323e1513e0f2156b1188b65170676fbe66f"
+      },
+      "sourcePreviewSha256": "8abadd75b9f611a7784d2bb6465d27afef2a9d6bd31519c82feb373a87ebed0b",
+      "oggSha256": "557d5ef127120c7e63aa76b120073b4569e1e975d638fa9ac103c04c5a7519fd",
+      "bytes": 22947
+    },
+    {
+      "id": "skill_0130_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0130.uexp",
+        "offset": 656,
+        "bytes": 68992,
+        "embeddedAwb": true,
+        "bank": "skill_0130.acb",
+        "sourceAssetSha256": "05f447dc50be23db20fc4d2115daba061e57295c1ba88a1b64392abbb3962d7f",
+        "bankSha256": "c9b52e18d11fdb63eb502b7cbae972db8bfb49523ec9479b5d9e26b05a20dd8a"
+      },
+      "sourcePreviewSha256": "9a13f64ec3441ddbe2169c7a01eaba85895d3a5ad4f6e6bf52876574161d245e",
+      "oggSha256": "2c2cbf3e9f36b6c05155f3e00adbf5301ee9ad38f78ce21b5df31d047c74a4d2",
+      "bytes": 22186
+    },
+    {
+      "id": "skill_0131_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0131.uexp",
+        "offset": 656,
+        "bytes": 115360,
+        "embeddedAwb": true,
+        "bank": "skill_0131.acb",
+        "sourceAssetSha256": "a757abfbfe0e3d91587c3b19efa2ebd75a29dd73c840b527ac513bd0a4a26ebb",
+        "bankSha256": "1e6ae231b53b18215820e53d9efe6f124c980856e20288d250e82b98ac6414e5"
+      },
+      "sourcePreviewSha256": "e08eaf14878da28321de8be01408ad83e775cce92d4a079ff275b5729319e6fe",
+      "oggSha256": "c34cf6968e6f9f8771ab28e1886a035e3192765d43d976b1e9bab5eab3ad3405",
+      "bytes": 37215
+    },
+    {
+      "id": "skill_0132_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0132_0.uexp",
+        "offset": 660,
+        "bytes": 100352,
+        "embeddedAwb": true,
+        "bank": "skill_0132_0.acb",
+        "sourceAssetSha256": "9a0d665fbdd430c40fc51292908c0c8a0a83183bbf42023a1e20a1b9859dd117",
+        "bankSha256": "3584221b3b214a94888ce828398a650d4864543a77130b012be77cd3d030f5fd"
+      },
+      "sourcePreviewSha256": "70a08e22d79987eae1bc6a66aa034979b8e2fdfa9d185d4b77a05b4c05e48244",
+      "oggSha256": "e16d6803d15328b92000cfebac089a6b4da04863f8472c56ebd9bf4521150e03",
+      "bytes": 34498
+    },
+    {
+      "id": "skill_0133_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0133_0.uexp",
+        "offset": 660,
+        "bytes": 53312,
+        "embeddedAwb": true,
+        "bank": "skill_0133_0.acb",
+        "sourceAssetSha256": "2f6bad32c2d000cfce28faf169b61e202ba1d53332c2ba7b012cce40745e1f6d",
+        "bankSha256": "48eacf93233cb4bc11e15b23dc8292b89174cfefcaf4a04f747c111bb4f0f94b"
+      },
+      "sourcePreviewSha256": "fd6439c661bf573725a1d4b8962dc53c4e9b44e33acfcced3380955471f3e62c",
+      "oggSha256": "97f9e3e47f5031da6f99ec9e236c618f23911d4dfde0b7becd1ba6159f03c935",
+      "bytes": 19199
+    },
+    {
+      "id": "skill_0139_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0139.uexp",
+        "offset": 643,
+        "bytes": 22816,
+        "embeddedAwb": true,
+        "bank": "skill_0139.acb",
+        "sourceAssetSha256": "5fc8ac300c8c1b7ae5e1004e136aa92a29d2bded614f3f71a84fdef171528546",
+        "bankSha256": "c2b980d6bebb02357b032d95cc576ca43f92a0dc5dbf61423b400b431cc76ff8"
+      },
+      "sourcePreviewSha256": "23205c758af88236f0f67146faf0f8848e6365237a716e60b070cf1301b56aef",
+      "oggSha256": "8139af064a7de298f5f69d8391f3b09ebcb1a49681572de02950153ca196e165",
+      "bytes": 14911
+    },
+    {
+      "id": "skill_0140_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0140.uexp",
+        "offset": 643,
+        "bytes": 28960,
+        "embeddedAwb": true,
+        "bank": "skill_0140.acb",
+        "sourceAssetSha256": "73f456a38370ca9c5c1b173b54a84d284af105755a5a6a49d04aa0e1d068e3d2",
+        "bankSha256": "abd62f170bdc95e8e912c97ed015cb5f4b961e271d02b4f22a3d7c6e5be05b3d"
+      },
+      "sourcePreviewSha256": "b1f3a261e94f19efda8ebf8fd99ab217b11a9d4e546693d3833d65b9a6b96c85",
+      "oggSha256": "4d0235dfa13c7801eda5c53830e8b69a835c2dc1dfc77390536110a449efcd4c",
+      "bytes": 18264
+    },
+    {
+      "id": "skill_0141_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0141.uexp",
+        "offset": 643,
+        "bytes": 44992,
+        "embeddedAwb": true,
+        "bank": "skill_0141.acb",
+        "sourceAssetSha256": "10b71b0721f3ce5b1fe336f5b116a922a15b8109955b19b283191081c996c4c0",
+        "bankSha256": "95ff92eb32a1773fd251296d4ebb769d144a4c9fa98bc3c6e54301272c0cf51c"
+      },
+      "sourcePreviewSha256": "4dca568028821a69a122485d991f253a4963e468db6277ce7fc2d84d0662d51d",
+      "oggSha256": "c02c6cc7a8efa020ca41c7d446ac1f3e7034f7d682a4da1ef463383e31f544de",
+      "bytes": 29911
+    },
+    {
+      "id": "skill_0142_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0142.uexp",
+        "offset": 643,
+        "bytes": 36800,
+        "embeddedAwb": true,
+        "bank": "skill_0142.acb",
+        "sourceAssetSha256": "3690810812c9c72f9682b9a99e577688efb4dd20a012e28d948286c51613821e",
+        "bankSha256": "903c95e8f313a6bd8ba6b1333ccc1f4f7d64d5a502df5785f76170230d5d9cfb"
+      },
+      "sourcePreviewSha256": "df33abd29fa60b749d84ee7244be5147a7da92559c834d537432a299fc413c07",
+      "oggSha256": "2f46bb0f25b5c9f40d9d677e07f79a0697cdcf9ea8e9f6d41cc16afee97a74d2",
+      "bytes": 22463
+    },
+    {
+      "id": "skill_0143_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0143_0.uexp",
+        "offset": 647,
+        "bytes": 48064,
+        "embeddedAwb": true,
+        "bank": "skill_0143_0.acb",
+        "sourceAssetSha256": "feb8b195b52c27728c1df041f24b5fd53fb657748ead045bf974599b12bdc3a3",
+        "bankSha256": "90faca0700275ebe571691041169c1fa27139bcefd8e371741c01c37d88c873c"
+      },
+      "sourcePreviewSha256": "b2bb3be5d59dcdce9026c429f81ff0994824caa3ca42b5d043dee7954446f10f",
+      "oggSha256": "f283bd638709c74e3b6a308b59a1f34e75dc40fab1ae9738b8cc9b7522226418",
+      "bytes": 34050
+    },
+    {
+      "id": "skill_0144_0_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0144_0.uexp",
+        "offset": 647,
+        "bytes": 34432,
+        "embeddedAwb": true,
+        "bank": "skill_0144_0.acb",
+        "sourceAssetSha256": "71bdaebb2253f33df06f082a2ba838c520ea6c42129fb98154a855db78016dce",
+        "bankSha256": "424db62e51554eee736ac71108c0f32bdd49f4a832a0336d557e7da2eb14bad5"
+      },
+      "sourcePreviewSha256": "84eb74d04ffb70431343b0e319c09030e08d1541475317297f138d2b36bead0f",
+      "oggSha256": "8a5a0b2c2d65781740a59ad6c0c1081e9c24ef538292d103fdb2847a55c2f7b8",
+      "bytes": 18383
+    },
+    {
+      "id": "skill_0145_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0145.uexp",
+        "offset": 643,
+        "bytes": 61024,
+        "embeddedAwb": true,
+        "bank": "skill_0145.acb",
+        "sourceAssetSha256": "2dc2bcd4c31f9f83eefdb39f0a1681ad3e97e0d7617bd9aac61051ef81955462",
+        "bankSha256": "fc70c2f0407e0732f25b77fc1c6fa0c0e81483e9ae1072814edf6d320022c5cc"
+      },
+      "sourcePreviewSha256": "044273e12bd2e5cfd749a5d294cde877d33240040769a5acea10cb6ee3cc995a",
+      "oggSha256": "f13a2b5bdc65efb7cc3b074de6625809b02b99cba1c0e20e0f1d49eafb5528b5",
+      "bytes": 41793
+    },
+    {
+      "id": "skill_0146_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0146.uexp",
+        "offset": 656,
+        "bytes": 91488,
+        "embeddedAwb": true,
+        "bank": "skill_0146.acb",
+        "sourceAssetSha256": "48b190420653b1f8d6271c376fc8ead379a20201becddd2f647faa40a5617589",
+        "bankSha256": "77c5498b0d4cd184755901fa1e77d6f2973b182215b55c5ab17a65398b0bc29c"
+      },
+      "sourcePreviewSha256": "a5155cb20d687486d5f8f45d3dbbb9353115d9e81ce4c1caa0ef9a00521ef4ba",
+      "oggSha256": "e9550e28725c399f3a80eec7250d50049cde03b46741337ed7149e46fd40526c",
+      "bytes": 35013
+    },
+    {
+      "id": "skill_0147_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0147.uexp",
+        "offset": 656,
+        "bytes": 119456,
+        "embeddedAwb": true,
+        "bank": "skill_0147.acb",
+        "sourceAssetSha256": "bdd75b9ed039a1fd310797a301f3e04219f44182b18b25e28dc57a610a84415a",
+        "bankSha256": "46e9ac415a8a4c7e5191656aa6447a2494295ffbb172394cd6baa7ac4e72f1da"
+      },
+      "sourcePreviewSha256": "51361f3112998f46b6b749eae39ba73c2b394f2938100db570f89d8bf7165c58",
+      "oggSha256": "4cbb2b4fd86b00ebc4fdd9e6762ecab37fe2e549a10ebdff008697de08abe314",
+      "bytes": 40592
+    },
+    {
+      "id": "skill_0148_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0148.uexp",
+        "offset": 643,
+        "bytes": 28288,
+        "embeddedAwb": true,
+        "bank": "skill_0148.acb",
+        "sourceAssetSha256": "0210ed69ff1150ee7ea8f4182659fe1470c1dcfcd1197b2ad323bb3b58022306",
+        "bankSha256": "b4b2e6ca3d5208f7dcbe07640d3c3129f23710a4ed82849889e83acba6a50609"
+      },
+      "sourcePreviewSha256": "cff304feb6c567e64bfced13e25c3dd1f1d35aa97f8970eeae8cdee8b34ba479",
+      "oggSha256": "cc0344b1723722fd3a9c244f908c9c5ddfb1dba4fea9dda2e4f4b0b8c4ded14e",
+      "bytes": 19573
+    },
+    {
+      "id": "skill_0155_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0155.uexp",
+        "offset": 643,
+        "bytes": 37248,
+        "embeddedAwb": true,
+        "bank": "skill_0155.acb",
+        "sourceAssetSha256": "9d6dc9cba1534d741936d96dfc4fc3007c40d124ea154dd4a3d0ae4c6894a452",
+        "bankSha256": "fd84fe78ba3d9784d41fb6b9057352d5ef73bd859d6b53591026d3c4feb5c491"
+      },
+      "sourcePreviewSha256": "17e68326f48b140a200e8ff21410cc6e1a9ae2bcbadd9435cdf634c5d9b4bfdb",
+      "oggSha256": "fb8c17d86a30e1bc00ee01296b9155b4d1c47a334bd42d78ff60082de5e20c93",
+      "bytes": 29261
+    },
+    {
+      "id": "skill_0156_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0156.uexp",
+        "offset": 643,
+        "bytes": 175808,
+        "embeddedAwb": true,
+        "bank": "skill_0156.acb",
+        "sourceAssetSha256": "a47e8a4fc44d06b82c5dbcb5e7eb2973c02d0565e6efc9f42bb2ce711bedef2b",
+        "bankSha256": "16688e68205b37396e6f0672347e151b0c60487c8900eaa629667498e20562f4"
+      },
+      "sourcePreviewSha256": "449db32f1d9e88a3c19aa6ff0776a4ca200fe43f65ce73b1a66c0a40e485a881",
+      "oggSha256": "0dc992db05db834541932dac4e7cd1dd31e9b047c3a21fff5bb3900961a66ec5",
+      "bytes": 30640
+    },
+    {
+      "id": "skill_0157_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0157.uexp",
+        "offset": 643,
+        "bytes": 45408,
+        "embeddedAwb": true,
+        "bank": "skill_0157.acb",
+        "sourceAssetSha256": "80cb9ff565590b0d39328fcd817adf4c9a3f3b2794fd068ed7f7d24cd6121022",
+        "bankSha256": "e6e53e8b9047c8fa1d1aaf83637377a66e9b3031240e7e09f7928e9f7b88629e"
+      },
+      "sourcePreviewSha256": "3a7df53d8d0ff6e652448be4658b9de4f3a5ccf18f562bf74ef29cd8c60419b0",
+      "oggSha256": "b315630622d9cbcc1d77967536cd07f831f9c55ce453e89db91f22fe471a04a9",
+      "bytes": 34973
+    },
+    {
+      "id": "skill_0163_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0163.uexp",
+        "offset": 656,
+        "bytes": 159008,
+        "embeddedAwb": true,
+        "bank": "skill_0163.acb",
+        "sourceAssetSha256": "8e8f707ab06421bf707b54368601ff500edaf0b80198f46c8f16fe51835053cb",
+        "bankSha256": "fe89f485a300424d0bc0e0eebdf0cdbd9696cb941f3b090f6854131355408cc3"
+      },
+      "sourcePreviewSha256": "92d1cc8ea71cd74a124ed141743958ba6abe84770d1959791c78b5212423836d",
+      "oggSha256": "003fcb4bf3955c8c4c9673153c2355ba44570abc432842b9ee464ca720c234b8",
+      "bytes": 51967
+    },
+    {
+      "id": "skill_0165_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0165.uexp",
+        "offset": 643,
+        "bytes": 52832,
+        "embeddedAwb": true,
+        "bank": "skill_0165.acb",
+        "sourceAssetSha256": "aa0615625037813d9521d4f01269d1de665b0184b7ab76ec9928c7c42f68aad3",
+        "bankSha256": "03fc775abbaf5a409bb9583cf23ae6ff1aa34a79460a938d948bd4f56edf3360"
+      },
+      "sourcePreviewSha256": "9c6e26eb858b5331cffb2ed09aec46b0ed52ba7f00d8a76f7848b7f08ae516b4",
+      "oggSha256": "351403a07a87c1e0b45902f849a21d6b5450e24a8384de2a1067793a69b5b82f",
+      "bytes": 34594
+    },
+    {
+      "id": "skill_0166_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0166.uexp",
+        "offset": 643,
+        "bytes": 46016,
+        "embeddedAwb": true,
+        "bank": "skill_0166.acb",
+        "sourceAssetSha256": "7c3b6d1c49fe105500069e5fa2cbef78074441f8ebcabd456577bed37d290471",
+        "bankSha256": "1868a0b1f47b82bab5e2cc0eb0b9511cad5e11d5656f9e2cc7d4af7092fba36f"
+      },
+      "sourcePreviewSha256": "a8213f6e5c2dceac020b1dd3cc512fbbe9b3c5eba0c79ad706546312f74cca00",
+      "oggSha256": "8c44977102356d7f2357acd7fff953a22f9e50fc48b8599f5f050ae4961827e1",
+      "bytes": 31448
+    },
+    {
+      "id": "skill_0167_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0167.uexp",
+        "offset": 656,
+        "bytes": 101056,
+        "embeddedAwb": true,
+        "bank": "skill_0167.acb",
+        "sourceAssetSha256": "2c84449521fcafbecb01d91246c48ffe2278fd04d82c848ba0a868f08bf4646b",
+        "bankSha256": "1a3ec969f1c49c09c35a42c98b35357163c57aeeec793bfca580762f143e29fb"
+      },
+      "sourcePreviewSha256": "35c50b0bcd03eff97abd16434d615f0d8d73e2080749ce1281ed7f800f78b647",
+      "oggSha256": "4356c7b62f651b6eebeef6084094688cb897a37e7735e8f0ec1f1ac694373338",
+      "bytes": 34403
+    },
+    {
+      "id": "skill_0170_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0170.uexp",
+        "offset": 643,
+        "bytes": 54304,
+        "embeddedAwb": true,
+        "bank": "skill_0170.acb",
+        "sourceAssetSha256": "c83f747e197e9c05453ee6e68e4bbbdc77fbbeca02411b315097b214a5fc7606",
+        "bankSha256": "f1ba536c51a66c315e5de0bcea761a82f93d04ad1c60be783f4663028b69bce1"
+      },
+      "sourcePreviewSha256": "b1f580e135909ce278ead5770a3504ad3f5e9d8eda36298ca7eaf248cf8b0e0f",
+      "oggSha256": "5baf39f3f714670f3133c04c15c5cd076be33b04c1b3b7846e2e00060cb70bfe",
+      "bytes": 38133
+    },
+    {
+      "id": "skill_0172_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0172.uexp",
+        "offset": 643,
+        "bytes": 54304,
+        "embeddedAwb": true,
+        "bank": "skill_0172.acb",
+        "sourceAssetSha256": "bddf038b2974d1ec696a0207561ea90ddb42871e84e4f48e3f3269d6f81dcb6c",
+        "bankSha256": "d8dc252511077271ef7cf91afb0507526280a6eb55f57757583f07d8c47613f6"
+      },
+      "sourcePreviewSha256": "16352a91cdc41c009d866dde47a5e4e633156937e6e198243dc7cf91a1cf2c69",
+      "oggSha256": "f0b6181da7de48c25523a237cc307d58683628b38c997521cbeb5f47e3592701",
+      "bytes": 38281
+    },
+    {
+      "id": "skill_0176_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0176.uexp",
+        "offset": 643,
+        "bytes": 52896,
+        "embeddedAwb": true,
+        "bank": "skill_0176.acb",
+        "sourceAssetSha256": "536175bb30a9ffac398b3ce282067a84abbe274b6fd5d9c239feafd570c756ed",
+        "bankSha256": "c947cf8c082abfbf72c6e38d910edc923f8534c8899f2ac176b07fb612becdbc"
+      },
+      "sourcePreviewSha256": "546709e8a1048391d715fe6da590ea82a1dc1987f6d9a698349d92f51c7f7503",
+      "oggSha256": "f6e5f05aa78fdbd064a4f976c791e90026e8987f1365b82e0347259c79be9503",
+      "bytes": 34558
+    },
+    {
+      "id": "skill_0177_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0177.uexp",
+        "offset": 643,
+        "bytes": 52480,
+        "embeddedAwb": true,
+        "bank": "skill_0177.acb",
+        "sourceAssetSha256": "3900551638e92d9ffae80552b908d2d6e017d97518048b8dad6598b5c133d9ef",
+        "bankSha256": "5d0b363f10d4c06b1621e421425297f1a3ede77fb75851378eaecbeaffbad30c"
+      },
+      "sourcePreviewSha256": "546709e8a1048391d715fe6da590ea82a1dc1987f6d9a698349d92f51c7f7503",
+      "oggSha256": "7b704535d65c3a23ff83b611a9ccb3a6035b03db9f281f8d34a80709b1e27958",
+      "bytes": 34558
+    },
+    {
+      "id": "skill_0180_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0180.uexp",
+        "offset": 643,
+        "bytes": 28736,
+        "embeddedAwb": true,
+        "bank": "skill_0180.acb",
+        "sourceAssetSha256": "eae0fbc76a17e84cc02e956b92abc0a3a9f49380fe4a432053e4b90e6ed3eff7",
+        "bankSha256": "10cc918d7feeb0926d21d4d12f169063538f836c28b210581fa36e1ca67fc144"
+      },
+      "sourcePreviewSha256": "05a3399314dd2af2c419922cd39b9f641f5723a2f9c07477bec4591353db23b8",
+      "oggSha256": "e84b8f1309c3d5feea7f240c2b0c7fd2363deff1ba7b2069e475065cf7f2fdfd",
+      "bytes": 18920
+    },
+    {
+      "id": "skill_0181_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0181.uexp",
+        "offset": 643,
+        "bytes": 28736,
+        "embeddedAwb": true,
+        "bank": "skill_0181.acb",
+        "sourceAssetSha256": "f7ac5f783012d944f261be2adbeb78780a8dad835a3fc4408329df101fba9ca2",
+        "bankSha256": "7ddd1cc65098e6ab21db06d34f27fd7e8c1f08e368d63acc5de4259e9a8501bd"
+      },
+      "sourcePreviewSha256": "e3fcacc569adc2d1ea1bb381667d94491c3b54d09041950fd624bcbfaafc7a4c",
+      "oggSha256": "e114f34110da22af7b53135273f77ce949b6e92c953fcafe7a84be7f93d4c71a",
+      "bytes": 19131
+    },
+    {
+      "id": "skill_0182_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0182.uexp",
+        "offset": 643,
+        "bytes": 28736,
+        "embeddedAwb": true,
+        "bank": "skill_0182.acb",
+        "sourceAssetSha256": "e8942c3f18c1a23c9d440193a63f7f1ad5808700cfc765544868fdb1425beb25",
+        "bankSha256": "da3f497646173b00d09f7bee906be94ae1716e972b47f5f2f04b6e5b1809617d"
+      },
+      "sourcePreviewSha256": "0af5fcf6feb0db9a9a2624e7dd1df4c45ca8550ed46d827a533f5cc142aad981",
+      "oggSha256": "5dd0f000a35ad865b03c4d98ede310fe3b9f2d2bd0fc62760ab7caf34040844e",
+      "bytes": 19305
+    },
+    {
+      "id": "skill_0188_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0188.uexp",
+        "offset": 643,
+        "bytes": 28960,
+        "embeddedAwb": true,
+        "bank": "skill_0188.acb",
+        "sourceAssetSha256": "50fe5de11789b11853594b032909eba9b492a11a444250c8db1a5e44191d9184",
+        "bankSha256": "6299b25048c234718f9020f8ae00ff2a07122bfa9317a11c46787cecf8c6cb7f"
+      },
+      "sourcePreviewSha256": "e0100bac70a10f04667bc07b40f5a29ec73d6ba364c46d9ea297600f2bb46b43",
+      "oggSha256": "9e863bc04195c320ee7679d1a37d9c70c00338d5f554bbbe910a0f2c084c738e",
+      "bytes": 19612
+    },
+    {
+      "id": "skill_0190_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0190.uexp",
+        "offset": 643,
+        "bytes": 53728,
+        "embeddedAwb": true,
+        "bank": "skill_0190.acb",
+        "sourceAssetSha256": "1f9a1023e84f70fb7c80be7df07f2d28dedaf1d1549914b043ddc100b83ba4ac",
+        "bankSha256": "721061ffd2da1cac605ca90344a72e09d66e5dd44c6769fbc488fe5d6a96b31c"
+      },
+      "sourcePreviewSha256": "e6271addd9a09507e9d0648996bb18e072c51df61692d1bfffc525dba035df6a",
+      "oggSha256": "0a9d5ce9eb0192e352ae5a40d90b64d73d363e85a1067e546f906bccbd8e5f98",
+      "bytes": 33784
+    },
+    {
+      "id": "skill_0191_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0191.uexp",
+        "offset": 643,
+        "bytes": 53728,
+        "embeddedAwb": true,
+        "bank": "skill_0191.acb",
+        "sourceAssetSha256": "651ac780c6c6ceb365b2e79997bda649f3dbab66a2d529db06bba76406457e39",
+        "bankSha256": "2be83696dceba0ad327e137b38c3ece035c416c3f5ff3fb4d02fbc140ab76633"
+      },
+      "sourcePreviewSha256": "c6596ca620590516727c36323f0483e6cce0b83afb7b0239125a53fdd175b21a",
+      "oggSha256": "d3baea1db48cf8346d5ad9ca824dc34893d7bf6367cb0e192cda6991fde79520",
+      "bytes": 34325
+    },
+    {
+      "id": "skill_0192_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0192.uexp",
+        "offset": 643,
+        "bytes": 53728,
+        "embeddedAwb": true,
+        "bank": "skill_0192.acb",
+        "sourceAssetSha256": "c3d7b2d0e81554a62dc862e8325b62011b658a80f17a293be9000950570f9862",
+        "bankSha256": "b322a8e3d28e9a60c3584a8ecaae42e1413dfe816ab9e41fe4eed87ec661151d"
+      },
+      "sourcePreviewSha256": "d6e70c09bde65197d2acb9581a4937266c981fa62a1527aa4318d6c5774dcbf1",
+      "oggSha256": "c45cd7eb369d6760f13e02f5317dc970ea9ab873468fe7850466c226f93ce758",
+      "bytes": 34422
+    },
+    {
+      "id": "skill_0198_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0198.uexp",
+        "offset": 643,
+        "bytes": 57600,
+        "embeddedAwb": true,
+        "bank": "skill_0198.acb",
+        "sourceAssetSha256": "627e6f813a38ce510f68f3e102c5da47c5eb5a82f1a08af60823bbb9d3504824",
+        "bankSha256": "1af09a488516b0043e949fb7e8188526b3c0207a39cf3df3d1bd0276113e471e"
+      },
+      "sourcePreviewSha256": "359e3bfa6c25ca9a3c6e5567f544e5837428e8c12814228cbdf41b86432bfc1d",
+      "oggSha256": "d1b6e4487a78c657f9e9ca0c7012912ba049effea02dfe98f5a880f66e593e30",
+      "bytes": 36408
+    },
+    {
+      "id": "skill_0200_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0200.uexp",
+        "offset": 643,
+        "bytes": 64544,
+        "embeddedAwb": true,
+        "bank": "skill_0200.acb",
+        "sourceAssetSha256": "2499c5048a4d494c23e2514a969f30bab151765a9540acce5dc670580b36a81b",
+        "bankSha256": "48024ec78b3c3cb5ceaafcf0da2ebafba39b6fda2cbe3db7f176960fca65f9f1"
+      },
+      "sourcePreviewSha256": "ccc57393e8a7f498e589044f5d59e6e5505038c0dcfaec514af9589004b7dc9c",
+      "oggSha256": "8f71b0ccaddc63386a69e93bb40a00ac7a17c0716623983a1ec817ad60ef3258",
+      "bytes": 44498
+    },
+    {
+      "id": "skill_0201_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0201.uexp",
+        "offset": 643,
+        "bytes": 42720,
+        "embeddedAwb": true,
+        "bank": "skill_0201.acb",
+        "sourceAssetSha256": "981aae36bfa26670fdc0016ce9833139fdc39dba638f24958dc1c42506e86313",
+        "bankSha256": "a2c6c58905c5fd59823f7f6300f959ced272e3665d446f3a7342e8477db128f4"
+      },
+      "sourcePreviewSha256": "b311ce2f53aea55b345321c21ffdbd13fc767182922f51e1ed95dc72ab9bdd61",
+      "oggSha256": "55978ea6320f5cf196fdc63178a99a4a6d49e40a45ffff7f1ec1d9a311d12a44",
+      "bytes": 30711
+    },
+    {
+      "id": "skill_0205_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0205.uexp",
+        "offset": 643,
+        "bytes": 36800,
+        "embeddedAwb": true,
+        "bank": "skill_0205.acb",
+        "sourceAssetSha256": "a5948d3eef9a4595647c388b3b37b9e29a5685f6ec1299071d86421287606113",
+        "bankSha256": "6a87314994976535d5892675b3a7a3067c1ddd70df22fd479738b626ffc19e12"
+      },
+      "sourcePreviewSha256": "2187290c1ff45bbccddae70d81efac80088e68086e321d95f712e33edcf29280",
+      "oggSha256": "e8eba29fc2faf1a7d8f3ad79d70b881a8977e8954411aa7318cea281e69ac818",
+      "bytes": 24597
+    },
+    {
+      "id": "skill_0206_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0206.uexp",
+        "offset": 643,
+        "bytes": 36800,
+        "embeddedAwb": true,
+        "bank": "skill_0206.acb",
+        "sourceAssetSha256": "6d530b3022835b279c9f51cfaccfeba67b5e11758e3007163ebbcdaf0a8e8586",
+        "bankSha256": "4809c253ec0e7eca55f6b1c9f41af0bceec6227ad7cbc1cc576f4d98550c1bb2"
+      },
+      "sourcePreviewSha256": "3996a7bf6b41c797d285aa6435508f1f92821d6b11d335b82ef98758df090bc6",
+      "oggSha256": "fa43e2ed4b7b4d254f851e23c3124f5c9634402c60823c55c4a31e31c52701c2",
+      "bytes": 24810
+    },
+    {
+      "id": "skill_0207_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0207.uexp",
+        "offset": 643,
+        "bytes": 53952,
+        "embeddedAwb": true,
+        "bank": "skill_0207.acb",
+        "sourceAssetSha256": "df2c53e8917d2b7ce7704b229c477b716983a75a037cecd047c35fbeea982b28",
+        "bankSha256": "6b450f49972ca208072cf5bd7a95feba466025686efb96cad28a0a77fa0191d6"
+      },
+      "sourcePreviewSha256": "44a1fb31a9cd3a40428928aaa8f0d8195529d23b1ca1e39bcf9dd78c99cdc613",
+      "oggSha256": "00b3ed30da0a4062c05f70b89e29997b41ee6e59534f986eeb0f2ace14e5bf04",
+      "bytes": 34130
+    },
+    {
+      "id": "skill_0210_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0210.uexp",
+        "offset": 643,
+        "bytes": 31680,
+        "embeddedAwb": true,
+        "bank": "skill_0210.acb",
+        "sourceAssetSha256": "24e159b39d2d33b98c202ed72067c8a642761e5be09de5e25df4b3cba7c87f65",
+        "bankSha256": "1e747a5e882404bd2435954126bd192ee78ef39d14cd49f47e9224b73bbddce1"
+      },
+      "sourcePreviewSha256": "1f52bc5cedb625ac9445904f55279450b9e2170b5a8f5cfa3e1741da7f786088",
+      "oggSha256": "3d4eb56b56abe56786c1218bca150e8bdaf010aec1f8da00a7aa0020d8422f13",
+      "bytes": 21507
+    },
+    {
+      "id": "skill_0211_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0211.uexp",
+        "offset": 656,
+        "bytes": 68320,
+        "embeddedAwb": true,
+        "bank": "skill_0211.acb",
+        "sourceAssetSha256": "076fd7e824e6ac69154ba4ad5056109c532628b987f0613ef06f93d73e2ef483",
+        "bankSha256": "cd2575ebd8d7e218535f47bf565197a5bf2336cb27e07cfb975f364b4a050588"
+      },
+      "sourcePreviewSha256": "d01d1831e76056e843dbda7e715137649e23067b3250f74dff90fabdd632112e",
+      "oggSha256": "a0ccd7b73f274550c7916ea2174fe3c875b4a7602738ba51393d10910c0247b8",
+      "bytes": 23879
+    },
+    {
+      "id": "skill_0215_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0215.uexp",
+        "offset": 643,
+        "bytes": 52832,
+        "embeddedAwb": true,
+        "bank": "skill_0215.acb",
+        "sourceAssetSha256": "72b72341d44bb09d1c833e5f5b47c2cf262af8b2bd9ec5659c5331339c1ffae2",
+        "bankSha256": "35823915826597e5d52ac9dde7150f49ea642d4d3eb1ca1c9ec2cda2142e4335"
+      },
+      "sourcePreviewSha256": "f42dcc59de1eb40b9d0c05a7605af0c78a0555d79f20ab661b04ea6dcce4e802",
+      "oggSha256": "400178a4d289d80b556a97f820ef2e8d440bbabb4f5e286d20ab23e40c3ec7ef",
+      "bytes": 35817
+    },
+    {
+      "id": "skill_0216_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0216.uexp",
+        "offset": 643,
+        "bytes": 52832,
+        "embeddedAwb": true,
+        "bank": "skill_0216.acb",
+        "sourceAssetSha256": "cb038ffe1943af4d3dcace72d27ec2fd9951cc3b8c9df075faf585fab7858b10",
+        "bankSha256": "1b1b66b696f57a83f3227051273fd83633aefead961ae098900f84550250e99c"
+      },
+      "sourcePreviewSha256": "005363e028635801969f6b06ed3198ea7ee1165f2de26290c64a8b8238a1df34",
+      "oggSha256": "71b02b30d6409f50916d4be369fb35769f16e276aa37ecafdfe771be55ebeb8a",
+      "bytes": 35376
+    },
+    {
+      "id": "skill_0220_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0220.uexp",
+        "offset": 643,
+        "bytes": 36928,
+        "embeddedAwb": true,
+        "bank": "skill_0220.acb",
+        "sourceAssetSha256": "99c6e6f7613fca3f7e8eae99cafdf8d5e6a44c329c447fecc1e6858bf9e41196",
+        "bankSha256": "04642dadeb5a6e4587bd9c9071da4e96efcdb692e9cca460bfcc4c7427afd7a2"
+      },
+      "sourcePreviewSha256": "afd2a507d6d3dc7dceb5b787ab61bcc156199c6fdc990f6c7c51736215ba3192",
+      "oggSha256": "2afd7e36cdb1886da846473dbc61306b4cdb989665a22cb8371d4074f3fecb7d",
+      "bytes": 22732
+    },
+    {
+      "id": "skill_0221_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0221.uexp",
+        "offset": 643,
+        "bytes": 37248,
+        "embeddedAwb": true,
+        "bank": "skill_0221.acb",
+        "sourceAssetSha256": "81e914ad417b16bafa13a59274a61ebde905e1ce0950cf2febbb4e1618015157",
+        "bankSha256": "c3c9fe943fadf0c7efe840070ab168ccf57e2d32b82fa376a84c1c3f769a5073"
+      },
+      "sourcePreviewSha256": "4faedac88f7153962d783040fb4c4daaa6d9db5e6260a1e2ff00dd1f3709eb68",
+      "oggSha256": "c278cf0a8f2f49c95ad3cfe83ceeaaa721e72cba923d7c3e1045e79c01581c13",
+      "bytes": 24868
+    },
+    {
+      "id": "skill_0222_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0222.uexp",
+        "offset": 643,
+        "bytes": 38272,
+        "embeddedAwb": true,
+        "bank": "skill_0222.acb",
+        "sourceAssetSha256": "355db71a95762f9ba7fb09c2c54c0e5cf4673638a5c7b016e70c4cdb8bf0a7c4",
+        "bankSha256": "1ca195efe588cc6dad115c903185588e5663fe0d9a1dbfc5527070899a69d3fd"
+      },
+      "sourcePreviewSha256": "7906cd2decfa25c5c57f3181c49b9690d87c38b1863c9532691ca10ad13b0007",
+      "oggSha256": "184bff81bbae180ec2db901a150558914762c48437cf262ec3cdce0c37fe4a9c",
+      "bytes": 24193
+    },
+    {
+      "id": "skill_0223_01",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Skill/0223.uexp",
+        "offset": 643,
+        "bytes": 36224,
+        "embeddedAwb": true,
+        "bank": "skill_0223.acb",
+        "sourceAssetSha256": "6614483a3cbe58c2cfcda10e77c5d2dead23b74edee32d5b6c9c7ffaf8189d2e",
+        "bankSha256": "60ae2e0da085714df8399d7b6f9fd0af1db50227b93dd4e9119876a82737904f"
+      },
+      "sourcePreviewSha256": "1bfbbf05279e90fe5613d21ef67e4c89c9660472c8511144e72bf06df59a31ed",
+      "oggSha256": "c118fcd11a588a7742e722c4c9c6a8b380b42748a26b5188efe12ed0160e8605",
+      "bytes": 23772
+    },
+    {
+      "id": "slash_medium",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "cd07564a58d643073a03ecbb36381cee121ecbf49955e5d7abc79fe44a8604b1",
+      "oggSha256": "7ecb8ca785cef0af7ef6bcfbdcae7df84f9a56473d8818b086090917194aa9f5",
+      "bytes": 11083
+    },
+    {
+      "id": "strike_heavy",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "7dc4a25e08af4335e678c0c0561563bebf8dd9fabfbdb2e4e90fc8ce4e8ac788",
+      "oggSha256": "0d513e9ee54ecab6003598e170b5c41abe84e03f88b6b9987aa3a8b094ad6358",
+      "bytes": 12814
+    },
+    {
+      "id": "strike_light",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "4783ae0d0f90f84f8d108fe7d81e40da7337e68c9c23a536a944c2d05f31031a",
+      "oggSha256": "f407faaa1e367a269e90dedf487b4a198d53b0e61ed178bbf241e5704de3dc06",
+      "bytes": 9771
+    },
+    {
+      "id": "summon",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "457dfdc135bd8afd682bff35b3e35c9a49e7c20602dd0d09c480d7d32f12b5f8",
+      "oggSha256": "6ae62d06513897386c1dd61678a4c35331e72acf48d680ca1663f14b429bed8e",
+      "bytes": 18931
+    },
+    {
+      "id": "swish_medium",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "411cc886e4cf3b6701cd547a04e823bfc345b8ed4d182c0413dc99972a10058f",
+      "oggSha256": "93d4780f798de228e3b179c53845c87752e182d17615d4381e8c675fbee53946",
+      "bytes": 7144
+    },
+    {
+      "id": "swish_small",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "ad8b1285728490e5bfb9ac46c2fee0a391e72863d165b86923a3cd0b025174a6",
+      "oggSha256": "346db08af3c45fa5d3aa710fb9912c44b792885baea2f06a275362930be4b59d",
+      "bytes": 7009
+    },
+    {
+      "id": "sword_draw",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "b8e4714c62c9f5eecf4462af942c38e33fd5a395deece63a374c1967008f686a",
+      "oggSha256": "b79b34e1ab47ddf006ff9b66755c5f37a002ef51cd7168742510d4d20aba01db",
+      "bytes": 12895
+    },
+    {
+      "id": "sword_sheath",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/system.uexp",
+        "offset": 148228,
+        "bytes": 8896864,
+        "embeddedAwb": true,
+        "bank": "system.acb",
+        "sourceAssetSha256": "b2899250da07c25152b3ad2b40ad7f88ae53bc6ced7adf1ccd79ecab75d742df",
+        "bankSha256": "d825941239ea4700ddfbc6337c4cde3fdce2fc1ac948f40cfd846af123c0adba"
+      },
+      "sourcePreviewSha256": "8e1130f3deb5c01bc5d57b96d16048a818a06d637342b6c872fc2f03496f2580",
+      "oggSha256": "2e0ca09de6b0e12be5a123baa4360527cf56bd1009e696c4055fecd6c4de49cc",
+      "bytes": 15061
+    },
+    {
+      "id": "theurgy_0260_03",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0260.uexp",
+        "offset": 1590,
+        "bytes": 315488,
+        "embeddedAwb": true,
+        "bank": "theurgy_0260.acb",
+        "sourceAssetSha256": "49a671acf60d06ae1f5d59491c277ba946837c00e3a59d413038cb8165a001e4",
+        "bankSha256": "afec55aa81f9f2ba8f9da8187e390edf30b858995119a8e86c1a9a1d240a8c77"
+      },
+      "sourcePreviewSha256": "e60655baa44317152bba8125286f0630078f2b3b5fb7ed8b29f4f299e1b49ca8",
+      "oggSha256": "c9e5be02ff15f8605e905cef323f49ac4b507ad86697824996bc7a1f2bb8e054",
+      "bytes": 56309
+    },
+    {
+      "id": "theurgy_0261_02",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0261.uexp",
+        "offset": 1113,
+        "bytes": 248736,
+        "embeddedAwb": true,
+        "bank": "theurgy_0261.acb",
+        "sourceAssetSha256": "8c54f29e51cbfdaea8ea19747397b4df4731a5136164e63e673244cd3146d6c3",
+        "bankSha256": "c944aabd577b519c816b040a5e0bcffdd0ccaf215385b815ca2bb95f6386c09f"
+      },
+      "sourcePreviewSha256": "df2f5f66b7a51ef8bbd5dbb7a6992056ca0aa9e875fe3f51993b4013cdde698d",
+      "oggSha256": "5e28f610f6bc8c37cf831bbc58bf43f392e97b60f95ef1b4955a129750680225",
+      "bytes": 57736
+    },
+    {
+      "id": "theurgy_0262_02",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0262.uexp",
+        "offset": 1126,
+        "bytes": 257376,
+        "embeddedAwb": true,
+        "bank": "theurgy_0262.acb",
+        "sourceAssetSha256": "4991debdc5251fc4f4a52387b3d6c07a5eeb8ba7609bc4f756733e85e2b2895d",
+        "bankSha256": "6e99523e2c72a7760df82326aaf1e4f1a69ddb543f890f61a3702ffa8516f08f"
+      },
+      "sourcePreviewSha256": "e6f31de32f7ed01b15c269d06d94d88edb094c52310ed4f47a9e55957bca356c",
+      "oggSha256": "4e94b92cc2c07a54049aab0c992d89aa97e05f052ae491fb7d631c6f340c8a37",
+      "bytes": 44970
+    },
+    {
+      "id": "theurgy_0263_02",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0263.uexp",
+        "offset": 1113,
+        "bytes": 225984,
+        "embeddedAwb": true,
+        "bank": "theurgy_0263.acb",
+        "sourceAssetSha256": "8cdf21f175e01b32f19b2e75b701cc9e81a7183165c7fb35e827dce8d100ef0c",
+        "bankSha256": "332cad85d0e4722cb37d29755dc817aad1893f971addfa280a5811306f096e93"
+      },
+      "sourcePreviewSha256": "ddbc240dd7051a310197cbd1d905fbf951d7f0b26a5b4d049294b232fbc73678",
+      "oggSha256": "beabe3fed11bffe1349def01521e3c4438a73d6369c18f733e53f7c295eac004",
+      "bytes": 52937
+    },
+    {
+      "id": "theurgy_0264_02",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0264.uexp",
+        "offset": 1126,
+        "bytes": 252480,
+        "embeddedAwb": true,
+        "bank": "theurgy_0264.acb",
+        "sourceAssetSha256": "d4fc30934bdf7d66b04b4b691ab3a0a3eaa3e05652b101792610bfba1c6a30a7",
+        "bankSha256": "fb23e9513149c73d62b3664e402ac880da72ecd7c0c763a2864c7f2b9d8b4a86"
+      },
+      "sourcePreviewSha256": "4e94a37b5d618563ab769234bea97e42afd8d45d03feb2bdd608c16456a58bd3",
+      "oggSha256": "3fa7a7688a803587694d08dbe5d7c6aadbc7f1aeac623a8898e7037b797de8f0",
+      "bytes": 45835
+    },
+    {
+      "id": "theurgy_0265_03",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0265.uexp",
+        "offset": 1603,
+        "bytes": 364640,
+        "embeddedAwb": true,
+        "bank": "theurgy_0265.acb",
+        "sourceAssetSha256": "9621be38cd2bd85aca0476a81d3045d882f8954304c565356ef4f07d933604ee",
+        "bankSha256": "8e6b63d72dcd9554ccb494c9585bca6e547d3d71c6c72c102fe3e9b75e7cbce5"
+      },
+      "sourcePreviewSha256": "9447bfeee0809b621122a8f3c8af036f4a953e8abe896157459ee807faa28b43",
+      "oggSha256": "c53dd8cc3d917440b0430575dc0ed191f43c884cddb93568eaf91151b2b42f10",
+      "bytes": 48945
+    },
+    {
+      "id": "theurgy_0266_02",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Battle/Theurgia/0266.uexp",
+        "offset": 1126,
+        "bytes": 371264,
+        "embeddedAwb": true,
+        "bank": "theurgy_0266.acb",
+        "sourceAssetSha256": "1b73ec223ccf94176b65032f2a669d31227f5f6d68956df721e7d96cc672c4b7",
+        "bankSha256": "1bd22c7a760584d82235ebf723542fc540a64316623584d2a0e7a2fa0bc13539"
+      },
+      "sourcePreviewSha256": "841708007f024252cb657287037bb99016b5a314fcf06529f61f4cf163a33ff2",
+      "oggSha256": "00d60288b537f1e58e3c49cd308701df4e188ad94f25714782a22dbe73f5ac0a",
+      "bytes": 65327
+    },
+    {
+      "id": "velvet_open",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Field/Daily_SE/daily_se.uexp",
+        "offset": 122047,
+        "bytes": 16669792,
+        "embeddedAwb": true,
+        "bank": "daily_se.acb",
+        "sourceAssetSha256": "1e4440009838ba3484637f580f7e5e6c40cde0b0b69a9d48f123b11a3868506f",
+        "bankSha256": "f72089903f3c5a56537628e409021e7122a8905f0218d86ca3625c592fbd75bb"
+      },
+      "sourcePreviewSha256": "f238f3d8c608e4b364890a1f7d1fbb58cf11637bf4fcf3effbb3425f061eca4b",
+      "oggSha256": "5a427b0e4fd2ea5d6e29ee70c336a4841e4dc5ea2a4ffd573cb3138c6d9a16ee",
+      "bytes": 23164
+    },
+    {
+      "id": "voice_abaddon",
+      "source": "originals/abaddon.wav",
+      "sourcePreviewSha256": "d3cd8e60ae0f94236b4ee1c62682c1dd86e3e100a4ed2cdbcf9945f506824516",
+      "oggSha256": "9b878905d0210fcbc23fa814975d6e5de5338a50408db4373c0351f04054043e",
+      "bytes": 11440
+    },
+    {
+      "id": "voice_alice",
+      "source": "originals/alice.wav",
+      "sourcePreviewSha256": "b762c5cf2d2326903e5b374159001b45ff023ecfcbcbc8e9647e3b5317968c89",
+      "oggSha256": "951fe117b1940788d7582a0f2b1002eccac1ca3a68fac6aaa5b362ea5c8d924e",
+      "bytes": 9647
+    },
+    {
+      "id": "voice_alilat",
+      "source": "originals/alilat.wav",
+      "sourcePreviewSha256": "ef702ff1f471dba5677e2c8398f47f68ff3146a092cd3bab82c9d0bdab08ae18",
+      "oggSha256": "1fcf433280269de687ec1cbaddd7a4e6cc5601f3bb50cc400d2a5a61408e58fd",
+      "bytes": 11535
+    },
+    {
+      "id": "voice_ananta",
+      "source": "originals/ananta.wav",
+      "sourcePreviewSha256": "85fd1dfa112be1a97ee9db34685bfece238e66417104b67f8a03c8201c51a2d0",
+      "oggSha256": "f8fae156ec5f9c500251988c036c2acf0d373d47df787347f743fc4d85084538",
+      "bytes": 13699
+    },
+    {
+      "id": "voice_angel",
+      "source": "originals/angel.wav",
+      "sourcePreviewSha256": "c0d8098a5a9548585657615a8e14110221a0c55caa8a7d2fc99986222ae973c5",
+      "oggSha256": "1a4f1427fe520443a6daa594472a1feee8a510a79894dda69d4aebee7256f178",
+      "bytes": 9942
+    },
+    {
+      "id": "voice_anubis",
+      "source": "originals/anubis.wav",
+      "sourcePreviewSha256": "e5be2895beb89656ee3a395ea30d62726381ba557d88aa7f6c89579000b4876d",
+      "oggSha256": "8030140a63464d5a5b188b09e507d9cfa2f0f7946812bfce7cebc50b778b7320",
+      "bytes": 12262
+    },
+    {
+      "id": "voice_apsaras",
+      "source": "originals/apsaras.wav",
+      "sourcePreviewSha256": "413b01bee2592837fb121dd4535889f0a996eaf0a9da0c0cfff79f752156c35b",
+      "oggSha256": "29bb921205131d7fd5d959a414ae11f26ea5ce40f50a56695077b77541008447",
+      "bytes": 13708
+    },
+    {
+      "id": "voice_ara_mitama",
+      "source": "originals/ara_mitama.wav",
+      "sourcePreviewSha256": "44d81db6f56b98311c8cad68e5578385490ea23a8a4a768b6dfba7182ded8794",
+      "oggSha256": "ecac0545cfa1b4050422fc3bb746754beaaa6d7e6271940025b0e0cc2b7d9928",
+      "bytes": 14479
+    },
+    {
+      "id": "voice_arahabaki",
+      "source": "originals/arahabaki.wav",
+      "sourcePreviewSha256": "45ace97eb6cca7b3c69345d90ebfb9fc3af8a4c0bee8c04d790b626af687c716",
+      "oggSha256": "b07b47881ada42cdccbeed3ff2e1b1c74c0aaa78f2ede8304ac5abf04f3386c3",
+      "bytes": 14576
+    },
+    {
+      "id": "voice_archangel",
+      "source": "originals/archangel.wav",
+      "sourcePreviewSha256": "48036961ca1a8a61334a206178fb1ab54c3b374aee3112dfcae40de0355d17a0",
+      "oggSha256": "3d15bd45911c6d8a92e11b8d331dd953a769a3a77f7918c876cd77371b026786",
+      "bytes": 14576
+    },
+    {
+      "id": "voice_arsene",
+      "source": "originals/arsene.wav",
+      "sourcePreviewSha256": "e5b25b7b9189af7331e6f1d990b3c51ba33fe390786f65eff50ce55c26bde41e",
+      "oggSha256": "49ae7c96d8e874149b17d64323d81d78a5c6c7ffc9ed6791cd85bf81964ba68c",
+      "bytes": 12862
+    },
+    {
+      "id": "voice_asura",
+      "source": "originals/asura.wav",
+      "sourcePreviewSha256": "085f40ec482eadbbc1b28def8de2a5ef902623b3c593fb964f18d972780bc1f3",
+      "oggSha256": "948739d06e0f0a6ab78b4502d0059fa5d5a1c028fcc29db5f8048e2d4b67510f",
+      "bytes": 12312
+    },
+    {
+      "id": "voice_atavaka",
+      "source": "originals/atavaka.wav",
+      "sourcePreviewSha256": "4b2dc86e6fc6c5b5963e972890ff75850c4eb408a9173d9be3788050bbe505a6",
+      "oggSha256": "b964757924fa07d84f1fffb922267c78483db187e9e5c64758f5ed5001bd3d30",
+      "bytes": 12683
+    },
+    {
+      "id": "voice_atropos",
+      "source": "originals/atropos.wav",
+      "sourcePreviewSha256": "19af11b43a78a780d825ef43d54565c066f8a5b957cab72201f982a8d1c492e9",
+      "oggSha256": "63f218b575002a412a1ff92e7d501a2fe3b1c82b2a8bef695a4b16131419c151",
+      "bytes": 12885
+    },
+    {
+      "id": "voice_attis",
+      "source": "originals/attis.wav",
+      "sourcePreviewSha256": "5d89d6025ca42580e2df4a04a446fb07fca37f718c6250d160bda6a4f75b3873",
+      "oggSha256": "3aca3dde4b0aff7dfba572941027ebbf49705ddd4be6d3e3dcf43ecb43e9e7df",
+      "bytes": 11342
+    },
+    {
+      "id": "voice_baal_zebul",
+      "source": "originals/baal_zebul.wav",
+      "sourcePreviewSha256": "35019b0855ff2fb07e053916c97603ce5104fbbd5e35164d01d748683ba24f1d",
+      "oggSha256": "63caf6b2212483b80b6b2dd1848114cb58f46b25e51ecac38ba218e194c18ded",
+      "bytes": 13540
+    },
+    {
+      "id": "voice_baphomet",
+      "source": "originals/baphomet.wav",
+      "sourcePreviewSha256": "7fe8b1fff456813bc8095f9b650bc479c969359ec4ca1c75fc0a912d1d1ff0b6",
+      "oggSha256": "64a0866733962079dcddd6496964c5f9b7369a4291d64db219687c480c85cfe8",
+      "bytes": 12034
+    },
+    {
+      "id": "voice_barong",
+      "source": "originals/barong.wav",
+      "sourcePreviewSha256": "5608ed75182ebc6e9f47ce55fd1b18cf87c5ebda4e527f4bd7d4317223f65273",
+      "oggSha256": "85d5078a8fccff1583a28c3a2db9112059f667edb71114477abaaff62849df1c",
+      "bytes": 10878
+    },
+    {
+      "id": "voice_beelzebub",
+      "source": "originals/beelzebub.wav",
+      "sourcePreviewSha256": "4adc642841e1b6a8094d111822da18d5374bd9e5c789ccf5f3e3cf948df9e821",
+      "oggSha256": "c3d9c0f4fb58955fe693b28877be32aae19720e99cf7d890251d8327787782b5",
+      "bytes": 12515
+    },
+    {
+      "id": "voice_belphegor",
+      "source": "originals/belphegor.wav",
+      "sourcePreviewSha256": "3928d749cb38b467f242246a4fe2250a34558d377231bc2e4707954d7e95114d",
+      "oggSha256": "0a06112fb1b5d4cd0109c05871c45939a730274be810f2bb119790738e4524f6",
+      "bytes": 12818
+    },
+    {
+      "id": "voice_berith",
+      "source": "originals/berith.wav",
+      "sourcePreviewSha256": "69e544a7520e35d05f835687d80d1c4abf8615506bc48003bf12298cf4ac5abe",
+      "oggSha256": "e2cf1c4f19d3c7a425ff1d8e6077dc993bfffd64adadc4eb1138dbeaed77cbec",
+      "bytes": 9692
+    },
+    {
+      "id": "voice_bishamonten",
+      "source": "originals/bishamonten.wav",
+      "sourcePreviewSha256": "e2a4d90fe54b134b57ee183d9489beb7e863363b134fa72687ac9ac33f669f80",
+      "oggSha256": "c2efe17c96d163c4db5509a6a874afc7f1b495527677e7260ffdfe92ed149049",
+      "bytes": 13114
+    },
+    {
+      "id": "voice_black_frost",
+      "source": "originals/black_frost.wav",
+      "sourcePreviewSha256": "493679e2345bc1a5c931bc80d77d227bcdf19f7f023a5c015e0a7fac7292fb82",
+      "oggSha256": "57827d303db5800ca6e0774209739723f120a4601923ee3cbe8aded3c287380f",
+      "bytes": 13946
+    },
+    {
+      "id": "voice_byakko",
+      "source": "originals/byakko.wav",
+      "sourcePreviewSha256": "8750189c66a221b01bd41acfdac933db1eeaf8f1d6bb52de79ed746a72240348",
+      "oggSha256": "c14c66ecf94b8c44b60af5013984d642481a6c07c024afc27003e37d38d95d55",
+      "bytes": 11363
+    },
+    {
+      "id": "voice_chernobog",
+      "source": "originals/chernobog.wav",
+      "sourcePreviewSha256": "2a5c6483f608fc3bc69e747516704835075148d7e5df9fb3658ab5376b026de5",
+      "oggSha256": "c6ee5b8cc72a4447a1050ce64c19485b4f0115185d03068dd1ae53b637207beb",
+      "bytes": 12180
+    },
+    {
+      "id": "voice_chi_you",
+      "source": "originals/chi_you.wav",
+      "sourcePreviewSha256": "703910ef0e465c9eec47cf41c418209496a4de9c6f6ac6673cc4df7b5f7b51d8",
+      "oggSha256": "0ef82f758e9fadc12132911b2410f6716df66e5a02b81ce27af51d89ab5a850c",
+      "bytes": 9846
+    },
+    {
+      "id": "voice_chimera",
+      "source": "originals/chimera.wav",
+      "sourcePreviewSha256": "a8e6b688b7a7996625c58a9c064f0f0ac734f7a0a905b5c60dc8833bce93d0ac",
+      "oggSha256": "2c8fde42a35513c363c0fed0136ac291ac8eb9a415bbec219703d92bf48f60d1",
+      "bytes": 10830
+    },
+    {
+      "id": "voice_clotho",
+      "source": "originals/clotho.wav",
+      "sourcePreviewSha256": "2063f13405d9dd8a8e3785c2405b575102b16322e77560fe94afb77e7cb2ee04",
+      "oggSha256": "dddbef61bc33b6db3eb5a7a44c561ec07495f3cd7fbe4ba1a099746808b1e271",
+      "bytes": 10946
+    },
+    {
+      "id": "voice_cu_chulainn",
+      "source": "originals/cu_chulainn.wav",
+      "sourcePreviewSha256": "783a6a4e15a2d8764d487a13e3d57f970531a8df7180e2b6e81318ba65cc2281",
+      "oggSha256": "7689c8612e0f6e6231a505c7da69ebd2f1ff334e19a46bcd639042cade11667a",
+      "bytes": 11254
+    },
+    {
+      "id": "voice_cybele",
+      "source": "originals/cybele.wav",
+      "sourcePreviewSha256": "81d25f62214ed2c3afcdf4b2067cc52451a6960801c61e4e3e9cd87ddf61630a",
+      "oggSha256": "d9bcd0b269ae412db3b63768a074b984b115b4efa03a8034978f8e2fc78ecfd3",
+      "bytes": 10809
+    },
+    {
+      "id": "voice_daisoujou",
+      "source": "originals/daisoujou.wav",
+      "sourcePreviewSha256": "f02aaad957b917779ccdc01cb9434cbad956e157bde34c8cfa69cf8747dec585",
+      "oggSha256": "7e494f41c3121e5fa8741733c4718ab752d56df377a9485b4a380f652ec9b517",
+      "bytes": 12751
+    },
+    {
+      "id": "voice_dakini",
+      "source": "originals/dakini.wav",
+      "sourcePreviewSha256": "2442c647a53386bfbd62bdf084fbd91995b252048869bb0ba5531afde7f39f59",
+      "oggSha256": "bceaa51757ff5abd7f93695469a8931ec84ae5284e2493faa705364929237033",
+      "bytes": 10895
+    },
+    {
+      "id": "voice_decarabia",
+      "source": "originals/decarabia.wav",
+      "sourcePreviewSha256": "a8cba14f73beda3fdbfae4414f51e8996d9af587b49bdfbbe8331e9c29ade4ae",
+      "oggSha256": "8c5d92145f8da8490752e9510f7f47df22c9e8089dd769d4a5ef397e82e6a0d9",
+      "bytes": 13735
+    },
+    {
+      "id": "voice_dionysus",
+      "source": "originals/dionysus.wav",
+      "sourcePreviewSha256": "33cab90d8d2d9f7c8335cb9702b889ff08b22cc52d49c344bca346193e330b1f",
+      "oggSha256": "e10d0e9220924ee4a353706436e738bb32929ded0a377f5d4e1e1d5688446576",
+      "bytes": 14286
+    },
+    {
+      "id": "voice_dominion",
+      "source": "originals/dominion.wav",
+      "sourcePreviewSha256": "ceaae72f62a87bbbaeff3005b447f72c9345356131b03b8c7b59479d9cd92230",
+      "oggSha256": "b327c4f36f4d35cdac688e85786140645894f9b01fed5ff2ced6c8488b300219",
+      "bytes": 12291
+    },
+    {
+      "id": "voice_eligor",
+      "source": "originals/eligor.wav",
+      "sourcePreviewSha256": "29a8e3865aa7f0aee0de05194dc26886f4bedb124da75c7f7c62a4fda8750406",
+      "oggSha256": "7cadfc9f4078aa5e23df644f3cc7b847529d3d1db01bdc974262c5cdd9d9200e",
+      "bytes": 11717
+    },
+    {
+      "id": "voice_flauros",
+      "source": "originals/flauros.wav",
+      "sourcePreviewSha256": "1b2bfd260b8602444315d00237ef0e8e30af309874dd03e9bc2576a58f903244",
+      "oggSha256": "bc52f12711739c950d697ad1515be547f66fa19dfb2f51c0018dd851f27166ec",
+      "bytes": 11787
+    },
+    {
+      "id": "voice_forneus",
+      "source": "originals/forneus.wav",
+      "sourcePreviewSha256": "09ff7451fca2d3913f168d8cc20289a39a5e1a49191d29e8d16f1da9fa84a11d",
+      "oggSha256": "80785dbe4f1258b775209cd8f18915e15516f9d47e01bcd20cf4a1816e004a90",
+      "bytes": 13127
+    },
+    {
+      "id": "voice_fortuna",
+      "source": "originals/fortuna.wav",
+      "sourcePreviewSha256": "af3a7f30872345bd554be31513f4bd8a42cf8e039a1a16892604515795a1f4fa",
+      "oggSha256": "2349ff923cca0a3ce58671b5bdb8eef21b577a52159ffe3eb3b1b048e7a67c26",
+      "bytes": 12449
+    },
+    {
+      "id": "voice_futsunushi",
+      "source": "originals/futsunushi.wav",
+      "sourcePreviewSha256": "cd9ebaa859a52c479b772db3cff4aa92520069953864e660b7c7bf1d8bb1e896",
+      "oggSha256": "16b0d7e79b8668c5418ae870557b96e3a9b46f4f055155a9efba3de2a68c5d50",
+      "bytes": 12377
+    },
+    {
+      "id": "voice_gabriel",
+      "source": "originals/gabriel.wav",
+      "sourcePreviewSha256": "ceffdc4bd8d8bab8e3e760a335eafc023ecd06388ba0825708201090a5a8f245",
+      "oggSha256": "e7902766cd559859335603b358bf350742e93fea308da9f05c915eee7251ddde",
+      "bytes": 11268
+    },
+    {
+      "id": "voice_ganesha",
+      "source": "originals/ganesha.wav",
+      "sourcePreviewSha256": "d33a3317a2e59dbadca3c1a4d563247f9faa64ea7f9b00258b8e014d6e9b4ed6",
+      "oggSha256": "06b15459f4eab9a5d4f4d00c055d399a28b5fceb99469df64c6f23a752471265",
+      "bytes": 12233
+    },
+    {
+      "id": "voice_ganga",
+      "source": "originals/ganga.wav",
+      "sourcePreviewSha256": "450d0b62f28944ba642f116c54f25661f972f3ed5959e7e622011ed502de3644",
+      "oggSha256": "3783f468a749ff01148eec7d0abe78d3719b376ea61dab7f102469bd5f8c73ad",
+      "bytes": 10840
+    },
+    {
+      "id": "voice_garuda",
+      "source": "originals/garuda.wav",
+      "sourcePreviewSha256": "0129c226a0900d1913fc13cf9e3ded4daee022c2ee1e9d542cf13449810317b0",
+      "oggSha256": "7a2ebd8858aa8092e849731a477fb16692074ba574516f547373aa2ccac50835",
+      "bytes": 11765
+    },
+    {
+      "id": "voice_genbu",
+      "source": "originals/genbu.wav",
+      "sourcePreviewSha256": "4db938305dc60acb86ef886fbb7254b0fed133e9c2c2fb271fb5f16ad398d645",
+      "oggSha256": "fe5a45f7759bb45b69d019673d967de00e126a97ab65d26a5527d1303994acd0",
+      "bytes": 10069
+    },
+    {
+      "id": "voice_generic_persona",
+      "source": "originals/generic_persona.wav",
+      "sourcePreviewSha256": "16879bb0523b09fda28ab2c70d456803a945aaa4ea912ff0015f4f10a1b064bb",
+      "oggSha256": "d5607554405e89cc6e74f139a6f518a726dbfabc5ab811d3156488bde91cc524",
+      "bytes": 11351
+    },
+    {
+      "id": "voice_girimekhala",
+      "source": "originals/girimekhala.wav",
+      "sourcePreviewSha256": "ee2921184dafe1b20948c6c29a55cda53898be2beffb4263e7435111244e110d",
+      "oggSha256": "9f107e0c196ff80ad8de81168104edf1b7ef5504314cc3590ebaa228c029e51e",
+      "bytes": 13579
+    },
+    {
+      "id": "voice_gurulu",
+      "source": "originals/gurulu.wav",
+      "sourcePreviewSha256": "871651464275597be0784d2c2b06a3f88cb7a1e5379f75312f3dcbafde6f50c4",
+      "oggSha256": "4e2b3993576e86f253ea217de61450e4c0617b66d1b7206a14c9c1c9e36b0199",
+      "bytes": 11022
+    },
+    {
+      "id": "voice_hanuman",
+      "source": "originals/hanuman.wav",
+      "sourcePreviewSha256": "3a3157f1d38d2c92a76316678046481216cf2ee3f32eb6e6fe3d024c33ac24d4",
+      "oggSha256": "b561ad615a73f2b50065b983d180bbd3e180ff492dbcea5ccd60c032a8b4280b",
+      "bytes": 10274
+    },
+    {
+      "id": "voice_hariti",
+      "source": "originals/hariti.wav",
+      "sourcePreviewSha256": "c7427b508f705d91588c41c6ffc441c3a1cfdb5f6ebea9ef0e50b1a73dcabd4a",
+      "oggSha256": "9930b22cd6b9a75e32363447fc153d47cae74a142f6fdabcb245a452eb6137bb",
+      "bytes": 11517
+    },
+    {
+      "id": "voice_hecatoncheires",
+      "source": "originals/hecatoncheires.wav",
+      "sourcePreviewSha256": "037eff7af5bca04de848366fd9d732baced827eaea8c3e7ab6adf193ba6ad6fb",
+      "oggSha256": "fe23474cecc2fe48f7eefefc37118580996e963c46a917f7d23ae8bab068e6e7",
+      "bytes": 17321
+    },
+    {
+      "id": "voice_helel",
+      "source": "originals/helel.wav",
+      "sourcePreviewSha256": "a7fd4dfcfd624b612d4d8437322992539e875a8d7fba7fbe22afd8365eebf377",
+      "oggSha256": "8c0b5cafd0696ecd50613bf70540fe13729d89f1b887a99005600cdf1d781c4d",
+      "bytes": 10231
+    },
+    {
+      "id": "voice_hell_biker",
+      "source": "originals/hell_biker.wav",
+      "sourcePreviewSha256": "4284de2c6ea2497652012607bf1db325820407cfeca118f9d9bfb2c921fcd78c",
+      "oggSha256": "df0fa05435304bc07ddd31f82ed5bcd5aeb34b2f7a177621b7a45c0e9da951b7",
+      "bytes": 12799
+    },
+    {
+      "id": "voice_high_pixie",
+      "source": "originals/high_pixie.wav",
+      "sourcePreviewSha256": "b6d2d3ef7f92840e89a4495c58f5404dca2162bb9aac04ff961b5d9591c519ef",
+      "oggSha256": "e50f93ca7a0ba975bf339e8099b8aa48c240bb3b559057e0a76ebcfcb84a9903",
+      "bytes": 13253
+    },
+    {
+      "id": "voice_horus",
+      "source": "originals/horus.wav",
+      "sourcePreviewSha256": "e20908437264e5cd6f445280bb8efbabf4eb0f1345eb3388c3b754af87b0e885",
+      "oggSha256": "1f757d3022db08656f93e8583f1a059cdb18fe974ffce7dcedf3d910b545e139",
+      "bytes": 9974
+    },
+    {
+      "id": "voice_houou",
+      "source": "originals/houou.wav",
+      "sourcePreviewSha256": "fd6c10838facae775246b093352833d3a7aa63eef1095adb95610065d7d13e84",
+      "oggSha256": "e3949ebcb92b4feb1fb7c372f7f447cfeb4e31b27201222ebbd00ba347b7f911",
+      "bytes": 9881
+    },
+    {
+      "id": "voice_hua_po",
+      "source": "originals/hua_po.wav",
+      "sourcePreviewSha256": "2001355328351919134b132bd66ba50577dc81161e952b9aaacfe6f548821182",
+      "oggSha256": "1219802771a09059d2e1a53dc4a20f3e3130b4b33ce8be11ba06db0ee48fc92a",
+      "bytes": 12500
+    },
+    {
+      "id": "voice_incubus",
+      "source": "originals/incubus.wav",
+      "sourcePreviewSha256": "976551004677af184937c3f621e572f5d05d1e0e884c6d0e3a03fed3c205fcdb",
+      "oggSha256": "3bab60053dbc4000ecf1fb3329d4a2fb26d3df03b7bf29b95da61044e3305fbc",
+      "bytes": 12588
+    },
+    {
+      "id": "voice_inugami",
+      "source": "originals/inugami.wav",
+      "sourcePreviewSha256": "07b2d2f66ec644f32ff2ea252e6640a4be1d1718eb843b027a299049b3e6113c",
+      "oggSha256": "742cd33d951d81e9bf5c1a8ecf6548280f95b3ee655d279b2f94d0ae662fe11d",
+      "bytes": 11612
+    },
+    {
+      "id": "voice_izanagi",
+      "source": "originals/izanagi.wav",
+      "sourcePreviewSha256": "7674d1d3ca8d18b3a1f3608a5546c14f2e1dd36268cd36c4655e0ea1dca50e64",
+      "oggSha256": "00be11372f2cb720b5ed1055aef4592d20a166948f6c924919e788d028a4d2a9",
+      "bytes": 12103
+    },
+    {
+      "id": "voice_jack_frost",
+      "source": "originals/jack_frost.wav",
+      "sourcePreviewSha256": "f9fd1ef3c9e82a2f350ec484ddd903ae8f03bbc61c9d2ba3b887acabd9d164a7",
+      "oggSha256": "6ff637582fc07fb669959c9864969c030369e1ee98ba32e4b43bcbc40db756fb",
+      "bytes": 14424
+    },
+    {
+      "id": "voice_jack_o_lantern",
+      "source": "originals/jack_o_lantern.wav",
+      "sourcePreviewSha256": "413bcd60e77c5535fe88f1a592caf955a74f2889feca735eacfcde0d1e596290",
+      "oggSha256": "f3ef3a75645d012bfee50b8b61148b9c8b5dc5412ad060c8598a8e132e9db2cd",
+      "bytes": 14813
+    },
+    {
+      "id": "voice_jatayu",
+      "source": "originals/jatayu.wav",
+      "sourcePreviewSha256": "c28b048a869e9056288c2a8e7cf3df16d16e127af4c4ed0e12dc9a904cd446a9",
+      "oggSha256": "a15278f0fcf40f2e06481925a3c9cef2576d745599c92d3ceea621e62c625f65",
+      "bytes": 11628
+    },
+    {
+      "id": "voice_jikokuten",
+      "source": "originals/jikokuten.wav",
+      "sourcePreviewSha256": "3dbb82f4a214a29f6244738baa53e2a4be4e4e7f7f234a61855967881d9fd097",
+      "oggSha256": "d373f29fea0e18426389f21f37b3d57069d4c009c2eac63c52afd1205dc8fca4",
+      "bytes": 12945
+    },
+    {
+      "id": "voice_kaiwan",
+      "source": "originals/kaiwan.wav",
+      "sourcePreviewSha256": "755ac2e5ac5585b356f57816190c7e4ec200546439c7e1daa296c6ba987be6f8",
+      "oggSha256": "9e8a2ae58ab6e620b836abf426a336a1364aed88d219f4e94017daa7c9564162",
+      "bytes": 10889
+    },
+    {
+      "id": "voice_kali",
+      "source": "originals/kali.wav",
+      "sourcePreviewSha256": "634035f7184c8f721dc32b239e48a31107bed7023e42348d9180c2095091ba70",
+      "oggSha256": "bc78786e6114b408b831d1c26285761ff0f931512181dfc090f1ac7506061944",
+      "bytes": 10490
+    },
+    {
+      "id": "voice_kikuri_hime",
+      "source": "originals/kikuri_hime.wav",
+      "sourcePreviewSha256": "3ff0096baffce91d372c274de47d1a18a0354ac7ccef87ac480bbb26d517bfc2",
+      "oggSha256": "904621a1d6b71df161ef1ade45fe16b703e671e9815912ccde3b8bf985b468d3",
+      "bytes": 14142
+    },
+    {
+      "id": "voice_king_frost",
+      "source": "originals/king_frost.wav",
+      "sourcePreviewSha256": "b548a6b5d72f165d1f3641a899ff5b4d5d1d0698b4c85620523589ed6a6d6f57",
+      "oggSha256": "cc4aab8080ba6734ba2b8c319fab93f745a3560a68016af068db6d34fcf14d05",
+      "bytes": 14125
+    },
+    {
+      "id": "voice_kohryu",
+      "source": "originals/kohryu.wav",
+      "sourcePreviewSha256": "6afeee9789505183f62dae2f56fb9141916bd824dee47167b938135da2f6b589",
+      "oggSha256": "c009269202d4bc020be0f6982bdaad2ed57cc40d231cf59ba15d1733ae492767",
+      "bytes": 10625
+    },
+    {
+      "id": "voice_koumokuten",
+      "source": "originals/koumokuten.wav",
+      "sourcePreviewSha256": "cd25ccb4b68837682b52a7ea3c00c25240b546e03954c56425d2c0c79a486b53",
+      "oggSha256": "e2025ce483ce79fd7df11082b8c8e1cdba614c26ab3ee20e1d47489373fdf86a",
+      "bytes": 13835
+    },
+    {
+      "id": "voice_kumbhanda",
+      "source": "originals/kumbhanda.wav",
+      "sourcePreviewSha256": "4fdf44a87790781e5911da923b7340f09ed9c0b35b623f35000f56d2dc07810f",
+      "oggSha256": "ccfce2a16520d3257a5baa7d0f40de6c85f5fc0502a7cafe02a736bc8d6d1f1f",
+      "bytes": 11784
+    },
+    {
+      "id": "voice_kurama_tengu",
+      "source": "originals/kurama_tengu.wav",
+      "sourcePreviewSha256": "20b61dda13e35d6e9dd338d3173c2aeb59aca8c4b1e8a4226bd7b4acc37776c0",
+      "oggSha256": "5f00f18ddf75d4fea3c34add74656f8f0e0964e6182f5fd0cdf01929abe7cebc",
+      "bytes": 15597
+    },
+    {
+      "id": "voice_kushi_mitama",
+      "source": "originals/kushi_mitama.wav",
+      "sourcePreviewSha256": "7484edbce3e66e393da08238d1ef7cdcc79efe123187d5c45aa1c83b8c3947d5",
+      "oggSha256": "f3f1ea67c4362182b1fac6b37099b0466b47436dfe8e5678bf5305ce7210ec52",
+      "bytes": 14684
+    },
+    {
+      "id": "voice_lachesis",
+      "source": "originals/lachesis.wav",
+      "sourcePreviewSha256": "0dc16c49eee01fa4d61c564dbd23cbb0a7576d0616e29490501dc6d2cf350668",
+      "oggSha256": "4cabbda1fc633ad039895f494c6a3a71aa883da38049fd9ca60fdf1b70d51fdb",
+      "bytes": 12356
+    },
+    {
+      "id": "voice_lakshmi",
+      "source": "originals/lakshmi.wav",
+      "sourcePreviewSha256": "22fd4b0eace8115e56c9f8b0925ab2b46a28a84ed9f635cb2c010b1a431de5c1",
+      "oggSha256": "8469f6bdf14f8f95217a30c6875be77ed08c2d0d3ce03a97bb4ad4485a625132",
+      "bytes": 11218
+    },
+    {
+      "id": "voice_lamia",
+      "source": "originals/lamia.wav",
+      "sourcePreviewSha256": "cde810aed687ff733fb122134907da462bd7fa5d097ee484c8b1435325cd983a",
+      "oggSha256": "e3a6e01f523a43348b4f2bc67a456e6da03d3b78da424f3314e09cb862bd7525",
+      "bytes": 11442
+    },
+    {
+      "id": "voice_leanan_sidhe",
+      "source": "originals/leanan_sidhe.wav",
+      "sourcePreviewSha256": "284f7bc00970e2ff371840231808b1382172be410995ddd6c7b0a35a95378963",
+      "oggSha256": "379ff90b18a7d82dd6b3759f040eeb1bb6bfe4241957eab72998e8d56ee2b323",
+      "bytes": 14050
+    },
+    {
+      "id": "voice_legion",
+      "source": "originals/legion.wav",
+      "sourcePreviewSha256": "3892dc2d9f658467897a13902964c9685c5e6a06f7e43f8c0c4ee5e7501ecb3d",
+      "oggSha256": "b210160d3e536857a2b24ee3391abe457d30d6e2f19851193eb9e2831282f595",
+      "bytes": 10739
+    },
+    {
+      "id": "voice_lilim",
+      "source": "originals/lilim.wav",
+      "sourcePreviewSha256": "1f389c3b1e6a86dd23b5c9cf2c926cba2ef59116f61d4e4fa958131697a81228",
+      "oggSha256": "e9f6a40dff62d9898674859e82d41ff2a822fe7bae3de83c3630ec991011f346",
+      "bytes": 9417
+    },
+    {
+      "id": "voice_lilith",
+      "source": "originals/lilith.wav",
+      "sourcePreviewSha256": "3de042950c1f7a6656139762f961596d6214d374b48d7d904c1244c05adf29bf",
+      "oggSha256": "83f13de00e2ef86baffddb478f5a0bc79754bcc96a29d88abf1d5b1d0a3b7661",
+      "bytes": 9624
+    },
+    {
+      "id": "voice_loa",
+      "source": "originals/loa.wav",
+      "sourcePreviewSha256": "11b2e21cc39e0aeb4ed4c322860cb97b172a09fb1dfe88ede0f1b4167b67a68e",
+      "oggSha256": "1fd45f149782d109cd8ee28da0229b002efe726207775fe60b7f8330ed18bfd0",
+      "bytes": 9539
+    },
+    {
+      "id": "voice_loki",
+      "source": "originals/loki.wav",
+      "sourcePreviewSha256": "bc850e1d74f463090f602057ca4c872b6a238a677e9382a790d3f35082175206",
+      "oggSha256": "dec5becfafb1df9cd2dfb0a09b78c04218240d26fb7281f530bb53b07bace006",
+      "bytes": 10185
+    },
+    {
+      "id": "voice_lucifer",
+      "source": "originals/lucifer.wav",
+      "sourcePreviewSha256": "29bd781d126503a658f289f720cec4849e050b858941bd1afefbdc1c7b57b6e2",
+      "oggSha256": "2dcc120713a9a12e2d2a88e2d83805b3ba5d0d2daa674d414873225bf34d7014",
+      "bytes": 12178
+    },
+    {
+      "id": "voice_mada",
+      "source": "originals/mada.wav",
+      "sourcePreviewSha256": "8898cb100e1a26ec85b1a5193128bd1bde22508740cd0538512e46bd8d3d4639",
+      "oggSha256": "11e25109cfc98b8bda4e4f54b7a9db5aaf2a3c8ce547f961bde72ed3c68259c1",
+      "bytes": 9120
+    },
+    {
+      "id": "voice_mara",
+      "source": "originals/mara.wav",
+      "sourcePreviewSha256": "fc959809e9fb62788ba5fef20525675c02b4df2604c0edfc7f30dfd340b08b28",
+      "oggSha256": "0c5e89410711122db6741815b81718db3716313af7bddf92e99582aa6adea624",
+      "bytes": 9769
+    },
+    {
+      "id": "voice_masakado",
+      "source": "originals/masakado.wav",
+      "sourcePreviewSha256": "00085e4960acb5542d314b5bbe9a2dc1583c209e3b1c72f0e04e0d8f65139b93",
+      "oggSha256": "752ef4591cb1942de738d4f7c3dc4308b1273939428d6aa97c3e2d961a6b74cf",
+      "bytes": 13326
+    },
+    {
+      "id": "voice_matador",
+      "source": "originals/matador.wav",
+      "sourcePreviewSha256": "6c044bfeb9c5e6d773ae4a50be906241cc3add3b62ebadf6e4cd2d4ad74c9f61",
+      "oggSha256": "3cec967083b539ea035ae50d98c563fb4084d1b2fc0bd455620eb80ed226c780",
+      "bytes": 12634
+    },
+    {
+      "id": "voice_melchizedek",
+      "source": "originals/melchizedek.wav",
+      "sourcePreviewSha256": "d5d0ae69b743861c94de9d7feb341690c4b83a93b37539ab1fc1776f8438462a",
+      "oggSha256": "3b0706248aab7d43477f329d5b385a9c6b62165cdcb2acd17be140efe5eb0443",
+      "bytes": 14782
+    },
+    {
+      "id": "voice_messiah",
+      "source": "originals/messiah.wav",
+      "sourcePreviewSha256": "3448dd6e4b121fb0f58256a82fccf81898213406d7e9fc1510c1a41f78f10cae",
+      "oggSha256": "353917f1b36502986e877a2db0d5d9e34cc468f1692dde978127113b3ca5a8f4",
+      "bytes": 13493
+    },
+    {
+      "id": "voice_metatron",
+      "source": "originals/metatron.wav",
+      "sourcePreviewSha256": "be8c70df09a0d3ee356be438bf027298b03f641d85b74bdce411d4e7e6f146d6",
+      "oggSha256": "23442dcf787db9595d9735cd841dd06032359993011238ff4b895e614a4dbca1",
+      "bytes": 13511
+    },
+    {
+      "id": "voice_michael",
+      "source": "originals/michael.wav",
+      "sourcePreviewSha256": "fc58d26d67160a601cc2001b767fc58ef63f2d82d0854b6ab8f74ea425c7d277",
+      "oggSha256": "7c08701692fc5222d8a4fc8ea5aa0896a3d375ad0f5c35841b9f7ca980a42126",
+      "bytes": 10316
+    },
+    {
+      "id": "voice_mishaguji",
+      "source": "originals/mishaguji.wav",
+      "sourcePreviewSha256": "4cffbb145259184d43928d8b9ec4627ff347ce6d3e1dadd75146d949834d3599",
+      "oggSha256": "a781b88f58e9a9cbb5ecff40df2e097329d713fa995b6c588dff8d93d0174173",
+      "bytes": 13901
+    },
+    {
+      "id": "voice_mithras",
+      "source": "originals/mithras.wav",
+      "sourcePreviewSha256": "8c431f82fbbd175b9da6f33229a4fa74fbfa64b5e328b2f3cfc8a1f7ee7ed537",
+      "oggSha256": "ba1c2ffd99529ec76c0f7af4661212af06c50312b6ce64126f15e666e5f21949",
+      "bytes": 12440
+    },
+    {
+      "id": "voice_mitra",
+      "source": "originals/mitra.wav",
+      "sourcePreviewSha256": "eb85bca5dbd10273d35bedfcb048778fe1e47b464125c998cca00bdcb4ca4f19",
+      "oggSha256": "453dc3a741b0bae399d203dc9f7b45006568ca0c363603e947163cf293901a24",
+      "bytes": 10917
+    },
+    {
+      "id": "voice_mokoi",
+      "source": "originals/mokoi.wav",
+      "sourcePreviewSha256": "7075255fd9b3cacea0bc76c79511dafc3efcffd5b456a8951f37569c269b7e07",
+      "oggSha256": "952adee72a3fa53f5cf7502fc31ee2268c4f515a30c967d9b0232199b749ea35",
+      "bytes": 11042
+    },
+    {
+      "id": "voice_mot",
+      "source": "originals/mot.wav",
+      "sourcePreviewSha256": "ea9b59658db4f3a1a447bca28db37e962e2e706d3169f9be74a5a847a050cc4b",
+      "oggSha256": "68f61f769bd4e034ad1617c975ba0476c9d80cd32607caad6ab934532966e9a3",
+      "bytes": 9645
+    },
+    {
+      "id": "voice_mother_harlot",
+      "source": "originals/mother_harlot.wav",
+      "sourcePreviewSha256": "c3aac4f5ff847407c2e5c6cadea4ba01b3ab9420f34db94edc98ce7bb54831cd",
+      "oggSha256": "f064682ba2175c5eaf42eeac5a2c0c287b0e23e85c0bb4fca0c41f7124e84389",
+      "bytes": 15558
+    },
+    {
+      "id": "voice_mothman",
+      "source": "originals/mothman.wav",
+      "sourcePreviewSha256": "76f4e1d4635a1222782fb114d4e23e95d19096e88ded7ec619b6ee08ea5cf039",
+      "oggSha256": "c60344d1a42a3ef7d347faa56a5882a0d5bb80d7e08264431218d337ed03138d",
+      "bytes": 13304
+    },
+    {
+      "id": "voice_naga",
+      "source": "originals/naga.wav",
+      "sourcePreviewSha256": "92ba21871f1731621db872c95bf0981812703373d3fd6376896a05043dc83476",
+      "oggSha256": "a7a33c360f03979a5b070c80da7fa0cdd89f050e57d6d9d8f9c6c181430a84d6",
+      "bytes": 10342
+    },
+    {
+      "id": "voice_naga_raja",
+      "source": "originals/naga_raja.wav",
+      "sourcePreviewSha256": "a7d6b775d0fdc32375589a902807a72e1cb7ed530dd72af8aceb2b69c8d53db9",
+      "oggSha256": "4679062bd0c0d84ed23f5ba2f5923325be91936fb56b072a92cfa8295bb7fe40",
+      "bytes": 13278
+    },
+    {
+      "id": "voice_narcissus",
+      "source": "originals/narcissus.wav",
+      "sourcePreviewSha256": "da90214d3c42fd9779a446a5e27cdf502ac9e0326aec680600c7b0c0e4455e9b",
+      "oggSha256": "b27091b2787d8816b4cba5db58e7f78d6b45fc33d6ef8a74df577722f4e153b6",
+      "bytes": 14407
+    },
+    {
+      "id": "voice_nebiros",
+      "source": "originals/nebiros.wav",
+      "sourcePreviewSha256": "1ee0ff4a67451d8adafdbaf49ab49778a32240136e48b7340e6c9f5158ede8af",
+      "oggSha256": "7d6f5d6d04805a4a4daf227330189525eee292edf0259a4e62e600abba1b541e",
+      "bytes": 13082
+    },
+    {
+      "id": "voice_neko_shogun",
+      "source": "originals/neko_shogun.wav",
+      "sourcePreviewSha256": "119be62e2c932802407f32384a7782e8f9d2223323952d0170dabea7ffcec523",
+      "oggSha256": "4ea48322a5666ab8b534bd2a1189aa8e12588591b14d700094b822048bb02b17",
+      "bytes": 13391
+    },
+    {
+      "id": "voice_nekomata",
+      "source": "originals/nekomata.wav",
+      "sourcePreviewSha256": "5c7a45136e1248fabffcef1c4265b5eb84d669fc5d9d0e0847da2273c0f16767",
+      "oggSha256": "e22eb65ba977c9f207192231f8d7e4d692456d0c15172d2fc4f3977fa8908f5f",
+      "bytes": 14492
+    },
+    {
+      "id": "voice_nidhoggr",
+      "source": "originals/nidhoggr.wav",
+      "sourcePreviewSha256": "9b409ae53a2548c1db5792dd935aad1752ecb98d72d4ca7697e371cc51993013",
+      "oggSha256": "c7ba61c3125d627f6881303ad049688609705952d6703e381759a6936d37c4c2",
+      "bytes": 11642
+    },
+    {
+      "id": "voice_nigi_mitama",
+      "source": "originals/nigi_mitama.wav",
+      "sourcePreviewSha256": "e30931c5182f6cae5af4dd86ad9bb57db7182f41382b251472a90483f2ce8719",
+      "oggSha256": "81cf9634e5bf4c2924915805f6af0bc92472adb7f6675c1863abb89780fc3d4d",
+      "bytes": 14970
+    },
+    {
+      "id": "voice_norn",
+      "source": "originals/norn.wav",
+      "sourcePreviewSha256": "c56d797a8c7955efe5be44f99908dd7afd48855edd393d5c75ae8312f26ce1dc",
+      "oggSha256": "142ba90da5d52865f4b439eaf9b528acdbcc1203c74564e5de5f83a96ca54e08",
+      "bytes": 9652
+    },
+    {
+      "id": "voice_oberon",
+      "source": "originals/oberon.wav",
+      "sourcePreviewSha256": "4cd64de35bf6a5b1ccd2cf22ebf4fda6627b42a2a7fe4989940d51d9c048c91e",
+      "oggSha256": "f1ccfcae28b2cd0331db02ae43ee9ead0e0d30adca14f7490ad8e2c3edd98c1a",
+      "bytes": 12006
+    },
+    {
+      "id": "voice_odin",
+      "source": "originals/odin.wav",
+      "sourcePreviewSha256": "bfcb5080a40537ed10c3a2538fa0740d5d4abf3defc2198834b1628513b30fa4",
+      "oggSha256": "fd9db8b027cbf965858e11272eb9c55ac64ba89bd7bef91b51d4d84668141e4d",
+      "bytes": 9465
+    },
+    {
+      "id": "voice_okuninushi",
+      "source": "originals/okuninushi.wav",
+      "sourcePreviewSha256": "ace9f87ca4786010a0483802280d3a59ec0c3b57a81e0bc939934579c68e87f3",
+      "oggSha256": "2b72c225a1948f09beeeac17c92af8e1c3b27e2b61f33093faa88f3ab446831b",
+      "bytes": 14058
+    },
+    {
+      "id": "voice_omoikane",
+      "source": "originals/omoikane.wav",
+      "sourcePreviewSha256": "daeff99d2aa078dccbc1ac5f187ff76ae318bb0d350c49a5d8bc615a088c7afb",
+      "oggSha256": "ff7249f26b8f30eb1a1436c964b8d344975b080f43b482c15ba543476b1aee2d",
+      "bytes": 12780
+    },
+    {
+      "id": "voice_oni",
+      "source": "originals/oni.wav",
+      "sourcePreviewSha256": "2f340907bea749d5baf96609ce12726e8e05da325c1915612a2e79301796f0ce",
+      "oggSha256": "3c7d6491daab1a598ac15c8bb001a626f7830fd2e40d02208beb9557f3847868",
+      "bytes": 9876
+    },
+    {
+      "id": "voice_onmoraki",
+      "source": "originals/onmoraki.wav",
+      "sourcePreviewSha256": "43755af2cc6693fba9d37c2c0a0cc0caaaec76ed0b2d76d9e1dec10d53b4d4de",
+      "oggSha256": "140b1c0f6c4102a87816c72b807836e389d5eae08bbb61f3e9c38dcd6fc13ef8",
+      "bytes": 14101
+    },
+    {
+      "id": "voice_orobas",
+      "source": "originals/orobas.wav",
+      "sourcePreviewSha256": "c0b94721fb95f6e0418405f0cec1771e93f080b80ef35ab31f27ab77574da7ed",
+      "oggSha256": "fcac06917873083a11628a1f14a6d12555182963ca47362a5b21abe1ba28788e",
+      "bytes": 12049
+    },
+    {
+      "id": "voice_orpheus",
+      "source": "originals/orpheus.wav",
+      "sourcePreviewSha256": "a2bb2ab6cefe90648ab6fb6d95e8dbd77f6ed48e779d72e0a4ad8c2f4ef35474",
+      "oggSha256": "4732ec4cd1e707a0a5b1087ed5dda20387ec4061a99e1217678d50e3e2ae1d82",
+      "bytes": 12610
+    },
+    {
+      "id": "voice_orpheus_telos",
+      "source": "originals/orpheus_telos.wav",
+      "sourcePreviewSha256": "a2bb2ab6cefe90648ab6fb6d95e8dbd77f6ed48e779d72e0a4ad8c2f4ef35474",
+      "oggSha256": "44aa1493e93faa575d5211606007a2cdb90d7535e48fb7cc4f31f028eecadd20",
+      "bytes": 12610
+    },
+    {
+      "id": "voice_orthrus",
+      "source": "originals/orthrus.wav",
+      "sourcePreviewSha256": "45d8f5afdc42ea502ba994eab2b7cae2617c25e644f038b538f19ab8627d8828",
+      "oggSha256": "5cb5d401bd4193b22f9201e4af5013ebcecdfd36d9cb29a476fe0a6a2a5eee26",
+      "bytes": 12479
+    },
+    {
+      "id": "voice_ose",
+      "source": "originals/ose.wav",
+      "sourcePreviewSha256": "4637705d79d991987505ec2532f5c4d3d96a9ace26af0fb7c30aa5f1a82dc6dc",
+      "oggSha256": "fd454192e63665db65c9b201beb6655765d723ed15366ffb2ccef45dcbdca964",
+      "bytes": 10180
+    },
+    {
+      "id": "voice_pale_rider",
+      "source": "originals/pale_rider.wav",
+      "sourcePreviewSha256": "666c66f1c2340571a68079e4cbb26b2baebe16cea36038ce9eda79eaaa91ef89",
+      "oggSha256": "d48f96c412fac00ca2ab86adcb1b470e2a0931db0417e34e0d432b81ff7e2d0e",
+      "bytes": 13553
+    },
+    {
+      "id": "voice_parvati",
+      "source": "originals/parvati.wav",
+      "sourcePreviewSha256": "f5a6c4f5f800aea9cdfd887cf19075ca3e3be71df9949644bcfc3d1f0be66e70",
+      "oggSha256": "4759d8f93464e588afc268de806a65013f781ab14f3bf79781d0b9919a939770",
+      "bytes": 13042
+    },
+    {
+      "id": "voice_pazuzu",
+      "source": "originals/pazuzu.wav",
+      "sourcePreviewSha256": "e3f4edeaf0da20a0d259fcebc9765ebf743f9d6316d6c5f4636a6ef67bb10aa6",
+      "oggSha256": "9509a7542c77e067ec0f93772d1bebcf6a77f3f62a746b646ea3be6131e688dd",
+      "bytes": 11391
+    },
+    {
+      "id": "voice_pisaca",
+      "source": "originals/pisaca.wav",
+      "sourcePreviewSha256": "16cf0ca72323a7f254ab7698b0c97ab2369fee381229c45c97d06b7fbcaa4be3",
+      "oggSha256": "f748e4236c13f2dbc4bafcfd59db76d966502e7e28e69f5ea8349f755cf56445",
+      "bytes": 11834
+    },
+    {
+      "id": "voice_pixie",
+      "source": "originals/pixie.wav",
+      "sourcePreviewSha256": "1c29b66a98ed0db638f1c54086efdd7a8d246df414d279619dfe33d51d846438",
+      "oggSha256": "b67dc0bfce4f2720041b703919b5ff55dcc6614dd7c3ead8ab0ebeea70133854",
+      "bytes": 10430
+    },
+    {
+      "id": "voice_power",
+      "source": "originals/power.wav",
+      "sourcePreviewSha256": "ed75b48b5d298ff59b208d90718e7f8faca78fb96ffdafaf318f347dcd0297ac",
+      "oggSha256": "f9057810ec78338a26a03391b76634bb141c21525ffe5beecfb37088deee3e18",
+      "bytes": 9646
+    },
+    {
+      "id": "voice_principality",
+      "source": "originals/principality.wav",
+      "sourcePreviewSha256": "3763f714beb82bf2b609b03a68838b1f06d58a278fba52a59fae87ef4b6f0f42",
+      "oggSha256": "ba4311bfbf786e1d5261e41d413df5251471361ef32c6da668a7ed058f5cec57",
+      "bytes": 13220
+    },
+    {
+      "id": "voice_qitian_dasheng",
+      "source": "originals/qitian_dasheng.wav",
+      "sourcePreviewSha256": "920355e7e99800fc97e91d0bcdaebea259938434941f32d545d4eaeee0cb797b",
+      "oggSha256": "f7ab041facf837cf8cf8dd8d45e4b2659214b54bb7021d432aa1e30d411d1343",
+      "bytes": 15992
+    },
+    {
+      "id": "voice_queen_medb",
+      "source": "originals/queen_medb.wav",
+      "sourcePreviewSha256": "e725cf66b2d2135cf9983508e32e89e61f852acf2a7fcb9567b624e96bb99f6c",
+      "oggSha256": "25993b5e18ca26e27802262393b05947eb8b92c8650aa12e5e654aefd3f2f178",
+      "bytes": 14242
+    },
+    {
+      "id": "voice_quetzalcoatl",
+      "source": "originals/quetzalcoatl.wav",
+      "sourcePreviewSha256": "016044aeadc14ffcdb680c810bf573cabb2564f67d76da75df5ea5a75dc1ac33",
+      "oggSha256": "ead834000854e4eff6baca54e886ffbbdff957e7df50aec4802ed37dd37c1f38",
+      "bytes": 13620
+    },
+    {
+      "id": "voice_rakshasa",
+      "source": "originals/rakshasa.wav",
+      "sourcePreviewSha256": "f01afc03517c9848e01abb07664e79765e9f115f73435ccf2fdc94a3758b87c3",
+      "oggSha256": "a8b829b0745d6377f6387e006ab82a6db4cda29e6a49877d422cfb29613a9a93",
+      "bytes": 13319
+    },
+    {
+      "id": "voice_rangda",
+      "source": "originals/rangda.wav",
+      "sourcePreviewSha256": "db5738fc52c8aac8fe1e21f4d0aa62f081764ba2c43444b0830c4305304b3083",
+      "oggSha256": "55502ac386e0944af5c8fec27f679097ce3cd4f02b8f3fa3713623f6d8751ccf",
+      "bytes": 11862
+    },
+    {
+      "id": "voice_raphael",
+      "source": "originals/raphael.wav",
+      "sourcePreviewSha256": "d1a904bbce895f5992f7f7f2806e7afbec03f311929465796ed3fe192702406a",
+      "oggSha256": "c74cf8f4d657ae83235bd26037440577f3acabcdc81235c747385a8e07c64a9a",
+      "bytes": 12054
+    },
+    {
+      "id": "voice_saki_mitama",
+      "source": "originals/saki_mitama.wav",
+      "sourcePreviewSha256": "14781d1f82514d0f5d66e0ddc6ea9bfc30f27f38a5d345809c655e84ebeee57a",
+      "oggSha256": "9c5d0c024c858dad3f760a4ecf503d70e9539989a03683fe6cfdced1fc4ab2ed",
+      "bytes": 15502
+    },
+    {
+      "id": "voice_samael",
+      "source": "originals/samael.wav",
+      "sourcePreviewSha256": "faf42eb4205aef092392866a874afeceb14b607fded874f63dd006b026feb8bf",
+      "oggSha256": "b16637eec38f01fd883175d1f93654171ef91d77f5369102a37f52c9b0410f70",
+      "bytes": 11331
+    },
+    {
+      "id": "voice_sandalphon",
+      "source": "originals/sandalphon.wav",
+      "sourcePreviewSha256": "4c05e77c8791f547a8a1b704188915563dc619b9f193720426491bc64cdb0936",
+      "oggSha256": "655988f3e183f13cd4bc3c22d52e4c7bbb0a6f14c1e60a5352e1fe841d705c38",
+      "bytes": 14189
+    },
+    {
+      "id": "voice_sandman",
+      "source": "originals/sandman.wav",
+      "sourcePreviewSha256": "d01a8676fa0e8b46aef3ddb71fc5bedd1eff3372bf30e312b76f506bb05f9aa3",
+      "oggSha256": "130b429aef6063da1006384bc9b2c303de7d166639fdf394fca764566c1de21f",
+      "bytes": 14016
+    },
+    {
+      "id": "voice_sarasvati",
+      "source": "originals/sarasvati.wav",
+      "sourcePreviewSha256": "2f1ffe85c8a06faf99967edb9dac51b9ecf1453092a7379a8ad5cb0ec9ae05e7",
+      "oggSha256": "98a98c7b41db9e50e3159643c1b81a87e4d9626a8841bd63573f234d84944a45",
+      "bytes": 14130
+    },
+    {
+      "id": "voice_satan",
+      "source": "originals/satan.wav",
+      "sourcePreviewSha256": "ba4b4af419e61bdacd42aaa5cc4c80a35b8dc94c9887dc8e70c7c7f2653fe418",
+      "oggSha256": "94f5b690d744b965874238873445d5704aaed31493b43c146f6506de7b4be1c2",
+      "bytes": 10551
+    },
+    {
+      "id": "voice_sati",
+      "source": "originals/sati.wav",
+      "sourcePreviewSha256": "966a721c193bda61c352543121b053bb2e04e8806b8512029904137b072f1c4c",
+      "oggSha256": "3b9557b6b78331157d552f4b1e1c04f3bc94ee69ed6cfbf65b07f70fdc7cb990",
+      "bytes": 10649
+    },
+    {
+      "id": "voice_saturnus",
+      "source": "originals/saturnus.wav",
+      "sourcePreviewSha256": "c444ac05c9735350c98cda5e5195843440bdc4ff3b90e44b4996179a9bc79968",
+      "oggSha256": "0bb8d4a1b9a87533abd6ac2045bef9749ac3ddde015dc5e2019949e39e7bea00",
+      "bytes": 13420
+    },
+    {
+      "id": "voice_scathach",
+      "source": "originals/scathach.wav",
+      "sourcePreviewSha256": "d260875abb722a1d0c5870d2b59ebc85be9fa9eb1e50840ba212a768bc7bab99",
+      "oggSha256": "728f9465aa7129bf410c94c3f2181d5541f039f9fd788881be7a8aa1fb2c5d47",
+      "bytes": 12616
+    },
+    {
+      "id": "voice_seiryu",
+      "source": "originals/seiryu.wav",
+      "sourcePreviewSha256": "b8379516f377d5be1d7c71676edf7852d75cca0e124c2047e27427bba2f1c945",
+      "oggSha256": "e0ade6a8d9c9ef4024d24cab6ad3f96172070533d913431680cf9b866a657e34",
+      "bytes": 10613
+    },
+    {
+      "id": "voice_setanta",
+      "source": "originals/setanta.wav",
+      "sourcePreviewSha256": "7fd97995f13db6092b5ded921f7726ee02331ff75c0661cdf6c7c1c5e55d1969",
+      "oggSha256": "a091a0ad1cabb0950a6b09ae1ed54aefdb869c32b2568bad329a0172a9c15ca4",
+      "bytes": 11452
+    },
+    {
+      "id": "voice_seth",
+      "source": "originals/seth.wav",
+      "sourcePreviewSha256": "03a171c02d3fbc0c898b6e3298061c30b97905f94ff621cab73839d1be988f5e",
+      "oggSha256": "a2828c231c73af7881d3bd736989d8e5dda010c522354006f8631dd4772c17a2",
+      "bytes": 9313
+    },
+    {
+      "id": "voice_shiisaa",
+      "source": "originals/shiisaa.wav",
+      "sourcePreviewSha256": "17319bb22e8a9a464a3380788029951b97d43bd854577b82c3c69e43339a3e48",
+      "oggSha256": "077e6a5337c1e00b2e15f88fc0c73aaf6dfb313d2656b9c3eecd11f82b35cb4d",
+      "bytes": 12671
+    },
+    {
+      "id": "voice_shiki_ouji",
+      "source": "originals/shiki_ouji.wav",
+      "sourcePreviewSha256": "4be405da03af384eeee58b3613e4783daa7532cbbc3de51d8ddcd349eeaf048c",
+      "oggSha256": "26cd8c98acc05626f4314b22e5f418f2f4dbe13d5772bd45d8beb8d9714ebb64",
+      "bytes": 12317
+    },
+    {
+      "id": "voice_shiva",
+      "source": "originals/shiva.wav",
+      "sourcePreviewSha256": "9d8fb3bd9ee0eade8fb48a08d3aca38498449cb4b54eb9907f75fddfccfe217e",
+      "oggSha256": "21045e27e2b35cff77c5c177f16f78938e49b8b640d658984f023c5d11d9cd58",
+      "bytes": 9821
+    },
+    {
+      "id": "voice_siegfried",
+      "source": "originals/siegfried.wav",
+      "sourcePreviewSha256": "cd1c5121a9d9a3b53621cd78a32caa3399cdd624f36435df0e4e842781cd908c",
+      "oggSha256": "db424a3d0bda332ea1d396cf2d0ba121f841b13d25d5fd3bd628a568d8c3c6f7",
+      "bytes": 11548
+    },
+    {
+      "id": "voice_silky",
+      "source": "originals/silky.wav",
+      "sourcePreviewSha256": "579b477814b1de1750473db84b9fe1209b2c30db4fa13de7cf2a8f05d7de4675",
+      "oggSha256": "92601d4521b79dde6d61c7e4d59e092d1c2ca21b3a776a267a1937ec73e58744",
+      "bytes": 10783
+    },
+    {
+      "id": "voice_skadi",
+      "source": "originals/skadi.wav",
+      "sourcePreviewSha256": "47950e75b889eac40acc9bed38c515a9e9e4af78839138c9470a867e269ac88c",
+      "oggSha256": "34bda936693e2a65a228360fddfcad6a8ecf4e156b946dd2bc387d70644c4be6",
+      "bytes": 11090
+    },
+    {
+      "id": "voice_slime",
+      "source": "originals/slime.wav",
+      "sourcePreviewSha256": "b6c71e58a3ff705c4c952d3d308995328fcdb1c54574a46e8eacf20ceeec4d5a",
+      "oggSha256": "cb6aa4c565d45f815499a5e817ee116a9b6e8f849b9e24c9b3f35f89ed46bd0e",
+      "bytes": 11332
+    },
+    {
+      "id": "voice_succubus",
+      "source": "originals/succubus.wav",
+      "sourcePreviewSha256": "6d84d9d6c70e9edba87f14eb1958001941de29a2286b7c76b21cc18a852c53c6",
+      "oggSha256": "7fed989214089b07b73dcda7f5a4394aa9e4ed0792bea3d8ae0d55106a8df760",
+      "bytes": 12749
+    },
+    {
+      "id": "voice_surt",
+      "source": "originals/surt.wav",
+      "sourcePreviewSha256": "38149c3853d9547678b9918458f1b986ca4cc91b4df2643c775e93dfca7d096e",
+      "oggSha256": "a1dc1cf40676be0f61af75cbd9546815d6338a009663ee6e46ac52253ce95957",
+      "bytes": 9476
+    },
+    {
+      "id": "voice_susano_o",
+      "source": "originals/susano_o.wav",
+      "sourcePreviewSha256": "8bb2b4f902103f7122b62954d7c5c49a9a28b73d8df4c2404f2a440cb2214758",
+      "oggSha256": "b498807b423db89a8633c8082a16a7dd75b432f80a6ea7eeb87e0328c1b87b68",
+      "bytes": 14004
+    },
+    {
+      "id": "voice_suzaku",
+      "source": "originals/suzaku.wav",
+      "sourcePreviewSha256": "f7ce3057801b9433f02af8e4f99c3be668ec6249915a7fe5aebae41784bfa283",
+      "oggSha256": "ce133d3cf15a38942805e244a2f46127cfad024d32d668f92f937e38855a2e23",
+      "bytes": 11979
+    },
+    {
+      "id": "voice_take_mikazuchi",
+      "source": "originals/take_mikazuchi.wav",
+      "sourcePreviewSha256": "f92c646c8774c990483d8922808ed4833c8b38c7af8a071578fc86e04a83d575",
+      "oggSha256": "fc49d6e28af0cd6a5f5c76ec105c119b419120659e78684564c4481f085c4762",
+      "bytes": 16501
+    },
+    {
+      "id": "voice_take_minakata",
+      "source": "originals/take_minakata.wav",
+      "sourcePreviewSha256": "bb8af9cdf1624b2bbe16f685e5cb22f7cc9590a46f99cf6de72401689fededdc",
+      "oggSha256": "04ea65aca98ebe45e0d6f4baceafdfadc22af5661af844a8b9202f400161dff2",
+      "bytes": 17421
+    },
+    {
+      "id": "voice_tam_lin",
+      "source": "originals/tam_lin.wav",
+      "sourcePreviewSha256": "58ece0e28d03043137ff5e546d8716ef4a1a6c4ae5098c0803446b69ab08f570",
+      "oggSha256": "cb6a04deea7700c86f06962c6a16eb17951da2c8453642d794a68cadbb21c912",
+      "bytes": 10983
+    },
+    {
+      "id": "voice_thanatos",
+      "source": "originals/thanatos.wav",
+      "sourcePreviewSha256": "7aabeada611e6878ad33f497c416343dbfcd38d9e8dcc992390496b59c9a4024",
+      "oggSha256": "8bb7ed4bee77c343469abd96fe45fd68a2806bb29f51cfa94b41b3c7412d075e",
+      "bytes": 13057
+    },
+    {
+      "id": "voice_thor",
+      "source": "originals/thor.wav",
+      "sourcePreviewSha256": "6ca29e2b0b8c6d3611961f9ad63254e9116834afa8501766bbd43b939e00a173",
+      "oggSha256": "ffe40cea8cbde1df5cf7459db9f7c6581598f9434366627ed49b45a362efb177",
+      "bytes": 9626
+    },
+    {
+      "id": "voice_thoth",
+      "source": "originals/thoth.wav",
+      "sourcePreviewSha256": "d760a977f35cdb817607c0b151eaaa8fa6cb3f848d6cf0c3c5390338f5cca626",
+      "oggSha256": "46a470b3501f7944cf57cb7922a09a877a9537d72d7a61a2c841804c759bd3c5",
+      "bytes": 9792
+    },
+    {
+      "id": "voice_throne",
+      "source": "originals/throne.wav",
+      "sourcePreviewSha256": "4ff8d42243c76841753e5852666c16428fb8563dad89de6d45b7f6d118efd83e",
+      "oggSha256": "fd2930688bd12e96dd3c7e9718785273e5502f01b34ca4ec2c5bd817d5f84e2e",
+      "bytes": 9665
+    },
+    {
+      "id": "voice_thunderbird",
+      "source": "originals/thunderbird.wav",
+      "sourcePreviewSha256": "8269bcfebda716b71a94553b4018c7f66237d796a60f9366199517cabc7a094f",
+      "oggSha256": "5a67fa17b929e54dc3b5243277e51b56644b2cd7a378123510272059a2ebfa42",
+      "bytes": 12732
+    },
+    {
+      "id": "voice_titania",
+      "source": "originals/titania.wav",
+      "sourcePreviewSha256": "b8031fac87744173bde37eb06268a60e255b91c27caf3b5ca5100bb5e49140da",
+      "oggSha256": "7509a1eb81592d6368b9110992ca78aedd939cb1e91243ff3df278820401284b",
+      "bytes": 12950
+    },
+    {
+      "id": "voice_trumpeter",
+      "source": "originals/trumpeter.wav",
+      "sourcePreviewSha256": "98ad90d2a840e4db81f6de07115a72f9290b5530a2970f1276748e2fd050bb5d",
+      "oggSha256": "870313b1d4accb5324875a22e8ae47f2d849996c455f27792143e8340c7427a8",
+      "bytes": 12868
+    },
+    {
+      "id": "voice_unicorn",
+      "source": "originals/unicorn.wav",
+      "sourcePreviewSha256": "f46deb367b45605157a0c442f7d90826f0db3d9fbed0660d841955b2ed1867a9",
+      "oggSha256": "36be7f1eb0ee4ae226f1090195f01a2eb2848c6d8b1b5f716561401503e55611",
+      "bytes": 12623
+    },
+    {
+      "id": "voice_uriel",
+      "source": "originals/uriel.wav",
+      "sourcePreviewSha256": "2fc2366db6284187520e6510a20b1546778a78da97d34937f692e31af5811775",
+      "oggSha256": "58c423fd5cf2913e20794198880a1811d7bcb8e50ecd81a714cfef3ca6dc705d",
+      "bytes": 9897
+    },
+    {
+      "id": "voice_valkyrie",
+      "source": "originals/valkyrie.wav",
+      "sourcePreviewSha256": "940df378ce722e4345cfe8cce7463ef17cfc02e1d531c585534f15ecbe7edd2b",
+      "oggSha256": "d166d40db0f4ab56c89ebe4c30b4a36e207f4ccf91848e929de4ba4468e60cf5",
+      "bytes": 11634
+    },
+    {
+      "id": "voice_vasuki",
+      "source": "originals/vasuki.wav",
+      "sourcePreviewSha256": "56282e250315db72361273259febc94665078b29271baf894464b66b7ff51a5a",
+      "oggSha256": "16429c617d1536837154112584f4db78643797490b6ed42109ab4e8291f66a01",
+      "bytes": 11984
+    },
+    {
+      "id": "voice_virtue",
+      "source": "originals/virtue.wav",
+      "sourcePreviewSha256": "e3f18d120d64fe06f11055d3656051f463f9e68f9181768f0d3512d6146bd5e0",
+      "oggSha256": "d514bb060ea1f5b1c603319100672af3514d4ccf063d4eb6344ac10589f08e88",
+      "bytes": 10922
+    },
+    {
+      "id": "voice_vishnu",
+      "source": "originals/vishnu.wav",
+      "sourcePreviewSha256": "8a2910451de80e5838e51065cb292994d400c9b92e44e0301a26be90934f6040",
+      "oggSha256": "514dd1f81f7283cfca57f6c5d44bd29997c811daf760005ba0e5495b6ac9f61d",
+      "bytes": 11239
+    },
+    {
+      "id": "voice_white_rider",
+      "source": "originals/white_rider.wav",
+      "sourcePreviewSha256": "411a205513738269604b33f5065510223e6cf513eca12e91bd84cca8ffe25852",
+      "oggSha256": "d417c146fd4aabcf8140abb5c7231b02db20e2c1464617bec221d2ffe10c2b41",
+      "bytes": 13303
+    },
+    {
+      "id": "voice_yakshini",
+      "source": "originals/yakshini.wav",
+      "sourcePreviewSha256": "6565b17408439fdc097126eaf1378cae1a9c204befd62be046fa9480faf14647",
+      "oggSha256": "8a78110dd7640c6493e426724950d5baa802876f7dd75e185b19c5492adbcf53",
+      "bytes": 12064
+    },
+    {
+      "id": "voice_yamata_no_orochi",
+      "source": "originals/yamata_no_orochi.wav",
+      "sourcePreviewSha256": "92e7730a8b4d48ec8031c0230d369dd939e1d5474c333165fa4a929ffd9e9747",
+      "oggSha256": "ea3bba607a2e229d61b8085597806217fbeaeea72f6e619eaadffb64bc1753ff",
+      "bytes": 18560
+    },
+    {
+      "id": "voice_yatagarasu",
+      "source": "originals/yatagarasu.wav",
+      "sourcePreviewSha256": "6a6dda0dc7d5f0585882ae3794508fec18dded92f7eed95f7c15e0c85e9ef0d5",
+      "oggSha256": "6db5c10e5f0dc025cf78e0ee0ec53f032d28c1356f089c18310deb248207b545",
+      "bytes": 14662
+    },
+    {
+      "id": "voice_yurlungur",
+      "source": "originals/yurlungur.wav",
+      "sourcePreviewSha256": "3291061b5581f35cdbec38dbd25769f44d73349e254970b1f3039474e1909984",
+      "oggSha256": "d8004fad5058e414518f45474ce4f0fe8db85f2f51e38bb7a0ab88e48b0f3f0e",
+      "bytes": 11466
+    },
+    {
+      "id": "voice_zouchouten",
+      "source": "originals/zouchouten.wav",
+      "sourcePreviewSha256": "c363f0ee21503717ca7674ebda4170bcacfb09bc7ef7caf07af10872e9e6d1b7",
+      "oggSha256": "845dbcd1daf2a3900b7b16903ef1789d8ede827c7f6ffd98e50ee6c0b570eb59",
+      "bytes": 13854
+    },
+    {
+      "id": "wood_close",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Field/Daily_SE/daily_se.uexp",
+        "offset": 122047,
+        "bytes": 16669792,
+        "embeddedAwb": true,
+        "bank": "daily_se.acb",
+        "sourceAssetSha256": "1e4440009838ba3484637f580f7e5e6c40cde0b0b69a9d48f123b11a3868506f",
+        "bankSha256": "f72089903f3c5a56537628e409021e7122a8905f0218d86ca3625c592fbd75bb"
+      },
+      "sourcePreviewSha256": "84a9b33ffabba1304cd94166cd85d9ff3a8225ab28463d9257a7806e806138b2",
+      "oggSha256": "9797ae9551a3662d208a2515a35047deb0f80c4772e6836a39caee3aef746930",
+      "bytes": 17802
+    },
+    {
+      "id": "wood_open",
+      "source": {
+        "asset": "P3R/Content/Xrd777/CriData/CueSheet/Field/Daily_SE/daily_se.uexp",
+        "offset": 122047,
+        "bytes": 16669792,
+        "embeddedAwb": true,
+        "bank": "daily_se.acb",
+        "sourceAssetSha256": "1e4440009838ba3484637f580f7e5e6c40cde0b0b69a9d48f123b11a3868506f",
+        "bankSha256": "f72089903f3c5a56537628e409021e7122a8905f0218d86ca3625c592fbd75bb"
+      },
+      "sourcePreviewSha256": "892443b1ad24bf862b614ddcd06c7d883becd45bc4dc956e4ca9658b775b7498",
+      "oggSha256": "35e47050b08bd6195f19527c7c7122bc288d5df9585a9c0b1335abad9c84b47c",
+      "bytes": 18867
+    }
+  ]
+}

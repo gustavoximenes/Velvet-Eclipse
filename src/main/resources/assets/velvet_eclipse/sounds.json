@@ -54,5 +54,2653 @@
         "stream": true
       }
     ]
+  },
+  "reload.absorb": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/absorb",
+        "stream": false
+      }
+    ]
+  },
+  "reload.battle_confirm": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/battle_confirm",
+        "stream": false
+      }
+    ]
+  },
+  "reload.battle_target": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/battle_target",
+        "stream": false
+      }
+    ]
+  },
+  "reload.bow_draw": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/bow_draw",
+        "stream": false
+      }
+    ]
+  },
+  "reload.bow_release": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/bow_release",
+        "stream": false
+      }
+    ]
+  },
+  "reload.cancel": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/cancel",
+        "stream": false
+      }
+    ]
+  },
+  "reload.cloth_soft": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/cloth_soft",
+        "stream": false
+      }
+    ]
+  },
+  "reload.critical": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/critical",
+        "stream": false
+      }
+    ]
+  },
+  "reload.cursor": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/cursor",
+        "stream": false
+      }
+    ]
+  },
+  "reload.down": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/down",
+        "stream": false
+      }
+    ]
+  },
+  "reload.error": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/error",
+        "stream": false
+      }
+    ]
+  },
+  "reload.evoker": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/evoker",
+        "stream": false
+      }
+    ]
+  },
+  "reload.gun_handling": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/gun_handling",
+        "stream": false
+      }
+    ]
+  },
+  "reload.gun_shot": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/gun_shot",
+        "stream": false
+      }
+    ]
+  },
+  "reload.hit_enemy_slash": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/hit_enemy_slash",
+        "stream": false
+      }
+    ]
+  },
+  "reload.hit_enemy_stab": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/hit_enemy_stab",
+        "stream": false
+      }
+    ]
+  },
+  "reload.hit_enemy_strike": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/hit_enemy_strike",
+        "stream": false
+      }
+    ]
+  },
+  "reload.item_use": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/item_use",
+        "stream": false
+      }
+    ]
+  },
+  "reload.one_more": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/one_more",
+        "stream": false
+      }
+    ]
+  },
+  "reload.one_more_enemy": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/one_more_enemy",
+        "stream": false
+      }
+    ]
+  },
+  "reload.persona_aura": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/persona_aura",
+        "stream": false
+      }
+    ]
+  },
+  "reload.persona_cutin": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/persona_cutin",
+        "stream": false
+      }
+    ]
+  },
+  "reload.pierce_light": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/pierce_light",
+        "stream": false
+      }
+    ]
+  },
+  "reload.reflect": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/reflect",
+        "stream": false
+      }
+    ]
+  },
+  "reload.room_close": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/room_close",
+        "stream": false
+      }
+    ]
+  },
+  "reload.room_open": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/room_open",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0010_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0010_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0011_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0011_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0012_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0012_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0016_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0016_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0018_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0018_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0020_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0020_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0021_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0021_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0022_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0022_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0026_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0026_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0030_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0030_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0031_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0031_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0032_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0032_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0036_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0036_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0040_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0040_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0041_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0041_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0042_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0042_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0046_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0046_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0050_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0050_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0051_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0051_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0054_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0054_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0056_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0056_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0057_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0057_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0058_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0058_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0062_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0062_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0064_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0064_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0065_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0065_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0068_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0068_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0070_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0070_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0071_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0071_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0072_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0072_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0076_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0076_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0078_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0078_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0079_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0079_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0080_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0080_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0081_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0081_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0082_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0082_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0085_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0085_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0087_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0087_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0089_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0089_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0091_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0091_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0093_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0093_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0095_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0095_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0096_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0096_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0100_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0100_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0101_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0101_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0103_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0103_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0104_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0104_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0105_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0105_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0110_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0110_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0111_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0111_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0112_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0112_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0113_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0113_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0114_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0114_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0115_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0115_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0116_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0116_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0117_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0117_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0118_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0118_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0119_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0119_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0120_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0120_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0121_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0121_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0125_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0125_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0126_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0126_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0127_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0127_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0128_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0128_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0129_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0129_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0130_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0130_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0131_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0131_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0132_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0132_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0133_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0133_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0139_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0139_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0140_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0140_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0141_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0141_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0142_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0142_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0143_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0143_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0144_0_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0144_0_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0145_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0145_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0146_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0146_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0147_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0147_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0148_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0148_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0155_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0155_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0156_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0156_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0157_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0157_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0163_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0163_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0165_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0165_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0166_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0166_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0167_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0167_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0170_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0170_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0172_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0172_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0176_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0176_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0177_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0177_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0180_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0180_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0181_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0181_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0182_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0182_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0188_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0188_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0190_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0190_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0191_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0191_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0192_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0192_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0198_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0198_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0200_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0200_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0201_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0201_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0205_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0205_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0206_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0206_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0207_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0207_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0210_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0210_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0211_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0211_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0215_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0215_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0216_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0216_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0220_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0220_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0221_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0221_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0222_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0222_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.skill_0223_01": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/skill_0223_01",
+        "stream": false
+      }
+    ]
+  },
+  "reload.slash_medium": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/slash_medium",
+        "stream": false
+      }
+    ]
+  },
+  "reload.strike_heavy": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/strike_heavy",
+        "stream": false
+      }
+    ]
+  },
+  "reload.strike_light": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/strike_light",
+        "stream": false
+      }
+    ]
+  },
+  "reload.summon": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/summon",
+        "stream": false
+      }
+    ]
+  },
+  "reload.swish_medium": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/swish_medium",
+        "stream": false
+      }
+    ]
+  },
+  "reload.swish_small": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/swish_small",
+        "stream": false
+      }
+    ]
+  },
+  "reload.sword_draw": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/sword_draw",
+        "stream": false
+      }
+    ]
+  },
+  "reload.sword_sheath": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/sword_sheath",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0260_03": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0260_03",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0261_02": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0261_02",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0262_02": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0262_02",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0263_02": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0263_02",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0264_02": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0264_02",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0265_03": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0265_03",
+        "stream": false
+      }
+    ]
+  },
+  "reload.theurgy_0266_02": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/theurgy_0266_02",
+        "stream": false
+      }
+    ]
+  },
+  "reload.velvet_open": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/velvet_open",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_abaddon": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_abaddon",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_alice": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_alice",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_alilat": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_alilat",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_ananta": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_ananta",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_angel": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_angel",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_anubis": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_anubis",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_apsaras": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_apsaras",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_ara_mitama": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_ara_mitama",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_arahabaki": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_arahabaki",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_archangel": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_archangel",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_arsene": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_arsene",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_asura": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_asura",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_atavaka": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_atavaka",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_atropos": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_atropos",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_attis": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_attis",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_baal_zebul": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_baal_zebul",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_baphomet": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_baphomet",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_barong": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_barong",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_beelzebub": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_beelzebub",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_belphegor": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_belphegor",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_berith": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_berith",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_bishamonten": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_bishamonten",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_black_frost": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_black_frost",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_byakko": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_byakko",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_chernobog": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_chernobog",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_chi_you": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_chi_you",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_chimera": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_chimera",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_clotho": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_clotho",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_cu_chulainn": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_cu_chulainn",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_cybele": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_cybele",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_daisoujou": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_daisoujou",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_dakini": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_dakini",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_decarabia": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_decarabia",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_dionysus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_dionysus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_dominion": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_dominion",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_eligor": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_eligor",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_flauros": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_flauros",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_forneus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_forneus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_fortuna": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_fortuna",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_futsunushi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_futsunushi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_gabriel": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_gabriel",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_ganesha": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_ganesha",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_ganga": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_ganga",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_garuda": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_garuda",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_genbu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_genbu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_generic_persona": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_generic_persona",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_girimekhala": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_girimekhala",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_gurulu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_gurulu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_hanuman": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_hanuman",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_hariti": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_hariti",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_hecatoncheires": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_hecatoncheires",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_helel": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_helel",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_hell_biker": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_hell_biker",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_high_pixie": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_high_pixie",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_horus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_horus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_houou": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_houou",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_hua_po": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_hua_po",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_incubus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_incubus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_inugami": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_inugami",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_izanagi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_izanagi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_jack_frost": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_jack_frost",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_jack_o_lantern": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_jack_o_lantern",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_jatayu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_jatayu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_jikokuten": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_jikokuten",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kaiwan": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kaiwan",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kali": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kali",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kikuri_hime": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kikuri_hime",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_king_frost": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_king_frost",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kohryu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kohryu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_koumokuten": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_koumokuten",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kumbhanda": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kumbhanda",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kurama_tengu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kurama_tengu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_kushi_mitama": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_kushi_mitama",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_lachesis": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_lachesis",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_lakshmi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_lakshmi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_lamia": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_lamia",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_leanan_sidhe": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_leanan_sidhe",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_legion": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_legion",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_lilim": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_lilim",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_lilith": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_lilith",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_loa": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_loa",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_loki": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_loki",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_lucifer": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_lucifer",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mada": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mada",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mara": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mara",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_masakado": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_masakado",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_matador": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_matador",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_melchizedek": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_melchizedek",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_messiah": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_messiah",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_metatron": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_metatron",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_michael": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_michael",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mishaguji": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mishaguji",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mithras": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mithras",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mitra": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mitra",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mokoi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mokoi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mot": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mot",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mother_harlot": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mother_harlot",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_mothman": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_mothman",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_naga": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_naga",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_naga_raja": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_naga_raja",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_narcissus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_narcissus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_nebiros": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_nebiros",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_neko_shogun": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_neko_shogun",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_nekomata": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_nekomata",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_nidhoggr": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_nidhoggr",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_nigi_mitama": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_nigi_mitama",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_norn": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_norn",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_oberon": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_oberon",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_odin": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_odin",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_okuninushi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_okuninushi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_omoikane": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_omoikane",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_oni": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_oni",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_onmoraki": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_onmoraki",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_orobas": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_orobas",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_orpheus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_orpheus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_orpheus_telos": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_orpheus_telos",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_orthrus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_orthrus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_ose": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_ose",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_pale_rider": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_pale_rider",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_parvati": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_parvati",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_pazuzu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_pazuzu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_pisaca": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_pisaca",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_pixie": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_pixie",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_power": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_power",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_principality": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_principality",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_qitian_dasheng": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_qitian_dasheng",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_queen_medb": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_queen_medb",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_quetzalcoatl": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_quetzalcoatl",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_rakshasa": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_rakshasa",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_rangda": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_rangda",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_raphael": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_raphael",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_saki_mitama": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_saki_mitama",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_samael": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_samael",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_sandalphon": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_sandalphon",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_sandman": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_sandman",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_sarasvati": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_sarasvati",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_satan": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_satan",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_sati": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_sati",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_saturnus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_saturnus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_scathach": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_scathach",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_seiryu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_seiryu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_setanta": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_setanta",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_seth": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_seth",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_shiisaa": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_shiisaa",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_shiki_ouji": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_shiki_ouji",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_shiva": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_shiva",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_siegfried": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_siegfried",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_silky": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_silky",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_skadi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_skadi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_slime": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_slime",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_succubus": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_succubus",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_surt": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_surt",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_susano_o": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_susano_o",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_suzaku": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_suzaku",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_take_mikazuchi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_take_mikazuchi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_take_minakata": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_take_minakata",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_tam_lin": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_tam_lin",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_thanatos": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_thanatos",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_thor": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_thor",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_thoth": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_thoth",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_throne": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_throne",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_thunderbird": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_thunderbird",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_titania": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_titania",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_trumpeter": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_trumpeter",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_unicorn": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_unicorn",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_uriel": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_uriel",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_valkyrie": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_valkyrie",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_vasuki": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_vasuki",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_virtue": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_virtue",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_vishnu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_vishnu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_white_rider": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_white_rider",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_yakshini": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_yakshini",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_yamata_no_orochi": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_yamata_no_orochi",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_yatagarasu": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_yatagarasu",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_yurlungur": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_yurlungur",
+        "stream": false
+      }
+    ]
+  },
+  "reload.voice_zouchouten": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/voice_zouchouten",
+        "stream": false
+      }
+    ]
+  },
+  "reload.wood_close": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/wood_close",
+        "stream": false
+      }
+    ]
+  },
+  "reload.wood_open": {
+    "sounds": [
+      {
+        "name": "velvet_eclipse:reload/wood_open",
+        "stream": false
+      }
+    ]
   }
 }

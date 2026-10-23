@@ -1,3 +1,10 @@
+# 0.6.55-reload-feedback
+
+- Implementa os novos efeitos Photon e áudios originais aprovados, preservando o fogo da evocação.
+- Adiciona volumes locais separados no System e One More nominal baseado no resultado confirmado.
+- Inclui a revisão 7 da Gekkoukan e correções de portas/assentos.
+- [Escopo, controles, adaptações e validação](docs/reload-feedback.md). Protocolos: principal 23, cidade 9, menu 7.
+
 # 0.6.54-paulownia-shops
 
 - Adiciona o seletor Tranquilo/Fácil/Normal/Difícil em TAB → System, com escolha salva pelo jogador solo ou pelo líder da party.

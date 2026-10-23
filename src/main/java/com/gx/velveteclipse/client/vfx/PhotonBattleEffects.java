@@ -42,18 +42,9 @@ public final class PhotonBattleEffects {
         impact("",family,scale,new ImpactAnchor(new com.gx.velveteclipse.network.BattleLightningS2C.Strike(x,y,z,seed)),seed);
     }
     private static void impact(String skill,Element family,float scale,ImpactAnchor anchor,long seed){
-        var world=Minecraft.m_91087_().f_91073_;if(world==null)return;if(world!=level){reset();level=world;}
-        var at=anchor.position(1);var plan=PhotonEffectPlan.create(family,scale,seed);Vector3f origin=new Vector3f((float)at.f_82479_,(float)at.f_82480_,(float)at.f_82481_);
-        SpellCoreRenderer.add(skill,family,scale,anchor,seed);
-        for(var b:plan.beams()){
-            var config=new BeamConfig();config.setLooping(false);config.setDuration(b.life());config.setStartDelay(b.delay());config.setEmitRate(new Constant(1));
-            config.getEnd().set(b.to().x()-b.from().x(),b.to().y()-b.from().y(),b.to().z()-b.from().z());
-            config.setWidth(new Fade(b.width(),false));config.setColor(new Fade(b.color(),true));material(config.material,"velvet_eclipse:textures/vfx/beam_glow.png");config.renderer.setBloomEffect(false);
-            var beam=new BeamEmitter(config);emit(beam,new Vector3f(origin).add(b.from().x(),b.from().y(),b.from().z()),b.delay()+b.life()+4,anchor,new Vector3f(b.from().x(),b.from().y(),b.from().z()));
-        }
-        particles(origin,plan.color(),plan.sparks(),plan.speed(),plan.size(),plan.life(),"photon:textures/particle/laser.png");
-        if(family==Element.FIRE||family==Element.NUCLEAR||family==Element.ALMIGHTY)particles(new Vector3f(origin).add(0,.5f,0),plan.color(),10,.035f,.85f,18,"photon:textures/particle/smoke.png");
+        ReloadPhoton.play(skill,family,scale,anchor,seed);
     }
+
     public static void summon(double x,double y,double z){
         var world=Minecraft.m_91087_().f_91073_;if(world==null)return;if(world!=level){reset();level=world;}
         SpellCoreRenderer.add("__summon",Element.SUPPORT,1,new ImpactAnchor(new com.gx.velveteclipse.network.BattleLightningS2C.Strike(x,y,z,41)),41);

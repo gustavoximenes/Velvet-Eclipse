@@ -54,10 +54,8 @@ public final class BattleDirector {
   int t=(int)age(0);if(lastTick==t)return;
   if(cue.kind().equals("skill")&&lastTick<38&&t>=38){var a=actor();if(a!=null)PhotonBattleEffects.trigger(a.m_20185_(),a.m_20186_()+1.55,a.m_20189_());}
   if(shifting()&&lastTick<ShiftPresentation.TRANSFER&&t>=ShiftPresentation.TRANSFER){var a=actor();var b=targetPosition(1);if(a!=null)PhotonBattleEffects.shift(a.m_20182_(),b);}
-  if(cue.kind().equals("attack")&&lastTick<19&&t>=19){var at=targetPosition(1);PhotonBattleEffects.impact(weapon()==Family.BOW||weapon()==Family.GUN||weapon()==Family.SPEAR?Element.PIERCE:weapon()==Family.FISTS?Element.PHYSICAL:Element.SLASH,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
   if(cue.kind().equals("attack")&&weapon()==Family.BOW&&lastTick<16&&t>=16){var a=actor();var at=targetPosition(1);if(a instanceof net.minecraft.client.player.AbstractClientPlayer p){var from=ApprovedAttackRenderer.projectileOrigin(p,Family.BOW);com.gx.velveteclipse.client.exploration.ArrowFlight.accept(new com.gx.velveteclipse.exploration.ExplorationNetwork.Shot(from.f_82479_,from.f_82480_,from.f_82481_,at.f_82479_,at.f_82480_+.8,at.f_82481_,3));}}
   int enemyHit=cue.kind().equals("enemy_melee")?19:10;
-  if(cue.kind().startsWith("enemy")&&cue.skill().isEmpty()&&lastTick<enemyHit&&t>=enemyHit){var at=targetPosition(1);PhotonBattleEffects.impact(Element.PHYSICAL,1,at.f_82479_,at.f_82480_,at.f_82481_,cue.actor().getLeastSignificantBits());}
   lastTick=t;
  }
  public static Entity summonActor(){var a=actor();return a!=null&&summoning(a.m_20148_())?a:null;}

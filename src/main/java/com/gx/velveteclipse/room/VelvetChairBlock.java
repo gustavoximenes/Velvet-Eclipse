@@ -14,5 +14,5 @@ public final class VelvetChairBlock extends HorizontalDirectionalBlock {
  @Override public BlockState m_5573_(net.minecraft.world.item.context.BlockPlaceContext c){var player=c.m_43723_();return m_49966_().m_61124_(f_54117_,player==null?Direction.NORTH:player.m_6350_().m_122424_());}
  @Override protected void m_7926_(StateDefinition.Builder<Block,BlockState> builder){builder.m_61104_(f_54117_);}
  @Override public VoxelShape m_5940_(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){return Block.m_49796_(2,0,2,14,11,14);}
- @Override public InteractionResult m_6227_(BlockState s,Level l,BlockPos p,Player player,InteractionHand h,BlockHitResult hit){if(player instanceof ServerPlayer sp)VelvetRoomService.sit(sp,p);return InteractionResult.SUCCESS;}
+ @Override public InteractionResult m_6227_(BlockState s,Level l,BlockPos p,Player player,InteractionHand h,BlockHitResult hit){if(h==InteractionHand.MAIN_HAND&&player instanceof ServerPlayer sp&&VelvetRoomService.sit(sp,p))com.gx.velveteclipse.forge.FeedbackServer.furniture(sp,"seat_sit",0,p.m_123341_()+.5,p.m_123342_()+.5,p.m_123343_()+.5);return InteractionResult.SUCCESS;}
 }

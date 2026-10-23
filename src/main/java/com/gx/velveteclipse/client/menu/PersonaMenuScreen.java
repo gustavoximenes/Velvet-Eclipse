@@ -211,12 +211,14 @@ public final class PersonaMenuScreen extends Screen {
                 list.add(new MenuDesign.Row("Animação All-Out",com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).label+" / ENTER para escolher",-1));
                 list.add(new MenuDesign.Row("Idioma / Language",com.gx.velveteclipse.client.localization.ClientLocalization.code().equals("en_us")?"English":"Português",-1));
                 list.add(new MenuDesign.Row("Dificuldade",com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).label+" / "+data.difficulty().note(),-1));
+                list.add(new MenuDesign.Row("Áudio do mod","Vozes, efeitos e interface",-1));
                 list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
                 if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio e controles nas opcoes do Minecraft.");action="Abrir opcoes";}
                 else if(selected==1){detail.add("Movimento do menu");detail.add("Alterna flutuacao do retrato, entrada das opcoes e transicoes.");detail.add("Preferencia valida nesta sessao.");action=motion?"Reduzir movimento":"Ativar animacoes";}
                 else if(selected==2){detail.add("ANIMAÇÃO ALL-OUT");detail.add("Pose final ao vencer o combate.");action="Escolher animação";}
                 else if(selected==3){detail.add("Idioma do Velvet Eclipse");detail.add("Altera os menus, descrições e mensagens do mod. Preferência salva neste cliente.");action="Português / English";}
                 else if(selected==4){detail.add(com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).description);detail.add("Ajuste automático por participantes do combate.");detail.add(data.difficulty().note());action="Escolher dificuldade";}
+                else if(selected==5){detail.add("Volumes independentes por tipo de som. Preferência salva neste cliente.");action="Ajustar áudio";}
                 else{detail.add("Retornar ao mundo.");action="Fechar menu";}
             }
         }
@@ -234,7 +236,7 @@ public final class PersonaMenuScreen extends Screen {
             case 10 -> com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");
             case 3 -> showPersona();
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
-            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else if(selected==4)chooseDifficulty(1);else closeMenu();}
+            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else if(selected==4)chooseDifficulty(1);else if(selected==5)f_96541_.m_91152_(new AudioSettingsScreen(this));else closeMenu();}
         }
     }
     @Override public void m_88315_(GuiGraphics g,int mouseX,int mouseY,float partial){

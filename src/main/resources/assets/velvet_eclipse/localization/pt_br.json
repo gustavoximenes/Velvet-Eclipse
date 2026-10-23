@@ -5600,5 +5600,9 @@
   "Ajuste automático por participantes do combate.": "Ajuste automático por participantes do combate.",
   "Escolher dificuldade": "Escolher dificuldade",
   "ESQ / DIR  Dificuldade": "ESQ / DIR  Dificuldade",
-  "O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta.": "O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta."
+  "O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta.": "O tempo de combate segue a dificuldade escolhida. Observem a fraqueza: ela pode mudar durante a luta.",
+  "Áudio do mod": "Áudio do mod",
+  "Vozes, efeitos e interface": "Vozes, efeitos e interface",
+  "Volumes independentes por tipo de som. Preferência salva neste cliente.": "Volumes independentes por tipo de som. Preferência salva neste cliente.",
+  "Ajustar áudio": "Ajustar áudio"
 }

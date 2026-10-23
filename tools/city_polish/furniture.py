@@ -22,7 +22,7 @@ def seat(id,x,y,z,yaw,bounds):
     anchor=(math.floor(x),math.floor(y),math.floor(z));assert anchor in cells,(id,anchor)
     seats.append(dict(id=id,x=x,y=y,z=z,yaw=yaw,bounds=bounds,anchor=list(anchor),tile=cells[anchor]))
 def dorm_seat(id,x,y,z,yaw=180,w=1,d=1,top=.97):
-    seat(id,x-100+w/2,y+65+top-.55,z+66+d/2,yaw,[x-100,y+65,z+66,x-100+w,y+67.15,z+66+d])
+    seat(id,x-100+w/2,y+65+top-.40,z+66+d/2,yaw,[x-100,y+65,z+66,x-100+w,y+67.15,z+66+d])
 for lev in [1,2,3]:
     for i,x in enumerate([-8.7,4] if lev<3 else [-8,4]):dorm_seat(f'bedroom_{lev}_{i}',-.5 if x<0 else 11.5,lev*5,8.78)
     if lev<3:
@@ -40,8 +40,8 @@ def mall_point(angle,r,x,y,z):
     a=math.radians(angle);c,s=math.cos(a),math.sin(a)
     return [93+s*r+c*x-s*z,64+y,65-c*r+s*x+c*z]
 def mall_seat(id,a,r,x,y,z,w,d,yaw):
-    p=mall_point(a,r,x,y-.55,z);corners=np.array([mall_point(a,r,xx,yy,zz) for xx in [x-w/2,x+w/2] for yy in [0,y+.65] for zz in [z-d/2,z+d/2]])
-    seat(id,*p,yaw-a,np.r_[corners.min(0),corners.max(0)].tolist())
+    p=mall_point(a,r,x,y-.40,z);corners=np.array([mall_point(a,r,xx,yy,zz) for xx in [x-w/2,x+w/2] for yy in [0,y+.65] for zz in [z-d/2,z+d/2]])
+    seat(id,*p,yaw+a,np.r_[corners.min(0),corners.max(0)].tolist())
 for x in [-2.35,2.35]:mall_seat(f'chagall_{x}',-67.5,19.5,x,.97,-1,.64,.64,180)
 for x in [-2.3,-1.2,1.2,2.3]:mall_seat(f'escapade_{x}',-90,19.5,x,.97,-3.05,.64,.64,180)
 for a in range(0,360,90):

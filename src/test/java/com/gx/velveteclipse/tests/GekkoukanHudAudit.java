@@ -9,7 +9,7 @@ import java.awt.*;import java.awt.geom.*;import java.awt.image.BufferedImage;imp
 public final class GekkoukanHudAudit {
  static int checks;static void check(boolean yes,String why){checks++;if(!yes)throw new AssertionError(why);}
  public static void main(String[] args)throws Exception{
-  check(CityPlan.get().revision()==6,"New city revision");check(CityPlan.legacy(5).revision()==5,"Exact last installed plan retained for migration");
+  check(CityPlan.get().revision()==7,"New city revision");check(CityPlan.legacy(5).revision()==5,"Exact last installed plan retained for migration");
   for(int[] size:new int[][]{{1920,1080},{1366,768},{1280,720},{2560,1440}})for(int gui:new int[]{1,2,3,4}){
    var l=ExplorationHudLayout.of(size[0]/gui,size[1]/gui);
    check(l.vitalsY()>51&&l.mapX()>188,"Cards do not collide");

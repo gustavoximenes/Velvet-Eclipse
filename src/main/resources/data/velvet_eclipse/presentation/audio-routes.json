@@ -1,0 +1,1411 @@
+{
+  "summon_evoker": [
+    "evoker"
+  ],
+  "summon_summon": [
+    "summon"
+  ],
+  "summon_persona_aura": [
+    "persona_aura"
+  ],
+  "summon_persona_cutin": [
+    "persona_cutin"
+  ],
+  "battle_one_more": [
+    "one_more"
+  ],
+  "battle_one_more_enemy": [
+    "one_more_enemy"
+  ],
+  "battle_critical": [
+    "critical"
+  ],
+  "battle_down": [
+    "down"
+  ],
+  "battle_absorb": [
+    "absorb"
+  ],
+  "battle_reflect": [
+    "reflect"
+  ],
+  "ui_cursor": [
+    "cursor"
+  ],
+  "ui_battle_target": [
+    "battle_target"
+  ],
+  "ui_battle_confirm": [
+    "battle_confirm"
+  ],
+  "ui_cancel": [
+    "cancel"
+  ],
+  "ui_error": [
+    "error"
+  ],
+  "physical_slash": [
+    "swish_medium",
+    "slash_medium"
+  ],
+  "physical_strike": [
+    "swish_medium",
+    "strike_heavy"
+  ],
+  "physical_pierce": [
+    "swish_small",
+    "pierce_light"
+  ],
+  "physical_tap": [
+    "swish_small",
+    "strike_light"
+  ],
+  "physical_bow": [
+    "bow_draw",
+    "bow_release",
+    "hit_enemy_stab"
+  ],
+  "physical_gun": [
+    "gun_handling",
+    "gun_shot",
+    "hit_enemy_stab"
+  ],
+  "physical_draw": [
+    "sword_draw"
+  ],
+  "physical_sheath": [
+    "sword_sheath"
+  ],
+  "physical_npc_hit_enemy_slash": [
+    "hit_enemy_slash"
+  ],
+  "physical_npc_hit_enemy_strike": [
+    "hit_enemy_strike"
+  ],
+  "skill_agi": [
+    "skill_0010_01"
+  ],
+  "skill_agilao": [
+    "skill_0011_01"
+  ],
+  "skill_agidyne": [
+    "skill_0012_01"
+  ],
+  "skill_maragi": [
+    "skill_0010_01"
+  ],
+  "skill_maragion": [
+    "skill_0011_01"
+  ],
+  "skill_maragidyne": [
+    "skill_0012_01"
+  ],
+  "skill_inferno": [
+    "skill_0016_0_01"
+  ],
+  "skill_maralagidyne": [
+    "skill_0018_01"
+  ],
+  "skill_bufu": [
+    "skill_0020_01"
+  ],
+  "skill_bufula": [
+    "skill_0021_01"
+  ],
+  "skill_bufudyne": [
+    "skill_0022_01"
+  ],
+  "skill_mabufu": [
+    "skill_0020_01"
+  ],
+  "skill_mabufula": [
+    "skill_0021_01"
+  ],
+  "skill_mabufudyne": [
+    "skill_0022_01"
+  ],
+  "skill_diamond_dust": [
+    "skill_0026_01"
+  ],
+  "skill_garu": [
+    "skill_0030_01"
+  ],
+  "skill_garula": [
+    "skill_0031_01"
+  ],
+  "skill_garudyne": [
+    "skill_0032_01"
+  ],
+  "skill_magaru": [
+    "skill_0030_01"
+  ],
+  "skill_magarula": [
+    "skill_0031_01"
+  ],
+  "skill_magarudyne": [
+    "skill_0032_01"
+  ],
+  "skill_panta_rhei": [
+    "skill_0036_01"
+  ],
+  "skill_zio": [
+    "skill_0040_01"
+  ],
+  "skill_zionga": [
+    "skill_0041_01"
+  ],
+  "skill_ziodyne": [
+    "skill_0042_01"
+  ],
+  "skill_mazio": [
+    "skill_0040_01"
+  ],
+  "skill_mazionga": [
+    "skill_0041_01"
+  ],
+  "skill_maziodyne": [
+    "skill_0042_01"
+  ],
+  "skill_thunder_reign": [
+    "skill_0046_01"
+  ],
+  "skill_hama": [
+    "skill_0050_01"
+  ],
+  "skill_hamaon": [
+    "skill_0051_01"
+  ],
+  "skill_mahama": [
+    "skill_0050_01"
+  ],
+  "skill_mahamaon": [
+    "skill_0051_01"
+  ],
+  "skill_samsara": [
+    "skill_0054_01"
+  ],
+  "skill_kouha": [
+    "skill_0056_01"
+  ],
+  "skill_kouga": [
+    "skill_0057_01"
+  ],
+  "skill_kougaon": [
+    "skill_0058_01"
+  ],
+  "skill_makouha": [
+    "skill_0056_01"
+  ],
+  "skill_makouga": [
+    "skill_0057_01"
+  ],
+  "skill_makougaon": [
+    "skill_0058_01"
+  ],
+  "skill_divine_judgment": [
+    "skill_0062_01"
+  ],
+  "skill_mudo": [
+    "skill_0064_01"
+  ],
+  "skill_mudoon": [
+    "skill_0065_01"
+  ],
+  "skill_mamudo": [
+    "skill_0064_01"
+  ],
+  "skill_mamudoon": [
+    "skill_0065_01"
+  ],
+  "skill_die_for_me": [
+    "skill_0068_01"
+  ],
+  "skill_eiga": [
+    "skill_0071_01"
+  ],
+  "skill_eigaon": [
+    "skill_0072_01"
+  ],
+  "skill_maeiga": [
+    "skill_0071_01"
+  ],
+  "skill_maeigaon": [
+    "skill_0072_01"
+  ],
+  "skill_demonic_decree": [
+    "skill_0076_01"
+  ],
+  "skill_megido": [
+    "skill_0078_01"
+  ],
+  "skill_megidola": [
+    "skill_0079_01"
+  ],
+  "skill_megidolaon": [
+    "skill_0080_01"
+  ],
+  "skill_black_viper": [
+    "skill_0081_01"
+  ],
+  "skill_morning_star": [
+    "skill_0082_0_01"
+  ],
+  "skill_poisma": [
+    "skill_0085_01"
+  ],
+  "skill_poison_mist": [
+    "skill_0085_01"
+  ],
+  "skill_marin_karin": [
+    "skill_0087_01"
+  ],
+  "skill_sexy_dance": [
+    "skill_0087_01"
+  ],
+  "skill_bewilder": [
+    "skill_0089_01"
+  ],
+  "skill_eerie_sound": [
+    "skill_0089_01"
+  ],
+  "skill_pulinpa": [
+    "skill_0091_01"
+  ],
+  "skill_tentarafoo": [
+    "skill_0091_01"
+  ],
+  "skill_evil_touch": [
+    "skill_0093_01"
+  ],
+  "skill_evil_smile": [
+    "skill_0093_01"
+  ],
+  "skill_provoke": [
+    "skill_0095_01"
+  ],
+  "skill_infuriate": [
+    "skill_0096_01"
+  ],
+  "skill_ghastly_wail": [
+    "skill_0100_01"
+  ],
+  "skill_foul_breath": [
+    "skill_0101_01"
+  ],
+  "skill_stagnant_air": [
+    "skill_0101_01"
+  ],
+  "skill_life_drain": [
+    "skill_0103_0_01"
+  ],
+  "skill_spirit_drain": [
+    "skill_0104_0_01"
+  ],
+  "skill_virus_breath": [
+    "skill_0105_01"
+  ],
+  "skill_power_slash": [
+    "skill_0110_01"
+  ],
+  "skill_fatal_end": [
+    "skill_0111_01"
+  ],
+  "skill_tempest_slash": [
+    "skill_0112_01"
+  ],
+  "skill_vacuum_slash": [
+    "skill_0113_01"
+  ],
+  "skill_blade_of_fury": [
+    "skill_0114_01"
+  ],
+  "skill_deathbound": [
+    "skill_0115_01"
+  ],
+  "skill_brave_blade": [
+    "skill_0116_01"
+  ],
+  "skill_vorpal_blade": [
+    "skill_0117_01"
+  ],
+  "skill_heaven_s_blade": [
+    "skill_0118_01"
+  ],
+  "skill_getsu_ei": [
+    "skill_0119_0_01"
+  ],
+  "skill_zan_ei": [
+    "skill_0120_01"
+  ],
+  "skill_neuro_slash": [
+    "skill_0121_01"
+  ],
+  "skill_bash": [
+    "skill_0125_01"
+  ],
+  "skill_assault_dive": [
+    "skill_0126_01"
+  ],
+  "skill_gigantic_fist": [
+    "skill_0127_01"
+  ],
+  "skill_swift_strike": [
+    "skill_0128_01"
+  ],
+  "skill_herculean_strike": [
+    "skill_0129_01"
+  ],
+  "skill_heat_wave": [
+    "skill_0130_01"
+  ],
+  "skill_god_s_hand": [
+    "skill_0131_01"
+  ],
+  "skill_akasha_arts": [
+    "skill_0132_0_01"
+  ],
+  "skill_sonic_punch": [
+    "skill_0133_0_01"
+  ],
+  "skill_single_shot": [
+    "skill_0139_01"
+  ],
+  "skill_holy_arrow": [
+    "skill_0140_01"
+  ],
+  "skill_torrent_shot": [
+    "skill_0141_01"
+  ],
+  "skill_vile_assault": [
+    "skill_0142_01"
+  ],
+  "skill_arrow_rain": [
+    "skill_0143_0_01"
+  ],
+  "skill_myriad_arrows": [
+    "skill_0144_0_01"
+  ],
+  "skill_cruel_attack": [
+    "skill_0145_01"
+  ],
+  "skill_primal_force": [
+    "skill_0146_01"
+  ],
+  "skill_pralaya": [
+    "skill_0147_01"
+  ],
+  "skill_poison_arrow": [
+    "skill_0148_01"
+  ],
+  "skill_dia": [
+    "skill_0155_01"
+  ],
+  "skill_diarama": [
+    "skill_0156_01"
+  ],
+  "skill_diarahan": [
+    "skill_0157_01"
+  ],
+  "skill_media": [
+    "skill_0155_01"
+  ],
+  "skill_mediarama": [
+    "skill_0156_01"
+  ],
+  "skill_mediarahan": [
+    "skill_0157_01"
+  ],
+  "skill_salvation": [
+    "skill_0163_01"
+  ],
+  "skill_recarm": [
+    "skill_0165_01"
+  ],
+  "skill_samarecarm": [
+    "skill_0166_01"
+  ],
+  "skill_recarmdra": [
+    "skill_0167_01"
+  ],
+  "skill_patra": [
+    "skill_0170_01"
+  ],
+  "skill_me_patra": [
+    "skill_0170_01"
+  ],
+  "skill_baisudi": [
+    "skill_0172_01"
+  ],
+  "skill_mabaisudi": [
+    "skill_0172_01"
+  ],
+  "skill_amrita_shower": [
+    "skill_0176_01"
+  ],
+  "skill_amrita_drop": [
+    "skill_0177_01"
+  ],
+  "skill_tarukaja": [
+    "skill_0180_01"
+  ],
+  "skill_rakukaja": [
+    "skill_0181_01"
+  ],
+  "skill_sukukaja": [
+    "skill_0182_01"
+  ],
+  "skill_matarukaja": [
+    "skill_0180_01"
+  ],
+  "skill_marakukaja": [
+    "skill_0181_01"
+  ],
+  "skill_masukukaja": [
+    "skill_0182_01"
+  ],
+  "skill_heat_riser": [
+    "skill_0188_01"
+  ],
+  "skill_tarunda": [
+    "skill_0190_01"
+  ],
+  "skill_rakunda": [
+    "skill_0191_01"
+  ],
+  "skill_sukunda": [
+    "skill_0192_01"
+  ],
+  "skill_matarunda": [
+    "skill_0190_01"
+  ],
+  "skill_marakunda": [
+    "skill_0191_01"
+  ],
+  "skill_masukunda": [
+    "skill_0192_01"
+  ],
+  "skill_debilitate": [
+    "skill_0198_01"
+  ],
+  "skill_dekaja": [
+    "skill_0200_01"
+  ],
+  "skill_dekunda": [
+    "skill_0201_01"
+  ],
+  "skill_charge": [
+    "skill_0205_01"
+  ],
+  "skill_concentrate": [
+    "skill_0206_01"
+  ],
+  "skill_bloody_charge": [
+    "skill_0207_01"
+  ],
+  "skill_rebellion": [
+    "skill_0210_01"
+  ],
+  "skill_revolution": [
+    "skill_0211_01"
+  ],
+  "skill_tetrakarn": [
+    "skill_0215_01"
+  ],
+  "skill_makarakarn": [
+    "skill_0216_01"
+  ],
+  "skill_fire_break": [
+    "skill_0220_01"
+  ],
+  "skill_ice_break": [
+    "skill_0221_01"
+  ],
+  "skill_wind_break": [
+    "skill_0222_01"
+  ],
+  "skill_elec_break": [
+    "skill_0223_01"
+  ],
+  "skill_cadenza": [
+    "theurgy_0260_03"
+  ],
+  "skill_jack_brothers": [
+    "theurgy_0261_02"
+  ],
+  "skill_king_and_i": [
+    "theurgy_0262_02"
+  ],
+  "skill_best_friends": [
+    "theurgy_0263_02"
+  ],
+  "skill_scarlet_havoc": [
+    "theurgy_0264_02"
+  ],
+  "skill_trickster": [
+    "theurgy_0265_03"
+  ],
+  "skill_armageddon": [
+    "theurgy_0266_02"
+  ],
+  "skill_frei": [
+    "skill_0078_01"
+  ],
+  "skill_freila": [
+    "skill_0079_01"
+  ],
+  "skill_freidyne": [
+    "skill_0080_01"
+  ],
+  "skill_mafrei": [
+    "skill_0078_01"
+  ],
+  "skill_mafreila": [
+    "skill_0079_01"
+  ],
+  "skill_mafreidyne": [
+    "skill_0080_01"
+  ],
+  "skill_atomic_flare": [
+    "skill_0080_01"
+  ],
+  "skill_cosmic_flare": [
+    "skill_0080_01"
+  ],
+  "skill_psi": [
+    "skill_0091_01"
+  ],
+  "skill_psio": [
+    "skill_0091_01"
+  ],
+  "skill_psiodyne": [
+    "skill_0091_01"
+  ],
+  "skill_mapsi": [
+    "skill_0091_01"
+  ],
+  "skill_mapsio": [
+    "skill_0091_01"
+  ],
+  "skill_mapsiodyne": [
+    "skill_0091_01"
+  ],
+  "skill_psycho_force": [
+    "skill_0091_01"
+  ],
+  "skill_psycho_blast": [
+    "skill_0091_01"
+  ],
+  "item_medicine": [
+    "item_use",
+    "skill_0155_01"
+  ],
+  "item_life_stone": [
+    "item_use",
+    "skill_0155_01"
+  ],
+  "item_bead": [
+    "item_use",
+    "skill_0157_01"
+  ],
+  "item_snuff_soul": [
+    "item_use"
+  ],
+  "item_chewing_soul": [
+    "item_use"
+  ],
+  "item_precious_egg": [
+    "item_use"
+  ],
+  "item_dis_poison": [
+    "item_use",
+    "skill_0172_01"
+  ],
+  "item_dis_charm": [
+    "item_use",
+    "skill_0170_01"
+  ],
+  "item_dis_rage": [
+    "item_use",
+    "skill_0170_01"
+  ],
+  "item_dis_patra": [
+    "item_use",
+    "skill_0170_01"
+  ],
+  "item_amrita_soda": [
+    "item_use",
+    "skill_0177_01"
+  ],
+  "item_pulse_tonic": [
+    "item_use",
+    "skill_0155_01"
+  ],
+  "item_agilao_gem": [
+    "item_use",
+    "skill_0011_01"
+  ],
+  "item_maragi_gem": [
+    "item_use",
+    "skill_0010_01"
+  ],
+  "item_bufula_gem": [
+    "item_use",
+    "skill_0021_01"
+  ],
+  "item_mabufu_gem": [
+    "item_use",
+    "skill_0020_01"
+  ],
+  "item_zionga_gem": [
+    "item_use",
+    "skill_0041_01"
+  ],
+  "item_mazio_gem": [
+    "item_use",
+    "skill_0040_01"
+  ],
+  "item_garula_gem": [
+    "item_use",
+    "skill_0031_01"
+  ],
+  "item_magaru_gem": [
+    "item_use",
+    "skill_0030_01"
+  ],
+  "item_kouga_gem": [
+    "item_use",
+    "skill_0057_01"
+  ],
+  "item_makouha_gem": [
+    "item_use",
+    "skill_0056_01"
+  ],
+  "item_eiga_gem": [
+    "item_use",
+    "skill_0071_01"
+  ],
+  "item_maeiha_gem": [
+    "item_use",
+    "skill_0070_01"
+  ],
+  "item_megido_gem": [
+    "item_use",
+    "skill_0078_01"
+  ],
+  "item_megidolaon_gem": [
+    "item_use",
+    "skill_0080_01"
+  ],
+  "item_flame_magatama": [
+    "item_use",
+    "skill_0012_01"
+  ],
+  "item_frigid_magatama": [
+    "item_use",
+    "skill_0022_01"
+  ],
+  "item_shock_magatama": [
+    "item_use",
+    "skill_0042_01"
+  ],
+  "item_gale_magatama": [
+    "item_use",
+    "skill_0032_01"
+  ],
+  "item_holy_magatama": [
+    "item_use",
+    "skill_0058_01"
+  ],
+  "item_malice_magatama": [
+    "item_use",
+    "skill_0072_01"
+  ],
+  "door_dorm_entrance": [
+    "wood_open",
+    "wood_close"
+  ],
+  "door_roof_door": [
+    "wood_open",
+    "wood_close"
+  ],
+  "door_room_1_-6.75_2": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_1_-6.75_-2.25": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_1_6.4_2": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_1_6.4_-2.25": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_2_-6.75_2": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_2_-6.75_-2.25": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_2_6.4_2": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_2_6.4_-2.25": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_3_-6.75_2": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_3_-6.75_-2.25": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_3_6.4_2": [
+    "room_open",
+    "room_close"
+  ],
+  "door_room_3_6.4_-2.25": [
+    "room_open",
+    "room_close"
+  ],
+  "door_kitchen_door": [
+    "wood_open",
+    "wood_close"
+  ],
+  "door_school_secretaria": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_professores": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_enfermaria": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_biblioteca": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_classroom_2f": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_conselho": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_laboratorio": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_ciencias": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_musica": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_artes": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_costura": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_classroom_3a": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_sanitarios": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_deposito": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_vestiarios": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_orientacao": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_impressao": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_transmissao": [
+    "room_open",
+    "room_close"
+  ],
+  "door_school_ginasio": [
+    "room_open",
+    "room_close"
+  ],
+  "velvet_door": [
+    "velvet_open"
+  ],
+  "seat_sit": [
+    "cloth_soft"
+  ],
+  "seat_stand": [
+    "cloth_soft"
+  ],
+  "voice_for_abaddon": [
+    "voice_abaddon"
+  ],
+  "voice_for_alice": [
+    "voice_alice"
+  ],
+  "voice_for_alilat": [
+    "voice_alilat"
+  ],
+  "voice_for_ananta": [
+    "voice_ananta"
+  ],
+  "voice_for_angel": [
+    "voice_angel"
+  ],
+  "voice_for_anubis": [
+    "voice_anubis"
+  ],
+  "voice_for_apsaras": [
+    "voice_apsaras"
+  ],
+  "voice_for_ara_mitama": [
+    "voice_ara_mitama"
+  ],
+  "voice_for_arahabaki": [
+    "voice_arahabaki"
+  ],
+  "voice_for_archangel": [
+    "voice_archangel"
+  ],
+  "voice_for_arsene": [
+    "voice_arsene"
+  ],
+  "voice_for_asura": [
+    "voice_asura"
+  ],
+  "voice_for_atavaka": [
+    "voice_atavaka"
+  ],
+  "voice_for_atropos": [
+    "voice_atropos"
+  ],
+  "voice_for_attis": [
+    "voice_attis"
+  ],
+  "voice_for_baal_zebul": [
+    "voice_baal_zebul"
+  ],
+  "voice_for_baphomet": [
+    "voice_baphomet"
+  ],
+  "voice_for_barong": [
+    "voice_barong"
+  ],
+  "voice_for_beelzebub": [
+    "voice_beelzebub"
+  ],
+  "voice_for_belphegor": [
+    "voice_belphegor"
+  ],
+  "voice_for_berith": [
+    "voice_berith"
+  ],
+  "voice_for_bishamonten": [
+    "voice_bishamonten"
+  ],
+  "voice_for_black_frost": [
+    "voice_black_frost"
+  ],
+  "voice_for_byakko": [
+    "voice_byakko"
+  ],
+  "voice_for_chernobog": [
+    "voice_chernobog"
+  ],
+  "voice_for_chi_you": [
+    "voice_chi_you"
+  ],
+  "voice_for_chimera": [
+    "voice_chimera"
+  ],
+  "voice_for_cinder_wisp": [
+    "voice_generic_persona"
+  ],
+  "voice_for_clotho": [
+    "voice_clotho"
+  ],
+  "voice_for_cu_chulainn": [
+    "voice_cu_chulainn"
+  ],
+  "voice_for_cybele": [
+    "voice_cybele"
+  ],
+  "voice_for_daisoujou": [
+    "voice_daisoujou"
+  ],
+  "voice_for_dakini": [
+    "voice_dakini"
+  ],
+  "voice_for_decarabia": [
+    "voice_decarabia"
+  ],
+  "voice_for_dionysus": [
+    "voice_dionysus"
+  ],
+  "voice_for_dominion": [
+    "voice_dominion"
+  ],
+  "voice_for_eligor": [
+    "voice_eligor"
+  ],
+  "voice_for_flauros": [
+    "voice_flauros"
+  ],
+  "voice_for_forneus": [
+    "voice_forneus"
+  ],
+  "voice_for_fortuna": [
+    "voice_fortuna"
+  ],
+  "voice_for_futsunushi": [
+    "voice_futsunushi"
+  ],
+  "voice_for_gabriel": [
+    "voice_gabriel"
+  ],
+  "voice_for_ganesha": [
+    "voice_ganesha"
+  ],
+  "voice_for_ganga": [
+    "voice_ganga"
+  ],
+  "voice_for_garuda": [
+    "voice_garuda"
+  ],
+  "voice_for_genbu": [
+    "voice_genbu"
+  ],
+  "voice_for_girimekhala": [
+    "voice_girimekhala"
+  ],
+  "voice_for_gurulu": [
+    "voice_gurulu"
+  ],
+  "voice_for_hanuman": [
+    "voice_hanuman"
+  ],
+  "voice_for_hariti": [
+    "voice_hariti"
+  ],
+  "voice_for_hecatoncheires": [
+    "voice_hecatoncheires"
+  ],
+  "voice_for_helel": [
+    "voice_helel"
+  ],
+  "voice_for_hell_biker": [
+    "voice_hell_biker"
+  ],
+  "voice_for_high_pixie": [
+    "voice_high_pixie"
+  ],
+  "voice_for_horus": [
+    "voice_horus"
+  ],
+  "voice_for_houou": [
+    "voice_houou"
+  ],
+  "voice_for_hua_po": [
+    "voice_hua_po"
+  ],
+  "voice_for_incubus": [
+    "voice_incubus"
+  ],
+  "voice_for_inugami": [
+    "voice_inugami"
+  ],
+  "voice_for_iron_oni": [
+    "voice_generic_persona"
+  ],
+  "voice_for_izanagi": [
+    "voice_izanagi"
+  ],
+  "voice_for_jack_frost": [
+    "voice_jack_frost"
+  ],
+  "voice_for_jack_o_lantern": [
+    "voice_jack_o_lantern"
+  ],
+  "voice_for_jatayu": [
+    "voice_jatayu"
+  ],
+  "voice_for_jikokuten": [
+    "voice_jikokuten"
+  ],
+  "voice_for_kaiwan": [
+    "voice_kaiwan"
+  ],
+  "voice_for_kali": [
+    "voice_kali"
+  ],
+  "voice_for_kikuri_hime": [
+    "voice_kikuri_hime"
+  ],
+  "voice_for_king_frost": [
+    "voice_king_frost"
+  ],
+  "voice_for_kohryu": [
+    "voice_kohryu"
+  ],
+  "voice_for_koumokuten": [
+    "voice_koumokuten"
+  ],
+  "voice_for_kumbhanda": [
+    "voice_kumbhanda"
+  ],
+  "voice_for_kurama_tengu": [
+    "voice_kurama_tengu"
+  ],
+  "voice_for_kushi_mitama": [
+    "voice_kushi_mitama"
+  ],
+  "voice_for_lachesis": [
+    "voice_lachesis"
+  ],
+  "voice_for_lakshmi": [
+    "voice_lakshmi"
+  ],
+  "voice_for_lamia": [
+    "voice_lamia"
+  ],
+  "voice_for_leanan_sidhe": [
+    "voice_leanan_sidhe"
+  ],
+  "voice_for_legion": [
+    "voice_legion"
+  ],
+  "voice_for_lilim": [
+    "voice_lilim"
+  ],
+  "voice_for_lilith": [
+    "voice_lilith"
+  ],
+  "voice_for_loa": [
+    "voice_loa"
+  ],
+  "voice_for_loki": [
+    "voice_loki"
+  ],
+  "voice_for_lucifer": [
+    "voice_lucifer"
+  ],
+  "voice_for_lumen_hare": [
+    "voice_generic_persona"
+  ],
+  "voice_for_mada": [
+    "voice_mada"
+  ],
+  "voice_for_mara": [
+    "voice_mara"
+  ],
+  "voice_for_masakado": [
+    "voice_masakado"
+  ],
+  "voice_for_matador": [
+    "voice_matador"
+  ],
+  "voice_for_melchizedek": [
+    "voice_melchizedek"
+  ],
+  "voice_for_messiah": [
+    "voice_messiah"
+  ],
+  "voice_for_metatron": [
+    "voice_metatron"
+  ],
+  "voice_for_michael": [
+    "voice_michael"
+  ],
+  "voice_for_mishaguji": [
+    "voice_mishaguji"
+  ],
+  "voice_for_mithras": [
+    "voice_mithras"
+  ],
+  "voice_for_mitra": [
+    "voice_mitra"
+  ],
+  "voice_for_mokoi": [
+    "voice_mokoi"
+  ],
+  "voice_for_mot": [
+    "voice_mot"
+  ],
+  "voice_for_mother_harlot": [
+    "voice_mother_harlot"
+  ],
+  "voice_for_mothman": [
+    "voice_mothman"
+  ],
+  "voice_for_naga": [
+    "voice_naga"
+  ],
+  "voice_for_naga_raja": [
+    "voice_naga_raja"
+  ],
+  "voice_for_narcissus": [
+    "voice_narcissus"
+  ],
+  "voice_for_nebiros": [
+    "voice_nebiros"
+  ],
+  "voice_for_neko_shogun": [
+    "voice_neko_shogun"
+  ],
+  "voice_for_nekomata": [
+    "voice_nekomata"
+  ],
+  "voice_for_nidhoggr": [
+    "voice_nidhoggr"
+  ],
+  "voice_for_nigi_mitama": [
+    "voice_nigi_mitama"
+  ],
+  "voice_for_nocturne_knight": [
+    "voice_generic_persona"
+  ],
+  "voice_for_norn": [
+    "voice_norn"
+  ],
+  "voice_for_oberon": [
+    "voice_oberon"
+  ],
+  "voice_for_odin": [
+    "voice_odin"
+  ],
+  "voice_for_okuninushi": [
+    "voice_okuninushi"
+  ],
+  "voice_for_omoikane": [
+    "voice_omoikane"
+  ],
+  "voice_for_oni": [
+    "voice_oni"
+  ],
+  "voice_for_onmoraki": [
+    "voice_onmoraki"
+  ],
+  "voice_for_orobas": [
+    "voice_orobas"
+  ],
+  "voice_for_orpheus": [
+    "voice_orpheus"
+  ],
+  "voice_for_orpheus_telos": [
+    "voice_orpheus_telos"
+  ],
+  "voice_for_orthrus": [
+    "voice_orthrus"
+  ],
+  "voice_for_ose": [
+    "voice_ose"
+  ],
+  "voice_for_pale_rider": [
+    "voice_pale_rider"
+  ],
+  "voice_for_parvati": [
+    "voice_parvati"
+  ],
+  "voice_for_pazuzu": [
+    "voice_pazuzu"
+  ],
+  "voice_for_pisaca": [
+    "voice_pisaca"
+  ],
+  "voice_for_pixie": [
+    "voice_pixie"
+  ],
+  "voice_for_power": [
+    "voice_power"
+  ],
+  "voice_for_principality": [
+    "voice_principality"
+  ],
+  "voice_for_qitian_dasheng": [
+    "voice_qitian_dasheng"
+  ],
+  "voice_for_queen_medb": [
+    "voice_queen_medb"
+  ],
+  "voice_for_quetzalcoatl": [
+    "voice_quetzalcoatl"
+  ],
+  "voice_for_rakshasa": [
+    "voice_rakshasa"
+  ],
+  "voice_for_rangda": [
+    "voice_rangda"
+  ],
+  "voice_for_raphael": [
+    "voice_raphael"
+  ],
+  "voice_for_saki_mitama": [
+    "voice_saki_mitama"
+  ],
+  "voice_for_samael": [
+    "voice_samael"
+  ],
+  "voice_for_sandalphon": [
+    "voice_sandalphon"
+  ],
+  "voice_for_sandman": [
+    "voice_sandman"
+  ],
+  "voice_for_sarasvati": [
+    "voice_sarasvati"
+  ],
+  "voice_for_satan": [
+    "voice_satan"
+  ],
+  "voice_for_sati": [
+    "voice_sati"
+  ],
+  "voice_for_saturnus": [
+    "voice_saturnus"
+  ],
+  "voice_for_scathach": [
+    "voice_scathach"
+  ],
+  "voice_for_seiryu": [
+    "voice_seiryu"
+  ],
+  "voice_for_setanta": [
+    "voice_setanta"
+  ],
+  "voice_for_seth": [
+    "voice_seth"
+  ],
+  "voice_for_shiisaa": [
+    "voice_shiisaa"
+  ],
+  "voice_for_shiki_ouji": [
+    "voice_shiki_ouji"
+  ],
+  "voice_for_shiva": [
+    "voice_shiva"
+  ],
+  "voice_for_siegfried": [
+    "voice_siegfried"
+  ],
+  "voice_for_silky": [
+    "voice_silky"
+  ],
+  "voice_for_skadi": [
+    "voice_skadi"
+  ],
+  "voice_for_slime": [
+    "voice_slime"
+  ],
+  "voice_for_succubus": [
+    "voice_succubus"
+  ],
+  "voice_for_surt": [
+    "voice_surt"
+  ],
+  "voice_for_susano_o": [
+    "voice_susano_o"
+  ],
+  "voice_for_suzaku": [
+    "voice_suzaku"
+  ],
+  "voice_for_sylphid": [
+    "voice_generic_persona"
+  ],
+  "voice_for_take_mikazuchi": [
+    "voice_take_mikazuchi"
+  ],
+  "voice_for_take_minakata": [
+    "voice_take_minakata"
+  ],
+  "voice_for_tam_lin": [
+    "voice_tam_lin"
+  ],
+  "voice_for_thanatos": [
+    "voice_thanatos"
+  ],
+  "voice_for_thor": [
+    "voice_thor"
+  ],
+  "voice_for_thoth": [
+    "voice_thoth"
+  ],
+  "voice_for_throne": [
+    "voice_throne"
+  ],
+  "voice_for_thunderbird": [
+    "voice_thunderbird"
+  ],
+  "voice_for_titania": [
+    "voice_titania"
+  ],
+  "voice_for_trumpeter": [
+    "voice_trumpeter"
+  ],
+  "voice_for_umbra_slime": [
+    "voice_generic_persona"
+  ],
+  "voice_for_unicorn": [
+    "voice_unicorn"
+  ],
+  "voice_for_uriel": [
+    "voice_uriel"
+  ],
+  "voice_for_valkyrie": [
+    "voice_valkyrie"
+  ],
+  "voice_for_vasuki": [
+    "voice_vasuki"
+  ],
+  "voice_for_virtue": [
+    "voice_virtue"
+  ],
+  "voice_for_vishnu": [
+    "voice_vishnu"
+  ],
+  "voice_for_white_rider": [
+    "voice_white_rider"
+  ],
+  "voice_for_yakshini": [
+    "voice_yakshini"
+  ],
+  "voice_for_yamata_no_orochi": [
+    "voice_yamata_no_orochi"
+  ],
+  "voice_for_yatagarasu": [
+    "voice_yatagarasu"
+  ],
+  "voice_for_yurlungur": [
+    "voice_yurlungur"
+  ],
+  "voice_for_zouchouten": [
+    "voice_zouchouten"
+  ]
+}
