@@ -7,6 +7,7 @@
 package com.gx.velveteclipse.forge;
 
 import com.gx.velveteclipse.VelvetEclipseMod;
+import com.gx.velveteclipse.presentation.PersonaActionTiming;
 import com.gx.velveteclipse.core.persona.PersonaRegistry;
 import com.gx.velveteclipse.forge.BattleService;
 import com.gx.velveteclipse.forge.PersonaDelayedActions;
@@ -42,7 +43,7 @@ public final class PersonaCinematicServer {
             PersonaCinematicServer.clearSequence(uUID, sequence);
         }
         Sequence sequence2 = new Sequence(uUID, object, string, (string2 = PlayerPersonaData.load(object).activePersona()) == null || string2.isBlank() ? "cinder_wisp" : string2);
-        sequence2.magic = PersonaCinematicServer.isMagicSkill(string);
+        sequence2.magic = PersonaActionTiming.magic(string);
         SEQUENCES.put(uUID, sequence2);
     }
 
@@ -56,9 +57,7 @@ public final class PersonaCinematicServer {
         if (sequence == null) {
             return false;
         }
-        if (string != null && !string.isBlank()) {
-            sequence.personaId = string;
-        }
+        // Persona and duration remain the snapshot captured when the action was reserved.
         return true;
     }
 
@@ -91,8 +90,11 @@ public final class PersonaCinematicServer {
             if (SEQUENCES.get(uUID) != sequence) continue;
             try {
                 double[] object;
-                if (sequence.player == null || BattleService.current(sequence.player) == null) {
+                var current = BattleService.current(sequence.player);
+                if (current != sequence.session || current == null || !sequence.gate.valid(current)
+                    || sequence.player instanceof net.minecraft.world.entity.Entity actor && (!actor.m_6084_() || actor.m_9236_() != sequence.level || RuntimeBridge.isEntityRemoved(actor))) {
                     PersonaCinematicServer.finishSequence(uUID, sequence);
+                    if (current == sequence.session) com.gx.velveteclipse.network.ModNetwork.sendPresentation(sequence.player,new com.gx.velveteclipse.network.BattleCueS2C("cancel","",false,0,0,0,0,0,0));
                     continue;
                 }
                 ++sequence.tick;
@@ -117,17 +119,23 @@ public final class PersonaCinematicServer {
                     PersonaCinematicServer.movePersona(sequence, PersonaCinematicServer.lerp((double)object[0], dArray[0], d), PersonaCinematicServer.lerp((double)object[1], dArray[1], d), PersonaCinematicServer.lerp((double)object[2], dArray[2], d), sequence.yaw);
                     PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);
                 }
-                if (sequence.tick >= 55 && sequence.tick <= (fullAttack(sequence.personaId)?107:94)) {
+                if (sequence.plan.attacking(sequence.tick)) {
                     PersonaCinematicServer.movePersonaAttack(sequence, dArray2[0], dArray2[1], dArray2[2], sequence.yaw, sequence.magic);
                 }
-                if (!fullAttack(sequence.personaId) && sequence.tick >= 95 && sequence.tick <= 107) {
+                if (sequence.tick >= sequence.plan.impact() && sequence.tick < sequence.plan.finish()) {
                     PersonaCinematicServer.movePersona(sequence, dArray[0], dArray[1], dArray[2], sequence.yaw);
                     PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);
                 }
-                CinematicEffects.tick(sequence.player, sequence.tick, sequence.skillId, sequence.magic, sequence.base, sequence.yaw);
-                if(sequence.tick==108){PersonaCinematicServer.finishSequence(uUID,sequence);continue;}
-                if (sequence.tick != 86 || sequence.resolved) continue;
-                sequence.resolved = PersonaDelayedActions.resolve(sequence.player, sequence.skillId);
+                CinematicEffects.tick(sequence.player, sequence.tick, sequence.personaId);
+                if(sequence.tick>=sequence.plan.finish()){PersonaCinematicServer.finishSequence(uUID,sequence);continue;}
+                if (!sequence.gate.claim(current, sequence.tick)) continue;
+                sequence.resolved = true; // exactly one attempt, even if the reservation became invalid
+                if (!PersonaDelayedActions.resolve(sequence.player, sequence.skillId)) {
+                    PersonaCinematicServer.finishSequence(uUID, sequence);
+                    com.gx.velveteclipse.network.ModNetwork.sendPresentation(sequence.player,new com.gx.velveteclipse.network.BattleCueS2C("cancel","",false,0,0,0,0,0,0));
+                    BattleService.sync(sequence.player,"Action cancelled.");
+                    continue;
+                }
                 if (SEQUENCES.get(uUID) != sequence) continue;
                 PersonaCinematicServer.setPersonaVisualState(sequence, sequence.personaId);
             }
@@ -158,7 +166,10 @@ public final class PersonaCinematicServer {
         }
     }
 
-    private static boolean fullAttack(String id){return id.equals("izanagi")||id.equals("arsene")||id.equals("orpheus")||com.gx.velveteclipse.core.persona.ReloadCatalogue.provisional(id);}
+    public static int duration(Object player) {
+        var sequence = SEQUENCES.get(RuntimeBridge.playerUuid(player));
+        return sequence == null ? 0 : sequence.plan.finish();
+    }
 
     private static boolean isMagicSkill(String string) {
         Object object;
@@ -213,7 +224,8 @@ public final class PersonaCinematicServer {
     }
 
     private static void clearSequence(UUID uUID, Sequence sequence) {
-        var session=BattleService.current(sequence.player);if(session!=null)session.cancelPrepared();
+        var session=BattleService.current(sequence.player);if(session==sequence.session&&session!=null&&session.prepared()==sequence.reservation)session.cancelPrepared();
+        if (session != sequence.session) return; // A stale sequence must not hide another encounter's actor.
         try {
             PersonaCinematicServer.discardEvoker(sequence);
         }
@@ -250,7 +262,12 @@ public final class PersonaCinematicServer {
         final UUID playerId;
         final Object player;
         final String skillId;
-        String personaId;
+        final String personaId;
+        final PersonaActionTiming.Plan plan;
+        final com.gx.velveteclipse.core.battle.BattleSession session;
+        final Object reservation;
+        final com.gx.velveteclipse.presentation.PersonaImpactGate gate;
+        final Object level;
         int tick;
         boolean resolved;
         boolean magic;
@@ -263,6 +280,11 @@ public final class PersonaCinematicServer {
             this.player = object;
             this.skillId = string;
             this.personaId = string2;
+            this.plan = PersonaActionTiming.forAction(string2, string);
+            this.session = BattleService.current(object);
+            this.reservation = session == null ? null : session.prepared();
+            this.gate = new com.gx.velveteclipse.presentation.PersonaImpactGate(session, plan);
+            this.level = object instanceof net.minecraft.world.entity.Entity entity ? entity.m_9236_() : null;
             this.yaw = RuntimeBridge.playerYaw(object);
             var session=BattleService.current(object);
             var target=session==null||session.prepared()==null?null:BattleService.targetActor(object,session.prepared().action().targetId());

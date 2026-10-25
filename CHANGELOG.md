@@ -1,3 +1,12 @@
+# 0.6.56-persona-timing — 24/10/2026
+
+- Resultado de habilidades após o clipe completo, com câmera e reserva por sessão; correções de cancelamento e prevenção de repetição.
+- Voz da Persona no disparo da Evoker; sons e mixer anteriores preservados.
+- Onmoraki 01 integrada, com idle, ataque físico/mágico, carta, ícone e enquadramento.
+- Photon elemental 02: 22 receitas, 38 habilidades; conversões nativas de origem, escala e rotação.
+- Preserva as correções anteriores da cidade, NPCs, dificuldade e proteção das estruturas. Protocolo principal 24.
+- Verificações offline; sem execução do Minecraft. Detalhes em docs/persona-timing-0.6.56.md.
+
 # 0.6.55-reload-feedback
 
 - Implementa os novos efeitos Photon e áudios originais aprovados, preservando o fogo da evocação.

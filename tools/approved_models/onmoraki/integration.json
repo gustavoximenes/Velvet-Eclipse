@@ -1,0 +1,18 @@
+{
+  "revision": "01",
+  "renderer_scale": 0.125,
+  "authoring_density": 8,
+  "axis_conversion_count": 1,
+  "clip_seconds": {
+    "misc.idle": 3.6,
+    "action.physical": 2.4,
+    "action.magic": 2.8
+  },
+  "damage": "after the complete clip; PersonaActionTiming",
+  "source_sha256": {
+    "onmoraki.animation.json": "35f17a198aa2a5b37c4400652863bd568586c491f866d018362a88631788aa93",
+    "onmoraki.bbmodel": "8d1d4f93e0deb72e522376e26943520dabcf83c584a3485779445df6e118d14b",
+    "onmoraki.geo.json": "0dd6fca32c83268ed56db1aa77d4a139f21a17ed1ed29f52bd1fc813afe2d584",
+    "onmoraki.png": "e49bfcda8ecb86e013cc3b8b380865282b50960d637f421fd28d187fd2d9c695"
+  }
+}

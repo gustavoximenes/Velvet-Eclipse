@@ -33,12 +33,12 @@ public final class BattleDirector {
  public static boolean summoning(UUID id){return active()&&cue.kind().equals("skill")&&cue.actor().equals(id);}
  public static float castingYaw(UUID id,float fallback){if(!summoning(id))return fallback;double x=cue.tx()-cue.x(),z=cue.tz()-cue.z();return x*x+z*z<.001?fallback:(float)Math.toDegrees(Math.atan2(-x,z));}
  public static boolean attacking(UUID id){return active()&&cue.kind().equals("attack")&&cue.actor().equals(id);}
- public static double hitAge(float partial){return age(partial)-(cue!=null&&cue.kind().equals("skill")?86:cue!=null&&cue.kind().equals("enemy")?10:19);}
+ public static double hitAge(float partial){return age(partial)-(cue!=null&&cue.kind().equals("skill")?com.gx.velveteclipse.presentation.PersonaActionTiming.impactFromDuration(cue.duration()):cue!=null&&cue.kind().equals("enemy")?10:19);}
  public static boolean hitPlayer(UUID id){var w=Minecraft.m_91087_().f_91073_;if(!active()||w==null||cue.targetEntity()<0)return false;var target=w.m_6815_(cue.targetEntity());return target!=null&&target.m_20148_().equals(id)&&hitAge(0)>=0&&hitAge(0)<12;}
  public static Family weapon(){try{return cue==null?Family.SWORD:Family.valueOf(cue.weapon());}catch(IllegalArgumentException e){return Family.SWORD;}}
  public static float personaAlpha(String owner,float partial){
   if(!active()||!cue.kind().equals("skill")||!cue.actor().toString().equals(owner))return 1;
-  double t=age(partial),a=Math.max(0,Math.min(1,(t-46)/12)),b=Math.max(0,Math.min(1,(108-t)/7));return (float)(a*a*(3-2*a)*b*b*(3-2*b));
+  double t=age(partial),a=Math.max(0,Math.min(1,(t-46)/12)),b=Math.max(0,Math.min(1,(com.gx.velveteclipse.presentation.PersonaActionTiming.impactFromDuration(cue.duration())+8-t)/7));return (float)(a*a*(3-2*a)*b*b*(3-2*b));
  }
  public static float fov(){return fov;}
  public static Vec3 commandEye(UUID id){var view=commandCamera.view();return view!=null&&commandSubject(id)?view.eye():null;}
@@ -81,7 +81,7 @@ public final class BattleDirector {
   Vec3 forward=new Vec3(b.f_82479_-a.f_82479_,0,b.f_82481_-a.f_82481_);
   if(kind.equals("shift")){var enemy=BattleTargetHud.roster().stream().filter(t->!t.ally()&&t.hp()>0).findFirst().orElse(null);var e=enemy==null?null:mc.f_91073_.m_6815_(enemy.entityId());if(e!=null)forward=e.m_20318_(partial).m_82546_(a.m_165921_(b,.5));forward=new Vec3(forward.f_82479_,0,forward.f_82481_);}
   if(forward.m_82556_()<.001)forward=new Vec3(0,0,1);else forward=forward.m_82541_();Vec3 side=new Vec3(forward.f_82481_,0,-forward.f_82479_);
-  var shot=BattleShot.sample(kind,time);Vec3 focus=a.m_165921_(b,shot.focus()).m_82520_(0,shot.focusHeight(),0);
+  var shot=BattleShot.sample(kind,time,kind.equals("skill")?com.gx.velveteclipse.presentation.PersonaActionTiming.impactFromDuration(cue.duration()):0);Vec3 focus=a.m_165921_(b,shot.focus()).m_82520_(0,shot.focusHeight(),0);
   Vec3 desired=focus.m_82549_(side.m_82490_(shot.side())).m_82549_(forward.m_82490_(shot.depth())).m_82520_(0,shot.height()-shot.focusHeight(),0);
   double hit=hitAge(partial);if(directed&&!shifting()&&hit>=0&&hit<5)desired=desired.m_82520_(Math.sin(hit*5)*.035*(1-hit/5),Math.cos(hit*6)*.025*(1-hit/5),0);
   Vec3 position;float lens=shot.fov();

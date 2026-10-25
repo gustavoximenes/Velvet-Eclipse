@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.56 — Onmoraki e sincronização de ataques
+
+A animação completa da Persona termina antes do dano e dos efeitos no alvo. Inclui Onmoraki 01, Photon elemental 02 e voz original no disparo da Evoker. Fogo da evocação e mixer preservados. [Escopo, limites e validação offline](docs/persona-timing-0.6.56.md). Cliente/servidor: 0.6.56; protocolo principal 24.
+
 # Velvet Eclipse 0.6.55 — Photon e áudio original
 
 Novos efeitos de ataque e 331 trechos originais, mantendo o fogo da evocação. Inclui correções da Gekkoukan e interações dos móveis. **TAB → System → Áudio do mod** oferece volumes separados para voz, combate, interações, interface e despertar, além da música do Minecraft. [Detalhes, limites e validação offline](docs/reload-feedback.md). Cliente e servidor: 0.6.55; protocolos principal 23, cidade 9, menu 7.

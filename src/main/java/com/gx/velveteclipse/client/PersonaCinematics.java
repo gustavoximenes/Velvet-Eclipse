@@ -16,6 +16,7 @@ public final class PersonaCinematics {
     private static int skillTicks;
     private static float battleYaw;
     private static String activeSkill;
+    private static int skillEnd = 153;
     private static boolean weakness;
     private static boolean melee;
     private static int meleeTicks;
@@ -52,6 +53,7 @@ public final class PersonaCinematics {
             battleYaw = RuntimeBridge.playerYaw(object);
         }
         activeSkill = string2 == null ? "" : string2;
+        skillEnd = com.gx.velveteclipse.presentation.PersonaActionTiming.forAction(battleSnapshotS2C.personaId(), activeSkill).finish();
         skillSequence = true;
         skillTicks = 0;
     }
@@ -88,7 +90,7 @@ public final class PersonaCinematics {
             if (introTicks > 0) {
                 --introTicks;
             }
-            if (skillSequence && ++skillTicks > 108) {
+            if (skillSequence && ++skillTicks > skillEnd) {
                 skillSequence = false;
                 activeSkill = "";
             }
@@ -122,12 +124,12 @@ public final class PersonaCinematics {
             double push=ease(time/37.0);
                 dArray2=mix(dArray2,RuntimeBridge.localOffset(dArray3,battleYaw,-.62,1.87,3.05),push);
                 dArray=mix(dArray,RuntimeBridge.localOffset(dArray3,battleYaw,-0.04,1.42,0.0),push);
-            } else if (skillSequence && time <= 108) {
+            } else if (skillSequence && time <= skillEnd) {
                 dArray2 = RuntimeBridge.localOffset(dArray3, battleYaw, -3.25, 2.15, 0.65);
                 dArray = RuntimeBridge.localOffset(dArray3, battleYaw, 0.0, 1.18, 2.85);
                 double dolly=ease((time-52)/42.0);
                 dArray2=mix(dArray2,RuntimeBridge.localOffset(dArray3,battleYaw,-2.9,2.05,0.95),dolly);
-                if(time>98){double back=ease((time-98)/10.0);dArray2=mix(dArray2,RuntimeBridge.localOffset(dArray3,battleYaw,-2.55,2.25,-4.35),back);dArray=mix(dArray,RuntimeBridge.localOffset(dArray3,battleYaw,0.05,1.08,4.65),back);}
+                if(time>skillEnd-10){double back=ease((time-skillEnd+10)/10.0);dArray2=mix(dArray2,RuntimeBridge.localOffset(dArray3,battleYaw,-2.55,2.25,-4.35),back);dArray=mix(dArray,RuntimeBridge.localOffset(dArray3,battleYaw,0.05,1.08,4.65),back);}
                 f = -0.6f;
             } else if (melee && meleeStart!=null) {
                 double[] origin={meleeStart.f_82479_,meleeStart.f_82480_,meleeStart.f_82481_};

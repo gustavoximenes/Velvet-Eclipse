@@ -15,11 +15,26 @@ public final class FeedbackAudit {
  private static DamageOutcome hit(Affinity a,boolean down,boolean crit){return new DamageOutcome(Element.FIRE,a,20,crit,down,false,false,false);}
  private static BattleResolution result(boolean more,DamageOutcome... hits){var map=new LinkedHashMap<UUID,DamageOutcome>();for(int i=0;i<hits.length;i++)map.put(new UUID(0,i),hits[i]);return new BattleResolution(BattleState.ACTIVE,more,List.of(),true,map,true);}
  public static void main(String[] args)throws Exception {
-  check(result(true,hit(Affinity.WEAK,true,false)).weaknessOneMore(),"new weakness down grants voice");
-  check(!result(true,hit(Affinity.WEAK,false,false),hit(Affinity.NORMAL,true,true)).weaknessOneMore(),"weakness on downed victim plus critical elsewhere must not announce persona");
+  for(String persona:List.of("pixie","nekomata","orpheus","thanatos")){
+   var timeline=new ArrayList<InvocationFeedback.Cue>();
+   for(int tick=0;tick<=108;tick++){
+    var cues=InvocationFeedback.at(tick,persona);timeline.addAll(cues);
+    for(var cue:cues)if(cue.kind().equals("voice"))check(tick==38&&cue.key().equals(persona)&&cues.contains(new InvocationFeedback.Cue("audio","summon_evoker")),"name uses captured persona at the gunshot, regardless of skill outcome");
+   }
+   check(timeline.stream().filter(c->c.kind().equals("voice")).count()==1,"exactly one name in a full invocation");
+   check(timeline.stream().filter(c->c.kind().equals("audio")).map(InvocationFeedback.Cue::key).toList().equals(List.of("summon_evoker","summon_summon","summon_persona_aura")),"existing invocation sounds retain their order");
+  }
+  for(int tick=0;tick<38;tick++)check(InvocationFeedback.at(tick,"pixie").isEmpty(),"cancel before gunshot emits no voice");
+  check(InvocationFeedback.at(38,null).size()==1&&InvocationFeedback.at(38," ").size()==1,"missing persona still has a gunshot without a broken voice route");
+  var sourceRoot=Path.of("src/main/java/com/gx/velveteclipse/forge");
+  var serverSource=Files.readString(sourceRoot.resolve("FeedbackServer.java"));
+  check(!serverSource.substring(serverSource.indexOf("public static void result("),serverSource.indexOf("public static void furniture(")).contains("\"voice\""),"resolution and One More cannot duplicate the invocation name");
+  check(Files.readString(sourceRoot.resolve("PersonaCinematicServer.java")).contains("CinematicEffects.tick(sequence.player, sequence.tick, sequence.personaId)"),"timeline receives armed Persona rather than a later menu selection");
+  check(result(true,hit(Affinity.WEAK,true,false)).weaknessOneMore(),"new weakness down grants weakness One More");
+  check(!result(true,hit(Affinity.WEAK,false,false),hit(Affinity.NORMAL,true,true)).weaknessOneMore(),"weakness on downed victim plus critical elsewhere is not weakness One More");
   check(!result(false,hit(Affinity.WEAK,true,false)).weaknessOneMore(),"final victory is not One More");
-  check(!result(true,hit(Affinity.NORMAL,true,true)).weaknessOneMore(),"critical alone has no name call");
-  for(var h:List.of(new DamageOutcome(Element.FIRE,Affinity.WEAK,0,false,true,false,false,false),new DamageOutcome(Element.FIRE,Affinity.WEAK,20,false,true,true,false,false),new DamageOutcome(Element.FIRE,Affinity.WEAK,20,false,true,false,true,false),new DamageOutcome(Element.FIRE,Affinity.WEAK,20,false,true,false,false,true)))check(!result(true,h).weaknessOneMore(),"blocked/reflected/absorbed/missed does not call");
+  check(!result(true,hit(Affinity.NORMAL,true,true)).weaknessOneMore(),"critical alone is not weakness One More");
+  for(var h:List.of(new DamageOutcome(Element.FIRE,Affinity.WEAK,0,false,true,false,false,false),new DamageOutcome(Element.FIRE,Affinity.WEAK,20,false,true,true,false,false),new DamageOutcome(Element.FIRE,Affinity.WEAK,20,false,true,false,true,false),new DamageOutcome(Element.FIRE,Affinity.WEAK,20,false,true,false,false,true)))check(!result(true,h).weaknessOneMore(),"blocked/reflected/absorbed/missed is not weakness One More");
   var gate=new FeedbackSession();var a=UUID.randomUUID();var b=UUID.randomUUID();check(!gate.accept(a,1),"no session");gate.start(a);check(gate.accept(a,1),"first");check(!gate.accept(a,1),"duplicate");check(!gate.accept(b,2),"other party");gate.start(a);check(!gate.accept(a,1),"duplicate start cannot reset gate");check(gate.accept(a,2),"next");gate.clear();check(!gate.accept(a,3),"left encounter");gate.start(b);check(gate.accept(b,1),"new encounter");
   var prefs=new AudioPreferences();for(var bus:Bus.values())check(prefs.get(bus)==1,"default audible");prefs.set(Bus.COMBAT,.35f);prefs.set(Bus.VOICE,0);check(prefs.get(Bus.COMBAT)==.35f&&prefs.get(Bus.INTERACTION)==1,"independent gains");var path=Path.of("build/reports/feedback/preferences.properties");prefs.save(path);var restored=AudioPreferences.read(path);check(restored.get(Bus.VOICE)==0&&restored.get(Bus.COMBAT)==.35f,"persist silence and volume");Files.writeString(path,"VOICE=NaN\nCOMBAT=garbage\nUI=-5\nINTERACTION=3\n");var malformed=AudioPreferences.read(path);check(malformed.get(Bus.VOICE)==1&&malformed.get(Bus.COMBAT)==1&&malformed.get(Bus.UI)==0&&malformed.get(Bus.INTERACTION)==1,"safe malformed/old config");
   for(var bus:Bus.values())check(ClientAudio.source(bus)!=net.minecraft.sounds.SoundSource.MUSIC,"music slider cannot mute "+bus);
@@ -33,7 +48,7 @@ public final class FeedbackAudit {
   var battle=new BattleSession(List.of(player,enemy),new Random(){public int nextInt(int bound){return Math.min(50,bound-1);}});
   for(var action:List.of(BattleAction.attack(enemy.id()),BattleAction.guard(),BattleAction.allOut()))check(com.gx.velveteclipse.forge.FeedbackServer.targets(battle,player.id(),action,id->null).isEmpty(),"basic action does not resolve null skill ID");
   var action=BattleAction.skill("feedback_cast",enemy.id());var reserved=battle.prepare(player.id(),action);check(reserved!=null&&!reserved.hit().newlyDowned(),"reservation is not a confirmed down");
-  var applied=battle.perform(player.id(),action);check(applied.accepted()&&applied.hits().get(enemy.id()).newlyDowned()&&applied.weaknessOneMore(),"voice uses applied damage, not prediction");
+  var applied=battle.perform(player.id(),action);check(applied.accepted()&&applied.hits().get(enemy.id()).newlyDowned()&&applied.weaknessOneMore(),"impact feedback uses applied damage, not prediction");
   check(!battle.perform(enemy.id(),BattleAction.guard()).accepted(),"out of turn produces no feedback");check(applied.hits().get(enemy.id()).newlyDowned(),"past result immutable after next action");
   var pts=new ArrayList<BattleFeedbackS2C.Target>();for(int i=0;i<BattleFeedbackS2C.MAX_TARGETS;i++)pts.add(new BattleFeedbackS2C.Target(new BattleLightningS2C.Strike(i,64,i,9,i,new UUID(2,i)),"weak"));var packet=new BattleFeedbackS2C(a,19,"skill","maragi",pts);var buf=new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());try{BattleFeedbackS2C.encode(packet,buf);check(packet.equals(BattleFeedbackS2C.decode(buf)),"128-target identity/outcome wire round trip");}finally{buf.release();}
   pts.add(pts.get(0));try{new BattleFeedbackS2C(a,20,"skill","maragi",pts);throw new AssertionError("unbounded packet");}catch(IllegalArgumentException expected){checks++;}

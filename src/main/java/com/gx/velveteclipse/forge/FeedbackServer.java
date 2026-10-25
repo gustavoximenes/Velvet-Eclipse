@@ -9,13 +9,19 @@ import net.minecraft.server.level.ServerPlayer;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
-/** Feedback is emitted once, after a successful state transition, to the encounter members. */
+/** Invocation markers and confirmed action results are sent only to encounter members. */
 public final class FeedbackServer {
  private static final AtomicLong ids=new AtomicLong();
  public static void membership(Object player,UUID session,boolean start){ModNetwork.sendPresentation(player,new BattleFeedbackS2C(session,ids.incrementAndGet(),start?"start":"stop","",List.of()));}
  private static BattleFeedbackS2C packet(UUID session,String kind,String key,List<BattleFeedbackS2C.Target> targets){return new BattleFeedbackS2C(session,ids.incrementAndGet(),kind,key,targets);}
  private static void send(List<Object> members,BattleFeedbackS2C packet){for(var p:members)ModNetwork.sendPresentation(p,packet);}
  public static void cue(Object p,String route){var s=BattleService.current(p);if(s==null)return;var pts=p instanceof Entity e?List.of(new BattleFeedbackS2C.Target(BattleLightningS2C.Strike.at(e),"normal")):List.<BattleFeedbackS2C.Target>of();send(BattleService.members(p),packet(s.id(),"audio",route,pts));}
+ public static void invocation(Object p,int tick,String persona){
+  var cues=com.gx.velveteclipse.presentation.InvocationFeedback.at(tick,persona);if(cues.isEmpty())return;
+  var s=BattleService.current(p);if(s==null)return;
+  var pts=p instanceof Entity e?List.of(new BattleFeedbackS2C.Target(BattleLightningS2C.Strike.at(e),"normal")):List.<BattleFeedbackS2C.Target>of();
+  var members=BattleService.members(p);for(var cue:cues)send(members,packet(s.id(),cue.kind(),cue.key(),pts));
+ }
  public static void swing(Object p){var s=BattleService.current(p);if(s==null)return;String family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family().name();cue(p,"swing_"+FeedbackLibrary.weapon(family));}
  public static void weaponPhase(Object p,boolean start){String family=FeedbackLibrary.weapon(com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family().name());if(family.equals("slash"))cue(p,start?"physical_draw":"physical_sheath");else if(start&&(family.equals("bow")||family.equals("gun")))cue(p,"prepare_"+family);}
  public static void cancel(Object p){var s=BattleService.current(p);if(s!=null)send(BattleService.members(p),packet(s.id(),"cancel","",List.of()));}
@@ -42,7 +48,6 @@ public final class FeedbackServer {
   if(result.oneMore()){
    var actor=s.find(actorId).orElse(null);boolean player=actor!=null&&actor.side()==BattleSide.PLAYERS;
    send(members,packet(s.id(),"audio",player?"battle_one_more":"battle_one_more_enemy",points.stream().limit(1).toList()));
-   if(player&&action.type()==BattleActionType.SKILL&&result.weaknessOneMore())send(members,packet(s.id(),"voice",persona,points.stream().limit(1).toList()));
   }
   if(result.hits().values().stream().anyMatch(h->h.newlyDowned()&&!h.missed()))send(members,packet(s.id(),"audio","battle_down",points.stream().limit(1).toList()));
  }

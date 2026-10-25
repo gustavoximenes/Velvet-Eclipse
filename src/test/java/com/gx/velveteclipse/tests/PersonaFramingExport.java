@@ -12,7 +12,7 @@ import software.bernie.geckolib.util.*;
 /** Authoring tool: measure native geometry through the whole animation, without an OpenGL window. */
 public final class PersonaFramingExport {
     static final Path ROOT=Path.of("src/main/resources/assets/velvet_eclipse");
-    static final Map<String,Double> SCALES=Map.of("apsaras",.0625,"jack_frost",.125,"forneus",.125,"chimera",.125,"pixie",.085,"izanagi",.25,"arsene",.125,"orpheus",.16,"nekomata",.125);
+    static final Map<String,Double> SCALES=Map.of("apsaras",.0625,"jack_frost",.125,"forneus",.125,"chimera",.125,"pixie",.085,"izanagi",.25,"arsene",.125,"orpheus",.16,"nekomata",.125,"onmoraki",.125);
     public static void main(String[] args)throws Exception {
         var profiles=new LinkedHashMap<String,Object>();
         if(args.length>0){

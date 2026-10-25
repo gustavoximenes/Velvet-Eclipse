@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-23",
+  "appearance": {
+    "url": "https://wiki.biligame.com/persona/P3R/%E9%98%B4%E6%91%A9%E7%BD%97%E9%AC%BC",
+    "image_url": "https://patchwiki.biligame.com/images/persona/5/50/fbvatimwquel83dz9mr1e1psmlx5x04.png",
+    "local": "reload-compendium.png",
+    "type": "Persona 3 Reload compendium screenshot",
+    "publisher_of_original_game": "ATLUS / SEGA",
+    "inspected": true,
+    "supports": ["overall silhouette", "palette", "closed eyes", "crest", "short wings", "legs"],
+    "does_not_verify": ["back view", "mouth interior", "idle cycle", "physical choreography", "magical choreography"]
+  },
+  "secondary_discovery": {
+    "url": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-games/Shin-Megami-Tensei-V-1987419.html",
+    "role": "Official promotional Onmoraki identity reference from a different game; not a Reload motion source"
+  },
+  "video_research": {
+    "url": "https://www.youtube.com/watch?v=TZap-dV5Oyo",
+    "title": "Persona 3 ALL Skills Showcase & Comparison | Portable Vs Reload",
+    "author": "ReVersed JRPGs",
+    "existing_workspace_video": "modeling/nekomata-study-02/work/reload-skills.mp4",
+    "inspected": "Selected physical, magical and support contact sheets; sampling only, not exhaustive footage inspection",
+    "result": "No Onmoraki-specific attack sequence identified with sufficient confidence in inspected samples",
+    "warning": "The video alternates Portable and Reload"
+  },
+  "motion_status": {
+    "idle": "authored proposal; pose informed by compendium screenshot, cycle timing unverified",
+    "physical_attack": "authored short lunge proposal; original Reload choreography unverified",
+    "magic_attack": "authored wing and mouth projection proposal; original Reload choreography unverified"
+  },
+  "original_mesh_or_animation_copied": false,
+  "mod_integration": false
+}

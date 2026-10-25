@@ -18,25 +18,28 @@ public final class ReloadPhoton {
    var out=new HashMap<String,PhotonSkillInstance.Recipe>();for(var p:PhotonSkillInstance.read(r))out.put(p.id(),p);return Map.copyOf(out);
   }catch(IOException e){throw new IllegalStateException(e);}
  }
- public static void reset(){for(var x:live)x.fx.close();live.clear();level=null;}
- public static void tick(){var w=Minecraft.m_91087_().f_91073_;if(w!=level){reset();return;}if(w==null)return;
+ public static int legacyCost(){return live.stream().mapToInt(Live::cost).sum();}
+ public static void reset(){ElementalPhoton.reset();for(var x:live)x.fx.close();live.clear();level=null;}
+ public static void tick(){ElementalPhoton.tick();var w=Minecraft.m_91087_().f_91073_;if(w!=level){for(var x:live)x.fx.close();live.clear();level=w;}if(w==null)return;
   for(var it=live.iterator();it.hasNext();){var x=it.next();int age=(int)(w.m_46467_()-x.start);if(age<0||age>100){x.fx.close();it.remove();continue;}x.fx.tick(age);if(x.fx.done()){x.fx.close();it.remove();}}
  }
  static String family(Element e){return switch(e){case FIRE->"agi";case ELECTRIC->"zio";case ICE->"bufu";case WIND->"garu";case LIGHT->"kouha";case DARK->"eiga";case ALMIGHTY->"megido";case PSY->"psy";case NUCLEAR->"nuclear";case HEALING->"dia";case SUPPORT->"tarukaja";case AILMENT->"ailment";case SLASH->"slash";case PIERCE->"pierce";default->"strike";};}
  public static void outcome(String state,Strike target){String profile=switch(state){case "reflect","null"->"makarakarn";case "absorb"->"dia";default->"strike";};playProfile(profile,1,new ImpactAnchor(target),true,16);}
  public static void play(String skill,Element element,float scale,ImpactAnchor anchor,long seed){
+  if(ElementalPhoton.supports(skill)){ElementalPhoton.play(skill,anchor,64);return;}
   String profile=FeedbackLibrary.profile(skill);if(profile.isEmpty())profile=family(element);
   boolean follow=element==Element.SUPPORT||element==Element.HEALING||element==Element.AILMENT;
   playProfile(profile,Math.max(.75f,Math.min(1.65f,scale)),anchor,follow,32);
  }
  public static void batch(String skill,List<Strike> targets){
+  if(ElementalPhoton.supports(skill)){ElementalPhoton.batch(skill,targets);return;}
   var e=SpellVisuals.family(skill);String p=FeedbackLibrary.profile(skill);if(p.isEmpty())p=family(e);int cost=Math.max(2,Math.min(32,192/Math.max(1,targets.size())));
   for(var t:targets)playProfile(p,Math.max(.75f,Math.min(1.65f,SpellVisuals.scale(skill))),new ImpactAnchor(t),e==Element.SUPPORT||e==Element.HEALING||e==Element.AILMENT,cost);
  }
  private static void playProfile(String id,float scale,ImpactAnchor anchor,boolean follow,int budget){
-  var w=Minecraft.m_91087_().f_91073_;if(w==null)return;if(level!=w){reset();level=w;}
+  var w=Minecraft.m_91087_().f_91073_;if(w==null)return;if(level!=w){for(var x:live)x.fx.close();live.clear();level=w;}
   var original=recipes.get(id);if(original==null)return;
-  int room=256-live.stream().mapToInt(Live::cost).sum();budget=Math.min(room,budget);if(budget<1)return;
+  int room=256-legacyCost()-ElementalPhoton.cost();budget=Math.min(room,budget);if(budget<1)return;
   var layers=new ArrayList<JsonObject>();
   if(original.layers().size()>budget&&id.equals("zio")){
    var l=original.layers().get(0).deepCopy();var end=new JsonArray();end.add(0);end.add(.1);end.add(0);l.add("b",end);layers.add(l);

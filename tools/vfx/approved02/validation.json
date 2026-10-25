@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "checks": 1309,
+  "individualStudies": 22,
+  "areaStudies": 6,
+  "mappedCatalogueEntries": 38,
+  "preservedProductionFiles": 4420,
+  "productionResourcesChanged": [],
+  "photonDraftCompiled": true,
+  "inGameValidation": false,
+  "jarBuilt": false,
+  "timingTests": {
+    "feedback": 1396,
+    "evokerWeakness": 4421
+  },
+  "panel": {
+    "passed": true,
+    "profiles": 22,
+    "desktop": true,
+    "mobile": true,
+    "media": true,
+    "area": true,
+    "playback": true,
+    "errors": []
+  },
+  "sourceChanges": [
+    "presentation/InvocationFeedback.java",
+    "forge/CinematicEffects.java",
+    "forge/PersonaCinematicServer.java",
+    "forge/FeedbackServer.java",
+    "tests/FeedbackAudit.java"
+  ]
+}

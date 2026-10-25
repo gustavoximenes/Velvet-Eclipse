@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "checks": 5688,
+  "cuboids": 96,
+  "bones": 20,
+  "atlas": [
+    1024,
+    1024
+  ],
+  "authoring_density": 8,
+  "sampled_poses": 291,
+  "structural_contacts": 23,
+  "minimum_joint_overlap_native_units": 0.9482406770456073,
+  "max_rotation_step_degrees": 11.429974010552035,
+  "clip_durations": {
+    "animation.onmoraki.air_idle": 3.6,
+    "animation.onmoraki.physical_attack": 2.4,
+    "animation.onmoraki.magic_attack": 2.8
+  },
+  "proposed_impact_seconds": {
+    "physical": 0.8,
+    "magic": 1.05
+  },
+  "source_and_installed_jar_preserved": 4889,
+  "integrated": false,
+  "minecraft_run": false
+}
