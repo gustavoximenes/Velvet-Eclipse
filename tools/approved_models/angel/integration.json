@@ -1,0 +1,22 @@
+{
+  "revision": "03",
+  "renderer_scale": 0.125,
+  "authoring_density": 8,
+  "axis_conversion_count": 1,
+  "clip_seconds": {
+    "misc.idle": 4.8,
+    "action.physical": 2.6,
+    "action.magic": 3.0,
+    "expression.serene": 2.4,
+    "expression.focus": 2.4,
+    "expression.exertion": 2.4,
+    "expression.hurt": 2.4
+  },
+  "expressions": "Authored idle/attack faces retained; standalone clips limited to facial bones",
+  "source_sha256": {
+    "angel.animation.json": "4dedcfb4bb5cad63cb5eea072a50937dcc7ec48af95a0c3d2455615062b987ff",
+    "angel.bbmodel": "1e6b85aed432d9a79d8743df1a2a5a20f65ae4a01eeb789d32a9c433bb96eaa6",
+    "angel.geo.json": "c7170fb45597557369d0fd00d5117d90e8037ff9221a43650bb50d83a9970422",
+    "angel.png": "1d258a20bec0d14773fd6dfc14f2d0860ce49b67c777e4792343fb3f5cd30ac4"
+  }
+}

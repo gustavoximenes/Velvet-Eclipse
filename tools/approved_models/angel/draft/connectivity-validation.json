@@ -1,0 +1,3443 @@
+{
+  "status": "passed",
+  "poses": 343,
+  "chain_links": 28,
+  "method": "Solid component connectivity for body, clothes, hair, wings and mount; topological interlocking for chain loops.",
+  "results": [
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.09999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.19999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.39999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.49999999999999994,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.7999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.8999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 0.9999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.0999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.2,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.2999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.4999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.5999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.7999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.9,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 1.9999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.0999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.1999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.5,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.5999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.6999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.8,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.9,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 2.9999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.0999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.1999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.4999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.5999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.6999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.8,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.8999999999999995,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 3.9999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.1,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.199999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.3999999999999995,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.5,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.699999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.ground_idle",
+      "time": 4.8,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.05416666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.10833333333333334,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.1625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.21666666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.27083333333333337,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.325,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.37916666666666665,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.43333333333333335,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.48750000000000004,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.5416666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.5958333333333333,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.65,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.7041666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.7583333333333333,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.8125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.8666666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.9208333333333334,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 0.9750000000000001,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.0291666666666668,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.0833333333333335,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.1375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.1916666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.2458333333333333,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.3541666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.4083333333333334,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.4625000000000001,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.5166666666666666,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.5708333333333333,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.6791666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.7333333333333334,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.7875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.8416666666666668,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.8958333333333335,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 1.9500000000000002,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.004166666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.0583333333333336,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.1125000000000003,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.166666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.220833333333333,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.275,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.3291666666666666,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.3833333333333333,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.4375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.4916666666666667,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.5458333333333334,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.physical_attack",
+      "time": 2.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.0625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.1875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.3125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.4375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.5,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.5625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.6875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.75,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.8125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 0.9375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.0625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.1875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.3125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.4375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.5,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.5625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.6875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.75,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.8125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 1.9375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.0625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.1875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.3125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.4375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.5,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.5625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.625,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.6875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.75,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.8125,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.875,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 2.9375,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.magic_attack",
+      "time": 3.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.049999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.09999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.19999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.24999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.35,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.39999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.44999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.49999999999999994,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.5499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.6499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.7499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.7999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.85,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.8999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.95,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 0.9999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.0499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.0999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.2,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.2999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.3499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.45,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.4999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.5499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.5999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.65,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.7499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.7999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.8499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.9,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.9499999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 1.9999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.05,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.0999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.1999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.3499999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_serene",
+      "time": 2.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.049999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.09999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.19999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.24999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.35,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.39999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.44999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.49999999999999994,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.5499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.6499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.7499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.7999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.85,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.8999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.95,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 0.9999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.0499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.0999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.2,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.2999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.3499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.45,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.4999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.5499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.5999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.65,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.7499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.7999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.8499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.9,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.9499999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 1.9999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.05,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.0999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.1999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.3499999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_focus",
+      "time": 2.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.049999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.09999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.19999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.24999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.35,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.39999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.44999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.49999999999999994,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.5499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.6499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.7499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.7999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.85,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.8999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.95,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 0.9999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.0499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.0999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.2,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.2999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.3499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.45,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.4999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.5499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.5999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.65,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.7499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.7999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.8499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.9,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.9499999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 1.9999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.05,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.0999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.1999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.3499999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_exertion",
+      "time": 2.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.0,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.049999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.09999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.19999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.24999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.35,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.39999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.44999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.49999999999999994,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.5499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.6,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.6499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.7499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.7999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.85,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.8999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.95,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 0.9999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.0499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.0999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.2,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.2999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.3499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.45,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.4999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.5499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.5999999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.65,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.7,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.7499999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.7999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.8499999999999999,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.9,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.9499999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 1.9999999999999998,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.05,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.0999999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.15,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.1999999999999997,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.25,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.3,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.3499999999999996,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    },
+    {
+      "clip": "animation.angel.expression_hurt",
+      "time": 2.4,
+      "body_components": [
+        245
+      ],
+      "detached": [],
+      "unlinked_chain_pairs": [],
+      "collar_attached": true
+    }
+  ],
+  "source_hashes": {
+    "angel.geo.json": "c7170fb45597557369d0fd00d5117d90e8037ff9221a43650bb50d83a9970422",
+    "angel.animation.json": "4dedcfb4bb5cad63cb5eea072a50937dcc7ec48af95a0c3d2455615062b987ff",
+    "angel.png": "1d258a20bec0d14773fd6dfc14f2d0860ce49b67c777e4792343fb3f5cd30ac4"
+  }
+}

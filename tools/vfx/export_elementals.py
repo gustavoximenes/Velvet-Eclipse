@@ -26,5 +26,11 @@ def main():
   data={'loader':'forge:obj','model':'velvet_eclipse:models/vfx/audit02/'+name+'.obj','flip_v':True,'automatic_culling':False,'shade_quads':False,'textures':{'white':'velvet_eclipse:vfx/audit02/white','particle':'velvet_eclipse:vfx/audit02/white'}}
   (out/(name+'.json')).write_text(json.dumps(data,indent=2)+'\n',encoding='utf8')
  (out/'white.mtl').write_text('newmtl white\nKd 1 1 1\nmap_Kd #white\n',encoding='utf8')
+ # Forge bakes OBJ materials against the block atlas, including models rendered by Photon.
+ atlas=R/'assets/minecraft/atlases/blocks.json';atlas.parent.mkdir(parents=True,exist_ok=True)
+ data=json.loads(atlas.read_text(encoding='utf8')) if atlas.exists() else {'sources':[]}
+ source={'type':'minecraft:single','resource':'velvet_eclipse:vfx/audit02/white'}
+ if source not in data['sources']:data['sources'].append(source)
+ atlas.write_text(json.dumps(data,indent=2)+'\n',encoding='utf8')
  print('Exported 22 recipes, 38 bindings and centered Photon OBJ meshes; summoning untouched.')
 if __name__=='__main__':main()

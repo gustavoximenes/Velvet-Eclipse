@@ -1,15 +1,13 @@
 package com.gx.velveteclipse.client.exploration;
-
-import com.gx.velveteclipse.client.presentation.ApprovedAttackRenderer;
+import com.gx.velveteclipse.client.presentation.*;
 import com.gx.velveteclipse.client.equipment.EquipmentScreen;
+import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.entity.player.PlayerModelPart;
-import org.joml.Quaternionf;
-import java.util.EnumSet;
-
-/** Same rigid standard/slim player rig as the field; never mutates the live renderer model. */
+import org.joml.Matrix4f;
+import java.util.Set;
+/** Approved articulated player geometry, projected in 3D; no rotated 2D sprite. */
 public final class EntryPlayerRenderer {
  private static boolean drawing;
  public static boolean drawing(){return drawing;}
@@ -17,17 +15,28 @@ public final class EntryPlayerRenderer {
  public static void draw(GuiGraphics g,int w,int h,double time,float alpha){
   var player=Minecraft.m_91087_().f_91074_;if(player==null||alpha<=0)return;
   boolean slim="slim".equals(player.m_108564_());var family=EquipmentScreen.family();
-  var frame=ApprovedAttackRenderer.travelPose(family,slim,time*.52,1);
-  var visible=EnumSet.noneOf(PlayerModelPart.class);for(var layer:PlayerModelPart.values())if(player.m_36170_(layer))visible.add(layer);
-  g.m_280262_();var pose=g.m_280168_();pose.m_85836_();drawing=true;
+  var frame=EntryRunPose.sample(family,Math.max(0,(time-12)/20),slim);
+  g.m_280262_();drawing=true;
   try{
-   pose.m_85837_(w*.43+(time/32)*w*.035,h*.49,1000);
-   float size=h*.33f*ApprovedAttackRenderer.PLAYER_SCALE;pose.m_85841_(size,size,-size);
-   pose.m_252781_(new Quaternionf().rotationZ(-.19f).rotateY(-.72f).rotateX(.22f));pose.m_85837_(0,-.55,0);
-   var out=new EntrySilhouette(g.m_280091_().m_6299_(RenderType.m_269166_()),alpha);
-   ApprovedAttackRenderer.body(pose,out,frame,slim,visible,15728880);
+   var out=new Projected(g.m_280091_().m_6299_(RenderType.m_269166_()),new Matrix4f(g.m_280168_().m_85850_().m_252922_()),w,h,time,alpha);
+   var pose=new PoseStack();pose.m_85841_(.9375f,.9375f,.9375f);pose.m_85837_(0,frame.feet()+frame.height(),0);pose.m_85841_(1,-1,-1);
+   // Transparent skin overlays are not solid boxes. The actual skin remains on the arena player.
+   ApprovedAttackRenderer.body(pose,out,frame,slim,Set.of(),15728880);
    ApprovedAttackRenderer.weapon(pose,ignored->out,15728880,family,frame,-1);
-  }finally{try{g.m_280262_();}finally{pose.m_85849_();drawing=false;}}
+  }finally{try{g.m_280262_();}finally{drawing=false;}}
+ }
+ private static final class Projected implements VertexConsumer {
+  final VertexConsumer out;final Matrix4f gui;final int w,h,alpha;final double tick;final double[] quad=new double[8];int n;
+  Projected(VertexConsumer out,Matrix4f gui,int w,int h,double tick,float alpha){this.out=out;this.gui=gui;this.w=w;this.h=h;this.tick=tick;this.alpha=Math.round(alpha*255);}
+  public VertexConsumer m_5483_(double x,double y,double z){var p=EntryProjection.project(x,y,z,w,h,tick);quad[n++]=p.x;quad[n++]=p.y;return this;}
+  public VertexConsumer m_6122_(int r,int g,int b,int a){return this;}public VertexConsumer m_7421_(float u,float v){return this;}
+  public VertexConsumer m_7122_(int a,int b){return this;}public VertexConsumer m_7120_(int a,int b){return this;}public VertexConsumer m_5601_(float x,float y,float z){return this;}
+  public void m_5752_(){if(n<8)return;n=0;
+   double[] clipped=quad.clone();clipped=EntryProjection.clip(clipped,1,0,0);clipped=EntryProjection.clip(clipped,-1,0,w);clipped=EntryProjection.clip(clipped,0,1,0);clipped=EntryProjection.clip(clipped,0,-1,h);
+   for(var poly:EntryProjection.outside(clipped,w,h,tick))for(int i=2;i+3<poly.length;i+=2){vertex(poly,0);vertex(poly,i);vertex(poly,i+2);vertex(poly,i+2);}
+  }
+  private void vertex(double[] p,int i){out.m_252986_(gui,(float)p[i],(float)p[i+1],1000).m_6122_(18,5,255,alpha).m_5752_();}
+  public void m_7404_(int a,int b,int c,int d){}public void m_141991_(){}
  }
  private EntryPlayerRenderer(){}
 }

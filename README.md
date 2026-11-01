@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.57 — Angel e entradas de batalha
+
+Angel 03 aprovada integrada, entradas neutra/vantagem/desvantagem e correção do Photon que fazia as partículas desaparecerem. [Escopo, validação e limites](docs/angel-entry-0.6.57.md). Cliente/servidor: 0.6.57; protocolo de exploração 5.
+
 # Velvet Eclipse 0.6.56 — Onmoraki e sincronização de ataques
 
 A animação completa da Persona termina antes do dano e dos efeitos no alvo. Inclui Onmoraki 01, Photon elemental 02 e voz original no disparo da Evoker. Fogo da evocação e mixer preservados. [Escopo, limites e validação offline](docs/persona-timing-0.6.56.md). Cliente/servidor: 0.6.56; protocolo principal 24.

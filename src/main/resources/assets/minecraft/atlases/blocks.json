@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "velvet_eclipse:vfx/audit02/white"
+    }
+  ]
+}

@@ -1,0 +1,10053 @@
+[
+  {
+    "name": "pelvis",
+    "bone": "hips",
+    "material": "skin",
+    "pattern": "",
+    "feature": "pelvis",
+    "cube": {
+      "origin": [
+        -18.0,
+        163.6,
+        -12.0
+      ],
+      "size": [
+        36,
+        20,
+        24
+      ],
+      "uv": [
+        516,
+        175
+      ]
+    }
+  },
+  {
+    "name": "waist",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "body",
+    "cube": {
+      "origin": [
+        -12.5,
+        181.8,
+        -10.0
+      ],
+      "size": [
+        25,
+        38,
+        20
+      ],
+      "uv": [
+        252,
+        113
+      ]
+    }
+  },
+  {
+    "name": "ribcage",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "body",
+    "cube": {
+      "origin": [
+        -17.0,
+        217.0,
+        -11.18
+      ],
+      "size": [
+        34,
+        38,
+        23
+      ],
+      "uv": [
+        798,
+        2
+      ]
+    }
+  },
+  {
+    "name": "upper_chest",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "body",
+    "cube": {
+      "origin": [
+        -19.0,
+        251.7,
+        -10.6
+      ],
+      "size": [
+        38,
+        11,
+        22
+      ],
+      "uv": [
+        852,
+        274
+      ]
+    }
+  },
+  {
+    "name": "neck",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "neck",
+    "cube": {
+      "origin": [
+        -6.0,
+        260.2,
+        -5.7
+      ],
+      "size": [
+        12,
+        22,
+        13
+      ],
+      "uv": [
+        138,
+        274
+      ]
+    }
+  },
+  {
+    "name": "collar",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -7.5,
+        271.4,
+        -6.7
+      ],
+      "size": [
+        15,
+        6,
+        15
+      ],
+      "uv": [
+        666,
+        347
+      ]
+    }
+  },
+  {
+    "name": "chain_collar_mount",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain_mount",
+    "cube": {
+      "origin": [
+        4.4,
+        272.0,
+        -12.3
+      ],
+      "size": [
+        4,
+        4,
+        7
+      ],
+      "uv": [
+        660,
+        374
+      ]
+    }
+  },
+  {
+    "name": "belt",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -14.5,
+        195.3,
+        -11.5
+      ],
+      "size": [
+        29,
+        11,
+        23
+      ],
+      "uv": [
+        426,
+        274
+      ]
+    }
+  },
+  {
+    "name": "belt_buckle",
+    "bone": "body",
+    "material": "silver",
+    "pattern": "band",
+    "feature": "buckle",
+    "cube": {
+      "origin": [
+        2.5,
+        197.2,
+        -13.24
+      ],
+      "size": [
+        7,
+        8,
+        2
+      ],
+      "uv": [
+        254,
+        395
+      ]
+    }
+  },
+  {
+    "name": "belt_buckle_center",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "",
+    "feature": "buckle",
+    "cube": {
+      "origin": [
+        4.0,
+        198.7,
+        -14.02
+      ],
+      "size": [
+        4,
+        5,
+        1
+      ],
+      "uv": [
+        886,
+        395
+      ]
+    }
+  },
+  {
+    "name": "vertical_front_strap",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        0.8,
+        202.0,
+        -13.32
+      ],
+      "size": [
+        4,
+        60,
+        2
+      ],
+      "rotation": [
+        0,
+        0,
+        -4
+      ],
+      "pivot": [
+        2.8,
+        232.0,
+        -12.32
+      ],
+      "uv": [
+        696,
+        2
+      ]
+    }
+  },
+  {
+    "name": "upper_back_band",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -17.5,
+        243.7,
+        11.72
+      ],
+      "size": [
+        35,
+        11,
+        2
+      ],
+      "uv": [
+        460,
+        374
+      ]
+    }
+  },
+  {
+    "name": "hip_band",
+    "bone": "hips",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -19.5,
+        173.4,
+        -13.0
+      ],
+      "size": [
+        39,
+        10,
+        26
+      ],
+      "uv": [
+        782,
+        230
+      ]
+    }
+  },
+  {
+    "name": "lower_garment",
+    "bone": "hips",
+    "material": "strap",
+    "pattern": "",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -11.0,
+        160.16,
+        -12.8
+      ],
+      "size": [
+        22,
+        12,
+        24
+      ],
+      "uv": [
+        914,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_hip_facet",
+    "bone": "hips",
+    "material": "skin",
+    "pattern": "",
+    "feature": "pelvis",
+    "cube": {
+      "origin": [
+        -18.2,
+        162.8,
+        -11.5
+      ],
+      "size": [
+        10,
+        20,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        -12
+      ],
+      "pivot": [
+        -13.2,
+        172.8,
+        0.0
+      ],
+      "uv": [
+        778,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_rib_facet",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "body",
+    "cube": {
+      "origin": [
+        -17.8,
+        208.0,
+        -9.6
+      ],
+      "size": [
+        10,
+        40,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "pivot": [
+        -12.8,
+        228.0,
+        0.4
+      ],
+      "uv": [
+        2,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_chest_band",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -18.96,
+        242.7,
+        -14.5
+      ],
+      "size": [
+        20,
+        13,
+        9
+      ],
+      "rotation": [
+        -6,
+        12,
+        13
+      ],
+      "pivot": [
+        -8.96,
+        249.2,
+        -10.0
+      ],
+      "uv": [
+        398,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_shoulder",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "shoulder",
+    "cube": {
+      "origin": [
+        -26.6,
+        253.0,
+        -7.7
+      ],
+      "size": [
+        14,
+        14,
+        17
+      ],
+      "rotation": [
+        0,
+        0,
+        12
+      ],
+      "pivot": [
+        -19.6,
+        260.0,
+        0.8
+      ],
+      "uv": [
+        220,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_upper_arm",
+    "bone": "right_upper_arm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "arm",
+    "cube": {
+      "origin": [
+        -28.9,
+        207.3,
+        -6.2
+      ],
+      "size": [
+        13,
+        55,
+        14
+      ],
+      "uv": [
+        524,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_elbow",
+    "bone": "right_elbow_bridge",
+    "material": "skin",
+    "pattern": "",
+    "feature": "arm",
+    "cube": {
+      "origin": [
+        -28.4,
+        204.0,
+        -5.7
+      ],
+      "size": [
+        12,
+        12,
+        13
+      ],
+      "uv": [
+        930,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_forearm",
+    "bone": "right_forearm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "arm",
+    "cube": {
+      "origin": [
+        -27.4,
+        164.9,
+        -4.7
+      ],
+      "size": [
+        10,
+        47,
+        11
+      ],
+      "uv": [
+        344,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_wrist",
+    "bone": "right_forearm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "wrist",
+    "cube": {
+      "origin": [
+        -26.4,
+        163.7,
+        -3.7
+      ],
+      "size": [
+        8,
+        7,
+        9
+      ],
+      "uv": [
+        220,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_wrist_band",
+    "bone": "right_forearm",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -28.4,
+        169.1,
+        -5.7
+      ],
+      "size": [
+        12,
+        5,
+        13
+      ],
+      "uv": [
+        52,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_palm",
+    "bone": "right_hand",
+    "material": "skin",
+    "pattern": "",
+    "feature": "hand",
+    "cube": {
+      "origin": [
+        -27.4,
+        153.9,
+        -1.7
+      ],
+      "size": [
+        10,
+        13,
+        5
+      ],
+      "uv": [
+        104,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_finger_0",
+    "bone": "right_finger_0",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -26.88,
+        148.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        7,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        -25.88,
+        151.54,
+        0.48
+      ],
+      "uv": [
+        274,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_fingertip_0",
+    "bone": "right_finger_0",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -26.88,
+        145.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        -25.88,
+        147.0,
+        -0.16
+      ],
+      "uv": [
+        332,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_finger_1",
+    "bone": "right_finger_1",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -24.56,
+        146.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        9,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        -23.56,
+        150.54,
+        0.48
+      ],
+      "uv": [
+        600,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_fingertip_1",
+    "bone": "right_finger_1",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -24.56,
+        143.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        -23.56,
+        145.0,
+        -0.16
+      ],
+      "uv": [
+        342,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_finger_2",
+    "bone": "right_finger_2",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -22.24,
+        146.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        9,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        -21.24,
+        150.54,
+        0.48
+      ],
+      "uv": [
+        612,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_fingertip_2",
+    "bone": "right_finger_2",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -22.24,
+        143.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        -21.24,
+        145.0,
+        -0.16
+      ],
+      "uv": [
+        352,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_finger_3",
+    "bone": "right_finger_3",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -19.92,
+        148.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        7,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        -18.92,
+        151.54,
+        0.48
+      ],
+      "uv": [
+        286,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_fingertip_3",
+    "bone": "right_finger_3",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -19.92,
+        145.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        -18.92,
+        147.0,
+        -0.16
+      ],
+      "uv": [
+        362,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_thumb",
+    "bone": "right_thumb",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        -18.14,
+        156.26,
+        -1.84
+      ],
+      "size": [
+        3,
+        7,
+        4
+      ],
+      "rotation": [
+        8,
+        0,
+        26
+      ],
+      "pivot": [
+        -16.64,
+        159.76,
+        0.16
+      ],
+      "uv": [
+        684,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -15.3,
+        85.3,
+        -7.5
+      ],
+      "size": [
+        9,
+        90,
+        15
+      ],
+      "uv": [
+        82,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh_contour_-1_0",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -20.56272,
+        150.60953,
+        -7.0
+      ],
+      "size": [
+        12,
+        25,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.7313969991604474
+      ],
+      "pivot": [
+        -14.56272,
+        163.10953,
+        0.0
+      ],
+      "uv": [
+        430,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh_contour_-1_1",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -20.56027,
+        125.55096,
+        -7.0
+      ],
+      "size": [
+        12,
+        28,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        3.353340494317913
+      ],
+      "pivot": [
+        -14.56027,
+        139.55096,
+        0.0
+      ],
+      "uv": [
+        914,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh_contour_-1_2",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -18.51215,
+        84.88158,
+        -7.0
+      ],
+      "size": [
+        12,
+        43,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        3.646271208756837
+      ],
+      "pivot": [
+        -12.51215,
+        106.38158,
+        0.0
+      ],
+      "uv": [
+        600,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh_contour_1_0",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -13.03728,
+        150.60953,
+        -7.0
+      ],
+      "size": [
+        12,
+        25,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        3.7313969991604474
+      ],
+      "pivot": [
+        -7.03728,
+        163.10953,
+        0.0
+      ],
+      "uv": [
+        484,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh_contour_1_1",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -13.03973,
+        125.55096,
+        -7.0
+      ],
+      "size": [
+        12,
+        28,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.353340494317913
+      ],
+      "pivot": [
+        -7.03973,
+        139.55096,
+        0.0
+      ],
+      "uv": [
+        968,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_upper_thigh_contour_1_2",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -15.08785,
+        84.88158,
+        -7.0
+      ],
+      "size": [
+        12,
+        43,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.646271208756837
+      ],
+      "pivot": [
+        -9.08785,
+        106.38158,
+        0.0
+      ],
+      "uv": [
+        654,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_lower_thigh",
+    "bone": "right_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -15.8,
+        89.6,
+        -5.0
+      ],
+      "size": [
+        10,
+        44,
+        10
+      ],
+      "uv": [
+        936,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_knee",
+    "bone": "right_knee_bridge",
+    "material": "skin",
+    "pattern": "",
+    "feature": "knee",
+    "cube": {
+      "origin": [
+        -16.8,
+        84.0,
+        -6.5
+      ],
+      "size": [
+        12,
+        12,
+        13
+      ],
+      "uv": [
+        2,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_calf",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -13.8,
+        8.9,
+        -6.0
+      ],
+      "size": [
+        6,
+        85,
+        12
+      ],
+      "uv": [
+        182,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_calf_contour_-1_0",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -17.75582,
+        70.57113,
+        -5.5
+      ],
+      "size": [
+        9,
+        24,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        -2.91532211664252
+      ],
+      "pivot": [
+        -13.25582,
+        82.57113,
+        0.0
+      ],
+      "uv": [
+        190,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_calf_contour_-1_1",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -17.75876,
+        53.4807,
+        -5.5
+      ],
+      "size": [
+        9,
+        20,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        3.57633437499735
+      ],
+      "pivot": [
+        -13.25876,
+        63.4807,
+        0.0
+      ],
+      "uv": [
+        284,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_calf_contour_-1_2",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -16.25397,
+        8.48899,
+        -5.5
+      ],
+      "size": [
+        9,
+        47,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        2.407033853495633
+      ],
+      "pivot": [
+        -11.75397,
+        31.98899,
+        0.0
+      ],
+      "uv": [
+        388,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_calf_contour_1_0",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -12.84418,
+        70.57113,
+        -5.5
+      ],
+      "size": [
+        9,
+        24,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        2.91532211664252
+      ],
+      "pivot": [
+        -8.34418,
+        82.57113,
+        0.0
+      ],
+      "uv": [
+        232,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_calf_contour_1_1",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -12.84124,
+        53.4807,
+        -5.5
+      ],
+      "size": [
+        9,
+        20,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.57633437499735
+      ],
+      "pivot": [
+        -8.34124,
+        63.4807,
+        0.0
+      ],
+      "uv": [
+        326,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_calf_contour_1_2",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -14.34603,
+        8.48899,
+        -5.5
+      ],
+      "size": [
+        9,
+        47,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        -2.407033853495633
+      ],
+      "pivot": [
+        -9.84603,
+        31.98899,
+        0.0
+      ],
+      "uv": [
+        430,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_shin",
+    "bone": "right_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        -14.8,
+        17.2,
+        -4.0
+      ],
+      "size": [
+        8,
+        28,
+        8
+      ],
+      "uv": [
+        2,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_ankle",
+    "bone": "right_ankle_bridge",
+    "material": "skin",
+    "pattern": "",
+    "feature": "foot",
+    "cube": {
+      "origin": [
+        -14.3,
+        6.0,
+        -4.5
+      ],
+      "size": [
+        7,
+        12,
+        9
+      ],
+      "uv": [
+        728,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_instep",
+    "bone": "right_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "foot",
+    "cube": {
+      "origin": [
+        -15.3,
+        3.2,
+        -14.6
+      ],
+      "size": [
+        9,
+        8,
+        18
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "pivot": [
+        -10.8,
+        7.2,
+        -5.6
+      ],
+      "uv": [
+        772,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_heel",
+    "bone": "right_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "foot",
+    "cube": {
+      "origin": [
+        -14.8,
+        3.4,
+        -2.54
+      ],
+      "size": [
+        8,
+        6,
+        7
+      ],
+      "uv": [
+        536,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_toe_0",
+    "bone": "right_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        -15.04,
+        2.8,
+        -17.8
+      ],
+      "size": [
+        2,
+        4,
+        6
+      ],
+      "uv": [
+        298,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_toe_1",
+    "bone": "right_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        -12.88,
+        2.8,
+        -17.8
+      ],
+      "size": [
+        2,
+        4,
+        6
+      ],
+      "uv": [
+        316,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_toe_2",
+    "bone": "right_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        -10.72,
+        2.8,
+        -17.3
+      ],
+      "size": [
+        2,
+        4,
+        5
+      ],
+      "uv": [
+        394,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_toe_3",
+    "bone": "right_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        -8.56,
+        2.8,
+        -17.3
+      ],
+      "size": [
+        2,
+        4,
+        5
+      ],
+      "uv": [
+        410,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_hip_facet",
+    "bone": "hips",
+    "material": "skin",
+    "pattern": "",
+    "feature": "pelvis",
+    "cube": {
+      "origin": [
+        8.2,
+        162.8,
+        -11.5
+      ],
+      "size": [
+        10,
+        20,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        12
+      ],
+      "pivot": [
+        13.2,
+        172.8,
+        0.0
+      ],
+      "uv": [
+        846,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_rib_facet",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "body",
+    "cube": {
+      "origin": [
+        7.8,
+        208.0,
+        -9.6
+      ],
+      "size": [
+        10,
+        40,
+        20
+      ],
+      "rotation": [
+        0,
+        0,
+        -9
+      ],
+      "pivot": [
+        12.8,
+        228.0,
+        0.4
+      ],
+      "uv": [
+        64,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_chest_band",
+    "bone": "body",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        -1.04,
+        242.7,
+        -14.5
+      ],
+      "size": [
+        20,
+        13,
+        9
+      ],
+      "rotation": [
+        -6,
+        -12,
+        -13
+      ],
+      "pivot": [
+        8.96,
+        249.2,
+        -10.0
+      ],
+      "uv": [
+        458,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_shoulder",
+    "bone": "body",
+    "material": "skin",
+    "pattern": "",
+    "feature": "shoulder",
+    "cube": {
+      "origin": [
+        12.6,
+        253.0,
+        -7.7
+      ],
+      "size": [
+        14,
+        14,
+        17
+      ],
+      "rotation": [
+        0,
+        0,
+        -12
+      ],
+      "pivot": [
+        19.6,
+        260.0,
+        0.8
+      ],
+      "uv": [
+        368,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_upper_arm",
+    "bone": "left_upper_arm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "arm",
+    "cube": {
+      "origin": [
+        15.9,
+        207.3,
+        -6.2
+      ],
+      "size": [
+        13,
+        55,
+        14
+      ],
+      "uv": [
+        580,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_elbow",
+    "bone": "left_elbow_bridge",
+    "material": "skin",
+    "pattern": "",
+    "feature": "arm",
+    "cube": {
+      "origin": [
+        16.4,
+        204.0,
+        -5.7
+      ],
+      "size": [
+        12,
+        12,
+        13
+      ],
+      "uv": [
+        54,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_forearm",
+    "bone": "left_forearm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "arm",
+    "cube": {
+      "origin": [
+        17.4,
+        164.9,
+        -4.7
+      ],
+      "size": [
+        10,
+        47,
+        11
+      ],
+      "uv": [
+        472,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_wrist",
+    "bone": "left_forearm",
+    "material": "skin",
+    "pattern": "",
+    "feature": "wrist",
+    "cube": {
+      "origin": [
+        18.4,
+        163.7,
+        -3.7
+      ],
+      "size": [
+        8,
+        7,
+        9
+      ],
+      "uv": [
+        256,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_wrist_band",
+    "bone": "left_forearm",
+    "material": "strap",
+    "pattern": "band",
+    "feature": "clothing",
+    "cube": {
+      "origin": [
+        16.4,
+        169.1,
+        -5.7
+      ],
+      "size": [
+        12,
+        5,
+        13
+      ],
+      "uv": [
+        136,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_palm",
+    "bone": "left_hand",
+    "material": "skin",
+    "pattern": "",
+    "feature": "hand",
+    "cube": {
+      "origin": [
+        17.4,
+        153.9,
+        -1.7
+      ],
+      "size": [
+        10,
+        13,
+        5
+      ],
+      "uv": [
+        188,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_finger_0",
+    "bone": "left_finger_0",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        17.92,
+        148.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        7,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        18.92,
+        151.54,
+        0.48
+      ],
+      "uv": [
+        334,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_fingertip_0",
+    "bone": "left_finger_0",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        17.92,
+        145.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        18.92,
+        147.0,
+        -0.16
+      ],
+      "uv": [
+        372,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_finger_1",
+    "bone": "left_finger_1",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        20.24,
+        146.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        9,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        21.24,
+        150.54,
+        0.48
+      ],
+      "uv": [
+        624,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_fingertip_1",
+    "bone": "left_finger_1",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        20.24,
+        143.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        21.24,
+        145.0,
+        -0.16
+      ],
+      "uv": [
+        382,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_finger_2",
+    "bone": "left_finger_2",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        22.56,
+        146.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        9,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        23.56,
+        150.54,
+        0.48
+      ],
+      "uv": [
+        636,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_fingertip_2",
+    "bone": "left_finger_2",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        22.56,
+        143.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        23.56,
+        145.0,
+        -0.16
+      ],
+      "uv": [
+        392,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_finger_3",
+    "bone": "left_finger_3",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        24.88,
+        148.04,
+        -1.02
+      ],
+      "size": [
+        2,
+        7,
+        3
+      ],
+      "rotation": [
+        7,
+        0,
+        0
+      ],
+      "pivot": [
+        25.88,
+        151.54,
+        0.48
+      ],
+      "uv": [
+        346,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_fingertip_3",
+    "bone": "left_finger_3",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        24.88,
+        145.5,
+        -1.16
+      ],
+      "size": [
+        2,
+        3,
+        2
+      ],
+      "rotation": [
+        23,
+        0,
+        0
+      ],
+      "pivot": [
+        25.88,
+        147.0,
+        -0.16
+      ],
+      "uv": [
+        402,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_thumb",
+    "bone": "left_thumb",
+    "material": "skin",
+    "pattern": "",
+    "feature": "finger",
+    "cube": {
+      "origin": [
+        15.14,
+        156.26,
+        -1.84
+      ],
+      "size": [
+        3,
+        7,
+        4
+      ],
+      "rotation": [
+        8,
+        0,
+        -26
+      ],
+      "pivot": [
+        16.64,
+        159.76,
+        0.16
+      ],
+      "uv": [
+        700,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        6.3,
+        85.3,
+        -7.5
+      ],
+      "size": [
+        9,
+        90,
+        15
+      ],
+      "uv": [
+        132,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh_contour_-1_0",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        1.03728,
+        150.60953,
+        -7.0
+      ],
+      "size": [
+        12,
+        25,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.7313969991604474
+      ],
+      "pivot": [
+        7.03728,
+        163.10953,
+        0.0
+      ],
+      "uv": [
+        538,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh_contour_-1_1",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        1.03973,
+        125.55096,
+        -7.0
+      ],
+      "size": [
+        12,
+        28,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        3.353340494317913
+      ],
+      "pivot": [
+        7.03973,
+        139.55096,
+        0.0
+      ],
+      "uv": [
+        2,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh_contour_-1_2",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        3.08785,
+        84.88158,
+        -7.0
+      ],
+      "size": [
+        12,
+        43,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        3.646271208756837
+      ],
+      "pivot": [
+        9.08785,
+        106.38158,
+        0.0
+      ],
+      "uv": [
+        708,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh_contour_1_0",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        8.56272,
+        150.60953,
+        -7.0
+      ],
+      "size": [
+        12,
+        25,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        3.7313969991604474
+      ],
+      "pivot": [
+        14.56272,
+        163.10953,
+        0.0
+      ],
+      "uv": [
+        592,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh_contour_1_1",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        8.56027,
+        125.55096,
+        -7.0
+      ],
+      "size": [
+        12,
+        28,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.353340494317913
+      ],
+      "pivot": [
+        14.56027,
+        139.55096,
+        0.0
+      ],
+      "uv": [
+        56,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_upper_thigh_contour_1_2",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        6.51215,
+        84.88158,
+        -7.0
+      ],
+      "size": [
+        12,
+        43,
+        14
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.646271208756837
+      ],
+      "pivot": [
+        12.51215,
+        106.38158,
+        0.0
+      ],
+      "uv": [
+        762,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_lower_thigh",
+    "bone": "left_thigh",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        5.8,
+        89.6,
+        -5.0
+      ],
+      "size": [
+        10,
+        44,
+        10
+      ],
+      "uv": [
+        978,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_knee",
+    "bone": "left_knee_bridge",
+    "material": "skin",
+    "pattern": "",
+    "feature": "knee",
+    "cube": {
+      "origin": [
+        4.8,
+        84.0,
+        -6.5
+      ],
+      "size": [
+        12,
+        12,
+        13
+      ],
+      "uv": [
+        106,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_calf",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        7.8,
+        8.9,
+        -6.0
+      ],
+      "size": [
+        6,
+        85,
+        12
+      ],
+      "uv": [
+        220,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_calf_contour_-1_0",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        3.84418,
+        70.57113,
+        -5.5
+      ],
+      "size": [
+        9,
+        24,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        -2.91532211664252
+      ],
+      "pivot": [
+        8.34418,
+        82.57113,
+        0.0
+      ],
+      "uv": [
+        274,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_calf_contour_-1_1",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        3.84124,
+        53.4807,
+        -5.5
+      ],
+      "size": [
+        9,
+        20,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        3.57633437499735
+      ],
+      "pivot": [
+        8.34124,
+        63.4807,
+        0.0
+      ],
+      "uv": [
+        432,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_calf_contour_-1_2",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        5.34603,
+        8.48899,
+        -5.5
+      ],
+      "size": [
+        9,
+        47,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        2.407033853495633
+      ],
+      "pivot": [
+        9.84603,
+        31.98899,
+        0.0
+      ],
+      "uv": [
+        516,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_calf_contour_1_0",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        8.75582,
+        70.57113,
+        -5.5
+      ],
+      "size": [
+        9,
+        24,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        2.91532211664252
+      ],
+      "pivot": [
+        13.25582,
+        82.57113,
+        0.0
+      ],
+      "uv": [
+        316,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_calf_contour_1_1",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        8.75876,
+        53.4807,
+        -5.5
+      ],
+      "size": [
+        9,
+        20,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.57633437499735
+      ],
+      "pivot": [
+        13.25876,
+        63.4807,
+        0.0
+      ],
+      "uv": [
+        474,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_calf_contour_1_2",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        7.25397,
+        8.48899,
+        -5.5
+      ],
+      "size": [
+        9,
+        47,
+        11
+      ],
+      "rotation": [
+        0,
+        0,
+        -2.407033853495633
+      ],
+      "pivot": [
+        11.75397,
+        31.98899,
+        0.0
+      ],
+      "uv": [
+        558,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_shin",
+    "bone": "left_shin",
+    "material": "skin",
+    "pattern": "",
+    "feature": "leg",
+    "cube": {
+      "origin": [
+        6.8,
+        17.2,
+        -4.0
+      ],
+      "size": [
+        8,
+        28,
+        8
+      ],
+      "uv": [
+        36,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_ankle",
+    "bone": "left_ankle_bridge",
+    "material": "skin",
+    "pattern": "",
+    "feature": "foot",
+    "cube": {
+      "origin": [
+        7.3,
+        6.0,
+        -4.5
+      ],
+      "size": [
+        7,
+        12,
+        9
+      ],
+      "uv": [
+        762,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_instep",
+    "bone": "left_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "foot",
+    "cube": {
+      "origin": [
+        6.3,
+        3.2,
+        -14.6
+      ],
+      "size": [
+        9,
+        8,
+        18
+      ],
+      "rotation": [
+        -8,
+        0,
+        0
+      ],
+      "pivot": [
+        10.8,
+        7.2,
+        -5.6
+      ],
+      "uv": [
+        828,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_heel",
+    "bone": "left_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "foot",
+    "cube": {
+      "origin": [
+        6.8,
+        3.4,
+        -2.54
+      ],
+      "size": [
+        8,
+        6,
+        7
+      ],
+      "uv": [
+        568,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_toe_0",
+    "bone": "left_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        6.56,
+        2.8,
+        -17.8
+      ],
+      "size": [
+        2,
+        4,
+        6
+      ],
+      "uv": [
+        358,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_toe_1",
+    "bone": "left_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        8.72,
+        2.8,
+        -17.8
+      ],
+      "size": [
+        2,
+        4,
+        6
+      ],
+      "uv": [
+        376,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_toe_2",
+    "bone": "left_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        10.88,
+        2.8,
+        -17.3
+      ],
+      "size": [
+        2,
+        4,
+        5
+      ],
+      "uv": [
+        426,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_toe_3",
+    "bone": "left_foot",
+    "material": "skin",
+    "pattern": "",
+    "feature": "toe",
+    "cube": {
+      "origin": [
+        13.04,
+        2.8,
+        -17.3
+      ],
+      "size": [
+        2,
+        4,
+        5
+      ],
+      "uv": [
+        442,
+        395
+      ]
+    }
+  },
+  {
+    "name": "neck_upper_joint",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "neck",
+    "cube": {
+      "origin": [
+        -5.5,
+        272.4,
+        -6.0
+      ],
+      "size": [
+        11,
+        20,
+        12
+      ],
+      "uv": [
+        172,
+        312
+      ]
+    }
+  },
+  {
+    "name": "cranial_core",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "cranium",
+    "cube": {
+      "origin": [
+        -17.0,
+        296.0,
+        -13.6
+      ],
+      "size": [
+        34,
+        32,
+        28
+      ],
+      "uv": [
+        126,
+        113
+      ]
+    }
+  },
+  {
+    "name": "forehead_plane",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "forehead",
+    "cube": {
+      "origin": [
+        -15.5,
+        313.8,
+        -17.68
+      ],
+      "size": [
+        31,
+        14,
+        8
+      ],
+      "uv": [
+        518,
+        347
+      ]
+    }
+  },
+  {
+    "name": "midface",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "midface",
+    "cube": {
+      "origin": [
+        -14.0,
+        291.0,
+        -17.776
+      ],
+      "size": [
+        28,
+        26,
+        8
+      ],
+      "uv": [
+        532,
+        274
+      ]
+    }
+  },
+  {
+    "name": "lower_face",
+    "bone": "jaw",
+    "material": "skin",
+    "pattern": "",
+    "feature": "jaw",
+    "cube": {
+      "origin": [
+        -10.0,
+        286.74,
+        -17.768
+      ],
+      "size": [
+        20,
+        11,
+        14
+      ],
+      "uv": [
+        158,
+        347
+      ]
+    }
+  },
+  {
+    "name": "chin_plane",
+    "bone": "jaw",
+    "material": "skin",
+    "pattern": "",
+    "feature": "chin",
+    "cube": {
+      "origin": [
+        -3.0,
+        282.9,
+        -17.76
+      ],
+      "size": [
+        6,
+        10,
+        10
+      ],
+      "uv": [
+        980,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_face_facet_0",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -17.33447,
+        298.63768,
+        -17.776
+      ],
+      "size": [
+        20,
+        11,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        3.082180824528147
+      ],
+      "pivot": [
+        -7.33447,
+        304.13768,
+        -9.776
+      ],
+      "uv": [
+        624,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_face_facet_1",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -16.20978,
+        294.22357,
+        -17.744
+      ],
+      "size": [
+        20,
+        9,
+        15
+      ],
+      "rotation": [
+        0,
+        0,
+        24.35300917502973
+      ],
+      "pivot": [
+        -6.20978,
+        298.72357,
+        -10.244
+      ],
+      "uv": [
+        228,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_face_facet_2",
+    "bone": "jaw",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -13.26744,
+        289.90241,
+        -17.712
+      ],
+      "size": [
+        20,
+        9,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        43.17591016762381
+      ],
+      "pivot": [
+        -3.26744,
+        294.40241,
+        -11.712
+      ],
+      "uv": [
+        796,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_face_facet_3",
+    "bone": "jaw",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -12.24193,
+        290.66477,
+        -17.68
+      ],
+      "size": [
+        20,
+        5,
+        10
+      ],
+      "rotation": [
+        0,
+        0,
+        73.03385189146384
+      ],
+      "pivot": [
+        -2.24193,
+        293.16477,
+        -12.68
+      ],
+      "uv": [
+        336,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_temple",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "temple",
+    "cube": {
+      "origin": [
+        -19.34,
+        298.2,
+        -7.6
+      ],
+      "size": [
+        7,
+        26,
+        16
+      ],
+      "rotation": [
+        0,
+        20,
+        0
+      ],
+      "pivot": [
+        -15.84,
+        311.2,
+        0.4
+      ],
+      "uv": [
+        110,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_ear",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        -22.0,
+        295.4,
+        -2.84
+      ],
+      "size": [
+        4,
+        10,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        8
+      ],
+      "pivot": [
+        -20.0,
+        300.4,
+        0.16
+      ],
+      "uv": [
+        292,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_blindfold",
+    "bone": "face_base",
+    "material": "blindfold",
+    "pattern": "embroidery",
+    "feature": "blindfold",
+    "cube": {
+      "origin": [
+        -16.74,
+        301.1,
+        -19.32
+      ],
+      "size": [
+        17,
+        9,
+        2
+      ],
+      "rotation": [
+        0,
+        5,
+        8
+      ],
+      "pivot": [
+        -8.24,
+        305.6,
+        -18.32
+      ],
+      "uv": [
+        716,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_blindfold_side",
+    "bone": "head",
+    "material": "blindfold",
+    "pattern": "band",
+    "feature": "blindfold",
+    "cube": {
+      "origin": [
+        -18.94,
+        302.6,
+        -18.3
+      ],
+      "size": [
+        3,
+        6,
+        23
+      ],
+      "rotation": [
+        0,
+        11,
+        0
+      ],
+      "pivot": [
+        -17.44,
+        305.6,
+        -6.8
+      ],
+      "uv": [
+        516,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_face_facet_0",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -2.66553,
+        298.63768,
+        -17.776
+      ],
+      "size": [
+        20,
+        11,
+        16
+      ],
+      "rotation": [
+        0,
+        0,
+        -3.082180824528147
+      ],
+      "pivot": [
+        7.33447,
+        304.13768,
+        -9.776
+      ],
+      "uv": [
+        698,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_face_facet_1",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -3.79022,
+        294.22357,
+        -17.744
+      ],
+      "size": [
+        20,
+        9,
+        15
+      ],
+      "rotation": [
+        0,
+        0,
+        -24.35300917502973
+      ],
+      "pivot": [
+        6.20978,
+        298.72357,
+        -10.244
+      ],
+      "uv": [
+        300,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_face_facet_2",
+    "bone": "jaw",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -6.73256,
+        289.90241,
+        -17.712
+      ],
+      "size": [
+        20,
+        9,
+        12
+      ],
+      "rotation": [
+        0,
+        0,
+        -43.17591016762381
+      ],
+      "pivot": [
+        3.26744,
+        294.40241,
+        -11.712
+      ],
+      "uv": [
+        862,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_face_facet_3",
+    "bone": "jaw",
+    "material": "skin",
+    "pattern": "",
+    "feature": "face_contour",
+    "cube": {
+      "origin": [
+        -7.75807,
+        290.66477,
+        -17.68
+      ],
+      "size": [
+        20,
+        5,
+        10
+      ],
+      "rotation": [
+        0,
+        0,
+        -73.03385189146384
+      ],
+      "pivot": [
+        2.24193,
+        293.16477,
+        -12.68
+      ],
+      "uv": [
+        398,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_temple",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "temple",
+    "cube": {
+      "origin": [
+        12.34,
+        298.2,
+        -7.6
+      ],
+      "size": [
+        7,
+        26,
+        16
+      ],
+      "rotation": [
+        0,
+        -20,
+        0
+      ],
+      "pivot": [
+        15.84,
+        311.2,
+        0.4
+      ],
+      "uv": [
+        158,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_ear",
+    "bone": "head",
+    "material": "skin",
+    "pattern": "",
+    "feature": "ear",
+    "cube": {
+      "origin": [
+        18.0,
+        295.4,
+        -2.84
+      ],
+      "size": [
+        4,
+        10,
+        6
+      ],
+      "rotation": [
+        0,
+        0,
+        -8
+      ],
+      "pivot": [
+        20.0,
+        300.4,
+        0.16
+      ],
+      "uv": [
+        314,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_blindfold",
+    "bone": "face_base",
+    "material": "blindfold",
+    "pattern": "embroidery",
+    "feature": "blindfold",
+    "cube": {
+      "origin": [
+        -0.26,
+        301.1,
+        -19.32
+      ],
+      "size": [
+        17,
+        9,
+        2
+      ],
+      "rotation": [
+        0,
+        -5,
+        -8
+      ],
+      "pivot": [
+        8.24,
+        305.6,
+        -18.32
+      ],
+      "uv": [
+        756,
+        374
+      ]
+    }
+  },
+  {
+    "name": "left_blindfold_side",
+    "bone": "head",
+    "material": "blindfold",
+    "pattern": "band",
+    "feature": "blindfold",
+    "cube": {
+      "origin": [
+        15.94,
+        302.6,
+        -18.3
+      ],
+      "size": [
+        3,
+        6,
+        23
+      ],
+      "rotation": [
+        0,
+        -11,
+        0
+      ],
+      "pivot": [
+        17.44,
+        305.6,
+        -6.8
+      ],
+      "uv": [
+        570,
+        312
+      ]
+    }
+  },
+  {
+    "name": "blindfold_back",
+    "bone": "head",
+    "material": "blindfold",
+    "pattern": "",
+    "feature": "blindfold",
+    "cube": {
+      "origin": [
+        -17.5,
+        302.2,
+        13.64
+      ],
+      "size": [
+        35,
+        6,
+        2
+      ],
+      "uv": [
+        458,
+        395
+      ]
+    }
+  },
+  {
+    "name": "blindfold_bridge",
+    "bone": "face_base",
+    "material": "blindfold",
+    "pattern": "",
+    "feature": "blindfold",
+    "cube": {
+      "origin": [
+        -2.5,
+        302.78,
+        -20.28
+      ],
+      "size": [
+        5,
+        5,
+        2
+      ],
+      "uv": [
+        870,
+        395
+      ]
+    }
+  },
+  {
+    "name": "nose_bridge",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "nose",
+    "cube": {
+      "origin": [
+        -1.0,
+        296.7,
+        -19.46
+      ],
+      "size": [
+        2,
+        9,
+        3
+      ],
+      "rotation": [
+        20,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        301.2,
+        -17.96
+      ],
+      "uv": [
+        648,
+        374
+      ]
+    }
+  },
+  {
+    "name": "nose_tip",
+    "bone": "face_base",
+    "material": "skin",
+    "pattern": "",
+    "feature": "nose",
+    "cube": {
+      "origin": [
+        -1.5,
+        296.2,
+        -20.62
+      ],
+      "size": [
+        3,
+        2,
+        3
+      ],
+      "rotation": [
+        20,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        297.2,
+        -19.12
+      ],
+      "uv": [
+        412,
+        408
+      ]
+    }
+  },
+  {
+    "name": "mouth_recess",
+    "bone": "mouth",
+    "material": "mouth",
+    "pattern": "",
+    "feature": "mouth",
+    "cube": {
+      "origin": [
+        -2.5,
+        290.52,
+        -18.66
+      ],
+      "size": [
+        5,
+        2,
+        1
+      ],
+      "uv": [
+        446,
+        408
+      ]
+    }
+  },
+  {
+    "name": "lower_lip",
+    "bone": "lip_lower",
+    "material": "lip",
+    "pattern": "",
+    "feature": "expression",
+    "cube": {
+      "origin": [
+        -2.0,
+        290.38,
+        -19.22
+      ],
+      "size": [
+        4,
+        1,
+        1
+      ],
+      "uv": [
+        460,
+        408
+      ]
+    }
+  },
+  {
+    "name": "lower_lip_cover",
+    "bone": "lip_lower",
+    "material": "skin",
+    "pattern": "",
+    "feature": "expression",
+    "cube": {
+      "origin": [
+        -3.5,
+        288.44,
+        -19.24
+      ],
+      "size": [
+        7,
+        2,
+        2
+      ],
+      "uv": [
+        426,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_upper_lip",
+    "bone": "lip_right",
+    "material": "lip",
+    "pattern": "",
+    "feature": "expression",
+    "cube": {
+      "origin": [
+        -2.78,
+        291.7,
+        -19.22
+      ],
+      "size": [
+        3,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        -9
+      ],
+      "pivot": [
+        -1.28,
+        292.2,
+        -18.72
+      ],
+      "uv": [
+        472,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_lip_corner",
+    "bone": "mouth_corner_right",
+    "material": "lip",
+    "pattern": "",
+    "feature": "expression",
+    "cube": {
+      "origin": [
+        -3.22,
+        291.1,
+        -18.74
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ],
+      "uv": [
+        482,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_upper_lip",
+    "bone": "lip_left",
+    "material": "lip",
+    "pattern": "",
+    "feature": "expression",
+    "cube": {
+      "origin": [
+        -0.22,
+        291.7,
+        -19.22
+      ],
+      "size": [
+        3,
+        1,
+        1
+      ],
+      "rotation": [
+        0,
+        0,
+        9
+      ],
+      "pivot": [
+        1.28,
+        292.2,
+        -18.72
+      ],
+      "uv": [
+        488,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_lip_corner",
+    "bone": "mouth_corner_left",
+    "material": "lip",
+    "pattern": "",
+    "feature": "expression",
+    "cube": {
+      "origin": [
+        2.22,
+        291.1,
+        -18.74
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ],
+      "uv": [
+        498,
+        408
+      ]
+    }
+  },
+  {
+    "name": "hair_occipital",
+    "bone": "hair_back",
+    "material": "hair_shadow",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -17.5,
+        289.8,
+        10.3
+      ],
+      "size": [
+        35,
+        38,
+        9
+      ],
+      "rotation": [
+        -7,
+        0,
+        0
+      ],
+      "pivot": [
+        0.0,
+        308.8,
+        14.8
+      ],
+      "uv": [
+        426,
+        175
+      ]
+    }
+  },
+  {
+    "name": "hair_cap",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -18.0,
+        319.3,
+        -15.3
+      ],
+      "size": [
+        36,
+        11,
+        33
+      ],
+      "uv": [
+        638,
+        175
+      ]
+    }
+  },
+  {
+    "name": "hair_crown",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -15.1,
+        326.1,
+        -11.9
+      ],
+      "size": [
+        27,
+        7,
+        27
+      ],
+      "rotation": [
+        -4,
+        0,
+        -7
+      ],
+      "pivot": [
+        -1.6,
+        329.6,
+        1.6
+      ],
+      "uv": [
+        606,
+        274
+      ]
+    }
+  },
+  {
+    "name": "front_swept_lock",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -12.9,
+        319.2,
+        -17.1
+      ],
+      "size": [
+        17,
+        12,
+        7
+      ],
+      "rotation": [
+        15,
+        0,
+        -27
+      ],
+      "pivot": [
+        -4.4,
+        325.2,
+        -13.6
+      ],
+      "uv": [
+        2,
+        374
+      ]
+    }
+  },
+  {
+    "name": "front_swept_tip",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -14.86,
+        309.7,
+        -18.52
+      ],
+      "size": [
+        7,
+        15,
+        6
+      ],
+      "rotation": [
+        8,
+        -10,
+        -18
+      ],
+      "pivot": [
+        -11.36,
+        317.2,
+        -15.52
+      ],
+      "uv": [
+        928,
+        347
+      ]
+    }
+  },
+  {
+    "name": "fringe_sweep",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -11.7,
+        312.3,
+        -18.74
+      ],
+      "size": [
+        17,
+        21,
+        5
+      ],
+      "rotation": [
+        7,
+        0,
+        -36
+      ],
+      "pivot": [
+        -3.2,
+        322.8,
+        -16.24
+      ],
+      "uv": [
+        884,
+        312
+      ]
+    }
+  },
+  {
+    "name": "fringe_outer",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -16.46,
+        304.5,
+        -18.74
+      ],
+      "size": [
+        7,
+        19,
+        5
+      ],
+      "rotation": [
+        4,
+        -8,
+        -16
+      ],
+      "pivot": [
+        -12.96,
+        314.0,
+        -16.24
+      ],
+      "uv": [
+        372,
+        347
+      ]
+    }
+  },
+  {
+    "name": "fringe_right_edge",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        10.12,
+        315.2,
+        -17.3
+      ],
+      "size": [
+        6,
+        16,
+        5
+      ],
+      "rotation": [
+        4,
+        8,
+        18
+      ],
+      "pivot": [
+        13.12,
+        323.2,
+        -14.8
+      ],
+      "uv": [
+        956,
+        347
+      ]
+    }
+  },
+  {
+    "name": "right_crown_bevel",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -20.36,
+        317.5,
+        -13.2
+      ],
+      "size": [
+        10,
+        13,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        -28
+      ],
+      "pivot": [
+        -15.36,
+        324.0,
+        0.8
+      ],
+      "uv": [
+        206,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_side_bob",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -22.3,
+        293.5,
+        -9.9
+      ],
+      "size": [
+        7,
+        29,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        -5
+      ],
+      "pivot": [
+        -18.8,
+        308.0,
+        1.6
+      ],
+      "uv": [
+        62,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_jaw_lock",
+    "bone": "hair_right",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        -21.0,
+        287.2,
+        -10.28
+      ],
+      "size": [
+        6,
+        12,
+        10
+      ],
+      "rotation": [
+        -7,
+        15,
+        17
+      ],
+      "pivot": [
+        -18.0,
+        293.2,
+        -5.28
+      ],
+      "uv": [
+        598,
+        347
+      ]
+    }
+  },
+  {
+    "name": "left_crown_bevel",
+    "bone": "hair_crown",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        10.36,
+        317.5,
+        -13.2
+      ],
+      "size": [
+        10,
+        13,
+        28
+      ],
+      "rotation": [
+        0,
+        0,
+        28
+      ],
+      "pivot": [
+        15.36,
+        324.0,
+        0.8
+      ],
+      "uv": [
+        284,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_side_bob",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        15.3,
+        293.5,
+        -9.9
+      ],
+      "size": [
+        7,
+        29,
+        23
+      ],
+      "rotation": [
+        0,
+        0,
+        5
+      ],
+      "pivot": [
+        18.8,
+        308.0,
+        1.6
+      ],
+      "uv": [
+        124,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_jaw_lock",
+    "bone": "hair_left",
+    "material": "hair",
+    "pattern": "hair",
+    "feature": "hair",
+    "cube": {
+      "origin": [
+        15.0,
+        287.2,
+        -10.28
+      ],
+      "size": [
+        6,
+        12,
+        10
+      ],
+      "rotation": [
+        -7,
+        -15,
+        -17
+      ],
+      "pivot": [
+        18.0,
+        293.2,
+        -5.28
+      ],
+      "uv": [
+        632,
+        347
+      ]
+    }
+  },
+  {
+    "name": "ribbon_right",
+    "bone": "ribbon_right",
+    "material": "blindfold",
+    "pattern": "",
+    "feature": "ribbon",
+    "cube": {
+      "origin": [
+        -12.1,
+        226.4,
+        19.5
+      ],
+      "size": [
+        5,
+        80,
+        1
+      ],
+      "rotation": [
+        -6,
+        0,
+        -7
+      ],
+      "pivot": [
+        -9.6,
+        266.4,
+        20.0
+      ],
+      "uv": [
+        378,
+        2
+      ]
+    }
+  },
+  {
+    "name": "ribbon_left",
+    "bone": "ribbon_left",
+    "material": "blindfold",
+    "pattern": "",
+    "feature": "ribbon",
+    "cube": {
+      "origin": [
+        6.8,
+        235.7,
+        21.1
+      ],
+      "size": [
+        4,
+        71,
+        1
+      ],
+      "rotation": [
+        -10,
+        0,
+        6
+      ],
+      "pivot": [
+        8.8,
+        271.2,
+        21.6
+      ],
+      "uv": [
+        512,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_wing_root",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "",
+    "feature": "wing",
+    "cube": {
+      "origin": [
+        -43.1,
+        252.0,
+        9.8
+      ],
+      "size": [
+        11,
+        52,
+        10
+      ],
+      "rotation": [
+        2.6691743186590635,
+        0,
+        45.62959860841026
+      ],
+      "pivot": [
+        -37.6,
+        278.0,
+        14.8
+      ],
+      "uv": [
+        710,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_wing_leading",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "",
+    "feature": "wing",
+    "cube": {
+      "origin": [
+        -104.8,
+        266.2,
+        12.5
+      ],
+      "size": [
+        12,
+        102,
+        7
+      ],
+      "rotation": [
+        0.0,
+        0,
+        63.23249108070382
+      ],
+      "pivot": [
+        -98.8,
+        317.2,
+        16.0
+      ],
+      "uv": [
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_0",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -51.9,
+        218.4,
+        17.3
+      ],
+      "size": [
+        11,
+        52,
+        3
+      ],
+      "rotation": [
+        4.488491817563711,
+        0,
+        157.86450812189963
+      ],
+      "pivot": [
+        -46.4,
+        244.4,
+        18.8
+      ],
+      "uv": [
+        876,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_0",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -59.82641,
+        214.2684,
+        19.97217
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.488491817563699,
+        0,
+        157.86450812189963
+      ],
+      "pivot": [
+        -56.82641,
+        218.7684,
+        20.97217
+      ],
+      "uv": [
+        796,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_1",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -62.5,
+        228.76667,
+        17.3
+      ],
+      "size": [
+        11,
+        48,
+        3
+      ],
+      "rotation": [
+        4.801494113959553,
+        0,
+        148.8023844420532
+      ],
+      "pivot": [
+        -57.0,
+        252.76667,
+        18.8
+      ],
+      "uv": [
+        186,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_1",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -73.46892,
+        226.02476,
+        19.98415
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.8014941139595395,
+        0,
+        148.80238444205324
+      ],
+      "pivot": [
+        -70.46892,
+        230.52476,
+        20.98415
+      ],
+      "uv": [
+        814,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_2",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -73.1,
+        238.13333,
+        17.3
+      ],
+      "size": [
+        11,
+        46,
+        3
+      ],
+      "rotation": [
+        5.009684603354825,
+        0,
+        138.67233185362758
+      ],
+      "pivot": [
+        -67.6,
+        261.13333,
+        18.8
+      ],
+      "uv": [
+        306,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_2",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -87.11392,
+        237.85423,
+        19.99211
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        5.00968460335482,
+        0,
+        138.67233185362753
+      ],
+      "pivot": [
+        -84.11392,
+        242.35423,
+        20.99211
+      ],
+      "uv": [
+        832,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_3",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -83.7,
+        246.5,
+        17.3
+      ],
+      "size": [
+        11,
+        46,
+        3
+      ],
+      "rotation": [
+        5.060748938963374,
+        0,
+        127.98623745207723
+      ],
+      "pivot": [
+        -78.2,
+        269.5,
+        18.8
+      ],
+      "uv": [
+        336,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_3",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -100.72719,
+        249.75124,
+        19.99407
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        5.060748938963389,
+        0,
+        127.98623745207728
+      ],
+      "pivot": [
+        -97.72719,
+        254.25124,
+        20.99407
+      ],
+      "uv": [
+        850,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_4",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -94.3,
+        254.36667,
+        17.3
+      ],
+      "size": [
+        11,
+        47,
+        3
+      ],
+      "rotation": [
+        4.940116361554048,
+        0,
+        117.45099777093223
+      ],
+      "pivot": [
+        -88.8,
+        277.86667,
+        18.8
+      ],
+      "uv": [
+        246,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_4",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -114.27837,
+        261.68959,
+        19.98945
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.940116361554067,
+        0,
+        117.45099777093208
+      ],
+      "pivot": [
+        -111.27837,
+        266.18959,
+        20.98945
+      ],
+      "uv": [
+        868,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_5",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -104.9,
+        261.23333,
+        17.3
+      ],
+      "size": [
+        11,
+        50,
+        3
+      ],
+      "rotation": [
+        4.681079656000438,
+        0,
+        107.71786170626818
+      ],
+      "pivot": [
+        -99.4,
+        286.23333,
+        18.8
+      ],
+      "uv": [
+        2,
+        175
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_5",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -127.75532,
+        273.63271,
+        19.97954
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.681079656000431,
+        0,
+        107.71786170626795
+      ],
+      "pivot": [
+        -124.75532,
+        278.13271,
+        20.97954
+      ],
+      "uv": [
+        886,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_6",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -115.5,
+        268.1,
+        17.3
+      ],
+      "size": [
+        11,
+        53,
+        3
+      ],
+      "rotation": [
+        4.342630013476809,
+        0,
+        99.17620334037618
+      ],
+      "pivot": [
+        -110.0,
+        294.6,
+        18.8
+      ],
+      "uv": [
+        816,
+        113
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_6",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -141.16561,
+        285.55017,
+        19.96659
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.342630013476808,
+        0,
+        99.17620334037606
+      ],
+      "pivot": [
+        -138.16561,
+        290.05017,
+        20.96659
+      ],
+      "uv": [
+        904,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_7",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -126.1,
+        273.96667,
+        17.3
+      ],
+      "size": [
+        11,
+        58,
+        3
+      ],
+      "rotation": [
+        3.9794391076678055,
+        0,
+        91.92685749002891
+      ],
+      "pivot": [
+        -120.6,
+        302.96667,
+        18.8
+      ],
+      "uv": [
+        914,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_7",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -154.52679,
+        297.42621,
+        19.95268
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.979439107667784,
+        0,
+        91.9268574900287
+      ],
+      "pivot": [
+        -151.52679,
+        301.92621,
+        20.95268
+      ],
+      "uv": [
+        922,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_8",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -136.7,
+        279.33333,
+        17.3
+      ],
+      "size": [
+        11,
+        64,
+        3
+      ],
+      "rotation": [
+        3.627415134842756,
+        0,
+        85.87987808748284
+      ],
+      "pivot": [
+        -131.2,
+        311.33333,
+        18.8
+      ],
+      "uv": [
+        636,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_8",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -167.85658,
+        309.25775,
+        19.93919
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.627415134842754,
+        0,
+        85.87987808748264
+      ],
+      "pivot": [
+        -164.85658,
+        313.75775,
+        20.93919
+      ],
+      "uv": [
+        940,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_9",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -147.3,
+        284.7,
+        17.3
+      ],
+      "size": [
+        11,
+        70,
+        3
+      ],
+      "rotation": [
+        3.3044563022631137,
+        0,
+        80.86399099577748
+      ],
+      "pivot": [
+        -141.8,
+        319.7,
+        18.8
+      ],
+      "uv": [
+        452,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_9",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -181.16848,
+        321.04873,
+        19.92681
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.304456302263123,
+        0,
+        80.86399099577733
+      ],
+      "pivot": [
+        -178.16848,
+        325.54873,
+        20.92681
+      ],
+      "uv": [
+        958,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_10",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -157.9,
+        289.56667,
+        17.3
+      ],
+      "size": [
+        11,
+        77,
+        3
+      ],
+      "rotation": [
+        3.016603538809641,
+        0,
+        76.69608707360102
+      ],
+      "pivot": [
+        -152.4,
+        328.06667,
+        18.8
+      ],
+      "uv": [
+        392,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_10",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -194.47133,
+        332.80555,
+        19.91578
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.0166035388096417,
+        0,
+        76.69608707360115
+      ],
+      "pivot": [
+        -191.47133,
+        337.30555,
+        20.91578
+      ],
+      "uv": [
+        976,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_11",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -168.5,
+        294.93333,
+        17.3
+      ],
+      "size": [
+        11,
+        83,
+        3
+      ],
+      "rotation": [
+        2.763600936690545,
+        0,
+        73.21245225340876
+      ],
+      "pivot": [
+        -163.0,
+        336.43333,
+        18.8
+      ],
+      "uv": [
+        318,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_11",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -207.77046,
+        344.53467,
+        19.90607
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        2.7636009366905454,
+        0,
+        73.21245225340884
+      ],
+      "pivot": [
+        -204.77046,
+        349.03467,
+        20.90607
+      ],
+      "uv": [
+        994,
+        374
+      ]
+    }
+  },
+  {
+    "name": "right_primary_12",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -179.1,
+        299.3,
+        17.3
+      ],
+      "size": [
+        11,
+        91,
+        3
+      ],
+      "rotation": [
+        2.5424231475070256,
+        0,
+        70.27772223555297
+      ],
+      "pivot": [
+        -173.6,
+        344.8,
+        18.8
+      ],
+      "uv": [
+        258,
+        2
+      ]
+    }
+  },
+  {
+    "name": "right_primary_tip_12",
+    "bone": "wing_right_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -221.06891,
+        356.24168,
+        19.89759
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        2.5424231475070345,
+        0,
+        70.27772223555331
+      ],
+      "pivot": [
+        -218.06891,
+        360.74168,
+        20.89759
+      ],
+      "uv": [
+        2,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_0",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -45.6,
+        239.5,
+        9.4
+      ],
+      "size": [
+        12,
+        33,
+        4
+      ],
+      "rotation": [
+        -3.579683184422053,
+        0,
+        148.2985703304943
+      ],
+      "pivot": [
+        -39.6,
+        256.0,
+        11.4
+      ],
+      "uv": [
+        714,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_0",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -52.9,
+        238.3,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.1301023541561
+      ],
+      "pivot": [
+        -49.4,
+        239.8,
+        10.4
+      ],
+      "uv": [
+        898,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_1",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -56.13333,
+        248.05556,
+        9.4
+      ],
+      "size": [
+        12,
+        31,
+        4
+      ],
+      "rotation": [
+        -3.767183496842391,
+        0,
+        141.65442504600662
+      ],
+      "pivot": [
+        -50.13333,
+        263.55556,
+        11.4
+      ],
+      "uv": [
+        358,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_1",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -64.45556,
+        247.54444,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.1301023541561
+      ],
+      "pivot": [
+        -60.95556,
+        249.04444,
+        10.4
+      ],
+      "uv": [
+        920,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_2",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -66.66667,
+        256.11111,
+        9.4
+      ],
+      "size": [
+        12,
+        30,
+        4
+      ],
+      "rotation": [
+        -3.9144041294451086,
+        0,
+        134.38394009160078
+      ],
+      "pivot": [
+        -60.66667,
+        271.11111,
+        11.4
+      ],
+      "uv": [
+        716,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_2",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -76.01111,
+        256.78889,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415668
+      ],
+      "pivot": [
+        -72.51111,
+        258.28889,
+        10.4
+      ],
+      "uv": [
+        942,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_3",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -77.2,
+        264.16667,
+        9.4
+      ],
+      "size": [
+        12,
+        29,
+        4
+      ],
+      "rotation": [
+        -4.002017688333036,
+        0,
+        126.656108415967
+      ],
+      "pivot": [
+        -71.2,
+        278.66667,
+        11.4
+      ],
+      "uv": [
+        974,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_3",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -87.56667,
+        266.03333,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415668
+      ],
+      "pivot": [
+        -84.06667,
+        267.53333,
+        10.4
+      ],
+      "uv": [
+        964,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_4",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -87.73333,
+        271.72222,
+        9.4
+      ],
+      "size": [
+        12,
+        29,
+        4
+      ],
+      "rotation": [
+        -4.016579070715988,
+        0,
+        118.72462296098612
+      ],
+      "pivot": [
+        -81.73333,
+        286.22222,
+        11.4
+      ],
+      "uv": [
+        2,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_4",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -99.12222,
+        275.27778,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415668
+      ],
+      "pivot": [
+        -95.62222,
+        276.77778,
+        10.4
+      ],
+      "uv": [
+        986,
+        395
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_5",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -98.26667,
+        279.27778,
+        9.4
+      ],
+      "size": [
+        12,
+        29,
+        4
+      ],
+      "rotation": [
+        -3.9557041005480627,
+        0,
+        110.88580146069297
+      ],
+      "pivot": [
+        -92.26667,
+        293.77778,
+        11.4
+      ],
+      "uv": [
+        36,
+        312
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_5",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -110.67778,
+        284.52222,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415668
+      ],
+      "pivot": [
+        -107.17778,
+        286.02222,
+        10.4
+      ],
+      "uv": [
+        2,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_6",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -108.8,
+        286.33333,
+        9.4
+      ],
+      "size": [
+        12,
+        30,
+        4
+      ],
+      "rotation": [
+        -3.8290736462262904,
+        0,
+        103.41618348184092
+      ],
+      "pivot": [
+        -102.8,
+        301.33333,
+        11.4
+      ],
+      "uv": [
+        750,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_6",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -122.23333,
+        293.76667,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415668
+      ],
+      "pivot": [
+        -118.73333,
+        295.26667,
+        10.4
+      ],
+      "uv": [
+        24,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_7",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -119.33333,
+        292.88889,
+        9.4
+      ],
+      "size": [
+        12,
+        32,
+        4
+      ],
+      "rotation": [
+        -3.654515023574957,
+        0,
+        96.51980175165707
+      ],
+      "pivot": [
+        -113.33333,
+        308.88889,
+        11.4
+      ],
+      "uv": [
+        70,
+        274
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_7",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -133.78889,
+        303.01111,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415663
+      ],
+      "pivot": [
+        -130.28889,
+        304.51111,
+        10.4
+      ],
+      "uv": [
+        46,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_8",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -129.86667,
+        299.44444,
+        9.4
+      ],
+      "size": [
+        12,
+        34,
+        4
+      ],
+      "rotation": [
+        -3.451947344601503,
+        0,
+        90.30721303180883
+      ],
+      "pivot": [
+        -123.86667,
+        316.44444,
+        11.4
+      ],
+      "uv": [
+        646,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_8",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -145.34444,
+        312.25556,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415663
+      ],
+      "pivot": [
+        -141.84444,
+        313.75556,
+        10.4
+      ],
+      "uv": [
+        68,
+        408
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_9",
+    "bone": "wing_right",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -140.4,
+        306.0,
+        9.4
+      ],
+      "size": [
+        12,
+        36,
+        4
+      ],
+      "rotation": [
+        -3.2386190179809207,
+        0,
+        84.80557109226521
+      ],
+      "pivot": [
+        -134.4,
+        324.0,
+        11.4
+      ],
+      "uv": [
+        362,
+        230
+      ]
+    }
+  },
+  {
+    "name": "right_secondary_tip_9",
+    "bone": "wing_right",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        -156.9,
+        321.5,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        98.13010235415663
+      ],
+      "pivot": [
+        -153.4,
+        323.0,
+        10.4
+      ],
+      "uv": [
+        90,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_wing_root",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "",
+    "feature": "wing",
+    "cube": {
+      "origin": [
+        32.1,
+        252.0,
+        9.8
+      ],
+      "size": [
+        11,
+        52,
+        10
+      ],
+      "rotation": [
+        2.6691743186590635,
+        0,
+        -45.62959860841026
+      ],
+      "pivot": [
+        37.6,
+        278.0,
+        14.8
+      ],
+      "uv": [
+        754,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_wing_leading",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "",
+    "feature": "wing",
+    "cube": {
+      "origin": [
+        92.8,
+        266.2,
+        12.5
+      ],
+      "size": [
+        12,
+        102,
+        7
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -63.23249108070382
+      ],
+      "pivot": [
+        98.8,
+        317.2,
+        16.0
+      ],
+      "uv": [
+        42,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_0",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        40.9,
+        218.4,
+        17.3
+      ],
+      "size": [
+        11,
+        52,
+        3
+      ],
+      "rotation": [
+        4.488491817563711,
+        0,
+        -157.86450812189963
+      ],
+      "pivot": [
+        46.4,
+        244.4,
+        18.8
+      ],
+      "uv": [
+        906,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_0",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        53.82641,
+        214.2684,
+        19.97217
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.488491817563699,
+        0,
+        -157.86450812189963
+      ],
+      "pivot": [
+        56.82641,
+        218.7684,
+        20.97217
+      ],
+      "uv": [
+        20,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_1",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        51.5,
+        228.76667,
+        17.3
+      ],
+      "size": [
+        11,
+        48,
+        3
+      ],
+      "rotation": [
+        4.801494113959553,
+        0,
+        -148.8023844420532
+      ],
+      "pivot": [
+        57.0,
+        252.76667,
+        18.8
+      ],
+      "uv": [
+        216,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_1",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        67.46892,
+        226.02476,
+        19.98415
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.8014941139595395,
+        0,
+        -148.80238444205324
+      ],
+      "pivot": [
+        70.46892,
+        230.52476,
+        20.98415
+      ],
+      "uv": [
+        38,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_2",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        62.1,
+        238.13333,
+        17.3
+      ],
+      "size": [
+        11,
+        46,
+        3
+      ],
+      "rotation": [
+        5.009684603354825,
+        0,
+        -138.67233185362758
+      ],
+      "pivot": [
+        67.6,
+        261.13333,
+        18.8
+      ],
+      "uv": [
+        366,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_2",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        81.11392,
+        237.85423,
+        19.99211
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        5.00968460335482,
+        0,
+        -138.67233185362753
+      ],
+      "pivot": [
+        84.11392,
+        242.35423,
+        20.99211
+      ],
+      "uv": [
+        56,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_3",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        72.7,
+        246.5,
+        17.3
+      ],
+      "size": [
+        11,
+        46,
+        3
+      ],
+      "rotation": [
+        5.060748938963374,
+        0,
+        -127.98623745207723
+      ],
+      "pivot": [
+        78.2,
+        269.5,
+        18.8
+      ],
+      "uv": [
+        396,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_3",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        94.72719,
+        249.75124,
+        19.99407
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        5.060748938963389,
+        0,
+        -127.98623745207728
+      ],
+      "pivot": [
+        97.72719,
+        254.25124,
+        20.99407
+      ],
+      "uv": [
+        74,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_4",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        83.3,
+        254.36667,
+        17.3
+      ],
+      "size": [
+        11,
+        47,
+        3
+      ],
+      "rotation": [
+        4.940116361554048,
+        0,
+        -117.45099777093223
+      ],
+      "pivot": [
+        88.8,
+        277.86667,
+        18.8
+      ],
+      "uv": [
+        276,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_4",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        108.27837,
+        261.68959,
+        19.98945
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.940116361554067,
+        0,
+        -117.45099777093208
+      ],
+      "pivot": [
+        111.27837,
+        266.18959,
+        20.98945
+      ],
+      "uv": [
+        92,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_5",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        93.9,
+        261.23333,
+        17.3
+      ],
+      "size": [
+        11,
+        50,
+        3
+      ],
+      "rotation": [
+        4.681079656000438,
+        0,
+        -107.71786170626818
+      ],
+      "pivot": [
+        99.4,
+        286.23333,
+        18.8
+      ],
+      "uv": [
+        32,
+        175
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_5",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        121.75532,
+        273.63271,
+        19.97954
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.681079656000431,
+        0,
+        -107.71786170626795
+      ],
+      "pivot": [
+        124.75532,
+        278.13271,
+        20.97954
+      ],
+      "uv": [
+        110,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_6",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        104.5,
+        268.1,
+        17.3
+      ],
+      "size": [
+        11,
+        53,
+        3
+      ],
+      "rotation": [
+        4.342630013476809,
+        0,
+        -99.17620334037618
+      ],
+      "pivot": [
+        110.0,
+        294.6,
+        18.8
+      ],
+      "uv": [
+        846,
+        113
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_6",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        135.16561,
+        285.55017,
+        19.96659
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        4.342630013476808,
+        0,
+        -99.17620334037606
+      ],
+      "pivot": [
+        138.16561,
+        290.05017,
+        20.96659
+      ],
+      "uv": [
+        128,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_7",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        115.1,
+        273.96667,
+        17.3
+      ],
+      "size": [
+        11,
+        58,
+        3
+      ],
+      "rotation": [
+        3.9794391076678055,
+        0,
+        -91.92685749002891
+      ],
+      "pivot": [
+        120.6,
+        302.96667,
+        18.8
+      ],
+      "uv": [
+        944,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_7",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        148.52679,
+        297.42621,
+        19.95268
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.979439107667784,
+        0,
+        -91.9268574900287
+      ],
+      "pivot": [
+        151.52679,
+        301.92621,
+        20.95268
+      ],
+      "uv": [
+        146,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_8",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        125.7,
+        279.33333,
+        17.3
+      ],
+      "size": [
+        11,
+        64,
+        3
+      ],
+      "rotation": [
+        3.627415134842756,
+        0,
+        -85.87987808748284
+      ],
+      "pivot": [
+        131.2,
+        311.33333,
+        18.8
+      ],
+      "uv": [
+        666,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_8",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        161.85658,
+        309.25775,
+        19.93919
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.627415134842754,
+        0,
+        -85.87987808748264
+      ],
+      "pivot": [
+        164.85658,
+        313.75775,
+        20.93919
+      ],
+      "uv": [
+        164,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_9",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        136.3,
+        284.7,
+        17.3
+      ],
+      "size": [
+        11,
+        70,
+        3
+      ],
+      "rotation": [
+        3.3044563022631137,
+        0,
+        -80.86399099577748
+      ],
+      "pivot": [
+        141.8,
+        319.7,
+        18.8
+      ],
+      "uv": [
+        482,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_9",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        175.16848,
+        321.04873,
+        19.92681
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.304456302263123,
+        0,
+        -80.86399099577733
+      ],
+      "pivot": [
+        178.16848,
+        325.54873,
+        20.92681
+      ],
+      "uv": [
+        182,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_10",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        146.9,
+        289.56667,
+        17.3
+      ],
+      "size": [
+        11,
+        77,
+        3
+      ],
+      "rotation": [
+        3.016603538809641,
+        0,
+        -76.69608707360102
+      ],
+      "pivot": [
+        152.4,
+        328.06667,
+        18.8
+      ],
+      "uv": [
+        422,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_10",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        188.47133,
+        332.80555,
+        19.91578
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        3.0166035388096417,
+        0,
+        -76.69608707360115
+      ],
+      "pivot": [
+        191.47133,
+        337.30555,
+        20.91578
+      ],
+      "uv": [
+        200,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_11",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        157.5,
+        294.93333,
+        17.3
+      ],
+      "size": [
+        11,
+        83,
+        3
+      ],
+      "rotation": [
+        2.763600936690545,
+        0,
+        -73.21245225340876
+      ],
+      "pivot": [
+        163.0,
+        336.43333,
+        18.8
+      ],
+      "uv": [
+        348,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_11",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        201.77046,
+        344.53467,
+        19.90607
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        2.7636009366905454,
+        0,
+        -73.21245225340884
+      ],
+      "pivot": [
+        204.77046,
+        349.03467,
+        20.90607
+      ],
+      "uv": [
+        218,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_primary_12",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        168.1,
+        299.3,
+        17.3
+      ],
+      "size": [
+        11,
+        91,
+        3
+      ],
+      "rotation": [
+        2.5424231475070256,
+        0,
+        -70.27772223555297
+      ],
+      "pivot": [
+        173.6,
+        344.8,
+        18.8
+      ],
+      "uv": [
+        288,
+        2
+      ]
+    }
+  },
+  {
+    "name": "left_primary_tip_12",
+    "bone": "wing_left_outer",
+    "material": "feather",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        215.06891,
+        356.24168,
+        19.89759
+      ],
+      "size": [
+        6,
+        9,
+        2
+      ],
+      "rotation": [
+        2.5424231475070345,
+        0,
+        -70.27772223555331
+      ],
+      "pivot": [
+        218.06891,
+        360.74168,
+        20.89759
+      ],
+      "uv": [
+        236,
+        395
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_0",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        33.6,
+        239.5,
+        9.4
+      ],
+      "size": [
+        12,
+        33,
+        4
+      ],
+      "rotation": [
+        -3.579683184422053,
+        0,
+        -148.2985703304943
+      ],
+      "pivot": [
+        39.6,
+        256.0,
+        11.4
+      ],
+      "uv": [
+        748,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_0",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        45.9,
+        238.3,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.1301023541561
+      ],
+      "pivot": [
+        49.4,
+        239.8,
+        10.4
+      ],
+      "uv": [
+        112,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_1",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        44.13333,
+        248.05556,
+        9.4
+      ],
+      "size": [
+        12,
+        31,
+        4
+      ],
+      "rotation": [
+        -3.767183496842391,
+        0,
+        -141.65442504600662
+      ],
+      "pivot": [
+        50.13333,
+        263.55556,
+        11.4
+      ],
+      "uv": [
+        392,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_1",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        57.45556,
+        247.54444,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.1301023541561
+      ],
+      "pivot": [
+        60.95556,
+        249.04444,
+        10.4
+      ],
+      "uv": [
+        134,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_2",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        54.66667,
+        256.11111,
+        9.4
+      ],
+      "size": [
+        12,
+        30,
+        4
+      ],
+      "rotation": [
+        -3.9144041294451086,
+        0,
+        -134.38394009160078
+      ],
+      "pivot": [
+        60.66667,
+        271.11111,
+        11.4
+      ],
+      "uv": [
+        784,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_2",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        69.01111,
+        256.78889,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415668
+      ],
+      "pivot": [
+        72.51111,
+        258.28889,
+        10.4
+      ],
+      "uv": [
+        156,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_3",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        65.2,
+        264.16667,
+        9.4
+      ],
+      "size": [
+        12,
+        29,
+        4
+      ],
+      "rotation": [
+        -4.002017688333036,
+        0,
+        -126.656108415967
+      ],
+      "pivot": [
+        71.2,
+        278.66667,
+        11.4
+      ],
+      "uv": [
+        70,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_3",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        80.56667,
+        266.03333,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415668
+      ],
+      "pivot": [
+        84.06667,
+        267.53333,
+        10.4
+      ],
+      "uv": [
+        178,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_4",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        75.73333,
+        271.72222,
+        9.4
+      ],
+      "size": [
+        12,
+        29,
+        4
+      ],
+      "rotation": [
+        -4.016579070715988,
+        0,
+        -118.72462296098612
+      ],
+      "pivot": [
+        81.73333,
+        286.22222,
+        11.4
+      ],
+      "uv": [
+        104,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_4",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        92.12222,
+        275.27778,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415668
+      ],
+      "pivot": [
+        95.62222,
+        276.77778,
+        10.4
+      ],
+      "uv": [
+        200,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_5",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        86.26667,
+        279.27778,
+        9.4
+      ],
+      "size": [
+        12,
+        29,
+        4
+      ],
+      "rotation": [
+        -3.9557041005480627,
+        0,
+        -110.88580146069297
+      ],
+      "pivot": [
+        92.26667,
+        293.77778,
+        11.4
+      ],
+      "uv": [
+        138,
+        312
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_5",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        103.67778,
+        284.52222,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415668
+      ],
+      "pivot": [
+        107.17778,
+        286.02222,
+        10.4
+      ],
+      "uv": [
+        222,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_6",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        96.8,
+        286.33333,
+        9.4
+      ],
+      "size": [
+        12,
+        30,
+        4
+      ],
+      "rotation": [
+        -3.8290736462262904,
+        0,
+        -103.41618348184092
+      ],
+      "pivot": [
+        102.8,
+        301.33333,
+        11.4
+      ],
+      "uv": [
+        818,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_6",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        115.23333,
+        293.76667,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415668
+      ],
+      "pivot": [
+        118.73333,
+        295.26667,
+        10.4
+      ],
+      "uv": [
+        244,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_7",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        107.33333,
+        292.88889,
+        9.4
+      ],
+      "size": [
+        12,
+        32,
+        4
+      ],
+      "rotation": [
+        -3.654515023574957,
+        0,
+        -96.51980175165707
+      ],
+      "pivot": [
+        113.33333,
+        308.88889,
+        11.4
+      ],
+      "uv": [
+        104,
+        274
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_7",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        126.78889,
+        303.01111,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415663
+      ],
+      "pivot": [
+        130.28889,
+        304.51111,
+        10.4
+      ],
+      "uv": [
+        266,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_8",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        117.86667,
+        299.44444,
+        9.4
+      ],
+      "size": [
+        12,
+        34,
+        4
+      ],
+      "rotation": [
+        -3.451947344601503,
+        0,
+        -90.30721303180883
+      ],
+      "pivot": [
+        123.86667,
+        316.44444,
+        11.4
+      ],
+      "uv": [
+        680,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_8",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        138.34444,
+        312.25556,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415663
+      ],
+      "pivot": [
+        141.84444,
+        313.75556,
+        10.4
+      ],
+      "uv": [
+        288,
+        408
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_9",
+    "bone": "wing_left",
+    "material": "feather_base",
+    "pattern": "feather",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        128.4,
+        306.0,
+        9.4
+      ],
+      "size": [
+        12,
+        36,
+        4
+      ],
+      "rotation": [
+        -3.2386190179809207,
+        0,
+        -84.80557109226521
+      ],
+      "pivot": [
+        134.4,
+        324.0,
+        11.4
+      ],
+      "uv": [
+        396,
+        230
+      ]
+    }
+  },
+  {
+    "name": "left_secondary_tip_9",
+    "bone": "wing_left",
+    "material": "feather",
+    "pattern": "",
+    "feature": "feather",
+    "cube": {
+      "origin": [
+        149.9,
+        321.5,
+        8.9
+      ],
+      "size": [
+        7,
+        3,
+        3
+      ],
+      "rotation": [
+        0.0,
+        0,
+        -98.13010235415663
+      ],
+      "pivot": [
+        153.4,
+        323.0,
+        10.4
+      ],
+      "uv": [
+        310,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_0_side_-1",
+    "bone": "chain_link_0",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        4.7,
+        270.1,
+        -12.1
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        534,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_0_end_-1",
+    "bone": "chain_link_0",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        4.7,
+        269.6,
+        -12.1
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        504,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_0_side_1",
+    "bone": "chain_link_0",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        8.7,
+        270.1,
+        -12.1
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        540,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_0_end_1",
+    "bone": "chain_link_0",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        4.7,
+        276.6,
+        -12.1
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        518,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_1_side_-1",
+    "bone": "chain_link_1",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        7.9,
+        265.14,
+        -12.98
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        546,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_1_end_-1",
+    "bone": "chain_link_1",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        7.9,
+        264.64,
+        -12.98
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        532,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_1_side_1",
+    "bone": "chain_link_1",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        11.9,
+        265.14,
+        -12.98
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        552,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_1_end_1",
+    "bone": "chain_link_1",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        7.9,
+        271.64,
+        -12.98
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        546,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_2_side_-1",
+    "bone": "chain_link_2",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        11.1,
+        260.18,
+        -13.86
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        558,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_2_end_-1",
+    "bone": "chain_link_2",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        11.1,
+        259.68,
+        -13.86
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        560,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_2_side_1",
+    "bone": "chain_link_2",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        15.1,
+        260.18,
+        -13.86
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        564,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_2_end_1",
+    "bone": "chain_link_2",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        11.1,
+        266.68,
+        -13.86
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        574,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_3_side_-1",
+    "bone": "chain_link_3",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.3,
+        255.22,
+        -14.74
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        570,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_3_end_-1",
+    "bone": "chain_link_3",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.3,
+        254.72,
+        -14.74
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        588,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_3_side_1",
+    "bone": "chain_link_3",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        18.3,
+        255.22,
+        -14.74
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        576,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_3_end_1",
+    "bone": "chain_link_3",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.3,
+        261.72,
+        -14.74
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        602,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_4_side_-1",
+    "bone": "chain_link_4",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        17.5,
+        250.26,
+        -15.62
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        582,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_4_end_-1",
+    "bone": "chain_link_4",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        17.5,
+        249.76,
+        -15.62
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        616,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_4_side_1",
+    "bone": "chain_link_4",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.5,
+        250.26,
+        -15.62
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        588,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_4_end_1",
+    "bone": "chain_link_4",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        17.5,
+        256.76,
+        -15.62
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        630,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_5_side_-1",
+    "bone": "chain_link_5",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.7,
+        245.3,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        594,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_5_end_-1",
+    "bone": "chain_link_5",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.7,
+        244.8,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        644,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_5_side_1",
+    "bone": "chain_link_5",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        24.7,
+        245.3,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        600,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_5_end_1",
+    "bone": "chain_link_5",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.7,
+        251.8,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        658,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_6_side_-1",
+    "bone": "chain_link_6",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.18,
+        238.74,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        606,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_6_end_-1",
+    "bone": "chain_link_6",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.18,
+        238.24,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        672,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_6_side_1",
+    "bone": "chain_link_6",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        25.18,
+        238.74,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        612,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_6_end_1",
+    "bone": "chain_link_6",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.18,
+        245.24,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        686,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_7_side_-1",
+    "bone": "chain_link_7",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.66,
+        232.18,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        618,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_7_end_-1",
+    "bone": "chain_link_7",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.66,
+        231.68,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        700,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_7_side_1",
+    "bone": "chain_link_7",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        25.66,
+        232.18,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        624,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_7_end_1",
+    "bone": "chain_link_7",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        21.66,
+        238.68,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        714,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_8_side_-1",
+    "bone": "chain_link_8",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.14,
+        225.62,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        630,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_8_end_-1",
+    "bone": "chain_link_8",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.14,
+        225.12,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        728,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_8_side_1",
+    "bone": "chain_link_8",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        26.14,
+        225.62,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        636,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_8_end_1",
+    "bone": "chain_link_8",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.14,
+        232.12,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        742,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_9_side_-1",
+    "bone": "chain_link_9",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.62,
+        219.06,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        642,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_9_end_-1",
+    "bone": "chain_link_9",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.62,
+        218.56,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        756,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_9_side_1",
+    "bone": "chain_link_9",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        26.62,
+        219.06,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        648,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_9_end_1",
+    "bone": "chain_link_9",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.62,
+        225.56,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        770,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_10_side_-1",
+    "bone": "chain_link_10",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        23.1,
+        212.5,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        654,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_10_end_-1",
+    "bone": "chain_link_10",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        23.1,
+        212.0,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        784,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_10_side_1",
+    "bone": "chain_link_10",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        27.1,
+        212.5,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        660,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_10_end_1",
+    "bone": "chain_link_10",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        23.1,
+        219.0,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        798,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_11_side_-1",
+    "bone": "chain_link_11",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.96667,
+        207.3,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        666,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_11_end_-1",
+    "bone": "chain_link_11",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.96667,
+        206.8,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        812,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_11_side_1",
+    "bone": "chain_link_11",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        24.96667,
+        207.3,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        672,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_11_end_1",
+    "bone": "chain_link_11",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.96667,
+        213.8,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        826,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_12_side_-1",
+    "bone": "chain_link_12",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        18.83333,
+        202.1,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        678,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_12_end_-1",
+    "bone": "chain_link_12",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        18.83333,
+        201.6,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        840,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_12_side_1",
+    "bone": "chain_link_12",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        22.83333,
+        202.1,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        684,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_12_end_1",
+    "bone": "chain_link_12",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        18.83333,
+        208.6,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        854,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_13_side_-1",
+    "bone": "chain_link_13",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        16.7,
+        196.9,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        690,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_13_end_-1",
+    "bone": "chain_link_13",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        16.7,
+        196.4,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        868,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_13_side_1",
+    "bone": "chain_link_13",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        20.7,
+        196.9,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        696,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_13_end_1",
+    "bone": "chain_link_13",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        16.7,
+        203.4,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        882,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_14_side_-1",
+    "bone": "chain_link_14",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.56667,
+        191.7,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        702,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_14_end_-1",
+    "bone": "chain_link_14",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.56667,
+        191.2,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        896,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_14_side_1",
+    "bone": "chain_link_14",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        18.56667,
+        191.7,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        708,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_14_end_1",
+    "bone": "chain_link_14",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.56667,
+        198.2,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        910,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_15_side_-1",
+    "bone": "chain_link_15",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        12.43333,
+        186.5,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        714,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_15_end_-1",
+    "bone": "chain_link_15",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        12.43333,
+        186.0,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        924,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_15_side_1",
+    "bone": "chain_link_15",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        16.43333,
+        186.5,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        720,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_15_end_1",
+    "bone": "chain_link_15",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        12.43333,
+        193.0,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        938,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_16_side_-1",
+    "bone": "chain_link_16",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        10.3,
+        181.3,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        726,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_16_end_-1",
+    "bone": "chain_link_16",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        10.3,
+        180.8,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        952,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_16_side_1",
+    "bone": "chain_link_16",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        14.3,
+        181.3,
+        -16.5
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        732,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_16_end_1",
+    "bone": "chain_link_16",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        10.3,
+        187.8,
+        -16.5
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        966,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_17_side_-1",
+    "bone": "chain_link_17",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        6.16667,
+        177.16667,
+        -16.63333
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        738,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_17_end_-1",
+    "bone": "chain_link_17",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        6.16667,
+        176.66667,
+        -16.63333
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        980,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_17_side_1",
+    "bone": "chain_link_17",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        10.16667,
+        177.16667,
+        -16.63333
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        744,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_17_end_1",
+    "bone": "chain_link_17",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        6.16667,
+        183.66667,
+        -16.63333
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        994,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_18_side_-1",
+    "bone": "chain_link_18",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        2.03333,
+        173.03333,
+        -16.76667
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        750,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_18_end_-1",
+    "bone": "chain_link_18",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        2.03333,
+        172.53333,
+        -16.76667
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        1008,
+        408
+      ]
+    }
+  },
+  {
+    "name": "chain_18_side_1",
+    "bone": "chain_link_18",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        6.03333,
+        173.03333,
+        -16.76667
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        756,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_18_end_1",
+    "bone": "chain_link_18",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        2.03333,
+        179.53333,
+        -16.76667
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        2,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_19_side_-1",
+    "bone": "chain_link_19",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -2.1,
+        168.9,
+        -16.9
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        762,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_19_end_-1",
+    "bone": "chain_link_19",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -2.1,
+        168.4,
+        -16.9
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        16,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_19_side_1",
+    "bone": "chain_link_19",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        1.9,
+        168.9,
+        -16.9
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        768,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_19_end_1",
+    "bone": "chain_link_19",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -2.1,
+        175.4,
+        -16.9
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        30,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_20_side_-1",
+    "bone": "chain_link_20",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -6.23333,
+        164.76667,
+        -17.03333
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        774,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_20_end_-1",
+    "bone": "chain_link_20",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -6.23333,
+        164.26667,
+        -17.03333
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        44,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_20_side_1",
+    "bone": "chain_link_20",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -2.23333,
+        164.76667,
+        -17.03333
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        780,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_20_end_1",
+    "bone": "chain_link_20",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -6.23333,
+        171.26667,
+        -17.03333
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        58,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_21_side_-1",
+    "bone": "chain_link_21",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -10.36667,
+        160.63333,
+        -17.16667
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        786,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_21_end_-1",
+    "bone": "chain_link_21",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -10.36667,
+        160.13333,
+        -17.16667
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        72,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_21_side_1",
+    "bone": "chain_link_21",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -6.36667,
+        160.63333,
+        -17.16667
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        792,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_21_end_1",
+    "bone": "chain_link_21",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -10.36667,
+        167.13333,
+        -17.16667
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        86,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_22_side_-1",
+    "bone": "chain_link_22",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -14.5,
+        156.5,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        798,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_22_end_-1",
+    "bone": "chain_link_22",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -14.5,
+        156.0,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        100,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_22_side_1",
+    "bone": "chain_link_22",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -10.5,
+        156.5,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        804,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_22_end_1",
+    "bone": "chain_link_22",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -14.5,
+        163.0,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        114,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_23_side_-1",
+    "bone": "chain_link_23",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -18.5,
+        152.34,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        810,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_23_end_-1",
+    "bone": "chain_link_23",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -18.5,
+        151.84,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        128,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_23_side_1",
+    "bone": "chain_link_23",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -14.5,
+        152.34,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        816,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_23_end_1",
+    "bone": "chain_link_23",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -18.5,
+        158.84,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        142,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_24_side_-1",
+    "bone": "chain_link_24",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -22.5,
+        148.18,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        822,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_24_end_-1",
+    "bone": "chain_link_24",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -22.5,
+        147.68,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        156,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_24_side_1",
+    "bone": "chain_link_24",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -18.5,
+        148.18,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        828,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_24_end_1",
+    "bone": "chain_link_24",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -22.5,
+        154.68,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        170,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_25_side_-1",
+    "bone": "chain_link_25",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -26.5,
+        144.02,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        834,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_25_end_-1",
+    "bone": "chain_link_25",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -26.5,
+        143.52,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        184,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_25_side_1",
+    "bone": "chain_link_25",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -22.5,
+        144.02,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        840,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_25_end_1",
+    "bone": "chain_link_25",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -26.5,
+        150.52,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        198,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_26_side_-1",
+    "bone": "chain_link_26",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -30.5,
+        139.86,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        846,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_26_end_-1",
+    "bone": "chain_link_26",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -30.5,
+        139.36,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        212,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_26_side_1",
+    "bone": "chain_link_26",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -26.5,
+        139.86,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        852,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_26_end_1",
+    "bone": "chain_link_26",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -30.5,
+        146.36,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        226,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_27_side_-1",
+    "bone": "chain_link_27",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -34.5,
+        135.7,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        858,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_27_end_-1",
+    "bone": "chain_link_27",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -34.5,
+        135.2,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        240,
+        416
+      ]
+    }
+  },
+  {
+    "name": "chain_27_side_1",
+    "bone": "chain_link_27",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -30.5,
+        135.7,
+        -17.3
+      ],
+      "size": [
+        1,
+        7,
+        1
+      ],
+      "uv": [
+        864,
+        395
+      ]
+    }
+  },
+  {
+    "name": "chain_27_end_1",
+    "bone": "chain_link_27",
+    "material": "silver",
+    "pattern": "",
+    "feature": "chain",
+    "cube": {
+      "origin": [
+        -34.5,
+        142.2,
+        -17.3
+      ],
+      "size": [
+        5,
+        1,
+        1
+      ],
+      "uv": [
+        254,
+        416
+      ]
+    }
+  }
+]

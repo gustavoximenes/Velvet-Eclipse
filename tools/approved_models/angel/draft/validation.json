@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": 16850,
+  "bones": 79,
+  "cuboids": 357,
+  "atlas": 1024,
+  "sampled_poses": 343,
+  "minimum_contact_native_units": 1.1955927288713326,
+  "minimum_clearance_native_units": 0.08191487383030349,
+  "facial_clips": 4,
+  "animation_clips": 7,
+  "integration": false,
+  "minecraft_executed": false
+}

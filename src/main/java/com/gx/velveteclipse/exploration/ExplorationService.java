@@ -24,6 +24,7 @@ import com.gx.velveteclipse.equipment.EquipmentCatalog.Family;
 @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE)
 public final class ExplorationService {
     private static final Map<UUID,State> PLAYERS=new HashMap<>();
+    private static int nextSequence;
     private static final EncounterReservation RESERVATIONS=new EncounterReservation();
     private static final class State {
         final ServerPlayer player; final Level level;
@@ -32,7 +33,7 @@ public final class ExplorationService {
         com.gx.velveteclipse.core.battle.EncounterOpening opening;
         Entity pendingTarget;Vec3 attackStart;Entity flyingTarget;int impactTick;Vec3 impact;
         Entity shadow; Vec3 start,end,shadowAnchor; boolean previousNoAi; float yaw;
-        State(ServerPlayer p){player=p;level=p.m_9236_();}
+        State(ServerPlayer p){player=p;level=p.m_9236_();sequence=++nextSequence;}
     }
     public static boolean active(Object p){return p instanceof ServerPlayer player&&PLAYERS.containsKey(player.m_20148_());}
     public static boolean preparing(Object p){State s=p instanceof ServerPlayer player?PLAYERS.get(player.m_20148_()):null;return s!=null&&s.mode==Mode.BATTLE_ENTRY;}
@@ -47,7 +48,7 @@ public final class ExplorationService {
             if(s==null){s=new State(p);PLAYERS.put(p.m_20148_(),s);send(s);}
             else if(canToggle(s.mode)){release(s);PLAYERS.remove(p.m_20148_());ExplorationNetwork.reply(p,Mode.NORMAL,0,s.sequence,-1,0);}
         }else if(action==ExplorationNetwork.ATTACK&&s!=null&&canAttack(s.mode)&&BattleService.current(p)==null){
-            s.pendingTarget=null;s.flyingTarget=null;s.impactTick=0;s.attackStart=p.m_20182_();s.family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();s.mode=Mode.EXPLORATION_ATTACK;s.tick=0;s.sequence++;s.yaw=p.m_146908_();send(s);ExplorationNetwork.swing(p,s.family.name(),s.yaw);
+            s.pendingTarget=null;s.flyingTarget=null;s.impactTick=0;s.attackStart=p.m_20182_();s.family=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses().family();s.mode=Mode.EXPLORATION_ATTACK;s.tick=0;s.sequence=++nextSequence;s.yaw=p.m_146908_();send(s);ExplorationNetwork.swing(p,s.family.name(),s.yaw);
         }
     }
     public static void tickServer(){
@@ -134,7 +135,7 @@ public final class ExplorationService {
     }
     public static void expire(ServerPlayer p){State s=PLAYERS.get(p.m_20148_());if(s!=null)cancel(s);}
     private static void cancel(State s){release(s);s.mode=Mode.EXPLORATION;s.tick=0;send(s);}
-    private static void send(State s){ExplorationNetwork.reply(s.player,s.mode,s.tick,s.sequence,s.shadow==null?-1:s.shadow.m_19879_(),s.yaw,s.start==null?s.player.m_20182_():s.start,s.end==null?s.player.m_20182_():s.end);}
+    private static void send(State s){ExplorationNetwork.reply(s.player,s.mode,s.tick,s.sequence,s.shadow==null?-1:s.shadow.m_19879_(),s.yaw,s.start==null?s.player.m_20182_():s.start,s.end==null?s.player.m_20182_():s.end,s.opening);}
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent e){State s=PLAYERS.remove(e.getEntity().m_20148_());if(s!=null)release(s);}
     @SubscribeEvent public static void stop(ServerStoppedEvent e){for(State s:PLAYERS.values())release(s);PLAYERS.clear();RESERVATIONS.clear();}
     @SubscribeEvent public static void attack(AttackEntityEvent e){if(active(e.getEntity()))e.setCanceled(true);else if(e.getTarget() instanceof com.gx.velveteclipse.shadow.FieldShadowEntity){e.setCanceled(true);if(e.getEntity() instanceof ServerPlayer p)ShadowWorldService.attackShadow(p,e.getTarget());}}

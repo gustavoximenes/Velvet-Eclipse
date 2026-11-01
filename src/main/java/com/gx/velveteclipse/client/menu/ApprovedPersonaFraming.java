@@ -20,7 +20,7 @@ public final class ApprovedPersonaFraming {
         } catch (java.io.IOException e) { throw new IllegalStateException("Persona preview bounds", e); }
     }
     public static float facing(String id) {
-        return switch (id) { case "forneus" -> 35; case "chimera" -> 24; case "jack_frost" -> -14; default -> 0; };
+        return switch (id) { case "angel" -> 18; case "forneus" -> 35; case "chimera" -> 24; case "jack_frost" -> -14; default -> 0; };
     }
     // Inventory projection flips screen Y: negative pitch observes the swimming rig from above.
     public static float tilt(String id) { return id.equals("forneus") ? -.20f : .06f; }
@@ -37,8 +37,8 @@ public final class ApprovedPersonaFraming {
         if(profile==null||profile.sheet()==null)return fit(id,495+revealOffset,34,395,412,yaw,false);
         double[] reference=projectedIdle(id,180+facing(id)), current=projectedIdle(id,yaw);
         double extent=switch(id){case "apsaras"->412;case "chimera"->418;case "jack_frost"->264;case "onmoraki"->294;case "pixie"->246;case "forneus"->466;default->378;};
-        double centerX=id.equals("forneus")?646:692;
-        double centerY=switch(id){case "apsaras","chimera"->236;case "jack_frost","pixie","onmoraki"->276;case "forneus"->224;default->246;};
+        double centerX=id.equals("angel")?643.5:id.equals("forneus")?646:692;
+        double centerY=switch(id){case "angel"->230;case "apsaras","chimera"->236;case "jack_frost","pixie","onmoraki"->276;case "forneus"->224;default->246;};
         double scale=extent/Math.max(.1,id.equals("forneus")?reference[2]-reference[0]:reference[3]-reference[1]);
         // Keep geometry inside the frame, including horns and the animated tail, in all rotations.
         double width=current[2]-current[0],height=current[3]-current[1];

@@ -1,3 +1,12 @@
+# 0.6.57-angel-entry — 01/11/2026
+
+- Angel 03: modelo, textura, idle, ataques completos, expressões, carta, ícone e menu.
+- Entrada aprovada com corrida em perspectiva; desvantagem direta na arena e avisos de piso localizados.
+- Relógio de entrada por sessão bloqueia comandos/turnos até a apresentação terminar.
+- Photon: corrigida direção NaN do Cone de raio zero e inclusão da textura branca no atlas.
+- Preservados fogo da evocação, áudio, sincronização de impacto e conteúdo anterior.
+- Validação offline; sem execução do Minecraft. Detalhes em docs/angel-entry-0.6.57.md.
+
 # 0.6.56-persona-timing — 24/10/2026
 
 - Resultado de habilidades após o clipe completo, com câmera e reserva por sessão; correções de cancelamento e prevenção de repetição.

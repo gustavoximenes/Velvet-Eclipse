@@ -66,6 +66,9 @@ public final class ClientHudEvents {
         ClientBattleUiState.hover(RuntimeBridge.guiMouseX(),RuntimeBridge.guiMouseY(),w,h);
         // GuiGraphics batches all strips and glyphs into its managed GUI buffer.
         g.m_286007_(() -> {
+            if(com.gx.velveteclipse.client.exploration.EntryTransition.visible()){
+                g.m_280262_();com.gx.velveteclipse.client.exploration.EntryTransition.paint(canvas,w,h,partial);return;
+            }
             if(com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!s.active()){
                 com.gx.velveteclipse.client.darkhour.DarkHourClient.paint(canvas,w,h);return;
             }
@@ -96,7 +99,7 @@ public final class ClientHudEvents {
     @Mod.EventBusSubscriber(modid="velvet_eclipse",bus=Mod.EventBusSubscriber.Bus.FORGE,value=Dist.CLIENT)
     public static final class InputHandler {
         @SubscribeEvent public static void hideOtherOverlays(net.minecraftforge.client.event.RenderGuiOverlayEvent.Pre event){
-            if((ClientBattleState.snapshot().active()||BattleResultsClient.active()||BattleTacticsClient.exclusiveHud()||com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!ClientBattleState.snapshot().active())&&!event.getOverlay().id().toString().equals("velvet_eclipse:persona_hud"))event.setCanceled(true);
+            if((com.gx.velveteclipse.client.exploration.EntryTransition.visible()||ClientBattleState.snapshot().active()||BattleResultsClient.active()||BattleTacticsClient.exclusiveHud()||com.gx.velveteclipse.client.darkhour.DarkHourClient.clock()&&!ClientBattleState.snapshot().active())&&!event.getOverlay().id().toString().equals("velvet_eclipse:persona_hud"))event.setCanceled(true);
         }
         @SubscribeEvent public static void onScreen(net.minecraftforge.client.event.ScreenEvent.Opening event){
             if(net.minecraft.client.Minecraft.m_91087_().f_91074_!=null&&net.minecraft.client.Minecraft.m_91087_().f_91073_!=null&&(ClientBattleState.snapshot().active()||AllOutPresentation.active())&&event.getNewScreen()!=null) {

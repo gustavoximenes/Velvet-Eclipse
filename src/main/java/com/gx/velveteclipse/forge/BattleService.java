@@ -25,6 +25,7 @@ public final class BattleService {
         final double[] origin,center;
         final float yaw;
         final int enemyCount;
+        int entryStart=-1000; EncounterOpening entryOpening=EncounterOpening.STANDARD;
         int delay=28;final Map<UUID,Integer> escapeReady=new HashMap<>();
         boolean wasBusy;int shiftUntil;UUID shiftFrom,shiftTo;
         boolean shuffleVictory,boss,raid,rare;int enemyPoseUntil;Entity animatingEnemy;int raidStage,dungeonFloor;
@@ -39,7 +40,7 @@ public final class BattleService {
     public static boolean encounterActive(UUID id){return BATTLES.containsKey(id);}
     public static boolean hasActiveBattle(Object p){var s=current(p);return s!=null&&s.state()==BattleState.ACTIVE;}
     public static List<Object> members(Object p){var g=group(p);return g==null?List.of():List.copyOf(g.players.values());}
-    private static boolean busy(Encounter g){return ticks<g.shiftUntil||g.pendingEnemy!=null||ticks<g.enemyPoseUntil||g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
+    private static boolean busy(Encounter g){return entryActive(g)||ticks<g.shiftUntil||g.pendingEnemy!=null||ticks<g.enemyPoseUntil||g.raid&&com.gx.velveteclipse.raid.RaidService.animating(g.session.id())||g.players.values().stream().anyMatch(p->MeleeBattleServer.active(p)||PersonaCinematicServer.suppressLegacySettle(p)||AllOutServer.active(p));}
     public static boolean actionBusy(Object p){var g=group(p);return g!=null&&(g.results.started()||g.session.state()!=BattleState.ACTIVE||g.session.prepared()!=null||busy(g));}
     private static BattleCombatant combatant(Object p){var d=PlayerPersonaData.load(p);var combatant=new BattleCombatant(RuntimeBridge.playerUuid(p),RuntimeBridge.playerName(p),BattleSide.PLAYERS,d.activeInstance(),d.maxHp(),d.hp(),d.maxSp(),d.sp()).equipment(com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses());if(p instanceof ServerPlayer player)combatant.moonDay(player.m_9236_().m_46468_()/24000L);return combatant;}
     private static double distance(double[] a,double[] b){double x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;}
@@ -66,6 +67,7 @@ public final class BattleService {
         var s=new BattleSession(participants,new Random(),EncounterOpening.STANDARD,DifficultyPreferences.effective(p));var g=new Encounter(p,s,count);g.dungeonFloor=floor;g.boss=boss;BATTLES.put(s.id(),g);attach(g,p,g.origin);
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),layout);
         if(boss)for(var c:s.participants())if(c.side()==BattleSide.ENEMIES){var e=targetActor(p,c.id());if(e!=null)com.gx.velveteclipse.darkhour.TartarusDungeonService.markGuardian(e);}
+        beginEntry(g,EncounterOpening.NEUTRAL,p);
         syncAll(g,count+" Shadow"+(count==1?"":"s")+" bloqueiam o caminho.");return s;
     }
     public static BattleSession startWorldEncounter(Object p,com.gx.velveteclipse.shadow.FieldShadowEntity field,EncounterOpening opening){
@@ -80,6 +82,7 @@ public final class BattleService {
         VisualBattleActors.spawnBattle(p,PlayerPersonaData.load(p).activePersona(),layout);
         String message=switch(opening){case ADVANTAGE->"VANTAGEM DA EQUIPE • Aliados começam!";case AMBUSH->"EMBOSCADA • Inimigos começam!";default->"ENCONTRO NEUTRO • Ordem inicial sorteada.";};
         if(g.rare)message+=" • SHADOW VERMELHA: inimigos poderosos, recompensas maiores.";
+        beginEntry(g,opening,p);
         syncAll(g,message);return s;
     }
     public static BattleSession startRaid(List<ServerPlayer> party,int stage,Entity enemy){return startRaid(party,stage,enemy,party.isEmpty()?BattleDifficulty.NORMAL:DifficultyPreferences.effective(party.get(0)));}
@@ -92,8 +95,16 @@ public final class BattleService {
         if(stage==2)foe.setRaidBoss(Element.FIRE);participants.add(foe);
         var s=new BattleSession(participants,new Random(),EncounterOpening.STANDARD,difficulty);var g=new Encounter(party.get(0),s,1);g.raid=true;g.raidStage=stage;g.boss=true;g.dungeonFloor=25;
         BATTLES.put(s.id(),g);for(var p:party){attach(g,p,RuntimeBridge.playerPosition(p));VisualBattleActors.replacePersona(p,PlayerPersonaData.load(p).activePersona());}
-        VisualBattleActors.bindEnemy(s.id(),foe.id(),enemy);syncAll(g,"O caminho está bloqueado. Preparem-se!");return s;
+        VisualBattleActors.bindEnemy(s.id(),foe.id(),enemy);beginEntry(g,EncounterOpening.NEUTRAL,party.get(0));syncAll(g,"O caminho está bloqueado. Preparem-se!");return s;
     }
+    private static boolean entryActive(Encounter g){return ticks-g.entryStart<com.gx.velveteclipse.exploration.EntryTimeline.duration(g.entryOpening);}
+    private static void beginEntry(Encounter g,EncounterOpening opening,Object initiator){
+        g.entryOpening=opening;
+        int elapsed=com.gx.velveteclipse.exploration.ExplorationService.preparing(initiator)?com.gx.velveteclipse.exploration.ExplorationRules.ENTRY_READY:0;
+        g.entryStart=ticks-elapsed;g.wasBusy=true;
+        sendEntry(g);
+    }
+    private static void sendEntry(Encounter g){for(Object p:g.players.values())if(p instanceof ServerPlayer sp)com.gx.velveteclipse.exploration.ExplorationNetwork.entry(sp,g.session.id(),g.entryOpening,ticks-g.entryStart);}
     private static void attach(Encounter g,Object p,double[] anchor){
         if(p instanceof ServerPlayer sp)sp.m_6915_();
         UUID id=RuntimeBridge.playerUuid(p);g.players.put(id,p);g.anchors.put(id,anchor);MEMBERS.put(id,g);FeedbackServer.membership(p,g.session.id(),true);
@@ -214,6 +225,7 @@ public final class BattleService {
             if(g.animatingEnemy!=null&&ticks>=g.enemyPoseUntil){g.animatingEnemy.m_146926_(0);g.animatingEnemy=null;}
             if(g.pendingEnemy!=null&&g.pendingEnemy.action().type()==BattleActionType.ATTACK&&ticks==g.enemyImpactAt-4){Object listener=g.players.values().stream().findFirst().orElse(null);if(listener!=null)FeedbackServer.cue(listener,"swing_strike");}
             if(g.pendingEnemy!=null&&ticks>=g.enemyImpactAt)resolveEnemy(g);
+            if(ticks-g.entryStart<=com.gx.velveteclipse.exploration.EntryTimeline.duration(g.entryOpening)&&ticks%10==0)sendEntry(g);
             boolean acting=busy(g);
             if(g.results.started())continue;
             if(!acting&&g.session.state()!=BattleState.ACTIVE){finish(g,g.ending);continue;}

@@ -1,0 +1,21 @@
+{
+  "review_date": "2026-10-31",
+  "appearance": {
+    "page": "https://samurai-gamers.com/persona-3-reload/p3re-angel-persona-guide/",
+    "compendium": "https://samurai-gamers.com/wp-content/uploads/2024/08/sg-p3r-justice-angel-1024x576.jpg",
+    "portrait": "https://samurai-gamers.com/wp-content/uploads/2024/08/sg-p3r-justice-angel-icon.jpg",
+    "observed": true,
+    "use": "Visual reference only. Guide statistics were not imported."
+  },
+  "action": {
+    "url": "https://www.youtube.com/watch?v=s-Ya33_6Wfs&t=230s",
+    "title": "Persona 3 Reload - 100% Compendium & Persona Background (DLC Included)",
+    "observed_range_seconds": [230.5,232.9],
+    "observed": true,
+    "use": "Raised-arm pose, body turn, wing folding and reopening. Compendium action; attack category not identified.",
+    "full_video_included": false
+  },
+  "local_face_method": ["modeling/elizabeth-rework-05", "modeling/nekomata-study-02"],
+  "uncertainties": ["Full idle period and amplitudes", "Original physical attack", "Original facial-expression set", "Final combat and menu scale"],
+  "technical_convention": "https://wiki.cobblemon.com/index.php/Tutorials/Creating_A_Model"
+}

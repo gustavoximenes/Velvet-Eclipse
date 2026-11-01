@@ -70,7 +70,8 @@ public final class PhotonElementalInstance implements AutoCloseable {
         // Photon 1.1.17 names its X/Y channels yaw/pitch respectively.
         c.rotationOverLifetime.setYaw(new Spin(spin.x));c.rotationOverLifetime.setPitch(new Spin(spin.y));c.rotationOverLifetime.setRoll(new Spin(spin.z));
         c.setSimulationSpace(ParticleConfig.Space.Local);c.setMaxParticles(1);
-        var point=new com.lowdragmc.photon.client.gameobject.emitter.data.shape.Cone();point.setRadius(0);point.setAngle(0);c.shape.setShape(point);
+        // Cone(radius=0) divides by its radius in Photon 1.1.17, poisoning even zero-speed particles with NaN.
+        c.shape.setShape(new com.lowdragmc.photon.client.gameobject.emitter.data.shape.Dot());
         c.setParallelUpdate(false);c.setParallelRendering(false);
         c.emission.setEmissionRate(new Constant(0));var burst=new EmissionSetting.Burst();
         burst.time=0;burst.cycles=1;burst.interval=1;burst.probability=1;burst.setCount(new Constant(1));c.emission.setBursts(List.of(burst));
@@ -91,7 +92,7 @@ public final class PhotonElementalInstance implements AutoCloseable {
         }else{
             c.renderer.setRenderMode(RendererSetting.Particle.Mode.Model);
             c.renderer.setModel(new IModelRenderer(resource("models",id)));
-            c.renderer.setUseBlockUV(true);c.renderer.setShade(false);
+            c.renderer.setUseBlockUV(false);c.renderer.setShade(false);
             c.material.setMaterial(new TextureMaterial(resource("textures","white")));
         }
         c.renderer.setBloomEffect(false);c.material.setDepthTest(true);c.material.setDepthMask(false);c.material.setCull(false);

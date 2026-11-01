@@ -33,8 +33,8 @@ public final class ClientBattleCamera {
             if(anchor!=null&&!PersonaCinematics.meleeActive())RuntimeBridge.freezeLocalClientPlayerPosition(anchor);
             if(!PersonaCinematics.meleeActive())RuntimeBridge.setEntityRotation(mc.f_91074_,com.gx.velveteclipse.client.presentation.BattleDirector.castingYaw(mc.f_91074_.m_20148_(),lockedYaw),2);
         }else anchor=null;
-        if(active&&mc.f_91080_==null){if(mc.f_91067_.m_91600_()){mc.f_91067_.m_91602_();releasedCursor=true;}}
-        else if(!active&&releasedCursor){if(mc.f_91080_==null&&valid)mc.f_91067_.m_91601_();releasedCursor=false;}
+        if(active&&!EntryTransition.visible()&&mc.f_91080_==null){if(mc.f_91067_.m_91600_()){mc.f_91067_.m_91602_();releasedCursor=true;}}
+        else if((!active||EntryTransition.visible())&&releasedCursor){if(mc.f_91080_==null&&valid)mc.f_91067_.m_91601_();releasedCursor=false;}
         battle=active;
     }
     private static void restore(){

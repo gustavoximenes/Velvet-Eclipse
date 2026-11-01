@@ -15,9 +15,9 @@ public final class ReloadFeedback {
   if(p.session().equals(BattleFeedbackS2C.WORLD)){
    if(!p.kind().equals("world")||p.event()<=lastWorld||p.targets().isEmpty())return;lastWorld=p.event();var t=p.targets().get(0).point();ReloadAudio.clip(p.key(),false,t.x(),t.y(),t.z());return;
   }
-  if(p.kind().equals("start")){if(!p.session().equals(gate.id())){ReloadPhoton.reset();ReloadAudio.reset(true);}gate.start(p.session());return;}
+  if(p.kind().equals("start")){if(!p.session().equals(gate.id())){ReloadPhoton.reset();ReloadAudio.reset(true);}gate.start(p.session());com.gx.velveteclipse.client.exploration.EntryTransition.membership(p.session());return;}
   if(!gate.accept(p.session(),p.event()))return;
-  if(p.kind().equals("stop")){gate.clear();ReloadPhoton.reset();ReloadAudio.reset(true);return;}
+  if(p.kind().equals("stop")){com.gx.velveteclipse.client.exploration.EntryTransition.reset();gate.clear();ReloadPhoton.reset();ReloadAudio.reset(true);return;}
   if(p.kind().equals("cancel")){ReloadPhoton.reset();ReloadAudio.reset(true);return;}
   var at=p.targets().isEmpty()?null:p.targets().get(0).point();double x=at==null?0:at.x(),y=at==null?0:at.y(),z=at==null?0:at.z();
   switch(p.kind()){
@@ -41,6 +41,6 @@ public final class ReloadFeedback {
    }
   }
  }
- public static void clear(){gate.clear();ReloadPhoton.reset();ReloadAudio.reset(false);world=null;lastWorld=Long.MIN_VALUE;}
+ public static void clear(){com.gx.velveteclipse.client.exploration.EntryTransition.reset();gate.clear();ReloadPhoton.reset();ReloadAudio.reset(false);world=null;lastWorld=Long.MIN_VALUE;}
  @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){if(e.phase!=TickEvent.Phase.END)return;if(world!=null&&Minecraft.m_91087_().f_91073_!=world){clear();return;}ReloadPhoton.tick();ReloadAudio.tick();}
 }

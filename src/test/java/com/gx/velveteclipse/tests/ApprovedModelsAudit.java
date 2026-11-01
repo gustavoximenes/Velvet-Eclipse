@@ -13,8 +13,8 @@ public final class ApprovedModelsAudit {
  public static void main(String[] args)throws Exception{
   var root=Path.of("src/main/resources/assets/velvet_eclipse");var output=Path.of("build/reports/model-combat");Files.createDirectories(output);
   var dimensions=new LinkedHashMap<String,Object>();
-  for(String id:List.of("pixie","elizabeth","nekomata","onmoraki")){
-   var source=Path.of("tools/approved_models/"+id+"/draft");double scale=switch(id){case "pixie"->.085;case "nekomata","onmoraki"->.125;default->.11;};
+  for(String id:List.of("pixie","elizabeth","nekomata","onmoraki","angel")){
+   var source=Path.of("tools/approved_models/"+id+"/draft");double scale=switch(id){case "pixie"->.085;case "nekomata","onmoraki","angel"->.125;default->.11;};
    var authored=JsonParser.parseString(Files.readString(source.resolve(id+".geo.json"))).getAsJsonObject().getAsJsonArray("minecraft:geometry").get(0).getAsJsonObject();
    String raw=Files.readString(root.resolve("geo/entity/"+id+".geo.json"));var geo=JsonUtil.GEO_GSON.fromJson(raw,Model.class);var tree=GeometryTree.fromModel(geo);var baked=BakedModelFactory.DEFAULT_FACTORY.constructGeoModel(tree);
    var converted=JsonParser.parseString(raw).getAsJsonObject().getAsJsonArray("minecraft:geometry").get(0).getAsJsonObject().getAsJsonArray("bones");
@@ -27,13 +27,13 @@ public final class ApprovedModelsAudit {
      for(int i=0;i<approved.size();i++){var a=approved.get(i).getAsJsonObject();var b=runtime.get(i).getAsJsonObject();check(a.get("size").equals(b.get("size"))&&a.get("uv").equals(b.get("uv")),"native dimensions and Box UV unchanged");}
     }bones++;
    }
-   check(cubes==switch(id){case "pixie"->210;case "nekomata"->266;case "onmoraki"->96;default->289;}&&bones==switch(id){case "pixie"->40;case "nekomata"->47;case "onmoraki"->20;default->45;},"exact approved revision "+id);
+   check(cubes==switch(id){case "pixie"->210;case "nekomata"->266;case "angel"->357;case "onmoraki"->96;default->289;}&&bones==switch(id){case "pixie"->40;case "nekomata"->47;case "angel"->79;case "onmoraki"->20;default->45;},"exact approved revision "+id);
    check(Arrays.equals(Files.readAllBytes(source.resolve(id+".png")),Files.readAllBytes(root.resolve("textures/entity/"+id+".png"))),"approved texture unchanged "+id);
    var clips=JsonParser.parseString(Files.readString(root.resolve("animations/entity/"+id+".animation.json"))).getAsJsonObject().getAsJsonObject("animations");var animations=JsonUtil.GEO_GSON.fromJson(clips,BakedAnimations.class);
    double[] bounds={Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE,-Double.MAX_VALUE,-Double.MAX_VALUE,-Double.MAX_VALUE};
    for(String clip:id.equals("elizabeth")?List.of("misc.idle"):List.of("misc.idle","action.magic","action.physical")){
     check(animations.getAnimation(clip)!=null,"controller clip exists "+id+" "+clip);var definition=clips.getAsJsonObject(clip);double length=definition.get("animation_length").getAsDouble();
-    check(length==(clip.equals("misc.idle")?(switch(id){case "pixie"->4;case "nekomata"->3.2;case "onmoraki"->3.6;default->4.8;}):id.equals("onmoraki")?(clip.equals("action.magic")?2.8:2.4):2.5),"idle duration / combat clip finishes before hiding");
+    check(length==(clip.equals("misc.idle")?(switch(id){case "pixie"->4;case "nekomata"->3.2;case "onmoraki"->3.6;default->4.8;}):id.equals("angel")?(clip.equals("action.magic")?3.0:2.6):id.equals("onmoraki")?(clip.equals("action.magic")?2.8:2.4):2.5),"idle duration / combat clip finishes before hiding");
     for(double tick:new double[]{0,10,20,28,40,length*20}){
      var posed=BakedModelFactory.DEFAULT_FACTORY.constructGeoModel(tree);
      for(var track:animations.getAnimation(clip).boneAnimations()){
@@ -46,7 +46,7 @@ public final class ApprovedModelsAudit {
      if(tick==28)Files.writeString(output.resolve(id+"-"+clip+".json"),new Gson().toJson(serialized));
     }
    }
-   check(bounds[4]<(id.equals("elizabeth")?2.8:2.5)&&bounds[4]>(id.equals("elizabeth")?2:1.1),"world height stays appropriate "+id+" "+Arrays.toString(bounds));dimensions.put(id,Map.of("bounds",bounds,"scale",scale,"bones",bones,"cubes",cubes));
+   check(bounds[4]<(id.equals("angel")?3.3:id.equals("elizabeth")?2.8:2.5)&&bounds[4]>(id.equals("elizabeth")?2:1.1),"world height stays appropriate "+id+" "+Arrays.toString(bounds));dimensions.put(id,Map.of("bounds",bounds,"scale",scale,"bones",bones,"cubes",cubes));
    if(id.equals("nekomata")){
     for(String clip:List.of("action.magic","action.physical")){
      var rootTrack=Arrays.stream(animations.getAnimation(clip).boneAnimations()).filter(b->b.boneName().equals("nekomata")).findFirst().orElseThrow();
@@ -66,6 +66,6 @@ public final class ApprovedModelsAudit {
    }
   }
   Files.writeString(output.resolve("native-model-bounds.json"),new Gson().toJson(dimensions));
-  System.out.println("PASS approved models: "+checks+" checks; Pixie03 / Elizabeth05 / Nekomata02 / Onmoraki01, native GeckoLib geometry, textures, transforms and action clips.");
+  System.out.println("PASS approved models: "+checks+" checks; Pixie03 / Elizabeth05 / Nekomata02 / Onmoraki01 / Angel03, native GeckoLib geometry, textures, transforms and action clips.");
  }
 }
