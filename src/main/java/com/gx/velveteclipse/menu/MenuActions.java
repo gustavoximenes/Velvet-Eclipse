@@ -6,6 +6,9 @@ import com.gx.velveteclipse.forge.PlayerPersonaData;
 public final class MenuActions {
     public record Result(String message,boolean changed){}
     public static Result apply(PlayerPersonaData data,String action,String argument,boolean battle){
+        return apply(data,action,argument,battle,com.gx.velveteclipse.roguelike.RogueBonuses.NONE);
+    }
+    public static Result apply(PlayerPersonaData data,String action,String argument,boolean battle,com.gx.velveteclipse.roguelike.RogueBonuses rogue){
         if(battle)return new Result("Aguarde o fim do combate.",false);
         if(action.equals("equip")){
             if(data.activePersona().equals(argument))return new Result("Persona ja equipada.",false);
@@ -23,7 +26,7 @@ public final class MenuActions {
                 return new Result("Habilidade indisponivel fora do combate.",false);
             if(data.hp()<=0||data.hp()>=data.maxHp())return new Result("Nao ha HP para recuperar.",false);
             if(data.sp()<skill.spCost())return new Result("SP insuficiente.",false);
-            data.setResources(data.hp()+Math.max(1,skill.power()),data.sp()-skill.spCost());return new Result("Cura aplicada.",true);
+            data.setResources(data.hp()+rogue.heal(Math.max(1,skill.power())),data.sp()-skill.spCost());return new Result("Cura aplicada.",true);
         }
         return new Result("",false);
     }

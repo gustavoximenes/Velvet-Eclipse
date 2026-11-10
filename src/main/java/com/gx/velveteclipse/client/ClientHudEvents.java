@@ -39,9 +39,9 @@ public final class ClientHudEvents {
         List<HudDesign.Entry> entries=new ArrayList<>();
         List<String> ids=skills?s.skills():s.roster();
         for(int i=0;i<Math.min(7,ids.size());i++) {
-            String id=ids.get(i);int cost=skills?PersonaRegistry.skill(id).map(v->v.spCost()).orElse(0):0;
+            String id=ids.get(i);var definition=skills?PersonaRegistry.skill(id).orElse(null):null;var payment=definition==null?new com.gx.velveteclipse.roguelike.SkillPayment(0,0):ClientBattleUiState.payment(definition,s);
             entries.add(new HudDesign.Entry(ClientKeyMappings.optionLabel(i),skills?ClientBattleUiState.displaySkill(id):ClientBattleUiState.displayPersona(id),
-                skills?(cost>0?cost+" SP":"--"):id.equals(s.personaId())?"ACTIVE":"",!skills||cost<=s.sp()));
+                skills?payment.label():id.equals(s.personaId())?"ACTIVE":"",!skills||definition!=null&&ClientBattleUiState.affordable(definition,s)));
         }
         HudDesign.View view=new HudDesign.View(s.active(),s.playerTurn(),ClientBattleUiState.actionLocked(),s.personaName(),s.hp(),s.maxHp(),s.sp(),s.maxSp(),
             s.enemyName(),s.enemyHp(),s.enemyMaxHp(),hp,sp,enemy,trail,s.message(),ClientBattleUiState.page().name(),entries,keys,ClientKeyMappings.label(ClientKeyMappings.BACK),

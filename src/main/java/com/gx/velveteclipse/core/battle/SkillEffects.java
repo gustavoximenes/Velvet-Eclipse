@@ -8,7 +8,7 @@ public final class SkillEffects {
  public static boolean revival(SkillDefinition s){var i=s==null?null:ReloadCatalogue.info(s.id());return i!=null&&i.effect().equals("FMTRecarm");}
  public static String apply(SkillDefinition s,BattleCombatant actor,BattleCombatant target,Random rng){
   var i=ReloadCatalogue.info(s.id());boolean waiting=actor!=target;int before=target.hp();
-  if(i==null){if(s.element()==Element.HEALING)target.heal(s.power());else return SupportEffects.apply(s.id(),actor,target);}
+  if(i==null){if(s.element()==Element.HEALING)target.heal(actor.rogue().heal(s.power()));else {String result=SupportEffects.apply(s.id(),actor,target);target.extendDebuff(s.id(),actor.rogue().debuffTurns());return result;}}
   else switch(i.effect()){
    case "FMTPersonaKaja"->{int stage=s.id().endsWith("kaja")?1:-1;switch(i.detail()){case "attack"->target.attackStatus(stage,waiting);case "defense"->target.defenseStatus(stage,waiting);default->target.accuracyStatus(stage,waiting);}}
    case "FMTElemCharge"->target.chargeUp(i.detail().equals("magic"));
@@ -18,20 +18,21 @@ public final class SkillEffects {
    case "$2 +$1% for 3 turns"->target.criticalBuff((int)i.value());
    case "FMTFoulBreathN"->target.foul();
    case "FMTCureAilment"->{if(s.id().equals("dekaja"))target.clearStages(true);else if(s.id().equals("dekunda"))target.clearStages(false);else{target.cure(i.detail().toUpperCase(Locale.ROOT).replace(" ",""));if(i.detail().contains("Down"))target.setDowned(false);}}
-   case "FMTRecarm"->{if(!target.alive())target.heal(Math.max(1,target.maxHp()*(int)i.value()/100));target.setDowned(false);}
-   case "$1% $2, user's HP reduced to 1"->target.heal(target.maxHp());
-   case "$1% $2 + Sukukaja"->{target.heal(target.maxHp()/2);target.accuracyStatus(1,waiting);}
-   case "FMTExact"->{if(i.detail().equals("HP restore"))target.heal(target.maxHp()*(int)i.value()/100);else inflict(actor,target,i.detail(),i.value(),rng);}
+   case "FMTRecarm"->{if(!target.alive())target.heal(actor.rogue().heal(Math.max(1,target.maxHp()*(int)i.value()/100)));target.setDowned(false);}
+   case "$1% $2, user's HP reduced to 1"->target.heal(actor.rogue().heal(target.maxHp()));
+   case "$1% $2 + Sukukaja"->{target.heal(actor.rogue().heal(target.maxHp()/2));target.accuracyStatus(1,waiting);}
+   case "FMTExact"->{if(i.detail().equals("HP restore"))target.heal(actor.rogue().heal(target.maxHp()*(int)i.value()/100));else inflict(actor,target,i.detail(),i.value(),rng);}
    case "FMTBase"->{switch(s.id()){
     case "heat_riser"->{target.attackStatus(1,waiting);target.defenseStatus(1,waiting);target.accuracyStatus(1,waiting);}
     case "debilitate"->{target.attackStatus(-1,waiting);target.defenseStatus(-1,waiting);target.accuracyStatus(-1,waiting);}
     case "best_friends"->{target.chargeUp(false);target.chargeUp(true);}
-    case "salvation"->{target.heal(target.maxHp());target.cure("ALL");target.setDowned(false);}
+    case "salvation"->{target.heal(actor.rogue().heal(target.maxHp()));target.cure("ALL");target.setDowned(false);}
     case "amrita_shower","amrita_drop"->{target.cure("ALL");target.setDowned(false);}
-    default->target.heal((int)Math.round(s.power()*(actor.equipment().has("divine grace")?1.5:1)));
+    default->target.heal(actor.rogue().heal((int)Math.round(s.power()*(actor.equipment().has("divine grace")?1.5:1))));
    }}
-   default->{if(s.element()==Element.HEALING)target.heal(s.power());else throw new IllegalArgumentException("Unimplemented active effect "+s.id()+" / "+i.effect());}
+   default->{if(s.element()==Element.HEALING)target.heal(actor.rogue().heal(s.power()));else throw new IllegalArgumentException("Unimplemented active effect "+s.id()+" / "+i.effect());}
   }
+  if(actor.side()!=target.side())target.extendDebuff(s.id(),actor.rogue().debuffTurns());
   return actor.name()+" usou "+s.displayName()+" em "+target.name()+"."+(target.hp()>before?" +"+(target.hp()-before)+" HP.":!target.ailment().isEmpty()?" "+target.ailment():"");
  }
  public static void afterHit(SkillDefinition s,BattleCombatant actor,BattleCombatant target,DamageOutcome hit,Random rng){

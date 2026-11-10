@@ -35,7 +35,7 @@ public final class BattleSession {
    public boolean canSwitchPersona(UUID actor){return !oneMore()&&prepared==null&&currentActor()!=null&&currentActor().id().equals(actor);}
    public List<BattleCombatant> batonTargets(){
       var actor=currentActor();if(!oneMore()||actor==null||actor.side()!=BattleSide.PLAYERS)return List.of();
-      return alliesOf(actor).stream().filter(a->!a.id().equals(actor.id())&&!a.downed()&&!batonChain.contains(a.id())).toList();
+      return alliesOf(actor).stream().filter(a->!a.id().equals(actor.id())&&!a.downed()&&!batonChain.contains(a.id())&&a.rogue().oneMore()).toList();
    }
    public boolean batonPass(UUID actor,UUID target){
       if(prepared!=null||!oneMore()||currentActor()==null||!currentActor().id().equals(actor)||batonTargets().stream().noneMatch(a->a.id().equals(target)))return false;
@@ -65,8 +65,8 @@ public final class BattleSession {
       var skill=action.type()==BattleActionType.ALL_OUT?allOutSkill():action.type()==BattleActionType.ITEM&&com.gx.velveteclipse.equipment.DamageItems.get(action.skillId())!=null?com.gx.velveteclipse.equipment.DamageItems.get(action.skillId()).skill():action.type()==BattleActionType.ATTACK?basic(actor):action.type()==BattleActionType.SKILL?PersonaRegistry.skill(action.skillId()).orElse(null):null;
       var target=skill==null?null:validSkillTarget(actor,action.targetId(),skill);
       if(skill==null||skill.isPassive()||target==null||!actor.alive())return null;
-      if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<actor.spCost(skill.spCost())
-         ||(skill.hpPercentCost()>0&&actor.hp()<=Math.max(1,actor.maxHp()*actor.hpCost(skill.hpPercentCost())/100))))return null;
+      if(action.type()==BattleActionType.SKILL&&(!actor.persona().learnedSkills().contains(skill.id())||actor.sp()<actor.spCost(skill)
+         ||(skill.hpPercentCost()>0&&actor.hp()<=actor.hpPayment(skill))))return null;
       var hits=new java.util.LinkedHashMap<UUID,DamageOutcome>();
       if(!skill.isDamageSkill()) {
          if(!SkillEffects.supported(skill))return null;
@@ -216,13 +216,7 @@ public final class BattleSession {
                   if (var7 == null) return new BattleResolution(this.state,false,List.of("Invalid target."));
                   if(var6.isPassive()||!var6.isDamageSkill()&&!SkillEffects.supported(var6))
                      return new BattleResolution(this.state,false,List.of("Unsupported skill."));
-                  if (var6.spCost() > 0 && !var4.spendSp(var6.spCost())) {
-                     return new BattleResolution(this.state, false, List.of("Not enough SP."));
-                  }
-
-                  if (var6.hpPercentCost() > 0 && !var4.spendHpPercent(var6.hpPercentCost())) {
-                     return new BattleResolution(this.state, false, List.of("Not enough HP to use that physical skill."));
-                  }
+                  if(!var4.spendSkill(var6))return new BattleResolution(state,false,List.of("Not enough HP or SP."));
 
                   if(!var6.isDamageSkill()) {
                      var info=com.gx.velveteclipse.core.persona.ReloadCatalogue.info(var6.id());
@@ -244,6 +238,7 @@ public final class BattleSession {
 
             if(var2.type()==BattleActionType.SKILL){var used=PersonaRegistry.skill(var2.skillId()).orElse(null);if(used!=null&&used.isDamageSkill())var4.useCharge(used.usesMagicStat());if(used!=null&&used.id().equals("armageddon"))var4.sacrifice();}
             prepared=null;
+            var5 &= var4.rogue().oneMore();
             var4.setBatonBoost(false);
             this.updateState();
             if (this.state == BattleState.ACTIVE && !var5) {

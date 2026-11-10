@@ -32,7 +32,9 @@ public final class ClientBattleUiState {
  public static void back(){sound("ui_cancel");if(com.gx.velveteclipse.client.equipment.ItemHelpHud.active()){com.gx.velveteclipse.client.equipment.ItemHelpHud.close();return;}if(page==Page.TARGET&&!pendingSkill.isBlank()&&!pendingSkill.equals("__baton_pass")){page=pendingSkill.startsWith("__item:")?Page.ITEMS:Page.SKILLS;opened=System.nanoTime();}else page=Page.MAIN;pendingSkill="";}
  private static boolean canAct(BattleSnapshotS2C s){return s!=null&&s.active()&&s.playerTurn()&&!actionLocked()&&!BattleTacticsClient.prompt();}
  public static com.gx.velveteclipse.equipment.EquipmentBonuses bonuses(BattleSnapshotS2C s){return com.gx.velveteclipse.client.equipment.EquipmentScreen.bag().bonuses().withSkills(s.passives());}
- public static boolean affordable(SkillDefinition skill,BattleSnapshotS2C s){return skill!=null&&!skill.isPassive()&&(skill.spCost()>0&&bonuses(s).has("spell master")?Math.max(1,skill.spCost()/2):skill.spCost())<=s.sp()&&(skill.hpPercentCost()==0||s.hp()>Math.max(1,s.maxHp()*(bonuses(s).has("arms master")?Math.max(1,skill.hpPercentCost()/2):skill.hpPercentCost())/100));}
+ public static com.gx.velveteclipse.roguelike.SkillPayment payment(SkillDefinition skill,BattleSnapshotS2C s){return com.gx.velveteclipse.roguelike.SkillPayment.of(skill,s.maxHp(),bonuses(s),com.gx.velveteclipse.client.menu.RogueScreen.bonuses());}
+ public static java.util.Map<String,com.gx.velveteclipse.roguelike.SkillPayment> payments(BattleSnapshotS2C s){var result=new java.util.HashMap<String,com.gx.velveteclipse.roguelike.SkillPayment>();for(String id:s.skills())PersonaRegistry.skill(id).ifPresent(skill->result.put(id,payment(skill,s)));return result;}
+ public static boolean affordable(SkillDefinition skill,BattleSnapshotS2C s){return skill!=null&&!skill.isPassive()&&payment(skill,s).affordable(s.hp(),s.sp());}
  public static boolean selectIndex(int index,BattleSnapshotS2C s){
   if(!canAct(s)||com.gx.velveteclipse.client.equipment.ItemHelpHud.active())return false;
   if(page==Page.TARGET)return confirm(s);

@@ -1,3 +1,7 @@
+# Velvet Eclipse 0.6.58 — Roguelike e portais
+
+**Tab → System → Roguelike:** modo opcional controlado pelo dono, com três classes, Arcana Buffs, Arcana Up e fusões supremas por rank. Corrige o crescimento de HP/SP por nível e a passagem indevida pelos portais do Tártaro durante a espera entre andares. [Escopo, uso e validação offline](docs/roguelike-portals-0.6.58.md). Cliente e servidor: 0.6.58; protocolos roguelike 2 e fusão 4.
+
 # Velvet Eclipse 0.6.57 — Angel e entradas de batalha
 
 Angel 03 aprovada integrada, entradas neutra/vantagem/desvantagem e correção do Photon que fazia as partículas desaparecerem. [Escopo, validação e limites](docs/angel-entry-0.6.57.md). Cliente/servidor: 0.6.57; protocolo de exploração 5.

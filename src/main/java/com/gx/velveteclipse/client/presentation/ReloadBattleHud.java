@@ -55,7 +55,7 @@ public final class ReloadBattleHud {
   }
   var s=ClientBattleState.snapshot();if(ClientBattleUiState.selector()){
    if(ClientBattleUiState.page()==ClientBattleUiState.Page.ITEMS)com.gx.velveteclipse.client.equipment.SupplyBattleHud.paint(canvas,width,height);
-   else{var choices=s.skills().stream().map(id->com.gx.velveteclipse.core.persona.PersonaRegistry.skill(id).orElse(null)).filter(Objects::nonNull).map(skill->ClientBattleUiState.bonuses(s).displayCost(skill)).toList();PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age()),width,height);}
+   else{var choices=s.skills().stream().map(id->com.gx.velveteclipse.core.persona.PersonaRegistry.skill(id).orElse(null)).filter(Objects::nonNull).toList();PersonaBattleDesign.paint(canvas,new PersonaBattleDesign.View(s.personaName(),choices,ClientBattleUiState.selected(),s.hp(),s.maxHp(),s.sp(),ClientBattleUiState.actionLocked(),ClientBattleUiState.age(),ClientBattleUiState.payments(s)),width,height);}
   }else if(view.page().equals("MAIN"))ReloadBattleDesign.commandsBackdrop(canvas,view,width,height);
  }
  public static boolean click(double x,double y,int w,int h){if(root==null||width!=w||height!=h||!showCommands||BattleDirector.active()||!ClientBattleState.snapshot().playerTurn()||ClientBattleUiState.actionLocked())return false;boolean hit=commands.mouseClicked(x,y,0);commands.mouseReleased(x,y,0);return hit;}

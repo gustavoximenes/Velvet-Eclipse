@@ -51,8 +51,8 @@ public final class TartarusDungeonService {
  }
  public static State data(ServerLevel l){return l.m_8895_().m_164861_(State::load,State::new,"velvet_eclipse_tartarus_interior");}
  public static void cross(ServerPlayer p,String route){
-  if(BattleService.current(p)!=null||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||p.m_20159_())return;
-  long now=System.currentTimeMillis();if(now-p.getPersistentData().m_128454_(COOLDOWN)<2000)return;
+  if(!p.m_6084_()||p.m_5833_()||BattleService.current(p)!=null||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||p.m_20159_())return;
+  long now=System.currentTimeMillis();if(TartarusPortalSafety.coolingDown(now,p.getPersistentData().m_128454_(COOLDOWN)))return;
   int here=floor(p),target;
   if(route.equals("entrance")){
    if(inside(p)||!DarkHourService.active(p.m_9236_()))return;var tower=TartarusService.data(p.m_284548_());if(!tower.ready()||tower.removing)return;
@@ -72,12 +72,13 @@ public final class TartarusDungeonService {
  public static void leave(ServerPlayer p){
   if(com.gx.velveteclipse.city.CityService.hasTartarusReturn(p)){
    if(!com.gx.velveteclipse.city.CityService.returnFromTartarus(p))p.m_5661_(com.gx.velveteclipse.localization.ModText.component("A chegada na cidade está bloqueada ou em atualização. Seu retorno à cidade foi preservado; tente novamente."),true);
+   else p.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);
    return;
   }
   var level=p.m_20194_().m_129783_();var back=p.getPersistentData().m_128469_(RETURN);var spawn=level.m_220360_();double x=back.m_128441_("x")?back.m_128459_("x"):spawn.m_123341_()+.5,z=back.m_128441_("z")?back.m_128459_("z"):spawn.m_123343_()+.5;
   var tower=TartarusService.data(level);if(tower.ready()&&!tower.removing){x=tower.x+.5;z=tower.z+32.5;}
   int y=level.m_6924_(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,(int)Math.floor(x),(int)Math.floor(z));
-  p.getPersistentData().m_128473_("velvet_eclipse:tartarus_entered_cycle");p.getPersistentData().m_128473_("velvet_eclipse:tartarus_dawn");p.getPersistentData().m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(level,x,y+.1,z,0,0);p.f_19789_=0;
+  p.getPersistentData().m_128473_("velvet_eclipse:tartarus_entered_cycle");p.getPersistentData().m_128473_("velvet_eclipse:tartarus_dawn");p.getPersistentData().m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(level,x,y+.1,z,0,0);p.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);p.f_19789_=0;
  }
  private static BlockState state(String name){
   if(name.startsWith("scenic_")){var block=DarkHourRegistry.ARCHITECTURE.get(name.substring(7)).get();var s=block.m_49966_().m_61124_(TartarusScenicBlock.SCENIC,true);return block instanceof StairBlock?s.m_61124_(StairBlock.f_56841_,Direction.NORTH):s;}
@@ -110,11 +111,11 @@ public final class TartarusDungeonService {
   }
   var pending=s.pending.entrySet().iterator();while(pending.hasNext()){
    var entry=pending.next();var request=entry.getValue();var p=l.m_7654_().m_6846_().m_11259_(entry.getKey());
-   if(p==null||!p.m_9236_().m_46472_().equals(request.from)||p.m_20275_(request.x,request.y,request.z)>36||BattleService.current(p)!=null){pending.remove();continue;}
+   if(p==null||!p.m_6084_()||p.m_5833_()||!p.m_9236_().m_46472_().equals(request.from)||p.m_20275_(request.x,request.y,request.z)>36||BattleService.current(p)!=null||com.gx.velveteclipse.exploration.ExplorationService.blocksBattleStart(p)||p.m_20159_()){pending.remove();continue;}
    if(!ready(s,request.floor))continue;
    repair(l,s,request.floor);if(s.defeated.contains(request.floor))openGate(l,request.floor);
    var plan=s.plan(l,request.floor);var at=request.descending&&request.floor>0?new TartarusInteriorLayout.Point(plan.stairs().x(),plan.stairs().z()+7):plan.entry();
-   p.getPersistentData().m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(l,TartarusInteriorLayout.origin(request.floor)+at.x()+.5,65.05,at.z()+.5,180,0);p.f_19789_=0;p.getPersistentData().m_128356_("velvet_eclipse:tartarus_entered_cycle",s.progress.cycle);TartarusTerminals.discover(p,request.floor);TartarusTerminals.ensureProps(l,s,request.floor);if(request.floor>0)spawn(l,s,request.floor);
+   p.getPersistentData().m_128356_(COOLDOWN,System.currentTimeMillis());p.m_8999_(l,TartarusInteriorLayout.origin(request.floor)+at.x()+.5,65.05,at.z()+.5,180,0);p.m_20256_(net.minecraft.world.phys.Vec3.f_82478_);p.f_19789_=0;p.getPersistentData().m_128356_("velvet_eclipse:tartarus_entered_cycle",s.progress.cycle);TartarusTerminals.discover(p,request.floor);TartarusTerminals.ensureProps(l,s,request.floor);if(request.floor>0)spawn(l,s,request.floor);
    if(request.from.equals(com.gx.velveteclipse.city.CityService.DIMENSION))p.getPersistentData().m_128379_("city_tartarus_return",true);
    else if(!request.from.equals(DIMENSION)&&!request.from.equals(VelvetRoomService.DIMENSION))p.getPersistentData().m_128473_("city_tartarus_return");
    p.m_5661_(com.gx.velveteclipse.localization.ModText.component(request.floor==0?"Tártaro • Hall de entrada":request.floor==250?"Tártaro • Andar 250 — Último andar":"Tártaro • Andar "+request.floor+" / 250"),false);pending.remove();

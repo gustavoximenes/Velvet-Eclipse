@@ -32,6 +32,7 @@ public final class TartarusTerminals {
   boolean permitChest=com.gx.velveteclipse.progression.RewardLedger.permitChest(f,Integer.parseInt(id.substring(id.lastIndexOf(':')+1)));
   boolean reward=permitChest&&com.gx.velveteclipse.progression.ProgressionRewards.chest(p,f);
   if(!s.progress.treasures.add(key)){if(permitChest&&!reward)p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Você já recolheu a permissão deste andar."),true);return;}
+  com.gx.velveteclipse.roguelike.RogueService.treasure(p);
   var data=PlayerPersonaData.load(p);long yen=250L+f*45L;data.addYen(yen);data.addPulseTonics(1);data.save(p);if(!permitChest){s.props.remove(id);e.m_146870_();}s.m_77762_();BattleService.sync(p,"Tesouro • ¥ "+yen+" e 1 Pulse Tonic");com.gx.velveteclipse.shuffle.ShuffleService.status(p,"");p.m_5661_(com.gx.velveteclipse.localization.ModText.component("Tesouro recolhido: ¥ "+yen+" e 1 Pulse Tonic"),false);
  }
  public static void request(ServerPlayer p,TartarusTerminalNetwork.Request r){

@@ -6,13 +6,16 @@ import com.gx.velveteclipse.equipment.*;
 /** Source pays once; recipient receives recovery only after all conditions pass. */
 public final class MenuRecovery {
     public static MenuActions.Result apply(PlayerPersonaData from,PlayerPersonaData to,EquipmentLoadout bag,String action,String id){
+        return apply(from,to,bag,action,id,com.gx.velveteclipse.roguelike.RogueBonuses.NONE);
+    }
+    public static MenuActions.Result apply(PlayerPersonaData from,PlayerPersonaData to,EquipmentLoadout bag,String action,String id,com.gx.velveteclipse.roguelike.RogueBonuses rogue){
         if(from.hp()<=0||to.hp()<=0)return new MenuActions.Result("Não é possível usar agora.",false);
         int hp=0,sp=0,cost=0;
         if(action.equals("heal_target")){
             var skill=PersonaRegistry.skill(id).orElse(null);
             if(skill==null||!from.hasPersona()||!from.activeInstance().learnedSkills().contains(id)||skill.element()!=Element.HEALING||skill.hpPercentCost()>0)return new MenuActions.Result("Habilidade indisponível.",false);
             if(from.sp()<skill.spCost())return new MenuActions.Result("SP insuficiente.",false);
-            hp=Math.max(1,skill.power());cost=skill.spCost();
+            hp=rogue.heal(Math.max(1,skill.power()));cost=skill.spCost();
         }else if(action.equals("tonic_target"))hp=Math.max(1,to.maxHp()*30/100);
         else if(action.equals("supply_target")){
             var supply=Supplies.get(id);if(supply==null||DamageItems.get(id)!=null||supply.hp()==0&&supply.sp()==0)return new MenuActions.Result("Use este item em combate.",false);

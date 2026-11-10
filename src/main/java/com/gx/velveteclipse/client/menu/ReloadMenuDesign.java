@@ -21,7 +21,7 @@ public final class ReloadMenuDesign {
     public static Rect action(){return rect(36,605,680,43);}
     public static Rect back(){return rect(16,679,160,34);}
     public static int pickRow(int tab,boolean gear,double x,double y){for(int i=0;i<visibleRows(tab,gear);i++)if(row(tab,i,gear).contains(x,y))return i;return -1;}
-    public static int pickHome(double x,double y){x/=SX;y/=SY;for(int i=0;i<TABS.length;i++){double px=526+Math.sin(i*.55)*23,py=154+i*44,a=Math.toRadians(-16+i*.8),dx=x-px,dy=y-py,lx=dx*Math.cos(a)+dy*Math.sin(a),ly=-dx*Math.sin(a)+dy*Math.cos(a);if(lx>=-28&&lx<=com.gx.velveteclipse.localization.DisplayText.text(TABS[i]).length()*24+40&&ly>=-8&&ly<=52)return i;}return -1;}
+    public static int pickHome(double x,double y){x/=SX;y/=SY;for(int i=0;i<TABS.length;i++){double px=526+Math.sin(i*.55)*23,py=140+i*38,a=Math.toRadians(-16+i*.8),dx=x-px,dy=y-py,lx=dx*Math.cos(a)+dy*Math.sin(a),ly=-dx*Math.sin(a)+dy*Math.cos(a);if(lx>=-28&&lx<=com.gx.velveteclipse.localization.DisplayText.text(TABS[i]).length()*24+40&&ly>=-8&&ly<=37)return i;}return -1;}
     public static Canvas scaled(Canvas target){return new Canvas(){
         public void fill(double x,double y,double w,double h,int color){target.fill(x*SX,y*SY,w*SX,h*SY,color);}
         public void poly(double[] p,int color){double[] q=p.clone();for(int i=0;i<q.length;i++)q[i]*=i%2==0?SX:SY;target.poly(q,color);}
@@ -69,9 +69,9 @@ public final class ReloadMenuDesign {
         if(!v.home()&&v.tab()==8)c.fill(708,141,554,484,0xE8061638);
         if(v.home()){
             c.fill(115,34,166,64,INK);c.fill(117,36,162,60,WHITE);c.body(String.format(Locale.ROOT,"¥ %,d",v.wallet()),123,37,31,0xFF050913,0);c.body("YEN / CARTEIRA",126,76,12,INK,0);
-            for(int i=0;i<TABS.length;i++){double x=526+Math.sin(i*.55)*23,y=154+i*44,angle=-16+i*.8,w=c.width(TABS[i],53)+25;boolean active=i==v.tab();
+            for(int i=0;i<TABS.length;i++){double x=526+Math.sin(i*.55)*23,y=140+i*38,angle=-16+i*.8,w=c.width(TABS[i],53)+25;boolean active=i==v.tab();
                 double progress=ReloadMenuOpening.option(v.entered(),i,v.motion());var entry=ReloadMenuOpening.layer(c,155*(1-progress),60*(1-progress),progress);
-                if(active){rotated(entry,new double[]{-22,13,w+19,-11,w-9,56,-41,70},x,y,angle,RED);rotated(entry,new double[]{-13,5,w+7,-5,w-10,48,-21,55},x,y,angle,WHITE);}entry.text(TABS[i],x,y+2,active?53:45,active?INK:CYAN,angle);
+                if(active){rotated(entry,new double[]{-22,13,w+19,-11,w-9,56,-41,70},x,y,angle,RED);rotated(entry,new double[]{-13,5,w+7,-5,w-10,48,-21,55},x,y,angle,WHITE);}entry.text(TABS[i],x,y+2,active?46:39,active?INK:CYAN,angle);
             }
             footer(c,HELP[v.tab()]);return;
         }

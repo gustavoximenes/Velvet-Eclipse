@@ -4,12 +4,12 @@ import static com.gx.velveteclipse.client.menu.MenuDesign.*;
 
 /** Coordinates are shared by the live screen, pointer picking and offline audit. */
 public final class VelvetArchiveDesign {
- public static final String[] HOME={"Fusão normal","Fusão especial","Busca por resultado","Compêndio","Contribuição"};
- public static final String[] SUB={"Normal Fusion","Special Fusion","Fusion Search","Persona Compendium","Party Fusion"};
+ public static final String[] HOME={"Fusão normal","Fusão especial","Busca por resultado","Compêndio","Contribuição","Fusões supremas"};
+ public static final String[] SUB={"Normal Fusion","Special Fusion","Fusion Search","Persona Compendium","Party Fusion","Supreme Fusions"};
  public record Row(String title,String detail){}
- public static Rect card(int index){double a=Math.toRadians(angle(index)),w=301,h=54,cx=205+(index%2)*32,cy=114+index*76;return new Rect(cx-w/2*Math.cos(a)+h/2*Math.sin(a),cy-w/2*Math.sin(a)-h/2*Math.cos(a),w,h);}
- public static double angle(int index){return index%2==0?-4:4;}
- public static int pickCard(double x,double y){for(int i=0;i<5;i++){var r=card(i);double a=Math.toRadians(angle(i)),dx=x-r.x(),dy=y-r.y();if(new Rect(0,0,r.w(),r.h()).contains(dx*Math.cos(a)+dy*Math.sin(a),-dx*Math.sin(a)+dy*Math.cos(a)))return i;}return -1;}
+ public static Rect card(int index){double a=Math.toRadians(angle(index)),w=301,h=46,cx=205+(index%2)*32,cy=116+index*62;return new Rect(cx-w/2*Math.cos(a)+h/2*Math.sin(a),cy-w/2*Math.sin(a)-h/2*Math.cos(a),w,h);}
+ public static double angle(int index){return index%2==0?-3:3;}
+ public static int pickCard(double x,double y){for(int i=0;i<HOME.length;i++){var r=card(i);double a=Math.toRadians(angle(i)),dx=x-r.x(),dy=y-r.y();if(new Rect(0,0,r.w(),r.h()).contains(dx*Math.cos(a)+dy*Math.sin(a),-dx*Math.sin(a)+dy*Math.cos(a)))return i;}return -1;}
  public static Rect row(int visible){return new Rect(29,147+visible*37,439,32);}
  public static int pickRow(double x,double y){for(int i=0;i<7;i++)if(row(i).contains(x,y))return i;return -1;}
  private static double[] transform(double[] points,Rect r,double degrees){double a=Math.toRadians(degrees),s=Math.sin(a),c=Math.cos(a);double[] out=points.clone();for(int i=0;i<out.length;i+=2){out[i]=r.x()+points[i]*c-points[i+1]*s;out[i+1]=r.y()+points[i]*s+points[i+1]*c;}return out;}
@@ -17,12 +17,12 @@ public final class VelvetArchiveDesign {
  public static void home(Canvas c,int selected){
   c.poly(new double[]{0,0,290,0,374,500,0,500},0x5E050B33);
   title(c,"ESCOLHA UMA FUSÃO","");
-  for(int i=0;i<5;i++){
+  for(int i=0;i<HOME.length;i++){
    var r=card(i);double a=angle(i),w=r.w(),h=r.h();int ink=i==selected?INK:WHITE;
    c.poly(transform(new double[]{-2,-2,w+2,-2,w+2,h+2,-2,h+2},r,a),i==selected?0xFF38FAF3:0xFFD3E6FF);
    c.poly(transform(new double[]{0,0,w,0,w,h,0,h},r,a),i==selected?0xFF08D8DC:0xF2122469);
-   for(int x:new int[]{12,289})for(int y:new int[]{12,48})c.poly(transform(new double[]{x,y-3,x+3,y,x,y+3,x-3,y},r,a),ink);
-   cardText(c,HOME[i],r,30,12,20,ink,a);cardText(c,SUB[i],r,32,39,10,ink,a);
+   for(int x:new int[]{12,289})for(int y:new int[]{10,39})c.poly(transform(new double[]{x,y-3,x+3,y,x,y+3,x-3,y},r,a),ink);
+   cardText(c,HOME[i],r,30,8,18,ink,a);cardText(c,SUB[i],r,32,31,9,ink,a);
   }
   c.poly(new double[]{426,385,865,372,853,450,422,462},0xEF040726);c.text("IGOR",444,393,13,CYAN,0);
   c.text("Duas almas abrem caminho",444,420,16,WHITE,0);c.text("a uma nova possibilidade.",444,438,16,WHITE,0);
@@ -49,6 +49,20 @@ public final class VelvetArchiveDesign {
   c.text((rows.isEmpty()?0:base+selected+1)+" / "+total+"    Setas Selecionar",34,419,10,MUTED,0);
  }
  public static void footer(Canvas c,String left,String right){c.fill(0,474,900,26,0xF203061E);c.text(left,20,482,11,WHITE,0);c.text(right,520,482,11,CYAN,0);}
+ public static String supremeStatus(com.gx.velveteclipse.core.fusion.SupremeFusion.Entry e){
+  if(!e.gated())return "NORMAL MODE / NO RANK LOCK";
+  return (e.unlocked()?"UNLOCKED / ":"LOCKED / ")+(e.allRanks()?e.maxed()+" / "+e.total()+" maxed Arcanas":"Rank "+e.rank()+" / 10");
+ }
+ public static void supremeDetail(Canvas c,com.gx.velveteclipse.core.fusion.SupremeFusion.Entry e,List<com.gx.velveteclipse.core.fusion.FusionSearch.Option> options,int combination){
+  c.fill(516,300,363,140,0xEF050C2D);c.text(fit(c,supremeStatus(e),337,12),529,307,12,e.unlocked()?CYAN:0xffffacbd,0);
+  c.text(e.arcana()+" / Required Lv "+e.level(),529,329,11,MUTED,0);
+  int index=options.isEmpty()?0:Math.floorMod(combination,options.size());
+  var ingredients=options.isEmpty()?e.ingredients():options.get(index).sources().stream().map(com.gx.velveteclipse.core.fusion.PartyFusion.Source::persona).toList();
+  String recipe=!e.unlocked()?(e.allRanks()?"Reach rank 10 in all 22 fusion Arcanas.":"Use Arcana Up cards to reach rank 10."):ingredients.isEmpty()?"No valid recipe with your current level and authorized ingredients.":String.join(" + ",ingredients.stream().map(id->com.gx.velveteclipse.core.persona.PersonaRegistry.persona(id).orElseThrow().displayName()).toList());
+  var lines=wrap(c,recipe,332,11);for(int i=0;i<Math.min(3,lines.size());i++)c.text(lines.get(i),529,351+i*14,11,WHITE,0);
+  c.text(!e.unlocked()?"Raise rank, then refresh with R.":options.isEmpty()?"Collect the ingredients and refresh with R.":"Combination "+(index+1)+" / "+options.size()+"   A / D",529,408,10,CYAN,0);
+  c.text(e.unlocked()?"ENTER  Inspect / inheritance":"Rank 10 required",529,425,10,MUTED,0);
+ }
  public static void dialog(Canvas c,String title,String text,String note){c.fill(0,0,900,474,0xA2020517);c.poly(new double[]{154,158,764,146,747,348,144,363},0xFF081A55);c.text(title,181,182,24,CYAN,0);var lines=wrap(c,text,538,16);for(int i=0;i<lines.size();i++)c.text(lines.get(i),182,229+i*22,16,WHITE,0);c.text(fit(c,note,538,12),182,301,12,MUTED,0);c.text("ENTER  Confirmar      ESC  Cancelar",182,334,14,CYAN,0);}
  private VelvetArchiveDesign(){}
 }

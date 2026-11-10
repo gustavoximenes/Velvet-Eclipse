@@ -4,6 +4,7 @@ import com.gx.velveteclipse.core.persona.PersonaDefinition;
 import com.gx.velveteclipse.core.persona.PersonaInstance;
 import com.gx.velveteclipse.core.persona.PersonaRegistry;
 import com.gx.velveteclipse.util.RuntimeBridge;
+import com.gx.velveteclipse.progression.PlayerLevelGrowth;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -13,12 +14,22 @@ import java.util.Set;
 
 public final class PlayerPersonaData {
    private static final String DATA_KEY = "velvet_eclipse:data_v1";
-   private int maxHp = 120;
-   private int hp = 120;
-   private int maxSp = 45;
-   private int sp = 45;
+   // V1 stores the level-one capacities, never growth or equipment. This also
+   // upgrades old leveled saves on read without multiplying growth on each login.
+   private int maxHp = PlayerLevelGrowth.BASE_HP;
+   private int hp = PlayerLevelGrowth.BASE_HP;
+   private int maxSp = PlayerLevelGrowth.BASE_SP;
+   private int sp = PlayerLevelGrowth.BASE_SP;
    private int pulseTonics = 3;
    private int playerLevel=1, playerExperience;
+   // Server-loaded context: ranks stay in RogueProfile; disabled mode supplies an empty map.
+   private java.util.Map<String,Integer> fusionRanks=java.util.Map.of();
+   private boolean roguelikeFusion;
+   public boolean roguelikeFusion(){return roguelikeFusion;}
+   public void fusionRanks(java.util.Map<String,Integer> ranks){fusionContext(true,ranks);}
+   public void fusionContext(boolean enabled,java.util.Map<String,Integer> ranks){roguelikeFusion=enabled;fusionRanks=enabled?java.util.Map.copyOf(com.gx.velveteclipse.roguelike.ArcanaUpCatalog.clean(ranks)):java.util.Map.of();}
+   public int fusionRank(com.gx.velveteclipse.core.persona.Arcana arcana){return fusionRanks.getOrDefault(com.gx.velveteclipse.roguelike.ArcanaUpCatalog.of(arcana).id(),0);}
+   public String fusionRankFingerprint(){return roguelikeFusion+":"+new java.util.TreeMap<>(fusionRanks);}
    private long yen;
    private int personaCapacity=2;
    // Only migration/switching old overflow uses this reserve. New acquisitions cannot bypass the cap.
@@ -36,6 +47,7 @@ public final class PlayerPersonaData {
    }
    private void registerOwned(){roster.values().forEach(this::register);reserve.values().forEach(this::register);}
    public boolean canExchange(Collection<String> consumed,PersonaInstance result){
+      if(result!=null&&!com.gx.velveteclipse.core.fusion.SupremeFusion.unlocked(this,result.definitionId()))return false;
       if(new java.util.HashSet<>(consumed).size()!=consumed.size()||!roster.keySet().containsAll(consumed))return false;
       var left=new java.util.HashSet<>(roster.keySet());left.removeAll(consumed);if(result!=null)left.add(result.definitionId());
       return !left.isEmpty()&&left.size()<=personaCapacity&&(result==null||PersonaRegistry.persona(result.definitionId()).isPresent());
@@ -60,17 +72,26 @@ public final class PlayerPersonaData {
    public void addYen(long amount){if(amount>0)yen=Math.min(9_999_999_999L,yen+Math.min(amount,9_999_999_999L));}
    public int playerLevel(){return playerLevel;}
    public int playerExperience(){return playerExperience;}
-   public void setPlayerLevel(int level){if(level<1||level>99)throw new IllegalArgumentException("Player level must be 1..99");playerLevel=level;playerExperience=0;}
+   public void setPlayerLevel(int level){
+      if(level<1||level>PlayerLevelGrowth.MAX_LEVEL)throw new IllegalArgumentException("Player level must be 1..99");
+      playerLevel=level;playerExperience=0;
+      // Administrative changes do not heal; lowering the level clamps resources.
+      setResources(hp,sp);
+   }
    public boolean setPersonaLevel(String id,int level){
       var instance=roster.get(id);if(instance==null)return false;
       instance.setLevel(PersonaRegistry.persona(id).orElseThrow(),level);return true;
    }
    public int playerNextExperience(){return PersonaInstance.experienceForNextLevel(playerLevel);}
    public void addPlayerExperience(int amount){
-      if(amount<=0||playerLevel>=99)return;
+      if(amount<=0||playerLevel>=PlayerLevelGrowth.MAX_LEVEL)return;
+      int oldMaxHp=maxHp(),oldMaxSp=maxSp();
       long xp=(long)playerExperience+amount;
-      while(playerLevel<99&&xp>=playerNextExperience()){xp-=playerNextExperience();playerLevel++;}
-      playerExperience=playerLevel==99?0:(int)xp;
+      while(playerLevel<PlayerLevelGrowth.MAX_LEVEL&&xp>=playerNextExperience()){xp-=playerNextExperience();playerLevel++;}
+      playerExperience=playerLevel==PlayerLevelGrowth.MAX_LEVEL?0:(int)xp;
+      // Preserve missing HP/SP instead of fully restoring, and never revive a KO.
+      hp=hp==0?0:PlayerLevelGrowth.addCapacity(hp,maxHp()-oldMaxHp,maxHp());
+      sp=PlayerLevelGrowth.addCapacity(sp,maxSp()-oldMaxSp,maxSp());
    }
    private String activePersona = "";
    private boolean awakened;
@@ -88,7 +109,7 @@ public final class PlayerPersonaData {
    }
 
    public int maxHp() {
-      return this.maxHp+equipment.hp();
+      return PlayerLevelGrowth.maxHp(this.maxHp,playerLevel,equipment.hp());
    }
 
    public int hp() {
@@ -96,7 +117,7 @@ public final class PlayerPersonaData {
    }
 
    public int maxSp() {
-      return this.maxSp+equipment.sp();
+      return PlayerLevelGrowth.maxSp(this.maxSp,playerLevel,equipment.sp());
    }
 
    public int sp() {
@@ -162,7 +183,7 @@ public final class PlayerPersonaData {
          return false;
       } else if (!var1.equals(var2) && this.roster.containsKey(var1) && this.roster.containsKey(var2)
            && !var3.definitionId().equals(var1) && !var3.definitionId().equals(var2) && var3.level()<=playerLevel
-           && PersonaRegistry.persona(var3.definitionId()).isPresent()) {
+           && PersonaRegistry.persona(var3.definitionId()).isPresent() && com.gx.velveteclipse.core.fusion.SupremeFusion.unlocked(this,var3.definitionId())) {
          boolean var4 = this.activePersona.equals(var1) || this.activePersona.equals(var2);
          registerOwned();register(var3);
          this.roster.remove(var1);
@@ -233,7 +254,7 @@ public final class PlayerPersonaData {
       this.pulseTonics = Math.max(0, this.pulseTonics + var1);
    }
 
-   public static PlayerPersonaData load(Object p){var d=loadBase(p);d.equipment=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses();d.setResources(d.hp,d.sp);d.registerOwned();return d;}
+   public static PlayerPersonaData load(Object p){var d=loadBase(p);d.equipment=com.gx.velveteclipse.equipment.EquipmentData.load(p).bonuses();d.setResources(d.hp,d.sp);d.registerOwned();if(p instanceof net.minecraft.server.level.ServerPlayer player)d.fusionContext(com.gx.velveteclipse.roguelike.RogueRules.enabled(player.m_20194_()),com.gx.velveteclipse.roguelike.RogueService.fusionRanks(player));return d;}
    private static PlayerPersonaData loadBase(Object var0) {
       PlayerPersonaData var1 = new PlayerPersonaData();
       Object var2 = RuntimeBridge.persistentData(var0);
@@ -248,7 +269,7 @@ public final class PlayerPersonaData {
                var1.maxSp = Math.max(0, Integer.parseInt(var4[4]));
                var1.activePersona = var4[5];
                var1.pulseTonics = Math.max(0, Integer.parseInt(var4[6]));
-               if(var4.length>=10){var1.playerLevel=clamp(Integer.parseInt(var4[8]),1,99);var1.playerExperience=clamp(Integer.parseInt(var4[9]),0,var1.playerNextExperience()-1);}
+               if(var4.length>=10){var1.playerLevel=clamp(Integer.parseInt(var4[8]),1,99);var1.playerExperience=var1.playerLevel==99?0:clamp(Integer.parseInt(var4[9]),0,var1.playerNextExperience()-1);}
                if(var4.length>=11)var1.yen=Math.max(0,Math.min(9_999_999_999L,Long.parseLong(var4[10])));
                if(var4.length>=12)var1.personaCapacity=clamp(Integer.parseInt(var4[11]),2,8);
                if(var4.length>=13&&!var4[12].isBlank())for(String row:var4[12].split(";")){var saved=decodePersona(row);if(saved!=null)var1.reserve.put(saved.definitionId(),saved);}

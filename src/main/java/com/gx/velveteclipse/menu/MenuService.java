@@ -23,7 +23,7 @@ public final class MenuService {
         if(action.equals("difficulty")){String message=DifficultyPreferences.set(player,argument);refresh(player,message);for(var member:com.gx.velveteclipse.party.PartyService.members(player))if(member!=player)refresh(member,"");return;}
         if(action.equals("all_out_style")){boolean ok=AllOutPreferences.set(player,argument);refresh(player,ok?"Animação de All-Out Attack salva.":"Estilo indisponível.");return;}
         PlayerPersonaData data=PlayerPersonaData.load(player);
-        var result=MenuActions.apply(data,action,argument,BattleService.hasActiveBattle(player));
+        var result=MenuActions.apply(data,action,argument,BattleService.hasActiveBattle(player),com.gx.velveteclipse.roguelike.RogueService.bonuses(player));
         if(result.changed()){data.save(player);BattleService.sync(player,result.message());}
         MenuNetwork.reply(player,snapshot(player,data,result.message()));
     }
@@ -52,7 +52,7 @@ public final class MenuService {
         if(target==null||!target.m_6084_()||target.m_9236_()!=source.m_9236_()||source.m_20280_(target)>64*64||BattleService.current(target)!=null||com.gx.velveteclipse.awakening.AwakeningService.active(target)){refresh(source,"O aliado precisa estar próximo e fora de combate.");return;}
         var from=PlayerPersonaData.load(source);var to=source==target?from:PlayerPersonaData.load(target);
         var bag=com.gx.velveteclipse.equipment.EquipmentData.load(source);
-        var result=MenuRecovery.apply(from,to,bag,action,args[0]);
+        var result=MenuRecovery.apply(from,to,bag,action,args[0],com.gx.velveteclipse.roguelike.RogueService.bonuses(source));
         if(result.changed()){com.gx.velveteclipse.forge.FeedbackServer.worldRoute(target,action.equals("heal_target")?"skill_"+args[0]:"item_"+(action.equals("tonic_target")?"pulse_tonic":args[0]));from.save(source);if(source!=target)to.save(target);com.gx.velveteclipse.equipment.EquipmentData.save(source,bag);BattleService.sync(source,result.message());if(source!=target)BattleService.sync(target,result.message());com.gx.velveteclipse.equipment.EquipmentService.sync(source,"sync","");}
         refresh(source,result.message());
     }

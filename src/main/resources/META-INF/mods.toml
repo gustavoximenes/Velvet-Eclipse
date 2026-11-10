@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="velvet_eclipse"
-version="0.6.57-angel-entry"
+version="0.6.58-roguelike-portals"
 displayName="Velvet Eclipse"
 authors="Gustavo Ximenes"
 description='''An original Minecraft RPG mod inspired by stylish monster-collecting and social JRPG combat systems.'''

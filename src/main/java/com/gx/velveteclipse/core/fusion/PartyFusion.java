@@ -15,9 +15,11 @@ public final class PartyFusion {
   var available=new TreeSet<>(recipe.inheritableSkills());available.removeAll(result.learnedSkills());if(!available.containsAll(skills))return null;
   for(String id:skills)result.inheritSkill(id);
   boolean allowed=result.level()<=data.playerLevel();String message=allowed?"As Personas listadas serão consumidas. Até duas habilidades podem ser herdadas.":"Requer nível de jogador "+result.level()+".";
+  int bonus=FusionArcanaBonus.apply(data,result);
   var groups=group(sources);groups.putIfAbsent(receiver,new ArrayList<>());
   for(var e:groups.entrySet())if(!owners.get(e.getKey()).canExchange(e.getValue(),e.getKey().equals(receiver)?result:null)){allowed=false;message="Falta espaço no destinatário ou a contribuição deixaria alguém sem Persona.";}
-  return new Preview(result,List.copyOf(available),allowed,message);
+  if(!SupremeFusion.unlocked(data,result.definitionId())){allowed=false;message=SupremeFusion.lockedMessage(result.definitionId());}
+  return new Preview(result,List.copyOf(available),allowed,allowed?FusionArcanaBonus.describe(data,result,bonus)+" "+message:message);
  }
  public static boolean commit(Map<UUID,PlayerPersonaData> owners,UUID receiver,List<Source> sources,String special,List<String> skills){
   var p=preview(owners,receiver,sources,special,skills);if(p==null||!p.allowed())return false;

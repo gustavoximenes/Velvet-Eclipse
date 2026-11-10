@@ -7,6 +7,18 @@ import com.gx.velveteclipse.core.persona.PersonaStats;
 import java.util.UUID;
 
 public final class BattleCombatant {
+   private com.gx.velveteclipse.roguelike.RogueBonuses rogue=com.gx.velveteclipse.roguelike.RogueBonuses.NONE;
+   public BattleCombatant rogue(com.gx.velveteclipse.roguelike.RogueBonuses value){rogue=value;return this;}
+   public com.gx.velveteclipse.roguelike.RogueBonuses rogue(){return rogue;}
+   public int spCost(com.gx.velveteclipse.core.persona.SkillDefinition s){return com.gx.velveteclipse.roguelike.SkillPayment.of(s,maxHp,equipment(),rogue).sp();}
+   public int hpPayment(com.gx.velveteclipse.core.persona.SkillDefinition s){return com.gx.velveteclipse.roguelike.SkillPayment.of(s,maxHp,equipment(),rogue).hp();}
+   public boolean spendSkill(com.gx.velveteclipse.core.persona.SkillDefinition s){int sp=spCost(s),hp=hpPayment(s);if(this.sp<sp||hp>0&&this.hp<=hp)return false;this.sp-=sp;this.hp-=hp;return true;}
+   public void extendDebuff(String id,int turns){
+      if(turns<=0)return;
+      if((id.endsWith("tarunda")||id.equals("debilitate"))&&attackStage<0&&attackTurns>0)attackTurns=3+turns;
+      if((id.endsWith("rakunda")||id.equals("debilitate"))&&defenseStage<0&&defenseTurns>0)defenseTurns=3+turns;
+      if((id.endsWith("sukunda")||id.equals("debilitate"))&&accuracyStage<0&&accuracyTurns>0)accuracyTurns=3+turns;
+   }
    private final UUID id;
    private final String name;
    private final BattleSide side;
@@ -212,6 +224,7 @@ public final class BattleCombatant {
       damage(n);
    }
    public void damage(int var1) {
+      if(var1>0)var1=Math.max(1,(int)Math.round(var1*rogue.incoming()));
       int var2 = Math.max(0, var1);
       if(var2>0)cure("SLEEP");
       if (this.guarding && var2>0) {

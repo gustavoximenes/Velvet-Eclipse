@@ -70,7 +70,7 @@ public final class PersonaMenuScreen extends Screen {
     private double scale(){return Math.min(f_96543_/900.0,f_96544_/500.0);}
     private double left(){return (f_96543_-900*scale())/2;}
     private double top(){return (f_96544_-500*scale())/2;}
-    private void selectTab(int index,boolean enter){allOutSelectOpen=gearOpen=targetOpen=false;sheet.close();tab=Math.floorMod(index,MenuDesign.TABS.length);selected=offset=0;actor=0;if(enter){home=false;if(tab==10){home=true;com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");}}changed=now();}
+    private void selectTab(int index,boolean enter){allOutSelectOpen=gearOpen=targetOpen=false;sheet.close();tab=Math.floorMod(index,MenuDesign.TABS.length);selected=offset=0;actor=0;if(enter){home=false;if(tab==11){home=true;RogueScreen.open(this,0);}if(tab==10){home=true;com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");}}changed=now();}
     private void openAllOutSelect(){allOutChoice=com.gx.velveteclipse.core.battle.AllOutStyle.parse(data.allOutStyle()).ordinal();allOutSelectOpen=true;changed=now();}
     private void chooseAllOut(){request("all_out_style",com.gx.velveteclipse.core.battle.AllOutStyle.values()[allOutChoice].id());allOutSelectOpen=false;changed=now();}
     private void chooseDifficulty(int delta){if(data.difficulty().editable())request("difficulty",com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).step(delta).id());else{message=data.difficulty().note();messageAt=now();}}
@@ -212,6 +212,7 @@ public final class PersonaMenuScreen extends Screen {
                 list.add(new MenuDesign.Row("Idioma / Language",com.gx.velveteclipse.client.localization.ClientLocalization.code().equals("en_us")?"English":"Português",-1));
                 list.add(new MenuDesign.Row("Dificuldade",com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).label+" / "+data.difficulty().note(),-1));
                 list.add(new MenuDesign.Row("Áudio do mod","Vozes, efeitos e interface",-1));
+                list.add(new MenuDesign.Row("Roguelike","Classes e Arcana Buffs / regra do mundo",-1));
                 list.add(new MenuDesign.Row("Voltar ao jogo","Fechar menu",-1));
                 if(selected==0){detail.add("SYSTEM");detail.add("Ajuste video, audio e controles nas opcoes do Minecraft.");action="Abrir opcoes";}
                 else if(selected==1){detail.add("Movimento do menu");detail.add("Alterna flutuacao do retrato, entrada das opcoes e transicoes.");detail.add("Preferencia valida nesta sessao.");action=motion?"Reduzir movimento":"Ativar animacoes";}
@@ -219,6 +220,7 @@ public final class PersonaMenuScreen extends Screen {
                 else if(selected==3){detail.add("Idioma do Velvet Eclipse");detail.add("Altera os menus, descrições e mensagens do mod. Preferência salva neste cliente.");action="Português / English";}
                 else if(selected==4){detail.add(com.gx.velveteclipse.core.battle.BattleDifficulty.parse(data.difficulty().id()).description);detail.add("Ajuste automático por participantes do combate.");detail.add(data.difficulty().note());action="Escolher dificuldade";}
                 else if(selected==5){detail.add("Volumes independentes por tipo de som. Preferência salva neste cliente.");action="Ajustar áudio";}
+                else if(selected==6){detail.add("Off by default. Only the world owner can change this mode.");action="Roguelike";}
                 else{detail.add("Retornar ao mundo.");action="Fechar menu";}
             }
         }
@@ -233,10 +235,11 @@ public final class PersonaMenuScreen extends Screen {
             case 0 -> {var p=data.equipped();if(actor==0&&p!=null&&selected<p.skills().size()&&p.skills().get(selected).element()==Element.HEALING)recover("heal_target",p.skills().get(selected).id(),p.skills().get(selected).displayName());}
             case 1 -> {if(selected>=choiceIds.size())return;String id=choiceIds.get(selected);if(id.equals("tonic"))recover("tonic_target","tonic","Pulse Tonic");else if(id.startsWith("s:"))recover("supply_target",id.substring(2),rows.get(selected).title());else f_96541_.m_91152_(new InventoryScreen(f_96541_.f_91074_));}
             case 2 -> {if(!gearOpen){gearSlot=selected;gearOpen=true;selected=offset=0;changed=now();}else if(selected<choiceIds.size())com.gx.velveteclipse.equipment.EquipmentNetwork.request("equip",choiceIds.get(selected),"");}
+            case 11 -> RogueScreen.open(this,0);
             case 10 -> com.gx.velveteclipse.party.PartyNetwork.request("open","","",0,"");
             case 3 -> showPersona();
             case 5 -> {var connection=f_96541_.m_91403_();if(connection!=null)f_96541_.m_91152_(new AdvancementsScreen(connection.m_105145_()));}
-            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else if(selected==4)chooseDifficulty(1);else if(selected==5)f_96541_.m_91152_(new AudioSettingsScreen(this));else closeMenu();}
+            case 8 -> {if(selected==0)f_96541_.m_91152_(new OptionsScreen(this,f_96541_.f_91066_));else if(selected==1)motion=!motion;else if(selected==2)openAllOutSelect();else if(selected==3){message=com.gx.velveteclipse.client.localization.ClientLocalization.toggle()?"Idioma salvo.":"Não foi possível salvar o idioma.";messageAt=now();}else if(selected==4)chooseDifficulty(1);else if(selected==5)f_96541_.m_91152_(new AudioSettingsScreen(this));else if(selected==6)RogueScreen.open(this,2);else closeMenu();}
         }
     }
     @Override public void m_88315_(GuiGraphics g,int mouseX,int mouseY,float partial){

@@ -5,7 +5,9 @@ import java.util.List;
 /** Responsive Reload-inspired skill list. All hit boxes use this exact coordinate system. */
 public final class PersonaBattleDesign {
  private static final int WHITE=0xFFF7FFFF,CYAN=0xFF51F5FF,BLUE=0xFF161BFF,INK=0xFF02061B;
- public record View(String persona,List<SkillDefinition> skills,int selected,int hp,int maxHp,int sp,boolean pending,double age){}
+ public record View(String persona,List<SkillDefinition> skills,int selected,int hp,int maxHp,int sp,boolean pending,double age,java.util.Map<String,com.gx.velveteclipse.roguelike.SkillPayment> payments){
+  public View(String persona,List<SkillDefinition> skills,int selected,int hp,int maxHp,int sp,boolean pending,double age){this(persona,skills,selected,hp,maxHp,sp,pending,age,java.util.Map.of());}
+ }
  public static double unit(int w,int h){return Math.min(w/820.0,h/390.0);}
  public static double top(int w,int h){return h-360*unit(w,h);}
  public static double entrance(double age){double p=Math.max(0,Math.min(1,age/.28));return 1-Math.pow(1-p,3);}
@@ -50,7 +52,7 @@ public final class PersonaBattleDesign {
   int first=v.selected/7*7;
   for(int i=first;i<Math.min(first+7,v.skills.size());i++){
    var skill=v.skills.get(i);boolean chosen=i==v.selected;
-   boolean affordable=skill.spCost()<=v.sp&&(skill.hpPercentCost()==0||v.hp>Math.max(1,v.maxHp*skill.hpPercentCost()/100));
+   var payment=v.payments.get(skill.id());boolean affordable=payment!=null?payment.affordable(v.hp,v.sp):skill.spCost()<=v.sp&&(skill.hpPercentCost()==0||v.hp>Math.max(1,v.maxHp*skill.hpPercentCost()/100));
    int rx=187+rowOffset(i-first,v.age),ry=76+(i-first)*24,rw=330,rh=22;
    if(chosen){BattleHudDesign.ribbon(c,rx-3,ry-2,rw+6,rh+4,0xFF33DAFF);BattleHudDesign.ribbon(c,rx,ry,rw,rh,WHITE);}
    else BattleHudDesign.ribbon(c,rx+4,ry,rw-4,rh,0xE8021747);
@@ -58,7 +60,7 @@ public final class PersonaBattleDesign {
    BattleGraphics.icon(c,skill.element(),rx+27,ry+rh*.5,8);
    c.text(HudDesign.fit(c,skill.displayName(),190),rx+57,ry+7,chosen?INK:affordable?CYAN:0xFF7F98BD);
    c.fill(rx+rw-69,ry+3,64,rh-6,INK);
-   c.text(PersonaDetails.cost(skill),rx+rw-64,ry+7,affordable?0xFFFFEF49:0xFFFF5975);
+   c.text(payment==null?PersonaDetails.cost(skill):payment.label(),rx+rw-64,ry+7,affordable?0xFFFFEF49:0xFFFF5975);
   }
   if(v.skills.isEmpty())c.text("Nenhuma habilidade aprendida",196,90,WHITE);
   else{
@@ -66,7 +68,7 @@ public final class PersonaBattleDesign {
    BattleHudDesign.ribbon(c,192,infoY-5,330,49,0xE9010A37);
    c.styled("Info",198,infoY,.9f,CYAN);
    wrap(c,PersonaDetails.description(skill),198,infoY+12,309,CYAN,2);
-   c.text(skill.isDamageSkill()?"Poder "+skill.power()+"   Acerto "+skill.accuracy()+"%":"Efeito de suporte   3 turnos",198,infoY+34,WHITE);
+   c.text(skill.isDamageSkill()?"Poder "+skill.power()+"   Acerto "+skill.accuracy()+"%":"Efeito de suporte",198,infoY+34,WHITE);
   }
   c.styled("Qual habilidade usar?",198,317,1.1f,WHITE);
   c.fill(0,338,530,22,0xF303092A);

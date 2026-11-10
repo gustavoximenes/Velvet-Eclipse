@@ -22,9 +22,9 @@ public final class EntryFloorBanner {
   var p=mc.f_91074_;var eye=e.getCamera().m_90583_();double yaw=Math.toRadians(p.m_146908_()),cs=Math.cos(yaw),sn=Math.sin(yaw);
   double cx=p.m_20185_()-sn*1.2,cy=p.m_20186_()+.045,cz=p.m_20189_()+cs*1.2;
   var matrix=e.getPoseStack().m_85850_().m_252922_();
-  for(double[] v:new double[][]{{-3.4,-.85,0,1},{-3.4,.85,0,0},{3.4,.85,1,0},{3.4,-.85,1,1}}){
-   out.m_252986_(matrix,(float)(cx+cs*v[0]-sn*v[1]-eye.f_82479_),(float)(cy-eye.f_82480_),(float)(cz+sn*v[0]+cs*v[1]-eye.f_82481_))
-      .m_6122_(255,255,255,(int)(opacity*255)).m_7421_((float)v[2],(float)v[3]).m_7122_(0,10).m_7120_(240,240).m_5601_(0,1,0).m_5752_();
+  for(var v:EntryBannerGeometry.quad(cx,cy,cz,eye.f_82479_,eye.f_82481_,p.m_146908_())){
+   out.m_252986_(matrix,(float)(v.x()-eye.f_82479_),(float)(v.y()-eye.f_82480_),(float)(v.z()-eye.f_82481_))
+      .m_6122_(255,255,255,(int)(opacity*255)).m_7421_(v.u(),v.v()).m_7122_(0,10).m_7120_(240,240).m_5601_(0,1,0).m_5752_();
   }
   buffers.m_109911_();
  }

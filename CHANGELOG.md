@@ -1,3 +1,12 @@
+# 0.6.58-roguelike-portals — 09/11/2026
+
+- Roguelike opcional, desativado por padrão e controlado pelo dono: DPS, suporte e Weakness Hitter, nove Arcana Buffs e confirmação de uso.
+- 23 cartas Arcana Up, ranks individuais até 10, EXP adicional de fusão e aba de fusões supremas. Rank máximo exigido somente com roguelike ativo.
+- Level up do jogador aumenta os máximos em 6 HP e 3 SP por nível, com migração dos saves e atualização dos resultados.
+- Portais do Tártaro seguram o jogador durante cooldown, geração e bloqueios de passagem; chegada zera o impulso. A colisão também vale nos andares existentes.
+- Corrige a orientação da faixa de entrada em batalha pela câmera, sem texto espelhado.
+- Validação offline, sem execução do Minecraft. Cliente e servidor devem usar a mesma versão. [Detalhes](docs/roguelike-portals-0.6.58.md).
+
 # 0.6.57-angel-entry — 01/11/2026
 
 - Angel 03: modelo, textura, idle, ataques completos, expressões, carta, ícone e menu.

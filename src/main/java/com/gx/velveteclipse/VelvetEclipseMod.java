@@ -13,6 +13,8 @@ public final class VelvetEclipseMod {
    public static final Logger LOGGER = LogUtils.getLogger();
 
    public VelvetEclipseMod() {
+      com.gx.velveteclipse.roguelike.RogueRules.initialize();
+      com.gx.velveteclipse.roguelike.ArcanaItems.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       GeckoLib.initialize();
       com.gx.velveteclipse.darkhour.DarkHourRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
       com.gx.velveteclipse.room.VelvetRoomRegistry.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());

@@ -24,7 +24,7 @@ public final class VelvetArchiveScreen extends Screen {
  private final PersonaModelPreview model=new PersonaModelPreview();
  private final com.gx.velveteclipse.client.room.VelvetScene background=com.gx.velveteclipse.client.room.VelvetScene.load("menu");
  private final com.gx.velveteclipse.client.room.VelvetScene portrait=com.gx.velveteclipse.client.room.VelvetScene.load("portrait");
- private static final int HOME=0,NORMAL=1,SPECIAL=2,BOOK=3,PARTY=4,INSPECT=5,BUY=6,OFFER=7,SEARCH=8;
+ private static final int HOME=0,NORMAL=1,SPECIAL=2,BOOK=3,PARTY=4,INSPECT=5,BUY=6,OFFER=7,SEARCH=8,SUPREME=9;
  public VelvetArchiveScreen(VelvetArchive.View data){super(com.gx.velveteclipse.localization.ModText.component("Velvet Room"));this.data=data;}
  public static void accept(String json){
   var d=MenuNetwork.JSON.fromJson(json,VelvetArchive.View.class);if(d==null)return;var mc=Minecraft.m_91087_();
@@ -41,10 +41,12 @@ public final class VelvetArchiveScreen extends Screen {
   if(s.page==NORMAL&&d.result()==null)s.sources.clear();s.bound();
  }
  private List<VelvetArchive.Stock> own(){return data.stock().stream().filter(x->x.owner().equals(data.self())).toList();}
+ private List<SupremeFusion.Entry> supremes(){return data.supreme()==null?List.of():data.supreme().entries();}
+ private List<FusionSearch.Option> supremeRecipes(){if(supremes().isEmpty())return List.of();String id=supremes().get(Math.min(selected,supremes().size()-1)).id();return data.supreme().options().stream().filter(o->o.id().equals(id)).toList();}
  private List<FusionSearch.Option> results(){var map=new LinkedHashMap<String,FusionSearch.Option>();if(data.results()!=null)for(var r:data.results())map.putIfAbsent(r.id(),r);return List.copyOf(map.values());}
  private List<FusionSearch.Option> recipes(){var results=results();if(results.isEmpty())return List.of();String id=results.get(Math.min(selected,results.size()-1)).id();return data.results().stream().filter(r->r.id().equals(id)).toList();}
  private FusionSearch.Option chosenRecipe(){var recipes=recipes();return recipes.get(Math.floorMod(combination,recipes.size()));}
- private int count(){return switch(page){case HOME->5;case NORMAL->data.stock().size();case SPECIAL->data.recipes().size();case BOOK,BUY->data.book().size();case PARTY,OFFER->own().size();case SEARCH->results().size();default->0;};}
+ private int count(){return switch(page){case HOME->VelvetArchiveDesign.HOME.length;case NORMAL->data.stock().size();case SPECIAL->data.recipes().size();case BOOK,BUY->data.book().size();case PARTY,OFFER->own().size();case SEARCH->results().size();case SUPREME->supremes().size();default->0;};}
  private void bound(){selected=Math.max(0,Math.min(selected,count()-1));offset=Math.max(0,Math.min(offset,Math.max(0,count()-7)));if(selected<offset)offset=selected;if(selected>=offset+7)offset=selected-6;}
  private void request(String action,String result,String recipient){waiting=true;sent=System.currentTimeMillis();FusionNetwork.archiveRequest(new VelvetArchive.Request(action,result,List.copyOf(sources),List.copyOf(inherited),data.token(),recipient));}
  private static PartyFusion.Source source(VelvetArchive.Stock s){return new PartyFusion.Source(UUID.fromString(s.owner()),s.id());}
@@ -55,7 +57,8 @@ public final class VelvetArchiveScreen extends Screen {
   if(page==INSPECT){if(!readOnly){if(picker){toggle();return;}int base=inspected.skills().size();if(skill>=base&&skill<base+inherited.size()){inherited.remove(new ArrayList<>(inherited).get(skill-base));return;}if(skill>=base){picker=true;pick=0;}}return;}
   if(count()==0)return;
   switch(page){
-   case HOME->{int next=new int[]{NORMAL,SPECIAL,SEARCH,BOOK,PARTY}[selected];change(next);if(next==SEARCH)request("search","0","");}
+   case HOME->{int next=new int[]{NORMAL,SPECIAL,SEARCH,BOOK,PARTY,SUPREME}[selected];change(next);if(next==SEARCH)request("search","0","");if(next==SUPREME)request("supreme","","");}
+   case SUPREME->{var entry=supremes().get(selected);if(!entry.unlocked()){message=SupremeFusion.lockedMessage(entry.id());return;}var recipes=supremeRecipes();if(recipes.isEmpty()){message="No valid recipe with your current level and authorized ingredients.";return;}var recipe=recipes.get(Math.floorMod(combination,recipes.size()));sources.clear();sources.addAll(recipe.sources());request("preview",recipe.special(),"");}
    case NORMAL->{var input=source(data.stock().get(selected));if(sources.remove(input))return;if(sources.stream().anyMatch(s->s.persona().equals(input.persona()))){message="Escolha Personas diferentes.";return;}sources.add(input);if(sources.size()==2)request("preview","","");}
    case SPECIAL->{var recipe=data.recipes().get(selected);sources.clear();for(String id:recipe.ingredients()){var s=data.stock().stream().filter(x->x.id().equals(id)).findFirst().orElse(null);if(s==null){message="Falta "+name(id)+". Obtenha a Persona ou uma contribuição autorizada.";sources.clear();return;}sources.add(source(s));}request("preview",recipe.id(),"");}
    case SEARCH->{var recipe=chosenRecipe();sources.clear();sources.addAll(recipe.sources());request("preview",recipe.special(),"");}
@@ -77,7 +80,7 @@ public final class VelvetArchiveScreen extends Screen {
  @Override public void m_86600_(){if(f_96541_.f_91074_==null||!VelvetRoomService.inside(f_96541_.f_91074_)){m_7379_();return;}if(waiting&&System.currentTimeMillis()-sent>8000){waiting=false;message="Sem resposta. Atualize com R antes de confirmar novamente.";}}
  @Override public boolean m_7933_(int key,int scan,int mods){
   if(key==340||key==344){stand();return true;}if(key==256){back();return true;}if(waiting)return true;
-  if(key==82){request("refresh","","");return true;}
+  if(key==82){request(page==SUPREME?"supreme":"refresh","","");return true;}
   if(page==INSPECT){
    if(key==67){confirm();return true;}if(key==65||key==68){model.rotate(key==68?1:-1);return true;}
    if(key==70){affinity=affinity<0?0:-1;return true;}
@@ -86,7 +89,7 @@ public final class VelvetArchiveScreen extends Screen {
    if(key==88&&page==BOOK&&count()>0){inspected=data.book().get(selected).persona();if(inspected!=null){inspectReturn=BOOK;page=INSPECT;readOnly=true;finished=false;skill=0;affinity=-1;}return true;}
    if(key==88&&page==PARTY&&count()>0){request("withdraw",own().get(selected).id(),"");return true;}
    if(page==SEARCH&&(key==266||key==267)){int target=data.resultOffset()+(key==267?16:-16);if(target>=0&&target<data.resultCount()){selected=offset=combination=0;request("search",""+target,"");}return true;}
-   if(key==263||key==262||key==65||key==68){int direction=key==262||key==68?1:-1;if(page==PARTY||page==OFFER)recipient=Math.floorMod(recipient+direction,Math.max(1,data.party().size()));else if(page==SEARCH){combination=Math.floorMod(combination+direction,Math.max(1,recipes().size()));}else model.rotate(direction);return true;}
+   if(key==263||key==262||key==65||key==68){int direction=key==262||key==68?1:-1;if(page==PARTY||page==OFFER)recipient=Math.floorMod(recipient+direction,Math.max(1,data.party().size()));else if(page==SEARCH||page==SUPREME){combination=Math.floorMod(combination+direction,Math.max(1,page==SUPREME?supremeRecipes().size():recipes().size()));}else model.rotate(direction);return true;}
    if(key==265||key==264){selected=Math.floorMod(selected+(key==264?1:-1),Math.max(1,count()));bound();return true;}
   }
   if(key==257||key==335){activate();return true;}return super.m_7933_(key,scan,mods);
@@ -100,8 +103,8 @@ public final class VelvetArchiveScreen extends Screen {
  }
  @Override public boolean m_6050_(double x,double y,double amount){if(!waiting){if(page==INSPECT){if(picker)pick=Math.max(0,Math.min(data.skills().size()-1,pick+(amount>0?-1:1)));else skill=Math.max(0,Math.min(inspected.skills().size()+1,skill+(amount>0?-1:1)));}else{selected+=amount>0?-1:1;bound();}}return true;}
  private MenuSnapshot.Persona sheetPersona(){var p=inspected;var skills=new ArrayList<>(p.skills());if(!readOnly)for(String id:inherited)PersonaRegistry.skill(id).ifPresent(skills::add);return new MenuSnapshot.Persona(p.id(),p.name(),p.arcana(),p.level(),p.xp(),p.nextXp(),p.stats(),skills,p.affinities());}
- private String previewId(){if(count()==0)return "";return switch(page){case NORMAL->data.stock().get(selected).id();case SPECIAL->data.recipes().get(selected).id();case BOOK,BUY->data.book().get(selected).id();case PARTY,OFFER->own().get(selected).id();case SEARCH->results().get(selected).id();default->"";};}
- private List<VelvetArchiveDesign.Row> rows(){var list=new ArrayList<VelvetArchiveDesign.Row>();for(int i=0;i<count();i++){String title="",detail="";switch(page){case NORMAL->{var s=data.stock().get(i);title=(sources.contains(source(s))?"✓ ":"")+"Lv "+s.level()+"   "+s.name();detail="Dono: "+s.ownerName();}case SPECIAL->{var r=data.recipes().get(i);title="Lv "+r.level()+"   "+r.name();detail=String.join(" + ",r.ingredients().stream().map(VelvetArchiveScreen::name).toList());}case BOOK,BUY->{var b=data.book().get(i);title=String.format("Lv %02d   %s",b.level(),b.name());detail=b.owned()?"POSSUÍDA":"¥ "+b.price();}case PARTY,OFFER->{var s=own().get(i);title=s.name();detail=s.offered()?"CONTRIBUIÇÃO AUTORIZADA":"ENTER autorizar • X retirar";}case SEARCH->{var r=results().get(i);title="Lv "+r.level()+"   "+r.name();detail=data.results().stream().filter(o->o.id().equals(r.id())).count()+" combinações";}}list.add(new VelvetArchiveDesign.Row(title,detail));}return list;}
+ private String previewId(){if(count()==0)return "";return switch(page){case NORMAL->data.stock().get(selected).id();case SPECIAL->data.recipes().get(selected).id();case BOOK,BUY->data.book().get(selected).id();case PARTY,OFFER->own().get(selected).id();case SEARCH->results().get(selected).id();case SUPREME->supremes().get(selected).id();default->"";};}
+ private List<VelvetArchiveDesign.Row> rows(){if(page==SUPREME)return supremes().stream().map(e->new VelvetArchiveDesign.Row("Lv "+e.level()+"   "+e.name(),e.arcana()+" / "+VelvetArchiveDesign.supremeStatus(e))).toList();var list=new ArrayList<VelvetArchiveDesign.Row>();for(int i=0;i<count();i++){String title="",detail="";switch(page){case NORMAL->{var s=data.stock().get(i);title=(sources.contains(source(s))?"✓ ":"")+"Lv "+s.level()+"   "+s.name();detail="Dono: "+s.ownerName();}case SPECIAL->{var r=data.recipes().get(i);title="Lv "+r.level()+"   "+r.name();detail=String.join(" + ",r.ingredients().stream().map(VelvetArchiveScreen::name).toList());}case BOOK,BUY->{var b=data.book().get(i);title=String.format("Lv %02d   %s",b.level(),b.name());detail=b.owned()?"POSSUÍDA":"¥ "+b.price();}case PARTY,OFFER->{var s=own().get(i);title=s.name();detail=s.offered()?"CONTRIBUIÇÃO AUTORIZADA":"ENTER autorizar • X retirar";}case SEARCH->{var r=results().get(i);title="Lv "+r.level()+"   "+r.name();detail=data.results().stream().filter(o->o.id().equals(r.id())).count()+" combinações";}}list.add(new VelvetArchiveDesign.Row(title,detail));}return list;}
  @Override public void m_88315_(GuiGraphics g,int mouseX,int mouseY,float partial){
   double time=System.nanoTime()/1e9;model.advance(time,true);g.m_280509_(0,0,f_96543_,f_96544_,0xFF030421);
   if(page!=INSPECT&&background!=null)background.draw(g,f_96543_,f_96544_,0,"",0);
@@ -122,13 +125,14 @@ public final class VelvetArchiveScreen extends Screen {
      if(picker){c.fill(480,116,401,339,0xF0051037);c.text("HERDAR HABILIDADE",495,124,20,CYAN,0);int start=Math.max(0,pick-5);for(int i=0;i<8&&i+start<data.skills().size();i++){var s=data.skills().get(i+start);int y=152+i*32;c.fill(491,y,379,29,i+start==pick?CYAN:0xFF202C68);c.text((inherited.contains(s.id())?"✓ ":"")+s.displayName(),502,y+4,15,i+start==pick?INK:WHITE,0);c.text(PersonaDetails.cost(s),735,y+8,10,i+start==pick?INK:MUTED,0);}if(data.skills().isEmpty())c.text("Nenhuma habilidade adicional.",499,172,14,WHITE,0);c.text("ENTER Escolher   ESC Voltar ao inspect",497,435,12,CYAN,0);}
     });
    }else{
-    String title=switch(page){case NORMAL->"FUSÃO NORMAL";case SPECIAL->"FUSÃO ESPECIAL";case SEARCH->"BUSCA POR RESULTADO";case BOOK,BUY->"COMPÊNDIO";default->"CONTRIBUIÇÃO";};
+    String title=switch(page){case NORMAL->"FUSÃO NORMAL";case SPECIAL->"FUSÃO ESPECIAL";case SEARCH->"BUSCA POR RESULTADO";case BOOK,BUY->"COMPÊNDIO";case SUPREME->"FUSÕES SUPREMAS";default->"CONTRIBUIÇÃO";};
     g.m_286007_(() ->{if(page!=HOME)VelvetArchiveDesign.listBackground(c,title,page==SEARCH?"Resultados possíveis com suas Personas e contribuições.":page==BOOK||page==BUY?"Personas registradas • seu progresso é preservado.":"Escolha as Personas e confira o resultado no inspect.",page==SEARCH?data.resultCount()+" RESULTADOS DISPONÍVEIS":"JOGADOR Lv "+data.level()+"       YEN "+data.yen());});
-    String id=previewId();if(!id.isEmpty()&&page!=SEARCH)model.drawCard(g,id,524,148,340,199);
+    String id=previewId();if(!id.isEmpty()&&page!=SEARCH)model.drawCard(g,id,524,148,340,page==SUPREME?145:199);
     pose.m_85837_(0,0,MenuDepth.FOREGROUND);g.m_286007_(() ->{
      if(page==HOME)VelvetArchiveDesign.home(c,selected);else{
       VelvetArchiveDesign.rows(c,rows(),selected,offset,page==SEARCH?data.resultCount():count(),page==SEARCH?data.resultOffset():0);
       c.text(fit(c,name(id).toUpperCase(Locale.ROOT),335,25),520,115,25,WHITE,0);
+      if(page==SUPREME&&count()>0)VelvetArchiveDesign.supremeDetail(c,supremes().get(selected),supremeRecipes(),combination);
       if(page==BOOK||page==BUY){var b=count()==0?null:data.book().get(selected);if(b!=null){c.text(PersonaDetails.arcana(b.persona().arcana())+"  /  Lv "+b.level(),525,145,12,CYAN,0);c.poly(new double[]{519,355,878,346,873,427,515,439},0xEF050C2D);c.text("CUSTO",531,363,10,MUTED,0);c.text("¥ "+b.price(),532,384,20,WHITE,0);c.text("ESPAÇO",738,361,10,MUTED,0);c.text(data.ownedCount()+" / "+data.capacity()+" Personas",738,385,14,CYAN,0);c.text("ENTER Invocar   X Inspect",578,416,15,CYAN,0);}}
       if(page==SEARCH&&count()>0){
        var available=recipes();int chosen=Math.floorMod(combination,available.size()),first=Math.max(0,chosen-3);

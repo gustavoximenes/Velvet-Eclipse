@@ -1,4 +1,10 @@
 plugins { id 'java' }
+tasks.register('tartarusPortalTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusPortalAudit'; jvmArgs '-Djava.awt.headless=true' }
+tasks.register('supremeFusionTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.SupremeFusionAudit'; jvmArgs '-Djava.awt.headless=true' }
+tasks.register('arcanaUpAssets', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.ArcanaUpPreview'; args '--assets'; jvmArgs '-Djava.awt.headless=true' }
+tasks.register('arcanaUpTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.ArcanaUpAudit'; jvmArgs '-Djava.awt.headless=true' }
+tasks.register('playerGrowthTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.PlayerGrowthAudit'; jvmArgs '-Djava.awt.headless=true' }
+tasks.register('roguelikeTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.RogueAudit'; jvmArgs '-Djava.awt.headless=true' }
 
 tasks.register('feedbackTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.FeedbackAudit'; jvmArgs '-Djava.awt.headless=true' }
 
@@ -49,7 +55,7 @@ tasks.register('reloadMenuTest', JavaExec) {
     mainClass = 'com.gx.velveteclipse.tests.ReloadMenuAudit'
     jvmArgs '-Djava.awt.headless=true'
 }
-version = '0.6.57-angel-entry'
+version = '0.6.58-roguelike-portals'
 tasks.register('tartarusReworkTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.tests.TartarusReworkAudit'; jvmArgs '-Djava.awt.headless=true', '-Xmx2G' }
 java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
 dependencies {
@@ -278,3 +284,4 @@ tasks.register('elementalLifecycleTest', JavaExec) { dependsOn testClasses; clas
 
 tasks.register('entryAuditExport', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.client.presentation.EntryAuditExport'; jvmArgs '-Djava.awt.headless=true' }
 tasks.register('entryReleaseTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.exploration.EntryReleaseAudit'; jvmArgs '-Djava.awt.headless=true' }
+tasks.register('entryBannerTest', JavaExec) { dependsOn testClasses; classpath = sourceSets.test.runtimeClasspath; mainClass = 'com.gx.velveteclipse.exploration.EntryBannerAudit'; jvmArgs '-Djava.awt.headless=true' }

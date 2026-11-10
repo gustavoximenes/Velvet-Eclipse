@@ -17,6 +17,7 @@ public final class BattleResultsDesign {
   c.text("JOGADOR  Lv "+r.beforeLevel()+"  >  "+r.level(),(int)(57*u),(int)(267*u),0xFFC9FFFF);
   int bar=(int)(275*u);c.fill((int)(57*u),(int)(286*u),bar,(int)(5*u),0xFF102050);c.fill((int)(57*u),(int)(286*u),(int)(bar*Math.min(1,r.experience()/(double)Math.max(1,r.next()))),(int)(5*u),0xFF67FFFF);
   c.text(r.experience()+" / "+r.next()+" EXP",(int)(57*u),(int)(299*u),0xFFC9FFFF);
+  if(r.level()>r.beforeLevel())c.text("MAX HP +"+com.gx.velveteclipse.progression.PlayerLevelGrowth.hpGain(r.beforeLevel(),r.level())+"   MAX SP +"+com.gx.velveteclipse.progression.PlayerLevelGrowth.spGain(r.beforeLevel(),r.level()),(int)(57*u),(int)(315*u),0xFF9CFF57);
   panel(c,185*u,339*u,385*u,105*u,0xFF1721EE);
   c.styled("ITEM",(int)(205*u),(int)(324*u),(float)(4.5*u),0xFF04F4F0);
   c.styled(r.items(),(int)(215*u),(int)(373*u),(float)(1.65*u),0xFFFFFFFF);
